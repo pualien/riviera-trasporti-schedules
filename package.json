@@ -1,0 +1,14 @@
+{
+  "name": "riviera-trasporti-schedules",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build:data": "node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs"
+  },
+  "devDependencies": {
+    "pdfjs-dist": "^5.4.54",
+    "vitest": "^3.2.4"
+  }
+}
