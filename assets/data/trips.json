@@ -1,0 +1,2318 @@
+[
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "05:20"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "05:28"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "05:36"
+      },
+      {
+        "name": "santo stefano",
+        "time": "05:44"
+      },
+      {
+        "name": "riva ligure",
+        "time": "05:46"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "05:50"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "06:05"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "05:40"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "05:48"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "05:56"
+      },
+      {
+        "name": "santo stefano",
+        "time": "06:04"
+      },
+      {
+        "name": "riva ligure",
+        "time": "06:06"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "06:10"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "06:25"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "06:00"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "06:08"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "06:16"
+      },
+      {
+        "name": "santo stefano",
+        "time": "06:24"
+      },
+      {
+        "name": "riva ligure",
+        "time": "06:26"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "06:30"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "06:45"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "05:35"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "05:38"
+      },
+      {
+        "name": "cervo",
+        "time": "05:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "05:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "05:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "06:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "06:13"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "06:21"
+      },
+      {
+        "name": "santo stefano",
+        "time": "06:29"
+      },
+      {
+        "name": "riva ligure",
+        "time": "06:31"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "06:35"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "06:50"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "05:55"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "05:58"
+      },
+      {
+        "name": "cervo",
+        "time": "06:05"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "06:07"
+      },
+      {
+        "name": "diano marina",
+        "time": "06:10"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "06:25"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "06:33"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "06:41"
+      },
+      {
+        "name": "santo stefano",
+        "time": "06:49"
+      },
+      {
+        "name": "riva ligure",
+        "time": "06:51"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "06:55"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "07:10"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "06:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "06:43"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "06:51"
+      },
+      {
+        "name": "santo stefano",
+        "time": "06:59"
+      },
+      {
+        "name": "riva ligure",
+        "time": "07:01"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "07:05"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "07:11"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "07:20"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "06:25"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "06:28"
+      },
+      {
+        "name": "cervo",
+        "time": "06:35"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "06:37"
+      },
+      {
+        "name": "diano marina",
+        "time": "06:40"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "06:55"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:05"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "07:15"
+      },
+      {
+        "name": "santo stefano",
+        "time": "07:23"
+      },
+      {
+        "name": "riva ligure",
+        "time": "07:25"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "07:30"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "07:36"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "07:45"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "07:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "07:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "07:33"
+      },
+      {
+        "name": "riva ligure",
+        "time": "07:35"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "07:40"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "07:46"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "07:55"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "07:15"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:25"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "07:33"
+      },
+      {
+        "name": "santo stefano",
+        "time": "07:41"
+      },
+      {
+        "name": "riva ligure",
+        "time": "07:43"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "07:47"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "08:05"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "san bartolomeo",
+        "time": "07:07"
+      },
+      {
+        "name": "diano marina",
+        "time": "07:10"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "07:25"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:35"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "06:55"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "06:58"
+      },
+      {
+        "name": "cervo",
+        "time": "07:05"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "07:07"
+      },
+      {
+        "name": "diano marina",
+        "time": "07:10"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "07:25"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:35"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "07:43"
+      },
+      {
+        "name": "santo stefano",
+        "time": "07:51"
+      },
+      {
+        "name": "riva ligure",
+        "time": "07:53"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "07:57"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "08:15"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "06:57"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "07:02"
+      },
+      {
+        "name": "cervo",
+        "time": "07:10"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "07:12"
+      },
+      {
+        "name": "diano marina",
+        "time": "07:15"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "07:30"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:40"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "07:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "07:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:40"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "07:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "07:05"
+      },
+      {
+        "name": "cervo",
+        "time": "07:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "07:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "07:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "07:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "07:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "07:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "08:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "08:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "08:12"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "08:18"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "08:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "07:50"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "08:00"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "08:10"
+      },
+      {
+        "name": "santo stefano",
+        "time": "08:20"
+      },
+      {
+        "name": "riva ligure",
+        "time": "08:23"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "08:27"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "08:33"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "08:45"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "07:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "07:35"
+      },
+      {
+        "name": "cervo",
+        "time": "07:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "07:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "07:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "08:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "08:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "08:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "08:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "08:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "08:42"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "08:48"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "09:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "08:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "08:05"
+      },
+      {
+        "name": "cervo",
+        "time": "08:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "08:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "08:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "08:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "08:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "08:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "09:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "09:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "09:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "09:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "08:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "08:35"
+      },
+      {
+        "name": "cervo",
+        "time": "08:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "08:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "08:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "09:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "09:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "09:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "09:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "09:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "09:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "10:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "09:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "09:05"
+      },
+      {
+        "name": "cervo",
+        "time": "09:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "09:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "09:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "09:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "09:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "09:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "10:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "10:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "10:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "10:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "09:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "09:35"
+      },
+      {
+        "name": "cervo",
+        "time": "09:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "09:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "09:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "10:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "10:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "10:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "10:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "10:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "10:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "11:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "10:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "10:05"
+      },
+      {
+        "name": "cervo",
+        "time": "10:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "10:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "10:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "10:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "10:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "10:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "11:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "11:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "11:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "11:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "10:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "10:35"
+      },
+      {
+        "name": "cervo",
+        "time": "10:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "10:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "10:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "11:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "11:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "11:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "11:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "11:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "11:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "12:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "11:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "11:05"
+      },
+      {
+        "name": "cervo",
+        "time": "11:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "11:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "11:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "11:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "11:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "11:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "12:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "12:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "12:12"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "12:18"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "12:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "11:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "11:35"
+      },
+      {
+        "name": "cervo",
+        "time": "11:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "11:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "11:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "12:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "12:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "12:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "12:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "12:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "12:42"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "12:48"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "13:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "12:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "12:05"
+      },
+      {
+        "name": "cervo",
+        "time": "12:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "12:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "12:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "12:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "12:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "12:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "13:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "13:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "13:12"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "13:18"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "13:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "12:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "12:35"
+      },
+      {
+        "name": "cervo",
+        "time": "12:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "12:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "12:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "13:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "13:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "13:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "13:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "13:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "13:42"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "13:48"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "14:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "13:14"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "13:24"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "13:34"
+      },
+      {
+        "name": "santo stefano",
+        "time": "13:42"
+      },
+      {
+        "name": "riva ligure",
+        "time": "13:44"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "13:49"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "14:04"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "imperia oneglia",
+        "time": "13:15"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "13:25"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "13:35"
+      },
+      {
+        "name": "santo stefano",
+        "time": "13:43"
+      },
+      {
+        "name": "riva ligure",
+        "time": "13:45"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "13:50"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "14:05"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "13:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "13:05"
+      },
+      {
+        "name": "cervo",
+        "time": "13:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "13:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "13:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "13:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "13:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "13:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "14:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "14:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "14:12"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "14:18"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "14:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "13:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "13:35"
+      },
+      {
+        "name": "cervo",
+        "time": "13:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "13:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "13:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "14:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "14:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "14:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "14:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "14:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "14:42"
+      },
+      {
+        "name": "rotonda scuola valle armea",
+        "time": "14:48"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "15:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "14:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "14:05"
+      },
+      {
+        "name": "cervo",
+        "time": "14:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "14:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "14:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "14:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "14:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "14:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "15:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "15:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "15:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "15:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "14:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "14:35"
+      },
+      {
+        "name": "cervo",
+        "time": "14:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "14:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "14:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "15:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "15:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "15:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "15:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "15:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "15:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "16:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "15:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "15:05"
+      },
+      {
+        "name": "cervo",
+        "time": "15:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "15:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "15:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "15:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "15:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "15:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "16:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "16:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "16:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "16:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "15:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "15:35"
+      },
+      {
+        "name": "cervo",
+        "time": "15:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "15:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "15:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "16:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "16:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "16:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "16:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "16:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "16:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "17:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "16:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "16:05"
+      },
+      {
+        "name": "cervo",
+        "time": "16:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "16:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "16:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "16:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "16:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "16:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "17:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "17:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "17:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "17:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "16:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "16:35"
+      },
+      {
+        "name": "cervo",
+        "time": "16:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "16:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "16:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "17:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "17:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "17:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "17:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "17:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "17:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "18:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "17:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "17:05"
+      },
+      {
+        "name": "cervo",
+        "time": "17:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "17:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "17:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "17:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "17:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "17:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "18:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "18:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "18:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "18:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "17:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "17:35"
+      },
+      {
+        "name": "cervo",
+        "time": "17:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "17:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "17:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "18:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "18:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "18:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "18:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "18:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "18:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "19:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "18:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "18:05"
+      },
+      {
+        "name": "cervo",
+        "time": "18:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "18:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "18:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "18:35"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "18:45"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "18:55"
+      },
+      {
+        "name": "santo stefano",
+        "time": "19:05"
+      },
+      {
+        "name": "riva ligure",
+        "time": "19:08"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "19:12"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "19:30"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "18:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "18:35"
+      },
+      {
+        "name": "cervo",
+        "time": "18:45"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "18:47"
+      },
+      {
+        "name": "diano marina",
+        "time": "18:50"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "19:05"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "19:15"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "19:25"
+      },
+      {
+        "name": "santo stefano",
+        "time": "19:35"
+      },
+      {
+        "name": "riva ligure",
+        "time": "19:38"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "19:42"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "20:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "19:00"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "19:03"
+      },
+      {
+        "name": "cervo",
+        "time": "19:10"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "19:12"
+      },
+      {
+        "name": "diano marina",
+        "time": "19:15"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "19:30"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "19:40"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "19:50"
+      },
+      {
+        "name": "santo stefano",
+        "time": "19:58"
+      },
+      {
+        "name": "riva ligure",
+        "time": "20:00"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "20:05"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "20:20"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "19:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "19:33"
+      },
+      {
+        "name": "cervo",
+        "time": "19:40"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "19:42"
+      },
+      {
+        "name": "diano marina",
+        "time": "19:45"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "20:00"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "19:50"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "19:53"
+      },
+      {
+        "name": "cervo",
+        "time": "20:00"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "20:02"
+      },
+      {
+        "name": "diano marina",
+        "time": "20:05"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "20:20"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "20:28"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "20:36"
+      },
+      {
+        "name": "santo stefano",
+        "time": "20:44"
+      },
+      {
+        "name": "riva ligure",
+        "time": "20:46"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "20:50"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "21:05"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "20:10"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "20:13"
+      },
+      {
+        "name": "cervo",
+        "time": "20:20"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "20:22"
+      },
+      {
+        "name": "diano marina",
+        "time": "20:25"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "20:40"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "20:30"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "20:33"
+      },
+      {
+        "name": "cervo",
+        "time": "20:40"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "20:42"
+      },
+      {
+        "name": "diano marina",
+        "time": "20:45"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "21:00"
+      },
+      {
+        "name": "imperia porto maurizio",
+        "time": "21:07"
+      },
+      {
+        "name": "san lorenzo",
+        "time": "21:14"
+      },
+      {
+        "name": "santo stefano",
+        "time": "21:21"
+      },
+      {
+        "name": "riva ligure",
+        "time": "21:24"
+      },
+      {
+        "name": "arma di taggia rossat",
+        "time": "21:28"
+      },
+      {
+        "name": "sanremo autostazione",
+        "time": "21:40"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "21:05"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "21:08"
+      },
+      {
+        "name": "cervo",
+        "time": "21:15"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "21:17"
+      },
+      {
+        "name": "diano marina",
+        "time": "21:20"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "21:35"
+      }
+    ]
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "dayType": "feriale",
+    "sourcePage": 23,
+    "stops": [
+      {
+        "name": "andora stazione fs",
+        "time": "21:40"
+      },
+      {
+        "name": "andora rotonda s.s.1",
+        "time": "21:43"
+      },
+      {
+        "name": "cervo",
+        "time": "21:50"
+      },
+      {
+        "name": "san bartolomeo",
+        "time": "21:52"
+      },
+      {
+        "name": "diano marina",
+        "time": "21:55"
+      },
+      {
+        "name": "imperia oneglia",
+        "time": "22:10"
+      }
+    ]
+  }
+]
