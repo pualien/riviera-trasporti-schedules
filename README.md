@@ -18,6 +18,8 @@ Build static route data from the official Riviera Trasporti PDF:
 npm run build:data
 ```
 
+The build now checks the extracted PDF index against [`data/manual/line-pages.json`](./data/manual/line-pages.json) and fails if indexed timetable pages are missing or a configured page parses to zero trips.
+
 Serve the site locally:
 
 ```bash
@@ -25,6 +27,16 @@ python3 -m http.server 4173
 ```
 
 Open [http://localhost:4173](http://localhost:4173).
+
+## Nearby Stop Picker
+
+The `From` and `To` fields both support a nearby-stop flow. The browser asks for geolocation permission, loads a compact runtime map, and uses a live provider to suggest the 3-5 closest known stops from the shipped timetable dataset.
+
+If location access is denied, the browser cannot provide geolocation, or the live provider cannot match results back to known Riviera stops, users can still search by typing stop names manually.
+
+## Scope
+
+The app supports direct rides from the official PDF, including school-only services exposed through the `Scolastico / School` day-type filter. It does not yet plan transfers.
 
 ## Project Structure
 

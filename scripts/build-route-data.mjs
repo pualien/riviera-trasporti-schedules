@@ -60,12 +60,18 @@ export async function buildRouteData({ indexEntries, manifestEntries, pages, ali
       throw new Error(`Missing page payload for ${config.lineId} page ${config.pageNumber}`);
     }
 
-    return parseTimetablePage({
+    const parsedTrips = parseTimetablePage({
       ...config,
       dayType: config.dayType ?? config.serviceNote,
       pageText: page.text,
       pageItems: page.items,
-    }).map(attachStopIds);
+    });
+
+    if (!parsedTrips.length) {
+      throw new Error(`Parsed zero trips for ${config.lineId} page ${config.pageNumber}`);
+    }
+
+    return parsedTrips.map(attachStopIds);
   });
 
   return {
@@ -89,7 +95,7 @@ async function main() {
     throw new Error('Missing PDF index page in extracted pages');
   }
 
-  const indexEntries = parsePdfIndex(indexPage.text);
+  const indexEntries = parsePdfIndex({ pageItems: indexPage.items });
   const output = await buildRouteData({ indexEntries, manifestEntries, pages, aliases });
 
   await mkdir(new URL('../assets/data/', import.meta.url), { recursive: true });
