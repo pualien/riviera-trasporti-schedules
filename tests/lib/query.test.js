@@ -12,9 +12,9 @@ const trips = [
     dayType: 'feriale',
     sourcePage: 22,
     stops: [
-      { name: 'andora stazione fs', time: '05:35' },
-      { name: 'imperia porto maurizio', time: '06:20' },
-      { name: 'sanremo autostazione', time: '07:00' },
+      { stopId: 'andora-stazione-fs', name: 'andora stazione fs', time: '05:35' },
+      { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '06:20' },
+      { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '07:00' },
     ],
   },
   {
@@ -22,9 +22,9 @@ const trips = [
     dayType: 'feriale',
     sourcePage: 22,
     stops: [
-      { name: 'andora stazione fs', time: '05:55' },
-      { name: 'imperia porto maurizio', time: '06:40' },
-      { name: 'sanremo autostazione', time: '07:20' },
+      { stopId: 'andora-stazione-fs', name: 'andora stazione fs', time: '05:55' },
+      { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '06:40' },
+      { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '07:20' },
     ],
   },
 ];
@@ -41,6 +41,8 @@ describe('findDirectTrips', () => {
 
     expect(matches).toHaveLength(2);
     expect(matches[0]).toMatchObject({
+      fromStopId: 'imperia-porto-maurizio',
+      toStopId: 'sanremo-autostazione',
       departureTime: '06:20',
       arrivalTime: '07:00',
       durationMinutes: 40,

@@ -1,15 +1,21 @@
-import { canonicalizeStopName } from './normalize.js';
+import { canonicalizeStopName, stopIdFromName } from './normalize.js';
 import { durationBetween, toMinutes } from './time.js';
 
 export function findDirectTrips({ from, to, dayType, aliases, trips }) {
   const fromName = canonicalizeStopName(from, aliases);
   const toName = canonicalizeStopName(to, aliases);
+  const fromStopId = stopIdFromName(fromName);
+  const toStopId = stopIdFromName(toName);
 
   return trips
     .filter((trip) => trip.dayType === dayType)
     .map((trip) => {
-      const fromIndex = trip.stops.findIndex((stop) => stop.name === fromName);
-      const toIndex = trip.stops.findIndex((stop) => stop.name === toName);
+      const fromIndex = trip.stops.findIndex(
+        (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === fromStopId,
+      );
+      const toIndex = trip.stops.findIndex(
+        (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === toStopId,
+      );
 
       if (fromIndex === -1 || toIndex === -1 || fromIndex >= toIndex) {
         return null;
@@ -21,6 +27,8 @@ export function findDirectTrips({ from, to, dayType, aliases, trips }) {
       return {
         lineId: trip.lineId,
         sourcePage: trip.sourcePage,
+        fromStopId,
+        toStopId,
         departureTime: fromStop.time,
         arrivalTime: toStop.time,
         durationMinutes: durationBetween(fromStop.time, toStop.time),

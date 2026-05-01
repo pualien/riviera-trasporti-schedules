@@ -8,6 +8,10 @@ export function normalizeText(value) {
     .trim();
 }
 
+export function stopIdFromName(value) {
+  return normalizeText(value).replace(/\s+/g, '-');
+}
+
 export function applyStopAliases(rawValue, aliases) {
   const normalized = normalizeText(rawValue);
 
@@ -21,5 +25,18 @@ export function applyStopAliases(rawValue, aliases) {
 }
 
 export function canonicalizeStopName(rawValue, aliases) {
+  return applyStopAliases(rawValue, aliases);
+}
+
+export function createStopRecord(canonical, variants) {
+  return {
+    id: stopIdFromName(canonical),
+    canonical,
+    variants,
+    matchTokens: [canonical, ...variants].map(normalizeText),
+  };
+}
+
+export function matchProviderStopName(rawValue, aliases) {
   return applyStopAliases(rawValue, aliases);
 }

@@ -1,6 +1,12 @@
 import { describe, expect, it } from 'vitest';
 import { durationBetween, normalizeStopName, toMinutes } from '../../src/lib/time.js';
-import { applyStopAliases, canonicalizeStopName } from '../../src/lib/normalize.js';
+import {
+  applyStopAliases,
+  canonicalizeStopName,
+  createStopRecord,
+  matchProviderStopName,
+  stopIdFromName,
+} from '../../src/lib/normalize.js';
 
 describe('stop normalization', () => {
   const aliases = {
@@ -15,6 +21,19 @@ describe('stop normalization', () => {
 
   it('normalizes spacing and punctuation before alias lookup', () => {
     expect(applyStopAliases(' Porto  Maurizio ', aliases)).toBe('imperia porto maurizio');
+  });
+
+  it('builds stable stop ids and records', () => {
+    expect(stopIdFromName('Imperia Porto Maurizio')).toBe('imperia-porto-maurizio');
+    expect(createStopRecord('imperia porto maurizio', aliases['imperia porto maurizio'])).toMatchObject({
+      id: 'imperia-porto-maurizio',
+      canonical: 'imperia porto maurizio',
+    });
+  });
+
+  it('matches provider labels back to canonical stops', () => {
+    expect(matchProviderStopName('Porto Maurizio', aliases)).toBe('imperia porto maurizio');
+    expect(canonicalizeStopName('Imperia P. Maurizio', aliases)).toBe('imperia porto maurizio');
   });
 
   it('parses timetable times and durations', () => {
