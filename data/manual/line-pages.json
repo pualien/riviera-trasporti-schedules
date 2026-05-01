@@ -1,8 +1,16 @@
 [
   {
     "lineId": "12",
+    "pageNumber": 22,
+    "direction": "SANREMO - IMPERIA - ANDORA",
+    "serviceNote": "feriale",
+    "parserFamily": "linear-intercity"
+  },
+  {
+    "lineId": "12",
     "pageNumber": 23,
     "direction": "ANDORA - IMPERIA - SANREMO",
-    "dayType": "feriale"
+    "serviceNote": "feriale",
+    "parserFamily": "linear-intercity"
   }
 ]
