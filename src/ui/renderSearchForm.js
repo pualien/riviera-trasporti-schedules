@@ -1,3 +1,11 @@
+function renderLocationButton(fieldName) {
+  return `
+    <button type="button" class="field-location-button" data-location-field="${fieldName}">
+      Use my location
+    </button>
+  `;
+}
+
 export function renderSearchForm({
   from = 'Porto Maurizio',
   to = 'Sanremo',
@@ -17,12 +25,18 @@ export function renderSearchForm({
       <form id="route-form" class="search-form">
         <label class="field">
           <span>Da / From</span>
-          <input name="from" value="${from}" placeholder="Porto Maurizio" autocomplete="off" />
+          <div class="field-input-row">
+            <input name="from" value="${from}" placeholder="Porto Maurizio" autocomplete="off" />
+            ${renderLocationButton('from')}
+          </div>
         </label>
 
         <label class="field">
           <span>A / To</span>
-          <input name="to" value="${to}" placeholder="Sanremo" autocomplete="off" />
+          <div class="field-input-row">
+            <input name="to" value="${to}" placeholder="Sanremo" autocomplete="off" />
+            ${renderLocationButton('to')}
+          </div>
         </label>
 
         <label class="field">
