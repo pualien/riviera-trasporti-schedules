@@ -55,4 +55,18 @@ describe('findDirectTrips', () => {
       lines: ['12'],
     });
   });
+
+  it('accepts exact stop ids when submitting a route search', () => {
+    const matches = findDirectTrips({
+      fromStopId: 'imperia-porto-maurizio',
+      toStopId: 'sanremo-autostazione',
+      dayType: 'feriale',
+      aliases,
+      trips,
+    });
+
+    expect(matches).toHaveLength(2);
+    expect(matches[0].fromStopId).toBe('imperia-porto-maurizio');
+    expect(matches[0].toStopId).toBe('sanremo-autostazione');
+  });
 });

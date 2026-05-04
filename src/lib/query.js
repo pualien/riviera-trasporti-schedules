@@ -1,20 +1,18 @@
 import { canonicalizeStopName, stopIdFromName } from './normalize.js';
 import { durationBetween, toMinutes } from './time.js';
 
-export function findDirectTrips({ from, to, dayType, aliases, trips }) {
-  const fromName = canonicalizeStopName(from, aliases);
-  const toName = canonicalizeStopName(to, aliases);
-  const fromStopId = stopIdFromName(fromName);
-  const toStopId = stopIdFromName(toName);
+export function findDirectTrips({ from, to, fromStopId, toStopId, dayType, aliases, trips }) {
+  const resolvedFromStopId = fromStopId ?? stopIdFromName(canonicalizeStopName(from, aliases));
+  const resolvedToStopId = toStopId ?? stopIdFromName(canonicalizeStopName(to, aliases));
 
   return trips
     .filter((trip) => trip.dayType === dayType)
     .map((trip) => {
       const fromIndex = trip.stops.findIndex(
-        (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === fromStopId,
+        (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === resolvedFromStopId,
       );
       const toIndex = trip.stops.findIndex(
-        (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === toStopId,
+        (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === resolvedToStopId,
       );
 
       if (fromIndex === -1 || toIndex === -1 || fromIndex >= toIndex) {
@@ -27,8 +25,8 @@ export function findDirectTrips({ from, to, dayType, aliases, trips }) {
       return {
         lineId: trip.lineId,
         sourcePage: trip.sourcePage,
-        fromStopId,
-        toStopId,
+        fromStopId: resolvedFromStopId,
+        toStopId: resolvedToStopId,
         departureTime: fromStop.time,
         arrivalTime: toStop.time,
         durationMinutes: durationBetween(fromStop.time, toStop.time),
