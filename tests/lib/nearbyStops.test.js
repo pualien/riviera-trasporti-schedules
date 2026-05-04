@@ -6,6 +6,14 @@ describe('buildNearbyStopChoices', () => {
     { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
     { id: 'sanremo-autostazione', canonical: 'sanremo autostazione', variants: ['sanremo'] },
   ];
+  const localities = [
+    {
+      id: 'porto-maurizio',
+      label: 'Porto Maurizio',
+      stopIds: ['imperia-porto-maurizio'],
+      matchTokens: ['porto maurizio'],
+    },
+  ];
 
   it('matches provider results to known stops and limits to five', async () => {
     const provider = vi.fn().mockResolvedValue([
@@ -22,12 +30,18 @@ describe('buildNearbyStopChoices', () => {
         'imperia porto maurizio': ['porto maurizio'],
         'sanremo autostazione': ['sanremo'],
       },
+      localities,
       fetchNearbyStops: provider,
       limit: 5,
     });
 
     expect(choices).toEqual([
-      expect.objectContaining({ stopId: 'imperia-porto-maurizio', distanceMeters: 180 }),
+      expect.objectContaining({
+        stopId: 'imperia-porto-maurizio',
+        distanceMeters: 180,
+        localityId: 'porto-maurizio',
+        localityLabel: 'Porto Maurizio',
+      }),
       expect.objectContaining({ stopId: 'sanremo-autostazione', distanceMeters: 420 }),
     ]);
   });

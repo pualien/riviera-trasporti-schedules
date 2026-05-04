@@ -4,6 +4,7 @@ import {
   createNearbyStopCacheKey,
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
+import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { toMinutes } from './lib/time.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
@@ -17,11 +18,20 @@ const LEAFLET_JS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 const state = {
   trips: [],
   stops: [],
+  localities: [],
+  reachability: {},
   aliases: {},
   formValues: {
-    from: 'Porto Maurizio',
-    to: 'Sanremo',
+    fromInput: 'Porto Maurizio',
+    fromLocalityId: null,
+    fromStopId: null,
+    toInput: '',
+    toStopId: null,
     dayType: 'feriale',
+  },
+  pickerState: {
+    exactStopChoices: [],
+    reachableDestinations: [],
   },
   resultState: null,
   locationPicker: null,
@@ -37,6 +47,37 @@ function nextDepartures(matches, count = 3) {
   const upcoming = matches.filter((match) => toMinutes(match.departureTime) >= nowMinutes);
   const source = upcoming.length ? upcoming : matches;
   return source.slice(0, count);
+}
+
+function buildReachabilityFromTrips(trips) {
+  const reachability = {};
+
+  for (const trip of trips) {
+    for (let fromIndex = 0; fromIndex < trip.stops.length; fromIndex += 1) {
+      const fromStopId = trip.stops[fromIndex].stopId;
+      const reachable = reachability[fromStopId] ?? new Set();
+
+      for (let toIndex = fromIndex + 1; toIndex < trip.stops.length; toIndex += 1) {
+        reachable.add(trip.stops[toIndex].stopId);
+      }
+
+      reachability[fromStopId] = reachable;
+    }
+  }
+
+  return Object.fromEntries(
+    Object.entries(reachability).map(([stopId, destinations]) => [stopId, [...destinations].sort()]),
+  );
+}
+
+async function fetchJsonOrNull(url) {
+  const response = await fetch(url);
+
+  if (!response.ok) {
+    return null;
+  }
+
+  return response.json();
 }
 
 function renderShell(content) {
@@ -57,7 +98,16 @@ function renderShell(content) {
 }
 
 function renderApp() {
-  const parts = [renderSearchForm(state.formValues)];
+  const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId);
+  const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
+  const parts = [renderSearchForm({
+    fromInput: state.formValues.fromInput,
+    fromLocalityLabel: selectedLocality?.label ?? '',
+    exactFromStop,
+    toInput: state.formValues.toInput,
+    reachableDestinations: state.pickerState.reachableDestinations,
+    dayType: state.formValues.dayType,
+  })];
 
   if (state.locationPicker) {
     parts.push(renderLocationPicker(state.locationPicker));
@@ -66,7 +116,7 @@ function renderApp() {
   if (state.resultState?.type === 'results') {
     parts.push(
       renderResultsView({
-        routeLabel: `${state.formValues.from} -> ${state.formValues.to}`,
+        routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
         allDepartures: state.resultState.allDepartures,
@@ -188,10 +238,26 @@ function bindNearbyStopSelection() {
         return;
       }
 
-      state.formValues = {
-        ...state.formValues,
-        [state.locationPicker.fieldName]: selectedStop.canonical,
-      };
+      if (state.locationPicker.fieldName === 'from') {
+        if (selectedStop.localityId) {
+          const locality = state.localities.find((entry) => entry.id === selectedStop.localityId);
+          if (locality) {
+            Object.assign(state, selectLocality(state, locality, state.stops));
+          }
+        }
+
+        const stop = state.stops.find((entry) => entry.id === selectedStop.stopId);
+        if (stop) {
+          Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
+        }
+      } else {
+        state.formValues = {
+          ...state.formValues,
+          toInput: selectedStop.canonical,
+          toStopId: selectedStop.stopId,
+        };
+      }
+
       state.locationPicker = null;
       renderApp();
       bindInteractions();
@@ -228,6 +294,7 @@ async function openLocationPicker(fieldName) {
         longitude: coords.longitude,
         stops: state.stops,
         aliases: state.aliases,
+        localities: state.localities,
         fetchNearbyStops: fetchOverpassNearbyStops,
         limit: 5,
       });
@@ -286,14 +353,17 @@ function bindForm() {
 
     const formData = new FormData(form);
     state.formValues = {
-      from: String(formData.get('from') ?? ''),
-      to: String(formData.get('to') ?? ''),
+      ...state.formValues,
+      fromInput: String(formData.get('from') ?? ''),
+      toInput: String(formData.get('to') ?? ''),
       dayType: String(formData.get('dayType') ?? 'feriale'),
     };
 
     const matches = findDirectTrips({
-      from: state.formValues.from,
-      to: state.formValues.to,
+      from: state.formValues.fromInput,
+      to: state.formValues.toInput,
+      fromStopId: state.formValues.fromStopId,
+      toStopId: state.formValues.toStopId,
       dayType: state.formValues.dayType,
       aliases: state.aliases,
       trips: state.trips,
@@ -337,13 +407,18 @@ function bindInteractions() {
 
 async function boot() {
   try {
-    const [trips, stops] = await Promise.all([
+    const [trips, stops, generatedLocalities, generatedReachability, manualLocalities] = await Promise.all([
       fetch('./assets/data/trips.json').then((response) => response.json()),
       fetch('./assets/data/stops.json').then((response) => response.json()),
+      fetchJsonOrNull('./assets/data/localities.json'),
+      fetchJsonOrNull('./assets/data/reachability.json'),
+      fetchJsonOrNull('./data/manual/localities.json'),
     ]);
 
     state.trips = trips;
     state.stops = stops;
+    state.localities = generatedLocalities ?? manualLocalities ?? [];
+    state.reachability = generatedReachability ?? buildReachabilityFromTrips(trips);
     state.aliases = Object.fromEntries(stops.map((stop) => [stop.canonical, stop.variants]));
 
     renderApp();

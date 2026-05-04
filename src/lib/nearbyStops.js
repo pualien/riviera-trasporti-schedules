@@ -19,6 +19,18 @@ function distanceBetweenMeters(from, to) {
   return Math.round(earthRadiusMeters * c);
 }
 
+function buildLocalityMap(localities) {
+  const byStopId = new Map();
+
+  for (const locality of localities) {
+    for (const stopId of locality.stopIds) {
+      byStopId.set(stopId, { localityId: locality.id, localityLabel: locality.label });
+    }
+  }
+
+  return byStopId;
+}
+
 export async function fetchOverpassNearbyStops(
   { latitude, longitude },
   { radiusMeters = 1200 } = {},
@@ -81,11 +93,13 @@ export async function buildNearbyStopChoices({
   longitude,
   stops,
   aliases,
+  localities = [],
   fetchNearbyStops,
   limit = 5,
 }) {
   const providerResults = await fetchNearbyStops({ latitude, longitude });
   const stopMap = new Map(stops.map((stop) => [stop.canonical, stop]));
+  const localityMap = buildLocalityMap(localities);
 
   return providerResults
     .map((result) => {
@@ -103,6 +117,7 @@ export async function buildNearbyStopChoices({
         distanceMeters: result.distanceMeters,
         latitude: result.lat,
         longitude: result.lon,
+        ...localityMap.get(stop.id),
       };
     })
     .filter(Boolean)
