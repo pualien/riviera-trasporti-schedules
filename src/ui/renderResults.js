@@ -4,17 +4,22 @@ const PDF_URL =
   'https://rivieratrasporti.it/images/_ORARI/2025-2026_Orario_Invernale_Generale_7%C2%AAVer_dal_01-04-2026.pdf';
 
 function renderDepartureCard(departure, t) {
+  const className = departure.isSelected
+    ? 'departure-card departure-card--selected'
+    : 'departure-card';
+
   return `
-    <article class="departure-card">
+    <button type="button" class="${className}" data-trip-key="${departure.tripKey ?? ''}">
       <div class="departure-main">
         <strong>${departure.departureTime}</strong>
         <p>${t('results.arrives')} ${departure.arrivalTime} · ${t('results.line')} ${departure.lineId}</p>
       </div>
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
+        <span>Show trip on map</span>
         <a href="${PDF_URL}#page=${departure.sourcePage}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>
-    </article>
+    </button>
   `;
 }
 
@@ -24,6 +29,8 @@ export function renderResultsView({
   summary,
   nextDepartures,
   allDepartures,
+  selectedTripKey = null,
+  selectedTripPanel = '',
 }) {
   return `
     <section class="results-shell">
@@ -58,7 +65,10 @@ export function renderResultsView({
           <p>${t('results.nextDeparturesSubtitle')}</p>
         </div>
         <div class="departure-list">
-          ${nextDepartures.map((departure) => renderDepartureCard(departure, t)).join('')}
+          ${nextDepartures.map((departure) => renderDepartureCard({
+            ...departure,
+            isSelected: departure.tripKey === selectedTripKey,
+          }, t)).join('')}
         </div>
       </section>
 
@@ -68,9 +78,13 @@ export function renderResultsView({
           <p>${t('results.allDeparturesSubtitle')}</p>
         </div>
         <div class="departure-list">
-          ${allDepartures.map((departure) => renderDepartureCard(departure, t)).join('')}
+          ${allDepartures.map((departure) => renderDepartureCard({
+            ...departure,
+            isSelected: departure.tripKey === selectedTripKey,
+          }, t)).join('')}
         </div>
       </section>
+      ${selectedTripPanel}
     </section>
   `;
 }
