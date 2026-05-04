@@ -1,11 +1,37 @@
 import { normalizeText } from './normalize.js';
 
+function localityTokens(locality) {
+  return [locality.label, ...(locality.aliases ?? []), ...(locality.matchTokens ?? [])]
+    .map(normalizeText);
+}
+
+function stopTokens(stop) {
+  return [stop.canonical, ...(stop.variants ?? []), ...(stop.matchTokens ?? [])]
+    .map(normalizeText);
+}
+
 export function findMatchingLocalities(query, localities) {
   const normalizedQuery = normalizeText(query);
 
   return localities.filter((locality) =>
-    locality.matchTokens.some((token) => token.includes(normalizedQuery)),
+    localityTokens(locality).some((token) => token.includes(normalizedQuery)),
   );
+}
+
+export function findExactLocalityMatch(query, localities) {
+  const normalizedQuery = normalizeText(query);
+
+  return localities.find((locality) =>
+    localityTokens(locality).some((token) => token === normalizedQuery),
+  ) ?? null;
+}
+
+export function findExactStopMatch(query, stops) {
+  const normalizedQuery = normalizeText(query);
+
+  return stops.find((stop) =>
+    stopTokens(stop).some((token) => token === normalizedQuery),
+  ) ?? null;
 }
 
 export function getLocalityStops(localityId, localities, stops) {

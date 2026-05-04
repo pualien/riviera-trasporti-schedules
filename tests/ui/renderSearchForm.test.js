@@ -2,21 +2,45 @@ import { describe, expect, it } from 'vitest';
 import { renderSearchForm } from '../../src/ui/renderSearchForm.js';
 
 describe('renderSearchForm', () => {
-  it('renders Riviera Trasporti-wide copy and a disabled to picker before exact origin selection', () => {
+  it('renders Riviera Trasporti-wide copy, from selections, and a disabled to picker before exact origin selection', () => {
     const html = renderSearchForm({
       fromInput: 'Porto Maurizio',
       fromLocalityLabel: 'Porto Maurizio',
       exactFromStop: null,
+      fromSuggestions: [
+        { value: 'Porto Maurizio' },
+        { value: 'Sanremo' },
+      ],
       toInput: '',
       reachableDestinations: [],
     });
 
     expect(html).toContain('Search Riviera Trasporti faster than reading the full PDF');
     expect(html).toContain('Choose area, then exact stop');
+    expect(html).toContain('name="from"');
+    expect(html).toContain('list="from-options"');
+    expect(html).toContain('<datalist id="from-options">');
+    expect(html).toContain('value="Porto Maurizio"');
+    expect(html).toContain('value="Sanremo"');
     expect(html).toContain('name="to"');
     expect(html).toContain('disabled');
     expect(html).toContain('data-location-field="from"');
     expect(html).toContain('data-location-field="to"');
+  });
+
+  it('shows exact-stop selections after a broad from locality is chosen', () => {
+    const html = renderSearchForm({
+      fromInput: 'Porto Maurizio',
+      fromLocalityLabel: 'Porto Maurizio',
+      exactFromStop: null,
+      exactStopChoices: [{ id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' }],
+      fromSuggestions: [{ value: 'imperia porto maurizio' }],
+      toInput: '',
+      reachableDestinations: [],
+    });
+
+    expect(html).toContain('Choose the exact stop in Porto Maurizio.');
+    expect(html).toContain('value="imperia porto maurizio"');
   });
 
   it('renders direct destinations after an exact origin stop exists', () => {

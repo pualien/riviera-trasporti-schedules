@@ -12,12 +12,24 @@ export function renderSearchForm({
   fromInput = from,
   fromLocalityLabel = '',
   exactFromStop = null,
+  exactStopChoices = [],
+  fromSuggestions = [],
   toInput = to,
   reachableDestinations = [],
   destinationMessage = '',
   dayType = 'feriale',
 } = {}) {
   const toDisabled = exactFromStop ? '' : 'disabled';
+  const fromHelp = exactFromStop
+    ? (fromLocalityLabel
+      ? `Exact stop confirmed in ${fromLocalityLabel}.`
+      : 'Exact departure stop confirmed.')
+    : fromLocalityLabel && exactStopChoices.length > 0
+      ? `Choose the exact stop in ${fromLocalityLabel}.`
+      : 'Start from a broad place like Porto Maurizio.';
+  const fromSuggestionsMarkup = fromSuggestions
+    .map(({ value, label = '' }) => `<option value="${value}"${label ? ` label="${label}"` : ''}></option>`)
+    .join('');
   const destinationsMarkup = reachableDestinations
     .map((stop) => `<option value="${stop.canonical}" data-stop-id="${stop.id}"></option>`)
     .join('');
@@ -41,10 +53,17 @@ export function renderSearchForm({
         <label class="field">
           <span>Da / From</span>
           <div class="field-input-row">
-            <input name="from" value="${fromInput}" placeholder="Porto Maurizio" autocomplete="off" />
+            <input
+              name="from"
+              value="${fromInput}"
+              placeholder="Porto Maurizio"
+              autocomplete="off"
+              list="from-options"
+            />
             ${renderLocationButton('from')}
           </div>
-          <small>${fromLocalityLabel || 'Start from a broad place like Porto Maurizio.'}</small>
+          <datalist id="from-options">${fromSuggestionsMarkup}</datalist>
+          <small>${fromHelp}</small>
         </label>
 
         <label class="field">

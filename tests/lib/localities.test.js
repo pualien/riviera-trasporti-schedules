@@ -1,5 +1,11 @@
 import { describe, expect, it } from 'vitest';
-import { findMatchingLocalities, getLocalityStops, getReachableStops } from '../../src/lib/localities.js';
+import {
+  findExactLocalityMatch,
+  findExactStopMatch,
+  findMatchingLocalities,
+  getLocalityStops,
+  getReachableStops,
+} from '../../src/lib/localities.js';
 
 const localities = [
   {
@@ -27,6 +33,15 @@ describe('locality helpers', () => {
       { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
       { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
     ]);
+  });
+
+  it('matches a typed locality selection by label or alias', () => {
+    expect(findExactLocalityMatch('Porto Maurizio', localities)?.id).toBe('porto-maurizio');
+    expect(findExactLocalityMatch('Imperia Porto Maurizio', localities)?.id).toBe('porto-maurizio');
+  });
+
+  it('matches a typed exact stop selection by canonical stop label', () => {
+    expect(findExactStopMatch('imperia porto maurizio', stops)?.id).toBe('imperia-porto-maurizio');
   });
 
   it('limits destination stops to the direct reachability map', () => {

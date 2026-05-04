@@ -1,4 +1,5 @@
 import { buildRouteSummary, findDirectTrips } from './lib/query.js';
+import { findExactLocalityMatch, findExactStopMatch } from './lib/localities.js';
 import {
   buildNearbyStopChoices,
   createNearbyStopCacheKey,
@@ -100,10 +101,21 @@ function renderShell(content) {
 function renderApp() {
   const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId);
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
+  const fromSuggestions = selectedLocality && !exactFromStop && state.pickerState.exactStopChoices.length > 0
+    ? state.pickerState.exactStopChoices.map((stop) => ({
+      value: stop.canonical,
+      label: `${selectedLocality.label} exact stop`,
+    }))
+    : state.localities.map((locality) => ({
+      value: locality.label,
+      label: 'Area',
+    }));
   const parts = [renderSearchForm({
     fromInput: state.formValues.fromInput,
     fromLocalityLabel: selectedLocality?.label ?? '',
     exactFromStop,
+    exactStopChoices: state.pickerState.exactStopChoices,
+    fromSuggestions,
     toInput: state.formValues.toInput,
     reachableDestinations: state.pickerState.reachableDestinations,
     dayType: state.formValues.dayType,
@@ -411,6 +423,68 @@ function selectFromStopChoice(stop) {
   Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
 }
 
+function focusFromInput(selectText = false) {
+  const fromInput = document.querySelector('input[name="from"]');
+
+  if (!fromInput) {
+    return;
+  }
+
+  fromInput.focus();
+
+  if (selectText) {
+    fromInput.setSelectionRange(0, fromInput.value.length);
+  }
+}
+
+function clearFromSelection(nextValue) {
+  resetDestinationState();
+  state.formValues = {
+    ...state.formValues,
+    fromInput: nextValue,
+    fromLocalityId: null,
+    fromStopId: null,
+  };
+  state.pickerState = {
+    ...state.pickerState,
+    exactStopChoices: [],
+    reachableDestinations: [],
+  };
+}
+
+function bindFromSelection() {
+  const fromInput = document.querySelector('input[name="from"]');
+
+  fromInput.addEventListener('change', (event) => {
+    const nextValue = String(event.currentTarget.value ?? '');
+    const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId);
+    const exactStopChoice = selectedLocality
+      ? findExactStopMatch(nextValue, state.pickerState.exactStopChoices)
+      : null;
+
+    if (exactStopChoice) {
+      selectFromStopChoice(exactStopChoice);
+      renderApp();
+      bindInteractions();
+      return;
+    }
+
+    const localityChoice = findExactLocalityMatch(nextValue, state.localities);
+
+    if (localityChoice) {
+      selectFromLocalityChoice(localityChoice);
+      renderApp();
+      bindInteractions();
+      focusFromInput(true);
+      return;
+    }
+
+    clearFromSelection(nextValue);
+    renderApp();
+    bindInteractions();
+  });
+}
+
 function bindLocationActions() {
   document.querySelectorAll('.field-location-button').forEach((button) => {
     button.addEventListener('click', () => {
@@ -421,6 +495,7 @@ function bindLocationActions() {
 
 function bindInteractions() {
   bindForm();
+  bindFromSelection();
   bindLocationActions();
 }
 
