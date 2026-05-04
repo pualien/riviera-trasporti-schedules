@@ -92,6 +92,7 @@ describe('renderResultsView', () => {
 
     expect(html).toContain('data-trip-key="12:feriale:23:0:imperia-porto-maurizio:sanremo-autostazione"');
     expect(html).toContain('departure-card departure-card--selected');
+    expect(html).toContain('Show trip on map');
     expect(html).toContain('data-testid="route-map-panel"');
   });
 });

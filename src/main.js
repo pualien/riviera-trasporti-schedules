@@ -1,11 +1,13 @@
 import { pushRouteSearchEvent } from './lib/analytics.js';
+import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
 import { buildRouteSummary, findDirectTrips } from './lib/query.js';
-import { findExactLocalityMatch, findExactStopMatch, findMatchingLocalities } from './lib/localities.js';
+import { findExactLocalityMatch, findExactStopMatch } from './lib/localities.js';
 import {
   buildNearbyStopChoices,
   createNearbyStopCacheKey,
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
+import { buildRouteMapState } from './lib/routeMap.js';
 import {
   SUPPORTED_LANGUAGES,
   createTranslator,
@@ -17,6 +19,7 @@ import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { toMinutes } from './lib/time.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
+import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderResultsView } from './ui/renderResults.js';
 import { renderSearchForm } from './ui/renderSearchForm.js';
 import { renderShell } from './ui/renderShell.js';
@@ -28,6 +31,7 @@ const LEAFLET_JS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 const state = {
   trips: [],
   stops: [],
+  stopCoordinates: {},
   localities: [],
   reachability: {},
   aliases: {},
@@ -95,6 +99,28 @@ async function fetchJsonOrNull(url) {
   return response.json();
 }
 
+function currentSelectedTripMatch() {
+  if (state.resultState?.type !== 'results' || !state.resultState.selectedTripKey) {
+    return null;
+  }
+
+  return state.resultState.allDepartures.find((departure) => departure.tripKey === state.resultState.selectedTripKey) ?? null;
+}
+
+function currentSelectedTripPanel(t) {
+  const selectedTripMatch = currentSelectedTripMatch();
+
+  if (!selectedTripMatch) {
+    return '';
+  }
+
+  return renderRouteMapPanel({
+    t,
+    match: selectedTripMatch,
+    mapState: buildRouteMapState(selectedTripMatch, state.stopCoordinates),
+  });
+}
+
 function renderApp() {
   const t = createTranslator(state.language);
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
@@ -133,6 +159,8 @@ function renderApp() {
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
         allDepartures: state.resultState.allDepartures,
+        selectedTripKey: state.resultState.selectedTripKey,
+        selectedTripPanel: currentSelectedTripPanel(t),
       }),
     );
   }
@@ -181,29 +209,19 @@ function resetDestinationState() {
 }
 
 function currentFromSuggestions(t) {
-  if (state.formValues.fromStopId) {
-    return state.localities.map((locality) => ({
-      value: locality.label,
-      meta: t('search.panel.area'),
-    }));
-  }
+  const selectedLocalityLabel = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.label ?? '';
+  const sections = buildFromSuggestionSections({
+    inputValue: state.formValues.fromInput,
+    localities: state.localities,
+    selectedLocalityLabel,
+    exactStopChoices: state.pickerState.exactStopChoices,
+  });
 
-  const query = normalizeText(state.formValues.fromInput);
-
-  if (state.formValues.fromLocalityId && !state.formValues.fromStopId) {
-    return state.pickerState.exactStopChoices
-      .filter((stop) => !query || normalizeText(stop.canonical).includes(query))
-      .map((stop) => ({
-        value: stop.canonical,
-        meta: t('search.panel.exactStop'),
-      }));
-  }
-
-  const matchingLocalities = query ? findMatchingLocalities(state.formValues.fromInput, state.localities) : state.localities;
-  return matchingLocalities.map((locality) => ({
-    value: locality.label,
-    meta: t('search.panel.area'),
-  }));
+  return {
+    areas: sections.areas.map((entry) => ({ ...entry, meta: t('search.panel.area') })),
+    exactStops: sections.exactStops.map((entry) => ({ ...entry, meta: t('search.panel.exactStop') })),
+    exactStopHeading: sections.exactStopHeading,
+  };
 }
 
 function currentDestinationMode() {
@@ -318,6 +336,41 @@ async function renderNearbyMap() {
   for (const stop of state.locationPicker.nearbyStops) {
     L.marker([stop.latitude, stop.longitude]).addTo(map).bindPopup(stop.canonical);
   }
+}
+
+async function renderSelectedTripMap(mapState) {
+  if (!mapState.hasMap) {
+    return;
+  }
+
+  const mapElement = document.querySelector('#selected-trip-map');
+
+  if (!mapElement || mapElement._leaflet_id) {
+    return;
+  }
+
+  const L = await ensureLeaflet();
+  const coordinates = mapState.points.map((point) => [point.latitude, point.longitude]);
+  const map = L.map(mapElement, {
+    zoomControl: false,
+    attributionControl: true,
+  });
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(map);
+
+  L.polyline(coordinates, {
+    color: '#1144cc',
+    weight: 4,
+  }).addTo(map);
+
+  mapState.points.forEach((point) => {
+    L.marker([point.latitude, point.longitude]).addTo(map).bindPopup(`${point.time} · ${point.label}`);
+  });
+
+  map.fitBounds(coordinates, { padding: [24, 24] });
 }
 
 function bindNearbyStopSelection() {
@@ -488,6 +541,7 @@ function bindForm() {
       summary: buildRouteSummary(matches),
       nextDepartures: nextDepartures(matches),
       allDepartures: matches,
+      selectedTripKey: null,
     };
     state.locationPicker = null;
     renderApp();
@@ -556,7 +610,10 @@ function bindFieldPanels() {
 
   fromInput?.addEventListener('input', (event) => {
     const nextValue = String(event.currentTarget.value ?? '');
-    const shouldClearLocality = Boolean(state.formValues.fromStopId) || nextValue === '';
+    const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
+    const shouldClearLocality = Boolean(state.formValues.fromStopId)
+      || nextValue === ''
+      || (selectedLocality && normalizeText(nextValue) !== normalizeText(selectedLocality.label));
 
     state.formValues = {
       ...state.formValues,
@@ -611,9 +668,7 @@ function bindFieldPanels() {
   document.querySelectorAll('[data-from-value]').forEach((button) => {
     button.addEventListener('click', () => {
       const value = button.dataset.fromValue ?? '';
-      const exactStopChoice = state.formValues.fromLocalityId
-        ? findExactStopMatch(value, state.pickerState.exactStopChoices)
-        : null;
+      const exactStopChoice = findExactStopMatch(value, state.pickerState.exactStopChoices);
 
       if (exactStopChoice) {
         selectFromStopChoice(exactStopChoice);
@@ -650,6 +705,38 @@ function bindFieldPanels() {
   });
 }
 
+function bindDepartureSelection() {
+  document.querySelectorAll('[data-trip-key]').forEach((card) => {
+    card.addEventListener('click', async (event) => {
+      if (event.target.closest('a')) {
+        return;
+      }
+
+      const tripKey = card.dataset.tripKey ?? '';
+      const match = state.resultState?.type === 'results'
+        ? state.resultState.allDepartures.find((departure) => departure.tripKey === tripKey)
+        : null;
+
+      if (!match || state.resultState?.type !== 'results') {
+        return;
+      }
+
+      state.resultState = {
+        ...state.resultState,
+        selectedTripKey: tripKey,
+      };
+
+      renderApp();
+      bindInteractions();
+
+      const mapState = buildRouteMapState(match, state.stopCoordinates);
+      if (mapState.hasMap) {
+        await renderSelectedTripMap(mapState);
+      }
+    });
+  });
+}
+
 function bindLocationActions() {
   document.querySelectorAll('.field-location-button').forEach((button) => {
     button.addEventListener('click', () => {
@@ -672,15 +759,17 @@ function bindLanguageSelector() {
 function bindInteractions() {
   bindForm();
   bindFieldPanels();
+  bindDepartureSelection();
   bindLocationActions();
   bindLanguageSelector();
 }
 
 async function boot() {
   try {
-    const [trips, stops, generatedLocalities, generatedReachability, manualLocalities] = await Promise.all([
+    const [trips, stops, stopCoordinates, generatedLocalities, generatedReachability, manualLocalities] = await Promise.all([
       fetch('./assets/data/trips.json').then((response) => response.json()),
       fetch('./assets/data/stops.json').then((response) => response.json()),
+      fetchJsonOrNull('./assets/data/stop-coordinates.json'),
       fetchJsonOrNull('./assets/data/localities.json'),
       fetchJsonOrNull('./assets/data/reachability.json'),
       fetchJsonOrNull('./data/manual/localities.json'),
@@ -688,6 +777,7 @@ async function boot() {
 
     state.trips = trips;
     state.stops = stops;
+    state.stopCoordinates = stopCoordinates ?? {};
     state.localities = generatedLocalities ?? manualLocalities ?? [];
     state.reachability = generatedReachability ?? buildReachabilityFromTrips(trips);
     state.aliases = Object.fromEntries(stops.map((stop) => [stop.canonical, stop.variants]));

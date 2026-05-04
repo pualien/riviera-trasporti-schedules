@@ -42,14 +42,14 @@ function renderFromPanel(fromSuggestions, t) {
   return `
     <div class="picker-panel" data-panel="from">
       <div class="picker-panel-head">
-        <div class="picker-panel-copy">Browse all departure areas</div>
+        <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
       </div>
       <div class="picker-option-list">
         ${renderSuggestionButtons('data-from-value', areas, t)}
       </div>
       ${exactStops.length ? `
         <div class="picker-panel-head">
-          <div class="picker-panel-copy">Refine within ${escapeHtml(exactStopHeading)}</div>
+          <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
         </div>
         <div class="picker-option-list">
           ${renderSuggestionButtons('data-from-value', exactStops, t)}

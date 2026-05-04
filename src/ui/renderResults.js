@@ -9,17 +9,17 @@ function renderDepartureCard(departure, t) {
     : 'departure-card';
 
   return `
-    <button type="button" class="${className}" data-trip-key="${departure.tripKey ?? ''}">
+    <article class="${className}" data-trip-key="${departure.tripKey ?? ''}">
       <div class="departure-main">
         <strong>${departure.departureTime}</strong>
         <p>${t('results.arrives')} ${departure.arrivalTime} · ${t('results.line')} ${departure.lineId}</p>
       </div>
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
-        <span>Show trip on map</span>
+        <span>${t('results.showTripMap')}</span>
         <a href="${PDF_URL}#page=${departure.sourcePage}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>
-    </button>
+    </article>
   `;
 }
 

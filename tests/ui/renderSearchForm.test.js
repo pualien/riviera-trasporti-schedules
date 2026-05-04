@@ -26,7 +26,7 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Route Lookup');
     expect(html).toContain('Find direct Riviera buses faster than scanning the PDF.');
     expect(html).not.toContain('Riviera Trasporti Search');
-    expect(html).toContain('placeholder="Porto Maurizio"');
+    expect(html).toContain('placeholder="Choose departure area"');
     expect(html).toContain('name="from"');
     expect(html).toContain('data-panel="from"');
     expect(html).toContain('data-from-value="Porto Maurizio"');
@@ -149,5 +149,17 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Finde direkte Riviera-Busse schneller als im PDF.');
     expect(html).toContain('Meinen Standort verwenden');
     expect(html).toContain('Abfahrten anzeigen');
+  });
+
+  it('renders network-wide search copy instead of corridor-specific placeholders', () => {
+    const html = renderSearchForm({
+      t: createTranslator('en'),
+      fromPanelOpen: true,
+      fromSuggestions: { areas: [], exactStops: [], exactStopHeading: '' },
+    });
+
+    expect(html).toContain('Browse all departure areas');
+    expect(html).toContain('placeholder="Choose departure area"');
+    expect(html).not.toContain('placeholder="Porto Maurizio"');
   });
 });
