@@ -8,10 +8,14 @@ describe('renderSearchForm', () => {
       fromInput: '',
       fromLocalitySelected: false,
       fromPanelOpen: true,
-      fromSuggestions: [
-        { value: 'Porto Maurizio', meta: 'Area' },
-        { value: 'Sanremo', meta: 'Area' },
-      ],
+      fromSuggestions: {
+        areas: [
+          { value: 'Porto Maurizio', meta: 'Area' },
+          { value: 'Sanremo', meta: 'Area' },
+        ],
+        exactStops: [],
+        exactStopHeading: '',
+      },
       toInput: '',
       toPanelOpen: true,
       destinationMode: 'informational',
@@ -35,6 +39,29 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Choose departure area');
     expect(html).toContain('data-location-field="from"');
     expect(html).toContain('data-location-field="to"');
+  });
+
+  it('renders a grouped from panel with all areas plus refinement choices', () => {
+    const html = renderSearchForm({
+      fromInput: 'porto',
+      fromLocalitySelected: true,
+      fromPanelOpen: true,
+      fromSuggestions: {
+        areas: [
+          { value: 'Andora', meta: 'Area' },
+          { value: 'Porto Maurizio', meta: 'Area' },
+        ],
+        exactStops: [
+          { value: 'imperia porto maurizio', meta: 'Exact stop' },
+        ],
+        exactStopHeading: 'Porto Maurizio',
+      },
+    });
+
+    expect(html).toContain('Browse all departure areas');
+    expect(html).toContain('Refine within Porto Maurizio');
+    expect(html.indexOf('data-from-value="Andora"')).toBeLessThan(html.indexOf('data-from-value="Porto Maurizio"'));
+    expect(html).toContain('data-from-value="imperia porto maurizio"');
   });
 
   it('renders exact destinations once an origin area has been selected', () => {

@@ -16,11 +16,11 @@ function escapeHtml(value = '') {
     .replaceAll('"', '&quot;');
 }
 
-function renderSuggestionButtons(suggestions = [], t) {
+function renderSuggestionButtons(attributeName, suggestions = [], t) {
   return suggestions
     .map(
       ({ value, meta = '', label = '' }) => `
-        <button type="button" class="picker-option" data-from-value="${escapeHtml(value)}">
+        <button type="button" class="picker-option" ${attributeName}="${escapeHtml(value)}">
           <span class="picker-option-copy">
             <span class="picker-option-label">${escapeHtml(value)}</span>
             ${(meta || label) ? `<small>${escapeHtml(meta || label)}</small>` : ''}
@@ -30,6 +30,33 @@ function renderSuggestionButtons(suggestions = [], t) {
       `,
     )
     .join('');
+}
+
+function renderFromPanel(fromSuggestions, t) {
+  const {
+    areas = [],
+    exactStops = [],
+    exactStopHeading = '',
+  } = fromSuggestions ?? {};
+
+  return `
+    <div class="picker-panel" data-panel="from">
+      <div class="picker-panel-head">
+        <div class="picker-panel-copy">Browse all departure areas</div>
+      </div>
+      <div class="picker-option-list">
+        ${renderSuggestionButtons('data-from-value', areas, t)}
+      </div>
+      ${exactStops.length ? `
+        <div class="picker-panel-head">
+          <div class="picker-panel-copy">Refine within ${escapeHtml(exactStopHeading)}</div>
+        </div>
+        <div class="picker-option-list">
+          ${renderSuggestionButtons('data-from-value', exactStops, t)}
+        </div>
+      ` : ''}
+    </div>
+  `;
 }
 
 function renderProgressStep({ index, label, detail, state }) {
@@ -137,7 +164,7 @@ export function renderSearchForm({
   fromInput = from,
   fromLocalitySelected = false,
   exactFromStop = null,
-  fromSuggestions = [],
+  fromSuggestions = { areas: [], exactStops: [], exactStopHeading: '' },
   fromPanelOpen = false,
   toInput = to,
   toStopSelected = false,
@@ -191,7 +218,7 @@ export function renderSearchForm({
             ${renderLocationButton('from', t('search.useMyLocation'))}
           </div>
           <small>${fromHelp}</small>
-          ${fromPanelOpen ? `<div class="picker-panel" data-panel="from">${renderSuggestionButtons(fromSuggestions, t)}</div>` : ''}
+          ${fromPanelOpen ? renderFromPanel(fromSuggestions, t) : ''}
         </label>
 
         <label class="field">
