@@ -154,7 +154,7 @@ export function renderSearchForm({
   return `
     <section class="hero-shell hero-shell--compact">
       <div class="hero-copy">
-        <p class="eyebrow">Riviera Trasporti Search</p>
+        <p class="eyebrow">Ricerca Percorsi / Route Lookup</p>
         <h1>Find direct Riviera buses faster than scanning the PDF.</h1>
         <p class="hero-text">
           Choose a departure area, narrow to the exact stop, then browse only direct destinations.

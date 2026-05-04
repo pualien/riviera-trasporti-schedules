@@ -18,7 +18,9 @@ describe('renderSearchForm', () => {
       reachableDestinations: [],
     });
 
-    expect(html).toContain('Find direct Riviera buses faster than scanning the PDF');
+    expect(html).toContain('Ricerca Percorsi / Route Lookup');
+    expect(html).toContain('Find direct Riviera buses faster than scanning the PDF.');
+    expect(html).not.toContain('Riviera Trasporti Search');
     expect(html).toContain('placeholder="Porto Maurizio"');
     expect(html).toContain('name="from"');
     expect(html).toContain('data-panel="from"');
