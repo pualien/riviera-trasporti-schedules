@@ -12,15 +12,15 @@ export function renderRouteMapPanel({ t = createTranslator('en'), match, mapStat
   return `
     <section class="route-map-panel" data-testid="route-map-panel">
       <div class="section-head">
-        <h3>Selected trip map</h3>
-        <p>The exact direct trip segment you selected</p>
+        <h3>${escapeHtml(t('results.selectedTripMap'))}</h3>
+        <p>${escapeHtml(t('results.selectedTripMapSubtitle'))}</p>
       </div>
       <div class="route-map-meta">
         <strong>${escapeHtml(t('results.line'))} ${escapeHtml(match.lineId)}</strong>
-        <span>${escapeHtml(match.departureTime)} → ${escapeHtml(match.arrivalTime)}</span>
+        <span>${escapeHtml(match.departureTime)} &rarr; ${escapeHtml(match.arrivalTime)}</span>
       </div>
       <div id="selected-trip-map" class="location-map">
-        ${mapState.hasMap ? '' : 'Map unavailable for this trip'}
+        ${mapState.hasMap ? '' : escapeHtml(t('results.mapUnavailable'))}
       </div>
       <ol class="route-stop-list">
         ${mapState.stops.map((stop) => `<li>${escapeHtml(stop.time)} · ${escapeHtml(stop.label)}</li>`).join('')}

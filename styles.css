@@ -448,6 +448,9 @@ a {
 .picker-option-list {
   display: grid;
   gap: 10px;
+  max-height: 18rem;
+  overflow-y: auto;
+  padding-right: 4px;
 }
 
 .picker-option {
@@ -607,10 +610,25 @@ a {
   justify-content: space-between;
   gap: 16px;
   align-items: center;
+  width: 100%;
   padding: 18px 20px;
   border-radius: 22px;
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(255, 255, 255, 0.92);
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.departure-card--selected {
+  border-color: rgba(17, 68, 204, 0.4);
+  box-shadow: 0 18px 32px rgba(17, 68, 204, 0.14);
+}
+
+.departure-card:hover {
+  transform: translateY(-1px);
 }
 
 .departure-main strong {
@@ -637,6 +655,36 @@ a {
   background: rgba(235, 76, 96, 0.12);
   color: var(--accent-strong);
   font-weight: 650;
+}
+
+.route-map-panel {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  background: var(--panel);
+  backdrop-filter: blur(18px) saturate(130%);
+  box-shadow: var(--shadow);
+}
+
+.route-map-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+
+.route-stop-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.route-stop-list li {
+  color: var(--text);
 }
 
 .empty-state {
@@ -718,7 +766,8 @@ a {
 
   .summary-head,
   .topbar,
-  .departure-card {
+  .departure-card,
+  .route-map-meta {
     flex-direction: column;
     align-items: flex-start;
   }
