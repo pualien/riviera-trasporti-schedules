@@ -1,0 +1,13 @@
+import { describe, expect, it } from 'vitest';
+import { readFileSync } from 'node:fs';
+
+const html = readFileSync(new URL('../../index.html', import.meta.url), 'utf8');
+
+describe('index.html branding', () => {
+  it('uses the approved title and favicon assets', () => {
+    expect(html).toContain('<title>Riviera Trasporti Ricerca Percorsi</title>');
+    expect(html).toContain('rel="icon" type="image/png" sizes="32x32" href="./assets/brand/favicon-32x32.png"');
+    expect(html).toContain('rel="icon" type="image/png" sizes="16x16" href="./assets/brand/favicon-16x16.png"');
+    expect(html).toContain('rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png"');
+  });
+});
