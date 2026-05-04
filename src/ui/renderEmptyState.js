@@ -1,9 +1,9 @@
-export function renderEmptyState(message) {
+export function renderEmptyState(message = 'No direct buses found for that exact stop pair on the selected day type.') {
   return `
     <section class="empty-state">
-      <p class="eyebrow">No direct match</p>
-      <h2>Route not available in the current direct index.</h2>
-      <p>${message}</p>
+      <p class="eyebrow">No Direct Route</p>
+      <h2>${message}</h2>
+      <p>Try another exact stop in the same area, or choose a different origin stop.</p>
     </section>
   `;
 }

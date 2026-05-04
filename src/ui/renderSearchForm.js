@@ -14,12 +14,16 @@ export function renderSearchForm({
   exactFromStop = null,
   toInput = to,
   reachableDestinations = [],
+  destinationMessage = '',
   dayType = 'feriale',
 } = {}) {
   const toDisabled = exactFromStop ? '' : 'disabled';
   const destinationsMarkup = reachableDestinations
     .map((stop) => `<option value="${stop.canonical}" data-stop-id="${stop.id}"></option>`)
     .join('');
+  const destinationHelp = exactFromStop && reachableDestinations.length === 0
+    ? (destinationMessage || 'No direct destinations found from this stop for the selected day type.')
+    : 'Only direct destinations from the selected stop are shown.';
 
   return `
     <section class="hero-shell">
@@ -57,6 +61,7 @@ export function renderSearchForm({
             ${renderLocationButton('to')}
           </div>
           <datalist id="to-destinations">${destinationsMarkup}</datalist>
+          <small>${destinationHelp}</small>
         </label>
 
         <label class="field">

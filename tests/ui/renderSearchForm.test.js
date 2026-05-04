@@ -31,4 +31,17 @@ describe('renderSearchForm', () => {
     expect(html).toContain('sanremo-autostazione');
     expect(html).not.toContain('disabled');
   });
+
+  it('shows a direct-destination empty message when the chosen origin has no reachable stops', () => {
+    const html = renderSearchForm({
+      fromInput: 'Test Origin',
+      fromLocalityLabel: 'Test Origin',
+      exactFromStop: { id: 'test-origin', canonical: 'test origin' },
+      toInput: '',
+      reachableDestinations: [],
+      destinationMessage: 'No direct destinations found from this stop for the selected day type.',
+    });
+
+    expect(html).toContain('No direct destinations found from this stop for the selected day type.');
+  });
 });

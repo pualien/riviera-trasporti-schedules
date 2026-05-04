@@ -151,6 +151,15 @@ function writeNearbyStopCache(latitude, longitude, nearbyStops) {
   window.sessionStorage.setItem(`nearby-stops:${cacheKey}`, JSON.stringify(nearbyStops));
 }
 
+function resetDestinationState() {
+  state.formValues = {
+    ...state.formValues,
+    toInput: '',
+    toStopId: null,
+  };
+  state.resultState = null;
+}
+
 async function ensureLeaflet() {
   if (window.L) {
     return window.L;
@@ -242,13 +251,13 @@ function bindNearbyStopSelection() {
         if (selectedStop.localityId) {
           const locality = state.localities.find((entry) => entry.id === selectedStop.localityId);
           if (locality) {
-            Object.assign(state, selectLocality(state, locality, state.stops));
+            selectFromLocalityChoice(locality);
           }
         }
 
         const stop = state.stops.find((entry) => entry.id === selectedStop.stopId);
         if (stop) {
-          Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
+          selectFromStopChoice(stop);
         }
       } else {
         state.formValues = {
@@ -390,6 +399,16 @@ function bindForm() {
     renderApp();
     bindInteractions();
   });
+}
+
+function selectFromLocalityChoice(locality) {
+  resetDestinationState();
+  Object.assign(state, selectLocality(state, locality, state.stops));
+}
+
+function selectFromStopChoice(stop) {
+  resetDestinationState();
+  Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
 }
 
 function bindLocationActions() {
