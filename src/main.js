@@ -12,6 +12,7 @@ import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderResultsView } from './ui/renderResults.js';
 import { renderSearchForm } from './ui/renderSearchForm.js';
+import { renderShell } from './ui/renderShell.js';
 
 const app = document.querySelector('#app');
 const LEAFLET_CSS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
@@ -86,23 +87,6 @@ async function fetchJsonOrNull(url) {
   return response.json();
 }
 
-function renderShell(content) {
-  app.innerHTML = `
-    <div class="app-shell">
-      <header class="topbar">
-        <div>
-          <p class="brand-kicker">Riviera Transit</p>
-          <p class="brand-subtitle">Official PDF, clearer consultation</p>
-        </div>
-        <a class="topbar-link" href="https://rivieratrasporti.it/" target="_blank" rel="noreferrer">
-          Riviera Trasporti
-        </a>
-      </header>
-      ${content}
-    </div>
-  `;
-}
-
 function renderApp() {
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
   const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
@@ -142,7 +126,7 @@ function renderApp() {
     parts.push(renderEmptyState(state.resultState.message));
   }
 
-  renderShell(parts.join(''));
+  app.innerHTML = renderShell(parts.join(''));
 }
 
 function readNearbyStopCache(latitude, longitude) {
