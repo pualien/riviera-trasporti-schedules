@@ -1,9 +1,11 @@
-export function renderEmptyState(message = 'No direct buses found for that exact stop pair on the selected day type.') {
+import { createTranslator } from '../lib/i18n.js';
+
+export function renderEmptyState(t = createTranslator('en'), message = t('empty.message')) {
   return `
     <section class="empty-state">
-      <p class="eyebrow">No Direct Route</p>
+      <p class="eyebrow">${t('empty.eyebrow')}</p>
       <h2>${message}</h2>
-      <p>Try another exact stop in the same area, or choose a different origin stop.</p>
+      <p>${t('empty.guidance')}</p>
     </section>
   `;
 }

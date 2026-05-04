@@ -67,6 +67,14 @@ a {
   padding: 18px 22px;
 }
 
+.topbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
 .brand-subtitle,
 .eyebrow,
 .section-head p,
@@ -112,6 +120,46 @@ a {
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.94);
   font-size: 0.92rem;
+}
+
+.language-selector {
+  display: grid;
+  gap: 4px;
+}
+
+.language-selector span {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.language-selector select {
+  min-width: 150px;
+  min-height: 44px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  font: inherit;
+  padding: 0 38px 0 12px;
+  appearance: none;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--accent-strong) 50%),
+    linear-gradient(135deg, var(--accent-strong) 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) calc(50% - 2px),
+    calc(100% - 14px) calc(50% - 2px);
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.language-selector select:hover,
+.language-selector select:focus-visible {
+  border-color: rgba(217, 59, 79, 0.26);
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12);
+  outline: none;
 }
 
 .hero-shell {
@@ -675,6 +723,10 @@ a {
     align-items: flex-start;
   }
 
+  .topbar-actions {
+    width: 100%;
+  }
+
   .departure-meta {
     justify-items: start;
     text-align: left;
@@ -697,6 +749,11 @@ a {
   }
 
   .topbar-link {
+    width: 100%;
+  }
+
+  .language-selector,
+  .language-selector select {
     width: 100%;
   }
 }

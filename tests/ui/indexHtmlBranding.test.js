@@ -10,4 +10,10 @@ describe('index.html branding', () => {
     expect(html).toContain('rel="icon" type="image/png" sizes="16x16" href="./assets/brand/favicon-16x16.png"');
     expect(html).toContain('rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png"');
   });
+
+  it('includes the Google Tag Manager snippets in head and body', () => {
+    expect(html).toContain("})(window,document,'script','dataLayer','GTM-WWVLPF5M');</script>");
+    expect(html).toContain('<body>\n    <!-- Google Tag Manager (noscript) -->');
+    expect(html).toContain('https://www.googletagmanager.com/ns.html?id=GTM-WWVLPF5M');
+  });
 });

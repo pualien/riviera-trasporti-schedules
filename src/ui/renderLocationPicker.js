@@ -1,3 +1,5 @@
+import { createTranslator } from '../lib/i18n.js';
+
 function formatDistance(distanceMeters) {
   if (distanceMeters >= 1000) {
     return `${(distanceMeters / 1000).toFixed(1)} km`;
@@ -6,14 +8,20 @@ function formatDistance(distanceMeters) {
   return `${distanceMeters} m`;
 }
 
-export function renderLocationPicker({ fieldName, state, nearbyStops = [], message = '' }) {
-  const title = fieldName === 'to' ? 'Choose a nearby destination stop' : 'Choose a nearby departure stop';
+export function renderLocationPicker({
+  fieldName,
+  state,
+  nearbyStops = [],
+  message = '',
+  t = createTranslator('en'),
+}) {
+  const title = fieldName === 'to' ? t('location.title.to') : t('location.title.from');
 
   if (state === 'error') {
     return `
       <section class="location-picker" data-field-name="${fieldName}">
         <div class="location-picker-copy">
-          <p class="eyebrow">Nearby Stops</p>
+          <p class="eyebrow">${t('location.eyebrow')}</p>
           <h3>${title}</h3>
           <p>${message}</p>
         </div>
@@ -36,23 +44,23 @@ export function renderLocationPicker({ fieldName, state, nearbyStops = [], messa
       )
       .join('')
     : state === 'loading'
-      ? '<p class="location-picker-message">Looking for the closest stops…</p>'
-      : '<p class="location-picker-message">No matched nearby stops found yet.</p>';
+      ? `<p class="location-picker-message">${t('location.loading')}</p>`
+      : `<p class="location-picker-message">${t('location.none')}</p>`;
 
   return `
     <section class="location-picker" data-field-name="${fieldName}">
       <div class="location-picker-copy">
-        <p class="eyebrow">Nearby Stops</p>
+        <p class="eyebrow">${t('location.eyebrow')}</p>
         <h3>${title}</h3>
-        <p>Choose an area first, then confirm the exact timetable stop if the nearby match is ambiguous.</p>
+        <p>${t('location.guidance')}</p>
       </div>
       <div class="location-map-shell">
-        <div id="location-picker-map" class="location-map">${state === 'loading' ? 'Loading map…' : ''}</div>
+        <div id="location-picker-map" class="location-map">${state === 'loading' ? t('location.loadingMap') : ''}</div>
       </div>
       <div class="location-choices">
         <div class="section-head">
-          <h3>Nearest stops</h3>
-          <p>Confirm the exact timetable stop inside the suggested area.</p>
+          <h3>${t('location.nearestStops')}</h3>
+          <p>${t('location.confirmExact')}</p>
         </div>
         <div class="nearby-stop-list">
           ${nearbyMarkup}

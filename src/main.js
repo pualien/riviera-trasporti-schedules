@@ -1,3 +1,4 @@
+import { pushRouteSearchEvent } from './lib/analytics.js';
 import { buildRouteSummary, findDirectTrips } from './lib/query.js';
 import { findExactLocalityMatch, findExactStopMatch, findMatchingLocalities } from './lib/localities.js';
 import {
@@ -5,6 +6,12 @@ import {
   createNearbyStopCacheKey,
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
+import {
+  SUPPORTED_LANGUAGES,
+  createTranslator,
+  persistLanguage,
+  readStoredLanguage,
+} from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
 import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { toMinutes } from './lib/time.js';
@@ -24,6 +31,7 @@ const state = {
   localities: [],
   reachability: {},
   aliases: {},
+  language: readStoredLanguage(window.localStorage),
   uiState: {
     fromPanelOpen: false,
     toPanelOpen: false,
@@ -88,32 +96,39 @@ async function fetchJsonOrNull(url) {
 }
 
 function renderApp() {
+  const t = createTranslator(state.language);
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
   const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
   const destinationOptions = currentDestinationOptions();
   const parts = [renderSearchForm({
+    t,
     fromInput: state.formValues.fromInput,
     fromLocalitySelected: Boolean(state.formValues.fromLocalityId),
     exactFromStop,
-    fromSuggestions: currentFromSuggestions(),
+    fromSuggestions: currentFromSuggestions(t),
     fromPanelOpen: state.uiState.fromPanelOpen,
     toInput: state.formValues.toInput,
     toStopSelected: Boolean(state.formValues.toStopId),
     toPanelOpen: state.uiState.toPanelOpen,
     reachableDestinations: destinationOptions,
     destinationMode: currentDestinationMode(),
-    destinationMessage: currentDestinationMessage(),
+    destinationMessage: currentDestinationMessage(t),
     selectedLocalityLabel: selectedLocality?.label ?? '',
     dayType: state.formValues.dayType,
   })];
 
   if (state.locationPicker) {
-    parts.push(renderLocationPicker(state.locationPicker));
+    parts.push(renderLocationPicker({
+      ...state.locationPicker,
+      message: state.locationPicker.messageKey ? t(state.locationPicker.messageKey) : state.locationPicker.message,
+      t,
+    }));
   }
 
   if (state.resultState?.type === 'results') {
     parts.push(
       renderResultsView({
+        t,
         routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
@@ -123,10 +138,17 @@ function renderApp() {
   }
 
   if (state.resultState?.type === 'empty') {
-    parts.push(renderEmptyState(state.resultState.message));
+    parts.push(renderEmptyState(
+      t,
+      state.resultState.messageKey ? t(state.resultState.messageKey) : state.resultState.message,
+    ));
   }
 
-  app.innerHTML = renderShell(parts.join(''));
+  app.innerHTML = renderShell(parts.join(''), {
+    language: state.language,
+    languages: SUPPORTED_LANGUAGES,
+    t,
+  });
 }
 
 function readNearbyStopCache(latitude, longitude) {
@@ -158,11 +180,11 @@ function resetDestinationState() {
   state.resultState = null;
 }
 
-function currentFromSuggestions() {
+function currentFromSuggestions(t) {
   if (state.formValues.fromStopId) {
     return state.localities.map((locality) => ({
       value: locality.label,
-      meta: 'Area',
+      meta: t('search.panel.area'),
     }));
   }
 
@@ -173,14 +195,14 @@ function currentFromSuggestions() {
       .filter((stop) => !query || normalizeText(stop.canonical).includes(query))
       .map((stop) => ({
         value: stop.canonical,
-        meta: 'Exact stop',
+        meta: t('search.panel.exactStop'),
       }));
   }
 
   const matchingLocalities = query ? findMatchingLocalities(state.formValues.fromInput, state.localities) : state.localities;
   return matchingLocalities.map((locality) => ({
     value: locality.label,
-    meta: 'Area',
+    meta: t('search.panel.area'),
   }));
 }
 
@@ -196,22 +218,22 @@ function currentDestinationMode() {
   return state.formValues.fromStopId ? 'exact-stop-destinations' : 'locality-destinations';
 }
 
-function currentDestinationMessage() {
+function currentDestinationMessage(t) {
   const mode = currentDestinationMode();
 
   if (mode === 'informational') {
-    return 'Choose a departure area first to see direct destinations.';
+    return t('search.destination.informational');
   }
 
   if (mode === 'empty') {
     return state.formValues.fromStopId
-      ? 'No direct destinations found from this exact stop for the selected day type.'
-      : 'No direct destinations found from this area for the selected day type.';
+      ? t('search.destination.emptyStop')
+      : t('search.destination.emptyLocality');
   }
 
   return state.formValues.fromStopId
-    ? 'Direct destinations from this stop'
-    : 'Direct destinations from this area';
+    ? t('search.destination.fromStop')
+    : t('search.destination.fromArea');
 }
 
 function currentDestinationOptions() {
@@ -341,7 +363,7 @@ async function openLocationPicker(fieldName) {
     fieldName,
     state: 'loading',
     nearbyStops: [],
-    message: '',
+    messageKey: '',
   };
   renderApp();
   bindInteractions();
@@ -350,7 +372,7 @@ async function openLocationPicker(fieldName) {
     state.locationPicker = {
       fieldName,
       state: 'error',
-      message: 'This browser cannot share your location. Type the stop name manually instead.',
+      messageKey: 'location.error.browser',
     };
     renderApp();
     bindInteractions();
@@ -386,14 +408,14 @@ async function openLocationPicker(fieldName) {
           fieldName,
           state: 'error',
           nearbyStops: [],
-          message: 'No nearby timetable stops could be matched from the live map provider.',
+          messageKey: 'location.error.nomatch',
         };
     } catch (error) {
       state.locationPicker = {
         fieldName,
         state: 'error',
         nearbyStops: [],
-        message: 'Nearby stop lookup failed. Type the stop name manually instead.',
+        messageKey: 'location.error.lookup',
       };
       console.error(error);
     }
@@ -409,7 +431,7 @@ async function openLocationPicker(fieldName) {
       fieldName,
       state: 'error',
       nearbyStops: [],
-      message: 'Location access was denied. Type the stop name manually instead.',
+      messageKey: 'location.error.denied',
     };
     renderApp();
     bindInteractions();
@@ -443,10 +465,17 @@ function bindForm() {
       trips: state.trips,
     });
 
+    pushRouteSearchEvent(window, {
+      from: state.formValues.fromInput,
+      to: state.formValues.toInput,
+      dayType: state.formValues.dayType,
+      resultsCount: matches.length,
+    });
+
     if (!matches.length) {
       state.resultState = {
         type: 'empty',
-        message: 'Try another stop alias, browse the official PDF, or adjust the day type.',
+        messageKey: 'empty.searchAdjust',
       };
       state.locationPicker = null;
       renderApp();
@@ -629,10 +658,22 @@ function bindLocationActions() {
   });
 }
 
+function bindLanguageSelector() {
+  const languageSelect = document.querySelector('select[name="language"]');
+
+  languageSelect?.addEventListener('change', (event) => {
+    state.language = String(event.currentTarget.value ?? state.language);
+    persistLanguage(window.localStorage, state.language);
+    renderApp();
+    bindInteractions();
+  });
+}
+
 function bindInteractions() {
   bindForm();
   bindFieldPanels();
   bindLocationActions();
+  bindLanguageSelector();
 }
 
 async function boot() {
@@ -654,10 +695,14 @@ async function boot() {
     renderApp();
     bindInteractions();
   } catch (error) {
-    renderShell(
-      renderEmptyState(
-        'The timetable data is not available yet. Run the static data build before publishing this page.',
-      ),
+    const t = createTranslator(state.language);
+    app.innerHTML = renderShell(
+      renderEmptyState(t, t('boot.dataUnavailable')),
+      {
+        language: state.language,
+        languages: SUPPORTED_LANGUAGES,
+        t,
+      },
     );
     console.error(error);
   }

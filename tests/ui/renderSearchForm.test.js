@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { createTranslator } from '../../src/lib/i18n.js';
 import { renderSearchForm } from '../../src/ui/renderSearchForm.js';
 
 describe('renderSearchForm', () => {
@@ -18,7 +19,7 @@ describe('renderSearchForm', () => {
       reachableDestinations: [],
     });
 
-    expect(html).toContain('Ricerca Percorsi / Route Lookup');
+    expect(html).toContain('Route Lookup');
     expect(html).toContain('Find direct Riviera buses faster than scanning the PDF.');
     expect(html).not.toContain('Riviera Trasporti Search');
     expect(html).toContain('placeholder="Porto Maurizio"');
@@ -109,5 +110,17 @@ describe('renderSearchForm', () => {
     expect(html).toContain('route-progress-step--done');
     expect(html).toContain('Direct-match stop locked');
     expect(html).toContain('Choose direct destination');
+  });
+
+  it('renders translated hero and field copy in German', () => {
+    const html = renderSearchForm({
+      t: createTranslator('de'),
+      destinationMessage: createTranslator('de')('search.destination.informational'),
+    });
+
+    expect(html).toContain('Routensuche');
+    expect(html).toContain('Finde direkte Riviera-Busse schneller als im PDF.');
+    expect(html).toContain('Meinen Standort verwenden');
+    expect(html).toContain('Abfahrten anzeigen');
   });
 });

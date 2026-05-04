@@ -1,7 +1,9 @@
-function renderLocationButton(fieldName) {
+import { createTranslator } from '../lib/i18n.js';
+
+function renderLocationButton(fieldName, label) {
   return `
     <button type="button" class="field-location-button" data-location-field="${fieldName}">
-      Use my location
+      ${escapeHtml(label)}
     </button>
   `;
 }
@@ -14,7 +16,7 @@ function escapeHtml(value = '') {
     .replaceAll('"', '&quot;');
 }
 
-function renderSuggestionButtons(suggestions = []) {
+function renderSuggestionButtons(suggestions = [], t) {
   return suggestions
     .map(
       ({ value, meta = '', label = '' }) => `
@@ -23,7 +25,7 @@ function renderSuggestionButtons(suggestions = []) {
             <span class="picker-option-label">${escapeHtml(value)}</span>
             ${(meta || label) ? `<small>${escapeHtml(meta || label)}</small>` : ''}
           </span>
-          <span class="picker-option-action" aria-hidden="true">Choose</span>
+          <span class="picker-option-action" aria-hidden="true">${escapeHtml(t('search.panel.choose'))}</span>
         </button>
       `,
     )
@@ -42,29 +44,29 @@ function renderProgressStep({ index, label, detail, state }) {
   `;
 }
 
-function renderRouteProgress({ fromLocalitySelected, exactFromStop, toStopSelected }) {
+function renderRouteProgress({ fromLocalitySelected, exactFromStop, toStopSelected, t }) {
   const areaState = fromLocalitySelected ? 'done' : 'active';
   const stopState = exactFromStop ? 'done' : (fromLocalitySelected ? 'active' : 'pending');
   const destinationState = toStopSelected ? 'done' : (fromLocalitySelected ? 'active' : 'pending');
 
   return `
-    <div class="route-progress" aria-label="Route picker steps">
+    <div class="route-progress" aria-label="${escapeHtml(t('search.progress.label'))}">
       ${renderProgressStep({
         index: '1',
-        label: 'Area',
-        detail: fromLocalitySelected ? 'Departure area chosen' : 'Choose departure area',
+        label: t('search.progress.area'),
+        detail: fromLocalitySelected ? t('search.progress.areaDone') : t('search.progress.areaPending'),
         state: areaState,
       })}
       ${renderProgressStep({
         index: '2',
-        label: 'Exact stop',
-        detail: exactFromStop ? 'Direct-match stop locked' : 'Refine only if needed',
+        label: t('search.progress.stop'),
+        detail: exactFromStop ? t('search.progress.stopDone') : t('search.progress.stopPending'),
         state: stopState,
       })}
       ${renderProgressStep({
         index: '3',
-        label: 'Destination',
-        detail: toStopSelected ? 'Direct stop selected' : 'Choose direct destination',
+        label: t('search.progress.destination'),
+        detail: toStopSelected ? t('search.progress.destinationDone') : t('search.progress.destinationPending'),
         state: destinationState,
       })}
     </div>
@@ -72,6 +74,7 @@ function renderRouteProgress({ fromLocalitySelected, exactFromStop, toStopSelect
 }
 
 function renderDestinationPanel({
+  t,
   destinationMode,
   destinationMessage,
   reachableDestinations,
@@ -80,16 +83,18 @@ function renderDestinationPanel({
 }) {
   const matchScope = exactFromStop
     ? exactFromStop.canonical
-    : (selectedLocalityLabel || 'Selected area');
-  const matchScopeLabel = exactFromStop ? 'Exact stop' : 'Departure area';
-  const destinationCountLabel = `${reachableDestinations.length} direct option${reachableDestinations.length === 1 ? '' : 's'}`;
+    : (selectedLocalityLabel || t('search.destination.departureArea'));
+  const matchScopeLabel = exactFromStop ? t('search.destination.exactStop') : t('search.destination.departureArea');
+  const destinationCountLabel = reachableDestinations.length === 1
+    ? t('search.destination.directOptions.one')
+    : t('search.destination.directOptions.other', { count: reachableDestinations.length });
 
   if (destinationMode === 'informational' || destinationMode === 'empty') {
     return `
       <div class="picker-panel-head">
         <div class="picker-panel-copy">${escapeHtml(destinationMessage)}</div>
         <div class="picker-panel-meta">
-          <span class="picker-panel-tag">${destinationMode === 'empty' ? 'No matches yet' : 'Waiting for area'}</span>
+          <span class="picker-panel-tag">${destinationMode === 'empty' ? t('search.panel.emptyTag') : t('search.panel.waitingTag')}</span>
         </div>
       </div>
     `;
@@ -114,9 +119,9 @@ function renderDestinationPanel({
             <button type="button" class="picker-option" data-stop-id="${stop.id}" data-to-value="${escapeHtml(stop.canonical)}">
               <span class="picker-option-copy">
                 <span class="picker-option-label">${escapeHtml(stop.canonical)}</span>
-                <small>Direct destination</small>
+                <small>${escapeHtml(t('search.panel.directDestination'))}</small>
               </span>
-              <span class="picker-option-action" aria-hidden="true">Choose</span>
+              <span class="picker-option-action" aria-hidden="true">${escapeHtml(t('search.panel.choose'))}</span>
             </button>
           `,
         )
@@ -126,6 +131,7 @@ function renderDestinationPanel({
 }
 
 export function renderSearchForm({
+  t = createTranslator('en'),
   from = '',
   to = '',
   fromInput = from,
@@ -138,70 +144,73 @@ export function renderSearchForm({
   toPanelOpen = false,
   reachableDestinations = [],
   destinationMode = 'informational',
-  destinationMessage = 'Choose a departure area first to see direct destinations.',
+  destinationMessage,
   selectedLocalityLabel = '',
   dayType = 'feriale',
 } = {}) {
   const fromHelp = exactFromStop
-    ? 'Exact departure stop selected for direct-service matching.'
+    ? t('search.fromHelp.exact')
     : (fromLocalitySelected
-      ? 'Area selected. Refine to the exact stop only if you need narrower matches.'
-      : 'Start with an area, then refine to the exact stop if needed.');
+      ? t('search.fromHelp.locality')
+      : t('search.fromHelp.blank'));
   const toHelp = fromLocalitySelected
-    ? 'Only direct destinations from the selected departure side appear here.'
-    : 'Direct destinations unlock after you choose a departure area.';
+    ? t('search.toHelp.ready')
+    : t('search.toHelp.locked');
+  const resolvedDestinationMessage = destinationMessage ?? t('search.destination.informational');
 
   return `
     <section class="hero-shell hero-shell--compact">
       <div class="hero-copy">
-        <p class="eyebrow">Ricerca Percorsi / Route Lookup</p>
-        <h1>Find direct Riviera buses faster than scanning the PDF.</h1>
+        <p class="eyebrow">${escapeHtml(t('search.eyebrow'))}</p>
+        <h1>${escapeHtml(t('search.title'))}</h1>
         <p class="hero-text">
-          Choose a departure area, narrow to the exact stop, then browse only direct destinations.
+          ${escapeHtml(t('search.heroText'))}
         </p>
       </div>
 
       <form id="route-form" class="search-form search-form--capsule">
         <div class="search-form-intro">
-          <p class="field-hint">Start broad, then refine only when you need to.</p>
+          <p class="field-hint">${escapeHtml(t('search.fieldHint'))}</p>
           ${renderRouteProgress({
             fromLocalitySelected,
             exactFromStop,
             toStopSelected,
+            t,
           })}
         </div>
         <label class="field">
-          <span>Da / From</span>
+          <span>${escapeHtml(t('search.fromLabel'))}</span>
           <div class="field-input-row">
             <input
               name="from"
               value="${escapeHtml(fromInput)}"
-              placeholder="Porto Maurizio"
+              placeholder="${escapeHtml(t('search.fromPlaceholder'))}"
               autocomplete="off"
               data-field="from"
             />
-            ${renderLocationButton('from')}
+            ${renderLocationButton('from', t('search.useMyLocation'))}
           </div>
           <small>${fromHelp}</small>
-          ${fromPanelOpen ? `<div class="picker-panel" data-panel="from">${renderSuggestionButtons(fromSuggestions)}</div>` : ''}
+          ${fromPanelOpen ? `<div class="picker-panel" data-panel="from">${renderSuggestionButtons(fromSuggestions, t)}</div>` : ''}
         </label>
 
         <label class="field">
-          <span>A / To</span>
+          <span>${escapeHtml(t('search.toLabel'))}</span>
           <div class="field-input-row">
             <input
               name="to"
               value="${escapeHtml(toInput)}"
-              placeholder="Choose direct destination"
+              placeholder="${escapeHtml(t('search.toPlaceholder'))}"
               autocomplete="off"
               data-field="to"
             />
-            ${renderLocationButton('to')}
+            ${renderLocationButton('to', t('search.useMyLocation'))}
           </div>
           <small>${toHelp}</small>
           ${toPanelOpen ? `<div class="picker-panel" data-panel="to">${renderDestinationPanel({
+            t,
             destinationMode,
-            destinationMessage,
+            destinationMessage: resolvedDestinationMessage,
             reachableDestinations,
             selectedLocalityLabel,
             exactFromStop,
@@ -209,16 +218,16 @@ export function renderSearchForm({
         </label>
 
         <label class="field">
-          <span>Giorno / Day type</span>
+          <span>${escapeHtml(t('search.dayTypeLabel'))}</span>
           <select name="dayType" class="field-select">
-            <option value="feriale" ${dayType === 'feriale' ? 'selected' : ''}>Feriale / Weekday</option>
-            <option value="sabato" ${dayType === 'sabato' ? 'selected' : ''}>Sabato / Saturday</option>
-            <option value="festivo" ${dayType === 'festivo' ? 'selected' : ''}>Festivo / Holiday</option>
-            <option value="scolastico" ${dayType === 'scolastico' ? 'selected' : ''}>Scolastico / School</option>
+            <option value="feriale" ${dayType === 'feriale' ? 'selected' : ''}>${escapeHtml(t('search.dayType.feriale'))}</option>
+            <option value="sabato" ${dayType === 'sabato' ? 'selected' : ''}>${escapeHtml(t('search.dayType.sabato'))}</option>
+            <option value="festivo" ${dayType === 'festivo' ? 'selected' : ''}>${escapeHtml(t('search.dayType.festivo'))}</option>
+            <option value="scolastico" ${dayType === 'scolastico' ? 'selected' : ''}>${escapeHtml(t('search.dayType.scolastico'))}</option>
           </select>
         </label>
 
-        <button type="submit" class="search-form-submit">Show departures</button>
+        <button type="submit" class="search-form-submit">${escapeHtml(t('search.submit'))}</button>
       </form>
     </section>
   `;
