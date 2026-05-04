@@ -24,7 +24,7 @@ describe('renderSearchForm', () => {
     });
 
     expect(html).toContain('Route Lookup');
-    expect(html).toContain('Find direct Riviera buses faster than scanning the PDF.');
+    expect(html).toContain('Find direct Riviera Trasporti buses faster than scanning the PDF.');
     expect(html).not.toContain('Riviera Trasporti Search');
     expect(html).toContain('placeholder="Choose departure area"');
     expect(html).toContain('name="from"');
@@ -146,7 +146,7 @@ describe('renderSearchForm', () => {
     });
 
     expect(html).toContain('Routensuche');
-    expect(html).toContain('Finde direkte Riviera-Busse schneller als im PDF.');
+    expect(html).toContain('Finde direkte Riviera-Trasporti-Busse schneller als im PDF.');
     expect(html).toContain('Meinen Standort verwenden');
     expect(html).toContain('Abfahrten anzeigen');
   });
