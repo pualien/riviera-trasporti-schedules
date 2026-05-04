@@ -16,7 +16,7 @@ describe('renderLocationPicker', () => {
       ],
     });
 
-    expect(html).toContain('Choose area, then exact stop');
+    expect(html).toContain('Choose an area first, then confirm the exact timetable stop if the nearby match is ambiguous.');
     expect(html).toContain('Porto Maurizio');
   });
 });

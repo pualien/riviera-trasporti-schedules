@@ -1,10 +1,11 @@
 import { buildRouteSummary, findDirectTrips } from './lib/query.js';
-import { findExactLocalityMatch, findExactStopMatch } from './lib/localities.js';
+import { findExactLocalityMatch, findExactStopMatch, findMatchingLocalities } from './lib/localities.js';
 import {
   buildNearbyStopChoices,
   createNearbyStopCacheKey,
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
+import { normalizeText } from './lib/normalize.js';
 import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { toMinutes } from './lib/time.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
@@ -22,8 +23,12 @@ const state = {
   localities: [],
   reachability: {},
   aliases: {},
+  uiState: {
+    fromPanelOpen: false,
+    toPanelOpen: false,
+  },
   formValues: {
-    fromInput: 'Porto Maurizio',
+    fromInput: '',
     fromLocalityId: null,
     fromStopId: null,
     toInput: '',
@@ -99,25 +104,17 @@ function renderShell(content) {
 }
 
 function renderApp() {
-  const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId);
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
-  const fromSuggestions = selectedLocality && !exactFromStop && state.pickerState.exactStopChoices.length > 0
-    ? state.pickerState.exactStopChoices.map((stop) => ({
-      value: stop.canonical,
-      label: `${selectedLocality.label} exact stop`,
-    }))
-    : state.localities.map((locality) => ({
-      value: locality.label,
-      label: 'Area',
-    }));
   const parts = [renderSearchForm({
     fromInput: state.formValues.fromInput,
-    fromLocalityLabel: selectedLocality?.label ?? '',
     exactFromStop,
-    exactStopChoices: state.pickerState.exactStopChoices,
-    fromSuggestions,
+    fromSuggestions: currentFromSuggestions(),
+    fromPanelOpen: state.uiState.fromPanelOpen,
     toInput: state.formValues.toInput,
-    reachableDestinations: state.pickerState.reachableDestinations,
+    toPanelOpen: state.uiState.toPanelOpen,
+    reachableDestinations: currentDestinationOptions(),
+    destinationMode: currentDestinationMode(),
+    destinationMessage: currentDestinationMessage(),
     dayType: state.formValues.dayType,
   })];
 
@@ -170,6 +167,70 @@ function resetDestinationState() {
     toStopId: null,
   };
   state.resultState = null;
+}
+
+function currentFromSuggestions() {
+  if (state.formValues.fromStopId) {
+    return state.localities.map((locality) => ({
+      value: locality.label,
+      meta: 'Area',
+    }));
+  }
+
+  const query = normalizeText(state.formValues.fromInput);
+
+  if (state.formValues.fromLocalityId && !state.formValues.fromStopId) {
+    return state.pickerState.exactStopChoices
+      .filter((stop) => !query || normalizeText(stop.canonical).includes(query))
+      .map((stop) => ({
+        value: stop.canonical,
+        meta: 'Exact stop',
+      }));
+  }
+
+  const matchingLocalities = query ? findMatchingLocalities(state.formValues.fromInput, state.localities) : state.localities;
+  return matchingLocalities.map((locality) => ({
+    value: locality.label,
+    meta: 'Area',
+  }));
+}
+
+function currentDestinationMode() {
+  if (!state.formValues.fromLocalityId) {
+    return 'informational';
+  }
+
+  if (state.pickerState.reachableDestinations.length === 0) {
+    return 'empty';
+  }
+
+  return state.formValues.fromStopId ? 'exact-stop-destinations' : 'locality-destinations';
+}
+
+function currentDestinationMessage() {
+  const mode = currentDestinationMode();
+
+  if (mode === 'informational') {
+    return 'Choose a departure area first to see direct destinations.';
+  }
+
+  if (mode === 'empty') {
+    return state.formValues.fromStopId
+      ? 'No direct destinations found from this exact stop for the selected day type.'
+      : 'No direct destinations found from this area for the selected day type.';
+  }
+
+  return state.formValues.fromStopId
+    ? 'Direct destinations from this stop'
+    : 'Direct destinations from this area';
+}
+
+function currentDestinationOptions() {
+  const query = normalizeText(state.formValues.toInput);
+
+  return state.pickerState.reachableDestinations.filter(
+    (stop) => !query || normalizeText(stop.canonical).includes(query),
+  );
 }
 
 async function ensureLeaflet() {
@@ -384,6 +445,9 @@ function bindForm() {
       from: state.formValues.fromInput,
       to: state.formValues.toInput,
       fromStopId: state.formValues.fromStopId,
+      fromLocalityStopIds: state.formValues.fromStopId
+        ? []
+        : (state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? []),
       toStopId: state.formValues.toStopId,
       dayType: state.formValues.dayType,
       aliases: state.aliases,
@@ -415,12 +479,16 @@ function bindForm() {
 
 function selectFromLocalityChoice(locality) {
   resetDestinationState();
-  Object.assign(state, selectLocality(state, locality, state.stops));
+  Object.assign(state, selectLocality(state, locality, state.stops, state.reachability));
+  state.uiState.fromPanelOpen = true;
+  state.uiState.toPanelOpen = false;
 }
 
 function selectFromStopChoice(stop) {
   resetDestinationState();
   Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
+  state.uiState.fromPanelOpen = false;
+  state.uiState.toPanelOpen = true;
 }
 
 function focusFromInput(selectText = false) {
@@ -452,36 +520,115 @@ function clearFromSelection(nextValue) {
   };
 }
 
-function bindFromSelection() {
-  const fromInput = document.querySelector('input[name="from"]');
+function bindFieldPanels() {
+  const fromInput = document.querySelector('[data-field="from"]');
+  const toInput = document.querySelector('[data-field="to"]');
 
-  fromInput.addEventListener('change', (event) => {
-    const nextValue = String(event.currentTarget.value ?? '');
-    const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId);
-    const exactStopChoice = selectedLocality
-      ? findExactStopMatch(nextValue, state.pickerState.exactStopChoices)
-      : null;
-
-    if (exactStopChoice) {
-      selectFromStopChoice(exactStopChoice);
-      renderApp();
-      bindInteractions();
+  fromInput?.addEventListener('focus', () => {
+    if (state.uiState.fromPanelOpen) {
       return;
     }
 
-    const localityChoice = findExactLocalityMatch(nextValue, state.localities);
-
-    if (localityChoice) {
-      selectFromLocalityChoice(localityChoice);
-      renderApp();
-      bindInteractions();
-      focusFromInput(true);
-      return;
-    }
-
-    clearFromSelection(nextValue);
+    state.uiState.fromPanelOpen = true;
+    state.uiState.toPanelOpen = false;
     renderApp();
     bindInteractions();
+    focusFromInput();
+  });
+
+  fromInput?.addEventListener('input', (event) => {
+    const nextValue = String(event.currentTarget.value ?? '');
+    const shouldClearLocality = Boolean(state.formValues.fromStopId) || nextValue === '';
+
+    state.formValues = {
+      ...state.formValues,
+      fromInput: nextValue,
+      fromLocalityId: shouldClearLocality ? null : state.formValues.fromLocalityId,
+      fromStopId: null,
+    };
+    state.formValues.toInput = '';
+    state.formValues.toStopId = null;
+    state.resultState = null;
+    state.uiState.fromPanelOpen = true;
+    state.uiState.toPanelOpen = false;
+
+    if (shouldClearLocality) {
+      state.pickerState = {
+        ...state.pickerState,
+        exactStopChoices: [],
+        reachableDestinations: [],
+      };
+    }
+
+    renderApp();
+    bindInteractions();
+    focusFromInput();
+  });
+
+  toInput?.addEventListener('focus', () => {
+    if (state.uiState.toPanelOpen) {
+      return;
+    }
+
+    state.uiState.fromPanelOpen = false;
+    state.uiState.toPanelOpen = true;
+    renderApp();
+    bindInteractions();
+    document.querySelector('[data-field="to"]')?.focus();
+  });
+
+  toInput?.addEventListener('input', (event) => {
+    state.formValues = {
+      ...state.formValues,
+      toInput: String(event.currentTarget.value ?? ''),
+      toStopId: null,
+    };
+    state.resultState = null;
+    state.uiState.toPanelOpen = true;
+    renderApp();
+    bindInteractions();
+    document.querySelector('[data-field="to"]')?.focus();
+  });
+
+  document.querySelectorAll('[data-from-value]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const value = button.dataset.fromValue ?? '';
+      const exactStopChoice = state.formValues.fromLocalityId
+        ? findExactStopMatch(value, state.pickerState.exactStopChoices)
+        : null;
+
+      if (exactStopChoice) {
+        selectFromStopChoice(exactStopChoice);
+      } else {
+        const localityChoice = findExactLocalityMatch(value, state.localities);
+
+        if (!localityChoice) {
+          clearFromSelection(value);
+        } else {
+          selectFromLocalityChoice(localityChoice);
+        }
+      }
+
+      renderApp();
+      bindInteractions();
+      if (state.uiState.fromPanelOpen) {
+        focusFromInput(true);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-to-value]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.formValues = {
+        ...state.formValues,
+        toInput: button.dataset.toValue ?? '',
+        toStopId: button.dataset.stopId ?? null,
+      };
+      state.resultState = null;
+      state.uiState.toPanelOpen = false;
+      renderApp();
+      bindInteractions();
+    });
   });
 }
 
@@ -495,7 +642,7 @@ function bindLocationActions() {
 
 function bindInteractions() {
   bindForm();
-  bindFromSelection();
+  bindFieldPanels();
   bindLocationActions();
 }
 
