@@ -1,6 +1,7 @@
 import { pushRouteSearchEvent } from './lib/analytics.js';
+import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
-import { buildRouteSummary, findDirectTrips } from './lib/query.js';
+import { findDirectTrips } from './lib/query.js';
 import { findExactLocalityMatch, findExactStopMatch } from './lib/localities.js';
 import {
   buildNearbyStopChoices,
@@ -8,6 +9,7 @@ import {
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
+import { buildSearchOutcome } from './lib/searchOutcome.js';
 import {
   SUPPORTED_LANGUAGES,
   createTranslator,
@@ -16,9 +18,9 @@ import {
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
 import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
-import { toMinutes } from './lib/time.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
+import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
 import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderResultsView } from './ui/renderResults.js';
 import { renderSearchForm } from './ui/renderSearchForm.js';
@@ -35,6 +37,7 @@ const state = {
   localities: [],
   reachability: {},
   aliases: {},
+  metadata: null,
   language: readStoredLanguage(window.localStorage),
   uiState: {
     fromPanelOpen: false,
@@ -55,18 +58,6 @@ const state = {
   resultState: null,
   locationPicker: null,
 };
-
-function currentMinutes() {
-  const now = new Date();
-  return (now.getHours() * 60) + now.getMinutes();
-}
-
-function nextDepartures(matches, count = 3) {
-  const nowMinutes = currentMinutes();
-  const upcoming = matches.filter((match) => toMinutes(match.departureTime) >= nowMinutes);
-  const source = upcoming.length ? upcoming : matches;
-  return source.slice(0, count);
-}
 
 function buildReachabilityFromTrips(trips) {
   const reachability = {};
@@ -156,6 +147,7 @@ function renderApp() {
       renderResultsView({
         t,
         routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
+        pdfUrl: state.metadata?.source?.url ?? '#',
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
         allDepartures: state.resultState.allDepartures,
@@ -165,16 +157,19 @@ function renderApp() {
     );
   }
 
-  if (state.resultState?.type === 'empty') {
-    parts.push(renderEmptyState(
+  if (state.resultState?.type === 'no-direct') {
+    parts.push(renderNoDirectFallback({
       t,
-      state.resultState.messageKey ? t(state.resultState.messageKey) : state.resultState.message,
-    ));
+      routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
+      pdfUrl: state.metadata?.source?.url ?? '#',
+      suggestions: state.resultState.suggestions,
+    }));
   }
 
   app.innerHTML = renderShell(parts.join(''), {
     language: state.language,
     languages: SUPPORTED_LANGUAGES,
+    datasetInfo: state.metadata,
     t,
   });
 }
@@ -525,24 +520,22 @@ function bindForm() {
       resultsCount: matches.length,
     });
 
-    if (!matches.length) {
-      state.resultState = {
-        type: 'empty',
-        messageKey: 'empty.searchAdjust',
-      };
-      state.locationPicker = null;
-      renderApp();
-      bindInteractions();
-      return;
-    }
+    const outcome = buildSearchOutcome({
+      matches,
+      now: new Date(),
+      fromLocalityId: state.formValues.fromLocalityId,
+      fromStopId: state.formValues.fromStopId,
+      localities: state.localities,
+      reachability: state.reachability,
+      stops: state.stops,
+    });
 
-    state.resultState = {
-      type: 'results',
-      summary: buildRouteSummary(matches),
-      nextDepartures: nextDepartures(matches),
-      allDepartures: matches,
-      selectedTripKey: null,
-    };
+    state.resultState = outcome.type === 'results'
+      ? {
+        ...outcome,
+        selectedTripKey: null,
+      }
+      : outcome;
     state.locationPicker = null;
     renderApp();
     bindInteractions();
@@ -766,21 +759,19 @@ function bindInteractions() {
 
 async function boot() {
   try {
-    const [trips, stops, stopCoordinates, generatedLocalities, generatedReachability, manualLocalities] = await Promise.all([
-      fetch('./assets/data/trips.json').then((response) => response.json()),
-      fetch('./assets/data/stops.json').then((response) => response.json()),
-      fetchJsonOrNull('./assets/data/stop-coordinates.json'),
-      fetchJsonOrNull('./assets/data/localities.json'),
-      fetchJsonOrNull('./assets/data/reachability.json'),
-      fetchJsonOrNull('./data/manual/localities.json'),
-    ]);
+    const bootData = await loadAppBootstrapData({
+      fetchJson: (url) => fetch(url).then((response) => response.json()),
+      fetchJsonOrNull,
+    });
 
-    state.trips = trips;
-    state.stops = stops;
-    state.stopCoordinates = stopCoordinates ?? {};
-    state.localities = generatedLocalities ?? manualLocalities ?? [];
-    state.reachability = generatedReachability ?? buildReachabilityFromTrips(trips);
-    state.aliases = Object.fromEntries(stops.map((stop) => [stop.canonical, stop.variants]));
+    state.trips = bootData.trips;
+    state.stops = bootData.stops;
+    state.stopCoordinates = bootData.stopCoordinates;
+    state.localities = bootData.generatedLocalities ?? bootData.manualLocalities ?? [];
+    state.reachability = bootData.generatedReachability ?? buildReachabilityFromTrips(bootData.trips);
+    state.metadata = bootData.metadata;
+    state.formValues = bootData.formValues;
+    state.aliases = Object.fromEntries(bootData.stops.map((stop) => [stop.canonical, stop.variants]));
 
     renderApp();
     bindInteractions();
