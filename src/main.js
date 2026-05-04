@@ -105,16 +105,21 @@ function renderShell(content) {
 
 function renderApp() {
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
+  const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
+  const destinationOptions = currentDestinationOptions();
   const parts = [renderSearchForm({
     fromInput: state.formValues.fromInput,
+    fromLocalitySelected: Boolean(state.formValues.fromLocalityId),
     exactFromStop,
     fromSuggestions: currentFromSuggestions(),
     fromPanelOpen: state.uiState.fromPanelOpen,
     toInput: state.formValues.toInput,
+    toStopSelected: Boolean(state.formValues.toStopId),
     toPanelOpen: state.uiState.toPanelOpen,
-    reachableDestinations: currentDestinationOptions(),
+    reachableDestinations: destinationOptions,
     destinationMode: currentDestinationMode(),
     destinationMessage: currentDestinationMessage(),
+    selectedLocalityLabel: selectedLocality?.label ?? '',
     dayType: state.formValues.dayType,
   })];
 
