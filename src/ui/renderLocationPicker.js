@@ -44,7 +44,7 @@ export function renderLocationPicker({ fieldName, state, nearbyStops = [], messa
       <div class="location-picker-copy">
         <p class="eyebrow">Nearby Stops</p>
         <h3>${title}</h3>
-        <p>Choose area, then exact stop. GPS can suggest nearby places, but route search still confirms one timetable stop.</p>
+        <p>Choose an area first, then confirm the exact timetable stop if the nearby match is ambiguous.</p>
       </div>
       <div class="location-map-shell">
         <div id="location-picker-map" class="location-map">${state === 'loading' ? 'Loading map…' : ''}</div>
