@@ -27,6 +27,15 @@ const trips = [
       { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '07:20' },
     ],
   },
+  {
+    lineId: '13',
+    dayType: 'feriale',
+    sourcePage: 24,
+    stops: [
+      { stopId: 'imperia-porto-maurizio-piazza-dante', name: 'imperia porto maurizio piazza dante', time: '06:15' },
+      { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '07:05' },
+    ],
+  },
 ];
 
 describe('findDirectTrips', () => {
@@ -68,5 +77,23 @@ describe('findDirectTrips', () => {
     expect(matches).toHaveLength(2);
     expect(matches[0].fromStopId).toBe('imperia-porto-maurizio');
     expect(matches[0].toStopId).toBe('sanremo-autostazione');
+  });
+
+  it('searches across every stop in the selected locality when no exact origin stop exists', () => {
+    const matches = findDirectTrips({
+      from: 'Porto Maurizio',
+      fromLocalityStopIds: ['imperia-porto-maurizio', 'imperia-porto-maurizio-piazza-dante'],
+      toStopId: 'sanremo-autostazione',
+      dayType: 'feriale',
+      aliases,
+      trips,
+    });
+
+    expect(matches).toHaveLength(3);
+    expect(matches.map((match) => match.fromStopId)).toEqual([
+      'imperia-porto-maurizio-piazza-dante',
+      'imperia-porto-maurizio',
+      'imperia-porto-maurizio',
+    ]);
   });
 });

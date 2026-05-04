@@ -3,6 +3,7 @@ import {
   findExactLocalityMatch,
   findExactStopMatch,
   findMatchingLocalities,
+  getLocalityReachableStops,
   getLocalityStops,
   getReachableStops,
 } from '../../src/lib/localities.js';
@@ -21,6 +22,7 @@ const stops = [
   { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
   { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
   { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+  { id: 'taggia-stazione', canonical: 'taggia stazione' },
 ];
 
 describe('locality helpers', () => {
@@ -48,5 +50,22 @@ describe('locality helpers', () => {
     expect(
       getReachableStops('imperia-porto-maurizio', { 'imperia-porto-maurizio': ['sanremo-autostazione'] }, stops),
     ).toEqual([{ id: 'sanremo-autostazione', canonical: 'sanremo autostazione' }]);
+  });
+
+  it('builds a locality-wide destination union from every stop in the locality', () => {
+    expect(
+      getLocalityReachableStops(
+        'porto-maurizio',
+        localities,
+        {
+          'imperia-porto-maurizio': ['sanremo-autostazione', 'taggia-stazione'],
+          'imperia-porto-maurizio-piazza-dante': ['sanremo-autostazione'],
+        },
+        stops,
+      ),
+    ).toEqual([
+      { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+      { id: 'taggia-stazione', canonical: 'taggia stazione' },
+    ]);
   });
 });

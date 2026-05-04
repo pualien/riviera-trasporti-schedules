@@ -49,3 +49,20 @@ export function getReachableStops(fromStopId, reachability, stops) {
   const stopMap = new Map(stops.map((stop) => [stop.id, stop]));
   return (reachability[fromStopId] ?? []).map((stopId) => stopMap.get(stopId)).filter(Boolean);
 }
+
+export function getLocalityReachableStops(localityId, localities, reachability, stops) {
+  const stopMap = new Map(stops.map((stop) => [stop.id, stop]));
+  const localityStops = getLocalityStops(localityId, localities, stops);
+  const destinationIds = new Set();
+
+  for (const stop of localityStops) {
+    for (const destinationId of reachability[stop.id] ?? []) {
+      destinationIds.add(destinationId);
+    }
+  }
+
+  return [...destinationIds]
+    .sort()
+    .map((stopId) => stopMap.get(stopId))
+    .filter(Boolean);
+}
