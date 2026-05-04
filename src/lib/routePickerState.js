@@ -1,6 +1,6 @@
-import { getLocalityStops, getReachableStops } from './localities.js';
+import { getLocalityReachableStops, getLocalityStops, getReachableStops } from './localities.js';
 
-export function selectLocality(state, locality, stops) {
+export function selectLocality(state, locality, stops, reachability) {
   return {
     ...state,
     formValues: {
@@ -14,7 +14,7 @@ export function selectLocality(state, locality, stops) {
     pickerState: {
       ...state.pickerState,
       exactStopChoices: getLocalityStops(locality.id, [locality], stops),
-      reachableDestinations: [],
+      reachableDestinations: getLocalityReachableStops(locality.id, [locality], reachability, stops),
     },
   };
 }
