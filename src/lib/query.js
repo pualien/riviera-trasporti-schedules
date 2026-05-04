@@ -11,7 +11,7 @@ export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = []
 
   return trips
     .filter((trip) => trip.dayType === dayType)
-    .flatMap((trip) =>
+    .flatMap((trip, tripIndex) =>
       resolvedOriginStopIds.map((originStopId) => {
         const fromIndex = trip.stops.findIndex(
           (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === originStopId,
@@ -28,13 +28,18 @@ export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = []
         const toStop = trip.stops[toIndex];
 
         return {
+          tripKey: `${trip.lineId}:${trip.dayType}:${trip.sourcePage}:${tripIndex}:${originStopId}:${resolvedToStopId}`,
           lineId: trip.lineId,
+          direction: trip.direction,
           sourcePage: trip.sourcePage,
           fromStopId: originStopId,
           toStopId: resolvedToStopId,
+          fromIndex,
+          toIndex,
           departureTime: fromStop.time,
           arrivalTime: toStop.time,
           durationMinutes: durationBetween(fromStop.time, toStop.time),
+          segmentStops: trip.stops.slice(fromIndex, toIndex + 1),
         };
       }),
     )

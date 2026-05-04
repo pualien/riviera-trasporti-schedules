@@ -96,4 +96,39 @@ describe('findDirectTrips', () => {
       'imperia-porto-maurizio',
     ]);
   });
+
+  it('returns stable trip metadata and the matched stop segment for each direct trip', () => {
+    const matches = findDirectTrips({
+      fromStopId: 'imperia-porto-maurizio',
+      toStopId: 'sanremo-autostazione',
+      dayType: 'feriale',
+      aliases,
+      trips: [
+        {
+          lineId: '12',
+          direction: 'ANDORA - SANREMO',
+          dayType: 'feriale',
+          sourcePage: 22,
+          stops: [
+            { stopId: 'andora-stazione-fs', name: 'andora stazione fs', time: '05:35' },
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '06:20' },
+            { stopId: 'taggia-stazione', name: 'taggia stazione', time: '06:45' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '07:00' },
+          ],
+        },
+      ],
+    });
+
+    expect(matches[0]).toMatchObject({
+      tripKey: '12:feriale:22:0:imperia-porto-maurizio:sanremo-autostazione',
+      direction: 'ANDORA - SANREMO',
+      fromIndex: 1,
+      toIndex: 3,
+    });
+    expect(matches[0].segmentStops.map((stop) => stop.stopId)).toEqual([
+      'imperia-porto-maurizio',
+      'taggia-stazione',
+      'sanremo-autostazione',
+    ]);
+  });
 });
