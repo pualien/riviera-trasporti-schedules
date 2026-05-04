@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { normalizeText } from '../src/lib/normalize.js';
 import { parsePdfIndex } from './lib/parsePdfIndex.mjs';
 import { parseTimetablePage } from './lib/parseTimetablePage.mjs';
+import { PDF_SOURCE_METADATA } from './lib/pdfSource.mjs';
 
 function stopIdFromName(value) {
   return normalizeText(value).replace(/\s+/g, '-');
@@ -76,7 +77,25 @@ function buildReachability(trips) {
   );
 }
 
-export async function buildRouteData({ indexEntries, manifestEntries, pages, aliases, localities = [] }) {
+function buildDatasetMetadata({ indexEntries, manifestEntries, builtAt }) {
+  return {
+    source: PDF_SOURCE_METADATA,
+    builtAt,
+    coverage: {
+      indexedPageCount: indexEntries.length,
+      manifestPageCount: manifestEntries.length,
+    },
+  };
+}
+
+export async function buildRouteData({
+  indexEntries,
+  manifestEntries,
+  pages,
+  aliases,
+  localities = [],
+  builtAt = new Date().toISOString(),
+}) {
   const missingEntries = indexEntries.filter(
     (indexEntry) =>
       !manifestEntries.some(
@@ -121,6 +140,7 @@ export async function buildRouteData({ indexEntries, manifestEntries, pages, ali
     trips,
     localities: validatedLocalities,
     reachability: buildReachability(trips),
+    metadata: buildDatasetMetadata({ indexEntries, manifestEntries, builtAt }),
   };
 }
 
@@ -148,6 +168,10 @@ async function main() {
   await writeFile(new URL('../assets/data/trips.json', import.meta.url), JSON.stringify(output.trips, null, 2));
   await writeFile(new URL('../assets/data/stops.json', import.meta.url), JSON.stringify(output.stops, null, 2));
   await writeFile(new URL('../assets/data/lines.json', import.meta.url), JSON.stringify(output.lines, null, 2));
+  await writeFile(
+    new URL('../assets/data/metadata.json', import.meta.url),
+    JSON.stringify(output.metadata, null, 2),
+  );
   await writeFile(
     new URL('../assets/data/localities.json', import.meta.url),
     JSON.stringify(output.localities, null, 2),

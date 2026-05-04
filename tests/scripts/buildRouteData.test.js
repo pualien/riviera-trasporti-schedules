@@ -93,4 +93,44 @@ Sanremo Autostazione 07.00`,
       }),
     ).rejects.toThrow('Unknown locality stop id');
   });
+
+  it('builds metadata with source freshness and indexed coverage counts', async () => {
+    const output = await buildRouteData({
+      indexEntries: [{ lineId: '12', pageNumber: 23, direction: 'ANDORA - IMPERIA - SANREMO' }],
+      manifestEntries: [
+        {
+          lineId: '12',
+          pageNumber: 23,
+          direction: 'ANDORA - IMPERIA - SANREMO',
+          dayType: 'feriale',
+          parserFamily: 'linear-intercity',
+        },
+      ],
+      pages: [
+        {
+          pageNumber: 23,
+          text: `Andora Stazione FS 05.35
+Imperia Porto Maurizio 06.20
+Sanremo Autostazione 07.00`,
+          items: [],
+        },
+      ],
+      aliases: {},
+      localities: [],
+      builtAt: '2026-05-05T08:30:00.000Z',
+    });
+
+    expect(output.metadata).toMatchObject({
+      source: {
+        title: '2025-2026 Orario Invernale Generale 7ª Ver. dal 01-04-2026',
+        url: expect.stringContaining('2025-2026_Orario_Invernale_Generale'),
+        effectiveDate: '2026-04-01',
+      },
+      builtAt: '2026-05-05T08:30:00.000Z',
+      coverage: {
+        indexedPageCount: 1,
+        manifestPageCount: 1,
+      },
+    });
+  });
 });
