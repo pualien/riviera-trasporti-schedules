@@ -1,0 +1,14 @@
+[
+  {
+    "id": "porto-maurizio",
+    "label": "Porto Maurizio",
+    "aliases": ["Imperia Porto Maurizio"],
+    "stopIds": ["imperia-porto-maurizio"]
+  },
+  {
+    "id": "sanremo",
+    "label": "Sanremo",
+    "aliases": ["Sanremo Autostazione"],
+    "stopIds": ["sanremo-autostazione"]
+  }
+]

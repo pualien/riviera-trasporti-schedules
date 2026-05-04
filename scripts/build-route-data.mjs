@@ -38,7 +38,45 @@ function buildStops(trips, aliases) {
   return stopNames.map((name) => createStopRecord(name, aliases[name] ?? []));
 }
 
-export async function buildRouteData({ indexEntries, manifestEntries, pages, aliases }) {
+function validateLocalities(localities, stops) {
+  const stopIds = new Set(stops.map((stop) => stop.id));
+
+  for (const locality of localities) {
+    for (const stopId of locality.stopIds) {
+      if (!stopIds.has(stopId)) {
+        throw new Error(`Unknown locality stop id: ${stopId}`);
+      }
+    }
+  }
+
+  return localities.map((locality) => ({
+    ...locality,
+    matchTokens: [locality.label, ...locality.aliases].map(normalizeText),
+  }));
+}
+
+function buildReachability(trips) {
+  const reachability = {};
+
+  for (const trip of trips) {
+    for (let fromIndex = 0; fromIndex < trip.stops.length; fromIndex += 1) {
+      const fromStopId = trip.stops[fromIndex].stopId;
+      const reachable = reachability[fromStopId] ?? new Set();
+
+      for (let toIndex = fromIndex + 1; toIndex < trip.stops.length; toIndex += 1) {
+        reachable.add(trip.stops[toIndex].stopId);
+      }
+
+      reachability[fromStopId] = reachable;
+    }
+  }
+
+  return Object.fromEntries(
+    Object.entries(reachability).map(([stopId, destinations]) => [stopId, [...destinations].sort()]),
+  );
+}
+
+export async function buildRouteData({ indexEntries, manifestEntries, pages, aliases, localities = [] }) {
   const missingEntries = indexEntries.filter(
     (indexEntry) =>
       !manifestEntries.some(
@@ -74,10 +112,15 @@ export async function buildRouteData({ indexEntries, manifestEntries, pages, ali
     return parsedTrips.map(attachStopIds);
   });
 
+  const stops = buildStops(trips, aliases);
+  const validatedLocalities = validateLocalities(localities, stops);
+
   return {
     lines: buildLines(manifestEntries),
-    stops: buildStops(trips, aliases),
+    stops,
     trips,
+    localities: validatedLocalities,
+    reachability: buildReachability(trips),
   };
 }
 
@@ -88,6 +131,9 @@ async function main() {
   const aliases = JSON.parse(
     await readFile(new URL('../data/manual/stop-aliases.json', import.meta.url), 'utf8'),
   );
+  const localities = JSON.parse(
+    await readFile(new URL('../data/manual/localities.json', import.meta.url), 'utf8'),
+  );
   const pages = JSON.parse(await readFile(new URL('../build/raw/pages.json', import.meta.url), 'utf8'));
   const indexPage = pages.find((page) => page.pageNumber === 2);
 
@@ -96,12 +142,20 @@ async function main() {
   }
 
   const indexEntries = parsePdfIndex({ pageItems: indexPage.items });
-  const output = await buildRouteData({ indexEntries, manifestEntries, pages, aliases });
+  const output = await buildRouteData({ indexEntries, manifestEntries, pages, aliases, localities });
 
   await mkdir(new URL('../assets/data/', import.meta.url), { recursive: true });
   await writeFile(new URL('../assets/data/trips.json', import.meta.url), JSON.stringify(output.trips, null, 2));
   await writeFile(new URL('../assets/data/stops.json', import.meta.url), JSON.stringify(output.stops, null, 2));
   await writeFile(new URL('../assets/data/lines.json', import.meta.url), JSON.stringify(output.lines, null, 2));
+  await writeFile(
+    new URL('../assets/data/localities.json', import.meta.url),
+    JSON.stringify(output.localities, null, 2),
+  );
+  await writeFile(
+    new URL('../assets/data/reachability.json', import.meta.url),
+    JSON.stringify(output.reachability, null, 2),
+  );
 
   console.log(`Built ${output.trips.length} trips across ${indexEntries.length} indexed pages`);
 }
