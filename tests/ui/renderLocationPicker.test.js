@@ -2,17 +2,21 @@ import { describe, expect, it } from 'vitest';
 import { renderLocationPicker } from '../../src/ui/renderLocationPicker.js';
 
 describe('renderLocationPicker', () => {
-  it('renders a compact map region and nearby choices', () => {
+  it('explains that GPS may still require exact stop confirmation inside a locality', () => {
     const html = renderLocationPicker({
       fieldName: 'from',
       state: 'ready',
       nearbyStops: [
-        { stopId: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', distanceMeters: 180 },
+        {
+          stopId: 'imperia-porto-maurizio',
+          canonical: 'imperia porto maurizio',
+          localityLabel: 'Porto Maurizio',
+          distanceMeters: 180,
+        },
       ],
     });
 
-    expect(html).toContain('Nearest stops');
-    expect(html).toContain('imperia porto maurizio');
-    expect(html).toContain('data-stop-id="imperia-porto-maurizio"');
+    expect(html).toContain('Choose area, then exact stop');
+    expect(html).toContain('Porto Maurizio');
   });
 });

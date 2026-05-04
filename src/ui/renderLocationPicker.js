@@ -28,7 +28,7 @@ export function renderLocationPicker({ fieldName, state, nearbyStops = [], messa
           <button type="button" class="nearby-stop" data-stop-id="${stop.stopId}">
             <span>
               <strong>${stop.canonical}</strong>
-              <small>${stop.label}</small>
+              <small>${stop.localityLabel ?? stop.label ?? stop.canonical}</small>
             </span>
             <span>${formatDistance(stop.distanceMeters)}</span>
           </button>
@@ -44,7 +44,7 @@ export function renderLocationPicker({ fieldName, state, nearbyStops = [], messa
       <div class="location-picker-copy">
         <p class="eyebrow">Nearby Stops</p>
         <h3>${title}</h3>
-        <p>Google Maps-style nearby stop suggestions, but still tied back to the official timetable dataset.</p>
+        <p>Choose area, then exact stop. GPS can suggest nearby places, but route search still confirms one timetable stop.</p>
       </div>
       <div class="location-map-shell">
         <div id="location-picker-map" class="location-map">${state === 'loading' ? 'Loading map…' : ''}</div>
@@ -52,7 +52,7 @@ export function renderLocationPicker({ fieldName, state, nearbyStops = [], messa
       <div class="location-choices">
         <div class="section-head">
           <h3>Nearest stops</h3>
-          <p>Pick one of the closest known stops for this field.</p>
+          <p>Confirm the exact timetable stop inside the suggested area.</p>
         </div>
         <div class="nearby-stop-list">
           ${nearbyMarkup}
