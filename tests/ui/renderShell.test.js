@@ -29,4 +29,23 @@ describe('renderShell', () => {
     expect(html).toContain('Site officiel Riviera Trasporti');
     expect(html).toContain('name="language"');
   });
+
+  it('renders the dataset freshness marker when metadata is available', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      datasetInfo: {
+        source: {
+          title: '2025-2026 Orario Invernale Generale 7ª Ver. dal 01-04-2026',
+          effectiveDate: '2026-04-01',
+        },
+        builtAt: '2026-05-05T08:30:00.000Z',
+      },
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('Updated from official PDF');
+    expect(html).toContain('2026-04-01');
+    expect(html).toContain('2026-05-05');
+  });
 });

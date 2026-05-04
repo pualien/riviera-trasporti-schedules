@@ -1,9 +1,6 @@
 import { createTranslator } from '../lib/i18n.js';
 
-const PDF_URL =
-  'https://rivieratrasporti.it/images/_ORARI/2025-2026_Orario_Invernale_Generale_7%C2%AAVer_dal_01-04-2026.pdf';
-
-function renderDepartureCard(departure, t) {
+function renderDepartureCard(departure, t, pdfUrl) {
   const className = departure.isSelected
     ? 'departure-card departure-card--selected'
     : 'departure-card';
@@ -17,15 +14,39 @@ function renderDepartureCard(departure, t) {
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
         <span>${t('results.showTripMap')}</span>
-        <a href="${PDF_URL}#page=${departure.sourcePage}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
+        <a href="${pdfUrl}#page=${departure.sourcePage}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>
     </article>
+  `;
+}
+
+function renderSummaryMetrics(summary, t) {
+  return `
+    <div class="metrics">
+      <div class="metric">
+        <span>${summary.serviceEnded ? t('results.noMoreDeparturesToday') : t('results.nextDeparture')}</span>
+        <strong>${summary.nextDeparture?.departureTime ?? '—'}</strong>
+      </div>
+      <div class="metric">
+        <span>${t('results.soonestArrival')}</span>
+        <strong>${summary.soonestArrival?.arrivalTime ?? '—'}</strong>
+      </div>
+      <div class="metric">
+        <span>${t('results.lastDepartureToday')}</span>
+        <strong>${summary.lastDepartureTime ?? '—'}</strong>
+      </div>
+      <div class="metric">
+        <span>${t('results.averageDuration')}</span>
+        <strong>${summary.averageDurationMinutes} min</strong>
+      </div>
+    </div>
   `;
 }
 
 export function renderResultsView({
   t = createTranslator('en'),
   routeLabel,
+  pdfUrl = '#',
   summary,
   nextDepartures,
   allDepartures,
@@ -43,20 +64,7 @@ export function renderResultsView({
           <div class="summary-lines">${t('results.line')} ${summary.lines.join(', ')}</div>
         </div>
 
-        <div class="metrics">
-          <div class="metric">
-            <span>${t('results.average')}</span>
-            <strong>${summary.averageDurationMinutes} min</strong>
-          </div>
-          <div class="metric">
-            <span>${t('results.first')}</span>
-            <strong>${summary.firstDeparture}</strong>
-          </div>
-          <div class="metric">
-            <span>${t('results.last')}</span>
-            <strong>${summary.lastDeparture}</strong>
-          </div>
-        </div>
+        ${renderSummaryMetrics(summary, t)}
       </article>
 
       <section class="results-section">
@@ -68,7 +76,7 @@ export function renderResultsView({
           ${nextDepartures.map((departure) => renderDepartureCard({
             ...departure,
             isSelected: departure.tripKey === selectedTripKey,
-          }, t)).join('')}
+          }, t, pdfUrl)).join('')}
         </div>
       </section>
 
@@ -81,7 +89,7 @@ export function renderResultsView({
           ${allDepartures.map((departure) => renderDepartureCard({
             ...departure,
             isSelected: departure.tripKey === selectedTripKey,
-          }, t)).join('')}
+          }, t, pdfUrl)).join('')}
         </div>
       </section>
       ${selectedTripPanel}

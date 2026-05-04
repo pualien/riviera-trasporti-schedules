@@ -16,11 +16,25 @@ function renderLanguageOptions(languages, selectedLanguage) {
     .join('');
 }
 
+function renderFreshnessMarker(datasetInfo, t) {
+  if (!datasetInfo?.source) {
+    return '';
+  }
+
+  return `
+    <p class="dataset-freshness">
+      ${t('shell.dataFreshness')}${datasetInfo.source.effectiveDate}
+      · ${datasetInfo.builtAt.slice(0, 10)}
+    </p>
+  `;
+}
+
 export function renderShell(
   content,
   {
     language = 'en',
     languages = SUPPORTED_LANGUAGES,
+    datasetInfo = null,
     t = createTranslator('en'),
   } = {},
 ) {
@@ -34,6 +48,7 @@ export function renderShell(
             alt="${BRAND_LOCKUP_ALT}"
           />
           <p class="brand-subtitle">${t('shell.subtitle')}</p>
+          ${renderFreshnessMarker(datasetInfo, t)}
         </div>
         <div class="topbar-actions">
           <a class="topbar-link" href="${FEEDBACK_FORM_URL}" target="_blank" rel="noreferrer">

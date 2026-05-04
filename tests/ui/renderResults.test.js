@@ -3,14 +3,17 @@ import { createTranslator } from '../../src/lib/i18n.js';
 import { renderResultsView } from '../../src/ui/renderResults.js';
 
 describe('renderResultsView', () => {
-  it('renders the route summary, next departures, and full timetable', () => {
+  it('renders decision-first summary metrics and uses the runtime PDF URL', () => {
     const html = renderResultsView({
       t: createTranslator('en'),
       routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
       summary: {
+        serviceEnded: false,
+        nextDeparture: { departureTime: '16:45' },
+        soonestArrival: { arrivalTime: '17:25' },
+        lastDepartureTime: '19:45',
         averageDurationMinutes: 39,
-        firstDeparture: '06:20',
-        lastDeparture: '19:45',
         lines: ['12'],
       },
       nextDepartures: [
@@ -22,30 +25,27 @@ describe('renderResultsView', () => {
           sourcePage: 23,
         },
       ],
-      allDepartures: [
-        {
-          departureTime: '06:20',
-          arrivalTime: '07:00',
-          durationMinutes: 40,
-          lineId: '12',
-          sourcePage: 23,
-        },
-      ],
+      allDepartures: [],
     });
 
-    expect(html).toContain('Next departures');
-    expect(html).toContain('39 min');
-    expect(html).toContain('Open PDF');
+    expect(html).toContain('Next departure');
+    expect(html).toContain('Soonest arrival');
+    expect(html).toContain('Last departure today');
+    expect(html).toContain('Average duration');
+    expect(html).toContain('https://example.com/riviera.pdf#page=23');
   });
 
   it('renders translated results copy without changing line data', () => {
     const html = renderResultsView({
       t: createTranslator('es'),
       routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
       summary: {
+        serviceEnded: false,
+        nextDeparture: { departureTime: '16:45' },
+        soonestArrival: { arrivalTime: '17:25' },
+        lastDepartureTime: '19:45',
         averageDurationMinutes: 39,
-        firstDeparture: '06:20',
-        lastDeparture: '19:45',
         lines: ['12'],
       },
       nextDepartures: [
@@ -69,10 +69,13 @@ describe('renderResultsView', () => {
     const html = renderResultsView({
       t: createTranslator('en'),
       routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
       summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
         averageDurationMinutes: 39,
-        firstDeparture: '06:20',
-        lastDeparture: '19:45',
         lines: ['12'],
       },
       nextDepartures: [],
