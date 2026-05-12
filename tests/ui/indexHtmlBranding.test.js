@@ -24,5 +24,8 @@ describe('index.html branding', () => {
     expect(html).toContain('name="twitter:card" content="summary_large_image"');
     expect(html).toContain('official Riviera Trasporti PDF');
     expect(html).toContain('Imperia, Sanremo, Ventimiglia, Andora');
+    expect(html).toContain('All verified taxi numbers');
+    expect(html).toContain('+39 0183 3785');
+    expect(html).toContain('+39 0182 0303');
   });
 });

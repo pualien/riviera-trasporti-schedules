@@ -126,6 +126,27 @@ a {
   margin: 0;
 }
 
+.taxi-options-section,
+.taxi-directory-section {
+  display: grid;
+  gap: 14px;
+}
+
+.taxi-section-head h3,
+.taxi-section-head p {
+  margin: 0;
+}
+
+.taxi-section-head p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.taxi-option-grid {
+  display: grid;
+  gap: 14px;
+}
+
 .taxi-option-actions {
   display: flex;
   flex-wrap: wrap;

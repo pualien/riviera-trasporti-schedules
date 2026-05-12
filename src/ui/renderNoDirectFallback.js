@@ -1,5 +1,5 @@
 import { createTranslator } from '../lib/i18n.js';
-import { renderTaxiOption } from './renderTaxiOption.js';
+import { renderTaxiOptionsSection } from './renderTaxiOption.js';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -14,7 +14,7 @@ export function renderNoDirectFallback({
   routeLabel,
   pdfUrl,
   suggestions = [],
-  taxiOption = null,
+  taxiOptions = [],
 }) {
   return `
     <section class="empty-state empty-state--fallback">
@@ -28,7 +28,7 @@ export function renderNoDirectFallback({
       <div class="fallback-suggestions">
         ${suggestions.map((suggestion) => `<span class="picker-panel-tag">${escapeHtml(suggestion.label)}</span>`).join('')}
       </div>
-      ${renderTaxiOption(taxiOption, { t })}
+      ${renderTaxiOptionsSection(taxiOptions, { t })}
     </section>
   `;
 }

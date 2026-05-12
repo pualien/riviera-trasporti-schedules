@@ -5,6 +5,7 @@ import {
   FEEDBACK_FORM_URL,
 } from '../lib/brand.js';
 import { createTranslator, SUPPORTED_LANGUAGES } from '../lib/i18n.js';
+import { renderTaxiOptionsSection } from './renderTaxiOption.js';
 
 function renderLanguageOptions(languages, selectedLanguage) {
   return languages
@@ -44,6 +45,7 @@ export function renderShell(
     language = 'en',
     languages = SUPPORTED_LANGUAGES,
     datasetInfo = null,
+    taxiDirectory = [],
     t = createTranslator('en'),
   } = {},
 ) {
@@ -76,6 +78,12 @@ export function renderShell(
       </header>
       ${renderSeoSupportCopy(t)}
       ${content}
+      ${renderTaxiOptionsSection(taxiDirectory, {
+        t,
+        titleKey: 'taxi.directoryTitle',
+        bodyKey: 'taxi.directoryBody',
+        className: 'taxi-directory-section',
+      })}
     </div>
   `;
 }

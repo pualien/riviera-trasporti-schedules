@@ -53,11 +53,38 @@ describe('renderShell', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',
       languages: SUPPORTED_LANGUAGES,
+      taxiDirectory: [
+        {
+          provinceId: 'imperia',
+          provinceLabel: 'Provincia di Imperia',
+          serviceLabel: 'Taxi Imperia',
+          phone: '+39 0183 3785',
+          phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
+          sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
+          verifiedAt: '2026-05-12',
+        },
+        {
+          provinceId: 'savona',
+          provinceLabel: 'Provincia di Savona',
+          serviceLabel: 'Radio Taxi Albenga',
+          phone: '+39 328 7254729',
+          phones: [
+            { label: '+39 328 7254729', href: 'tel:+393287254729' },
+            { label: '+39 0182 0303', href: 'tel:+3901820303' },
+          ],
+          sourceUrl: 'https://www.radiotaxialbenga.it/',
+          verifiedAt: '2026-05-12',
+        },
+      ],
       t: createTranslator('en'),
     });
 
     expect(html).toContain('Riviera Trasporti bus timetable');
     expect(html).toContain('Imperia');
     expect(html).toContain('Andora');
+    expect(html).toContain('All verified taxi numbers');
+    expect(html).toContain('Taxi Imperia');
+    expect(html).toContain('Radio Taxi Albenga');
+    expect(html).toContain('tel:+3901820303');
   });
 });

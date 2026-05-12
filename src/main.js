@@ -10,8 +10,7 @@ import {
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
 import { buildSearchOutcome } from './lib/searchOutcome.js';
-import { resolveProvinceForStop } from './lib/provinceLookup.js';
-import { findTaxiOptionByProvince } from './lib/taxiDirectory.js';
+import { listTaxiOptions } from './lib/taxiDirectory.js';
 import {
   SUPPORTED_LANGUAGES,
   createTranslator,
@@ -24,6 +23,7 @@ import {
   buildDefaultSeoMetadata,
   buildRouteSeoMetadata,
 } from './lib/seo.js';
+import { findTaxiOptionsForRoute } from './lib/routeTaxiOptions.js';
 import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
@@ -119,18 +119,14 @@ function currentSelectedTripPanel(t) {
   });
 }
 
-function currentDestinationStop() {
-  if (state.formValues.toStopId) {
-    return state.stops.find((stop) => stop.id === state.formValues.toStopId) ?? null;
-  }
-
-  return findExactStopMatch(state.formValues.toInput, state.stops);
-}
-
-function currentTaxiOption() {
-  const destinationStop = currentDestinationStop();
-  const provinceId = resolveProvinceForStop(destinationStop?.id ?? null, state.stops);
-  return findTaxiOptionByProvince(provinceId);
+function currentRouteTaxiOptions() {
+  return findTaxiOptionsForRoute({
+    fromInput: state.formValues.fromInput,
+    fromStopId: state.formValues.fromStopId,
+    toInput: state.formValues.toInput,
+    toStopId: state.formValues.toStopId,
+    stops: state.stops,
+  });
 }
 
 function updateSeoForCurrentState(t) {
@@ -151,7 +147,7 @@ function renderApp() {
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
   const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
   const destinationOptions = currentDestinationOptions();
-  const taxiOption = currentTaxiOption();
+  const taxiOptions = currentRouteTaxiOptions();
   const parts = [renderSearchForm({
     t,
     fromInput: state.formValues.fromInput,
@@ -186,7 +182,7 @@ function renderApp() {
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
         allDepartures: state.resultState.allDepartures,
-        taxiOption,
+        taxiOptions,
         selectedTripKey: state.resultState.selectedTripKey,
         selectedTripPanel: currentSelectedTripPanel(t),
       }),
@@ -199,7 +195,7 @@ function renderApp() {
       routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
       pdfUrl: state.metadata?.source?.url ?? '#',
       suggestions: state.resultState.suggestions,
-      taxiOption,
+      taxiOptions,
     }));
   }
 
@@ -207,6 +203,7 @@ function renderApp() {
     language: state.language,
     languages: SUPPORTED_LANGUAGES,
     datasetInfo: state.metadata,
+    taxiDirectory: listTaxiOptions(),
     t,
   });
   updateSeoForCurrentState(t);

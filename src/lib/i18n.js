@@ -111,6 +111,9 @@ const DICTIONARY = {
     'taxi.bookOnline': 'Prenota online',
     'taxi.source': 'Fonte',
     'taxi.verified': 'Verificato {date}',
+    'taxi.routeTitle': 'Numeri taxi utili per questo percorso',
+    'taxi.directoryTitle': 'Tutti i numeri taxi verificati',
+    'taxi.directoryBody': 'Numeri taxi pubblici utili lungo l attuale copertura Riviera Trasporti, comodi anche per ricerche locali e trasferimenti.',
   },
   en: {
     'shell.subtitle': 'Official PDF, clearer route lookup',
@@ -213,6 +216,9 @@ const DICTIONARY = {
     'taxi.bookOnline': 'Book online',
     'taxi.source': 'Source',
     'taxi.verified': 'Verified {date}',
+    'taxi.routeTitle': 'Taxi numbers for this route',
+    'taxi.directoryTitle': 'All verified taxi numbers',
+    'taxi.directoryBody': 'Public taxi numbers across the current Riviera Trasporti coverage area, useful for local searches and fallback transfers.',
   },
   fr: {
     'shell.subtitle': 'PDF officiel, recherche d itineraire plus claire',
@@ -315,6 +321,9 @@ const DICTIONARY = {
     'taxi.bookOnline': 'Reserver en ligne',
     'taxi.source': 'Source',
     'taxi.verified': 'Verifie {date}',
+    'taxi.routeTitle': 'Numeros de taxi utiles pour ce trajet',
+    'taxi.directoryTitle': 'Tous les numeros de taxi verifies',
+    'taxi.directoryBody': 'Numeros de taxi publics sur la zone actuellement couverte par Riviera Trasporti, utiles pour la recherche locale et les transferts.',
   },
   de: {
     'shell.subtitle': 'Offizielles PDF, klarere Routenabfrage',
@@ -417,6 +426,9 @@ const DICTIONARY = {
     'taxi.bookOnline': 'Online buchen',
     'taxi.source': 'Quelle',
     'taxi.verified': 'Verifiziert {date}',
+    'taxi.routeTitle': 'Taxi-Nummern fuer diese Strecke',
+    'taxi.directoryTitle': 'Alle verifizierten Taxi-Nummern',
+    'taxi.directoryBody': 'Oeffentliche Taxi-Nummern im aktuellen Riviera-Trasporti-Gebiet, nuetzlich fuer lokale Suchen und Ausweichfahrten.',
   },
   es: {
     'shell.subtitle': 'PDF oficial, busqueda de rutas mas clara',
@@ -519,6 +531,9 @@ const DICTIONARY = {
     'taxi.bookOnline': 'Reservar en linea',
     'taxi.source': 'Fuente',
     'taxi.verified': 'Verificado {date}',
+    'taxi.routeTitle': 'Numeros de taxi para esta ruta',
+    'taxi.directoryTitle': 'Todos los numeros de taxi verificados',
+    'taxi.directoryBody': 'Numeros publicos de taxi en la cobertura actual de Riviera Trasporti, utiles para busquedas locales y traslados alternativos.',
   },
 };
 
