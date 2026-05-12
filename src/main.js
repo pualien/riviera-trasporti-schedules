@@ -10,6 +10,8 @@ import {
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
 import { buildSearchOutcome } from './lib/searchOutcome.js';
+import { resolveProvinceForStop } from './lib/provinceLookup.js';
+import { findTaxiOptionByProvince } from './lib/taxiDirectory.js';
 import {
   SUPPORTED_LANGUAGES,
   createTranslator,
@@ -17,6 +19,11 @@ import {
   readStoredLanguage,
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
+import {
+  applySeoMetadata,
+  buildDefaultSeoMetadata,
+  buildRouteSeoMetadata,
+} from './lib/seo.js';
 import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
@@ -112,11 +119,39 @@ function currentSelectedTripPanel(t) {
   });
 }
 
+function currentDestinationStop() {
+  if (state.formValues.toStopId) {
+    return state.stops.find((stop) => stop.id === state.formValues.toStopId) ?? null;
+  }
+
+  return findExactStopMatch(state.formValues.toInput, state.stops);
+}
+
+function currentTaxiOption() {
+  const destinationStop = currentDestinationStop();
+  const provinceId = resolveProvinceForStop(destinationStop?.id ?? null, state.stops);
+  return findTaxiOptionByProvince(provinceId);
+}
+
+function updateSeoForCurrentState(t) {
+  if (!state.formValues.fromInput || !state.formValues.toInput) {
+    applySeoMetadata(document, buildDefaultSeoMetadata());
+    return;
+  }
+
+  applySeoMetadata(document, buildRouteSeoMetadata({
+    from: state.formValues.fromInput,
+    to: state.formValues.toInput,
+    dayTypeLabel: t(`search.dayType.${state.formValues.dayType}`),
+  }));
+}
+
 function renderApp() {
   const t = createTranslator(state.language);
   const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
   const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
   const destinationOptions = currentDestinationOptions();
+  const taxiOption = currentTaxiOption();
   const parts = [renderSearchForm({
     t,
     fromInput: state.formValues.fromInput,
@@ -151,6 +186,7 @@ function renderApp() {
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
         allDepartures: state.resultState.allDepartures,
+        taxiOption,
         selectedTripKey: state.resultState.selectedTripKey,
         selectedTripPanel: currentSelectedTripPanel(t),
       }),
@@ -163,6 +199,7 @@ function renderApp() {
       routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
       pdfUrl: state.metadata?.source?.url ?? '#',
       suggestions: state.resultState.suggestions,
+      taxiOption,
     }));
   }
 
@@ -172,6 +209,7 @@ function renderApp() {
     datasetInfo: state.metadata,
     t,
   });
+  updateSeoForCurrentState(t);
 }
 
 function readNearbyStopCache(latitude, longitude) {
@@ -777,6 +815,7 @@ async function boot() {
     bindInteractions();
   } catch (error) {
     const t = createTranslator(state.language);
+    applySeoMetadata(document, buildDefaultSeoMetadata());
     app.innerHTML = renderShell(
       renderEmptyState(t, t('boot.dataUnavailable')),
       {

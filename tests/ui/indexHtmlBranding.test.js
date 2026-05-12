@@ -16,4 +16,13 @@ describe('index.html branding', () => {
     expect(html).toContain('<body>\n    <!-- Google Tag Manager (noscript) -->');
     expect(html).toContain('https://www.googletagmanager.com/ns.html?id=GTM-WWVLPF5M');
   });
+
+  it('includes canonical, description, social metadata, and crawlable shell copy', () => {
+    expect(html).toContain('rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/"');
+    expect(html).toContain('name="description"');
+    expect(html).toContain('property="og:title"');
+    expect(html).toContain('name="twitter:card" content="summary_large_image"');
+    expect(html).toContain('official Riviera Trasporti PDF');
+    expect(html).toContain('Imperia, Sanremo, Ventimiglia, Andora');
+  });
 });

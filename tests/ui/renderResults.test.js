@@ -98,4 +98,35 @@ describe('renderResultsView', () => {
     expect(html).toContain('Show trip on map');
     expect(html).toContain('data-testid="route-map-panel"');
   });
+
+  it('renders a taxi secondary option card when curated coverage exists', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: { departureTime: '16:45' },
+        soonestArrival: { arrivalTime: '17:25' },
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [],
+      allDepartures: [],
+      taxiOption: {
+        provinceLabel: 'Provincia di Imperia',
+        serviceLabel: 'Taxi Imperia',
+        phone: '+39 0183 3785',
+        callHref: 'tel:+3901833785',
+        sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
+        verifiedAt: '2026-05-12',
+      },
+    });
+
+    expect(html).toContain('Secondary option');
+    expect(html).toContain('Taxi Imperia');
+    expect(html).toContain('tel:+3901833785');
+    expect(html).toContain('2026-05-12');
+  });
 });

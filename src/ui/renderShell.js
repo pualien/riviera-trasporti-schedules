@@ -29,6 +29,15 @@ function renderFreshnessMarker(datasetInfo, t) {
   `;
 }
 
+function renderSeoSupportCopy(t) {
+  return `
+    <section class="seo-support-copy">
+      <h2>${t('shell.seoTitle')}</h2>
+      <p>${t('shell.seoBody')}</p>
+    </section>
+  `;
+}
+
 export function renderShell(
   content,
   {
@@ -65,6 +74,7 @@ export function renderShell(
           </label>
         </div>
       </header>
+      ${renderSeoSupportCopy(t)}
       ${content}
     </div>
   `;

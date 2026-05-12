@@ -1,4 +1,5 @@
 import { createTranslator } from '../lib/i18n.js';
+import { renderTaxiOption } from './renderTaxiOption.js';
 
 function renderDepartureCard(departure, t, pdfUrl) {
   const className = departure.isSelected
@@ -50,6 +51,7 @@ export function renderResultsView({
   summary,
   nextDepartures,
   allDepartures,
+  taxiOption = null,
   selectedTripKey = null,
   selectedTripPanel = '',
 }) {
@@ -65,6 +67,7 @@ export function renderResultsView({
         </div>
 
         ${renderSummaryMetrics(summary, t)}
+        ${renderTaxiOption(taxiOption, { t })}
       </article>
 
       <section class="results-section">

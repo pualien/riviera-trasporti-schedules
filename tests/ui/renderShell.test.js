@@ -48,4 +48,16 @@ describe('renderShell', () => {
     expect(html).toContain('2026-04-01');
     expect(html).toContain('2026-05-05');
   });
+
+  it('renders supporting crawlable network copy in the shell', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('Riviera Trasporti bus timetable');
+    expect(html).toContain('Imperia');
+    expect(html).toContain('Andora');
+  });
 });
