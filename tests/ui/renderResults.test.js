@@ -2,6 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { createTranslator } from '../../src/lib/i18n.js';
 import { renderResultsView } from '../../src/ui/renderResults.js';
 
+function getTaxiPanel(html) {
+  return html.match(/<div class="taxi-panel">([\s\S]*?)<\/div>\s*<\/section>/)?.[1] ?? '';
+}
+
 const countOccurrences = (html, needle) => html.split(needle).length - 1;
 
 describe('renderResultsView', () => {
@@ -135,12 +139,15 @@ describe('renderResultsView', () => {
           serviceLabel: 'Radio Taxi Sanremo',
           phone: '+39 0184 541454',
           phones: [{ label: '+39 0184 541454', href: 'tel:+390184541454' }],
+          bookingUrl: 'https://radiotaxisanremo.com/book',
           sourceUrl: 'https://radiotaxisanremo.com/',
           verifiedAt: '2026-05-13',
           coverageLabels: ['Sanremo', 'Arma di Taggia', 'Taggia'],
         },
       ],
     });
+
+    const taxiPanel = getTaxiPanel(html);
 
     expect(html).toContain('Taxi numbers for this route');
     expect(html).toContain('Mauro Taxi Diano Marina');
@@ -149,8 +156,16 @@ describe('renderResultsView', () => {
     expect(html).toContain('Arma di Taggia');
     expect(html).toContain('tel:+393470439704');
     expect(html).toContain('tel:+390184541454');
-    expect(countOccurrences(html, 'class="taxi-panel"')).toBe(1);
-    expect(countOccurrences(html, 'class="taxi-panel-entry"')).toBe(2);
+    expect(countOccurrences(html, '<div class="taxi-panel">')).toBe(1);
+    expect(countOccurrences(taxiPanel, '<article class="taxi-panel-entry">')).toBe(2);
+    expect(taxiPanel).toContain('<h4>Mauro Taxi Diano Marina</h4>');
+    expect(taxiPanel).toContain('<h4>Radio Taxi Sanremo</h4>');
+    expect(taxiPanel).toContain('If you need a fallback in Provincia di Imperia, you can call a verified taxi contact.');
+    expect(taxiPanel).toContain('href="https://maurotaxi.it/it/"');
+    expect(taxiPanel).toContain('href="https://radiotaxisanremo.com/"');
+    expect(taxiPanel).toContain('Verified 2026-05-13');
+    expect(taxiPanel).toContain('href="https://radiotaxisanremo.com/book"');
+    expect(taxiPanel).toContain('Book online');
     expect(html).not.toContain('class="taxi-option-card"');
   });
 });

@@ -38,10 +38,10 @@ export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}
   const phoneEntries = resolvePhoneEntries(taxiOption);
 
   return `
-    <div class="taxi-panel-entry">
+    <article class="taxi-panel-entry">
       <div class="taxi-panel-entry-copy">
         <p class="eyebrow">${escapeHtml(t('taxi.eyebrow'))}</p>
-        <h3>${escapeHtml(taxiOption.serviceLabel)}</h3>
+        <h4>${escapeHtml(taxiOption.serviceLabel)}</h4>
         <p>${escapeHtml(t('taxi.copy', { province: taxiOption.provinceLabel }))}</p>
         ${renderCoverageLabels(taxiOption)}
         <p class="taxi-panel-entry-meta">
@@ -57,7 +57,7 @@ export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}
     ? `<a class="topbar-link" href="${taxiOption.bookingUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('taxi.bookOnline'))}</a>`
     : ''}
       </div>
-    </div>
+    </article>
   `;
 }
 

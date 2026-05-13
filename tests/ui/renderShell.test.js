@@ -2,6 +2,10 @@ import { describe, expect, it } from 'vitest';
 import { createTranslator, SUPPORTED_LANGUAGES } from '../../src/lib/i18n.js';
 import { renderShell } from '../../src/ui/renderShell.js';
 
+function getTaxiPanel(html) {
+  return html.match(/<div class="taxi-panel">([\s\S]*?)<\/div>\s*<\/section>/)?.[1] ?? '';
+}
+
 const countOccurrences = (html, needle) => html.split(needle).length - 1;
 
 describe('renderShell', () => {
@@ -85,6 +89,8 @@ describe('renderShell', () => {
       t: createTranslator('en'),
     });
 
+    const taxiPanel = getTaxiPanel(html);
+
     expect(html).toContain('Riviera Trasporti bus timetable');
     expect(html).toContain('Imperia');
     expect(html).toContain('Andora');
@@ -93,8 +99,15 @@ describe('renderShell', () => {
     expect(html).toContain('Porto Maurizio');
     expect(html).toContain('Radio Taxi Albenga');
     expect(html).toContain('tel:+3901820303');
-    expect(countOccurrences(html, 'class="taxi-panel"')).toBe(1);
-    expect(countOccurrences(html, 'class="taxi-panel-entry"')).toBe(2);
+    expect(countOccurrences(html, '<div class="taxi-panel">')).toBe(1);
+    expect(countOccurrences(taxiPanel, '<article class="taxi-panel-entry">')).toBe(2);
+    expect(taxiPanel).toContain('<h4>Taxi Imperia</h4>');
+    expect(taxiPanel).toContain('<h4>Radio Taxi Albenga</h4>');
+    expect(taxiPanel).toContain('If you need a fallback in Provincia di Imperia, you can call a verified taxi contact.');
+    expect(taxiPanel).toContain('If you need a fallback in Provincia di Savona, you can call a verified taxi contact.');
+    expect(taxiPanel).toContain('href="https://www.comune.imperia.it/it/page/taxi-imperia"');
+    expect(taxiPanel).toContain('href="https://www.radiotaxialbenga.it/"');
+    expect(taxiPanel).toContain('Verified 2026-05-13');
     expect(html).not.toContain('class="taxi-option-card"');
   });
 });
