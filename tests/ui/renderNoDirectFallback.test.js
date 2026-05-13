@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { createTranslator } from '../../src/lib/i18n.js';
 import { renderNoDirectFallback } from '../../src/ui/renderNoDirectFallback.js';
 
+const countOccurrences = (html, needle) => html.split(needle).length - 1;
+
 describe('renderNoDirectFallback', () => {
   it('renders transfer guidance, PDF link, and alternate stop suggestions', () => {
     const html = renderNoDirectFallback({
@@ -48,5 +50,8 @@ describe('renderNoDirectFallback', () => {
     expect(html).toContain('Radio Taxi Sanremo');
     expect(html).toContain('Taggia');
     expect(html).toContain('tel:+390184541454');
+    expect(countOccurrences(html, 'class="taxi-panel"')).toBe(1);
+    expect(countOccurrences(html, 'class="taxi-panel-entry"')).toBe(1);
+    expect(html).not.toContain('class="taxi-option-card"');
   });
 });

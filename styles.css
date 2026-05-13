@@ -111,18 +111,28 @@ a {
   font-size: 0.94rem;
 }
 
-.taxi-option-card {
+.taxi-panel {
   margin-top: 18px;
-  padding: 18px;
+  padding: 8px 18px;
   border-radius: 22px;
   border: 1px solid var(--line);
   background: rgba(255, 255, 255, 0.82);
   display: grid;
-  gap: 10px;
+  gap: 0;
 }
 
-.taxi-option-card h3,
-.taxi-option-card p {
+.taxi-panel-entry {
+  display: grid;
+  gap: 14px;
+  padding: 18px 0;
+}
+
+.taxi-panel-entry + .taxi-panel-entry {
+  border-top: 1px solid rgba(92, 77, 61, 0.12);
+}
+
+.taxi-panel-entry h3,
+.taxi-panel-entry p {
   margin: 0;
 }
 
@@ -142,24 +152,24 @@ a {
   line-height: 1.6;
 }
 
-.taxi-option-grid {
+.taxi-panel-entry-copy {
   display: grid;
-  gap: 14px;
+  gap: 10px;
 }
 
-.taxi-option-actions {
+.taxi-panel-entry-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
-.taxi-option-coverage {
+.taxi-panel-entry-coverage {
   color: var(--text);
   font-size: 0.94rem;
   line-height: 1.5;
 }
 
-.taxi-option-meta {
+.taxi-panel-entry-meta {
   color: var(--muted);
   font-size: 0.88rem;
 }

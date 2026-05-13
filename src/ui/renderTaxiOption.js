@@ -26,7 +26,7 @@ function renderCoverageLabels(taxiOption) {
   }
 
   return `
-    <p class="taxi-option-coverage">${escapeHtml(taxiOption.coverageLabels.join(' · '))}</p>
+    <p class="taxi-panel-entry-coverage">${escapeHtml(taxiOption.coverageLabels.join(' · '))}</p>
   `;
 }
 
@@ -38,12 +38,18 @@ export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}
   const phoneEntries = resolvePhoneEntries(taxiOption);
 
   return `
-    <aside class="taxi-option-card">
-      <p class="eyebrow">${escapeHtml(t('taxi.eyebrow'))}</p>
-      <h3>${escapeHtml(taxiOption.serviceLabel)}</h3>
-      <p>${escapeHtml(t('taxi.copy', { province: taxiOption.provinceLabel }))}</p>
-      ${renderCoverageLabels(taxiOption)}
-      <div class="taxi-option-actions">
+    <div class="taxi-panel-entry">
+      <div class="taxi-panel-entry-copy">
+        <p class="eyebrow">${escapeHtml(t('taxi.eyebrow'))}</p>
+        <h3>${escapeHtml(taxiOption.serviceLabel)}</h3>
+        <p>${escapeHtml(t('taxi.copy', { province: taxiOption.provinceLabel }))}</p>
+        ${renderCoverageLabels(taxiOption)}
+        <p class="taxi-panel-entry-meta">
+          <a href="${taxiOption.sourceUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('taxi.source'))}</a>
+          · ${escapeHtml(t('taxi.verified', { date: taxiOption.verifiedAt }))}
+        </p>
+      </div>
+      <div class="taxi-panel-entry-actions">
         ${phoneEntries.map((phoneEntry) => `
           <a class="topbar-link" href="${phoneEntry.href}">${escapeHtml(t('taxi.call'))} ${escapeHtml(phoneEntry.label)}</a>
         `).join('')}
@@ -51,11 +57,7 @@ export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}
     ? `<a class="topbar-link" href="${taxiOption.bookingUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('taxi.bookOnline'))}</a>`
     : ''}
       </div>
-      <p class="taxi-option-meta">
-        <a href="${taxiOption.sourceUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('taxi.source'))}</a>
-        · ${escapeHtml(t('taxi.verified', { date: taxiOption.verifiedAt }))}
-      </p>
-    </aside>
+    </div>
   `;
 }
 
@@ -75,7 +77,7 @@ export function renderTaxiOptionsSection(taxiOptions = [], {
         <h3>${escapeHtml(t(titleKey))}</h3>
         ${bodyKey ? `<p>${escapeHtml(t(bodyKey))}</p>` : ''}
       </div>
-      <div class="taxi-option-grid">
+      <div class="taxi-panel">
         ${taxiOptions.map((taxiOption) => renderTaxiOption(taxiOption, { t })).join('')}
       </div>
     </section>

@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { createTranslator } from '../../src/lib/i18n.js';
 import { renderResultsView } from '../../src/ui/renderResults.js';
 
+const countOccurrences = (html, needle) => html.split(needle).length - 1;
+
 describe('renderResultsView', () => {
   it('renders decision-first summary metrics and uses the runtime PDF URL', () => {
     const html = renderResultsView({
@@ -147,5 +149,8 @@ describe('renderResultsView', () => {
     expect(html).toContain('Arma di Taggia');
     expect(html).toContain('tel:+393470439704');
     expect(html).toContain('tel:+390184541454');
+    expect(countOccurrences(html, 'class="taxi-panel"')).toBe(1);
+    expect(countOccurrences(html, 'class="taxi-panel-entry"')).toBe(2);
+    expect(html).not.toContain('class="taxi-option-card"');
   });
 });
