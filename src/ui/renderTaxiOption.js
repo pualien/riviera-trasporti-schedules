@@ -20,6 +20,16 @@ function resolvePhoneEntries(taxiOption) {
   return [];
 }
 
+function renderCoverageLabels(taxiOption) {
+  if (!Array.isArray(taxiOption.coverageLabels) || !taxiOption.coverageLabels.length) {
+    return '';
+  }
+
+  return `
+    <p class="taxi-option-coverage">${escapeHtml(taxiOption.coverageLabels.join(' · '))}</p>
+  `;
+}
+
 export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}) {
   if (!taxiOption) {
     return '';
@@ -32,6 +42,7 @@ export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}
       <p class="eyebrow">${escapeHtml(t('taxi.eyebrow'))}</p>
       <h3>${escapeHtml(taxiOption.serviceLabel)}</h3>
       <p>${escapeHtml(t('taxi.copy', { province: taxiOption.provinceLabel }))}</p>
+      ${renderCoverageLabels(taxiOption)}
       <div class="taxi-option-actions">
         ${phoneEntries.map((phoneEntry) => `
           <a class="topbar-link" href="${phoneEntry.href}">${escapeHtml(t('taxi.call'))} ${escapeHtml(phoneEntry.label)}</a>

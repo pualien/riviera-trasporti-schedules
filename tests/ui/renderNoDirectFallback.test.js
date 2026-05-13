@@ -31,19 +31,22 @@ describe('renderNoDirectFallback', () => {
       suggestions: [],
       taxiOptions: [
         {
+          serviceId: 'radio-taxi-sanremo',
           provinceId: 'imperia',
           provinceLabel: 'Provincia di Imperia',
-          serviceLabel: 'Taxi Imperia',
-          phone: '+39 0183 3785',
-          phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
-          sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
-          verifiedAt: '2026-05-12',
+          serviceLabel: 'Radio Taxi Sanremo',
+          phone: '+39 0184 541454',
+          phones: [{ label: '+39 0184 541454', href: 'tel:+390184541454' }],
+          sourceUrl: 'https://radiotaxisanremo.com/',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Sanremo', 'Arma di Taggia', 'Taggia'],
         },
       ],
     });
 
     expect(html).toContain('Taxi numbers for this route');
-    expect(html).toContain('Taxi Imperia');
-    expect(html).toContain('tel:+3901833785');
+    expect(html).toContain('Radio Taxi Sanremo');
+    expect(html).toContain('Taggia');
+    expect(html).toContain('tel:+390184541454');
   });
 });

@@ -153,6 +153,12 @@ a {
   gap: 10px;
 }
 
+.taxi-option-coverage {
+  color: var(--text);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
 .taxi-option-meta {
   color: var(--muted);
   font-size: 0.88rem;

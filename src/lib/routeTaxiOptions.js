@@ -1,6 +1,6 @@
 import { findExactStopMatch } from './localities.js';
 import { resolveProvinceForStop } from './provinceLookup.js';
-import { findTaxiOptionByProvince } from './taxiDirectory.js';
+import { findTaxiOptionByProvince, findTaxiOptionByStop } from './taxiDirectory.js';
 
 function resolveSelectedStop({ stopId, inputValue, stops }) {
   if (stopId) {
@@ -26,11 +26,13 @@ export function findTaxiOptionsForRoute({
     resolveSelectedStop({ stopId: toStopId, inputValue: toInput, stops }),
   ].filter(Boolean);
 
-  const provinceIds = [...new Set(endpointStops
-    .map((stop) => resolveProvinceForStop(stop.id, stops))
-    .filter(Boolean))];
+  return dedupeTaxiOptions(endpointStops
+    .map((stop) =>
+      findTaxiOptionByStop(stop)
+      ?? findTaxiOptionByProvince(resolveProvinceForStop(stop.id, stops)))
+    .filter(Boolean));
+}
 
-  return provinceIds
-    .map((provinceId) => findTaxiOptionByProvince(provinceId))
-    .filter(Boolean);
+export function dedupeTaxiOptions(taxiOptions = []) {
+  return [...new Map(taxiOptions.map((entry) => [entry.serviceId, entry])).values()];
 }

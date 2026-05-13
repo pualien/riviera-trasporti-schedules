@@ -55,15 +55,29 @@ describe('renderShell', () => {
       languages: SUPPORTED_LANGUAGES,
       taxiDirectory: [
         {
+          serviceId: 'taxi-imperia',
           provinceId: 'imperia',
           provinceLabel: 'Provincia di Imperia',
           serviceLabel: 'Taxi Imperia',
           phone: '+39 0183 3785',
           phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
           sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
-          verifiedAt: '2026-05-12',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Imperia', 'Porto Maurizio'],
         },
         {
+          serviceId: 'radio-taxi-sanremo',
+          provinceId: 'imperia',
+          provinceLabel: 'Provincia di Imperia',
+          serviceLabel: 'Radio Taxi Sanremo',
+          phone: '+39 0184 541454',
+          phones: [{ label: '+39 0184 541454', href: 'tel:+390184541454' }],
+          sourceUrl: 'https://radiotaxisanremo.com/',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Sanremo', 'Arma di Taggia', 'Taggia'],
+        },
+        {
+          serviceId: 'radio-taxi-albenga',
           provinceId: 'savona',
           provinceLabel: 'Provincia di Savona',
           serviceLabel: 'Radio Taxi Albenga',
@@ -73,7 +87,8 @@ describe('renderShell', () => {
             { label: '+39 0182 0303', href: 'tel:+3901820303' },
           ],
           sourceUrl: 'https://www.radiotaxialbenga.it/',
-          verifiedAt: '2026-05-12',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Andora', 'Albenga'],
         },
       ],
       t: createTranslator('en'),
@@ -84,6 +99,10 @@ describe('renderShell', () => {
     expect(html).toContain('Andora');
     expect(html).toContain('All verified taxi numbers');
     expect(html).toContain('Taxi Imperia');
+    expect(html).toContain('Porto Maurizio');
+    expect(html).toContain('Radio Taxi Sanremo');
+    expect(html).toContain('Arma di Taggia');
+    expect(html).toContain('Taggia');
     expect(html).toContain('Radio Taxi Albenga');
     expect(html).toContain('tel:+3901820303');
   });

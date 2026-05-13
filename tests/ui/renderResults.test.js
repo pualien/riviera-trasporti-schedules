@@ -99,10 +99,10 @@ describe('renderResultsView', () => {
     expect(html).toContain('data-testid="route-map-panel"');
   });
 
-  it('renders taxi route options when curated coverage exists on both endpoints', () => {
+  it('renders taxi route options with destination coverage labels', () => {
     const html = renderResultsView({
       t: createTranslator('en'),
-      routeLabel: 'Porto Maurizio -> Sanremo',
+      routeLabel: 'Diano Marina -> Sanremo',
       pdfUrl: 'https://example.com/riviera.pdf',
       summary: {
         serviceEnded: false,
@@ -116,33 +116,36 @@ describe('renderResultsView', () => {
       allDepartures: [],
       taxiOptions: [
         {
+          serviceId: 'mauro-taxi-diano-marina',
           provinceId: 'imperia',
           provinceLabel: 'Provincia di Imperia',
-          serviceLabel: 'Taxi Imperia',
-          phone: '+39 0183 3785',
-          phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
-          sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
-          verifiedAt: '2026-05-12',
+          serviceLabel: 'Mauro Taxi Diano Marina',
+          phone: '+39 347 0439704',
+          phones: [{ label: '+39 347 0439704', href: 'tel:+393470439704' }],
+          sourceUrl: 'https://maurotaxi.it/it/',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Diano Marina'],
         },
         {
-          provinceId: 'savona',
-          provinceLabel: 'Provincia di Savona',
-          serviceLabel: 'Radio Taxi Albenga',
-          phone: '+39 328 7254729',
-          phones: [
-            { label: '+39 328 7254729', href: 'tel:+393287254729' },
-            { label: '+39 0182 0303', href: 'tel:+3901820303' },
-          ],
-          sourceUrl: 'https://www.radiotaxialbenga.it/',
-          verifiedAt: '2026-05-12',
+          serviceId: 'radio-taxi-sanremo',
+          provinceId: 'imperia',
+          provinceLabel: 'Provincia di Imperia',
+          serviceLabel: 'Radio Taxi Sanremo',
+          phone: '+39 0184 541454',
+          phones: [{ label: '+39 0184 541454', href: 'tel:+390184541454' }],
+          sourceUrl: 'https://radiotaxisanremo.com/',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Sanremo', 'Arma di Taggia', 'Taggia'],
         },
       ],
     });
 
     expect(html).toContain('Taxi numbers for this route');
-    expect(html).toContain('Taxi Imperia');
-    expect(html).toContain('Radio Taxi Albenga');
-    expect(html).toContain('tel:+3901833785');
-    expect(html).toContain('tel:+3901820303');
+    expect(html).toContain('Mauro Taxi Diano Marina');
+    expect(html).toContain('Diano Marina');
+    expect(html).toContain('Radio Taxi Sanremo');
+    expect(html).toContain('Arma di Taggia');
+    expect(html).toContain('tel:+393470439704');
+    expect(html).toContain('tel:+390184541454');
   });
 });
