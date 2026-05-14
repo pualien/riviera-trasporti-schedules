@@ -87,4 +87,25 @@ describe('renderLocationPicker', () => {
     expect(html).toContain('Loading map');
     expect(html).toContain('data-map-status="loading"');
   });
+
+  it('escapes unavailable map messages and map status attributes', () => {
+    const messageHtml = renderLocationPicker({
+      fieldName: 'from',
+      state: 'ready',
+      mapState: 'unavailable',
+      mapMessage: '<img src=x onerror="alert(1)">',
+      t: createTranslator('en'),
+    });
+    const statusHtml = renderLocationPicker({
+      fieldName: 'from',
+      state: 'ready',
+      mapState: 'ready" autofocus onfocus="alert(1)',
+      t: createTranslator('en'),
+    });
+
+    expect(messageHtml).not.toContain('<img');
+    expect(messageHtml).toContain('&lt;img src=x onerror=&quot;alert(1)&quot;&gt;');
+    expect(statusHtml).not.toContain('data-map-status="ready" autofocus');
+    expect(statusHtml).toContain('data-map-status="ready&quot; autofocus onfocus=&quot;alert(1)"');
+  });
 });
