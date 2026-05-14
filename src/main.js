@@ -33,6 +33,7 @@ import {
   readStoredLanguage,
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
+import { registerServiceWorker } from './lib/registerServiceWorker.js';
 import {
   hydrateSearchStateFromUrl,
   hydrateSearchStateFromRouteSnapshot,
@@ -1195,6 +1196,7 @@ async function boot() {
     hydrateRouteStateFromUrl();
     renderApp();
     bindInteractions();
+    registerServiceWorker();
     window.addEventListener('popstate', () => {
       hydrateRouteStateFromUrl();
       renderApp();

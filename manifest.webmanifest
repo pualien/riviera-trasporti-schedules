@@ -1,0 +1,23 @@
+{
+  "name": "Riviera Trasporti Ricerca Percorsi",
+  "short_name": "RT Percorsi",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f1ea",
+  "theme_color": "#eb4c60",
+  "icons": [
+    {
+      "src": "./assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./assets/brand/riviera-trasporti-ricerca-percorsi-ios-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
