@@ -35,18 +35,18 @@ describe('buildBrowseIndex', () => {
 
     expect(index.lines).toEqual([
       {
-        lineId: '12',
-        directions: ['Origin to Destination'],
+        lineId: '2',
+        directions: ['Middle to Destination'],
         stops: [
-          { id: 'origin', canonical: 'Origin' },
           { id: 'middle', canonical: 'Middle' },
           { id: 'destination', canonical: 'Destination' },
         ],
       },
       {
-        lineId: '2',
-        directions: ['Middle to Destination'],
+        lineId: '12',
+        directions: ['Origin to Destination'],
         stops: [
+          { id: 'origin', canonical: 'Origin' },
           { id: 'middle', canonical: 'Middle' },
           { id: 'destination', canonical: 'Destination' },
         ],
@@ -60,7 +60,7 @@ describe('buildBrowseIndex', () => {
     expect(index.stops.find((stop) => stop.id === 'middle')).toEqual({
       id: 'middle',
       canonical: 'Middle',
-      lines: ['12', '2'],
+      lines: ['2', '12'],
     });
   });
 });

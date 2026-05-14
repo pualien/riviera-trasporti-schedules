@@ -1,5 +1,5 @@
 function compareLineIds(left, right) {
-  return String(left ?? '').localeCompare(String(right ?? ''));
+  return String(left ?? '').localeCompare(String(right ?? ''), undefined, { numeric: true });
 }
 
 function compareText(left, right) {
