@@ -105,7 +105,49 @@ describe('renderResultsView', () => {
 
     expect(html).toContain('data-trip-key="12:feriale:23:0:imperia-porto-maurizio:sanremo-autostazione"');
     expect(html).toContain('departure-card departure-card--selected');
-    expect(html).toContain('Show trip on map');
+    expect(html).toContain('Selected');
+    expect(html).toContain('data-testid="route-map-panel"');
+  });
+
+  it('labels selected and unselected departure detail actions clearly', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [
+        {
+          tripKey: 'selected-trip',
+          departureTime: '06:20',
+          arrivalTime: '07:00',
+          durationMinutes: 40,
+          lineId: '12',
+          sourcePage: 23,
+        },
+        {
+          tripKey: 'other-trip',
+          departureTime: '07:05',
+          arrivalTime: '07:46',
+          durationMinutes: 41,
+          lineId: '12',
+          sourcePage: 23,
+        },
+      ],
+      allDepartures: [],
+      selectedTripKey: 'selected-trip',
+      selectedTripPanel: '<section data-testid="route-map-panel">panel</section>',
+    });
+
+    expect(html).toContain('departure-card departure-card--selected');
+    expect(html).toContain('Selected');
+    expect(html).toContain('Details');
     expect(html).toContain('data-testid="route-map-panel"');
   });
 

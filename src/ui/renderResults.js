@@ -5,6 +5,9 @@ function renderDepartureCard(departure, t, pdfUrl) {
   const className = departure.isSelected
     ? 'departure-card departure-card--selected'
     : 'departure-card';
+  const actionLabel = departure.isSelected
+    ? t('results.selectedAction')
+    : t('results.detailsAction');
 
   return `
     <article class="${className}" data-trip-key="${departure.tripKey ?? ''}">
@@ -14,7 +17,7 @@ function renderDepartureCard(departure, t, pdfUrl) {
       </div>
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
-        <span>${t('results.showTripMap')}</span>
+        <span>${actionLabel}</span>
         <a href="${pdfUrl}#page=${departure.sourcePage}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>
     </article>

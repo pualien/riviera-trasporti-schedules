@@ -157,7 +157,14 @@ function currentSelectedTripPanel(t) {
   return renderRouteMapPanel({
     t,
     match: selectedTripMatch,
-    mapState: buildRouteMapState(selectedTripMatch, state.stopCoordinates),
+    pdfUrl: state.metadata?.source?.url ?? '#',
+    mapState: buildRouteMapState(
+      selectedTripMatch,
+      state.stopCoordinates,
+      {
+        mapLoadFailed: state.resultState?.selectedTripMapLoadFailed === true,
+      },
+    ),
   });
 }
 
