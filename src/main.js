@@ -331,6 +331,7 @@ function renderApp() {
     parts.push(renderLocationPicker({
       ...state.locationPicker,
       message: state.locationPicker.messageKey ? t(state.locationPicker.messageKey) : state.locationPicker.message,
+      mapMessage: state.locationPicker.mapMessageKey ? t(state.locationPicker.mapMessageKey) : state.locationPicker.mapMessage,
       t,
     }));
   }
@@ -493,42 +494,48 @@ async function ensureLeaflet() {
 
 async function renderNearbyMap() {
   if (!state.locationPicker || state.locationPicker.state !== 'ready') {
-    return;
+    return false;
   }
 
   const mapElement = document.querySelector('#location-picker-map');
 
   if (!mapElement || !state.locationPicker.coords) {
-    return;
+    return false;
   }
-
-  const L = await ensureLeaflet();
-  const { latitude, longitude } = state.locationPicker.coords;
 
   if (mapElement._leaflet_id) {
-    return;
+    return true;
   }
 
-  const map = L.map(mapElement, {
-    zoomControl: false,
-    attributionControl: true,
-  }).setView([latitude, longitude], 14);
+  try {
+    const L = await ensureLeaflet();
+    const { latitude, longitude } = state.locationPicker.coords;
+    const map = L.map(mapElement, {
+      zoomControl: false,
+      attributionControl: true,
+    }).setView([latitude, longitude], 14);
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
 
-  L.circleMarker([latitude, longitude], {
-    radius: 8,
-    color: '#0070f0',
-    weight: 3,
-    fillColor: '#0a84ff',
-    fillOpacity: 0.35,
-  }).addTo(map);
+    L.circleMarker([latitude, longitude], {
+      radius: 8,
+      color: '#d93b4f',
+      weight: 3,
+      fillColor: '#eb4c60',
+      fillOpacity: 0.35,
+    }).addTo(map);
 
-  for (const stop of state.locationPicker.nearbyStops) {
-    L.marker([stop.latitude, stop.longitude]).addTo(map).bindPopup(stop.canonical);
+    for (const stop of state.locationPicker.nearbyStops) {
+      L.marker([stop.latitude, stop.longitude]).addTo(map).bindPopup(stop.canonical);
+    }
+
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
   }
 }
 
@@ -652,6 +659,7 @@ async function openLocationPicker(fieldName) {
         ? {
           fieldName,
           state: 'ready',
+          mapState: 'ready',
           nearbyStops,
           coords: {
             latitude: coords.latitude,
@@ -677,7 +685,16 @@ async function openLocationPicker(fieldName) {
     renderApp();
     bindInteractions();
     if (state.locationPicker?.state === 'ready') {
-      await renderNearbyMap();
+      const mapRendered = await renderNearbyMap();
+      if (!mapRendered && state.locationPicker?.state === 'ready') {
+        state.locationPicker = {
+          ...state.locationPicker,
+          mapState: 'unavailable',
+          mapMessageKey: 'location.error.map',
+        };
+        renderApp();
+        bindInteractions();
+      }
       bindNearbyStopSelection();
     }
   }, () => {
