@@ -148,6 +148,10 @@ function currentSelectedTripMatch() {
   return state.resultState.allDepartures.find((departure) => departure.tripKey === state.resultState.selectedTripKey) ?? null;
 }
 
+function clearRouteResults() {
+  state.resultState = null;
+}
+
 function currentSelectedTripPanel(t) {
   const selectedTripMatch = currentSelectedTripMatch();
 
@@ -232,7 +236,7 @@ function hydrateRouteStateFromUrl() {
     localities: state.localities,
   });
   state.browseState = routeUrlState.browse;
-  state.resultState = null;
+  clearRouteResults();
   state.locationPicker = null;
   state.pickerState = {
     exactStopChoices: [],
@@ -401,7 +405,7 @@ function resetDestinationState() {
     toInput: '',
     toStopId: null,
   };
-  state.resultState = null;
+  clearRouteResults();
 }
 
 function currentFromSuggestions(t) {
@@ -881,7 +885,7 @@ function seedSearchStop(stopId, fieldName) {
 
   if (fieldName === 'from') {
     Object.assign(state, seedOriginStopFromBrowse(state, stop, state.reachability, state.stops));
-    state.resultState = null;
+    clearRouteResults();
     state.uiState.fromPanelOpen = false;
     state.uiState.toPanelOpen = true;
   } else {
@@ -890,7 +894,7 @@ function seedSearchStop(stopId, fieldName) {
       toInput: stop.canonical,
       toStopId: stop.id,
     };
-    state.resultState = null;
+    clearRouteResults();
   }
 
   writeRouteUrl({ push: true });
@@ -1024,7 +1028,7 @@ function bindFieldPanels() {
     };
     state.formValues.toInput = '';
     state.formValues.toStopId = null;
-    state.resultState = null;
+    clearRouteResults();
     state.uiState.fromPanelOpen = true;
     state.uiState.toPanelOpen = false;
 
@@ -1060,7 +1064,7 @@ function bindFieldPanels() {
       toInput: String(event.currentTarget.value ?? ''),
       toStopId: null,
     };
-    state.resultState = null;
+    clearRouteResults();
     state.uiState.toPanelOpen = true;
     writeRouteUrl({ push: false });
     renderApp();
@@ -1100,7 +1104,7 @@ function bindFieldPanels() {
         toInput: button.dataset.toValue ?? '',
         toStopId: button.dataset.stopId ?? null,
       };
-      state.resultState = null;
+      clearRouteResults();
       state.uiState.toPanelOpen = false;
       writeRouteUrl({ push: false });
       renderApp();
@@ -1194,7 +1198,7 @@ function restoreSavedRoute(route) {
     stops: state.stops,
     localities: state.localities,
   });
-  state.resultState = null;
+  clearRouteResults();
   state.locationPicker = null;
   state.uiState = {
     fromPanelOpen: false,
