@@ -119,4 +119,61 @@ describe('findOneTransferSuggestions', () => {
       now: new Date('2026-05-14T05:00:00'),
     })).toHaveLength(3);
   });
+
+  it('deduplicates duplicated trip rows before limiting suggestions', () => {
+    const duplicatedTrips = [
+      {
+        lineId: '17',
+        dayType: 'feriale',
+        sourcePage: 40,
+        stops: [
+          { stopId: 'origin', name: 'Origin', time: '07:10' },
+          { stopId: 'transfer', name: 'Transfer', time: '07:30' },
+        ],
+      },
+      {
+        lineId: '17',
+        dayType: 'feriale',
+        sourcePage: 40,
+        stops: [
+          { stopId: 'origin', name: 'Origin', time: '07:10' },
+          { stopId: 'transfer', name: 'Transfer', time: '07:30' },
+        ],
+      },
+      {
+        lineId: '15',
+        dayType: 'feriale',
+        sourcePage: 41,
+        stops: [
+          { stopId: 'transfer', name: 'Transfer', time: '07:40' },
+          { stopId: 'destination', name: 'Destination', time: '08:00' },
+        ],
+      },
+    ];
+
+    const suggestions = findOneTransferSuggestions({
+      trips: duplicatedTrips,
+      fromStopIds: ['origin'],
+      toStopId: 'destination',
+      dayType: 'feriale',
+      now: new Date('2026-05-14T06:30:00'),
+    });
+
+    expect(suggestions).toHaveLength(1);
+    expect(suggestions[0]).toMatchObject({
+      transferStopId: 'transfer',
+      firstLeg: {
+        lineId: '17',
+        departureTime: '07:10',
+        arrivalTime: '07:30',
+        sourcePage: 40,
+      },
+      secondLeg: {
+        lineId: '15',
+        departureTime: '07:40',
+        arrivalTime: '08:00',
+        sourcePage: 41,
+      },
+    });
+  });
 });

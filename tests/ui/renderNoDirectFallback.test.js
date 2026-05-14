@@ -72,4 +72,16 @@ describe('renderNoDirectFallback', () => {
     expect(taxiPanel).toContain('Verified 2026-05-13');
     expect(html).not.toContain('class="taxi-option-card"');
   });
+
+  it('escapes the fallback PDF href', () => {
+    const html = renderNoDirectFallback({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf?name="unsafe"',
+      suggestions: [],
+    });
+
+    expect(html).toContain('href="https://example.com/riviera.pdf?name=&quot;unsafe&quot;"');
+    expect(html).not.toContain('href="https://example.com/riviera.pdf?name="unsafe""');
+  });
 });

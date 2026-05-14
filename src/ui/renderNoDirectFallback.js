@@ -39,7 +39,7 @@ export function renderNoDirectFallback({
       <p>${escapeHtml(routeLabel)}</p>
       <p>${escapeHtml(t('empty.transferNote'))}</p>
       <div class="fallback-actions">
-        <a class="topbar-link" href="${pdfUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('results.openPdf'))}</a>
+        <a class="topbar-link" href="${escapeHtml(pdfUrl)}" target="_blank" rel="noreferrer">${escapeHtml(t('results.openPdf'))}</a>
       </div>
       <div class="fallback-suggestions">
         ${suggestions.map(renderFallbackSuggestion).join('')}

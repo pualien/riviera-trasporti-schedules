@@ -20,6 +20,37 @@ function compareSuggestions(left, right) {
     || compareText(left.transferStopId, right.transferStopId);
 }
 
+function suggestionDisplayKey(suggestion) {
+  return [
+    suggestion.firstLeg.fromStopId,
+    suggestion.transferStopId,
+    suggestion.secondLeg.toStopId,
+    suggestion.firstLeg.lineId,
+    suggestion.secondLeg.lineId,
+    suggestion.firstLeg.departureTime,
+    suggestion.firstLeg.arrivalTime,
+    suggestion.secondLeg.departureTime,
+    suggestion.secondLeg.arrivalTime,
+    suggestion.firstLeg.sourcePage,
+    suggestion.secondLeg.sourcePage,
+  ].join('|');
+}
+
+function uniqueSuggestions(suggestions) {
+  const seen = new Set();
+
+  return suggestions.filter((suggestion) => {
+    const key = suggestionDisplayKey(suggestion);
+
+    if (seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
 function sameDayTrips(trips, dayType) {
   return trips.filter((trip) => trip.dayType === dayType);
 }
@@ -36,6 +67,7 @@ function firstLegsForTrip(trip, originStopIds, toStopId) {
       .map((transferStop) => ({
         lineId: trip.lineId,
         direction: trip.direction,
+        fromStopId: originStop.stopId,
         departureStopId: originStop.stopId,
         departureStopName: originStop.name,
         departureTime: originStop.time,
@@ -73,6 +105,7 @@ function secondLegsForTransfer(trips, transferStopId, toStopId, earliestDepartur
       lineId: trip.lineId,
       direction: trip.direction,
       departureTime: transferStop.time,
+      toStopId: destinationStop.stopId,
       arrivalStopId: destinationStop.stopId,
       arrivalStopName: destinationStop.name,
       arrivalTime: destinationStop.time,
@@ -137,5 +170,5 @@ export function findOneTransferSuggestions({
     ? futureSuggestions.map((suggestion) => ({ ...suggestion, isFuture: true }))
     : suggestions.map((suggestion) => ({ ...suggestion, isFuture: false }));
 
-  return selectedSuggestions.slice(0, MAX_TRANSFER_SUGGESTIONS);
+  return uniqueSuggestions(selectedSuggestions).slice(0, MAX_TRANSFER_SUGGESTIONS);
 }
