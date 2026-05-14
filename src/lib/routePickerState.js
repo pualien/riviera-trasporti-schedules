@@ -19,15 +19,15 @@ export function selectLocality(state, locality, stops, reachability) {
   };
 }
 
-export function selectOriginStop(state, stop, reachability, stops) {
+export function selectOriginStop(state, stop, reachability, stops, options = {}) {
   return {
     ...state,
     formValues: {
       ...state.formValues,
       fromInput: stop.canonical,
       fromStopId: stop.id,
-      toInput: '',
-      toStopId: null,
+      toInput: options.preserveDestination ? state.formValues.toInput : '',
+      toStopId: options.preserveDestination ? state.formValues.toStopId : null,
     },
     pickerState: {
       ...state.pickerState,

@@ -102,4 +102,36 @@ describe('routePickerState', () => {
       { id: 'taggia-stazione', canonical: 'taggia stazione' },
     ]);
   });
+
+  it('preserves the chosen destination when an origin recovery suggestion is applied', () => {
+    const nextState = selectOriginStop(
+      {
+        formValues: {
+          fromInput: 'Porto Maurizio',
+          fromLocalityId: 'porto-maurizio',
+          fromStopId: 'imperia-porto-maurizio',
+          toInput: 'sanremo autostazione',
+          toStopId: 'sanremo-autostazione',
+        },
+        pickerState: {
+          exactStopChoices: [{ id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia piazza dante' }],
+          reachableDestinations: [],
+        },
+      },
+      { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia piazza dante' },
+      { 'imperia-porto-maurizio-piazza-dante': ['sanremo-autostazione'] },
+      [{ id: 'sanremo-autostazione', canonical: 'sanremo autostazione' }],
+      { preserveDestination: true },
+    );
+
+    expect(nextState.formValues).toMatchObject({
+      fromInput: 'imperia piazza dante',
+      fromStopId: 'imperia-porto-maurizio-piazza-dante',
+      toInput: 'sanremo autostazione',
+      toStopId: 'sanremo-autostazione',
+    });
+    expect(nextState.pickerState.reachableDestinations).toEqual([
+      { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+    ]);
+  });
 });

@@ -712,7 +712,15 @@ function bindNoDirectActions() {
       }
 
       if (button.dataset.noDirectAction === 'set-origin-stop') {
-        selectFromStopChoice(stop);
+        Object.assign(state, selectOriginStop(
+          state,
+          stop,
+          state.reachability,
+          state.stops,
+          { preserveDestination: true },
+        ));
+        state.uiState.fromPanelOpen = false;
+        state.uiState.toPanelOpen = true;
       }
 
       if (button.dataset.noDirectAction === 'set-destination-stop') {
