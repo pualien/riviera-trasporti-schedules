@@ -62,6 +62,7 @@ import { renderTabNav } from './ui/renderTabNav.js';
 const app = document.querySelector('#app');
 const LEAFLET_CSS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
 const LEAFLET_JS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+let locationPickerRequestId = 0;
 
 function savedRoutesStorage() {
   return getSavedRoutesStorage(window);
@@ -492,8 +493,12 @@ async function ensureLeaflet() {
   return window.L;
 }
 
-async function renderNearbyMap() {
+async function renderNearbyMap(requestId) {
   if (!state.locationPicker || state.locationPicker.state !== 'ready') {
+    return false;
+  }
+
+  if (state.locationPicker.requestId !== requestId) {
     return false;
   }
 
@@ -509,6 +514,15 @@ async function renderNearbyMap() {
 
   try {
     const L = await ensureLeaflet();
+
+    if (state.locationPicker?.requestId !== requestId || state.locationPicker.state !== 'ready') {
+      return false;
+    }
+
+    if (!state.locationPicker.coords) {
+      return false;
+    }
+
     const { latitude, longitude } = state.locationPicker.coords;
     const map = L.map(mapElement, {
       zoomControl: false,
@@ -620,7 +634,11 @@ function bindNearbyStopSelection() {
 }
 
 async function openLocationPicker(fieldName) {
+  const requestId = locationPickerRequestId + 1;
+  locationPickerRequestId = requestId;
+
   state.locationPicker = {
+    requestId,
     fieldName,
     state: 'loading',
     nearbyStops: [],
@@ -631,6 +649,7 @@ async function openLocationPicker(fieldName) {
 
   if (!navigator.geolocation) {
     state.locationPicker = {
+      requestId,
       fieldName,
       state: 'error',
       messageKey: 'location.error.browser',
@@ -641,6 +660,10 @@ async function openLocationPicker(fieldName) {
   }
 
   navigator.geolocation.getCurrentPosition(async ({ coords }) => {
+    if (state.locationPicker?.requestId !== requestId) {
+      return;
+    }
+
     try {
       const cachedNearbyStops = readNearbyStopCache(coords.latitude, coords.longitude);
       const nearbyStops = cachedNearbyStops ?? await buildNearbyStopChoices({
@@ -653,10 +676,15 @@ async function openLocationPicker(fieldName) {
         limit: 5,
       });
 
+      if (state.locationPicker?.requestId !== requestId) {
+        return;
+      }
+
       writeNearbyStopCache(coords.latitude, coords.longitude, nearbyStops);
 
       state.locationPicker = nearbyStops.length
         ? {
+          requestId,
           fieldName,
           state: 'ready',
           mapState: 'ready',
@@ -667,13 +695,19 @@ async function openLocationPicker(fieldName) {
           },
         }
         : {
+          requestId,
           fieldName,
           state: 'error',
           nearbyStops: [],
           messageKey: 'location.error.nomatch',
         };
     } catch (error) {
+      if (state.locationPicker?.requestId !== requestId) {
+        return;
+      }
+
       state.locationPicker = {
+        requestId,
         fieldName,
         state: 'error',
         nearbyStops: [],
@@ -684,9 +718,13 @@ async function openLocationPicker(fieldName) {
 
     renderApp();
     bindInteractions();
-    if (state.locationPicker?.state === 'ready') {
-      const mapRendered = await renderNearbyMap();
-      if (!mapRendered && state.locationPicker?.state === 'ready') {
+    if (state.locationPicker?.requestId === requestId && state.locationPicker.state === 'ready') {
+      const mapRendered = await renderNearbyMap(requestId);
+      if (
+        !mapRendered
+        && state.locationPicker?.requestId === requestId
+        && state.locationPicker.state === 'ready'
+      ) {
         state.locationPicker = {
           ...state.locationPicker,
           mapState: 'unavailable',
@@ -698,7 +736,12 @@ async function openLocationPicker(fieldName) {
       bindNearbyStopSelection();
     }
   }, () => {
+    if (state.locationPicker?.requestId !== requestId) {
+      return;
+    }
+
     state.locationPicker = {
+      requestId,
       fieldName,
       state: 'error',
       nearbyStops: [],
