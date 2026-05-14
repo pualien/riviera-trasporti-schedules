@@ -7,13 +7,13 @@ import {
 
 describe('routeUrlState', () => {
   it('parses search state with ids taking priority over labels', () => {
-    const parsed = parseRouteUrlState('?tab=search&from=Porto%20Maurizio&fromStop=imperia-porto-maurizio&to=Sanremo&toStop=sanremo-autostazione&day=sabato');
+    const parsed = parseRouteUrlState('?tab=search&from=Porto%20Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo&toStop=sanremo-autostazione&day=sabato');
 
     expect(parsed).toEqual({
       tab: 'search',
       search: {
         fromInput: 'Porto Maurizio',
-        fromLocalityId: null,
+        fromLocalityId: 'porto-maurizio',
         fromStopId: 'imperia-porto-maurizio',
         toInput: 'Sanremo',
         toStopId: 'sanremo-autostazione',
@@ -37,7 +37,7 @@ describe('routeUrlState', () => {
       search: {
         fromInput: 'Porto Maurizio',
         fromLocalityId: 'porto-maurizio',
-        fromStopId: null,
+        fromStopId: 'imperia-porto-maurizio',
         toInput: 'Sanremo Autostazione',
         toStopId: 'sanremo-autostazione',
         dayType: 'feriale',
@@ -49,6 +49,6 @@ describe('routeUrlState', () => {
       },
     });
 
-    expect(params.toString()).toBe('tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=stops&stop=sanremo-autostazione');
+    expect(params.toString()).toBe('tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=stops&stop=sanremo-autostazione');
   });
 });

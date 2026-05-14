@@ -505,6 +505,7 @@ function bindNearbyStopSelection() {
       }
 
       state.locationPicker = null;
+      writeRouteUrl({ push: false });
       renderApp();
       bindInteractions();
     });
@@ -642,6 +643,7 @@ function bindForm() {
       }
       : outcome;
     state.locationPicker = null;
+    writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
   });
@@ -652,6 +654,7 @@ function selectFromLocalityChoice(locality) {
   Object.assign(state, selectLocality(state, locality, state.stops, state.reachability));
   state.uiState.fromPanelOpen = true;
   state.uiState.toPanelOpen = false;
+  writeRouteUrl({ push: false });
 }
 
 function selectFromStopChoice(stop) {
@@ -659,6 +662,7 @@ function selectFromStopChoice(stop) {
   Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
   state.uiState.fromPanelOpen = false;
   state.uiState.toPanelOpen = true;
+  writeRouteUrl({ push: false });
 }
 
 function focusFromInput(selectText = false) {
@@ -688,6 +692,7 @@ function clearFromSelection(nextValue) {
     exactStopChoices: [],
     reachableDestinations: [],
   };
+  writeRouteUrl({ push: false });
 }
 
 function bindFieldPanels() {
@@ -733,6 +738,7 @@ function bindFieldPanels() {
       };
     }
 
+    writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
     focusFromInput();
@@ -758,6 +764,7 @@ function bindFieldPanels() {
     };
     state.resultState = null;
     state.uiState.toPanelOpen = true;
+    writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
     document.querySelector('[data-field="to"]')?.focus();
@@ -797,6 +804,7 @@ function bindFieldPanels() {
       };
       state.resultState = null;
       state.uiState.toPanelOpen = false;
+      writeRouteUrl({ push: false });
       renderApp();
       bindInteractions();
     });

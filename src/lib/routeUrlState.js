@@ -47,7 +47,7 @@ export function parseRouteUrlState(search = '') {
     tab,
     search: {
       fromInput: params.get('from') ?? '',
-      fromLocalityId: fromStopId ? null : valueOrNull(params.get('fromLocality')),
+      fromLocalityId: valueOrNull(params.get('fromLocality')),
       fromStopId,
       toInput: params.get('to') ?? '',
       toStopId: valueOrNull(params.get('toStop')),
@@ -82,7 +82,7 @@ export function serializeRouteUrlState(routeState = DEFAULT_ROUTE_URL_STATE) {
     params.set('from', state.search.fromInput);
   }
 
-  if (state.search.fromLocalityId && !state.search.fromStopId) {
+  if (state.search.fromLocalityId) {
     params.set('fromLocality', state.search.fromLocalityId);
   }
 
