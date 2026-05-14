@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_ROUTE_URL_STATE,
+  hydrateSearchStateFromRouteSnapshot,
   hydrateSearchStateFromUrl,
   parseRouteUrlState,
   serializeRouteUrlState,
@@ -94,6 +95,36 @@ describe('routeUrlState', () => {
       currentFormValues: DEFAULT_ROUTE_URL_STATE.search,
       urlSearchState: parseRouteUrlState('?from=Porto%20Maurizio&fromLocality=stale-locality&fromStop=stale-stop&to=Sanremo&toStop=stale-to-stop&day=feriale').search,
       search: '?from=Porto%20Maurizio&fromLocality=stale-locality&fromStop=stale-stop&to=Sanremo&toStop=stale-to-stop&day=feriale',
+      stops: [
+        { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
+        { id: 'sanremo-autostazione', canonical: 'Sanremo Autostazione' },
+      ],
+      localities: [
+        { id: 'porto-maurizio', label: 'Porto Maurizio', stopIds: ['imperia-porto-maurizio'] },
+      ],
+    });
+
+    expect(hydrated).toEqual({
+      fromInput: 'Porto Maurizio',
+      fromLocalityId: null,
+      fromStopId: null,
+      toInput: 'Sanremo',
+      toStopId: null,
+      dayType: 'feriale',
+    });
+  });
+
+  it('drops unresolved saved route ids while preserving saved labels', () => {
+    const hydrated = hydrateSearchStateFromRouteSnapshot({
+      currentFormValues: DEFAULT_ROUTE_URL_STATE.search,
+      route: {
+        fromInput: 'Porto Maurizio',
+        fromLocalityId: 'stale-locality',
+        fromStopId: 'stale-stop',
+        toInput: 'Sanremo',
+        toStopId: 'stale-to-stop',
+        dayType: 'feriale',
+      },
       stops: [
         { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
         { id: 'sanremo-autostazione', canonical: 'Sanremo Autostazione' },

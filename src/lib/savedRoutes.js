@@ -66,7 +66,22 @@ export function readSavedRoutes(storage = getSavedRoutesStorage()) {
       return emptySavedRoutes(true);
     }
 
-    const parsed = JSON.parse(rawValue);
+    let parsed;
+    try {
+      parsed = JSON.parse(rawValue);
+    } catch {
+      try {
+        storage.removeItem?.(SAVED_ROUTES_STORAGE_KEY);
+      } catch {
+        // Corrupt content is still recoverable if future writes succeed.
+      }
+      return emptySavedRoutes(true);
+    }
+
+    if (!parsed || typeof parsed !== 'object') {
+      return emptySavedRoutes(true);
+    }
+
     return {
       favorites: Array.isArray(parsed.favorites) ? parsed.favorites : [],
       recents: Array.isArray(parsed.recents) ? parsed.recents : [],

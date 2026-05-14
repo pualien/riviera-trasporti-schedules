@@ -20,6 +20,15 @@ function createStorage(initialValue = null) {
   };
 }
 
+function createRawStorage(rawValue) {
+  const values = new Map([['riviera:saved-routes', rawValue]]);
+  return {
+    getItem: (key) => values.get(key) ?? null,
+    setItem: (key, value) => values.set(key, value),
+    removeItem: (key) => values.delete(key),
+  };
+}
+
 const route = {
   fromInput: 'Porto Maurizio',
   fromLocalityId: 'porto-maurizio',
@@ -97,5 +106,30 @@ describe('savedRoutes', () => {
 
     expect(storage).toBeNull();
     expect(readSavedRoutes(storage)).toEqual({ favorites: [], recents: [], available: false });
+  });
+
+  it('treats malformed saved route JSON as recoverable empty storage', () => {
+    const storage = createRawStorage('{bad json');
+
+    expect(readSavedRoutes(storage)).toEqual({ favorites: [], recents: [], available: true });
+  });
+
+  it('treats malformed saved route schema as recoverable empty storage', () => {
+    const storage = createRawStorage('null');
+
+    expect(readSavedRoutes(storage)).toEqual({ favorites: [], recents: [], available: true });
+  });
+
+  it('recovers from malformed saved route JSON on later saves', () => {
+    const storage = createRawStorage('{bad json');
+
+    addRecentRoute(storage, route);
+    addFavoriteRoute(storage, { ...route, toInput: 'Ventimiglia', toStopId: 'ventimiglia' });
+
+    expect(readSavedRoutes(storage)).toMatchObject({
+      available: true,
+      recents: [expect.objectContaining({ toInput: 'Sanremo Autostazione' })],
+      favorites: [expect.objectContaining({ toInput: 'Ventimiglia' })],
+    });
   });
 });

@@ -33,6 +33,7 @@ import {
 import { normalizeText } from './lib/normalize.js';
 import {
   hydrateSearchStateFromUrl,
+  hydrateSearchStateFromRouteSnapshot,
   parseRouteUrlState,
   serializeRouteUrlState,
 } from './lib/routeUrlState.js';
@@ -929,14 +930,12 @@ function bindTabNavigation() {
 
 function restoreSavedRoute(route) {
   state.activeTab = 'search';
-  state.formValues = {
-    fromInput: route.fromInput ?? '',
-    fromLocalityId: route.fromLocalityId ?? null,
-    fromStopId: route.fromStopId ?? null,
-    toInput: route.toInput ?? '',
-    toStopId: route.toStopId ?? null,
-    dayType: route.dayType ?? 'feriale',
-  };
+  state.formValues = hydrateSearchStateFromRouteSnapshot({
+    currentFormValues: state.formValues,
+    route,
+    stops: state.stops,
+    localities: state.localities,
+  });
   state.resultState = null;
   state.locationPicker = null;
   state.uiState = {

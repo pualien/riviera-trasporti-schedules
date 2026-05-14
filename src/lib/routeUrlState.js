@@ -35,6 +35,26 @@ function hasValidDayParam(search = '') {
   return VALID_DAY_TYPES.has(new URLSearchParams(search).get('day'));
 }
 
+function validateSearchStateIds(searchState, { stops = [], localities = [] } = {}) {
+  const stopIds = new Set(stops.map((stop) => stop.id));
+  const localityIds = new Set(localities.map((locality) => locality.id));
+  const hydrated = { ...searchState };
+
+  if (hydrated.fromLocalityId && !localityIds.has(hydrated.fromLocalityId)) {
+    hydrated.fromLocalityId = null;
+  }
+
+  if (hydrated.fromStopId && !stopIds.has(hydrated.fromStopId)) {
+    hydrated.fromStopId = null;
+  }
+
+  if (hydrated.toStopId && !stopIds.has(hydrated.toStopId)) {
+    hydrated.toStopId = null;
+  }
+
+  return hydrated;
+}
+
 export function parseRouteUrlState(search = '') {
   const params = new URLSearchParams(search);
   const tab = params.get('tab') ?? DEFAULT_ROUTE_URL_STATE.tab;
@@ -127,9 +147,7 @@ export function hydrateSearchStateFromUrl({
   stops = [],
   localities = [],
 } = {}) {
-  const stopIds = new Set(stops.map((stop) => stop.id));
-  const localityIds = new Set(localities.map((locality) => locality.id));
-  const hydrated = {
+  let hydrated = {
     ...DEFAULT_ROUTE_URL_STATE.search,
     ...currentFormValues,
     ...urlSearchState,
@@ -139,17 +157,27 @@ export function hydrateSearchStateFromUrl({
     hydrated.dayType = currentFormValues.dayType ?? DEFAULT_ROUTE_URL_STATE.search.dayType;
   }
 
-  if (hydrated.fromLocalityId && !localityIds.has(hydrated.fromLocalityId)) {
-    hydrated.fromLocalityId = null;
-  }
-
-  if (hydrated.fromStopId && !stopIds.has(hydrated.fromStopId)) {
-    hydrated.fromStopId = null;
-  }
-
-  if (hydrated.toStopId && !stopIds.has(hydrated.toStopId)) {
-    hydrated.toStopId = null;
-  }
+  hydrated = validateSearchStateIds(hydrated, { stops, localities });
 
   return hydrated;
+}
+
+export function hydrateSearchStateFromRouteSnapshot({
+  currentFormValues = DEFAULT_ROUTE_URL_STATE.search,
+  route = DEFAULT_ROUTE_URL_STATE.search,
+  stops = [],
+  localities = [],
+} = {}) {
+  const hydrated = {
+    ...DEFAULT_ROUTE_URL_STATE.search,
+    ...currentFormValues,
+    fromInput: route.fromInput ?? '',
+    fromLocalityId: route.fromLocalityId ?? null,
+    fromStopId: route.fromStopId ?? null,
+    toInput: route.toInput ?? '',
+    toStopId: route.toStopId ?? null,
+    dayType: VALID_DAY_TYPES.has(route.dayType) ? route.dayType : DEFAULT_ROUTE_URL_STATE.search.dayType,
+  };
+
+  return validateSearchStateIds(hydrated, { stops, localities });
 }
