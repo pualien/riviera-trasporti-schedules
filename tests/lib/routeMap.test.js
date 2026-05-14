@@ -54,6 +54,22 @@ describe('buildRouteMapState', () => {
     expect(state.stops).toHaveLength(3);
   });
 
+  it('treats unusable coordinates as missing stops', () => {
+    const state = buildRouteMapState(match, {
+      'imperia-porto-maurizio': { latitude: 43.886, longitude: 8.029 },
+      'taggia-stazione': { latitude: Number.NaN, longitude: 7.852 },
+      'sanremo-autostazione': { latitude: 43.817, longitude: 7.777 },
+    });
+
+    expect(state.mapStatus).toBe('partial');
+    expect(state.hasMap).toBe(true);
+    expect(state.points.map((point) => point.stopId)).toEqual([
+      'imperia-porto-maurizio',
+      'sanremo-autostazione',
+    ]);
+    expect(state.missingStopIds).toEqual(['taggia-stazione']);
+  });
+
   it('returns a load-failed map state when map rendering failed after coordinates were available', () => {
     const state = buildRouteMapState(match, {
       'imperia-porto-maurizio': { latitude: 43.886, longitude: 8.029 },
@@ -66,5 +82,17 @@ describe('buildRouteMapState', () => {
     expect(state.mapStatus).toBe('load-failed');
     expect(state.hasMap).toBe(false);
     expect(state.points).toHaveLength(3);
+  });
+
+  it('returns unavailable when map loading failed but fewer than two stops have coordinates', () => {
+    const state = buildRouteMapState(match, {
+      'imperia-porto-maurizio': { latitude: 43.886, longitude: 8.029 },
+    }, {
+      mapLoadFailed: true,
+    });
+
+    expect(state.mapStatus).toBe('unavailable');
+    expect(state.hasMap).toBe(false);
+    expect(state.points).toHaveLength(1);
   });
 });
