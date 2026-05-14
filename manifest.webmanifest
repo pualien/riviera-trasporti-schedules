@@ -1,6 +1,7 @@
 {
   "name": "Riviera Trasporti Ricerca Percorsi",
   "short_name": "RT Percorsi",
+  "description": "Route-first lookup for Riviera Trasporti timetable data.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
