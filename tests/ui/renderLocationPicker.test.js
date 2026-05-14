@@ -40,4 +40,51 @@ describe('renderLocationPicker', () => {
     expect(html).toContain('Choisissez d abord une zone');
     expect(html).toContain('Porto Maurizio');
   });
+
+  it('renders denied location errors without an empty map shell', () => {
+    const html = renderLocationPicker({
+      fieldName: 'from',
+      state: 'error',
+      message: 'Location access was denied. Type the stop name manually instead.',
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('Location access was denied');
+    expect(html).not.toContain('id="location-picker-map"');
+    expect(html).toContain('Use manual search');
+  });
+
+  it('renders ready nearby stop choices when the map script is unavailable', () => {
+    const html = renderLocationPicker({
+      fieldName: 'from',
+      state: 'ready',
+      mapState: 'unavailable',
+      mapMessage: 'The map could not load. Nearby stop choices are still available.',
+      t: createTranslator('en'),
+      nearbyStops: [
+        {
+          stopId: 'imperia-porto-maurizio',
+          canonical: 'imperia porto maurizio',
+          localityLabel: 'Porto Maurizio',
+          distanceMeters: 180,
+        },
+      ],
+    });
+
+    expect(html).toContain('The map could not load');
+    expect(html).toContain('imperia porto maurizio');
+    expect(html).toContain('data-map-status="unavailable"');
+  });
+
+  it('renders loading state inside the map shell', () => {
+    const html = renderLocationPicker({
+      fieldName: 'to',
+      state: 'loading',
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('Looking for the closest stops');
+    expect(html).toContain('Loading map');
+    expect(html).toContain('data-map-status="loading"');
+  });
 });

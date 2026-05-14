@@ -46,6 +46,8 @@ describe('i18n helpers', () => {
       expect(t('results.mapNoCoordinates')).not.toBe('results.mapNoCoordinates');
       expect(t('results.mapLoadFailed')).not.toBe('results.mapLoadFailed');
       expect(t('results.mapLoadFailedDetail')).not.toBe('results.mapLoadFailedDetail');
+      expect(t('location.manualSearch')).not.toBe('location.manualSearch');
+      expect(t('location.error.map')).not.toBe('location.error.map');
     }
   });
 });
