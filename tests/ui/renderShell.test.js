@@ -36,6 +36,17 @@ describe('renderShell', () => {
     expect(html).toContain('name="language"');
   });
 
+  it('renders top-level tab navigation when provided', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      tabNavigation: '<nav class="app-tabs">Tabs</nav>',
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('<nav class="app-tabs">Tabs</nav>');
+  });
+
   it('renders the dataset freshness marker when metadata is available', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',

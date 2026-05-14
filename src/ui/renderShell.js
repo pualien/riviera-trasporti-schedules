@@ -46,6 +46,7 @@ export function renderShell(
     languages = SUPPORTED_LANGUAGES,
     datasetInfo = null,
     taxiDirectory = [],
+    tabNavigation = '',
     t = createTranslator('en'),
   } = {},
 ) {
@@ -76,6 +77,7 @@ export function renderShell(
           </label>
         </div>
       </header>
+      ${tabNavigation}
       ${renderSeoSupportCopy(t)}
       ${content}
       ${renderTaxiOptionsSection(taxiDirectory, {

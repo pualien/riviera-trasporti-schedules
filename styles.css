@@ -205,6 +205,36 @@ a {
   line-height: 1.6;
 }
 
+.app-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.app-tab {
+  border: 1px solid rgba(62, 39, 24, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text, #1d1a17);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 18px;
+}
+
+.app-tab--active,
+.app-tab[aria-current="page"] {
+  background: #eb4c60;
+  border-color: #d93b4f;
+  color: #ffffff;
+}
+
+.app-tab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.18);
+}
+
 .language-selector {
   display: grid;
   gap: 4px;

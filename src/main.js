@@ -2,7 +2,13 @@ import { pushRouteSearchEvent } from './lib/analytics.js';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
 import { findDirectTrips } from './lib/query.js';
-import { findExactLocalityMatch, findExactStopMatch } from './lib/localities.js';
+import {
+  findExactLocalityMatch,
+  findExactStopMatch,
+  getLocalityReachableStops,
+  getLocalityStops,
+  getReachableStops,
+} from './lib/localities.js';
 import {
   buildNearbyStopChoices,
   createNearbyStopCacheKey,
@@ -18,6 +24,7 @@ import {
   readStoredLanguage,
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
+import { parseRouteUrlState, serializeRouteUrlState } from './lib/routeUrlState.js';
 import {
   applySeoMetadata,
   buildDefaultSeoMetadata,
@@ -32,6 +39,7 @@ import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderResultsView } from './ui/renderResults.js';
 import { renderSearchForm } from './ui/renderSearchForm.js';
 import { renderShell } from './ui/renderShell.js';
+import { renderTabNav } from './ui/renderTabNav.js';
 
 const app = document.querySelector('#app');
 const LEAFLET_CSS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
@@ -46,6 +54,12 @@ const state = {
   aliases: {},
   metadata: null,
   language: readStoredLanguage(window.localStorage),
+  activeTab: 'search',
+  browseState: {
+    mode: 'lines',
+    lineId: null,
+    stopId: null,
+  },
   uiState: {
     fromPanelOpen: false,
     toPanelOpen: false,
@@ -129,6 +143,61 @@ function currentRouteTaxiOptions() {
   });
 }
 
+function currentRouteUrlState() {
+  return {
+    tab: state.activeTab,
+    search: state.formValues,
+    browse: state.browseState,
+  };
+}
+
+function writeRouteUrl({ push = false } = {}) {
+  const params = serializeRouteUrlState(currentRouteUrlState());
+  const query = params.toString();
+  const nextUrl = `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+  const method = push ? 'pushState' : 'replaceState';
+
+  window.history[method](currentRouteUrlState(), '', nextUrl);
+}
+
+function hydrateRouteStateFromUrl() {
+  const routeUrlState = parseRouteUrlState(window.location.search);
+
+  state.activeTab = routeUrlState.tab;
+  state.formValues = {
+    ...state.formValues,
+    ...routeUrlState.search,
+  };
+  state.browseState = routeUrlState.browse;
+  state.resultState = null;
+  state.locationPicker = null;
+  state.pickerState = {
+    exactStopChoices: [],
+    reachableDestinations: [],
+  };
+
+  if (state.formValues.fromStopId) {
+    state.pickerState = {
+      ...state.pickerState,
+      reachableDestinations: getReachableStops(state.formValues.fromStopId, state.reachability, state.stops),
+    };
+    return;
+  }
+
+  if (state.formValues.fromLocalityId) {
+    state.pickerState = {
+      ...state.pickerState,
+      exactStopChoices: getLocalityStops(state.formValues.fromLocalityId, state.localities, state.stops),
+      reachableDestinations: getLocalityReachableStops(
+        state.formValues.fromLocalityId,
+        state.localities,
+        state.reachability,
+        state.stops,
+      ),
+    };
+  }
+}
+
 function updateSeoForCurrentState(t) {
   if (!state.formValues.fromInput || !state.formValues.toInput) {
     applySeoMetadata(document, buildDefaultSeoMetadata());
@@ -204,6 +273,7 @@ function renderApp() {
     languages: SUPPORTED_LANGUAGES,
     datasetInfo: state.metadata,
     taxiDirectory: listTaxiOptions(),
+    tabNavigation: renderTabNav({ activeTab: state.activeTab, t }),
     t,
   });
   updateSeoForCurrentState(t);
@@ -784,12 +854,30 @@ function bindLanguageSelector() {
   });
 }
 
+function bindTabNavigation() {
+  document.querySelectorAll('[data-tab-target]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const nextTab = button.dataset.tabTarget ?? 'search';
+
+      if (nextTab === state.activeTab) {
+        return;
+      }
+
+      state.activeTab = nextTab;
+      writeRouteUrl({ push: true });
+      renderApp();
+      bindInteractions();
+    });
+  });
+}
+
 function bindInteractions() {
   bindForm();
   bindFieldPanels();
   bindDepartureSelection();
   bindLocationActions();
   bindLanguageSelector();
+  bindTabNavigation();
 }
 
 async function boot() {
@@ -808,8 +896,14 @@ async function boot() {
     state.formValues = bootData.formValues;
     state.aliases = Object.fromEntries(bootData.stops.map((stop) => [stop.canonical, stop.variants]));
 
+    hydrateRouteStateFromUrl();
     renderApp();
     bindInteractions();
+    window.addEventListener('popstate', () => {
+      hydrateRouteStateFromUrl();
+      renderApp();
+      bindInteractions();
+    });
   } catch (error) {
     const t = createTranslator(state.language);
     applySeoMetadata(document, buildDefaultSeoMetadata());
