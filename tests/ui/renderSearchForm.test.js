@@ -139,6 +139,19 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Choose direct destination');
   });
 
+  it('guides users from route selection to selected departure details without a wizard', () => {
+    const html = renderSearchForm({
+      t: createTranslator('en'),
+      fromLocalitySelected: true,
+      exactFromStop: null,
+      toStopSelected: true,
+    });
+
+    expect(html).toContain('Choose an origin area or exact stop.');
+    expect(html).toContain('Direct destinations appear after the origin is known.');
+    expect(html).toContain('Select one departure to inspect exact trip details.');
+  });
+
   it('renders translated hero and field copy in German', () => {
     const html = renderSearchForm({
       t: createTranslator('de'),

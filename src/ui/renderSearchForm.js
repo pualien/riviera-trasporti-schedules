@@ -204,6 +204,11 @@ export function renderSearchForm({
             toStopSelected,
             t,
           })}
+          <div class="route-guidance">
+            <span>${escapeHtml(t('search.guidance.origin'))}</span>
+            <span>${escapeHtml(t('search.guidance.destination'))}</span>
+            <span>${escapeHtml(t('search.guidance.departure'))}</span>
+          </div>
         </div>
         <label class="field">
           <span>${escapeHtml(t('search.fromLabel'))}</span>

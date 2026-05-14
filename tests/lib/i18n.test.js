@@ -48,6 +48,9 @@ describe('i18n helpers', () => {
       expect(t('results.mapLoadFailedDetail')).not.toBe('results.mapLoadFailedDetail');
       expect(t('location.manualSearch')).not.toBe('location.manualSearch');
       expect(t('location.error.map')).not.toBe('location.error.map');
+      expect(t('search.guidance.origin')).not.toBe('search.guidance.origin');
+      expect(t('search.guidance.destination')).not.toBe('search.guidance.destination');
+      expect(t('search.guidance.departure')).not.toBe('search.guidance.departure');
     }
   });
 });
