@@ -861,8 +861,8 @@ a {
 }
 
 .departure-card--selected {
-  border-color: rgba(17, 68, 204, 0.4);
-  box-shadow: 0 18px 32px rgba(17, 68, 204, 0.14);
+  border-color: rgba(217, 59, 79, 0.72);
+  box-shadow: 0 0 0 3px rgba(235, 76, 96, 0.12), var(--shadow);
 }
 
 .departure-card:hover {
@@ -906,6 +906,10 @@ a {
   box-shadow: var(--shadow);
 }
 
+.route-map-panel .eyebrow {
+  margin: 0;
+}
+
 .route-map-meta {
   display: flex;
   justify-content: space-between;
@@ -925,6 +929,14 @@ a {
   color: var(--text);
 }
 
+.route-guidance {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+
 .empty-state {
   text-align: left;
 }
@@ -940,17 +952,22 @@ a {
   box-shadow: var(--shadow);
 }
 
+.location-picker--error {
+  border-color: rgba(217, 59, 79, 0.24);
+}
+
 .location-picker-copy h3 {
   margin: 8px 0 10px;
   font-size: 1.55rem;
   letter-spacing: -0.04em;
 }
 
+.route-map-message,
 .location-picker-copy p:last-child,
 .location-picker-message {
   margin: 0;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
 .location-map-shell {
@@ -962,6 +979,22 @@ a {
 
 .location-map {
   min-height: 280px;
+}
+
+.location-map[data-map-status="partial"],
+.location-map[data-map-status="unavailable"],
+.location-map[data-map-status="load-failed"] {
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  text-align: center;
+  color: var(--muted);
+  background:
+    linear-gradient(135deg, rgba(239, 228, 214, 0.9), rgba(255, 255, 255, 0.86));
+}
+
+.location-map[data-map-status="ready"] {
+  background: rgba(255, 255, 255, 0.72);
 }
 
 .nearby-stop-list {

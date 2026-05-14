@@ -60,6 +60,31 @@ describe('service worker', () => {
     await expect(promises[0]).rejects.toThrow('missing required asset');
   });
 
+  it('treats stop coordinates as optional cached data', async () => {
+    const cachedUrls = [];
+    const listeners = loadServiceWorker({
+      caches: {
+        open: async () => ({
+          add: async (url) => {
+            cachedUrls.push(url);
+            if (url === './assets/data/stop-coordinates.json') {
+              throw new Error('coordinates unavailable');
+            }
+          },
+        }),
+      },
+      fetch: async () => {
+        throw new Error('unused');
+      },
+    });
+    const { event, promises } = waitableEvent();
+
+    listeners.install(event);
+    await expect(promises[0]).resolves.toBeUndefined();
+
+    expect(cachedUrls).toContain('./assets/data/stop-coordinates.json');
+  });
+
   it('deletes only old caches owned by this app', async () => {
     const deleted = [];
     const listeners = loadServiceWorker({

@@ -68,7 +68,7 @@ self.addEventListener('install', (event) => {
         ...REQUIRED_ASSETS.map((url) => cache.add(url)),
         ...OPTIONAL_ASSETS.map((url) => cache.add(url).catch(() => null)),
       ],
-    )),
+    ).then(() => undefined)),
   );
 });
 
