@@ -34,4 +34,18 @@ describe('i18n helpers', () => {
 
     expect(writes).toEqual([['language', 'de']]);
   });
+
+  it('translates selected-trip map status copy in every supported language', () => {
+    for (const language of SUPPORTED_LANGUAGES) {
+      const t = createTranslator(language.code);
+
+      expect(t('results.selectedTripDetails')).not.toBe('results.selectedTripDetails');
+      expect(t('results.detailsAction')).not.toBe('results.detailsAction');
+      expect(t('results.selectedAction')).not.toBe('results.selectedAction');
+      expect(t('results.mapPartial')).not.toBe('results.mapPartial');
+      expect(t('results.mapNoCoordinates')).not.toBe('results.mapNoCoordinates');
+      expect(t('results.mapLoadFailed')).not.toBe('results.mapLoadFailed');
+      expect(t('results.mapLoadFailedDetail')).not.toBe('results.mapLoadFailedDetail');
+    }
+  });
 });
