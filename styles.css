@@ -707,6 +707,55 @@ a {
   text-align: left;
 }
 
+.browse-view {
+  display: grid;
+  gap: 18px;
+}
+
+.browse-mode-switch,
+.browse-stop-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.browse-mode-switch button,
+.browse-list button,
+.browse-stop-actions button {
+  border: 1px solid rgba(62, 39, 24, 0.12);
+  border-radius: 18px;
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  padding: 12px 14px;
+}
+
+.browse-mode-switch [aria-current="page"] {
+  background: #eb4c60;
+  color: #ffffff;
+}
+
+.browse-layout {
+  display: grid;
+  grid-template-columns: minmax(180px, 260px) minmax(0, 1fr);
+  gap: 18px;
+}
+
+.browse-list,
+.browse-detail,
+.browse-stop-row {
+  background: rgba(255, 251, 247, 0.84);
+  border: 1px solid rgba(62, 39, 24, 0.1);
+  border-radius: 22px;
+  padding: 18px;
+}
+
+.browse-list,
+.browse-stop-list {
+  display: grid;
+  gap: 10px;
+}
+
 .summary-card,
 .results-section,
 .empty-state {
@@ -1020,5 +1069,11 @@ a {
   .language-selector,
   .language-selector select {
     width: 100%;
+  }
+}
+
+@media (max-width: 760px) {
+  .browse-layout {
+    grid-template-columns: 1fr;
   }
 }

@@ -1,5 +1,6 @@
 import { pushRouteSearchEvent } from './lib/analytics.js';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
+import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
 import { findDirectTrips } from './lib/query.js';
 import {
@@ -50,6 +51,7 @@ import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
 import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
+import { renderBrowseView } from './ui/renderBrowseView.js';
 import { renderResultsView } from './ui/renderResults.js';
 import { renderSearchForm } from './ui/renderSearchForm.js';
 import { renderShell } from './ui/renderShell.js';
@@ -74,6 +76,7 @@ const state = {
   language: readStoredLanguage(window.localStorage),
   activeTab: 'search',
   savedRoutes: { favorites: [], recents: [], available: true },
+  browseIndex: { lines: [], stops: [] },
   browseState: {
     mode: 'lines',
     lineId: null,
@@ -258,7 +261,15 @@ function renderApp() {
   const taxiOptions = currentRouteTaxiOptions();
   const parts = [];
 
-  if (state.activeTab === 'saved') {
+  if (state.activeTab === 'browse') {
+    parts.push(renderBrowseView({
+      t,
+      browseIndex: state.browseIndex,
+      mode: state.browseState.mode,
+      selectedLineId: state.browseState.lineId,
+      selectedStopId: state.browseState.stopId,
+    }));
+  } else if (state.activeTab === 'saved') {
     parts.push(renderSavedView({
       t,
       favorites: state.savedRoutes.favorites,
@@ -284,7 +295,7 @@ function renderApp() {
     }));
   }
 
-  if (state.activeTab !== 'saved' && state.locationPicker) {
+  if (state.activeTab === 'search' && state.locationPicker) {
     parts.push(renderLocationPicker({
       ...state.locationPicker,
       message: state.locationPicker.messageKey ? t(state.locationPicker.messageKey) : state.locationPicker.message,
@@ -292,7 +303,7 @@ function renderApp() {
     }));
   }
 
-  if (state.activeTab !== 'saved' && state.resultState?.type === 'results') {
+  if (state.activeTab === 'search' && state.resultState?.type === 'results') {
     parts.push(
       renderResultsView({
         t,
@@ -308,7 +319,7 @@ function renderApp() {
     );
   }
 
-  if (state.activeTab !== 'saved' && state.resultState?.type === 'no-direct') {
+  if (state.activeTab === 'search' && state.resultState?.type === 'no-direct') {
     parts.push(renderNoDirectFallback({
       t,
       routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
@@ -760,6 +771,78 @@ function bindNoDirectActions() {
   });
 }
 
+function seedSearchStop(stopId, fieldName) {
+  const stop = state.stops.find((entry) => entry.id === stopId);
+
+  if (!stop) {
+    return;
+  }
+
+  state.activeTab = 'search';
+
+  if (fieldName === 'from') {
+    selectFromStopChoice(stop);
+  } else {
+    state.formValues = {
+      ...state.formValues,
+      toInput: stop.canonical,
+      toStopId: stop.id,
+    };
+  }
+
+  writeRouteUrl({ push: true });
+  renderApp();
+  bindInteractions();
+}
+
+function bindBrowseActions() {
+  document.querySelectorAll('[data-browse-mode]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.browseState = {
+        ...state.browseState,
+        mode: button.dataset.browseMode ?? 'lines',
+      };
+      writeRouteUrl({ push: true });
+      renderApp();
+      bindInteractions();
+    });
+  });
+
+  document.querySelectorAll('[data-browse-line]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.browseState = {
+        ...state.browseState,
+        mode: 'lines',
+        lineId: button.dataset.browseLine,
+      };
+      writeRouteUrl({ push: true });
+      renderApp();
+      bindInteractions();
+    });
+  });
+
+  document.querySelectorAll('[data-browse-stop]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.browseState = {
+        ...state.browseState,
+        mode: 'stops',
+        stopId: button.dataset.browseStop,
+      };
+      writeRouteUrl({ push: true });
+      renderApp();
+      bindInteractions();
+    });
+  });
+
+  document.querySelectorAll('[data-search-from-stop]').forEach((button) => {
+    button.addEventListener('click', () => seedSearchStop(button.dataset.searchFromStop, 'from'));
+  });
+
+  document.querySelectorAll('[data-search-to-stop]').forEach((button) => {
+    button.addEventListener('click', () => seedSearchStop(button.dataset.searchToStop, 'to'));
+  });
+}
+
 function selectFromLocalityChoice(locality) {
   resetDestinationState();
   Object.assign(state, selectLocality(state, locality, state.stops, state.reachability));
@@ -1084,6 +1167,7 @@ function bindInteractions() {
   bindTabNavigation();
   bindSavedRoutes();
   bindNoDirectActions();
+  bindBrowseActions();
 }
 
 async function boot() {
@@ -1095,6 +1179,7 @@ async function boot() {
 
     state.trips = bootData.trips;
     state.stops = bootData.stops;
+    state.browseIndex = buildBrowseIndex({ trips: bootData.trips, stops: bootData.stops });
     state.stopCoordinates = bootData.stopCoordinates;
     state.localities = bootData.generatedLocalities ?? bootData.manualLocalities ?? [];
     state.reachability = bootData.generatedReachability ?? buildReachabilityFromTrips(bootData.trips);
