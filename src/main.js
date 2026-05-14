@@ -16,6 +16,12 @@ import {
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
 import { buildSearchOutcome } from './lib/searchOutcome.js';
+import {
+  addFavoriteRoute,
+  addRecentRoute,
+  readSavedRoutes,
+  removeFavoriteRoute,
+} from './lib/savedRoutes.js';
 import { listTaxiOptions } from './lib/taxiDirectory.js';
 import {
   SUPPORTED_LANGUAGES,
@@ -40,6 +46,7 @@ import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
 import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
+import { renderSavedView } from './ui/renderSavedView.js';
 import { renderResultsView } from './ui/renderResults.js';
 import { renderSearchForm } from './ui/renderSearchForm.js';
 import { renderShell } from './ui/renderShell.js';
@@ -59,6 +66,7 @@ const state = {
   metadata: null,
   language: readStoredLanguage(window.localStorage),
   activeTab: 'search',
+  savedRoutes: { favorites: [], recents: [], available: true },
   browseState: {
     mode: 'lines',
     lineId: null,
@@ -155,6 +163,15 @@ function currentRouteUrlState() {
   };
 }
 
+function currentSavedRouteSnapshot({ resultType = null, resultCount = 0 } = {}) {
+  return {
+    ...state.formValues,
+    resultType,
+    resultCount,
+    timestamp: new Date().toISOString(),
+  };
+}
+
 function writeRouteUrl({ push = false } = {}) {
   const params = serializeRouteUrlState(currentRouteUrlState());
   const query = params.toString();
@@ -224,24 +241,35 @@ function renderApp() {
   const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
   const destinationOptions = currentDestinationOptions();
   const taxiOptions = currentRouteTaxiOptions();
-  const parts = [renderSearchForm({
-    t,
-    fromInput: state.formValues.fromInput,
-    fromLocalitySelected: Boolean(state.formValues.fromLocalityId),
-    exactFromStop,
-    fromSuggestions: currentFromSuggestions(t),
-    fromPanelOpen: state.uiState.fromPanelOpen,
-    toInput: state.formValues.toInput,
-    toStopSelected: Boolean(state.formValues.toStopId),
-    toPanelOpen: state.uiState.toPanelOpen,
-    reachableDestinations: destinationOptions,
-    destinationMode: currentDestinationMode(),
-    destinationMessage: currentDestinationMessage(t),
-    selectedLocalityLabel: selectedLocality?.label ?? '',
-    dayType: state.formValues.dayType,
-  })];
+  const parts = [];
 
-  if (state.locationPicker) {
+  if (state.activeTab === 'saved') {
+    parts.push(renderSavedView({
+      t,
+      favorites: state.savedRoutes.favorites,
+      recents: state.savedRoutes.recents,
+      available: state.savedRoutes.available,
+    }));
+  } else {
+    parts.push(renderSearchForm({
+      t,
+      fromInput: state.formValues.fromInput,
+      fromLocalitySelected: Boolean(state.formValues.fromLocalityId),
+      exactFromStop,
+      fromSuggestions: currentFromSuggestions(t),
+      fromPanelOpen: state.uiState.fromPanelOpen,
+      toInput: state.formValues.toInput,
+      toStopSelected: Boolean(state.formValues.toStopId),
+      toPanelOpen: state.uiState.toPanelOpen,
+      reachableDestinations: destinationOptions,
+      destinationMode: currentDestinationMode(),
+      destinationMessage: currentDestinationMessage(t),
+      selectedLocalityLabel: selectedLocality?.label ?? '',
+      dayType: state.formValues.dayType,
+    }));
+  }
+
+  if (state.activeTab !== 'saved' && state.locationPicker) {
     parts.push(renderLocationPicker({
       ...state.locationPicker,
       message: state.locationPicker.messageKey ? t(state.locationPicker.messageKey) : state.locationPicker.message,
@@ -249,7 +277,7 @@ function renderApp() {
     }));
   }
 
-  if (state.resultState?.type === 'results') {
+  if (state.activeTab !== 'saved' && state.resultState?.type === 'results') {
     parts.push(
       renderResultsView({
         t,
@@ -265,7 +293,7 @@ function renderApp() {
     );
   }
 
-  if (state.resultState?.type === 'no-direct') {
+  if (state.activeTab !== 'saved' && state.resultState?.type === 'no-direct') {
     parts.push(renderNoDirectFallback({
       t,
       routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
@@ -602,6 +630,10 @@ async function openLocationPicker(fieldName) {
 function bindForm() {
   const form = document.querySelector('#route-form');
 
+  if (!form) {
+    return;
+  }
+
   form.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -649,6 +681,10 @@ function bindForm() {
         selectedTripKey: null,
       }
       : outcome;
+    state.savedRoutes = addRecentRoute(window.localStorage, currentSavedRouteSnapshot({
+      resultType: outcome.type,
+      resultCount: matches.length,
+    }));
     state.locationPicker = null;
     writeRouteUrl({ push: false });
     renderApp();
@@ -886,6 +922,93 @@ function bindTabNavigation() {
   });
 }
 
+function restoreSavedRoute(route) {
+  state.activeTab = 'search';
+  state.formValues = {
+    fromInput: route.fromInput ?? '',
+    fromLocalityId: route.fromLocalityId ?? null,
+    fromStopId: route.fromStopId ?? null,
+    toInput: route.toInput ?? '',
+    toStopId: route.toStopId ?? null,
+    dayType: route.dayType ?? 'feriale',
+  };
+  state.resultState = null;
+  state.locationPicker = null;
+  state.uiState = {
+    fromPanelOpen: false,
+    toPanelOpen: false,
+  };
+  state.pickerState = {
+    exactStopChoices: [],
+    reachableDestinations: [],
+  };
+
+  if (state.formValues.fromStopId) {
+    state.pickerState = {
+      ...state.pickerState,
+      reachableDestinations: getReachableStops(state.formValues.fromStopId, state.reachability, state.stops),
+    };
+  } else if (state.formValues.fromLocalityId) {
+    state.pickerState = {
+      ...state.pickerState,
+      exactStopChoices: getLocalityStops(state.formValues.fromLocalityId, state.localities, state.stops),
+      reachableDestinations: getLocalityReachableStops(
+        state.formValues.fromLocalityId,
+        state.localities,
+        state.reachability,
+        state.stops,
+      ),
+    };
+  }
+
+  writeRouteUrl({ push: true });
+  renderApp();
+  bindInteractions();
+}
+
+function findSavedRoute(identity) {
+  return [
+    ...state.savedRoutes.favorites,
+    ...state.savedRoutes.recents,
+  ].find((route) => route.identity === identity) ?? null;
+}
+
+function bindSavedRoutes() {
+  document.querySelector('[data-save-current-route]')?.addEventListener('click', () => {
+    const resultCount = state.resultState?.type === 'results' ? state.resultState.allDepartures.length : 0;
+    state.savedRoutes = addFavoriteRoute(window.localStorage, currentSavedRouteSnapshot({
+      resultType: state.resultState?.type ?? null,
+      resultCount,
+    }));
+    renderApp();
+    bindInteractions();
+  });
+
+  document.querySelector('[data-share-current-route]')?.addEventListener('click', async () => {
+    writeRouteUrl({ push: false });
+    await navigator.clipboard?.writeText?.(window.location.href);
+  });
+
+  document.querySelectorAll('[data-saved-route], [data-recent-route]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const identity = button.dataset.savedRoute ?? button.dataset.recentRoute ?? '';
+      const route = findSavedRoute(identity);
+
+      if (route) {
+        restoreSavedRoute(route);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-remove-favorite]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.savedRoutes = removeFavoriteRoute(window.localStorage, button.dataset.removeFavorite ?? '');
+      renderApp();
+      bindInteractions();
+    });
+  });
+}
+
 function bindInteractions() {
   bindForm();
   bindFieldPanels();
@@ -893,6 +1016,7 @@ function bindInteractions() {
   bindLocationActions();
   bindLanguageSelector();
   bindTabNavigation();
+  bindSavedRoutes();
 }
 
 async function boot() {
@@ -910,6 +1034,7 @@ async function boot() {
     state.metadata = bootData.metadata;
     state.formValues = bootData.formValues;
     state.aliases = Object.fromEntries(bootData.stops.map((stop) => [stop.canonical, stop.variants]));
+    state.savedRoutes = readSavedRoutes(window.localStorage);
 
     hydrateRouteStateFromUrl();
     renderApp();

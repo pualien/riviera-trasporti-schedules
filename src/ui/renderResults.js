@@ -64,6 +64,10 @@ export function renderResultsView({
             <h2>${routeLabel}</h2>
           </div>
           <div class="summary-lines">${t('results.line')} ${summary.lines.join(', ')}</div>
+          <div class="summary-actions">
+            <button type="button" class="topbar-link" data-save-current-route>${t('results.saveRoute')}</button>
+            <button type="button" class="topbar-link" data-share-current-route>${t('results.shareRoute')}</button>
+          </div>
         </div>
 
         ${renderSummaryMetrics(summary, t)}

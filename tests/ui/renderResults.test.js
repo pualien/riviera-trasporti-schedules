@@ -39,6 +39,10 @@ describe('renderResultsView', () => {
     expect(html).toContain('Last departure today');
     expect(html).toContain('Average duration');
     expect(html).toContain('https://example.com/riviera.pdf#page=23');
+    expect(html).toContain('data-save-current-route');
+    expect(html).toContain('data-share-current-route');
+    expect(html).toContain('Save route');
+    expect(html).toContain('Share');
   });
 
   it('renders translated results copy without changing line data', () => {
