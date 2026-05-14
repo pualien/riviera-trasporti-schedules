@@ -1,6 +1,14 @@
 import { createTranslator } from '../lib/i18n.js';
 import { renderTaxiOptionsSection } from './renderTaxiOption.js';
 
+function pdfHref(pdfUrl, sourcePage) {
+  if (!pdfUrl || pdfUrl === '#') {
+    return '#';
+  }
+
+  return sourcePage ? `${pdfUrl}#page=${sourcePage}` : pdfUrl;
+}
+
 function renderDepartureCard(departure, t, pdfUrl) {
   const className = departure.isSelected
     ? 'departure-card departure-card--selected'
@@ -18,7 +26,7 @@ function renderDepartureCard(departure, t, pdfUrl) {
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
         <span>${actionLabel}</span>
-        <a href="${pdfUrl}#page=${departure.sourcePage}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
+        <a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>
     </article>
   `;

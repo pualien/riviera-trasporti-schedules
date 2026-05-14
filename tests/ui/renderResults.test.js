@@ -75,6 +75,35 @@ describe('renderResultsView', () => {
     expect(html).toContain('Abrir PDF');
   });
 
+  it('uses a sane fallback PDF link when the runtime PDF URL is missing', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: '#',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: { departureTime: '16:45' },
+        soonestArrival: { arrivalTime: '17:25' },
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [
+        {
+          departureTime: '16:45',
+          arrivalTime: '17:25',
+          durationMinutes: 40,
+          lineId: '12',
+          sourcePage: 23,
+        },
+      ],
+      allDepartures: [],
+    });
+
+    expect(html).not.toContain('##page=23');
+    expect(html).toContain('href="#"');
+  });
+
   it('renders selectable departure cards and the selected trip panel', () => {
     const html = renderResultsView({
       t: createTranslator('en'),
