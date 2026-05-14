@@ -1,8 +1,12 @@
 export const SAVED_ROUTES_STORAGE_KEY = 'riviera:saved-routes';
 export const SAVED_ROUTE_LIMIT = 8;
 
-function defaultStorage() {
-  return typeof window === 'undefined' ? null : window.localStorage;
+export function getSavedRoutesStorage(globalObject = typeof window === 'undefined' ? null : window) {
+  try {
+    return globalObject?.localStorage ?? null;
+  } catch {
+    return null;
+  }
 }
 
 function emptySavedRoutes(available = true) {
@@ -18,7 +22,11 @@ function normalizeRoute(route) {
 
 function writeSavedRoutes(storage, savedRoutes) {
   try {
-    storage?.setItem?.(SAVED_ROUTES_STORAGE_KEY, JSON.stringify({
+    if (!storage?.setItem) {
+      return emptySavedRoutes(false);
+    }
+
+    storage.setItem(SAVED_ROUTES_STORAGE_KEY, JSON.stringify({
       favorites: savedRoutes.favorites,
       recents: savedRoutes.recents,
     }));
@@ -46,9 +54,13 @@ export function createRouteIdentity(route) {
   ].join('|');
 }
 
-export function readSavedRoutes(storage = defaultStorage()) {
+export function readSavedRoutes(storage = getSavedRoutesStorage()) {
   try {
-    const rawValue = storage?.getItem?.(SAVED_ROUTES_STORAGE_KEY);
+    if (!storage?.getItem) {
+      return emptySavedRoutes(false);
+    }
+
+    const rawValue = storage.getItem(SAVED_ROUTES_STORAGE_KEY);
 
     if (!rawValue) {
       return emptySavedRoutes(true);
@@ -65,7 +77,7 @@ export function readSavedRoutes(storage = defaultStorage()) {
   }
 }
 
-export function addRecentRoute(storage = defaultStorage(), route) {
+export function addRecentRoute(storage = getSavedRoutesStorage(), route) {
   const savedRoutes = readSavedRoutes(storage);
 
   if (!savedRoutes.available) {
@@ -78,7 +90,7 @@ export function addRecentRoute(storage = defaultStorage(), route) {
   });
 }
 
-export function addFavoriteRoute(storage = defaultStorage(), route) {
+export function addFavoriteRoute(storage = getSavedRoutesStorage(), route) {
   const savedRoutes = readSavedRoutes(storage);
 
   if (!savedRoutes.available) {
@@ -91,7 +103,7 @@ export function addFavoriteRoute(storage = defaultStorage(), route) {
   });
 }
 
-export function removeFavoriteRoute(storage = defaultStorage(), identity) {
+export function removeFavoriteRoute(storage = getSavedRoutesStorage(), identity) {
   const savedRoutes = readSavedRoutes(storage);
 
   if (!savedRoutes.available) {

@@ -3,6 +3,7 @@ import {
   addFavoriteRoute,
   addRecentRoute,
   createRouteIdentity,
+  getSavedRoutesStorage,
   readSavedRoutes,
   removeFavoriteRoute,
 } from '../../src/lib/savedRoutes.js';
@@ -77,6 +78,24 @@ describe('savedRoutes', () => {
       },
     };
 
+    expect(readSavedRoutes(storage)).toEqual({ favorites: [], recents: [], available: false });
+  });
+
+  it('returns unavailable when storage is missing', () => {
+    expect(readSavedRoutes(null)).toEqual({ favorites: [], recents: [], available: false });
+    expect(addRecentRoute(null, route)).toEqual({ favorites: [], recents: [], available: false });
+    expect(addFavoriteRoute(null, route)).toEqual({ favorites: [], recents: [], available: false });
+    expect(removeFavoriteRoute(null, createRouteIdentity(route))).toEqual({ favorites: [], recents: [], available: false });
+  });
+
+  it('guards storage getter access before reading saved routes', () => {
+    const storage = getSavedRoutesStorage({
+      get localStorage() {
+        throw new Error('blocked');
+      },
+    });
+
+    expect(storage).toBeNull();
     expect(readSavedRoutes(storage)).toEqual({ favorites: [], recents: [], available: false });
   });
 });

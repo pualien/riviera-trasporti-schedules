@@ -24,6 +24,7 @@ describe('renderSavedView', () => {
     expect(html).toContain('Saved routes');
     expect(html).toContain('Recent searches');
     expect(html).toContain('data-saved-route="porto|to|feriale"');
+    expect(html).toContain('data-remove-favorite="porto|to|feriale"');
     expect(html).toContain('data-recent-route="recent"');
     expect(html).toContain('Porto Maurizio');
     expect(html).toContain('Sanremo Autostazione');

@@ -19,6 +19,7 @@ import { buildSearchOutcome } from './lib/searchOutcome.js';
 import {
   addFavoriteRoute,
   addRecentRoute,
+  getSavedRoutesStorage,
   readSavedRoutes,
   removeFavoriteRoute,
 } from './lib/savedRoutes.js';
@@ -55,6 +56,10 @@ import { renderTabNav } from './ui/renderTabNav.js';
 const app = document.querySelector('#app');
 const LEAFLET_CSS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
 const LEAFLET_JS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+
+function savedRoutesStorage() {
+  return getSavedRoutesStorage(window);
+}
 
 const state = {
   trips: [],
@@ -681,7 +686,7 @@ function bindForm() {
         selectedTripKey: null,
       }
       : outcome;
-    state.savedRoutes = addRecentRoute(window.localStorage, currentSavedRouteSnapshot({
+    state.savedRoutes = addRecentRoute(savedRoutesStorage(), currentSavedRouteSnapshot({
       resultType: outcome.type,
       resultCount: matches.length,
     }));
@@ -976,7 +981,7 @@ function findSavedRoute(identity) {
 function bindSavedRoutes() {
   document.querySelector('[data-save-current-route]')?.addEventListener('click', () => {
     const resultCount = state.resultState?.type === 'results' ? state.resultState.allDepartures.length : 0;
-    state.savedRoutes = addFavoriteRoute(window.localStorage, currentSavedRouteSnapshot({
+    state.savedRoutes = addFavoriteRoute(savedRoutesStorage(), currentSavedRouteSnapshot({
       resultType: state.resultState?.type ?? null,
       resultCount,
     }));
@@ -1002,7 +1007,7 @@ function bindSavedRoutes() {
 
   document.querySelectorAll('[data-remove-favorite]').forEach((button) => {
     button.addEventListener('click', () => {
-      state.savedRoutes = removeFavoriteRoute(window.localStorage, button.dataset.removeFavorite ?? '');
+      state.savedRoutes = removeFavoriteRoute(savedRoutesStorage(), button.dataset.removeFavorite ?? '');
       renderApp();
       bindInteractions();
     });
@@ -1034,7 +1039,7 @@ async function boot() {
     state.metadata = bootData.metadata;
     state.formValues = bootData.formValues;
     state.aliases = Object.fromEntries(bootData.stops.map((stop) => [stop.canonical, stop.variants]));
-    state.savedRoutes = readSavedRoutes(window.localStorage);
+    state.savedRoutes = readSavedRoutes(savedRoutesStorage());
 
     hydrateRouteStateFromUrl();
     renderApp();
