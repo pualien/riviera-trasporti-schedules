@@ -534,37 +534,43 @@ async function renderNearbyMap() {
 
 async function renderSelectedTripMap(mapState) {
   if (!mapState.hasMap) {
-    return;
+    return false;
   }
 
   const mapElement = document.querySelector('#selected-trip-map');
 
   if (!mapElement || mapElement._leaflet_id) {
-    return;
+    return true;
   }
 
-  const L = await ensureLeaflet();
-  const coordinates = mapState.points.map((point) => [point.latitude, point.longitude]);
-  const map = L.map(mapElement, {
-    zoomControl: false,
-    attributionControl: true,
-  });
+  try {
+    const L = await ensureLeaflet();
+    const coordinates = mapState.points.map((point) => [point.latitude, point.longitude]);
+    const map = L.map(mapElement, {
+      zoomControl: false,
+      attributionControl: true,
+    });
 
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(map);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    }).addTo(map);
 
-  L.polyline(coordinates, {
-    color: '#1144cc',
-    weight: 4,
-  }).addTo(map);
+    L.polyline(coordinates, {
+      color: '#d93b4f',
+      weight: 4,
+    }).addTo(map);
 
-  mapState.points.forEach((point) => {
-    L.marker([point.latitude, point.longitude]).addTo(map).bindPopup(`${point.time} · ${point.label}`);
-  });
+    mapState.points.forEach((point) => {
+      L.marker([point.latitude, point.longitude]).addTo(map).bindPopup(`${point.time} · ${point.label}`);
+    });
 
-  map.fitBounds(coordinates, { padding: [24, 24] });
+    map.fitBounds(coordinates, { padding: [24, 24] });
+    return true;
+  } catch (error) {
+    console.error(error);
+    return false;
+  }
 }
 
 function bindNearbyStopSelection() {
@@ -1062,6 +1068,7 @@ function bindDepartureSelection() {
       state.resultState = {
         ...state.resultState,
         selectedTripKey: tripKey,
+        selectedTripMapLoadFailed: false,
       };
 
       renderApp();
@@ -1069,7 +1076,15 @@ function bindDepartureSelection() {
 
       const mapState = buildRouteMapState(match, state.stopCoordinates);
       if (mapState.hasMap) {
-        await renderSelectedTripMap(mapState);
+        const mapRendered = await renderSelectedTripMap(mapState);
+        if (!mapRendered && state.resultState?.type === 'results') {
+          state.resultState = {
+            ...state.resultState,
+            selectedTripMapLoadFailed: true,
+          };
+          renderApp();
+          bindInteractions();
+        }
       }
     });
   });
