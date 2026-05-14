@@ -6,9 +6,11 @@ import { findDirectTrips, resolveRouteStopIds } from './lib/query.js';
 import {
   findExactLocalityMatch,
   findExactStopMatch,
+  getDepartureStops,
   getLocalityReachableStops,
   getLocalityStops,
   getReachableStops,
+  resolveOriginSelection,
 } from './lib/localities.js';
 import {
   buildNearbyStopChoices,
@@ -183,15 +185,31 @@ function currentRouteTaxiOptions() {
 }
 
 function currentLocalityStopIds() {
-  return state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? [];
+  return currentOriginContext().selectedLocality?.stopIds ?? [];
+}
+
+function currentAvailableDepartureStops() {
+  return getDepartureStops(state.stops, state.reachability);
+}
+
+function currentOriginContext() {
+  return resolveOriginSelection({
+    fromInput: state.formValues.fromInput,
+    fromLocalityId: state.formValues.fromLocalityId,
+    fromStopId: state.formValues.fromStopId,
+    localities: state.localities,
+    stops: state.stops,
+    reachability: state.reachability,
+  });
 }
 
 function currentResolvedRouteStopIds() {
+  const originContext = currentOriginContext();
   return resolveRouteStopIds({
     from: state.formValues.fromInput,
     to: state.formValues.toInput,
-    fromStopId: state.formValues.fromStopId,
-    fromLocalityStopIds: state.formValues.fromStopId ? [] : currentLocalityStopIds(),
+    fromStopId: originContext.exactFromStop?.id ?? null,
+    fromLocalityStopIds: originContext.exactFromStop ? [] : currentLocalityStopIds(),
     toStopId: state.formValues.toStopId,
     aliases: state.aliases,
   });
@@ -291,8 +309,9 @@ function updateSeoForCurrentState(t) {
 
 function renderApp() {
   const t = createTranslator(state.language);
-  const exactFromStop = state.stops.find((stop) => stop.id === state.formValues.fromStopId) ?? null;
-  const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
+  const originContext = currentOriginContext();
+  const exactFromStop = originContext.exactFromStop;
+  const selectedLocality = originContext.selectedLocality;
   const destinationOptions = currentDestinationOptions();
   const taxiOptions = currentRouteTaxiOptions();
   const parts = [];
@@ -316,7 +335,7 @@ function renderApp() {
     parts.push(renderSearchForm({
       t,
       fromInput: state.formValues.fromInput,
-      fromLocalitySelected: Boolean(state.formValues.fromLocalityId),
+      fromLocalitySelected: Boolean(selectedLocality || exactFromStop),
       exactFromStop,
       fromSuggestions: currentFromSuggestions(t),
       fromPanelOpen: state.uiState.fromPanelOpen,
@@ -408,12 +427,13 @@ function resetDestinationState() {
 }
 
 function currentFromSuggestions(t) {
-  const selectedLocalityLabel = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.label ?? '';
+  const originContext = currentOriginContext();
   const sections = buildFromSuggestionSections({
     inputValue: state.formValues.fromInput,
     localities: state.localities,
-    selectedLocalityLabel,
-    exactStopChoices: state.pickerState.exactStopChoices,
+    selectedLocalityLabel: originContext.selectedLocality?.label ?? '',
+    exactStopChoices: originContext.exactStopChoices,
+    availableExactStops: currentAvailableDepartureStops(),
   });
 
   return {
@@ -424,39 +444,43 @@ function currentFromSuggestions(t) {
 }
 
 function currentDestinationMode() {
-  if (!state.formValues.fromLocalityId) {
+  const originContext = currentOriginContext();
+
+  if (!originContext.selectedLocality && !originContext.exactFromStop) {
     return 'informational';
   }
 
-  if (state.pickerState.reachableDestinations.length === 0) {
+  if (originContext.reachableDestinations.length === 0) {
     return 'empty';
   }
 
-  return state.formValues.fromStopId ? 'exact-stop-destinations' : 'locality-destinations';
+  return originContext.exactFromStop ? 'exact-stop-destinations' : 'locality-destinations';
 }
 
 function currentDestinationMessage(t) {
   const mode = currentDestinationMode();
+  const originContext = currentOriginContext();
 
   if (mode === 'informational') {
     return t('search.destination.informational');
   }
 
   if (mode === 'empty') {
-    return state.formValues.fromStopId
+    return originContext.exactFromStop
       ? t('search.destination.emptyStop')
       : t('search.destination.emptyLocality');
   }
 
-  return state.formValues.fromStopId
+  return originContext.exactFromStop
     ? t('search.destination.fromStop')
     : t('search.destination.fromArea');
 }
 
 function currentDestinationOptions() {
+  const originContext = currentOriginContext();
   const query = normalizeText(state.formValues.toInput);
 
-  return state.pickerState.reachableDestinations.filter(
+  return originContext.reachableDestinations.filter(
     (stop) => !query || normalizeText(stop.canonical).includes(query),
   );
 }
@@ -722,11 +746,12 @@ async function openLocationPicker(fieldName) {
 
 function submitCurrentSearch() {
   const routeStopIds = currentResolvedRouteStopIds();
+  const originContext = currentOriginContext();
   const matches = findDirectTrips({
     from: state.formValues.fromInput,
     to: state.formValues.toInput,
-    fromStopId: state.formValues.fromStopId,
-    fromLocalityStopIds: state.formValues.fromStopId
+    fromStopId: originContext.exactFromStop?.id ?? null,
+    fromLocalityStopIds: originContext.exactFromStop
       ? []
       : currentLocalityStopIds(),
     toStopId: state.formValues.toStopId,
@@ -738,8 +763,8 @@ function submitCurrentSearch() {
   const outcome = buildSearchOutcome({
     matches,
     now: new Date(),
-    fromLocalityId: state.formValues.fromLocalityId,
-    fromStopId: state.formValues.fromStopId,
+    fromLocalityId: originContext.selectedLocality?.id ?? null,
+    fromStopId: originContext.exactFromStop?.id ?? null,
     localities: state.localities,
     reachability: state.reachability,
     stops: state.stops,
@@ -1039,7 +1064,10 @@ function bindFieldPanels() {
   document.querySelectorAll('[data-from-value]').forEach((button) => {
     button.addEventListener('click', () => {
       const value = button.dataset.fromValue ?? '';
-      const exactStopChoice = findExactStopMatch(value, state.pickerState.exactStopChoices);
+      const optionType = button.dataset.optionType ?? '';
+      const exactStopChoice = optionType === 'exact-stop'
+        ? findExactStopMatch(value, currentAvailableDepartureStops())
+        : null;
 
       if (exactStopChoice) {
         selectFromStopChoice(exactStopChoice);

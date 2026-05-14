@@ -6,19 +6,43 @@ function sortByLabel(entries) {
   );
 }
 
+function localityMatches(locality, query) {
+  const tokens = [
+    locality.label,
+    ...(locality.aliases ?? []),
+    ...(locality.matchTokens ?? []),
+  ].map(normalizeText);
+
+  return !query || tokens.some((token) => token.includes(query));
+}
+
+function stopMatches(stop, query) {
+  const tokens = [
+    stop.canonical,
+    ...(stop.variants ?? []),
+    ...(stop.matchTokens ?? []),
+  ].map(normalizeText);
+
+  return !query || tokens.some((token) => token.includes(query));
+}
+
 export function buildFromSuggestionSections({
   inputValue,
   localities,
   selectedLocalityLabel,
   exactStopChoices,
+  availableExactStops = [],
 }) {
   const query = normalizeText(inputValue);
   const matchingAreas = sortByLabel(localities)
-    .filter((locality) => !query || normalizeText(locality.label).includes(query))
-    .map((locality) => ({ value: locality.label, meta: 'Area' }));
-  const matchingExactStops = sortByLabel(exactStopChoices)
-    .filter((stop) => !query || normalizeText(stop.canonical).includes(query))
-    .map((stop) => ({ value: stop.canonical, meta: 'Exact stop' }));
+    .filter((locality) => localityMatches(locality, query))
+    .map((locality) => ({ value: locality.label, meta: 'Area', type: 'area' }));
+  const exactStopSource = exactStopChoices.length
+    ? exactStopChoices
+    : (query ? availableExactStops : []);
+  const matchingExactStops = sortByLabel(exactStopSource)
+    .filter((stop) => stopMatches(stop, query))
+    .map((stop) => ({ value: stop.canonical, meta: 'Exact stop', type: 'exact-stop' }));
 
   return {
     areas: matchingAreas,

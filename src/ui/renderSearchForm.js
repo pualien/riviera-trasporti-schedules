@@ -19,8 +19,8 @@ function escapeHtml(value = '') {
 function renderSuggestionButtons(attributeName, suggestions = [], t) {
   return suggestions
     .map(
-      ({ value, meta = '', label = '' }) => `
-        <button type="button" class="picker-option" ${attributeName}="${escapeHtml(value)}">
+      ({ value, meta = '', label = '', type = '' }) => `
+        <button type="button" class="picker-option" ${attributeName}="${escapeHtml(value)}" ${type ? `data-option-type="${escapeHtml(type)}"` : ''}>
           <span class="picker-option-copy">
             <span class="picker-option-label">${escapeHtml(value)}</span>
             ${(meta || label) ? `<small>${escapeHtml(meta || label)}</small>` : ''}
@@ -38,6 +38,9 @@ function renderFromPanel(fromSuggestions, t) {
     exactStops = [],
     exactStopHeading = '',
   } = fromSuggestions ?? {};
+  const initialOptions = exactStopHeading
+    ? areas
+    : [...areas, ...exactStops];
 
   return `
     <div class="picker-panel" data-panel="from">
@@ -45,9 +48,9 @@ function renderFromPanel(fromSuggestions, t) {
         <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
       </div>
       <div class="picker-option-list">
-        ${renderSuggestionButtons('data-from-value', areas, t)}
+        ${renderSuggestionButtons('data-from-value', initialOptions, t)}
       </div>
-      ${exactStops.length ? `
+      ${exactStops.length && exactStopHeading ? `
         <div class="picker-panel-head">
           <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
         </div>
@@ -175,12 +178,13 @@ export function renderSearchForm({
   selectedLocalityLabel = '',
   dayType = 'feriale',
 } = {}) {
+  const originReady = fromLocalitySelected || Boolean(exactFromStop);
   const fromHelp = exactFromStop
     ? t('search.fromHelp.exact')
     : (fromLocalitySelected
       ? t('search.fromHelp.locality')
       : t('search.fromHelp.blank'));
-  const toHelp = fromLocalitySelected
+  const toHelp = originReady
     ? t('search.toHelp.ready')
     : t('search.toHelp.locked');
   const resolvedDestinationMessage = destinationMessage ?? t('search.destination.informational');

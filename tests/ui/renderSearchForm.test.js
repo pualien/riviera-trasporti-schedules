@@ -104,6 +104,23 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Exact departure stop selected for direct-service matching.');
   });
 
+  it('treats an exact stop as destination-ready even without a chosen broad area', () => {
+    const html = renderSearchForm({
+      fromInput: 'diano marina',
+      fromLocalitySelected: false,
+      exactFromStop: { id: 'diano-marina', canonical: 'diano marina' },
+      toInput: '',
+      toPanelOpen: true,
+      destinationMode: 'exact-stop-destinations',
+      destinationMessage: 'Direct destinations from this stop',
+      reachableDestinations: [{ id: 'sanremo-autostazione', canonical: 'sanremo autostazione' }],
+    });
+
+    expect(html).toContain('Only direct destinations from the selected departure side appear here.');
+    expect(html).not.toContain('Choose a departure area first to see direct destinations.');
+    expect(html).toContain('Direct destinations from this stop');
+  });
+
   it('shows an informational to panel without disabling the field before origin selection', () => {
     const html = renderSearchForm({
       fromInput: '',

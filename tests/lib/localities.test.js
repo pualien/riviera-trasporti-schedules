@@ -3,9 +3,11 @@ import {
   findExactLocalityMatch,
   findExactStopMatch,
   findMatchingLocalities,
+  getDepartureStops,
   getLocalityReachableStops,
   getLocalityStops,
   getReachableStops,
+  resolveOriginSelection,
 } from '../../src/lib/localities.js';
 
 const localities = [
@@ -19,8 +21,9 @@ const localities = [
 ];
 
 const stops = [
-  { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
+  { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
   { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
+  { id: 'diano-marina', canonical: 'diano marina' },
   { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
   { id: 'taggia-stazione', canonical: 'taggia stazione' },
 ];
@@ -32,7 +35,7 @@ describe('locality helpers', () => {
 
   it('expands a locality into exact stop records', () => {
     expect(getLocalityStops('porto-maurizio', localities, stops)).toEqual([
-      { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
+      { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
       { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
     ]);
   });
@@ -67,5 +70,64 @@ describe('locality helpers', () => {
       { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
       { id: 'taggia-stazione', canonical: 'taggia stazione' },
     ]);
+  });
+
+  it('lists every stop that has at least one direct onward destination', () => {
+    expect(
+      getDepartureStops(stops, {
+        'imperia-porto-maurizio': ['sanremo-autostazione'],
+        'diano-marina': ['taggia-stazione'],
+        'sanremo-autostazione': [],
+      }),
+    ).toEqual([
+      { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
+      { id: 'diano-marina', canonical: 'diano marina' },
+    ]);
+  });
+
+  it('treats a typed locality alias as a broad origin selection', () => {
+    expect(
+      resolveOriginSelection({
+        fromInput: 'Imperia Porto Maurizio',
+        localities,
+        stops,
+        reachability: {
+          'imperia-porto-maurizio': ['sanremo-autostazione'],
+          'imperia-porto-maurizio-piazza-dante': ['taggia-stazione'],
+        },
+      }),
+    ).toMatchObject({
+      selectedLocality: localities[0],
+      exactFromStop: null,
+      exactStopChoices: [
+        { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
+        { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
+      ],
+      reachableDestinations: [
+        { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+        { id: 'taggia-stazione', canonical: 'taggia stazione' },
+      ],
+    });
+  });
+
+  it('treats a typed departure stop outside the locality list as an exact origin selection', () => {
+    expect(
+      resolveOriginSelection({
+        fromInput: 'diano marina',
+        localities,
+        stops,
+        reachability: {
+          'diano-marina': ['sanremo-autostazione', 'taggia-stazione'],
+        },
+      }),
+    ).toMatchObject({
+      selectedLocality: null,
+      exactFromStop: { id: 'diano-marina', canonical: 'diano marina' },
+      exactStopChoices: [],
+      reachableDestinations: [
+        { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+        { id: 'taggia-stazione', canonical: 'taggia stazione' },
+      ],
+    });
   });
 });

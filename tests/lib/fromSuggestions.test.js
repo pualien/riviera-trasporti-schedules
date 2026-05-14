@@ -33,6 +33,7 @@ describe('buildFromSuggestionSections', () => {
         { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
         { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
       ],
+      availableExactStops: [],
     });
 
     expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
@@ -41,5 +42,21 @@ describe('buildFromSuggestionSections', () => {
       'imperia porto maurizio piazza dante',
     ]);
     expect(sections.exactStopHeading).toBe('Porto Maurizio');
+  });
+
+  it('matches locality aliases and network-wide departure stops before a locality is selected', () => {
+    const sections = buildFromSuggestionSections({
+      inputValue: 'imperia porto maurizio',
+      localities,
+      selectedLocalityLabel: '',
+      exactStopChoices: [],
+      availableExactStops: [
+        { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
+        { id: 'diano-marina', canonical: 'diano marina', variants: [] },
+      ],
+    });
+
+    expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
+    expect(sections.exactStops.map((entry) => entry.value)).toEqual(['imperia porto maurizio']);
   });
 });
