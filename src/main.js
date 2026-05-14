@@ -18,6 +18,7 @@ import {
 import { buildRouteMapState } from './lib/routeMap.js';
 import { buildSearchOutcome } from './lib/searchOutcome.js';
 import { findOneTransferSuggestions } from './lib/transferSuggestions.js';
+import { ensureLeaflet } from './lib/leafletLoader.js';
 import {
   addFavoriteRoute,
   addRecentRoute,
@@ -60,8 +61,6 @@ import { renderShell } from './ui/renderShell.js';
 import { renderTabNav } from './ui/renderTabNav.js';
 
 const app = document.querySelector('#app');
-const LEAFLET_CSS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
-const LEAFLET_JS_URL = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
 let locationPickerRequestId = 0;
 
 function savedRoutesStorage() {
@@ -460,41 +459,6 @@ function currentDestinationOptions() {
   return state.pickerState.reachableDestinations.filter(
     (stop) => !query || normalizeText(stop.canonical).includes(query),
   );
-}
-
-async function ensureLeaflet() {
-  if (window.L) {
-    return window.L;
-  }
-
-  if (!document.querySelector(`link[href="${LEAFLET_CSS_URL}"]`)) {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = LEAFLET_CSS_URL;
-    document.head.append(link);
-  }
-
-  await new Promise((resolve, reject) => {
-    const existingScript = document.querySelector(`script[src="${LEAFLET_JS_URL}"]`);
-
-    if (existingScript) {
-      existingScript.addEventListener('load', resolve, { once: true });
-      existingScript.addEventListener('error', reject, { once: true });
-      if (window.L) {
-        resolve();
-      }
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.src = LEAFLET_JS_URL;
-    script.async = true;
-    script.onload = resolve;
-    script.onerror = reject;
-    document.body.append(script);
-  });
-
-  return window.L;
 }
 
 async function renderNearbyMap(requestId) {

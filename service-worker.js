@@ -21,6 +21,7 @@ const REQUIRED_ASSETS = [
   './src/lib/browseIndex.js',
   './src/lib/fromSuggestions.js',
   './src/lib/i18n.js',
+  './src/lib/leafletLoader.js',
   './src/lib/localities.js',
   './src/lib/nearbyStops.js',
   './src/lib/normalize.js',
