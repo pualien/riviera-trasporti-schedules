@@ -176,4 +176,35 @@ describe('findOneTransferSuggestions', () => {
       },
     });
   });
+
+  it('rejects transfer legs whose arrival time is earlier than departure time', () => {
+    const suggestions = findOneTransferSuggestions({
+      trips: [
+        {
+          lineId: 'A',
+          dayType: 'feriale',
+          sourcePage: 50,
+          stops: [
+            { stopId: 'origin', name: 'Origin', time: '08:00' },
+            { stopId: 'transfer', name: 'Transfer', time: '08:20' },
+          ],
+        },
+        {
+          lineId: 'B',
+          dayType: 'feriale',
+          sourcePage: 51,
+          stops: [
+            { stopId: 'transfer', name: 'Transfer', time: '08:30' },
+            { stopId: 'destination', name: 'Destination', time: '07:00' },
+          ],
+        },
+      ],
+      fromStopIds: ['origin'],
+      toStopId: 'destination',
+      dayType: 'feriale',
+      now: new Date('2026-05-14T07:00:00'),
+    });
+
+    expect(suggestions).toEqual([]);
+  });
 });

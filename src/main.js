@@ -125,13 +125,17 @@ function buildReachabilityFromTrips(trips) {
 }
 
 async function fetchJsonOrNull(url) {
-  const response = await fetch(url);
+  try {
+    const response = await fetch(url);
 
-  if (!response.ok) {
+    if (!response.ok) {
+      return null;
+    }
+
+    return response.json();
+  } catch (error) {
     return null;
   }
-
-  return response.json();
 }
 
 function currentSelectedTripMatch() {

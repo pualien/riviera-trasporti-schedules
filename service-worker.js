@@ -1,6 +1,7 @@
-const CACHE_NAME = 'riviera-route-tools-v1';
+const CACHE_PREFIX = 'riviera-route-tools-';
+const CACHE_NAME = `${CACHE_PREFIX}v1`;
 
-const APP_ASSETS = [
+const REQUIRED_ASSETS = [
   './',
   './index.html',
   './styles.css',
@@ -10,14 +11,9 @@ const APP_ASSETS = [
   './assets/brand/favicon-32x32.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-ios-1024.png',
+  './assets/brand/riviera-trasporti-ricerca-percorsi-lockup.png',
   './assets/data/trips.json',
   './assets/data/stops.json',
-  './assets/data/lines.json',
-  './assets/data/metadata.json',
-  './assets/data/localities.json',
-  './assets/data/reachability.json',
-  './assets/data/stop-coordinates.json',
-  './data/manual/localities.json',
   './src/main.js',
   './src/lib/analytics.js',
   './src/lib/appBootstrap.js',
@@ -56,10 +52,22 @@ const APP_ASSETS = [
   './src/ui/renderTransferSuggestions.js',
 ];
 
+const OPTIONAL_ASSETS = [
+  './assets/data/lines.json',
+  './assets/data/metadata.json',
+  './assets/data/localities.json',
+  './assets/data/reachability.json',
+  './assets/data/stop-coordinates.json',
+  './data/manual/localities.json',
+];
+
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => Promise.all(
-      APP_ASSETS.map((url) => cache.add(url).catch(() => null)),
+      [
+        ...REQUIRED_ASSETS.map((url) => cache.add(url)),
+        ...OPTIONAL_ASSETS.map((url) => cache.add(url).catch(() => null)),
+      ],
     )),
   );
 });
@@ -68,7 +76,7 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => Promise.all(
       cacheNames
-        .filter((cacheName) => cacheName !== CACHE_NAME)
+        .filter((cacheName) => cacheName.startsWith(CACHE_PREFIX) && cacheName !== CACHE_NAME)
         .map((cacheName) => caches.delete(cacheName)),
     )),
   );
@@ -80,7 +88,11 @@ async function cacheResponse(request, response) {
   }
 
   const cache = await caches.open(CACHE_NAME);
-  await cache.put(request, response.clone());
+  try {
+    await cache.put(request, response.clone());
+  } catch (error) {
+    // Runtime caching is best-effort; a quota miss should not break navigation.
+  }
 }
 
 self.addEventListener('fetch', (event) => {

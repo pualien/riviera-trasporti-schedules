@@ -55,6 +55,10 @@ function sameDayTrips(trips, dayType) {
   return trips.filter((trip) => trip.dayType === dayType);
 }
 
+function hasPositiveDuration(startTime, endTime) {
+  return toMinutes(endTime) > toMinutes(startTime);
+}
+
 function firstLegsForTrip(trip, originStopIds, toStopId) {
   return trip.stops.flatMap((originStop, originIndex) => {
     if (!originStopIds.has(originStop.stopId)) {
@@ -64,6 +68,7 @@ function firstLegsForTrip(trip, originStopIds, toStopId) {
     return trip.stops
       .slice(originIndex + 1)
       .filter((transferStop) => transferStop.stopId !== toStopId)
+      .filter((transferStop) => hasPositiveDuration(originStop.time, transferStop.time))
       .map((transferStop) => ({
         lineId: trip.lineId,
         direction: trip.direction,
@@ -98,6 +103,10 @@ function secondLegsForTransfer(trips, transferStopId, toStopId, earliestDepartur
     const transferStop = trip.stops[transferIndex];
 
     if (toMinutes(transferStop.time) < earliestDepartureMinutes) {
+      return [];
+    }
+
+    if (!hasPositiveDuration(transferStop.time, destinationStop.time)) {
       return [];
     }
 

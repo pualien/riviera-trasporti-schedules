@@ -1,5 +1,13 @@
 import { defaultDayTypeForDate } from './serviceDay.js';
 
+async function optionalJson(fetchJsonOrNull, url) {
+  try {
+    return await fetchJsonOrNull(url);
+  } catch (error) {
+    return null;
+  }
+}
+
 export async function loadAppBootstrapData({
   fetchJson,
   fetchJsonOrNull,
@@ -16,11 +24,11 @@ export async function loadAppBootstrapData({
   ] = await Promise.all([
     fetchJson('./assets/data/trips.json'),
     fetchJson('./assets/data/stops.json'),
-    fetchJsonOrNull('./assets/data/stop-coordinates.json'),
-    fetchJsonOrNull('./assets/data/localities.json'),
-    fetchJsonOrNull('./assets/data/reachability.json'),
-    fetchJsonOrNull('./data/manual/localities.json'),
-    fetchJsonOrNull('./assets/data/metadata.json'),
+    optionalJson(fetchJsonOrNull, './assets/data/stop-coordinates.json'),
+    optionalJson(fetchJsonOrNull, './assets/data/localities.json'),
+    optionalJson(fetchJsonOrNull, './assets/data/reachability.json'),
+    optionalJson(fetchJsonOrNull, './data/manual/localities.json'),
+    optionalJson(fetchJsonOrNull, './assets/data/metadata.json'),
   ]);
 
   return {
