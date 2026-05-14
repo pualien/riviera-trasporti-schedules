@@ -2,7 +2,7 @@ import { pushRouteSearchEvent } from './lib/analytics.js';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
-import { findDirectTrips } from './lib/query.js';
+import { findDirectTrips, resolveRouteStopIds } from './lib/query.js';
 import {
   findExactLocalityMatch,
   findExactStopMatch,
@@ -39,6 +39,7 @@ import {
   hydrateSearchStateFromRouteSnapshot,
   parseRouteUrlState,
   serializeRouteUrlState,
+  shouldRunSearchFromRouteState,
 } from './lib/routeUrlState.js';
 import {
   applySeoMetadata,
@@ -170,12 +171,19 @@ function currentRouteTaxiOptions() {
   });
 }
 
-function currentOriginStopIds() {
-  if (state.formValues.fromStopId) {
-    return [state.formValues.fromStopId];
-  }
-
+function currentLocalityStopIds() {
   return state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? [];
+}
+
+function currentResolvedRouteStopIds() {
+  return resolveRouteStopIds({
+    from: state.formValues.fromInput,
+    to: state.formValues.toInput,
+    fromStopId: state.formValues.fromStopId,
+    fromLocalityStopIds: state.formValues.fromStopId ? [] : currentLocalityStopIds(),
+    toStopId: state.formValues.toStopId,
+    aliases: state.aliases,
+  });
 }
 
 function currentRouteUrlState() {
@@ -243,6 +251,18 @@ function hydrateRouteStateFromUrl() {
       ),
     };
   }
+}
+
+function restoreSearchResultsIfReady() {
+  if (!shouldRunSearchFromRouteState({
+    tab: state.activeTab,
+    search: state.formValues,
+  })) {
+    return false;
+  }
+
+  submitCurrentSearch();
+  return true;
 }
 
 function updateSeoForCurrentState(t) {
@@ -660,13 +680,14 @@ async function openLocationPicker(fieldName) {
 }
 
 function submitCurrentSearch() {
+  const routeStopIds = currentResolvedRouteStopIds();
   const matches = findDirectTrips({
     from: state.formValues.fromInput,
     to: state.formValues.toInput,
     fromStopId: state.formValues.fromStopId,
     fromLocalityStopIds: state.formValues.fromStopId
       ? []
-      : (state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? []),
+      : currentLocalityStopIds(),
     toStopId: state.formValues.toStopId,
     dayType: state.formValues.dayType,
     aliases: state.aliases,
@@ -686,8 +707,8 @@ function submitCurrentSearch() {
   if (outcome.type === 'no-direct') {
     outcome.transferSuggestions = findOneTransferSuggestions({
       trips: state.trips,
-      fromStopIds: currentOriginStopIds(),
-      toStopId: state.formValues.toStopId,
+      fromStopIds: routeStopIds.originStopIds,
+      toStopId: routeStopIds.destinationStopId,
       dayType: state.formValues.dayType,
       now: new Date(),
     });
@@ -800,6 +821,7 @@ function seedSearchStop(stopId, fieldName) {
   }
 
   writeRouteUrl({ push: true });
+  restoreSearchResultsIfReady();
   renderApp();
   bindInteractions();
 }
@@ -1120,6 +1142,7 @@ function restoreSavedRoute(route) {
   }
 
   writeRouteUrl({ push: true });
+  restoreSearchResultsIfReady();
   renderApp();
   bindInteractions();
 }
@@ -1198,11 +1221,13 @@ async function boot() {
     state.savedRoutes = readSavedRoutes(savedRoutesStorage());
 
     hydrateRouteStateFromUrl();
+    restoreSearchResultsIfReady();
     renderApp();
     bindInteractions();
     registerServiceWorker();
     window.addEventListener('popstate', () => {
       hydrateRouteStateFromUrl();
+      restoreSearchResultsIfReady();
       renderApp();
       bindInteractions();
     });

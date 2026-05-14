@@ -181,3 +181,18 @@ export function hydrateSearchStateFromRouteSnapshot({
 
   return validateSearchStateIds(hydrated, { stops, localities });
 }
+
+export function shouldRunSearchFromRouteState(routeState = DEFAULT_ROUTE_URL_STATE) {
+  const state = {
+    ...DEFAULT_ROUTE_URL_STATE,
+    ...routeState,
+    search: {
+      ...DEFAULT_ROUTE_URL_STATE.search,
+      ...routeState.search,
+    },
+  };
+
+  return state.tab === 'search'
+    && Boolean(state.search.fromInput.trim())
+    && Boolean(state.search.toInput.trim());
+}

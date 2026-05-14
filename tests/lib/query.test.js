@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { buildRouteSummary, findDirectTrips } from '../../src/lib/query.js';
+import { buildRouteSummary, findDirectTrips, resolveRouteStopIds } from '../../src/lib/query.js';
 
 const aliases = {
   'imperia porto maurizio': ['porto maurizio'],
@@ -130,5 +130,41 @@ describe('findDirectTrips', () => {
       'taggia-stazione',
       'sanremo-autostazione',
     ]);
+  });
+});
+
+describe('resolveRouteStopIds', () => {
+  it('resolves typed origin and destination labels through the same aliases direct search uses', () => {
+    expect(resolveRouteStopIds({
+      from: 'Porto Maurizio',
+      to: 'Sanremo',
+      aliases,
+    })).toEqual({
+      originStopIds: ['imperia-porto-maurizio'],
+      destinationStopId: 'sanremo-autostazione',
+    });
+  });
+
+  it('preserves selected exact ids and locality stop ids over labels', () => {
+    expect(resolveRouteStopIds({
+      from: 'Ignored label',
+      to: 'Ignored destination',
+      fromStopId: 'selected-origin',
+      fromLocalityStopIds: ['locality-origin'],
+      toStopId: 'selected-destination',
+      aliases,
+    })).toEqual({
+      originStopIds: ['selected-origin'],
+      destinationStopId: 'selected-destination',
+    });
+
+    expect(resolveRouteStopIds({
+      from: 'Ignored label',
+      to: 'Sanremo',
+      fromLocalityStopIds: ['locality-origin-a', 'locality-origin-b'],
+      aliases,
+    })).toMatchObject({
+      originStopIds: ['locality-origin-a', 'locality-origin-b'],
+    });
   });
 });

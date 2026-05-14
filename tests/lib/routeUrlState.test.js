@@ -5,6 +5,7 @@ import {
   hydrateSearchStateFromUrl,
   parseRouteUrlState,
   serializeRouteUrlState,
+  shouldRunSearchFromRouteState,
 } from '../../src/lib/routeUrlState.js';
 
 describe('routeUrlState', () => {
@@ -142,5 +143,33 @@ describe('routeUrlState', () => {
       toStopId: null,
       dayType: 'feriale',
     });
+  });
+
+  it('marks shared search URLs with labels as restorable searches', () => {
+    expect(shouldRunSearchFromRouteState({
+      tab: 'search',
+      search: {
+        fromInput: 'Porto Maurizio',
+        toInput: 'Sanremo Autostazione',
+      },
+    })).toBe(true);
+  });
+
+  it('does not auto-run browse URLs or incomplete searches', () => {
+    expect(shouldRunSearchFromRouteState({
+      tab: 'browse',
+      search: {
+        fromInput: 'Porto Maurizio',
+        toInput: 'Sanremo Autostazione',
+      },
+    })).toBe(false);
+
+    expect(shouldRunSearchFromRouteState({
+      tab: 'search',
+      search: {
+        fromInput: 'Porto Maurizio',
+        toInput: '',
+      },
+    })).toBe(false);
   });
 });

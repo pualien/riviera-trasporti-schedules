@@ -1,13 +1,47 @@
 import { canonicalizeStopName, stopIdFromName } from './normalize.js';
 import { durationBetween, toMinutes } from './time.js';
 
-export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = [], toStopId, dayType, aliases, trips }) {
-  const resolvedOriginStopIds = fromStopId
+function stopIdForSearchInput(value, aliases) {
+  const stopId = stopIdFromName(canonicalizeStopName(value, aliases));
+  return stopId || null;
+}
+
+export function resolveRouteStopIds({
+  from = '',
+  to = '',
+  fromStopId = null,
+  fromLocalityStopIds = [],
+  toStopId = null,
+  aliases = {},
+} = {}) {
+  const originStopIds = fromStopId
     ? [fromStopId]
     : fromLocalityStopIds.length
       ? fromLocalityStopIds
-      : [stopIdFromName(canonicalizeStopName(from, aliases))];
-  const resolvedToStopId = toStopId ?? stopIdFromName(canonicalizeStopName(to, aliases));
+      : [stopIdForSearchInput(from, aliases)].filter(Boolean);
+
+  return {
+    originStopIds,
+    destinationStopId: toStopId ?? stopIdForSearchInput(to, aliases),
+  };
+}
+
+export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = [], toStopId, dayType, aliases, trips }) {
+  const {
+    originStopIds: resolvedOriginStopIds,
+    destinationStopId: resolvedToStopId,
+  } = resolveRouteStopIds({
+    from,
+    to,
+    fromStopId,
+    fromLocalityStopIds,
+    toStopId,
+    aliases,
+  });
+
+  if (!resolvedOriginStopIds.length || !resolvedToStopId) {
+    return [];
+  }
 
   return trips
     .filter((trip) => trip.dayType === dayType)
