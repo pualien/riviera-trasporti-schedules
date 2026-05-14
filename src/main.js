@@ -1077,7 +1077,7 @@ function bindDepartureSelection() {
       const mapState = buildRouteMapState(match, state.stopCoordinates);
       if (mapState.hasMap) {
         const mapRendered = await renderSelectedTripMap(mapState);
-        if (!mapRendered && state.resultState?.type === 'results') {
+        if (!mapRendered && state.resultState?.type === 'results' && state.resultState.selectedTripKey === tripKey) {
           state.resultState = {
             ...state.resultState,
             selectedTripMapLoadFailed: true,
