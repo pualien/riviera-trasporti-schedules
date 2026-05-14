@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DEFAULT_ROUTE_URL_STATE,
+  hydrateSearchStateFromUrl,
   parseRouteUrlState,
   serializeRouteUrlState,
 } from '../../src/lib/routeUrlState.js';
@@ -50,5 +51,65 @@ describe('routeUrlState', () => {
     });
 
     expect(params.toString()).toBe('tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=stops&stop=sanremo-autostazione');
+  });
+
+  it('preserves the current day type when the URL has no day parameter', () => {
+    const hydrated = hydrateSearchStateFromUrl({
+      currentFormValues: {
+        ...DEFAULT_ROUTE_URL_STATE.search,
+        dayType: 'festivo',
+      },
+      urlSearchState: parseRouteUrlState('?from=Sanremo').search,
+      search: '?from=Sanremo',
+      stops: [],
+      localities: [],
+    });
+
+    expect(hydrated).toMatchObject({
+      fromInput: 'Sanremo',
+      dayType: 'festivo',
+    });
+  });
+
+  it('uses an explicit valid day parameter from the URL', () => {
+    const hydrated = hydrateSearchStateFromUrl({
+      currentFormValues: {
+        ...DEFAULT_ROUTE_URL_STATE.search,
+        dayType: 'festivo',
+      },
+      urlSearchState: parseRouteUrlState('?from=Sanremo&day=sabato').search,
+      search: '?from=Sanremo&day=sabato',
+      stops: [],
+      localities: [],
+    });
+
+    expect(hydrated).toMatchObject({
+      fromInput: 'Sanremo',
+      dayType: 'sabato',
+    });
+  });
+
+  it('drops unresolved ids so labels can still hydrate usable search state', () => {
+    const hydrated = hydrateSearchStateFromUrl({
+      currentFormValues: DEFAULT_ROUTE_URL_STATE.search,
+      urlSearchState: parseRouteUrlState('?from=Porto%20Maurizio&fromLocality=stale-locality&fromStop=stale-stop&to=Sanremo&toStop=stale-to-stop&day=feriale').search,
+      search: '?from=Porto%20Maurizio&fromLocality=stale-locality&fromStop=stale-stop&to=Sanremo&toStop=stale-to-stop&day=feriale',
+      stops: [
+        { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
+        { id: 'sanremo-autostazione', canonical: 'Sanremo Autostazione' },
+      ],
+      localities: [
+        { id: 'porto-maurizio', label: 'Porto Maurizio', stopIds: ['imperia-porto-maurizio'] },
+      ],
+    });
+
+    expect(hydrated).toEqual({
+      fromInput: 'Porto Maurizio',
+      fromLocalityId: null,
+      fromStopId: null,
+      toInput: 'Sanremo',
+      toStopId: null,
+      dayType: 'feriale',
+    });
   });
 });

@@ -24,7 +24,11 @@ import {
   readStoredLanguage,
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
-import { parseRouteUrlState, serializeRouteUrlState } from './lib/routeUrlState.js';
+import {
+  hydrateSearchStateFromUrl,
+  parseRouteUrlState,
+  serializeRouteUrlState,
+} from './lib/routeUrlState.js';
 import {
   applySeoMetadata,
   buildDefaultSeoMetadata,
@@ -164,10 +168,13 @@ function hydrateRouteStateFromUrl() {
   const routeUrlState = parseRouteUrlState(window.location.search);
 
   state.activeTab = routeUrlState.tab;
-  state.formValues = {
-    ...state.formValues,
-    ...routeUrlState.search,
-  };
+  state.formValues = hydrateSearchStateFromUrl({
+    currentFormValues: state.formValues,
+    urlSearchState: routeUrlState.search,
+    search: window.location.search,
+    stops: state.stops,
+    localities: state.localities,
+  });
   state.browseState = routeUrlState.browse;
   state.resultState = null;
   state.locationPicker = null;

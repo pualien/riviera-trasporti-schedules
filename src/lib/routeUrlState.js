@@ -31,6 +31,10 @@ function valueOrNull(value) {
   return value || null;
 }
 
+function hasValidDayParam(search = '') {
+  return VALID_DAY_TYPES.has(new URLSearchParams(search).get('day'));
+}
+
 export function parseRouteUrlState(search = '') {
   const params = new URLSearchParams(search);
   const tab = params.get('tab') ?? DEFAULT_ROUTE_URL_STATE.tab;
@@ -114,4 +118,38 @@ export function serializeRouteUrlState(routeState = DEFAULT_ROUTE_URL_STATE) {
   }
 
   return params;
+}
+
+export function hydrateSearchStateFromUrl({
+  currentFormValues = DEFAULT_ROUTE_URL_STATE.search,
+  urlSearchState = DEFAULT_ROUTE_URL_STATE.search,
+  search = '',
+  stops = [],
+  localities = [],
+} = {}) {
+  const stopIds = new Set(stops.map((stop) => stop.id));
+  const localityIds = new Set(localities.map((locality) => locality.id));
+  const hydrated = {
+    ...DEFAULT_ROUTE_URL_STATE.search,
+    ...currentFormValues,
+    ...urlSearchState,
+  };
+
+  if (!hasValidDayParam(search)) {
+    hydrated.dayType = currentFormValues.dayType ?? DEFAULT_ROUTE_URL_STATE.search.dayType;
+  }
+
+  if (hydrated.fromLocalityId && !localityIds.has(hydrated.fromLocalityId)) {
+    hydrated.fromLocalityId = null;
+  }
+
+  if (hydrated.fromStopId && !stopIds.has(hydrated.fromStopId)) {
+    hydrated.fromStopId = null;
+  }
+
+  if (hydrated.toStopId && !stopIds.has(hydrated.toStopId)) {
+    hydrated.toStopId = null;
+  }
+
+  return hydrated;
 }
