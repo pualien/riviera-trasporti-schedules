@@ -16,6 +16,7 @@ import {
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
 import { buildSearchOutcome } from './lib/searchOutcome.js';
+import { findOneTransferSuggestions } from './lib/transferSuggestions.js';
 import {
   addFavoriteRoute,
   addRecentRoute,
@@ -159,6 +160,14 @@ function currentRouteTaxiOptions() {
     toStopId: state.formValues.toStopId,
     stops: state.stops,
   });
+}
+
+function currentOriginStopIds() {
+  if (state.formValues.fromStopId) {
+    return [state.formValues.fromStopId];
+  }
+
+  return state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? [];
 }
 
 function currentRouteUrlState() {
@@ -305,6 +314,7 @@ function renderApp() {
       routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
       pdfUrl: state.metadata?.source?.url ?? '#',
       suggestions: state.resultState.suggestions,
+      transferSuggestions: state.resultState.transferSuggestions ?? [],
       taxiOptions,
     }));
   }
@@ -656,6 +666,16 @@ function submitCurrentSearch() {
     reachability: state.reachability,
     stops: state.stops,
   });
+
+  if (outcome.type === 'no-direct') {
+    outcome.transferSuggestions = findOneTransferSuggestions({
+      trips: state.trips,
+      fromStopIds: currentOriginStopIds(),
+      toStopId: state.formValues.toStopId,
+      dayType: state.formValues.dayType,
+      now: new Date(),
+    });
+  }
 
   state.resultState = outcome.type === 'results'
     ? { ...outcome, selectedTripKey: null }

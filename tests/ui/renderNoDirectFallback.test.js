@@ -34,6 +34,7 @@ describe('renderNoDirectFallback', () => {
     expect(html).toContain('data-stop-id="imperia-porto-maurizio-piazza-dante"');
     expect(html).toContain('<button type="button"');
     expect(html).toContain('https://example.com/riviera.pdf');
+    expect(html).toContain('No conservative one-change option found');
   });
 
   it('renders taxi route options when fallback taxi coverage exists', () => {
