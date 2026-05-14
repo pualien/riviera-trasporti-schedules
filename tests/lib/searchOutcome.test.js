@@ -78,8 +78,36 @@ describe('buildSearchOutcome', () => {
           kind: 'origin-stop',
           stopId: 'imperia-porto-maurizio-piazza-dante',
           label: 'Imperia Porto Maurizio Piazza Dante',
+          action: {
+            type: 'set-origin-stop',
+            stopId: 'imperia-porto-maurizio-piazza-dante',
+          },
         },
       ],
+    });
+  });
+
+  it('returns reachable destination suggestions for a broad locality no-direct search', () => {
+    const outcome = buildSearchOutcome({
+      matches: [],
+      now: new Date('2026-05-04T16:10:00'),
+      fromLocalityId: 'porto-maurizio',
+      fromStopId: null,
+      localities,
+      reachability: {
+        'imperia-porto-maurizio': ['sanremo-autostazione'],
+      },
+      stops,
+    });
+
+    expect(outcome.suggestions[0]).toMatchObject({
+      kind: 'destination-stop',
+      stopId: 'sanremo-autostazione',
+      label: 'Sanremo Autostazione',
+      action: {
+        type: 'set-destination-stop',
+        stopId: 'sanremo-autostazione',
+      },
     });
   });
 });

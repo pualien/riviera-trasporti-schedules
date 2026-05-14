@@ -633,6 +633,37 @@ async function openLocationPicker(fieldName) {
   });
 }
 
+function submitCurrentSearch() {
+  const matches = findDirectTrips({
+    from: state.formValues.fromInput,
+    to: state.formValues.toInput,
+    fromStopId: state.formValues.fromStopId,
+    fromLocalityStopIds: state.formValues.fromStopId
+      ? []
+      : (state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? []),
+    toStopId: state.formValues.toStopId,
+    dayType: state.formValues.dayType,
+    aliases: state.aliases,
+    trips: state.trips,
+  });
+
+  const outcome = buildSearchOutcome({
+    matches,
+    now: new Date(),
+    fromLocalityId: state.formValues.fromLocalityId,
+    fromStopId: state.formValues.fromStopId,
+    localities: state.localities,
+    reachability: state.reachability,
+    stops: state.stops,
+  });
+
+  state.resultState = outcome.type === 'results'
+    ? { ...outcome, selectedTripKey: null }
+    : outcome;
+
+  return { matches, outcome };
+}
+
 function bindForm() {
   const form = document.querySelector('#route-form');
 
@@ -651,18 +682,7 @@ function bindForm() {
       dayType: String(formData.get('dayType') ?? 'feriale'),
     };
 
-    const matches = findDirectTrips({
-      from: state.formValues.fromInput,
-      to: state.formValues.toInput,
-      fromStopId: state.formValues.fromStopId,
-      fromLocalityStopIds: state.formValues.fromStopId
-        ? []
-        : (state.localities.find((locality) => locality.id === state.formValues.fromLocalityId)?.stopIds ?? []),
-      toStopId: state.formValues.toStopId,
-      dayType: state.formValues.dayType,
-      aliases: state.aliases,
-      trips: state.trips,
-    });
+    const { matches, outcome } = submitCurrentSearch();
 
     pushRouteSearchEvent(window, {
       from: state.formValues.fromInput,
@@ -671,22 +691,6 @@ function bindForm() {
       resultsCount: matches.length,
     });
 
-    const outcome = buildSearchOutcome({
-      matches,
-      now: new Date(),
-      fromLocalityId: state.formValues.fromLocalityId,
-      fromStopId: state.formValues.fromStopId,
-      localities: state.localities,
-      reachability: state.reachability,
-      stops: state.stops,
-    });
-
-    state.resultState = outcome.type === 'results'
-      ? {
-        ...outcome,
-        selectedTripKey: null,
-      }
-      : outcome;
     state.savedRoutes = addRecentRoute(savedRoutesStorage(), currentSavedRouteSnapshot({
       resultType: outcome.type,
       resultCount: matches.length,
@@ -695,6 +699,36 @@ function bindForm() {
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
+  });
+}
+
+function bindNoDirectActions() {
+  document.querySelectorAll('[data-no-direct-action]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const stop = state.stops.find((entry) => entry.id === button.dataset.stopId);
+
+      if (!stop) {
+        return;
+      }
+
+      if (button.dataset.noDirectAction === 'set-origin-stop') {
+        selectFromStopChoice(stop);
+      }
+
+      if (button.dataset.noDirectAction === 'set-destination-stop') {
+        state.formValues = {
+          ...state.formValues,
+          toInput: stop.canonical,
+          toStopId: stop.id,
+        };
+      }
+
+      state.activeTab = 'search';
+      submitCurrentSearch();
+      writeRouteUrl({ push: true });
+      renderApp();
+      bindInteractions();
+    });
   });
 }
 
@@ -1021,6 +1055,7 @@ function bindInteractions() {
   bindLanguageSelector();
   bindTabNavigation();
   bindSavedRoutes();
+  bindNoDirectActions();
 }
 
 async function boot() {

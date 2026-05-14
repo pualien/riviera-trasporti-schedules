@@ -38,6 +38,7 @@ function buildFallbackSuggestions({
         kind: 'origin-stop',
         stopId: stop.id,
         label: stop.canonical,
+        action: { type: 'set-origin-stop', stopId: stop.id },
       }))
       .slice(0, 3);
   }
@@ -51,6 +52,7 @@ function buildFallbackSuggestions({
       kind: 'destination-stop',
       stopId: stop.id,
       label: stop.canonical,
+      action: { type: 'set-destination-stop', stopId: stop.id },
     }))
     .slice(0, 3);
 }

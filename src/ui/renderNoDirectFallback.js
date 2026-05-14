@@ -9,6 +9,20 @@ function escapeHtml(value = '') {
     .replaceAll('"', '&quot;');
 }
 
+function renderFallbackSuggestion(suggestion) {
+  const action = suggestion.action ?? {};
+
+  return `
+    <button type="button"
+      class="picker-panel-tag fallback-suggestion-button"
+      data-no-direct-action="${escapeHtml(action.type ?? '')}"
+      data-stop-id="${escapeHtml(action.stopId ?? suggestion.stopId ?? '')}"
+    >
+      ${escapeHtml(suggestion.label)}
+    </button>
+  `;
+}
+
 export function renderNoDirectFallback({
   t = createTranslator('en'),
   routeLabel,
@@ -26,7 +40,7 @@ export function renderNoDirectFallback({
         <a class="topbar-link" href="${pdfUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('results.openPdf'))}</a>
       </div>
       <div class="fallback-suggestions">
-        ${suggestions.map((suggestion) => `<span class="picker-panel-tag">${escapeHtml(suggestion.label)}</span>`).join('')}
+        ${suggestions.map(renderFallbackSuggestion).join('')}
       </div>
       ${renderTaxiOptionsSection(taxiOptions, { t })}
     </section>

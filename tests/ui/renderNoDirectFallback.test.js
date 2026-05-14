@@ -19,6 +19,10 @@ describe('renderNoDirectFallback', () => {
           kind: 'origin-stop',
           stopId: 'imperia-porto-maurizio-piazza-dante',
           label: 'Imperia Porto Maurizio Piazza Dante',
+          action: {
+            type: 'set-origin-stop',
+            stopId: 'imperia-porto-maurizio-piazza-dante',
+          },
         },
       ],
     });
@@ -26,6 +30,9 @@ describe('renderNoDirectFallback', () => {
     expect(html).toContain('No direct ride found');
     expect(html).toContain('This journey may still require a transfer');
     expect(html).toContain('Imperia Porto Maurizio Piazza Dante');
+    expect(html).toContain('data-no-direct-action="set-origin-stop"');
+    expect(html).toContain('data-stop-id="imperia-porto-maurizio-piazza-dante"');
+    expect(html).toContain('<button type="button"');
     expect(html).toContain('https://example.com/riviera.pdf');
   });
 
