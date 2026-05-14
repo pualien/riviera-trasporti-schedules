@@ -35,3 +35,22 @@ export function selectOriginStop(state, stop, reachability, stops, options = {})
     },
   };
 }
+
+export function seedOriginStopFromBrowse(state, stop, reachability, stops) {
+  return {
+    ...state,
+    formValues: {
+      ...state.formValues,
+      fromInput: stop.canonical,
+      fromLocalityId: null,
+      fromStopId: stop.id,
+      toInput: '',
+      toStopId: null,
+    },
+    pickerState: {
+      ...state.pickerState,
+      exactStopChoices: [],
+      reachableDestinations: getReachableStops(stop.id, reachability, stops),
+    },
+  };
+}

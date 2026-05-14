@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { selectLocality, selectOriginStop } from '../../src/lib/routePickerState.js';
+import { seedOriginStopFromBrowse, selectLocality, selectOriginStop } from '../../src/lib/routePickerState.js';
 
 describe('routePickerState', () => {
   it('clears the chosen destination when a new locality is selected', () => {
@@ -132,6 +132,39 @@ describe('routePickerState', () => {
     });
     expect(nextState.pickerState.reachableDestinations).toEqual([
       { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+    ]);
+  });
+
+  it('seeds a browse origin stop without retaining stale locality state', () => {
+    const nextState = seedOriginStopFromBrowse(
+      {
+        formValues: {
+          fromInput: 'Porto Maurizio',
+          fromLocalityId: 'porto-maurizio',
+          fromStopId: null,
+          toInput: 'sanremo autostazione',
+          toStopId: 'sanremo-autostazione',
+        },
+        pickerState: {
+          exactStopChoices: [{ id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' }],
+          reachableDestinations: [{ id: 'sanremo-autostazione', canonical: 'sanremo autostazione' }],
+        },
+      },
+      { id: 'andora-stazione-fs', canonical: 'andora stazione fs' },
+      { 'andora-stazione-fs': ['finale-ligure'] },
+      [{ id: 'finale-ligure', canonical: 'finale ligure' }],
+    );
+
+    expect(nextState.formValues).toMatchObject({
+      fromInput: 'andora stazione fs',
+      fromLocalityId: null,
+      fromStopId: 'andora-stazione-fs',
+      toInput: '',
+      toStopId: null,
+    });
+    expect(nextState.pickerState.exactStopChoices).toEqual([]);
+    expect(nextState.pickerState.reachableDestinations).toEqual([
+      { id: 'finale-ligure', canonical: 'finale ligure' },
     ]);
   });
 });

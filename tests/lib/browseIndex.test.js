@@ -63,4 +63,22 @@ describe('buildBrowseIndex', () => {
       lines: ['2', '12'],
     });
   });
+
+  it('dedupes duplicate stop ids while merging serving lines', () => {
+    const index = buildBrowseIndex({
+      stops: [
+        ...stops,
+        { id: 'middle', canonical: 'Middle Duplicate' },
+      ],
+      trips,
+    });
+
+    expect(index.stops.filter((stop) => stop.id === 'middle')).toEqual([
+      {
+        id: 'middle',
+        canonical: 'Middle Duplicate',
+        lines: ['2', '12'],
+      },
+    ]);
+  });
 });

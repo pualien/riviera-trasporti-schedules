@@ -45,7 +45,7 @@ import {
   buildRouteSeoMetadata,
 } from './lib/seo.js';
 import { findTaxiOptionsForRoute } from './lib/routeTaxiOptions.js';
-import { selectLocality, selectOriginStop } from './lib/routePickerState.js';
+import { seedOriginStopFromBrowse, selectLocality, selectOriginStop } from './lib/routePickerState.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
@@ -781,13 +781,17 @@ function seedSearchStop(stopId, fieldName) {
   state.activeTab = 'search';
 
   if (fieldName === 'from') {
-    selectFromStopChoice(stop);
+    Object.assign(state, seedOriginStopFromBrowse(state, stop, state.reachability, state.stops));
+    state.resultState = null;
+    state.uiState.fromPanelOpen = false;
+    state.uiState.toPanelOpen = true;
   } else {
     state.formValues = {
       ...state.formValues,
       toInput: stop.canonical,
       toStopId: stop.id,
     };
+    state.resultState = null;
   }
 
   writeRouteUrl({ push: true });

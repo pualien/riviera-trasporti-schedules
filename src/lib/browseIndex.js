@@ -73,8 +73,8 @@ export function buildBrowseIndex({ trips = [], stops = [] } = {}) {
     }));
 
   const servedStopIds = new Set(stopGroups.keys());
-  const stopsIndex = stops
-    .filter((stop) => servedStopIds.has(stop.id))
+  const uniqueStops = new Map(stops.filter((stop) => servedStopIds.has(stop.id)).map((stop) => [stop.id, stop]));
+  const stopsIndex = [...uniqueStops.values()]
     .map((stop) => ({
       id: stop.id,
       canonical: stop.canonical,
