@@ -1,11 +1,20 @@
 import {
-  BRAND_LOCKUP_ALT,
-  BRAND_LOCKUP_SRC,
+  APP_SITE_URL,
+  BRAND_NAME,
   BRAND_SITE_URL,
   FEEDBACK_FORM_URL,
 } from '../lib/brand.js';
 import { createTranslator, SUPPORTED_LANGUAGES } from '../lib/i18n.js';
+import { renderAdSlot } from './renderAdSlot.js';
 import { renderTaxiOptionsSection } from './renderTaxiOption.js';
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
 
 function renderLanguageOptions(languages, selectedLanguage) {
   return languages
@@ -35,6 +44,7 @@ function renderSeoSupportCopy(t) {
     <section class="seo-support-copy">
       <h2>${t('shell.seoTitle')}</h2>
       <p>${t('shell.seoBody')}</p>
+      <p class="seo-support-note">${t('shell.sourceTrustBody')}</p>
     </section>
   `;
 }
@@ -44,6 +54,7 @@ export function renderShell(
   {
     language = 'en',
     languages = SUPPORTED_LANGUAGES,
+    adSlots = {},
     datasetInfo = null,
     taxiDirectory = [],
     tabNavigation = '',
@@ -54,11 +65,9 @@ export function renderShell(
     <div class="app-shell">
       <header class="topbar">
         <div class="brand-lockup">
-          <img
-            class="brand-lockup-image"
-            src="${BRAND_LOCKUP_SRC}"
-            alt="${BRAND_LOCKUP_ALT}"
-          />
+          <a class="brand-wordmark" href="${APP_SITE_URL}" aria-label="${BRAND_NAME}">
+            ${escapeHtml(BRAND_NAME)}
+          </a>
           <p class="brand-subtitle">${t('shell.subtitle')}</p>
           ${renderFreshnessMarker(datasetInfo, t)}
         </div>
@@ -79,7 +88,17 @@ export function renderShell(
       </header>
       ${tabNavigation}
       ${renderSeoSupportCopy(t)}
+      ${renderAdSlot({
+        slotId: 'shell-lead',
+        className: 'ad-slot--lead',
+        content: adSlots.lead,
+      })}
       ${content}
+      ${renderAdSlot({
+        slotId: 'shell-utility',
+        className: 'ad-slot--utility',
+        content: adSlots.utility,
+      })}
       ${renderTaxiOptionsSection(taxiDirectory, {
         t,
         titleKey: 'taxi.directoryTitle',

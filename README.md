@@ -1,8 +1,8 @@
-# riviera-trasporti-schedules
+# Azzuriva
 
-Static route finder for Riviera Trasporti timetable data, built for GitHub Pages.
+Independent Italian Riviera travel companion for Riviera Trasporti timetable data, built for GitHub Pages.
 
-The app turns the official PDF into a route-first web experience. Instead of manually scanning the timetable, users can search direct rides such as `Porto Maurizio -> Sanremo`, see the next departures, inspect the full timetable for the selected day type, and jump back to the official PDF page for verification.
+The app turns the official PDF into a route-first travel experience. Instead of manually scanning the timetable, users can search direct rides such as `Porto Maurizio -> Sanremo`, see the next departures, inspect the full timetable for the selected day type, and jump back to the official PDF page for verification. The product also reserves room for local discovery and verified fallback contacts without presenting itself as an official transit site.
 
 ## Development
 
@@ -36,7 +36,7 @@ If location access is denied, the browser cannot provide geolocation, or the liv
 
 ## Scope
 
-The app supports direct rides from the official PDF, including school-only services exposed through the `Scolastico / School` day-type filter. It does not yet plan transfers.
+The app supports direct rides from the official PDF, including school-only services exposed through the `Scolastico / School` day-type filter. It also presents conservative fallback guidance such as verified taxi contacts. It does not yet plan transfers end to end.
 
 ## Project Structure
 
@@ -49,3 +49,14 @@ The app supports direct rides from the official PDF, including school-only servi
 ## Deployment
 
 The site is designed for GitHub Pages. The deployment workflow installs dependencies, rebuilds the static JSON assets, and publishes the repository as a Pages artifact.
+
+## AdSense
+
+The repo now includes the Google AdSense Auto ads integration path. The site loads the AdSense script from [src/lib/installAdSense.js](/Users/msenardi/Projects/riviera-trasporti-schedules/src/lib/installAdSense.js), but it stays inactive until a real publisher ID is set in [src/lib/ads.js](/Users/msenardi/Projects/riviera-trasporti-schedules/src/lib/ads.js).
+
+The remaining launch steps are:
+
+- Add the real `ca-pub-...` publisher ID in [src/lib/ads.js](/Users/msenardi/Projects/riviera-trasporti-schedules/src/lib/ads.js).
+- Add the site in AdSense and enable Auto ads in the AdSense UI.
+- Publish a real `/ads.txt` file using the template in [ads.txt.example](/Users/msenardi/Projects/riviera-trasporti-schedules/ads.txt.example).
+- Configure Privacy & messaging in AdSense for EEA/UK/Swiss consent if you want to serve those regions.

@@ -8,7 +8,7 @@ import {
 describe('seo metadata helpers', () => {
   it('builds default and route-aware metadata', () => {
     expect(buildDefaultSeoMetadata()).toMatchObject({
-      title: 'Riviera Trasporti Ricerca Percorsi',
+      title: 'Azzuriva',
     });
 
     expect(buildRouteSeoMetadata({
@@ -16,7 +16,7 @@ describe('seo metadata helpers', () => {
       to: 'Sanremo',
       dayTypeLabel: 'Weekday',
     })).toMatchObject({
-      title: 'Porto Maurizio to Sanremo | Riviera Trasporti Ricerca Percorsi',
+      title: 'Porto Maurizio to Sanremo | Azzuriva',
     });
   });
 

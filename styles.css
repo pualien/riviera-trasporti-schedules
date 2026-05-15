@@ -98,10 +98,13 @@ a {
   min-width: 0;
 }
 
-.brand-lockup-image {
-  display: block;
-  width: min(100%, 340px);
-  height: auto;
+.brand-wordmark {
+  width: fit-content;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 750;
+  line-height: 0.92;
+  letter-spacing: -0.08em;
+  color: var(--text);
 }
 
 .brand-subtitle {
@@ -235,6 +238,29 @@ a {
 .seo-support-copy p {
   color: var(--muted);
   line-height: 1.6;
+}
+
+.seo-support-note {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.ad-slot {
+  min-height: 112px;
+  padding: 20px 24px;
+  border-radius: 26px;
+  border: 1px dashed rgba(62, 39, 24, 0.2);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(255, 251, 247, 0.72));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.ad-slot > * {
+  margin: 0;
 }
 
 .app-tabs {

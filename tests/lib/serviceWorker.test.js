@@ -83,6 +83,9 @@ describe('service worker', () => {
     await expect(promises[0]).resolves.toBeUndefined();
 
     expect(cachedUrls).toContain('./assets/data/stop-coordinates.json');
+    expect(cachedUrls).toContain('./src/lib/ads.js');
+    expect(cachedUrls).toContain('./src/lib/installAdSense.js');
+    expect(cachedUrls).toContain('./src/ui/renderAdSlot.js');
   });
 
   it('deletes only old caches owned by this app', async () => {
@@ -90,8 +93,8 @@ describe('service worker', () => {
     const listeners = loadServiceWorker({
       caches: {
         keys: async () => [
-          'riviera-route-tools-v0',
-          'riviera-route-tools-v1',
+          'azzuriva-route-tools-v0',
+          'azzuriva-route-tools-v1',
           'other-static-app',
         ],
         delete: async (cacheName) => {
@@ -108,7 +111,7 @@ describe('service worker', () => {
     listeners.activate(event);
     await promises[0];
 
-    expect(deleted).toEqual(['riviera-route-tools-v0']);
+    expect(deleted).toEqual(['azzuriva-route-tools-v0']);
   });
 
   it('returns a network response when best-effort runtime caching fails', async () => {

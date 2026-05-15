@@ -1,4 +1,5 @@
-const CACHE_PREFIX = 'riviera-route-tools-';
+const CACHE_PREFIX = 'azzuriva-route-tools-';
+const LEGACY_CACHE_PREFIX = 'riviera-route-tools-';
 const CACHE_NAME = `${CACHE_PREFIX}v1`;
 
 const REQUIRED_ASSETS = [
@@ -11,11 +12,11 @@ const REQUIRED_ASSETS = [
   './assets/brand/favicon-32x32.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-ios-1024.png',
-  './assets/brand/riviera-trasporti-ricerca-percorsi-lockup.png',
   './assets/data/trips.json',
   './assets/data/stops.json',
   './src/main.js',
   './src/lib/analytics.js',
+  './src/lib/ads.js',
   './src/lib/appBootstrap.js',
   './src/lib/brand.js',
   './src/lib/browseIndex.js',
@@ -27,6 +28,7 @@ const REQUIRED_ASSETS = [
   './src/lib/normalize.js',
   './src/lib/provinceLookup.js',
   './src/lib/query.js',
+  './src/lib/installAdSense.js',
   './src/lib/registerServiceWorker.js',
   './src/lib/routeMap.js',
   './src/lib/routePickerState.js',
@@ -39,6 +41,7 @@ const REQUIRED_ASSETS = [
   './src/lib/taxiDirectory.js',
   './src/lib/time.js',
   './src/lib/transferSuggestions.js',
+  './src/ui/renderAdSlot.js',
   './src/ui/renderBrowseView.js',
   './src/ui/renderEmptyState.js',
   './src/ui/renderLocationPicker.js',
@@ -77,7 +80,10 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => Promise.all(
       cacheNames
-        .filter((cacheName) => cacheName.startsWith(CACHE_PREFIX) && cacheName !== CACHE_NAME)
+        .filter((cacheName) => (
+          (cacheName.startsWith(CACHE_PREFIX) || cacheName.startsWith(LEGACY_CACHE_PREFIX))
+          && cacheName !== CACHE_NAME
+        ))
         .map((cacheName) => caches.delete(cacheName)),
     )),
   );

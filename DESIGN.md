@@ -1,5 +1,5 @@
 ---
-name: Riviera Trasporti Search
+name: Azzuriva
 description: Route-first timetable lookup for direct Riviera buses.
 colors:
   primary: "#eb4c60"
@@ -100,15 +100,15 @@ components:
     typography: "{typography.body}"
 ---
 
-# Design System: Riviera Trasporti Search
+# Design System: Azzuriva
 
 ## 1. Overview
 
-**Creative North Star: "Quiet Timetable Concierge"**
+**Creative North Star: "Trusted Riviera Companion"**
 
 This interface behaves like a patient guide standing between the rider and a dense official PDF. It does not dramatize transit search. It lowers effort, reduces ambiguity, and keeps the user moving from broad place recognition to exact stop confirmation with minimal friction.
 
-The visual system is soft, warm, and product-first. Cream-tinted surfaces, rounded controls, and restrained coral emphasis make the tool feel calm and trustworthy rather than institutional or flashy. The atmosphere is intentionally lighter than a typical transport utility, but it never slips into decorative whimsy.
+The visual system is soft, warm, and product-first. Cream-tinted surfaces, rounded controls, and restrained coral emphasis make the tool feel calm and trustworthy rather than institutional or flashy. The atmosphere is intentionally lighter than a typical transport utility, but it never slips into decorative whimsy. It should also leave deliberate room for future sponsor surfaces without making the shell feel ad-led.
 
 This system explicitly rejects the dated public-service portal look described in `PRODUCT.md`: cluttered layouts, weak hierarchy, low-contrast controls, cramped fields, legacy gradients, heavy chrome, and anything that feels bureaucratic or visually stale.
 

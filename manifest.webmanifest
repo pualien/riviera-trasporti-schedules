@@ -1,7 +1,7 @@
 {
-  "name": "Riviera Trasporti Ricerca Percorsi",
-  "short_name": "RT Percorsi",
-  "description": "Route-first lookup for Riviera Trasporti timetable data.",
+  "name": "Azzuriva",
+  "short_name": "Azzuriva",
+  "description": "Independent Italian Riviera travel companion for direct Riviera Trasporti bus checks.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

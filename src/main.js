@@ -64,6 +64,10 @@ import { renderTabNav } from './ui/renderTabNav.js';
 
 const app = document.querySelector('#app');
 let locationPickerRequestId = 0;
+const SHELL_AD_SLOTS = Object.freeze({
+  lead: '',
+  utility: '',
+});
 
 function savedRoutesStorage() {
   return getSavedRoutesStorage(window);
@@ -389,6 +393,7 @@ function renderApp() {
   app.innerHTML = renderShell(parts.join(''), {
     language: state.language,
     languages: SUPPORTED_LANGUAGES,
+    adSlots: SHELL_AD_SLOTS,
     datasetInfo: state.metadata,
     taxiDirectory: listTaxiOptions(),
     tabNavigation: renderTabNav({ activeTab: state.activeTab, t }),
@@ -1317,6 +1322,7 @@ async function boot() {
       {
         language: state.language,
         languages: SUPPORTED_LANGUAGES,
+        adSlots: SHELL_AD_SLOTS,
         t,
       },
     );

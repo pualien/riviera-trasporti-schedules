@@ -1,0 +1,3 @@
+# Replace the placeholder publisher ID with your real AdSense publisher ID
+# and publish the resulting file at /ads.txt on the production domain.
+google.com, pub-0000000000000000, DIRECT, f08c47fec0942fa0

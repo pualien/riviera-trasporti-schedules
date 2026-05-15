@@ -9,18 +9,19 @@ function getTaxiPanel(html) {
 const countOccurrences = (html, needle) => html.split(needle).length - 1;
 
 describe('renderShell', () => {
-  it('renders the approved lockup, descriptor, and official-site link', () => {
+  it('renders the Azzuriva wordmark, descriptor, and official-site link', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',
       languages: SUPPORTED_LANGUAGES,
       t: createTranslator('en'),
     });
 
-    expect(html).toContain('./assets/brand/riviera-trasporti-ricerca-percorsi-lockup.png');
-    expect(html).toContain('alt="Riviera Trasporti Ricerca Percorsi wordmark"');
-    expect(html).toContain('Official PDF, clearer route lookup');
+    expect(html).toContain('class="brand-wordmark"');
+    expect(html).toContain('Azzuriva');
+    expect(html).toContain('Italian Riviera travel companion');
     expect(html).toContain('Official Riviera Trasporti site');
     expect(html).toContain('<section>Body</section>');
+    expect(html).not.toContain('brand-lockup-image');
   });
 
   it('renders the language selector and translated feedback action', () => {
@@ -45,6 +46,25 @@ describe('renderShell', () => {
     });
 
     expect(html).toContain('<nav class="app-tabs">Tabs</nav>');
+  });
+
+  it('renders lead and utility ad slots only when configured', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      adSlots: {
+        lead: '<div>Lead sponsor</div>',
+        utility: '<div>Route sponsor</div>',
+      },
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('data-ad-slot="shell-lead"');
+    expect(html).toContain('data-ad-slot="shell-utility"');
+    expect(html).toContain('<div>Lead sponsor</div>');
+    expect(html).toContain('<div>Route sponsor</div>');
+    expect(html.indexOf('data-ad-slot="shell-lead"')).toBeLessThan(html.indexOf('<section>Body</section>'));
+    expect(html.indexOf('data-ad-slot="shell-utility"')).toBeGreaterThan(html.indexOf('<section>Body</section>'));
   });
 
   it('renders the dataset freshness marker when metadata is available', () => {
@@ -102,7 +122,8 @@ describe('renderShell', () => {
 
     const taxiPanel = getTaxiPanel(html);
 
-    expect(html).toContain('Riviera Trasporti bus timetable');
+    expect(html).toContain('Azzuriva for the Italian Riviera');
+    expect(html).toContain('Azzuriva is independent: bus times still point back to the official Riviera Trasporti PDF.');
     expect(html).toContain('Imperia');
     expect(html).toContain('Andora');
     expect(html).toContain('All verified taxi numbers');

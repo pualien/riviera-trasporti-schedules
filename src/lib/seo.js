@@ -1,5 +1,7 @@
-const DEFAULT_TITLE = 'Riviera Trasporti Ricerca Percorsi';
-const DEFAULT_DESCRIPTION = 'Search direct Riviera Trasporti bus timetables faster than scanning the official Riviera Trasporti PDF across Imperia, Sanremo, Ventimiglia, Andora, and nearby Riviera destinations.';
+import { BRAND_NAME, OFFICIAL_SOURCE_NAME } from './brand.js';
+
+const DEFAULT_TITLE = BRAND_NAME;
+const DEFAULT_DESCRIPTION = `${BRAND_NAME} helps you check direct ${OFFICIAL_SOURCE_NAME} buses from the official PDF across Imperia, Sanremo, Ventimiglia, Andora, and nearby Riviera towns.`;
 
 export function buildDefaultSeoMetadata() {
   return {
@@ -11,7 +13,7 @@ export function buildDefaultSeoMetadata() {
 export function buildRouteSeoMetadata({ from, to, dayTypeLabel }) {
   return {
     title: `${from} to ${to} | ${DEFAULT_TITLE}`,
-    description: `Direct Riviera Trasporti timetable lookup for ${from} to ${to} on ${dayTypeLabel}. Compare next departures, full schedules, and taxi fallback options from the official PDF dataset.`,
+    description: `${BRAND_NAME} helps you compare direct ${OFFICIAL_SOURCE_NAME} departures for ${from} to ${to} on ${dayTypeLabel}, with official-PDF trust and taxi fallback context.`,
   };
 }
 
