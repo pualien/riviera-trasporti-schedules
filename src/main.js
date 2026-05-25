@@ -51,6 +51,7 @@ import {
 } from './lib/seo.js';
 import { findTaxiOptionsForRoute } from './lib/routeTaxiOptions.js';
 import { seedOriginStopFromBrowse, selectLocality, selectOriginStop } from './lib/routePickerState.js';
+import { captureTextInputSelection, restoreTextInputSelection } from './lib/textInputSelection.js';
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
@@ -1009,6 +1010,7 @@ function bindFieldPanels() {
 
   fromInput?.addEventListener('input', (event) => {
     const nextValue = String(event.currentTarget.value ?? '');
+    const selection = captureTextInputSelection(event.currentTarget);
     const selectedLocality = state.localities.find((locality) => locality.id === state.formValues.fromLocalityId) ?? null;
     const shouldClearLocality = Boolean(state.formValues.fromStopId)
       || nextValue === ''
@@ -1037,7 +1039,7 @@ function bindFieldPanels() {
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
-    focusFromInput();
+    restoreTextInputSelection(document.querySelector('[data-field="from"]'), selection);
   });
 
   toInput?.addEventListener('focus', () => {
@@ -1053,6 +1055,7 @@ function bindFieldPanels() {
   });
 
   toInput?.addEventListener('input', (event) => {
+    const selection = captureTextInputSelection(event.currentTarget);
     state.formValues = {
       ...state.formValues,
       toInput: String(event.currentTarget.value ?? ''),
@@ -1063,7 +1066,7 @@ function bindFieldPanels() {
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
-    document.querySelector('[data-field="to"]')?.focus();
+    restoreTextInputSelection(document.querySelector('[data-field="to"]'), selection);
   });
 
   document.querySelectorAll('[data-from-value]').forEach((button) => {
