@@ -59,4 +59,30 @@ describe('buildFromSuggestionSections', () => {
     expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
     expect(sections.exactStops.map((entry) => entry.value)).toEqual(['imperia porto maurizio']);
   });
+
+  it('shows exact departure stops before typing when locality coverage is incomplete', () => {
+    const sections = buildFromSuggestionSections({
+      inputValue: '',
+      localities: [
+        {
+          id: 'porto-maurizio',
+          label: 'Porto Maurizio',
+          aliases: ['Imperia Porto Maurizio'],
+          stopIds: ['imperia-porto-maurizio'],
+        },
+      ],
+      selectedLocalityLabel: '',
+      exactStopChoices: [],
+      availableExactStops: [
+        { id: 'diano-marina', canonical: 'diano marina', variants: [] },
+        { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
+      ],
+    });
+
+    expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
+    expect(sections.exactStops.map((entry) => entry.value)).toEqual([
+      'diano marina',
+      'imperia porto maurizio',
+    ]);
+  });
 });

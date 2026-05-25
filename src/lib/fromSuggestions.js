@@ -26,6 +26,22 @@ function stopMatches(stop, query) {
   return !query || tokens.some((token) => token.includes(query));
 }
 
+function localityCoverageIsIncomplete(localities = [], availableExactStops = []) {
+  if (availableExactStops.length === 0) {
+    return false;
+  }
+
+  if (localities.length === 0) {
+    return true;
+  }
+
+  const coveredStopIds = new Set(
+    localities.flatMap((locality) => locality.stopIds ?? []),
+  );
+
+  return availableExactStops.some((stop) => !coveredStopIds.has(stop.id));
+}
+
 export function buildFromSuggestionSections({
   inputValue,
   localities,
@@ -37,9 +53,10 @@ export function buildFromSuggestionSections({
   const matchingAreas = sortByLabel(localities)
     .filter((locality) => localityMatches(locality, query))
     .map((locality) => ({ value: locality.label, meta: 'Area', type: 'area' }));
+  const shouldExposeNetworkStops = !query && localityCoverageIsIncomplete(localities, availableExactStops);
   const exactStopSource = exactStopChoices.length
     ? exactStopChoices
-    : (query ? availableExactStops : []);
+    : ((query || shouldExposeNetworkStops) ? availableExactStops : []);
   const matchingExactStops = sortByLabel(exactStopSource)
     .filter((stop) => stopMatches(stop, query))
     .map((stop) => ({ value: stop.canonical, meta: 'Exact stop', type: 'exact-stop' }));
