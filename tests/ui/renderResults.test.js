@@ -243,4 +243,64 @@ describe('renderResultsView', () => {
     expect(taxiPanel).toContain('Book online');
     expect(html).not.toContain('class="taxi-option-card"');
   });
+
+  it('renders save feedback in an aria-live route action status', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Imperia -> Sanremo',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [],
+      allDepartures: [],
+      routeActions: {
+        saveFeedback: { status: 'saved' },
+        shareModal: null,
+      },
+    });
+
+    expect(html).toContain('class="route-action-feedback"');
+    expect(html).toContain('aria-live="polite"');
+    expect(html).toContain('Route saved');
+  });
+
+  it('renders share modal with tracked direct link and social options', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Imperia -> Sanremo',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [],
+      allDepartures: [],
+      routeActions: {
+        saveFeedback: null,
+        shareModal: {
+          baseUrl: 'https://azzuriva.example/app?tab=search&from=Imperia&to=Sanremo&day=feriale',
+          status: 'copied',
+        },
+      },
+    });
+
+    expect(html).toContain('role="dialog"');
+    expect(html).toContain('aria-modal="true"');
+    expect(html).toContain('data-share-modal');
+    expect(html).toContain('utm_source=share_link');
+    expect(html).toContain('data-share-option="whatsapp"');
+    expect(html).toContain('utm_source=share_whatsapp');
+    expect(html).toContain('data-share-option="telegram"');
+    expect(html).toContain('data-share-option="facebook"');
+    expect(html).toContain('data-share-option="x"');
+    expect(html).toContain('Link copied');
+  });
 });

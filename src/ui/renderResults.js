@@ -1,5 +1,18 @@
 import { createTranslator } from '../lib/i18n.js';
+import {
+  SHARE_CHANNELS,
+  buildRouteShareUrl,
+  buildSocialShareHref,
+} from '../lib/shareRoute.js';
 import { renderTaxiOptionsSection } from './renderTaxiOption.js';
+
+function escapeHtml(value = '') {
+  return String(value)
+    .replaceAll('&', '&amp;')
+    .replaceAll('<', '&lt;')
+    .replaceAll('>', '&gt;')
+    .replaceAll('"', '&quot;');
+}
 
 function pdfHref(pdfUrl, sourcePage) {
   if (!pdfUrl || pdfUrl === '#') {
@@ -55,6 +68,71 @@ function renderSummaryMetrics(summary, t) {
   `;
 }
 
+function renderSaveFeedback(saveFeedback, t) {
+  if (!saveFeedback?.status) {
+    return '';
+  }
+
+  return `
+    <p class="route-action-feedback" role="status" aria-live="polite">
+      ${escapeHtml(t(`results.saveFeedback.${saveFeedback.status}`))}
+    </p>
+  `;
+}
+
+function renderShareModal(shareModal, routeLabel, t) {
+  if (!shareModal?.baseUrl) {
+    return '';
+  }
+
+  const directShareUrl = buildRouteShareUrl(shareModal.baseUrl, 'link');
+  const statusMessage = shareModal.status ? t(`results.share.${shareModal.status}`) : '';
+  const shareOptions = SHARE_CHANNELS
+    .filter((channel) => channel.id !== 'link')
+    .map((channel) => {
+      const shareUrl = buildRouteShareUrl(shareModal.baseUrl, channel.id);
+      const href = buildSocialShareHref({
+        channel: channel.id,
+        shareUrl,
+        text: routeLabel,
+      });
+
+      return `
+        <a class="share-option" href="${escapeHtml(href)}" target="_blank" rel="noreferrer"
+          data-share-option="${escapeHtml(channel.id)}" data-share-url="${escapeHtml(shareUrl)}">
+          ${escapeHtml(t(channel.labelKey))}
+        </a>
+      `;
+    })
+    .join('');
+
+  return `
+    <div class="share-modal-backdrop" data-share-modal-backdrop>
+      <section class="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-modal-title" data-share-modal>
+        <div class="share-modal-head">
+          <div>
+            <p class="eyebrow">${escapeHtml(t('results.shareRoute'))}</p>
+            <h3 id="share-modal-title">${escapeHtml(t('results.share.title'))}</h3>
+            <p>${escapeHtml(t('results.share.subtitle'))}</p>
+          </div>
+          <button type="button" class="share-modal-close" data-share-modal-close aria-label="${escapeHtml(t('results.share.close'))}">x</button>
+        </div>
+        <label class="share-link-field">
+          <span>${escapeHtml(t('results.share.directLink'))}</span>
+          <input type="text" readonly value="${escapeHtml(directShareUrl)}" data-share-direct-link>
+        </label>
+        <div class="share-actions">
+          <button type="button" class="share-option" data-share-copy-link data-share-url="${escapeHtml(directShareUrl)}">
+            ${escapeHtml(t('results.share.copyLink'))}
+          </button>
+          ${shareOptions}
+        </div>
+        <p class="share-modal-status" role="status" aria-live="polite">${escapeHtml(statusMessage)}</p>
+      </section>
+    </div>
+  `;
+}
+
 export function renderResultsView({
   t = createTranslator('en'),
   routeLabel,
@@ -65,6 +143,7 @@ export function renderResultsView({
   taxiOptions = [],
   selectedTripKey = null,
   selectedTripPanel = '',
+  routeActions = { saveFeedback: null, shareModal: null },
 }) {
   return `
     <section class="results-shell">
@@ -78,6 +157,7 @@ export function renderResultsView({
           <div class="summary-actions">
             <button type="button" class="topbar-link" data-save-current-route>${t('results.saveRoute')}</button>
             <button type="button" class="topbar-link" data-share-current-route>${t('results.shareRoute')}</button>
+            ${renderSaveFeedback(routeActions.saveFeedback, t)}
           </div>
         </div>
 
@@ -111,6 +191,7 @@ export function renderResultsView({
         </div>
       </section>
       ${selectedTripPanel}
+      ${renderShareModal(routeActions.shareModal, routeLabel, t)}
     </section>
   `;
 }

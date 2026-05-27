@@ -1,4 +1,8 @@
-import { pushRouteSearchEvent } from './lib/analytics.js';
+import {
+  pushRouteSaveEvent,
+  pushRouteSearchEvent,
+  pushRouteShareEvent,
+} from './lib/analytics.js';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
@@ -41,6 +45,7 @@ import {
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
 import { registerServiceWorker } from './lib/registerServiceWorker.js';
+import { buildRouteShareUrl } from './lib/shareRoute.js';
 import {
   hydrateSearchStateFromUrl,
   hydrateSearchStateFromRouteSnapshot,
@@ -113,6 +118,10 @@ const state = {
     reachableDestinations: [],
   },
   resultState: null,
+  routeActions: {
+    saveFeedback: null,
+    shareModal: null,
+  },
   locationPicker: null,
 };
 
@@ -161,6 +170,10 @@ function currentSelectedTripMatch() {
 
 function clearRouteResults() {
   state.resultState = null;
+  state.routeActions = {
+    saveFeedback: null,
+    shareModal: null,
+  };
 }
 
 function currentSelectedTripPanel(t) {
@@ -249,6 +262,25 @@ function writeRouteUrl({ push = false } = {}) {
   const method = push ? 'pushState' : 'replaceState';
 
   window.history[method](currentRouteUrlState(), '', nextUrl);
+}
+
+function currentRouteAbsoluteUrl() {
+  const params = serializeRouteUrlState(currentRouteUrlState());
+  const query = params.toString();
+  return `${window.location.origin}${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+}
+
+function currentRouteActionContext() {
+  return {
+    from: state.formValues.fromInput,
+    to: state.formValues.toInput,
+    dayType: state.formValues.dayType,
+    resultsCount: state.resultState?.type === 'results' ? state.resultState.allDepartures.length : 0,
+  };
+}
+
+function focusShareModal() {
+  document.querySelector('[data-share-modal-close]')?.focus();
 }
 
 function hydrateRouteStateFromUrl() {
@@ -382,6 +414,7 @@ function renderApp() {
         taxiOptions,
         selectedTripKey: state.resultState.selectedTripKey,
         selectedTripPanel: currentSelectedTripPanel(t),
+        routeActions: state.routeActions,
       }),
     );
   }
@@ -757,6 +790,10 @@ async function openLocationPicker(fieldName) {
 }
 
 function submitCurrentSearch() {
+  state.routeActions = {
+    saveFeedback: null,
+    shareModal: null,
+  };
   const routeStopIds = currentResolvedRouteStopIds();
   const originContext = currentOriginContext();
   const matches = findDirectTrips({
@@ -1312,18 +1349,116 @@ function findSavedRoute(identity) {
 
 function bindSavedRoutes() {
   document.querySelector('[data-save-current-route]')?.addEventListener('click', () => {
-    const resultCount = state.resultState?.type === 'results' ? state.resultState.allDepartures.length : 0;
     state.savedRoutes = addFavoriteRoute(savedRoutesStorage(), currentSavedRouteSnapshot({
       resultType: state.resultState?.type ?? null,
-      resultCount,
+      resultCount: currentRouteActionContext().resultsCount,
     }));
+
+    const saveStatus = state.savedRoutes.available ? 'saved' : 'unavailable';
+    state.routeActions = {
+      saveFeedback: { status: saveStatus },
+      shareModal: null,
+    };
+    pushRouteSaveEvent(window, {
+      ...currentRouteActionContext(),
+      saveStatus,
+    });
     renderApp();
     bindInteractions();
   });
 
-  document.querySelector('[data-share-current-route]')?.addEventListener('click', async () => {
+  document.querySelector('[data-share-current-route]')?.addEventListener('click', () => {
     writeRouteUrl({ push: false });
-    await navigator.clipboard?.writeText?.(window.location.href);
+    state.routeActions = {
+      ...state.routeActions,
+      shareModal: {
+        baseUrl: currentRouteAbsoluteUrl(),
+        status: null,
+      },
+    };
+    renderApp();
+    bindInteractions();
+    focusShareModal();
+  });
+
+  document.querySelector('[data-share-copy-link]')?.addEventListener('click', async (event) => {
+    const shareUrl = event.currentTarget.dataset.shareUrl ?? buildRouteShareUrl(currentRouteAbsoluteUrl(), 'link');
+    let status = 'copied';
+
+    try {
+      await navigator.clipboard?.writeText?.(shareUrl);
+    } catch {
+      status = 'manualCopy';
+    }
+
+    if (!navigator.clipboard?.writeText) {
+      status = 'manualCopy';
+    }
+
+    pushRouteShareEvent(window, {
+      ...currentRouteActionContext(),
+      shareMethod: 'link',
+      shareUrl,
+    });
+
+    state.routeActions = {
+      ...state.routeActions,
+      shareModal: {
+        ...(state.routeActions.shareModal ?? {}),
+        status,
+      },
+    };
+    renderApp();
+    bindInteractions();
+    focusShareModal();
+  });
+
+  document.querySelectorAll('[data-share-option]').forEach((link) => {
+    link.addEventListener('click', () => {
+      pushRouteShareEvent(window, {
+        ...currentRouteActionContext(),
+        shareMethod: link.dataset.shareOption ?? '',
+        shareUrl: link.dataset.shareUrl ?? '',
+      });
+    });
+  });
+
+  document.querySelector('[data-share-modal-backdrop]')?.addEventListener('click', (event) => {
+    if (event.target !== event.currentTarget) {
+      return;
+    }
+
+    state.routeActions = {
+      ...state.routeActions,
+      shareModal: null,
+    };
+    renderApp();
+    bindInteractions();
+    document.querySelector('[data-share-current-route]')?.focus();
+  });
+
+  document.querySelector('[data-share-modal-close]')?.addEventListener('click', () => {
+    state.routeActions = {
+      ...state.routeActions,
+      shareModal: null,
+    };
+    renderApp();
+    bindInteractions();
+    document.querySelector('[data-share-current-route]')?.focus();
+  });
+
+  document.querySelector('[data-share-modal]')?.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') {
+      return;
+    }
+
+    state.routeActions = {
+      ...state.routeActions,
+      shareModal: null,
+    };
+    renderApp();
+    bindInteractions();
+    document.querySelector('[data-share-current-route]')?.focus();
   });
 
   document.querySelectorAll('[data-saved-route], [data-recent-route]').forEach((button) => {
