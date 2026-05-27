@@ -1,0 +1,34 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Riviera Transit
+      - paragraph [ref=e7]: Official PDF, clearer consultation
+    - link "Riviera Trasporti" [ref=e8] [cursor=pointer]:
+      - /url: https://rivieratrasporti.it/
+  - generic [ref=e9]:
+    - generic [ref=e10]:
+      - paragraph [ref=e11]: Riviera Trasporti Search
+      - heading "Search Riviera Trasporti faster than reading the full PDF." [level=1] [ref=e12]
+      - paragraph [ref=e13]: Choose an area first, confirm the exact stop, then browse only direct destinations published in the official timetable.
+    - generic [ref=e14]:
+      - paragraph [ref=e15]: Choose area, then exact stop.
+      - generic [ref=e16]:
+        - generic [ref=e17]: Da / From
+        - generic [ref=e18]:
+          - combobox "Da / From Use my location Start from a broad place like Porto Maurizio." [ref=e19]: Porto Maurizio
+          - button "Use my location" [ref=e20] [cursor=pointer]
+        - generic [ref=e21]: Start from a broad place like Porto Maurizio.
+      - generic [ref=e22]:
+        - generic [ref=e23]: A / To
+        - generic [ref=e24]:
+          - combobox "A / To Use my location Only direct destinations from the selected stop are shown." [disabled] [ref=e25]
+          - button "Use my location" [ref=e26] [cursor=pointer]
+        - generic [ref=e27]: Only direct destinations from the selected stop are shown.
+      - generic [ref=e28]:
+        - generic [ref=e29]: Giorno / Day type
+        - combobox "Giorno / Day type" [ref=e30]:
+          - option "Feriale / Weekday" [selected]
+          - option "Sabato / Saturday"
+          - option "Festivo / Holiday"
+          - option "Scolastico / School"
+      - button "Show departures" [ref=e31] [cursor=pointer]

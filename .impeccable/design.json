@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-04T18:16:17Z",
+  "title": "Design System: Riviera Trasporti Search",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Riviera Coral",
+        "canonical": "oklch(67% 0.21 14)",
+        "tonalRamp": [
+          "#3a1518",
+          "#5b2027",
+          "#7d2a36",
+          "#a83445",
+          "#d93b4f",
+          "#eb4c60",
+          "#f47b87",
+          "#f7f1ea"
+        ]
+      },
+      "primary-deep": {
+        "role": "primary",
+        "displayName": "Timetable Red",
+        "canonical": "oklch(61% 0.21 17)",
+        "tonalRamp": [
+          "#321114",
+          "#531b20",
+          "#73242c",
+          "#962f3a",
+          "#b93a48",
+          "#d93b4f",
+          "#eb6b78",
+          "#f8d8dc"
+        ]
+      },
+      "signal": {
+        "role": "secondary",
+        "displayName": "Signal Apricot",
+        "canonical": "oklch(76% 0.18 52)",
+        "tonalRamp": [
+          "#3f2413",
+          "#65371b",
+          "#8d4b22",
+          "#b95f25",
+          "#df742d",
+          "#ff8a3d",
+          "#ffaf73",
+          "#ffe3c6"
+        ]
+      },
+      "cream-top": {
+        "role": "neutral",
+        "displayName": "Morning Cream",
+        "canonical": "oklch(96% 0.02 75)",
+        "tonalRamp": [
+          "#2c2620",
+          "#494036",
+          "#675b4d",
+          "#877768",
+          "#aa9685",
+          "#d0c0af",
+          "#f7f1ea",
+          "#fdfaf6"
+        ]
+      },
+      "cream-bottom": {
+        "role": "neutral",
+        "displayName": "Sand Fade",
+        "canonical": "oklch(92% 0.03 72)",
+        "tonalRamp": [
+          "#28231d",
+          "#43392f",
+          "#5d5040",
+          "#7c6956",
+          "#9d8570",
+          "#c1a893",
+          "#efe4d6",
+          "#faf5ef"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Ticket Paper",
+        "canonical": "oklch(98% 0.01 70)",
+        "tonalRamp": [
+          "#2b2824",
+          "#45403a",
+          "#605952",
+          "#7d746b",
+          "#9d9389",
+          "#c8beb4",
+          "#fffbf7",
+          "#ffffff"
+        ]
+      },
+      "panel-strong": {
+        "role": "neutral",
+        "displayName": "Clear Panel",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "#2a2a2a",
+          "#454545",
+          "#606060",
+          "#808080",
+          "#a6a6a6",
+          "#d0d0d0",
+          "#f3f3f3",
+          "#ffffff"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Timetable Ink",
+        "canonical": "oklch(20% 0.02 35)",
+        "tonalRamp": [
+          "#0d0b0a",
+          "#1d1a17",
+          "#322d28",
+          "#4b433b",
+          "#665c51",
+          "#85786b",
+          "#b1a69a",
+          "#dfd7cf"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Quiet Taupe",
+        "canonical": "oklch(51% 0.03 55)",
+        "tonalRamp": [
+          "#141210",
+          "#282420",
+          "#3b352f",
+          "#514941",
+          "#6b6258",
+          "#908679",
+          "#bbb1a5",
+          "#e4ddd7"
+        ]
+      },
+      "quiet-line": {
+        "role": "neutral",
+        "displayName": "Warm Rule",
+        "canonical": "oklch(31% 0.04 48)",
+        "tonalRamp": [
+          "#120d09",
+          "#211812",
+          "#312219",
+          "#3e2718",
+          "#624a37",
+          "#896d58",
+          "#b29a88",
+          "#ddd0c5"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero promise and top-level route framing."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Summary titles and major section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Section headings inside results and picker areas."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Helper copy, descriptions, and route support text."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Field labels, chips, metadata, and compact control text."
+      }
+    },
+    "shadows": [
+      {
+        "name": "ambient-shell",
+        "value": "0 30px 60px rgba(93, 63, 35, 0.12)",
+        "purpose": "Diffuse section separation for hero, results, and picker shells."
+      },
+      {
+        "name": "hover-lift",
+        "value": "0 16px 28px rgba(93, 63, 35, 0.12)",
+        "purpose": "Interactive row hover lift."
+      },
+      {
+        "name": "action-lift",
+        "value": "0 18px 30px rgba(217, 59, 79, 0.24)",
+        "purpose": "Primary call-to-action emphasis."
+      },
+      {
+        "name": "focus-halo",
+        "value": "0 0 0 4px rgba(235, 76, 96, 0.12)",
+        "purpose": "Keyboard-visible focus treatment for fields and options."
+      }
+    ],
+    "motion": [
+      {
+        "name": "duration-fast",
+        "value": "180ms",
+        "purpose": "Default interactive transition timing."
+      },
+      {
+        "name": "ease-standard",
+        "value": "ease",
+        "purpose": "Default easing for hover and focus transitions in the current implementation."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact",
+        "value": "860px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main task submission action for route lookup.",
+      "html": "<button class=\"ds-btn-primary\">Show departures</button>",
+      "css": ".ds-btn-primary { min-height: 56px; padding: 0 16px; border-radius: 20px; border: 0; display: inline-flex; align-items: center; justify-content: center; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 0.88rem; font-weight: 650; color: #ffffff; background: linear-gradient(180deg, #eb4c60, #d93b4f); box-shadow: 0 18px 30px rgba(217, 59, 79, 0.24); cursor: pointer; transition: transform 180ms ease, box-shadow 180ms ease; } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { transform: translateY(-1px); box-shadow: 0 22px 34px rgba(217, 59, 79, 0.28); outline: none; }"
+    },
+    {
+      "name": "Location Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary utility action for geolocation-assisted stop lookup.",
+      "html": "<button class=\"ds-btn-location\">Use my location</button>",
+      "css": ".ds-btn-location { min-height: 56px; padding: 0 18px; border-radius: 20px; border: 1px solid rgba(62, 39, 24, 0.12); font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 0.88rem; font-weight: 650; color: #d93b4f; background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 238, 231, 0.96)); white-space: nowrap; cursor: pointer; transition: border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; } .ds-btn-location:hover, .ds-btn-location:focus-visible { border-color: rgba(217, 59, 79, 0.26); background: linear-gradient(180deg, rgba(255, 248, 249, 0.98), rgba(248, 232, 226, 0.98)); box-shadow: 0 12px 24px rgba(93, 63, 35, 0.1); outline: none; }"
+    },
+    {
+      "name": "Search Input",
+      "kind": "input",
+      "refersTo": "input-search",
+      "description": "Primary text field for broad stop and locality search.",
+      "html": "<input class=\"ds-input-search\" placeholder=\"Porto Maurizio\" />",
+      "css": ".ds-input-search { width: 100%; min-height: 56px; padding: 0 16px; border-radius: 20px; border: 1px solid rgba(62, 39, 24, 0.12); background: rgba(255, 255, 255, 0.92); color: #1d1a17; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 1rem; line-height: 1.6; } .ds-input-search::placeholder { color: #6b6258; } .ds-input-search:focus-visible { outline: none; border-color: rgba(217, 59, 79, 0.26); box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12); }"
+    },
+    {
+      "name": "Day Type Select",
+      "kind": "input",
+      "refersTo": "select-field",
+      "description": "Large select control for day-type filtering with warm custom chrome.",
+      "html": "<select class=\"ds-select-field\"><option>Feriale / Weekday</option><option>Sabato / Saturday</option><option>Festivo / Holiday</option></select>",
+      "css": ".ds-select-field { width: 100%; min-height: 56px; padding: 0 52px 0 16px; border-radius: 20px; border: 1px solid rgba(62, 39, 24, 0.12); appearance: none; background-color: rgba(255, 255, 255, 0.92); background-image: linear-gradient(45deg, transparent 50%, #d93b4f 50%), linear-gradient(135deg, #d93b4f 50%, transparent 50%); background-position: calc(100% - 24px) calc(50% - 2px), calc(100% - 17px) calc(50% - 2px); background-size: 7px 7px, 7px 7px; background-repeat: no-repeat; color: #1d1a17; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 1rem; } .ds-select-field:focus-visible, .ds-select-field:hover { outline: none; border-color: rgba(217, 59, 79, 0.26); box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12); }"
+    },
+    {
+      "name": "Destination Option",
+      "kind": "custom",
+      "refersTo": "option-picker",
+      "description": "Signature direct-destination picker row with explicit choose affordance.",
+      "html": "<button class=\"ds-option-row\"><span class=\"ds-option-copy\"><span class=\"ds-option-label\">sanremo autostazione</span><span class=\"ds-option-meta\">Direct destination</span></span><span class=\"ds-option-chip\">Choose</span></button>",
+      "css": ".ds-option-row { width: 100%; min-height: 72px; padding: 14px 16px 14px 18px; border-radius: 22px; border: 1px solid rgba(62, 39, 24, 0.1); background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 240, 233, 0.98)); color: #1d1a17; box-shadow: 0 12px 24px rgba(93, 63, 35, 0.08); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: center; text-align: left; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease, background 180ms ease; } .ds-option-copy { display: grid; gap: 4px; min-width: 0; } .ds-option-label { font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 1rem; font-weight: 650; line-height: 1.3; color: #1d1a17; } .ds-option-meta { font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 0.82rem; line-height: 1.35; color: #5a5147; } .ds-option-chip { display: inline-flex; align-items: center; justify-content: center; min-width: 78px; padding: 10px 12px; border-radius: 999px; background: rgba(235, 76, 96, 0.1); color: #d93b4f; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; } .ds-option-row:hover, .ds-option-row:focus-visible { transform: translateY(-1px); border-color: rgba(217, 59, 79, 0.24); background: linear-gradient(180deg, rgba(255, 250, 251, 0.98), rgba(248, 237, 231, 0.98)); box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12), 0 16px 28px rgba(93, 63, 35, 0.12); outline: none; }"
+    },
+    {
+      "name": "Summary Card",
+      "kind": "card",
+      "refersTo": "card-panel",
+      "description": "Route summary container for key service metrics.",
+      "html": "<article class=\"ds-summary-card\"><p class=\"ds-kicker\">Route Summary</p><h2 class=\"ds-title\">Porto Maurizio → Sanremo</h2><div class=\"ds-metrics\"><div class=\"ds-metric\"><span>Average</span><strong>42 min</strong></div><div class=\"ds-metric\"><span>First</span><strong>06:20</strong></div><div class=\"ds-metric\"><span>Last</span><strong>19:10</strong></div></div></article>",
+      "css": ".ds-summary-card { padding: 24px; border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.92); background: rgba(255, 251, 247, 0.86); box-shadow: 0 30px 60px rgba(93, 63, 35, 0.12); backdrop-filter: blur(18px) saturate(130%); } .ds-kicker { margin: 0; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 0.76rem; font-weight: 650; letter-spacing: 0.12em; text-transform: uppercase; color: #6b6258; } .ds-title { margin: 10px 0 14px; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1; letter-spacing: -0.05em; color: #1d1a17; } .ds-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; } .ds-metric { padding: 16px 18px; border-radius: 20px; background: rgba(255, 255, 255, 0.74); border: 1px solid rgba(255, 255, 255, 0.9); } .ds-metric span { display: block; color: #6b6258; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; } .ds-metric strong { display: block; margin-top: 8px; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; font-size: 1.4rem; letter-spacing: -0.04em; color: #1d1a17; }"
+    },
+    {
+      "name": "Nearby Stop Row",
+      "kind": "custom",
+      "refersTo": "option-picker",
+      "description": "Nearby stop suggestion row for geolocation-assisted selection.",
+      "html": "<button class=\"ds-nearby-stop\"><span class=\"ds-stop-copy\"><strong>imperia porto maurizio</strong><small>Porto Maurizio</small></span><span class=\"ds-stop-distance\">420 m</span></button>",
+      "css": ".ds-nearby-stop { width: 100%; min-height: 56px; padding: 0 16px; border-radius: 20px; border: 1px solid rgba(62, 39, 24, 0.12); background: rgba(255, 255, 255, 0.92); color: #1d1a17; display: flex; align-items: center; justify-content: space-between; gap: 14px; text-align: left; cursor: pointer; font-family: \"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif; } .ds-stop-copy { display: grid; gap: 4px; } .ds-stop-copy strong { font-size: 1rem; text-transform: capitalize; color: #1d1a17; } .ds-stop-copy small { font-size: 0.82rem; color: #6b6258; } .ds-stop-distance { color: #6b6258; font-size: 0.88rem; font-weight: 600; } .ds-nearby-stop:focus-visible, .ds-nearby-stop:hover { outline: none; border-color: rgba(217, 59, 79, 0.26); box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Quiet Timetable Concierge",
+    "overview": "This interface behaves like a patient guide standing between the rider and a dense official PDF. It does not dramatize transit search. It lowers effort, reduces ambiguity, and keeps the user moving from broad place recognition to exact stop confirmation with minimal friction.\n\nThe visual system is soft, warm, and product-first. Cream-tinted surfaces, rounded controls, and restrained coral emphasis make the tool feel calm and trustworthy rather than institutional or flashy. The atmosphere is intentionally lighter than a typical transport utility, but it never slips into decorative whimsy.\n\nThis system explicitly rejects the dated public-service portal look described in PRODUCT.md: cluttered layouts, weak hierarchy, low-contrast controls, cramped fields, legacy gradients, heavy chrome, and anything that feels bureaucratic or visually stale.",
+    "keyCharacteristics": [
+      "Warm neutral surfaces with one clear action color.",
+      "Large, legible form controls that privilege certainty over density.",
+      "Soft layering instead of hard containers or loud panels.",
+      "Calm bilingual copy with strong hierarchy and low cognitive load.",
+      "Accessibility-forward contrast, focus, and interaction states."
+    ],
+    "rules": [
+      {
+        "name": "The One Warm Pulse Rule",
+        "body": "Coral appears where the user should act or where the system must confirm importance. It is forbidden as idle decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The No Dead Gray Rule",
+        "body": "Neutrals stay warm. Pure grayscale surfaces are prohibited because they break the calm, trustworthy atmosphere.",
+        "section": "colors"
+      },
+      {
+        "name": "The One-Family Rule",
+        "body": "No display-font detours, no novelty alternates, no decorative type pairings. Product trust comes from consistency.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fast-Squint Rule",
+        "body": "If a rider cannot distinguish the page promise, the active route, and the next action within two seconds, the hierarchy is wrong.",
+        "section": "typography"
+      },
+      {
+        "name": "The Soft Layer Rule",
+        "body": "Panels should feel cushioned, not glossy. If a surface looks like floating glass or a 2014 raised card, the blur or shadow is wrong.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep primary controls at 56px minimum height with 20px rounding so touch and scan effort stay low.",
+      "Do use Timetable Ink (#1d1a17) for essential route names, departure times, and labels that drive decisions.",
+      "Do reserve Riviera Coral (#eb4c60) and Timetable Red (#d93b4f) for action, active emphasis, and route certainty.",
+      "Do preserve soft layer depth with one ambient shell shadow and subtle hover lift, not stacked container effects.",
+      "Do treat WCAG AA as the floor and push critical reading surfaces toward AAA contrast where practical."
+    ],
+    "donts": [
+      "Don't make this feel like an old website or a dated public-service portal.",
+      "Don't use cluttered layouts, weak hierarchy, low-contrast controls, cramped form fields, legacy gradients, or heavy chrome.",
+      "Don't introduce glassmorphism as decoration. The blur in this system is structural and quiet, never a visual gimmick.",
+      "Don't let coral spread across inactive surfaces. If everything is emphasized, nothing is.",
+      "Don't replace clear selection rows with tiny native-looking dropdown treatments when the route choice list benefits from explicit readable options."
+    ]
+  }
+}
