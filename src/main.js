@@ -94,6 +94,7 @@ const state = {
     mode: 'lines',
     lineId: null,
     stopId: null,
+    query: '',
   },
   uiState: {
     fromPanelOpen: false,
@@ -332,6 +333,7 @@ function renderApp() {
       mode: state.browseState.mode,
       selectedLineId: state.browseState.lineId,
       selectedStopId: state.browseState.stopId,
+      query: state.browseState.query,
     }));
   } else if (state.activeTab === 'saved') {
     parts.push(renderSavedView({
@@ -903,6 +905,24 @@ function seedSearchStop(stopId, fieldName) {
 }
 
 function bindBrowseActions() {
+  document.querySelector('[data-browse-filter]')?.addEventListener('input', (event) => {
+    const input = event.currentTarget;
+    const selectionStart = input.selectionStart ?? input.value.length;
+    const selectionEnd = input.selectionEnd ?? input.value.length;
+
+    state.browseState = {
+      ...state.browseState,
+      query: input.value,
+    };
+    writeRouteUrl({ push: false });
+    renderApp();
+    bindInteractions();
+
+    const nextInput = document.querySelector('[data-browse-filter]');
+    nextInput?.focus();
+    nextInput?.setSelectionRange?.(selectionStart, selectionEnd);
+  });
+
   document.querySelectorAll('[data-browse-mode]').forEach((button) => {
     button.addEventListener('click', () => {
       state.browseState = {

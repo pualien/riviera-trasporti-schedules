@@ -16,6 +16,7 @@ export const DEFAULT_ROUTE_URL_STATE = {
     mode: 'lines',
     lineId: null,
     stopId: null,
+    query: '',
   },
 };
 
@@ -81,6 +82,7 @@ export function parseRouteUrlState(search = '') {
       mode,
       lineId: valueOrNull(params.get('line')),
       stopId: valueOrNull(params.get('stop')),
+      query: params.get('browseQuery') ?? '',
     },
   };
 }
@@ -135,6 +137,10 @@ export function serializeRouteUrlState(routeState = DEFAULT_ROUTE_URL_STATE) {
 
   if (state.browse.stopId) {
     params.set('stop', state.browse.stopId);
+  }
+
+  if (state.browse.query?.trim()) {
+    params.set('browseQuery', state.browse.query.trim());
   }
 
   return params;

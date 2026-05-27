@@ -87,13 +87,13 @@ export function renderShell(
         </div>
       </header>
       ${tabNavigation}
-      ${renderSeoSupportCopy(t)}
+      ${content}
       ${renderAdSlot({
         slotId: 'shell-lead',
         className: 'ad-slot--lead',
         content: adSlots.lead,
       })}
-      ${content}
+      ${renderSeoSupportCopy(t)}
       ${renderAdSlot({
         slotId: 'shell-utility',
         className: 'ad-slot--utility',

@@ -5,9 +5,14 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
+    "test:browser": "playwright test",
+    "test:e2e": "playwright test tests/e2e/app-flow.spec.js",
+    "test:a11y": "playwright test tests/e2e/a11y.spec.js",
+    "test:smoke": "playwright test tests/e2e",
     "build:data": "node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "pdfjs-dist": "^5.4.54",
     "vitest": "^3.2.4"
   }

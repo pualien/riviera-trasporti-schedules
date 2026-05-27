@@ -1,6 +1,6 @@
 const CACHE_PREFIX = 'azzuriva-route-tools-';
 const LEGACY_CACHE_PREFIX = 'riviera-route-tools-';
-const CACHE_NAME = `${CACHE_PREFIX}v1`;
+const CACHE_NAME = `${CACHE_PREFIX}v2`;
 
 const REQUIRED_ASSETS = [
   './',

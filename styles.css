@@ -738,6 +738,42 @@ a {
   gap: 18px;
 }
 
+.browse-filter {
+  display: grid;
+  gap: 7px;
+}
+
+.browse-filter span {
+  color: var(--muted);
+  font-size: 0.88rem;
+  font-weight: 650;
+}
+
+.browse-filter input {
+  min-height: 56px;
+  width: 100%;
+  border-radius: 20px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--text);
+  font: inherit;
+  padding: 0 16px;
+}
+
+.browse-filter input:focus-visible {
+  outline: none;
+  border-color: rgba(217, 59, 79, 0.26);
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12);
+}
+
+.browse-count,
+.browse-list-message,
+.browse-empty-detail {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .browse-mode-switch,
 .browse-stop-actions {
   display: flex;
@@ -751,14 +787,36 @@ a {
   border: 1px solid rgba(62, 39, 24, 0.12);
   border-radius: 18px;
   background: #ffffff;
+  color: var(--text);
   cursor: pointer;
   font: inherit;
   padding: 12px 14px;
 }
 
+.browse-list button {
+  display: flex;
+  width: 100%;
+  text-align: left;
+}
+
+.browse-list button:hover,
+.browse-list button:focus-visible,
+.browse-stop-actions button:hover,
+.browse-stop-actions button:focus-visible {
+  border-color: rgba(217, 59, 79, 0.26);
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.1);
+  outline: none;
+}
+
 .browse-mode-switch [aria-current="page"] {
   background: #eb4c60;
   color: #ffffff;
+}
+
+.browse-list button[aria-current="page"] {
+  border-color: rgba(217, 59, 79, 0.42);
+  background: rgba(255, 248, 249, 0.98);
+  box-shadow: 0 0 0 3px rgba(235, 76, 96, 0.1);
 }
 
 .browse-layout {
@@ -780,6 +838,52 @@ a {
 .browse-stop-list {
   display: grid;
   gap: 10px;
+}
+
+.browse-list {
+  align-content: start;
+  max-height: min(62vh, 44rem);
+  overflow: auto;
+}
+
+.browse-group {
+  display: grid;
+  gap: 8px;
+}
+
+.browse-group + .browse-group {
+  padding-top: 6px;
+}
+
+.browse-group h3 {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 750;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.browse-group-list {
+  display: grid;
+  gap: 8px;
+}
+
+.browse-row-copy {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.browse-row-copy strong,
+.browse-row-copy small {
+  overflow-wrap: anywhere;
+}
+
+.browse-row-copy small {
+  color: var(--muted);
+  font-size: 0.82rem;
+  line-height: 1.35;
 }
 
 .summary-card,
@@ -1086,6 +1190,10 @@ a {
 
   .hero-shell--compact {
     grid-template-columns: 1fr;
+  }
+
+  .hero-shell--compact .search-form {
+    order: -1;
   }
 
   .summary-head,

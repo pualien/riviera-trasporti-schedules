@@ -26,6 +26,7 @@ describe('routeUrlState', () => {
         mode: 'lines',
         lineId: null,
         stopId: null,
+        query: '',
       },
     });
   });
@@ -49,10 +50,23 @@ describe('routeUrlState', () => {
         mode: 'stops',
         lineId: null,
         stopId: 'sanremo-autostazione',
+        query: 'Sanremo',
       },
     });
 
-    expect(params.toString()).toBe('tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=stops&stop=sanremo-autostazione');
+    expect(params.toString()).toBe('tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=stops&stop=sanremo-autostazione&browseQuery=Sanremo');
+  });
+
+  it('parses browse filter state for shareable catalog URLs', () => {
+    expect(parseRouteUrlState('?tab=browse&browse=stops&browseQuery=sanremo&stop=sanremo-autostazione')).toMatchObject({
+      tab: 'browse',
+      browse: {
+        mode: 'stops',
+        lineId: null,
+        stopId: 'sanremo-autostazione',
+        query: 'sanremo',
+      },
+    });
   });
 
   it('preserves the current day type when the URL has no day parameter', () => {

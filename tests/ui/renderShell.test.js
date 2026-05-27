@@ -33,6 +33,8 @@ describe('renderShell', () => {
 
     expect(html).toContain('value="fr" selected');
     expect(html).toContain('Donner un conseil');
+    expect(html).toContain('href="https://forms.gle/tjo52ginwrjUGdMC6"');
+    expect(html).not.toContain('PLACEHOLDER');
     expect(html).toContain('Site officiel Riviera Trasporti');
     expect(html).toContain('name="language"');
   });
@@ -63,8 +65,34 @@ describe('renderShell', () => {
     expect(html).toContain('data-ad-slot="shell-utility"');
     expect(html).toContain('<div>Lead sponsor</div>');
     expect(html).toContain('<div>Route sponsor</div>');
-    expect(html.indexOf('data-ad-slot="shell-lead"')).toBeLessThan(html.indexOf('<section>Body</section>'));
+    expect(html.indexOf('<section>Body</section>')).toBeLessThan(html.indexOf('data-ad-slot="shell-lead"'));
     expect(html.indexOf('data-ad-slot="shell-utility"')).toBeGreaterThan(html.indexOf('<section>Body</section>'));
+  });
+
+  it('keeps the app content before crawl-support copy on mobile-first render order', () => {
+    const html = renderShell('<section id="route-search">Route search</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      tabNavigation: '<nav class="app-tabs">Tabs</nav>',
+      taxiDirectory: [
+        {
+          serviceId: 'taxi-imperia',
+          provinceId: 'imperia',
+          provinceLabel: 'Provincia di Imperia',
+          serviceLabel: 'Taxi Imperia',
+          phone: '+39 0183 3785',
+          phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
+          sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Imperia'],
+        },
+      ],
+      t: createTranslator('en'),
+    });
+
+    expect(html.indexOf('<nav class="app-tabs">Tabs</nav>')).toBeLessThan(html.indexOf('<section id="route-search">'));
+    expect(html.indexOf('<section id="route-search">')).toBeLessThan(html.indexOf('class="seo-support-copy"'));
+    expect(html.indexOf('<section id="route-search">')).toBeLessThan(html.indexOf('class="taxi-directory-section"'));
   });
 
   it('renders the dataset freshness marker when metadata is available', () => {

@@ -28,6 +28,15 @@ python3 -m http.server 4173
 
 Open [http://localhost:4173](http://localhost:4173).
 
+Run the test suites:
+
+```bash
+npm test
+npm run test:smoke
+```
+
+The smoke suite uses Playwright against the static server to cover the mobile route form, Browse filtering, and baseline accessibility checks.
+
 ## Nearby Stop Picker
 
 The `From` and `To` fields both support a nearby-stop flow. The browser asks for geolocation permission, loads a compact runtime map, and uses a live provider to suggest the 3-5 closest known stops from the shipped timetable dataset.

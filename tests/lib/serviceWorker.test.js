@@ -95,6 +95,7 @@ describe('service worker', () => {
         keys: async () => [
           'azzuriva-route-tools-v0',
           'azzuriva-route-tools-v1',
+          'azzuriva-route-tools-v2',
           'other-static-app',
         ],
         delete: async (cacheName) => {
@@ -111,7 +112,7 @@ describe('service worker', () => {
     listeners.activate(event);
     await promises[0];
 
-    expect(deleted).toEqual(['azzuriva-route-tools-v0']);
+    expect(deleted).toEqual(['azzuriva-route-tools-v0', 'azzuriva-route-tools-v1']);
   });
 
   it('returns a network response when best-effort runtime caching fails', async () => {
