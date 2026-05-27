@@ -133,4 +133,48 @@ Sanremo Autostazione 07.00`,
       },
     });
   });
+
+  it('derives localities from configured locality rules and stop data', async () => {
+    const output = await buildRouteData({
+      indexEntries: [{ lineId: '12', pageNumber: 23, direction: 'ANDORA - IMPERIA - SANREMO' }],
+      manifestEntries: [
+        {
+          lineId: '12',
+          pageNumber: 23,
+          direction: 'ANDORA - IMPERIA - SANREMO',
+          dayType: 'feriale',
+          parserFamily: 'linear-intercity',
+        },
+      ],
+      pages: [
+        {
+          pageNumber: 23,
+          text: `Diano Marina 05.35
+D. Marina Vecchia Stazione 05.40
+Sanremo Autostazione 07.00`,
+          items: [],
+        },
+      ],
+      aliases: {},
+      localities: [],
+      localityRules: [
+        {
+          id: 'diano-marina',
+          label: 'Diano Marina',
+          aliases: ['Diano'],
+          matchTokens: ['diano marina', 'd. marina'],
+        },
+      ],
+    });
+
+    expect(output.localities).toContainEqual(
+      expect.objectContaining({
+        id: 'diano-marina',
+        label: 'Diano Marina',
+        aliases: ['Diano'],
+        stopIds: ['diano-marina', 'd-marina-vecchia-stazione'],
+        matchTokens: ['diano marina', 'diano', 'd marina'],
+      }),
+    );
+  });
 });

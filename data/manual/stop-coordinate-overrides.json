@@ -1,0 +1,233 @@
+[
+  {
+    "stopId": "imperia-porto-maurizio",
+    "latitude": 43.8783009,
+    "longitude": 8.0162007,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Pensilina Porto Maurizio"
+  },
+  {
+    "stopId": "imperia-oneglia",
+    "latitude": 43.890415,
+    "longitude": 8.039467,
+    "source": "FlixBus stop page",
+    "sourceLabel": "Largo Piana Nannollo"
+  },
+  {
+    "stopId": "porto-maurizio-pensilina",
+    "latitude": 43.8783869,
+    "longitude": 8.0162076,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Pensilina Porto Maurizio"
+  },
+  {
+    "stopId": "porto-maurizio-pens",
+    "latitude": 43.8783869,
+    "longitude": 8.0162076,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Pensilina Porto Maurizio"
+  },
+  {
+    "stopId": "piazza-ricci",
+    "latitude": 43.8763477,
+    "longitude": 8.0133072,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Piazza Ricci"
+  },
+  {
+    "stopId": "via-cascione",
+    "latitude": 43.8744414,
+    "longitude": 8.0124474,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Via Cascione"
+  },
+  {
+    "stopId": "sanremo-autostazione",
+    "latitude": 43.8181223,
+    "longitude": 7.7785931,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Sanremo Autostazione"
+  },
+  {
+    "stopId": "arma-di-taggia",
+    "latitude": 43.8321207,
+    "longitude": 7.8497505,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Arma di Taggia"
+  },
+  {
+    "stopId": "taggia-stazione-fs",
+    "latitude": 43.8446339,
+    "longitude": 7.8553138,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Taggia-Arma"
+  },
+  {
+    "stopId": "riva-ligure",
+    "latitude": 43.8400181,
+    "longitude": 7.8837406,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Riva Ligure, Cimitero (direzione Andora)"
+  },
+  {
+    "stopId": "santo-stefano",
+    "latitude": 43.8397317,
+    "longitude": 7.8893057,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Santo Stefano La Palma (direzione Andora)"
+  },
+  {
+    "stopId": "cipressa",
+    "latitude": 43.8514947,
+    "longitude": 7.9306421,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Cipressa"
+  },
+  {
+    "stopId": "pietrabruna",
+    "latitude": 43.8898757,
+    "longitude": 7.9024955,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Pietrabruna"
+  },
+  {
+    "stopId": "diano-marina",
+    "latitude": 43.9045232,
+    "longitude": 8.0780877,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Diano Marina"
+  },
+  {
+    "stopId": "andora-stazione-fs",
+    "latitude": 43.9599191,
+    "longitude": 8.1391313,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Stazione di Andora Sud"
+  },
+  {
+    "stopId": "andora-fs",
+    "latitude": 43.9599191,
+    "longitude": 8.1391313,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Stazione di Andora Sud"
+  },
+  {
+    "stopId": "san-bartolomeo",
+    "latitude": 43.8288553,
+    "longitude": 7.7477332,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "San Bartolomeo Bivio Gozo"
+  },
+  {
+    "stopId": "bordighera",
+    "latitude": 43.7783475,
+    "longitude": 7.6635979,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Bordighera"
+  },
+  {
+    "stopId": "borghetto-superiore",
+    "latitude": 43.8041919,
+    "longitude": 7.6618059,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Borghetto Superiore"
+  },
+  {
+    "stopId": "case-popolari",
+    "latitude": 43.7848892,
+    "longitude": 7.6554221,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Case Popolari"
+  },
+  {
+    "stopId": "vallecrosia",
+    "latitude": 43.7855042,
+    "longitude": 7.6408625,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Vallecrosia Centro"
+  },
+  {
+    "stopId": "ventimiglia---via-cavour",
+    "latitude": 43.7921001,
+    "longitude": 7.6084989,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Ventimiglia, via Cavour"
+  },
+  {
+    "stopId": "ventimiglia-via-cavour",
+    "latitude": 43.7921001,
+    "longitude": 7.6084989,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Ventimiglia, via Cavour"
+  },
+  {
+    "stopId": "ventimiglia",
+    "latitude": 43.7917202,
+    "longitude": 7.6037085,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Ventimiglia"
+  },
+  {
+    "stopId": "ventimiglia-capolinea",
+    "latitude": 43.7917202,
+    "longitude": 7.6037085,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Ventimiglia"
+  },
+  {
+    "stopId": "ventimiglia---capolinea",
+    "latitude": 43.7917202,
+    "longitude": 7.6037085,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Ventimiglia"
+  },
+  {
+    "stopId": "ponte-san-luigi",
+    "latitude": 43.7855489,
+    "longitude": 7.5315556,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Ponte San Luigi"
+  },
+  {
+    "stopId": "dolceacqua",
+    "latitude": 43.8512726,
+    "longitude": 7.6232014,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Dolceacqua"
+  },
+  {
+    "stopId": "olivetta-san-michele",
+    "latitude": 43.8783764,
+    "longitude": 7.535065,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Olivetta San Michele"
+  },
+  {
+    "stopId": "lecchiore",
+    "latitude": 43.9133513,
+    "longitude": 7.926429,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Lecchiore"
+  },
+  {
+    "stopId": "vasia",
+    "latitude": 43.9325895,
+    "longitude": 7.9530413,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Vasia"
+  },
+  {
+    "stopId": "albenga",
+    "latitude": 44.0472894,
+    "longitude": 8.2215848,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Albenga"
+  },
+  {
+    "stopId": "madonna-della-villa",
+    "latitude": 43.8945542,
+    "longitude": 7.7494336,
+    "source": "OpenStreetMap Overpass",
+    "sourceLabel": "Madonna della Villa"
+  }
+]

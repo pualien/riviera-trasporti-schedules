@@ -1221,13 +1221,13 @@
     "variants": []
   },
   {
-    "id": "d-marina-via-cesare-battisti-capolinea",
-    "canonical": "d. marina via cesare battisti capolinea",
+    "id": "diano-marina-capolinea",
+    "canonical": "diano marina capolinea",
     "variants": []
   },
   {
-    "id": "d-marina-vecchia-stazione",
-    "canonical": "d. marina vecchia stazione",
+    "id": "diano-marina-vecchia-stazione",
+    "canonical": "diano marina vecchia stazione",
     "variants": []
   },
   {
@@ -1236,8 +1236,13 @@
     "variants": []
   },
   {
-    "id": "nuova-stazione-fs",
-    "canonical": "nuova stazione fs",
+    "id": "nuova-stazione-fs-(arrivo)",
+    "canonical": "nuova stazione fs (arrivo)",
+    "variants": []
+  },
+  {
+    "id": "nuova-stazione-fs-(partenza)",
+    "canonical": "nuova stazione fs (partenza)",
     "variants": []
   },
   {
@@ -1246,8 +1251,13 @@
     "variants": []
   },
   {
-    "id": "cervo-p-castello",
-    "canonical": "cervo p. castello",
+    "id": "cervo-piazza-castello",
+    "canonical": "cervo piazza castello",
+    "variants": []
+  },
+  {
+    "id": "nuova-stazione-fs",
+    "canonical": "nuova stazione fs",
     "variants": []
   },
   {

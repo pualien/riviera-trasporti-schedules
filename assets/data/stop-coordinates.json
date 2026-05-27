@@ -1,1 +1,134 @@
-{}
+{
+  "imperia-porto-maurizio": {
+    "latitude": 43.8783009,
+    "longitude": 8.0162007
+  },
+  "imperia-oneglia": {
+    "latitude": 43.890415,
+    "longitude": 8.039467
+  },
+  "porto-maurizio-pensilina": {
+    "latitude": 43.8783869,
+    "longitude": 8.0162076
+  },
+  "porto-maurizio-pens": {
+    "latitude": 43.8783869,
+    "longitude": 8.0162076
+  },
+  "piazza-ricci": {
+    "latitude": 43.8763477,
+    "longitude": 8.0133072
+  },
+  "via-cascione": {
+    "latitude": 43.8744414,
+    "longitude": 8.0124474
+  },
+  "sanremo-autostazione": {
+    "latitude": 43.8181223,
+    "longitude": 7.7785931
+  },
+  "arma-di-taggia": {
+    "latitude": 43.8321207,
+    "longitude": 7.8497505
+  },
+  "taggia-stazione-fs": {
+    "latitude": 43.8446339,
+    "longitude": 7.8553138
+  },
+  "riva-ligure": {
+    "latitude": 43.8400181,
+    "longitude": 7.8837406
+  },
+  "santo-stefano": {
+    "latitude": 43.8397317,
+    "longitude": 7.8893057
+  },
+  "cipressa": {
+    "latitude": 43.8514947,
+    "longitude": 7.9306421
+  },
+  "pietrabruna": {
+    "latitude": 43.8898757,
+    "longitude": 7.9024955
+  },
+  "diano-marina": {
+    "latitude": 43.9045232,
+    "longitude": 8.0780877
+  },
+  "andora-stazione-fs": {
+    "latitude": 43.9599191,
+    "longitude": 8.1391313
+  },
+  "andora-fs": {
+    "latitude": 43.9599191,
+    "longitude": 8.1391313
+  },
+  "san-bartolomeo": {
+    "latitude": 43.8288553,
+    "longitude": 7.7477332
+  },
+  "bordighera": {
+    "latitude": 43.7783475,
+    "longitude": 7.6635979
+  },
+  "borghetto-superiore": {
+    "latitude": 43.8041919,
+    "longitude": 7.6618059
+  },
+  "case-popolari": {
+    "latitude": 43.7848892,
+    "longitude": 7.6554221
+  },
+  "vallecrosia": {
+    "latitude": 43.7855042,
+    "longitude": 7.6408625
+  },
+  "ventimiglia---via-cavour": {
+    "latitude": 43.7921001,
+    "longitude": 7.6084989
+  },
+  "ventimiglia-via-cavour": {
+    "latitude": 43.7921001,
+    "longitude": 7.6084989
+  },
+  "ventimiglia": {
+    "latitude": 43.7917202,
+    "longitude": 7.6037085
+  },
+  "ventimiglia-capolinea": {
+    "latitude": 43.7917202,
+    "longitude": 7.6037085
+  },
+  "ventimiglia---capolinea": {
+    "latitude": 43.7917202,
+    "longitude": 7.6037085
+  },
+  "ponte-san-luigi": {
+    "latitude": 43.7855489,
+    "longitude": 7.5315556
+  },
+  "dolceacqua": {
+    "latitude": 43.8512726,
+    "longitude": 7.6232014
+  },
+  "olivetta-san-michele": {
+    "latitude": 43.8783764,
+    "longitude": 7.535065
+  },
+  "lecchiore": {
+    "latitude": 43.9133513,
+    "longitude": 7.926429
+  },
+  "vasia": {
+    "latitude": 43.9325895,
+    "longitude": 7.9530413
+  },
+  "albenga": {
+    "latitude": 44.0472894,
+    "longitude": 8.2215848
+  },
+  "madonna-della-villa": {
+    "latitude": 43.8945542,
+    "longitude": 7.7494336
+  }
+}

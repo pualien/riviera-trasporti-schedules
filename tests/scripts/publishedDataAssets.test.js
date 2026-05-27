@@ -24,4 +24,50 @@ describe('published data assets', () => {
       expect(typeof parsed, asset.path).toBe(asset.expectedType);
     }
   });
+
+  it('publishes enough broad localities to make area-first search meaningful', async () => {
+    const [localities, reachability] = await Promise.all([
+      readFile(new URL('../../assets/data/localities.json', import.meta.url), 'utf8').then(JSON.parse),
+      readFile(new URL('../../assets/data/reachability.json', import.meta.url), 'utf8').then(JSON.parse),
+    ]);
+    const coveredStopIds = new Set(localities.flatMap((locality) => locality.stopIds ?? []));
+    const departureStopIds = Object.entries(reachability)
+      .filter(([, destinations]) => destinations.length > 0)
+      .map(([stopId]) => stopId);
+    const coveredDepartureCount = departureStopIds.filter((stopId) => coveredStopIds.has(stopId)).length;
+
+    expect(localities.length).toBeGreaterThanOrEqual(25);
+    expect(coveredDepartureCount / departureStopIds.length).toBeGreaterThanOrEqual(0.4);
+    expect(localities.map((locality) => locality.id)).toEqual(expect.arrayContaining([
+      'andora',
+      'imperia',
+      'sanremo',
+      'ventimiglia',
+    ]));
+  });
+
+  it('publishes usable stop coordinates for selected-trip maps', async () => {
+    const coordinates = JSON.parse(
+      await readFile(new URL('../../assets/data/stop-coordinates.json', import.meta.url), 'utf8'),
+    );
+    const usableCoordinates = Object.entries(coordinates).filter(([, coords]) =>
+      Number.isFinite(coords.latitude) && Number.isFinite(coords.longitude),
+    );
+
+    expect(usableCoordinates.length).toBeGreaterThanOrEqual(20);
+    expect(coordinates).toEqual(expect.objectContaining({
+      'imperia-oneglia': expect.objectContaining({
+        latitude: expect.any(Number),
+        longitude: expect.any(Number),
+      }),
+      'imperia-porto-maurizio': expect.objectContaining({
+        latitude: expect.any(Number),
+        longitude: expect.any(Number),
+      }),
+      'sanremo-autostazione': expect.objectContaining({
+        latitude: expect.any(Number),
+        longitude: expect.any(Number),
+      }),
+    }));
+  });
 });

@@ -52,8 +52,71 @@ function validateLocalities(localities, stops) {
 
   return localities.map((locality) => ({
     ...locality,
-    matchTokens: [locality.label, ...locality.aliases].map(normalizeText),
+    matchTokens: [...new Set([
+      locality.label,
+      ...(locality.aliases ?? []),
+      ...(locality.matchTokens ?? []),
+    ].map(normalizeText))],
   }));
+}
+
+function stopMatchesLocalityRule(stop, rule) {
+  const stopTokens = [
+    stop.canonical,
+    ...(stop.variants ?? []),
+    ...(stop.matchTokens ?? []),
+  ].map(normalizeText);
+  const ruleTokens = [
+    rule.label,
+    ...(rule.aliases ?? []),
+    ...(rule.matchTokens ?? []),
+  ].map(normalizeText);
+
+  return stopTokens.some((stopToken) =>
+    ruleTokens.some((ruleToken) =>
+      stopToken === ruleToken
+      || stopToken.startsWith(`${ruleToken} `)
+      || stopToken.includes(` ${ruleToken} `),
+    ));
+}
+
+function deriveLocalitiesFromRules(localityRules = [], stops = []) {
+  return localityRules
+    .map((rule) => ({
+      id: rule.id,
+      label: rule.label,
+      aliases: rule.aliases ?? [],
+      stopIds: stops
+        .filter((stop) => stopMatchesLocalityRule(stop, rule))
+        .map((stop) => stop.id),
+      matchTokens: rule.matchTokens ?? [],
+    }))
+    .filter((locality) => locality.stopIds.length > 0);
+}
+
+function mergeLocalities(manualLocalities = [], generatedLocalities = []) {
+  const byId = new Map();
+
+  for (const locality of [...generatedLocalities, ...manualLocalities]) {
+    const current = byId.get(locality.id) ?? {
+      ...locality,
+      aliases: [],
+      stopIds: [],
+      matchTokens: [],
+    };
+
+    byId.set(locality.id, {
+      ...current,
+      ...locality,
+      aliases: [...new Set([...(current.aliases ?? []), ...(locality.aliases ?? [])])],
+      stopIds: [...new Set([...(current.stopIds ?? []), ...(locality.stopIds ?? [])])],
+      matchTokens: [...new Set([...(current.matchTokens ?? []), ...(locality.matchTokens ?? [])])],
+    });
+  }
+
+  return [...byId.values()].sort((left, right) =>
+    normalizeText(left.label).localeCompare(normalizeText(right.label)),
+  );
 }
 
 function buildReachability(trips) {
@@ -94,6 +157,7 @@ export async function buildRouteData({
   pages,
   aliases,
   localities = [],
+  localityRules = [],
   builtAt = new Date().toISOString(),
 }) {
   const missingEntries = indexEntries.filter(
@@ -132,7 +196,11 @@ export async function buildRouteData({
   });
 
   const stops = buildStops(trips, aliases);
-  const validatedLocalities = validateLocalities(localities, stops);
+  const generatedLocalities = deriveLocalitiesFromRules(localityRules, stops);
+  const validatedLocalities = validateLocalities(
+    mergeLocalities(localities, generatedLocalities),
+    stops,
+  );
 
   return {
     lines: buildLines(manifestEntries),
@@ -154,6 +222,9 @@ async function main() {
   const localities = JSON.parse(
     await readFile(new URL('../data/manual/localities.json', import.meta.url), 'utf8'),
   );
+  const localityRules = JSON.parse(
+    await readFile(new URL('../data/manual/locality-rules.json', import.meta.url), 'utf8'),
+  );
   const pages = JSON.parse(await readFile(new URL('../build/raw/pages.json', import.meta.url), 'utf8'));
   const indexPage = pages.find((page) => page.pageNumber === 2);
 
@@ -162,7 +233,14 @@ async function main() {
   }
 
   const indexEntries = parsePdfIndex({ pageItems: indexPage.items });
-  const output = await buildRouteData({ indexEntries, manifestEntries, pages, aliases, localities });
+  const output = await buildRouteData({
+    indexEntries,
+    manifestEntries,
+    pages,
+    aliases,
+    localities,
+    localityRules,
+  });
 
   await mkdir(new URL('../assets/data/', import.meta.url), { recursive: true });
   await writeFile(new URL('../assets/data/trips.json', import.meta.url), JSON.stringify(output.trips, null, 2));

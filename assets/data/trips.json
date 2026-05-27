@@ -85248,18 +85248,18 @@
     "stops": [
       {
         "name": "diano marina",
-        "time": "10:40",
+        "time": "07:20",
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "05:50",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "05:51",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -85267,19 +85267,218 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "05:56",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "06:48",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "06:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - DIANO CASTELLO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:00",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "06:35",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "06:36",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "06:38",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "06:41",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "07:33",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "07:40",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - DIANO CASTELLO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:50",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:00",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:01",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:03",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:10",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:15",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:20",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:22",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:27",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "08:34",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:43",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:55",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - DIANO CASTELLO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "10:40",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "10:45",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "10:46",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "10:48",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "10:55",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:00",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "11:05",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "11:07",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:12",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "11:19",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:28",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "11:40",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85295,34 +85494,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "06:35",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "12:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "06:36",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "12:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "06:38",
+        "time": "12:18",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "06:41",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "12:25",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "07:33",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "12:30",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "07:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina vecchia stazione",
+        "time": "12:35",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "12:37",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:42",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "12:49",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:58",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85338,49 +85572,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:00",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "08:01",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "08:03",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:10",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:15",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "08:20",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "13:11",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "08:22",
+        "time": "13:13",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:27",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:16",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:08",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85396,29 +85615,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:43",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "diano marina vecchia stazione",
+        "time": "14:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "bar sito lato mare",
+        "time": "14:18",
+        "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:21",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:13",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:20",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85434,49 +85658,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "10:45",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "14:30",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "10:46",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:31",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "10:48",
+        "time": "14:33",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "10:55",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:40",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "11:00",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:45",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "11:05",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:50",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "11:07",
+        "time": "14:52",
         "stopId": "bar-sito-lato-mare"
       },
       {
         "name": "san bartolomeo al mare",
-        "time": "11:12",
+        "time": "14:57",
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
+        "name": "cervo piazza castello",
+        "time": "15:04",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "15:13",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:25",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85492,295 +85736,14 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "11:28",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "11:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "12:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:25",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:30",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:35",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:37",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:42",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:58",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "13:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "13:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:21",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:13",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:20",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:11",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:13",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:16",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:45",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:50",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:52",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "14:57",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:30",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:31",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:33",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:40",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:08",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "15:13",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:25",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "16:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:16",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -85788,19 +85751,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "16:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "16:30",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:35",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -85813,22 +85776,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "16:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "16:49",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -85836,19 +85786,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85859,14 +85809,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "17:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -85874,19 +85824,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:16",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "18:08",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "18:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -85897,14 +85847,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "19:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -85912,19 +85862,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "19:20",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "19:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:30",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -85937,22 +85887,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "19:44",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "19:44",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -85960,19 +85897,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "20:05",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -86783,18 +86720,18 @@
     "stops": [
       {
         "name": "diano marina",
-        "time": "10:40",
+        "time": "07:20",
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "05:50",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "05:51",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -86802,19 +86739,218 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "05:56",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "06:48",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "06:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - STAZIONE FS",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:00",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "06:35",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "06:36",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "06:38",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "06:41",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "07:33",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "07:40",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - STAZIONE FS",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:50",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:00",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:01",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:03",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:10",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:15",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:20",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:22",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:27",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "08:34",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:43",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:55",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - STAZIONE FS",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "10:40",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "10:45",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "10:46",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "10:48",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "10:55",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:00",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "11:05",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "11:07",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:12",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "11:19",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:28",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "11:40",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -86830,34 +86966,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "06:35",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "12:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "06:36",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "12:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "06:38",
+        "time": "12:18",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "06:41",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "12:25",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "07:33",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "12:30",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "07:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina vecchia stazione",
+        "time": "12:35",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "12:37",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:42",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "12:49",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:58",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -86873,49 +87044,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:00",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "08:01",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "08:03",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:10",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:15",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "08:20",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "13:11",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "08:22",
+        "time": "13:13",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:27",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:16",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:08",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -86931,29 +87087,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:43",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "diano marina vecchia stazione",
+        "time": "14:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "bar sito lato mare",
+        "time": "14:18",
+        "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:21",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:13",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:20",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -86969,49 +87130,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "10:45",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "14:30",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "10:46",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:31",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "10:48",
+        "time": "14:33",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "10:55",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:40",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "11:00",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:45",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "11:05",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:50",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "11:07",
+        "time": "14:52",
         "stopId": "bar-sito-lato-mare"
       },
       {
         "name": "san bartolomeo al mare",
-        "time": "11:12",
+        "time": "14:57",
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
+        "name": "cervo piazza castello",
+        "time": "15:04",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "15:13",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:25",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -87027,295 +87208,14 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "11:28",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "11:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "12:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:25",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:30",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:35",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:37",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:42",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:58",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "13:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "13:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:21",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:13",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:20",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:11",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:13",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:16",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:45",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:50",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:52",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "14:57",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:30",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:31",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:33",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:40",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:08",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "15:13",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:25",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "16:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:16",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -87323,19 +87223,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "16:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "16:30",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:35",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -87348,22 +87248,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "16:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "16:49",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -87371,19 +87258,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -87394,14 +87281,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "17:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -87409,19 +87296,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:16",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "18:08",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "18:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -87432,14 +87319,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "19:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -87447,19 +87334,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "19:20",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "19:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:30",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -87472,22 +87359,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "19:44",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "19:44",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -87495,19 +87369,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "20:05",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -89462,18 +89336,18 @@
     "stops": [
       {
         "name": "diano marina",
-        "time": "10:40",
+        "time": "07:20",
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "05:50",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "05:51",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -89481,19 +89355,218 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "05:56",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "06:48",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "06:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "32",
+    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:00",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "06:35",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "06:36",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "06:38",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "06:41",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "07:33",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "07:40",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "32",
+    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:50",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:00",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:01",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:03",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:10",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:15",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:20",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:22",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:27",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "08:34",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:43",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:55",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "32",
+    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "10:40",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "10:45",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "10:46",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "10:48",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "10:55",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:00",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "11:05",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "11:07",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:12",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "11:19",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:28",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "11:40",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -89509,34 +89582,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "06:35",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "12:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "06:36",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "12:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "06:38",
+        "time": "12:18",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "06:41",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "12:25",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "07:33",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "12:30",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "07:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina vecchia stazione",
+        "time": "12:35",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "12:37",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:42",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "12:49",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:58",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -89552,49 +89660,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:00",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "08:01",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "08:03",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:10",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:15",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "08:20",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "13:11",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "08:22",
+        "time": "13:13",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:27",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:16",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:08",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -89610,29 +89703,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:43",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "diano marina vecchia stazione",
+        "time": "14:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "bar sito lato mare",
+        "time": "14:18",
+        "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:21",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:13",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:20",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -89648,49 +89746,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "10:45",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "14:30",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "10:46",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:31",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "10:48",
+        "time": "14:33",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "10:55",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:40",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "11:00",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:45",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "11:05",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:50",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "11:07",
+        "time": "14:52",
         "stopId": "bar-sito-lato-mare"
       },
       {
         "name": "san bartolomeo al mare",
-        "time": "11:12",
+        "time": "14:57",
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
+        "name": "cervo piazza castello",
+        "time": "15:04",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "15:13",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:25",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -89706,295 +89824,14 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "11:28",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "11:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "12:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:25",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:30",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:35",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:37",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:42",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:58",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "13:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "13:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:21",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:13",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:20",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:11",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:13",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:16",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:45",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:50",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:52",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "14:57",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:30",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:31",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:33",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:40",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:08",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "15:13",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:25",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "16:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:16",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -90002,19 +89839,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "16:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "16:30",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:35",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -90027,22 +89864,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "16:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "16:49",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -90050,19 +89874,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -90073,14 +89897,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "17:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -90088,19 +89912,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:16",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "18:08",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "18:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -90111,14 +89935,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "19:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -90126,19 +89950,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "19:20",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "19:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:30",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -90151,22 +89975,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "19:44",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "19:44",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -90174,19 +89985,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "20:05",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92141,18 +91952,18 @@
     "stops": [
       {
         "name": "diano marina",
-        "time": "10:40",
+        "time": "07:20",
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "05:50",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "05:51",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -92160,19 +91971,218 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "05:56",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "06:48",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "06:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "33",
+    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:00",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "06:35",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "06:36",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "06:38",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "06:41",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "07:33",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "07:40",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "33",
+    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "08:50",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:00",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:01",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:03",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:10",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:15",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "08:20",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "08:22",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:27",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "08:34",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "08:43",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "08:50",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "08:55",
+        "stopId": "diano-marina-capolinea"
+      }
+    ]
+  },
+  {
+    "lineId": "33",
+    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
+    "dayType": "feriale",
+    "sourcePage": 53,
+    "stops": [
+      {
+        "name": "diano marina",
+        "time": "10:40",
+        "stopId": "diano-marina"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "10:45",
+        "stopId": "diano-marina-capolinea"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "10:46",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "10:48",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "10:55",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:00",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina vecchia stazione",
+        "time": "11:05",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "11:07",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:12",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "11:19",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "11:28",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "11:35",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "11:40",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92188,34 +92198,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "06:35",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "12:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "06:36",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "12:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "06:38",
+        "time": "12:18",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "06:41",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "12:25",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "07:33",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "12:30",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "07:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina vecchia stazione",
+        "time": "12:35",
+        "stopId": "diano-marina-vecchia-stazione"
+      },
+      {
+        "name": "bar sito lato mare",
+        "time": "12:37",
+        "stopId": "bar-sito-lato-mare"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:42",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "cervo piazza castello",
+        "time": "12:49",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "12:58",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "13:05",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92231,49 +92276,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:00",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "13:10",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "08:01",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "08:03",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:10",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "08:15",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "08:20",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "13:11",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "08:22",
+        "time": "13:13",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:27",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "13:16",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:08",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92289,29 +92319,34 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "08:34",
-        "stopId": "cervo-p-castello"
+        "name": "diano marina capolinea",
+        "time": "14:15",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "san bartolomeo al mare",
-        "time": "08:43",
-        "stopId": "san-bartolomeo-al-mare"
+        "name": "diano marina vecchia stazione",
+        "time": "14:16",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "bar sito lato mare",
+        "time": "14:18",
+        "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "08:50",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:21",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "08:55",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:13",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:20",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92327,49 +92362,69 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "10:45",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "name": "diano marina capolinea",
+        "time": "14:30",
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "10:46",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:31",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "10:48",
+        "time": "14:33",
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "10:55",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (arrivo)",
+        "time": "14:40",
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
-        "time": "11:00",
-        "stopId": "nuova-stazione-fs"
+        "name": "nuova stazione fs (partenza)",
+        "time": "14:45",
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
-        "time": "11:05",
-        "stopId": "d-marina-vecchia-stazione"
+        "name": "diano marina vecchia stazione",
+        "time": "14:50",
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
-        "time": "11:07",
+        "time": "14:52",
         "stopId": "bar-sito-lato-mare"
       },
       {
         "name": "san bartolomeo al mare",
-        "time": "11:12",
+        "time": "14:57",
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
+        "name": "cervo piazza castello",
+        "time": "15:04",
+        "stopId": "cervo-piazza-castello"
+      },
+      {
+        "name": "san bartolomeo al mare",
+        "time": "15:13",
+        "stopId": "san-bartolomeo-al-mare"
+      },
+      {
+        "name": "nuova stazione fs (arrivo)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(arrivo)"
+      },
+      {
+        "name": "nuova stazione fs (partenza)",
+        "time": "15:20",
+        "stopId": "nuova-stazione-fs-(partenza)"
+      },
+      {
+        "name": "diano marina capolinea",
+        "time": "15:25",
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92385,295 +92440,14 @@
         "stopId": "diano-marina"
       },
       {
-        "name": "cervo p. castello",
-        "time": "11:19",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "11:28",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "11:35",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "11:40",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "12:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:25",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "12:30",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "12:35",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "12:37",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:42",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "12:49",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "12:58",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:05",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "13:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "13:16",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "13:18",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "13:21",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:13",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:20",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:11",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:13",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:16",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:45",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:50",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:52",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "14:57",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "14:30",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      },
-      {
-        "name": "d. marina vecchia stazione",
-        "time": "14:31",
-        "stopId": "d-marina-vecchia-stazione"
-      },
-      {
-        "name": "bar sito lato mare",
-        "time": "14:33",
-        "stopId": "bar-sito-lato-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "14:40",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:08",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "15:04",
-        "stopId": "cervo-p-castello"
-      },
-      {
-        "name": "san bartolomeo al mare",
-        "time": "15:13",
-        "stopId": "san-bartolomeo-al-mare"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "nuova stazione fs",
-        "time": "15:20",
-        "stopId": "nuova-stazione-fs"
-      },
-      {
-        "name": "d. marina via cesare battisti capolinea",
-        "time": "15:25",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "16:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:16",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -92681,19 +92455,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "16:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "16:30",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "16:35",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -92706,22 +92480,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "16:49",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "16:49",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -92729,19 +92490,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "17:05",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92752,14 +92513,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "17:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "17:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -92767,19 +92528,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "17:16",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "18:08",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "18:15",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },
@@ -92790,14 +92551,14 @@
     "sourcePage": 53,
     "stops": [
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "19:10",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:11",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -92805,19 +92566,19 @@
         "stopId": "bar-sito-lato-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "19:20",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "19:25",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina vecchia stazione",
+        "name": "diano marina vecchia stazione",
         "time": "19:30",
-        "stopId": "d-marina-vecchia-stazione"
+        "stopId": "diano-marina-vecchia-stazione"
       },
       {
         "name": "bar sito lato mare",
@@ -92830,22 +92591,9 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "cervo p. castello",
+        "name": "cervo piazza castello",
         "time": "19:44",
-        "stopId": "cervo-p-castello"
-      }
-    ]
-  },
-  {
-    "lineId": "33",
-    "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
-    "dayType": "feriale",
-    "sourcePage": 53,
-    "stops": [
-      {
-        "name": "cervo p. castello",
-        "time": "19:44",
-        "stopId": "cervo-p-castello"
+        "stopId": "cervo-piazza-castello"
       },
       {
         "name": "san bartolomeo al mare",
@@ -92853,19 +92601,19 @@
         "stopId": "san-bartolomeo-al-mare"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (arrivo)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(arrivo)"
       },
       {
-        "name": "nuova stazione fs",
+        "name": "nuova stazione fs (partenza)",
         "time": "20:00",
-        "stopId": "nuova-stazione-fs"
+        "stopId": "nuova-stazione-fs-(partenza)"
       },
       {
-        "name": "d. marina via cesare battisti capolinea",
+        "name": "diano marina capolinea",
         "time": "20:05",
-        "stopId": "d-marina-via-cesare-battisti-capolinea"
+        "stopId": "diano-marina-capolinea"
       }
     ]
   },

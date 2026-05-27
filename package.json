@@ -5,7 +5,7 @@
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",
-    "build:data": "node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs"
+    "build:data": "node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs"
   },
   "devDependencies": {
     "pdfjs-dist": "^5.4.54",

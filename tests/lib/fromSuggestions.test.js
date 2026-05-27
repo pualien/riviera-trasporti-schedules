@@ -85,4 +85,35 @@ describe('buildFromSuggestionSections', () => {
       'imperia porto maurizio',
     ]);
   });
+
+  it('keeps the blank picker area-first when locality coverage is broadly useful', () => {
+    const sections = buildFromSuggestionSections({
+      inputValue: '',
+      localities: [
+        {
+          id: 'imperia',
+          label: 'Imperia',
+          aliases: ['Porto Maurizio'],
+          stopIds: ['imperia-porto-maurizio', 'imperia-oneglia'],
+        },
+        {
+          id: 'sanremo',
+          label: 'Sanremo',
+          aliases: [],
+          stopIds: ['sanremo-autostazione'],
+        },
+      ],
+      selectedLocalityLabel: '',
+      exactStopChoices: [],
+      availableExactStops: [
+        { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: [] },
+        { id: 'imperia-oneglia', canonical: 'imperia oneglia', variants: [] },
+        { id: 'sanremo-autostazione', canonical: 'sanremo autostazione', variants: [] },
+        { id: 'diano-marina', canonical: 'diano marina', variants: [] },
+      ],
+    });
+
+    expect(sections.areas.map((entry) => entry.value)).toEqual(['Imperia', 'Sanremo']);
+    expect(sections.exactStops).toEqual([]);
+  });
 });

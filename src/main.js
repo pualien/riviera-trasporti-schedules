@@ -18,6 +18,10 @@ import {
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
+import {
+  openPanelWithPointerSafeTiming,
+  shouldOpenPanelFromFocusedInputClick,
+} from './lib/pickerTiming.js';
 import { buildSearchOutcome } from './lib/searchOutcome.js';
 import { findOneTransferSuggestions } from './lib/transferSuggestions.js';
 import { ensureLeaflet } from './lib/leafletLoader.js';
@@ -995,8 +999,9 @@ function clearFromSelection(nextValue) {
 function bindFieldPanels() {
   const fromInput = document.querySelector('[data-field="from"]');
   const toInput = document.querySelector('[data-field="to"]');
+  let toInputPointerOpening = false;
 
-  fromInput?.addEventListener('focus', () => {
+  function openFromPanel({ selectText = false } = {}) {
     if (state.uiState.fromPanelOpen) {
       return;
     }
@@ -1005,7 +1010,28 @@ function bindFieldPanels() {
     state.uiState.toPanelOpen = false;
     renderApp();
     bindInteractions();
-    focusFromInput();
+    focusFromInput(selectText);
+  }
+
+  fromInput?.addEventListener('focus', () => {
+    openFromPanel();
+  });
+
+  fromInput?.addEventListener('pointerdown', () => {
+    openPanelWithPointerSafeTiming({
+      openedByPointer: true,
+      open: () => openFromPanel(),
+      schedule: (callback) => window.setTimeout(callback, 0),
+    });
+  });
+
+  fromInput?.addEventListener('click', (event) => {
+    if (shouldOpenPanelFromFocusedInputClick({
+      inputIsFocused: document.activeElement === event.currentTarget,
+      panelIsOpen: state.uiState.fromPanelOpen,
+    })) {
+      openFromPanel();
+    }
   });
 
   fromInput?.addEventListener('input', (event) => {
@@ -1042,7 +1068,7 @@ function bindFieldPanels() {
     restoreTextInputSelection(document.querySelector('[data-field="from"]'), selection);
   });
 
-  toInput?.addEventListener('focus', () => {
+  function openToPanel() {
     if (state.uiState.toPanelOpen) {
       return;
     }
@@ -1052,6 +1078,30 @@ function bindFieldPanels() {
     renderApp();
     bindInteractions();
     document.querySelector('[data-field="to"]')?.focus();
+  }
+
+  toInput?.addEventListener('pointerdown', () => {
+    toInputPointerOpening = true;
+  });
+
+  toInput?.addEventListener('focus', () => {
+    openPanelWithPointerSafeTiming({
+      openedByPointer: toInputPointerOpening,
+      open: () => {
+        toInputPointerOpening = false;
+        openToPanel();
+      },
+      schedule: (callback) => window.setTimeout(callback, 0),
+    });
+  });
+
+  toInput?.addEventListener('click', (event) => {
+    if (shouldOpenPanelFromFocusedInputClick({
+      inputIsFocused: document.activeElement === event.currentTarget,
+      panelIsOpen: state.uiState.toPanelOpen,
+    })) {
+      openToPanel();
+    }
   });
 
   toInput?.addEventListener('input', (event) => {

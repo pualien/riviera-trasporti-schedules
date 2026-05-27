@@ -26,7 +26,9 @@ function stopMatches(stop, query) {
   return !query || tokens.some((token) => token.includes(query));
 }
 
-function localityCoverageIsIncomplete(localities = [], availableExactStops = []) {
+const EXACT_STOP_FALLBACK_COVERAGE_RATIO = 0.6;
+
+function localityCoverageNeedsExactStopFallback(localities = [], availableExactStops = []) {
   if (availableExactStops.length === 0) {
     return false;
   }
@@ -38,8 +40,9 @@ function localityCoverageIsIncomplete(localities = [], availableExactStops = [])
   const coveredStopIds = new Set(
     localities.flatMap((locality) => locality.stopIds ?? []),
   );
+  const coveredExactStopCount = availableExactStops.filter((stop) => coveredStopIds.has(stop.id)).length;
 
-  return availableExactStops.some((stop) => !coveredStopIds.has(stop.id));
+  return (coveredExactStopCount / availableExactStops.length) < EXACT_STOP_FALLBACK_COVERAGE_RATIO;
 }
 
 export function buildFromSuggestionSections({
@@ -53,7 +56,7 @@ export function buildFromSuggestionSections({
   const matchingAreas = sortByLabel(localities)
     .filter((locality) => localityMatches(locality, query))
     .map((locality) => ({ value: locality.label, meta: 'Area', type: 'area' }));
-  const shouldExposeNetworkStops = !query && localityCoverageIsIncomplete(localities, availableExactStops);
+  const shouldExposeNetworkStops = !query && localityCoverageNeedsExactStopFallback(localities, availableExactStops);
   const exactStopSource = exactStopChoices.length
     ? exactStopChoices
     : ((query || shouldExposeNetworkStops) ? availableExactStops : []);

@@ -1065,20 +1065,22 @@
     "bar-sito-lato-mare",
     "calderina",
     "cervo",
-    "cervo-p-castello",
-    "d-marina-vecchia-stazione",
-    "d-marina-via-cesare-battisti-capolinea",
+    "cervo-piazza-castello",
     "deglio",
     "diano-arentino",
     "diano-borello",
     "diano-castello",
     "diano-marina",
+    "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
     "diano-roncagli",
     "diano-san-pietro",
     "evigno",
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "nuova-stazione-fs",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
     "riva-ligure",
     "rotonda-scuola-valle-armea",
     "san-bartolomeo",
@@ -2371,35 +2373,65 @@
   "diano-castello": [
     "diano-castello"
   ],
-  "d-marina-via-cesare-battisti-capolinea": [
+  "diano-marina-capolinea": [
     "bar-sito-lato-mare",
-    "cervo-p-castello",
-    "d-marina-vecchia-stazione",
-    "d-marina-via-cesare-battisti-capolinea",
-    "nuova-stazione-fs",
+    "cervo-piazza-castello",
+    "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
     "san-bartolomeo-al-mare"
   ],
-  "d-marina-vecchia-stazione": [
+  "diano-marina-vecchia-stazione": [
     "bar-sito-lato-mare",
-    "cervo-p-castello",
-    "d-marina-vecchia-stazione",
-    "d-marina-via-cesare-battisti-capolinea",
-    "nuova-stazione-fs",
+    "cervo-piazza-castello",
+    "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
     "san-bartolomeo-al-mare"
   ],
   "bar-sito-lato-mare": [
     "bar-sito-lato-mare",
-    "cervo-p-castello",
-    "d-marina-vecchia-stazione",
-    "d-marina-via-cesare-battisti-capolinea",
-    "nuova-stazione-fs",
+    "cervo-piazza-castello",
+    "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
+    "san-bartolomeo-al-mare"
+  ],
+  "nuova-stazione-fs-(arrivo)": [
+    "bar-sito-lato-mare",
+    "cervo-piazza-castello",
+    "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
+    "san-bartolomeo-al-mare"
+  ],
+  "nuova-stazione-fs-(partenza)": [
+    "bar-sito-lato-mare",
+    "cervo-piazza-castello",
+    "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
+    "san-bartolomeo-al-mare"
+  ],
+  "san-bartolomeo-al-mare": [
+    "cervo-piazza-castello",
+    "diano-marina-capolinea",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
+    "san-bartolomeo-al-mare"
+  ],
+  "cervo-piazza-castello": [
+    "diano-marina-capolinea",
+    "nuova-stazione-fs-(arrivo)",
+    "nuova-stazione-fs-(partenza)",
     "san-bartolomeo-al-mare"
   ],
   "nuova-stazione-fs": [
-    "bar-sito-lato-mare",
-    "cervo-p-castello",
-    "d-marina-vecchia-stazione",
-    "d-marina-via-cesare-battisti-capolinea",
     "deglio",
     "diano-arentino",
     "diano-borello",
@@ -2407,18 +2439,7 @@
     "diano-san-pietro",
     "evigno",
     "nuova-stazione-fs",
-    "san-bartolomeo-al-mare",
     "villa-faraldi"
-  ],
-  "san-bartolomeo-al-mare": [
-    "cervo-p-castello",
-    "d-marina-via-cesare-battisti-capolinea",
-    "nuova-stazione-fs"
-  ],
-  "cervo-p-castello": [
-    "d-marina-via-cesare-battisti-capolinea",
-    "nuova-stazione-fs",
-    "san-bartolomeo-al-mare"
   ],
   "diano-san-pietro": [
     "deglio",
