@@ -51,6 +51,9 @@ describe('i18n helpers', () => {
       expect(t('search.guidance.origin')).not.toBe('search.guidance.origin');
       expect(t('search.guidance.destination')).not.toBe('search.guidance.destination');
       expect(t('search.guidance.departure')).not.toBe('search.guidance.departure');
+      expect(t('tabs.trains')).not.toBe('tabs.trains');
+      expect(t('provider.flixbus.title')).not.toBe('provider.flixbus.title');
+      expect(t('provider.blablacar.hint')).not.toBe('provider.blablacar.hint');
     }
   });
 });

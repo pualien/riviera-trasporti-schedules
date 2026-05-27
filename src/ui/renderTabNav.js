@@ -8,7 +8,7 @@ function escapeHtml(value = '') {
     .replaceAll('"', '&quot;');
 }
 
-const TABS = ['search', 'browse', 'saved'];
+const TABS = ['search', 'trains', 'flixbus', 'blablacar', 'browse', 'saved'];
 
 export function renderTabNav({ activeTab = 'search', t = createTranslator('en') } = {}) {
   return `

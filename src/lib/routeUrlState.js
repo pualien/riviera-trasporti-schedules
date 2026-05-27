@@ -1,4 +1,4 @@
-const VALID_TABS = new Set(['search', 'browse', 'saved']);
+const VALID_TABS = new Set(['search', 'trains', 'flixbus', 'blablacar', 'browse', 'saved']);
 const VALID_BROWSE_MODES = new Set(['lines', 'stops']);
 const VALID_DAY_TYPES = new Set(['feriale', 'sabato', 'festivo', 'scolastico']);
 

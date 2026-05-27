@@ -44,6 +44,12 @@ import {
   readStoredLanguage,
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
+import {
+  buildProviderSearchUrl,
+  createDefaultProviderSearchState,
+  isProviderSearchTab,
+  updateProviderSearchState,
+} from './lib/providerSearch.js';
 import { registerServiceWorker } from './lib/registerServiceWorker.js';
 import { buildRouteShareUrl } from './lib/shareRoute.js';
 import {
@@ -64,6 +70,7 @@ import { captureTextInputSelection, restoreTextInputSelection } from './lib/text
 import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
+import { renderProviderSearchView } from './ui/renderProviderSearchView.js';
 import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
@@ -113,6 +120,7 @@ const state = {
     toStopId: null,
     dayType: 'feriale',
   },
+  providerSearch: createDefaultProviderSearchState(),
   pickerState: {
     exactStopChoices: [],
     reachableDestinations: [],
@@ -373,6 +381,15 @@ function renderApp() {
       favorites: state.savedRoutes.favorites,
       recents: state.savedRoutes.recents,
       available: state.savedRoutes.available,
+    }));
+  } else if (isProviderSearchTab(state.activeTab)) {
+    const providerValues = state.providerSearch[state.activeTab];
+
+    parts.push(renderProviderSearchView({
+      provider: state.activeTab,
+      t,
+      values: providerValues,
+      actionUrl: buildProviderSearchUrl(state.activeTab, providerValues),
     }));
   } else {
     parts.push(renderSearchForm({
@@ -1280,6 +1297,57 @@ function bindLanguageSelector() {
   });
 }
 
+function readProviderSearchValues(form) {
+  const formData = new FormData(form);
+
+  return {
+    from: String(formData.get('provider-from') ?? ''),
+    to: String(formData.get('provider-to') ?? ''),
+    date: String(formData.get('provider-date') ?? ''),
+  };
+}
+
+function syncProviderSearchForm(form, provider) {
+  const values = readProviderSearchValues(form);
+  state.providerSearch = updateProviderSearchState(state.providerSearch, provider, values);
+
+  const actionUrl = buildProviderSearchUrl(provider, values);
+  const actionLink = form.querySelector('[data-provider-search-link]');
+
+  form.dataset.providerActionUrl = actionUrl;
+
+  if (actionLink) {
+    actionLink.href = actionUrl;
+  }
+
+  return actionUrl;
+}
+
+function bindProviderSearchForm() {
+  const form = document.querySelector('[data-provider-search]');
+
+  if (!form) {
+    return;
+  }
+
+  const provider = form.dataset.providerSearch;
+
+  if (!isProviderSearchTab(provider)) {
+    return;
+  }
+
+  form.addEventListener('input', () => {
+    syncProviderSearchForm(form, provider);
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const actionUrl = syncProviderSearchForm(form, provider);
+
+    window.open(actionUrl, '_blank', 'noopener,noreferrer');
+  });
+}
+
 function bindTabNavigation() {
   document.querySelectorAll('[data-tab-target]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -1483,6 +1551,7 @@ function bindSavedRoutes() {
 
 function bindInteractions() {
   bindForm();
+  bindProviderSearchForm();
   bindFieldPanels();
   bindDepartureSelection();
   bindLocationActions();

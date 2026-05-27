@@ -85,7 +85,9 @@ describe('service worker', () => {
     expect(cachedUrls).toContain('./assets/data/stop-coordinates.json');
     expect(cachedUrls).toContain('./src/lib/ads.js');
     expect(cachedUrls).toContain('./src/lib/installAdSense.js');
+    expect(cachedUrls).toContain('./src/lib/providerSearch.js');
     expect(cachedUrls).toContain('./src/ui/renderAdSlot.js');
+    expect(cachedUrls).toContain('./src/ui/renderProviderSearchView.js');
   });
 
   it('deletes only old caches owned by this app', async () => {
@@ -96,6 +98,8 @@ describe('service worker', () => {
           'azzuriva-route-tools-v0',
           'azzuriva-route-tools-v1',
           'azzuriva-route-tools-v2',
+          'azzuriva-route-tools-v3',
+          'azzuriva-route-tools-v4',
           'other-static-app',
         ],
         delete: async (cacheName) => {
@@ -112,7 +116,12 @@ describe('service worker', () => {
     listeners.activate(event);
     await promises[0];
 
-    expect(deleted).toEqual(['azzuriva-route-tools-v0', 'azzuriva-route-tools-v1']);
+    expect(deleted).toEqual([
+      'azzuriva-route-tools-v0',
+      'azzuriva-route-tools-v1',
+      'azzuriva-route-tools-v2',
+      'azzuriva-route-tools-v3',
+    ]);
   });
 
   it('returns a network response when best-effort runtime caching fails', async () => {

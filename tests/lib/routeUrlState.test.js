@@ -35,6 +35,12 @@ describe('routeUrlState', () => {
     expect(parseRouteUrlState('?tab=bad&browse=bad&day=bad')).toEqual(DEFAULT_ROUTE_URL_STATE);
   });
 
+  it('accepts external provider tabs as shareable app views', () => {
+    expect(parseRouteUrlState('?tab=trains')).toMatchObject({ tab: 'trains' });
+    expect(parseRouteUrlState('?tab=flixbus')).toMatchObject({ tab: 'flixbus' });
+    expect(parseRouteUrlState('?tab=blablacar')).toMatchObject({ tab: 'blablacar' });
+  });
+
   it('serializes stable route ids and readable labels', () => {
     const params = serializeRouteUrlState({
       tab: 'search',

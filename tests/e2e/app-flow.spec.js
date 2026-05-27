@@ -32,6 +32,35 @@ test('loads the route search first on mobile and filters Browse stops', async ({
   await expect(page.locator('.browse-count')).toContainText('matches');
 });
 
+test('opens provider search tabs and builds a prefilled FlixBus handoff', async ({ page }) => {
+  await page.goto('/');
+
+  await page.getByRole('button', { name: 'FlixBus search' }).click();
+  await expect(page.getByRole('heading', { name: 'FlixBus search' })).toBeVisible();
+
+  await page.locator('input[name="provider-from"]').fill('Sanremo');
+  await page.locator('input[name="provider-to"]').fill('Ventimiglia');
+  await page.locator('input[name="provider-date"]').fill('2026-06-01');
+
+  const actionLink = page.locator('[data-provider-search-link]');
+  await expect(actionLink).toHaveAttribute('href', /departureCity=83f11a76-676c-4cd0-ae59-668e1a716496/);
+  await expect(actionLink).toHaveAttribute('href', /arrivalCity=32183c0e-909d-48ce-8c32-7a0f77b4db5c/);
+  await expect(actionLink).toHaveAttribute('href', /rideDate=01.06.2026/);
+
+  await page.getByRole('button', { name: 'Train search' }).click();
+  await expect(page.getByRole('heading', { name: 'Train search' })).toBeVisible();
+  await page.locator('input[name="provider-from"]').fill('Imperia');
+  await page.locator('input[name="provider-to"]').fill('Sanremo');
+  await page.locator('input[name="provider-date"]').fill('2026-06-01');
+  await expect(page.locator('[data-provider-search-link]')).toHaveAttribute('href', /Channels.Website.WEB\/website\/auth\/handoff/);
+  await expect(page.locator('[data-provider-search-link]')).toHaveAttribute('href', /departureStation=Imperia/);
+  await expect(page.locator('[data-provider-search-link]')).toHaveAttribute('href', /arrivalStation=Sanremo/);
+  await expect(page.locator('[data-provider-search-link]')).toHaveAttribute('href', /departureDate=01-06-2026/);
+
+  await page.getByRole('button', { name: 'BlaBlaCar search' }).click();
+  await expect(page.getByRole('heading', { name: 'BlaBlaCar search' })).toBeVisible();
+});
+
 test('shows route action feedback and opens a tracked share modal', async ({ page }) => {
   await page.addInitScript(() => {
     window.__copiedText = '';
