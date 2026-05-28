@@ -180,6 +180,67 @@ describe('renderResultsView', () => {
     expect(html).toContain('data-testid="route-map-panel"');
   });
 
+  it('share diffusion UI', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [
+        {
+          tripKey: 'selected-trip',
+          departureTime: '06:20',
+          arrivalTime: '07:00',
+          durationMinutes: 40,
+          lineId: '12',
+          sourcePage: 23,
+        },
+      ],
+      allDepartures: [],
+    });
+
+    expect(html).toContain('data-share-departure="selected-trip"');
+    expect(html).toContain('Share departure');
+  });
+
+  it('renders shared route context controls when a shared departure is restored', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [],
+      allDepartures: [],
+      sharedRouteContext: {
+        visible: true,
+        selectedDepartureRestored: true,
+      },
+    });
+
+    expect(html).toContain('class="shared-route-context"');
+    expect(html).toContain('Shared route');
+    expect(html).toContain('data-save-current-route');
+    expect(html).toContain('data-reverse-shared-route');
+    expect(html).toContain('data-share-current-route');
+    expect(html).toContain('Save');
+    expect(html).toContain('Reverse');
+    expect(html).toContain('Share again');
+  });
+
   it('renders taxi route options with destination coverage labels', () => {
     const html = renderResultsView({
       t: createTranslator('en'),

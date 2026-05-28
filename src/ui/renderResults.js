@@ -30,6 +30,9 @@ function renderDepartureCard(departure, t, pdfUrl) {
   const actionLabel = departure.isSelected
     ? t('results.selectedAction')
     : t('results.detailsAction');
+  const shareAction = departure.tripKey
+    ? `<button type="button" class="departure-share-action" data-share-departure="${escapeHtml(departure.tripKey)}">${escapeHtml(t('results.shareDeparture'))}</button>`
+    : '';
 
   return `
     <article class="${className}" data-trip-key="${departure.tripKey ?? ''}">
@@ -40,6 +43,7 @@ function renderDepartureCard(departure, t, pdfUrl) {
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
         <span>${actionLabel}</span>
+        ${shareAction}
         <a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>
     </article>
@@ -78,6 +82,30 @@ function renderSaveFeedback(saveFeedback, t) {
     <p class="route-action-feedback" role="status" aria-live="polite">
       ${escapeHtml(t(`results.saveFeedback.${saveFeedback.status}`))}
     </p>
+  `;
+}
+
+function renderSharedRouteContext(sharedRouteContext, t) {
+  if (!sharedRouteContext?.visible) {
+    return '';
+  }
+
+  const bodyKey = sharedRouteContext.selectedDepartureRestored
+    ? 'results.sharedContext.restored'
+    : 'results.sharedContext.routeOnly';
+
+  return `
+    <section class="shared-route-context">
+      <div>
+        <p class="eyebrow">${escapeHtml(t('results.sharedContext.title'))}</p>
+        <p>${escapeHtml(t(bodyKey))}</p>
+      </div>
+      <div class="shared-route-context-actions">
+        <button type="button" class="topbar-link" data-save-current-route>${escapeHtml(t('results.sharedContext.save'))}</button>
+        <button type="button" class="topbar-link" data-reverse-shared-route>${escapeHtml(t('results.sharedContext.reverse'))}</button>
+        <button type="button" class="topbar-link" data-share-current-route>${escapeHtml(t('results.sharedContext.shareAgain'))}</button>
+      </div>
+    </section>
   `;
 }
 
@@ -147,6 +175,7 @@ export function renderResultsView({
   selectedTripKey = null,
   selectedTripPanel = '',
   routeActions = { saveFeedback: null, shareModal: null },
+  sharedRouteContext = null,
 }) {
   return `
     <section class="results-shell">
@@ -167,6 +196,8 @@ export function renderResultsView({
         ${renderSummaryMetrics(summary, t)}
         ${renderTaxiOptionsSection(taxiOptions, { t })}
       </article>
+
+      ${renderSharedRouteContext(sharedRouteContext, t)}
 
       <section class="results-section">
         <div class="section-head">
