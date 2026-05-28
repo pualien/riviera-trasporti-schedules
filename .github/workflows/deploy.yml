@@ -23,6 +23,7 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npm run build:data
+      - run: npm run build:seo
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

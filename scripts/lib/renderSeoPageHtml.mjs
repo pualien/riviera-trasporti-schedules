@@ -1,5 +1,3 @@
-const PROJECT_PATH = '/riviera-trasporti-schedules';
-
 function escapeHtml(value = '') {
   return String(value)
     .replace(/&/g, '&amp;')
@@ -40,7 +38,15 @@ function basePath(site) {
 
 function joinPath(...parts) {
   const cleanParts = parts.map((part) => trimSlashes(part)).filter(Boolean);
-  return `/${cleanParts.join('/')}${cleanParts.length ? '/' : ''}`;
+  if (!cleanParts.length) {
+    return '/';
+  }
+
+  const joined = `/${cleanParts.join('/')}`;
+  const lastPart = String(parts.at(-1) ?? '');
+  const trailingSlash = lastPart.endsWith('/');
+
+  return `${joined}${trailingSlash ? '/' : ''}`;
 }
 
 function publicPath(site, path) {
@@ -90,7 +96,7 @@ function renderLayout({ site, metadata, path, title, description, body }) {
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeAttribute(description)}">
   <link rel="canonical" href="${escapeAttribute(canonical)}">
-  <link rel="stylesheet" href="${PROJECT_PATH}/styles.css">
+  <link rel="stylesheet" href="${escapeAttribute(publicPath(site, '/styles.css'))}">
 </head>
 <body>
   <main class="seo-page">
@@ -134,6 +140,7 @@ export function renderRoutePageHtml({ site, metadata, route }) {
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(description)}</p>
       <a class="button" href="${escapeAttribute(routeSearchUrl(site, route))}">Cerca nell'app</a>
+      <a class="button secondary" href="${escapeAttribute(publicPath(site, path))}">Condividi questa pagina</a>
     </header>
     <section>
       <h2>Linee disponibili</h2>
@@ -188,7 +195,9 @@ export function renderPlacePageHtml({ site, metadata, place }) {
       <h2>Destinazioni dirette</h2>
       <ul>
 ${formatList(destinations, (destination) => {
-  const href = publicPath(site, pagePath('places', destination.slug));
+  const href = destination.routeSlug
+    ? publicPath(site, pagePath('routes', destination.routeSlug))
+    : publicPath(site, pagePath('places', destination.slug));
   return `<a href="${escapeAttribute(href)}">${escapeHtml(destination.label)}</a>`;
 })}
       </ul>

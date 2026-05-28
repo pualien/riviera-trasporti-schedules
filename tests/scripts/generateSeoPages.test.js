@@ -69,8 +69,14 @@ describe('generateSeoPages', () => {
       'Bus Imperia - Sanremo',
     );
     await expect(readOutput(rootDir, 'places/imperia/index.html')).resolves.toContain('Bus da Imperia');
+    await expect(readOutput(rootDir, 'places/imperia/index.html')).resolves.toContain(
+      'href="/riviera-trasporti-schedules/routes/imperia/sanremo/"',
+    );
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('linea 12');
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/imperia/sanremo/');
+    await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain(
+      '<loc>https://pualien.github.io/riviera-trasporti-schedules/</loc>',
+    );
     await expect(readOutput(rootDir, 'robots.txt')).resolves.toContain('Sitemap:');
     await expect(readOutput(rootDir, '404.html')).resolves.toContain('Azzuriva');
   });
@@ -87,6 +93,7 @@ describe('generateSeoPages', () => {
 
     const routeHtml = await readOutput(rootDir, 'routes/imperia/sanremo/index.html');
     expect(routeHtml).toContain('href="/riviera-trasporti-schedules/?tab=search');
+    expect(routeHtml).toContain('href="/riviera-trasporti-schedules/styles.css"');
     expect(routeHtml).not.toContain('/riviera-trasporti-schedules/riviera-trasporti-schedules/');
   });
 

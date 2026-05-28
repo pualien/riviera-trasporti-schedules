@@ -116,10 +116,19 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
     readJson(rootDir, 'assets/data/localities.json'),
   ]);
   const routePages = buildRoutePageCandidates({ trips, localities, limit: routeLimit });
-  const placePages = buildPlacePageSummaries({ trips, localities });
+  const routeSlugByPair = new Map(
+    routePages.map((route) => [`${route.fromLocalityId}->${route.toLocalityId}`, route.slug]),
+  );
+  const placePages = buildPlacePageSummaries({ trips, localities }).map((place) => ({
+    ...place,
+    directDestinations: place.directDestinations.map((destination) => ({
+      ...destination,
+      routeSlug: routeSlugByPair.get(`${place.localityId}->${destination.id}`),
+    })),
+  }));
   const linePages = buildLinePageSummaries({ trips, stops });
   const renderingSite = rendererSite(site);
-  const sitemapPages = [];
+  const sitemapPages = ['/'];
 
   await removeGeneratedPageDirs(rootDir);
 

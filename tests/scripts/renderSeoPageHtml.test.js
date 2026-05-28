@@ -53,6 +53,8 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('?tab=search');
     expect(html).toContain('from=Imperia');
     expect(html).toContain('to=Sanremo');
+    expect(html).toContain('Condividi questa pagina');
+    expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
   });
 
   it('renders place and line pages with self canonical URLs and Italian headings', () => {
@@ -62,7 +64,7 @@ describe('renderSeoPageHtml', () => {
       place: {
         slug: 'sanremo',
         label: 'Sanremo',
-        directDestinations: [{ label: 'Imperia', slug: 'imperia' }],
+        directDestinations: [{ label: 'Imperia', slug: 'imperia', routeSlug: 'sanremo/imperia' }],
         lineIds: ['12'],
       },
     });
@@ -85,7 +87,7 @@ describe('renderSeoPageHtml', () => {
     expect(lineHtml).toContain(
       '<link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/lines/12/">',
     );
-    expect(placeHtml).toContain('href="/riviera-trasporti-schedules/places/imperia/"');
+    expect(placeHtml).toContain('href="/riviera-trasporti-schedules/routes/sanremo/imperia/"');
     expect(placeHtml).toContain('Destinazioni dirette');
     expect(lineHtml).toContain('Riviera Trasporti linea 12');
   });
@@ -119,6 +121,8 @@ describe('renderSeoPageHtml', () => {
     });
 
     expect(routeHtml).toContain('href="/base/app/?tab=search&amp;from=Imperia&amp;to=Sanremo&amp;day=feriale"');
+    expect(routeHtml).toContain('href="/base/styles.css"');
+    expect(routeHtml).not.toContain('/riviera-trasporti-schedules/styles.css');
     expect(placeHtml).toContain('href="/base/places/imperia/"');
     expect(placeHtml).toContain('<link rel="canonical" href="https://example.com/base/places/sanremo/">');
   });
