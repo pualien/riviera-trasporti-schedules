@@ -90,9 +90,13 @@ function renderSharedRouteContext(sharedRouteContext, t) {
     return '';
   }
 
-  const bodyKey = sharedRouteContext.selectedDepartureRestored
-    ? 'results.sharedContext.restored'
-    : 'results.sharedContext.routeOnly';
+  let bodyKey = 'results.sharedContext.routeOnly';
+
+  if (sharedRouteContext.selectedDepartureRestored) {
+    bodyKey = 'results.sharedContext.restored';
+  } else if (sharedRouteContext.shareScope === 'departure' && sharedRouteContext.tripKey) {
+    bodyKey = 'results.sharedContext.departureUnavailable';
+  }
 
   return `
     <section class="shared-route-context">

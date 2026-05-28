@@ -144,13 +144,7 @@ const state = {
     saveFeedback: null,
     shareModal: null,
   },
-  inboundShare: {
-    opened: false,
-    restored: false,
-    shareScope: null,
-    tripKey: null,
-    selectedDepartureRestored: false,
-  },
+  inboundShare: createDefaultInboundShareState(),
   locationPicker: null,
 };
 
@@ -203,6 +197,20 @@ function clearRouteResults() {
     saveFeedback: null,
     shareModal: null,
   };
+}
+
+function createDefaultInboundShareState() {
+  return {
+    opened: false,
+    restored: false,
+    shareScope: null,
+    tripKey: null,
+    selectedDepartureRestored: false,
+  };
+}
+
+function clearInboundShareState() {
+  state.inboundShare = createDefaultInboundShareState();
 }
 
 function currentSelectedTripPanel(t) {
@@ -570,6 +578,8 @@ function renderApp() {
         routeActions: state.routeActions,
         sharedRouteContext: {
           visible: state.inboundShare.opened,
+          shareScope: state.inboundShare.shareScope,
+          tripKey: state.inboundShare.tripKey,
           selectedDepartureRestored: state.inboundShare.selectedDepartureRestored,
         },
       }),
@@ -1061,6 +1071,7 @@ function bindForm() {
       toInput: String(formData.get('to') ?? ''),
       dayType: String(formData.get('dayType') ?? 'feriale'),
     };
+    clearInboundShareState();
 
     const { matches, outcome } = submitCurrentSearch();
 
@@ -1820,6 +1831,7 @@ function bindSavedRoutes() {
       toInput: state.formValues.fromInput,
       toStopId: state.formValues.fromStopId,
     };
+    clearInboundShareState();
     clearRouteResults();
     writeRouteUrl({ push: true });
     restoreSearchResultsIfReady();

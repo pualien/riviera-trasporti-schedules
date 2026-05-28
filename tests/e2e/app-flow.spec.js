@@ -6,6 +6,27 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
+const SEARCH_ROUTE = '/?tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=lines';
+
+async function firstTripKeyForSharedRoute(page) {
+  await page.goto(SEARCH_ROUTE);
+  const firstDeparture = page.locator('[data-trip-key]').first();
+  await expect(firstDeparture).toBeVisible();
+  const tripKey = await firstDeparture.getAttribute('data-trip-key');
+
+  expect(tripKey).toBeTruthy();
+  return tripKey;
+}
+
+async function openSharedDeparture(page) {
+  const tripKey = await firstTripKeyForSharedRoute(page);
+  await page.goto(`${SEARCH_ROUTE}&share=departure&trip=${encodeURIComponent(tripKey)}&utm_medium=route_share`);
+  await expect(page.locator('.shared-route-context')).toContainText('The shared departure was found in this timetable.');
+  await expect(page.locator(`[data-trip-key="${tripKey}"]`).first()).toHaveClass(/departure-card--selected/);
+
+  return tripKey;
+}
+
 test('loads the route search first on mobile and filters Browse stops', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
@@ -112,4 +133,28 @@ test('shows route action feedback and opens a tracked share modal', async ({ pag
       share_url: expect.stringContaining('utm_source=share_link'),
     }),
   ]);
+});
+
+test('restores inbound shared departure context from a real trip key', async ({ page }) => {
+  await openSharedDeparture(page);
+
+  await expect(page.getByRole('heading', { name: 'Selected trip details' })).toBeVisible();
+});
+
+test('clears inbound shared departure context after a manual search submission', async ({ page }) => {
+  await openSharedDeparture(page);
+
+  await page.getByRole('button', { name: 'Show departures' }).click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
+test('clears inbound shared departure context when reversing the shared route', async ({ page }) => {
+  await openSharedDeparture(page);
+
+  await page.getByRole('button', { name: 'Reverse' }).click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
 });

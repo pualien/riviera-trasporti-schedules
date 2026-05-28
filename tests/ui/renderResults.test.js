@@ -241,6 +241,34 @@ describe('renderResultsView', () => {
     expect(html).toContain('Share again');
   });
 
+  it('renders a distinct note when a shared departure no longer resolves', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [],
+      allDepartures: [],
+      sharedRouteContext: {
+        visible: true,
+        shareScope: 'departure',
+        tripKey: 'stale-trip',
+        selectedDepartureRestored: false,
+      },
+    });
+
+    expect(html).toContain('class="shared-route-context"');
+    expect(html).toContain('The shared departure is no longer available in this timetable.');
+    expect(html).not.toContain('The shared route reopened with the current timetable.');
+  });
+
   it('renders taxi route options with destination coverage labels', () => {
     const html = renderResultsView({
       t: createTranslator('en'),
