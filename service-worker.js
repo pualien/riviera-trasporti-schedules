@@ -129,6 +129,17 @@ async function cacheSameOriginUrl(urlValue) {
   await cacheResponse(url.href, response);
 }
 
+function serviceWorkerScopePath() {
+  const scopeUrl = new URL(self.registration?.scope ?? './', self.location.href ?? self.location.origin);
+  return scopeUrl.pathname.endsWith('/') ? scopeUrl.pathname : `${scopeUrl.pathname}/`;
+}
+
+function isAppShellNavigation(requestUrl) {
+  const scopePath = serviceWorkerScopePath();
+
+  return requestUrl.pathname === scopePath || requestUrl.pathname === `${scopePath}index.html`;
+}
+
 self.addEventListener('message', (event) => {
   if (event.data?.type === 'SKIP_WAITING') {
     self.skipWaiting?.();
@@ -169,6 +180,13 @@ self.addEventListener('fetch', (event) => {
       return networkResponse;
     } catch (error) {
       if (request.mode === 'navigate') {
+        if (isAppShellNavigation(requestUrl)) {
+          const appShell = await caches.match('./index.html');
+          if (appShell) {
+            return appShell;
+          }
+        }
+
         const offlineFallback = await caches.match('./offline.html');
         if (offlineFallback) {
           return offlineFallback;

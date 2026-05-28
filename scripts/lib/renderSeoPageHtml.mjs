@@ -147,8 +147,23 @@ function renderSeoServiceWorkerScript(site) {
 (function(){
   if(!('serviceWorker' in navigator)){ return; }
 
+  var serviceWorkerUrls = ['${serviceWorkerPath}', '/service-worker.js'];
+
+  function registerServiceWorker(index){
+    var url = serviceWorkerUrls[index];
+    if(!url){ return Promise.reject(new Error('No service worker URL available')); }
+
+    return navigator.serviceWorker.register(url).catch(function(error){
+      if(index + 1 < serviceWorkerUrls.length){
+        return registerServiceWorker(index + 1);
+      }
+
+      throw error;
+    });
+  }
+
   window.addEventListener('load', function(){
-    navigator.serviceWorker.register('${serviceWorkerPath}').then(function(){
+    registerServiceWorker(0).then(function(){
       return navigator.serviceWorker.ready;
     }).then(function(registration){
       var worker = registration.active || navigator.serviceWorker.controller;

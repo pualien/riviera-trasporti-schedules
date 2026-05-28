@@ -346,4 +346,44 @@ describe('service worker', () => {
 
     await expect(respondWithPromises[0]).resolves.toBe(fallbackResponse);
   });
+
+  it('returns the app shell before the offline fallback for failed root app navigations', async () => {
+    const appShellResponse = { name: 'app shell' };
+    const fallbackResponse = { name: 'offline fallback' };
+    const listeners = loadServiceWorker({
+      caches: {
+        match: async (request) => {
+          if (request === './index.html') {
+            return appShellResponse;
+          }
+
+          if (request === './offline.html') {
+            return fallbackResponse;
+          }
+
+          return null;
+        },
+        open: async () => ({
+          put: async () => undefined,
+        }),
+      },
+      fetch: async () => {
+        throw new Error('offline');
+      },
+    });
+    const respondWithPromises = [];
+
+    listeners.fetch({
+      request: {
+        method: 'GET',
+        mode: 'navigate',
+        url: 'http://localhost/?tab=search',
+      },
+      respondWith(promise) {
+        respondWithPromises.push(promise);
+      },
+    });
+
+    await expect(respondWithPromises[0]).resolves.toBe(appShellResponse);
+  });
 });

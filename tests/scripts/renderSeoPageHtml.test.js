@@ -164,7 +164,9 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('<link rel="manifest" href="/riviera-trasporti-schedules/manifest.webmanifest">');
     expect(html).toContain('<meta name="theme-color" content="#eb4c60">');
     expect(html).toContain('<link rel="apple-touch-icon" href="/riviera-trasporti-schedules/assets/brand/apple-touch-icon.png">');
-    expect(html).toContain("navigator.serviceWorker.register('/riviera-trasporti-schedules/service-worker.js')");
+    expect(html).toContain("var serviceWorkerUrls = ['/riviera-trasporti-schedules/service-worker.js', '/service-worker.js'];");
+    expect(html).toContain('navigator.serviceWorker.register(url)');
+    expect(html).toContain("'/service-worker.js'");
     expect(html).toContain("type:'CACHE_URL'");
     expect(html).toContain('url:window.location.href');
   });
