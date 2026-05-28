@@ -2,13 +2,14 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { describe, expect, it } from 'vitest';
 
-function loadServiceWorker({ caches, fetch }) {
+function loadServiceWorker({ caches, fetch, selfOverrides = {} }) {
   const listeners = {};
   const self = {
     location: { origin: 'http://localhost' },
     addEventListener(type, listener) {
       listeners[type] = listener;
     },
+    ...selfOverrides,
   };
 
   vm.runInNewContext(
@@ -102,6 +103,7 @@ describe('service worker', () => {
           'azzuriva-route-tools-v3',
           'azzuriva-route-tools-v4',
           'azzuriva-route-tools-v5',
+          'azzuriva-route-tools-v6',
           'other-static-app',
         ],
         delete: async (cacheName) => {
@@ -124,7 +126,46 @@ describe('service worker', () => {
       'azzuriva-route-tools-v2',
       'azzuriva-route-tools-v3',
       'azzuriva-route-tools-v4',
+      'azzuriva-route-tools-v5',
     ]);
+  });
+
+  it('activates a refreshed app cache without waiting for old clients to close', async () => {
+    let skipWaitingCalled = false;
+    let clientsClaimed = false;
+    const listeners = loadServiceWorker({
+      caches: {
+        open: async () => ({
+          add: async () => undefined,
+        }),
+        keys: async () => [],
+        delete: async () => true,
+      },
+      fetch: async () => {
+        throw new Error('unused');
+      },
+      selfOverrides: {
+        skipWaiting: async () => {
+          skipWaitingCalled = true;
+        },
+        clients: {
+          claim: async () => {
+            clientsClaimed = true;
+          },
+        },
+      },
+    });
+    const install = waitableEvent();
+    const activate = waitableEvent();
+
+    listeners.install(install.event);
+    await install.promises[0];
+
+    listeners.activate(activate.event);
+    await activate.promises[0];
+
+    expect(skipWaitingCalled).toBe(true);
+    expect(clientsClaimed).toBe(true);
   });
 
   it('returns a network response when best-effort runtime caching fails', async () => {

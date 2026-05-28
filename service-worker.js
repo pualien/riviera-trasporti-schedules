@@ -1,6 +1,6 @@
 const CACHE_PREFIX = 'azzuriva-route-tools-';
 const LEGACY_CACHE_PREFIX = 'riviera-route-tools-';
-const CACHE_NAME = `${CACHE_PREFIX}v5`;
+const CACHE_NAME = `${CACHE_PREFIX}v6`;
 
 const REQUIRED_ASSETS = [
   './',
@@ -75,7 +75,7 @@ self.addEventListener('install', (event) => {
         ...REQUIRED_ASSETS.map((url) => cache.add(url)),
         ...OPTIONAL_ASSETS.map((url) => cache.add(url).catch(() => null)),
       ],
-    ).then(() => undefined)),
+    ).then(() => self.skipWaiting?.())),
   );
 });
 
@@ -88,7 +88,7 @@ self.addEventListener('activate', (event) => {
           && cacheName !== CACHE_NAME
         ))
         .map((cacheName) => caches.delete(cacheName)),
-    )),
+    )).then(() => self.clients?.claim?.()),
   );
 });
 

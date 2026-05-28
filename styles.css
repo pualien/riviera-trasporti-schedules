@@ -100,10 +100,11 @@ a {
 
 .brand-wordmark {
   width: fit-content;
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 750;
-  line-height: 0.92;
-  letter-spacing: -0.08em;
+  font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
   color: var(--text);
 }
 
@@ -273,6 +274,7 @@ a {
 .app-tab {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   border: 1px solid rgba(62, 39, 24, 0.14);
   border-radius: 999px;
@@ -282,7 +284,11 @@ a {
   font: inherit;
   font-weight: 700;
   min-height: 46px;
-  padding: 8px 18px 8px 10px;
+  padding: 8px 18px;
+}
+
+.app-tab--with-logo {
+  padding-left: 10px;
 }
 
 .app-tab--active,
@@ -1273,6 +1279,44 @@ a {
   background: rgba(235, 76, 96, 0.12);
   color: var(--accent-strong);
   font-weight: 650;
+}
+
+.departure-share-action,
+.departure-meta a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: 7px 12px;
+  border: 1px solid rgba(62, 39, 24, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 650;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.departure-share-action {
+  border-color: rgba(217, 59, 79, 0.18);
+  background: rgba(235, 76, 96, 0.1);
+}
+
+.departure-share-action:hover,
+.departure-share-action:focus-visible,
+.departure-meta a:hover,
+.departure-meta a:focus-visible {
+  border-color: rgba(217, 59, 79, 0.3);
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.1);
+  outline: none;
 }
 
 .route-map-panel {

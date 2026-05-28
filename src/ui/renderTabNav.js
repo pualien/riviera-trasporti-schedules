@@ -14,17 +14,26 @@ const TABS = ['search', 'trains', 'flixbus', 'blablacar', 'browse', 'saved'];
 export function renderTabNav({ activeTab = 'search', t = createTranslator('en') } = {}) {
   return `
     <nav class="app-tabs" aria-label="${escapeHtml(t('tabs.label'))}">
-      ${TABS.map((tab) => `
+      ${TABS.map((tab) => {
+        const logo = renderTabLogo(tab);
+        const tabClassName = [
+          'app-tab',
+          logo ? 'app-tab--with-logo' : 'app-tab--text-only',
+          activeTab === tab ? 'app-tab--active' : '',
+        ].filter(Boolean).join(' ');
+
+        return `
         <button
           type="button"
-          class="app-tab ${activeTab === tab ? 'app-tab--active' : ''}"
+          class="${tabClassName}"
           data-tab-target="${tab}"
           ${activeTab === tab ? 'aria-current="page"' : ''}
         >
-          ${renderTabLogo(tab)}
+          ${logo}
           <span>${escapeHtml(t(`tabs.${tab}`))}</span>
         </button>
-      `).join('')}
+      `;
+      }).join('')}
     </nav>
   `;
 }
