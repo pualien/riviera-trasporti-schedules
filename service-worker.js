@@ -1,5 +1,8 @@
-const CACHE_PREFIX = 'azzuriva-route-tools-';
-const LEGACY_CACHE_PREFIX = 'riviera-route-tools-';
+const CACHE_PREFIX = 'riviera-dei-fiori-route-finder-';
+const LEGACY_CACHE_PREFIXES = [
+  'azzuriva-route-tools-',
+  'riviera-route-tools-',
+];
 const CACHE_NAME = `${CACHE_PREFIX}v6`;
 
 const REQUIRED_ASSETS = [
@@ -84,7 +87,10 @@ self.addEventListener('activate', (event) => {
     caches.keys().then((cacheNames) => Promise.all(
       cacheNames
         .filter((cacheName) => (
-          (cacheName.startsWith(CACHE_PREFIX) || cacheName.startsWith(LEGACY_CACHE_PREFIX))
+          (
+            cacheName.startsWith(CACHE_PREFIX)
+            || LEGACY_CACHE_PREFIXES.some((prefix) => cacheName.startsWith(prefix))
+          )
           && cacheName !== CACHE_NAME
         ))
         .map((cacheName) => caches.delete(cacheName)),

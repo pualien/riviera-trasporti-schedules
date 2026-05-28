@@ -85,7 +85,7 @@ describe('route action analytics', () => {
       dayType: 'sabato',
       resultsCount: 3,
       shareMethod: 'whatsapp',
-      shareUrl: 'https://azzuriva.example/app?utm_source=share_whatsapp',
+      shareUrl: 'https://riviera-dei-fiori-route-finder.example/app?utm_source=share_whatsapp',
     });
 
     expect(windowObject.dataLayer).toEqual([
@@ -96,7 +96,7 @@ describe('route action analytics', () => {
         day_type: 'sabato',
         results_count: 3,
         share_method: 'whatsapp',
-        share_url: 'https://azzuriva.example/app?utm_source=share_whatsapp',
+        share_url: 'https://riviera-dei-fiori-route-finder.example/app?utm_source=share_whatsapp',
       },
     ]);
   });
@@ -112,7 +112,7 @@ describe('growth analytics', () => {
       hasShareUtm: true,
       utmSource: 'share_whatsapp',
       utmMedium: 'route_share',
-      utmCampaign: 'azzuriva_route_share',
+      utmCampaign: 'riviera_dei_fiori_route_share',
       referrerType: 'direct',
       language: 'it',
     });
@@ -124,7 +124,7 @@ describe('growth analytics', () => {
       has_share_utm: true,
       utm_source: 'share_whatsapp',
       utm_medium: 'route_share',
-      utm_campaign: 'azzuriva_route_share',
+      utm_campaign: 'riviera_dei_fiori_route_share',
       referrer_type: 'direct',
       language: 'it',
     });

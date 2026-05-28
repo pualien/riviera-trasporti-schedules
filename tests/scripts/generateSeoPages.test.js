@@ -16,7 +16,7 @@ async function readOutput(rootDir, relativePath) {
 }
 
 async function createFixtureRoot() {
-  const rootDir = await mkdtemp(path.join(tmpdir(), 'azzuriva-seo-'));
+  const rootDir = await mkdtemp(path.join(tmpdir(), 'riviera-dei-fiori-route-finder-seo-'));
   tempRoots.push(rootDir);
   await mkdir(path.join(rootDir, 'assets/data'), { recursive: true });
 
@@ -53,7 +53,7 @@ async function createFixtureRoot() {
 }
 
 async function createBroadLocalityFixtureRoot() {
-  const rootDir = await mkdtemp(path.join(tmpdir(), 'azzuriva-seo-broad-'));
+  const rootDir = await mkdtemp(path.join(tmpdir(), 'riviera-dei-fiori-route-finder-seo-broad-'));
   tempRoots.push(rootDir);
   await mkdir(path.join(rootDir, 'assets/data'), { recursive: true });
 
@@ -144,7 +144,7 @@ describe('generateSeoPages', () => {
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('Partenze rappresentative');
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('08:00');
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain(
-      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=riviera_dei_fiori_route_finder_seo"',
     );
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/imperia/sanremo/');
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/');
@@ -152,7 +152,7 @@ describe('generateSeoPages', () => {
       '<loc>https://pualien.github.io/riviera-trasporti-schedules/</loc>',
     );
     await expect(readOutput(rootDir, 'robots.txt')).resolves.toContain('Sitemap:');
-    await expect(readOutput(rootDir, '404.html')).resolves.toContain('Azzuriva');
+    await expect(readOutput(rootDir, '404.html')).resolves.toContain('Riviera Dei Fiori Route Finder');
   });
 
   it('uses the GitHub Pages default site without duplicating the app path in rendered links', async () => {

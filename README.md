@@ -1,8 +1,8 @@
-# Azzuriva
+# Riviera Dei Fiori Route Finder
 
-Independent Italian Riviera travel companion for Riviera Trasporti timetable data, built for GitHub Pages.
+Independent Riviera dei Fiori route finder for Riviera Trasporti timetable data, built for GitHub Pages.
 
-The app turns the official PDF into a route-first travel experience. Instead of manually scanning the timetable, users can search direct rides such as `Porto Maurizio -> Sanremo`, see the next departures, inspect the full timetable for the selected day type, and jump back to the official PDF page for verification. The product also reserves room for local discovery and verified fallback contacts without presenting itself as an official transit site.
+The app turns the official PDF into a route-first bus lookup experience. Instead of manually scanning the timetable, users can search direct rides such as `Porto Maurizio -> Sanremo`, see the next departures, inspect the full timetable for the selected day type, and jump back to the official PDF page for verification. The product also reserves room for local discovery and verified fallback contacts without presenting itself as an official transit site.
 
 ## Development
 

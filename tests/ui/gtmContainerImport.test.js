@@ -33,8 +33,8 @@ describe('GTM container import', () => {
   it('targets the installed GTM container with the requested analytics destinations', () => {
     expect(importConfig.exportFormatVersion).toBe(2);
     expect(importConfig.containerVersion.container.publicId).toBe('GTM-WWVLPF5M');
-    expect(constantValue('Azzuriva - GA4 Measurement ID')).toBe('G-8MXQM6YJEV');
-    expect(constantValue('Azzuriva - Mixpanel Token')).toBe('ea2efc9dafb9a379253ed093bed9c9dd');
+    expect(constantValue('Riviera Dei Fiori Route Finder - GA4 Measurement ID')).toBe('G-8MXQM6YJEV');
+    expect(constantValue('Riviera Dei Fiori Route Finder - Mixpanel Token')).toBe('ea2efc9dafb9a379253ed093bed9c9dd');
   });
 
   it('sends the route_search dataLayer event to both GA4 and Mixpanel', () => {
@@ -57,7 +57,7 @@ describe('GTM container import', () => {
     });
     expect(findParameter(ga4RouteSearchTag.parameter, 'eventName').value).toBe('route_search');
     expect(findParameter(ga4RouteSearchTag.parameter, 'measurementIdOverride').value).toBe(
-      '{{Azzuriva - GA4 Measurement ID}}',
+      '{{Riviera Dei Fiori Route Finder - GA4 Measurement ID}}',
     );
 
     const eventParameters = findParameter(ga4RouteSearchTag.parameter, 'eventSettingsTable')
@@ -176,7 +176,7 @@ describe('GTM container import', () => {
       });
       expect(findParameter(ga4Tag.parameter, 'eventName').value).toBe(eventName);
       expect(findParameter(ga4Tag.parameter, 'measurementIdOverride').value).toBe(
-        '{{Azzuriva - GA4 Measurement ID}}',
+        '{{Riviera Dei Fiori Route Finder - GA4 Measurement ID}}',
       );
       const ga4EventParameters = findParameter(ga4Tag.parameter, 'eventSettingsTable')
         .list.map((entry) => entry.map.find((item) => item.key === 'parameter').value);

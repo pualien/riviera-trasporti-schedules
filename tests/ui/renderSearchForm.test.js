@@ -23,8 +23,8 @@ describe('renderSearchForm', () => {
       reachableDestinations: [],
     });
 
-    expect(html).toContain('Azzuriva');
-    expect(html).toContain('Find direct Riviera Trasporti buses and practical Riviera travel context faster with Azzuriva.');
+    expect(html).toContain('Riviera Dei Fiori Route Finder');
+    expect(html).toContain('Find direct Riviera Trasporti buses across the Riviera dei Fiori with Riviera Dei Fiori Route Finder.');
     expect(html).not.toContain('Riviera Trasporti Search');
     expect(html).toContain('placeholder="Choose departure area"');
     expect(html).toContain('name="from"');
@@ -175,8 +175,8 @@ describe('renderSearchForm', () => {
       destinationMessage: createTranslator('de')('search.destination.informational'),
     });
 
-    expect(html).toContain('Azzuriva');
-    expect(html).toContain('Finde direkte Riviera-Trasporti-Busse und klarere Riviera-Hinweise schneller mit Azzuriva.');
+    expect(html).toContain('Riviera Dei Fiori Route Finder');
+    expect(html).toContain('Finde direkte Riviera-Trasporti-Busse an der Riviera dei Fiori mit Riviera Dei Fiori Route Finder.');
     expect(html).toContain('Meinen Standort verwenden');
     expect(html).toContain('Abfahrten anzeigen');
   });

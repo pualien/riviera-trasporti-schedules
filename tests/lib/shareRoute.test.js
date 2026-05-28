@@ -10,10 +10,10 @@ import {
 
 describe('shareRoute', () => {
   it('adds stable route share UTM values and channel-specific sources', () => {
-    const baseUrl = 'https://azzuriva.example/app?tab=search&from=Imperia&day=feriale';
+    const baseUrl = 'https://riviera-dei-fiori-route-finder.example/app?tab=search&from=Imperia&day=feriale';
 
     expect(buildRouteShareUrl(baseUrl, 'link')).toBe(
-      'https://azzuriva.example/app?tab=search&from=Imperia&day=feriale&utm_source=share_link&utm_medium=route_share&utm_campaign=azzuriva_route_share',
+      'https://riviera-dei-fiori-route-finder.example/app?tab=search&from=Imperia&day=feriale&utm_source=share_link&utm_medium=route_share&utm_campaign=riviera_dei_fiori_route_share',
     );
     expect(buildRouteShareUrl(baseUrl, 'whatsapp')).toContain('utm_source=share_whatsapp');
     expect(buildRouteShareUrl(baseUrl, 'telegram')).toContain('utm_source=share_telegram');
@@ -25,17 +25,17 @@ describe('shareRoute', () => {
 
   it('keeps existing non-share query parameters and replaces old share UTM parameters', () => {
     const sharedUrl = buildRouteShareUrl(
-      'https://azzuriva.example/app?tab=search&utm_source=old&utm_medium=old&utm_campaign=old#details',
+      'https://riviera-dei-fiori-route-finder.example/app?tab=search&utm_source=old&utm_medium=old&utm_campaign=old#details',
       'facebook',
     );
 
     expect(sharedUrl).toBe(
-      'https://azzuriva.example/app?tab=search&utm_source=share_facebook&utm_medium=route_share&utm_campaign=azzuriva_route_share#details',
+      'https://riviera-dei-fiori-route-finder.example/app?tab=search&utm_source=share_facebook&utm_medium=route_share&utm_campaign=riviera_dei_fiori_route_share#details',
     );
   });
 
   it('builds social target URLs around the channel share URL', () => {
-    const shareUrl = 'https://azzuriva.example/app?tab=search&utm_source=share_whatsapp';
+    const shareUrl = 'https://riviera-dei-fiori-route-finder.example/app?tab=search&utm_source=share_whatsapp';
     const text = 'Imperia -> Sanremo';
 
     expect(buildSocialShareHref({ channel: 'whatsapp', shareUrl, text })).toBe(
@@ -62,7 +62,7 @@ describe('shareRoute', () => {
         sourceLabel: 'PDF ufficiale Riviera Trasporti',
       }),
     ).toBe(
-      'Azzuriva: Imperia -> Sanremo, linea 12, parte 14:25, arriva 15:10. Giorno: Feriale. Orario dal PDF ufficiale Riviera Trasporti.',
+      'Riviera Dei Fiori Route Finder: Imperia -> Sanremo, linea 12, parte 14:25, arriva 15:10. Giorno: Feriale. Orario dal PDF ufficiale Riviera Trasporti.',
     );
   });
 
@@ -75,14 +75,14 @@ describe('shareRoute', () => {
         sourceLabel: 'PDF ufficiale Riviera Trasporti',
       }),
     ).toBe(
-      'Azzuriva: Imperia -> Sanremo. Giorno: Feriale. Orario dal PDF ufficiale Riviera Trasporti.',
+      'Riviera Dei Fiori Route Finder: Imperia -> Sanremo. Giorno: Feriale. Orario dal PDF ufficiale Riviera Trasporti.',
     );
   });
 
   it('uses default route share options when omitted', () => {
     expect(() => buildRouteShareText()).not.toThrow();
     expect(buildRouteShareText()).toBe(
-      'Azzuriva: undefined. Giorno: undefined. Orario dal PDF ufficiale Riviera Trasporti.',
+      'Riviera Dei Fiori Route Finder: undefined. Giorno: undefined. Orario dal PDF ufficiale Riviera Trasporti.',
     );
   });
 
@@ -95,21 +95,21 @@ describe('shareRoute', () => {
         sourceLabel: 'PDF ufficiale Riviera Trasporti',
       }),
     ).toBe(
-      'Azzuriva: Imperia -> Sanremo, linea 12, parte 18:05, arriva 18:45. Giorno: Sabato. Orario dal PDF ufficiale Riviera Trasporti.',
+      'Riviera Dei Fiori Route Finder: Imperia -> Sanremo, linea 12, parte 18:05, arriva 18:45. Giorno: Sabato. Orario dal PDF ufficiale Riviera Trasporti.',
     );
   });
 
   it('uses default departure share options when omitted', () => {
     expect(() => buildDepartureShareText()).not.toThrow();
     expect(buildDepartureShareText()).toBe(
-      'Azzuriva: undefined. Giorno: undefined. Orario dal PDF ufficiale Riviera Trasporti.',
+      'Riviera Dei Fiori Route Finder: undefined. Giorno: undefined. Orario dal PDF ufficiale Riviera Trasporti.',
     );
   });
 
   it('builds native share payloads without changing fields', () => {
-    const title = 'Azzuriva';
+    const title = 'Riviera Dei Fiori Route Finder';
     const text = 'Imperia -> Sanremo';
-    const url = 'https://azzuriva.example/app';
+    const url = 'https://riviera-dei-fiori-route-finder.example/app';
 
     expect(buildNativeSharePayload({ title, text, url })).toEqual({ title, text, url });
   });

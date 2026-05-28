@@ -146,7 +146,7 @@ test('opens provider search tabs and builds a prefilled FlixBus handoff', async 
 
 test('attributes SEO app CTA traffic to SEO source context', async ({ page }) => {
   await page.goto(
-    `${SEARCH_ROUTE}&utm_source=seo_route&utm_medium=seo_page&utm_campaign=azzuriva_seo`,
+    `${SEARCH_ROUTE}&utm_source=seo_route&utm_medium=seo_page&utm_campaign=riviera_dei_fiori_route_finder_seo`,
     { referer: 'http://127.0.0.1:4173/routes/imperia/sanremo/' },
   );
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
@@ -163,7 +163,7 @@ test('attributes SEO app CTA traffic to SEO source context', async ({ page }) =>
       event: 'landing_context',
       utm_source: 'seo_route',
       utm_medium: 'seo_page',
-      utm_campaign: 'azzuriva_seo',
+      utm_campaign: 'riviera_dei_fiori_route_finder_seo',
       referrer_type: 'seo',
     }),
     expect.objectContaining({
@@ -199,7 +199,7 @@ test('shows route action feedback and opens a tracked share modal', async ({ pag
   await expect(dialog).toBeVisible();
   await expect(dialog.getByLabel('Direct link')).toHaveValue(/utm_source=share_link/);
   await expect(dialog.getByLabel('Direct link')).toHaveValue(/utm_medium=route_share/);
-  await expect(dialog.getByLabel('Direct link')).toHaveValue(/utm_campaign=azzuriva_route_share/);
+  await expect(dialog.getByLabel('Direct link')).toHaveValue(/utm_campaign=riviera_dei_fiori_route_share/);
 
   await dialog.getByRole('button', { name: 'Copy link' }).click();
   await expect(dialog.locator('.share-modal-status')).toContainText('Link copied');

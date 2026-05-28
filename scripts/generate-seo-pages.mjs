@@ -96,12 +96,12 @@ function renderNotFoundHtml(site) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Azzuriva - pagina non trovata</title>
+  <title>Riviera Dei Fiori Route Finder - pagina non trovata</title>
   <meta name="robots" content="noindex">
 </head>
 <body>
   <main>
-    <h1>Azzuriva</h1>
+    <h1>Riviera Dei Fiori Route Finder</h1>
     <p>Pagina non trovata.</p>
     <a href="${canonicalUrl(site, '/')}">Torna all'app</a>
   </main>

@@ -1,5 +1,5 @@
 ---
-name: Azzuriva
+name: Riviera Dei Fiori Route Finder
 description: Route-first timetable lookup for direct Riviera buses.
 colors:
   primary: "#eb4c60"
@@ -100,7 +100,7 @@ components:
     typography: "{typography.body}"
 ---
 
-# Design System: Azzuriva
+# Design System: Riviera Dei Fiori Route Finder
 
 ## 1. Overview
 

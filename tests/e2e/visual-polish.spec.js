@@ -38,7 +38,7 @@ test('keeps text-only tabs optically centered', async ({ page }) => {
   await expect(tabLabelCenterOffset(page, 'Salvati')).resolves.toBeLessThanOrEqual(1);
 });
 
-test('keeps the Azzuriva wordmark readable', async ({ page }) => {
+test('keeps the Riviera Dei Fiori Route Finder wordmark readable', async ({ page }) => {
   await page.setViewportSize({ width: 960, height: 800 });
   await page.goto('/');
 
@@ -49,7 +49,7 @@ test('keeps the Azzuriva wordmark readable', async ({ page }) => {
   expect(letterSpacing).toBeGreaterThan(-2.5);
 });
 
-test('styles departure share controls as Azzuriva actions', async ({ page }) => {
+test('styles departure share controls as Riviera Dei Fiori Route Finder actions', async ({ page }) => {
   await page.setViewportSize({ width: 960, height: 800 });
   await page.goto(SEARCH_ROUTE);
 

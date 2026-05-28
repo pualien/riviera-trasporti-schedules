@@ -1,5 +1,7 @@
+import { BRAND_NAME } from './brand.js';
+
 export const SHARE_UTM_MEDIUM = 'route_share';
-export const SHARE_UTM_CAMPAIGN = 'azzuriva_route_share';
+export const SHARE_UTM_CAMPAIGN = 'riviera_dei_fiori_route_share';
 
 export const SHARE_CHANNELS = Object.freeze([
   { id: 'link', labelKey: 'results.share.copyLink', utmSource: 'share_link' },
@@ -33,7 +35,7 @@ function buildSourceShareSentence({ dayTypeLabel, sourceLabel }) {
 }
 
 function buildTimedShareText({ routeLabel, dayTypeLabel, departure, sourceLabel }) {
-  return `Azzuriva: ${routeLabel}, linea ${departure.lineId}, parte ${departure.departureTime}, arriva ${departure.arrivalTime}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
+  return `${BRAND_NAME}: ${routeLabel}, linea ${departure.lineId}, parte ${departure.departureTime}, arriva ${departure.arrivalTime}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
 }
 
 export function buildRouteShareText({
@@ -51,7 +53,7 @@ export function buildRouteShareText({
     });
   }
 
-  return `Azzuriva: ${routeLabel}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
+  return `${BRAND_NAME}: ${routeLabel}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
 }
 
 export function buildDepartureShareText({
@@ -61,7 +63,7 @@ export function buildDepartureShareText({
   sourceLabel = 'PDF ufficiale Riviera Trasporti',
 } = {}) {
   if (!departure) {
-    return `Azzuriva: ${routeLabel}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
+    return `${BRAND_NAME}: ${routeLabel}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
   }
 
   return buildTimedShareText({ routeLabel, dayTypeLabel, departure, sourceLabel });

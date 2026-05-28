@@ -9,7 +9,7 @@ function getTaxiPanel(html) {
 const countOccurrences = (html, needle) => html.split(needle).length - 1;
 
 describe('renderShell', () => {
-  it('renders the Azzuriva wordmark, descriptor, and official-site link', () => {
+  it('renders the Riviera Dei Fiori Route Finder wordmark, descriptor, and official-site link', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',
       languages: SUPPORTED_LANGUAGES,
@@ -17,8 +17,8 @@ describe('renderShell', () => {
     });
 
     expect(html).toContain('class="brand-wordmark"');
-    expect(html).toContain('Azzuriva');
-    expect(html).toContain('Italian Riviera travel companion');
+    expect(html).toContain('Riviera Dei Fiori Route Finder');
+    expect(html).toContain('Riviera dei Fiori bus route lookup');
     expect(html).toContain('Browse routes');
     expect(html).toContain('href="https://pualien.github.io/riviera-trasporti-schedules/routes/"');
     expect(html).toContain('Official Riviera Trasporti site');
@@ -152,8 +152,8 @@ describe('renderShell', () => {
 
     const taxiPanel = getTaxiPanel(html);
 
-    expect(html).toContain('Azzuriva for the Italian Riviera');
-    expect(html).toContain('Azzuriva is independent: bus times still point back to the official Riviera Trasporti PDF.');
+    expect(html).toContain('Riviera Dei Fiori Route Finder for the Riviera dei Fiori');
+    expect(html).toContain('Riviera Dei Fiori Route Finder is independent: bus times still point back to the official Riviera Trasporti PDF.');
     expect(html).toContain('Imperia');
     expect(html).toContain('Andora');
     expect(html).toContain('All verified taxi numbers');

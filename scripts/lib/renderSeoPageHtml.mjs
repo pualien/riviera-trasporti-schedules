@@ -92,7 +92,7 @@ function formatList(values = [], formatter = (value) => value) {
 }
 
 const SEO_UTM_MEDIUM = 'seo_page';
-const SEO_UTM_CAMPAIGN = 'azzuriva_seo';
+const SEO_UTM_CAMPAIGN = 'riviera_dei_fiori_route_finder_seo';
 
 function addSeoUtm(params, source) {
   params.set('utm_source', source);

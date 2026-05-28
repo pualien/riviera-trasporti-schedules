@@ -1,7 +1,7 @@
 {
-  "name": "Azzuriva",
-  "short_name": "Azzuriva",
-  "description": "Independent Italian Riviera travel companion for direct Riviera Trasporti bus checks.",
+  "name": "Riviera Dei Fiori Route Finder",
+  "short_name": "Riviera Dei Fiori Route Finder",
+  "description": "Independent Riviera dei Fiori route finder for direct Riviera Trasporti bus checks.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

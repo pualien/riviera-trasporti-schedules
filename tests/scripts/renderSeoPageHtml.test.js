@@ -64,7 +64,7 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('Linea 12');
     expect(html).toContain('48 partenze');
     expect(html).toContain(
-      'href="/riviera-trasporti-schedules/?utm_source=seo_routes_index&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+      'href="/riviera-trasporti-schedules/?utm_source=seo_routes_index&amp;utm_medium=seo_page&amp;utm_campaign=riviera_dei_fiori_route_finder_seo"',
     );
     expect(html.indexOf('Da Imperia')).toBeLessThan(html.indexOf('Da Sanremo'));
     expect(html).toContain("tab:'seo_routes_index'");
@@ -118,7 +118,7 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('toStop=sanremo-autostazione');
     expect(html).toContain('utm_source=seo_route');
     expect(html).toContain('utm_medium=seo_page');
-    expect(html).toContain('utm_campaign=azzuriva_seo');
+    expect(html).toContain('utm_campaign=riviera_dei_fiori_route_finder_seo');
     expect(html).toContain('Link permanente');
     expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
   });
@@ -193,7 +193,7 @@ describe('renderSeoPageHtml', () => {
     );
     expect(placeHtml).toContain('href="/riviera-trasporti-schedules/routes/sanremo/imperia/"');
     expect(placeHtml).toContain(
-      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Sanremo&amp;to=Andora+Autostazione&amp;fromLocality=sanremo&amp;toStop=andora-autostazione&amp;day=feriale&amp;utm_source=seo_place&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Sanremo&amp;to=Andora+Autostazione&amp;fromLocality=sanremo&amp;toStop=andora-autostazione&amp;day=feriale&amp;utm_source=seo_place&amp;utm_medium=seo_page&amp;utm_campaign=riviera_dei_fiori_route_finder_seo"',
     );
     expect(placeHtml).toContain('Destinazioni dirette');
     expect(lineHtml).toContain('Riviera Trasporti linea 12');
@@ -232,7 +232,7 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('<td>Sanremo Autostazione</td>');
     expect(html).toContain('https://example.com/orario.pdf#page=23');
     expect(html).toContain(
-      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=riviera_dei_fiori_route_finder_seo"',
     );
   });
 
@@ -265,12 +265,12 @@ describe('renderSeoPageHtml', () => {
     });
 
     expect(routeHtml).toContain(
-      'href="/base/app/?tab=search&amp;from=Imperia&amp;to=Sanremo&amp;day=feriale&amp;utm_source=seo_route&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+      'href="/base/app/?tab=search&amp;from=Imperia&amp;to=Sanremo&amp;day=feriale&amp;utm_source=seo_route&amp;utm_medium=seo_page&amp;utm_campaign=riviera_dei_fiori_route_finder_seo"',
     );
     expect(routeHtml).toContain('href="/base/styles.css"');
     expect(routeHtml).not.toContain('/riviera-trasporti-schedules/styles.css');
     expect(placeHtml).toContain(
-      'href="/base/app/?tab=search&amp;from=Sanremo&amp;to=Imperia&amp;day=feriale&amp;utm_source=seo_place&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+      'href="/base/app/?tab=search&amp;from=Sanremo&amp;to=Imperia&amp;day=feriale&amp;utm_source=seo_place&amp;utm_medium=seo_page&amp;utm_campaign=riviera_dei_fiori_route_finder_seo"',
     );
     expect(placeHtml).toContain('<link rel="canonical" href="https://example.com/base/places/sanremo/">');
   });

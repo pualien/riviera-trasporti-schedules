@@ -97,13 +97,15 @@ describe('service worker', () => {
     const listeners = loadServiceWorker({
       caches: {
         keys: async () => [
-          'azzuriva-route-tools-v0',
-          'azzuriva-route-tools-v1',
-          'azzuriva-route-tools-v2',
-          'azzuriva-route-tools-v3',
-          'azzuriva-route-tools-v4',
-          'azzuriva-route-tools-v5',
+          'riviera-dei-fiori-route-finder-v0',
+          'riviera-dei-fiori-route-finder-v1',
+          'riviera-dei-fiori-route-finder-v2',
+          'riviera-dei-fiori-route-finder-v3',
+          'riviera-dei-fiori-route-finder-v4',
+          'riviera-dei-fiori-route-finder-v5',
+          'riviera-dei-fiori-route-finder-v6',
           'azzuriva-route-tools-v6',
+          'riviera-route-tools-v6',
           'other-static-app',
         ],
         delete: async (cacheName) => {
@@ -121,12 +123,14 @@ describe('service worker', () => {
     await promises[0];
 
     expect(deleted).toEqual([
-      'azzuriva-route-tools-v0',
-      'azzuriva-route-tools-v1',
-      'azzuriva-route-tools-v2',
-      'azzuriva-route-tools-v3',
-      'azzuriva-route-tools-v4',
-      'azzuriva-route-tools-v5',
+      'riviera-dei-fiori-route-finder-v0',
+      'riviera-dei-fiori-route-finder-v1',
+      'riviera-dei-fiori-route-finder-v2',
+      'riviera-dei-fiori-route-finder-v3',
+      'riviera-dei-fiori-route-finder-v4',
+      'riviera-dei-fiori-route-finder-v5',
+      'azzuriva-route-tools-v6',
+      'riviera-route-tools-v6',
     ]);
   });
 

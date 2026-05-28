@@ -375,9 +375,9 @@ describe('renderResultsView', () => {
       routeActions: {
         saveFeedback: null,
         shareModal: {
-          baseUrl: 'https://azzuriva.example/app?tab=search&from=Imperia&to=Sanremo&day=feriale',
+          baseUrl: 'https://riviera-dei-fiori-route-finder.example/app?tab=search&from=Imperia&to=Sanremo&day=feriale',
           status: 'copied',
-          text: 'Azzuriva: Imperia -> Sanremo, linea 12, parte 08:30.',
+          text: 'Riviera Dei Fiori Route Finder: Imperia -> Sanremo, linea 12, parte 08:30.',
         },
       },
     });
@@ -397,6 +397,6 @@ describe('renderResultsView', () => {
     expect(html).toContain('data-share-option="x"');
     expect(html).toContain('share-option--x');
     expect(html).toContain('Link copied');
-    expect(html).toContain(encodeURIComponent('Azzuriva: Imperia -> Sanremo, linea 12, parte 08:30.'));
+    expect(html).toContain(encodeURIComponent('Riviera Dei Fiori Route Finder: Imperia -> Sanremo, linea 12, parte 08:30.'));
   });
 });
