@@ -19,6 +19,8 @@ describe('shareRoute', () => {
     expect(buildRouteShareUrl(baseUrl, 'telegram')).toContain('utm_source=share_telegram');
     expect(buildRouteShareUrl(baseUrl, 'facebook')).toContain('utm_source=share_facebook');
     expect(buildRouteShareUrl(baseUrl, 'x')).toContain('utm_source=share_x');
+    expect(buildRouteShareUrl(baseUrl, 'native')).toContain('utm_source=share_native');
+    expect(SHARE_CHANNELS.map((channel) => channel.id)).not.toContain('native');
   });
 
   it('keeps existing non-share query parameters and replaces old share UTM parameters', () => {

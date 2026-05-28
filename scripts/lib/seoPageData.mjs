@@ -203,9 +203,16 @@ export function buildRoutePageCandidates({ trips = [], localities = [], stops = 
     .slice(0, limit);
 }
 
-export function buildPlacePageSummaries({ trips = [], localities = [] } = {}) {
+function compareDepartureSearch(left, right) {
+  return compareText(left.departureTime, right.departureTime)
+    || compareText(left.arrivalTime, right.arrivalTime)
+    || compareLineIds(left.lineId, right.lineId);
+}
+
+export function buildPlacePageSummaries({ trips = [], localities = [], stops = [] } = {}) {
   const localityByStopId = localitiesByStopId(localities);
   const slugByLocalityId = localitySlugMap(localities);
+  const stopById = new Map(stops.map((stop) => [stop.id, stop]));
   const summaries = new Map(
     localities.map((locality) => [
       locality.id,
@@ -240,10 +247,27 @@ export function buildPlacePageSummaries({ trips = [], localities = [] } = {}) {
           continue;
         }
 
+        const search = {
+          fromLabel: fromLocality.label,
+          fromLocalityId: fromLocality.id,
+          toLabel: stopLabel(stopById, tripStops[toIndex]),
+          toStopId: tripStops[toIndex].stopId,
+          dayType: trip.dayType,
+          departureTime: tripStops[fromIndex].time,
+          arrivalTime: tripStops[toIndex].time,
+          lineId: trip.lineId,
+        };
+        const previousDestination = summary.directDestinations.get(toLocality.id);
+
+        if (previousDestination && compareDepartureSearch(previousDestination.search, search) <= 0) {
+          continue;
+        }
+
         summary.directDestinations.set(toLocality.id, {
           id: toLocality.id,
           label: toLocality.label,
           slug: slugByLocalityId.get(toLocality.id),
+          search,
         });
       }
     }

@@ -15,6 +15,7 @@ import {
 export const DEFAULT_SITE = {
   baseUrl: 'https://pualien.github.io/riviera-trasporti-schedules',
   appPath: '/riviera-trasporti-schedules/',
+  gtmId: 'GTM-WWVLPF5M',
 };
 
 async function readJson(rootDir, relativePath) {
@@ -119,7 +120,7 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
   const routeSlugByPair = new Map(
     routePages.map((route) => [`${route.fromLocalityId}->${route.toLocalityId}`, route.slug]),
   );
-  const placePages = buildPlacePageSummaries({ trips, localities }).map((place) => ({
+  const placePages = buildPlacePageSummaries({ trips, localities, stops }).map((place) => ({
     ...place,
     directDestinations: place.directDestinations.map((destination) => ({
       ...destination,

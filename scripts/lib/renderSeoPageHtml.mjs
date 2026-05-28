@@ -11,6 +11,15 @@ function escapeAttribute(value = '') {
   return escapeHtml(value);
 }
 
+function escapeScriptString(value = '') {
+  return String(value)
+    .replace(/\\/g, '\\\\')
+    .replace(/'/g, "\\'")
+    .replace(/</g, '\\x3c')
+    .replace(/\r/g, '\\r')
+    .replace(/\n/g, '\\n');
+}
+
 function trimSlashes(value = '') {
   return String(value).replace(/^\/+|\/+$/g, '');
 }
@@ -82,11 +91,91 @@ function formatList(values = [], formatter = (value) => value) {
   return values.map((value) => `<li>${formatter(value)}</li>`).join('\n');
 }
 
-function renderLayout({ site, metadata, path, title, description, body }) {
+const SEO_UTM_MEDIUM = 'seo_page';
+const SEO_UTM_CAMPAIGN = 'azzuriva_seo';
+
+function addSeoUtm(params, source) {
+  params.set('utm_source', source);
+  params.set('utm_medium', SEO_UTM_MEDIUM);
+  params.set('utm_campaign', SEO_UTM_CAMPAIGN);
+}
+
+function renderGtmHead(site, pageType) {
+  if (!site.gtmId) {
+    return '';
+  }
+
+  const gtmId = escapeScriptString(site.gtmId);
+  const tab = escapeScriptString(pageType);
+
+  return `  <script>
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'landing_context',tab:'${tab}',has_route_params:false,has_share_utm:false,utm_source:'',utm_medium:'',utm_campaign:'',referrer_type:document.referrer?'referral':'direct',language:document.documentElement.lang||'it'});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${gtmId}');</script>
+  <!-- End Google Tag Manager -->`;
+}
+
+function renderGtmNoScript(site) {
+  if (!site.gtmId) {
+    return '';
+  }
+
+  return `  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=${escapeAttribute(site.gtmId)}"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->`;
+}
+
+function renderSeoOutboundScript(site) {
+  if (!site.gtmId) {
+    return '';
+  }
+
+  return `  <script>
+(function(){
+  function targetType(href){
+    var normalizedHref = String(href || '').toLowerCase();
+
+    if(normalizedHref.indexOf('.pdf') !== -1){ return 'official_pdf'; }
+    if(normalizedHref.indexOf('tel:') === 0){ return 'taxi_call'; }
+    if(normalizedHref.indexOf('trenitalia') !== -1 || normalizedHref.indexOf('lefrecce.it') !== -1 || normalizedHref.indexOf('dati.regione.liguria.it') !== -1){ return 'train'; }
+    if(normalizedHref.indexOf('flixbus') !== -1){ return 'flixbus'; }
+    if(normalizedHref.indexOf('blablacar') !== -1){ return 'blablacar'; }
+    if(normalizedHref.indexOf('wa.me') !== -1 || normalizedHref.indexOf('t.me') !== -1 || normalizedHref.indexOf('facebook.com/sharer') !== -1 || normalizedHref.indexOf('twitter.com/intent') !== -1){ return 'social_share'; }
+
+    return 'external';
+  }
+
+  document.addEventListener('click', function(event){
+    var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+
+    if(!link){ return; }
+
+    var href = link.getAttribute('href') || '';
+
+    if(!/^https?:/i.test(href) && !/^tel:/i.test(href)){ return; }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'outbound_click',target_type:targetType(href),context:'seo_page'});
+  });
+})();
+</script>`;
+}
+
+function renderLayout({ site, metadata, path, title, description, body, pageType }) {
   const canonical = canonicalUrl(site, path);
   const sourceTitle = metadata?.source?.title ?? 'orario ufficiale';
   const effectiveDate = metadata?.source?.effectiveDate;
   const builtAt = metadata?.builtAt;
+  const gtmHead = renderGtmHead(site, pageType);
+  const gtmNoScript = renderGtmNoScript(site);
+  const seoOutboundScript = renderSeoOutboundScript(site);
 
   return `<!doctype html>
 <html lang="it">
@@ -97,16 +186,16 @@ function renderLayout({ site, metadata, path, title, description, body }) {
   <meta name="description" content="${escapeAttribute(description)}">
   <link rel="canonical" href="${escapeAttribute(canonical)}">
   <link rel="stylesheet" href="${escapeAttribute(publicPath(site, '/styles.css'))}">
-</head>
+${gtmHead ? `${gtmHead}\n` : ''}</head>
 <body>
-  <main class="seo-page">
+${gtmNoScript ? `${gtmNoScript}\n` : ''}  <main class="seo-page">
 ${body}
     <footer>
       <p>Dati da ${escapeHtml(sourceTitle)}${effectiveDate ? `, validi dal ${escapeHtml(effectiveDate)}` : ''}.</p>
       ${builtAt ? `<p>Pagina generata il ${escapeHtml(builtAt)}.</p>` : ''}
     </footer>
   </main>
-</body>
+${seoOutboundScript ? `${seoOutboundScript}\n` : ''}</body>
 </html>`;
 }
 
@@ -135,6 +224,8 @@ function routeSearchUrl(site, route) {
     params.set('day', day);
   }
 
+  addSeoUtm(params, 'seo_route');
+
   return `${appPath(site)}?${params.toString()}`;
 }
 
@@ -148,6 +239,34 @@ function lineSearchUrl(site, departure) {
   if (departure.dayType) {
     params.set('day', departure.dayType);
   }
+
+  addSeoUtm(params, 'seo_line');
+
+  return `${appPath(site)}?${params.toString()}`;
+}
+
+function placeDestinationSearchUrl(site, place, destination) {
+  const search = destination.search ?? {};
+  const params = new URLSearchParams({
+    tab: 'search',
+    from: search.fromLabel ?? place.label ?? '',
+    to: search.toLabel ?? destination.label ?? '',
+  });
+
+  if (search.fromLocalityId ?? place.localityId) {
+    params.set('fromLocality', search.fromLocalityId ?? place.localityId);
+  }
+
+  if (search.fromStopId) {
+    params.set('fromStop', search.fromStopId);
+  }
+
+  if (search.toStopId) {
+    params.set('toStop', search.toStopId);
+  }
+
+  params.set('day', search.dayType ?? 'feriale');
+  addSeoUtm(params, 'seo_place');
 
   return `${appPath(site)}?${params.toString()}`;
 }
@@ -205,7 +324,7 @@ ${departures
       ${dayTypes.length ? `<p>Servizi: ${escapeHtml(dayTypes.join(', '))}.</p>` : ''}
     </section>`;
 
-  return renderLayout({ site, metadata, path, title, description, body });
+  return renderLayout({ site, metadata, path, title, description, body, pageType: 'seo_route' });
 }
 
 export function renderPlacePageHtml({ site, metadata, place }) {
@@ -224,7 +343,7 @@ export function renderPlacePageHtml({ site, metadata, place }) {
 ${formatList(destinations, (destination) => {
   const href = destination.routeSlug
     ? publicPath(site, pagePath('routes', destination.routeSlug))
-    : publicPath(site, pagePath('places', destination.slug));
+    : placeDestinationSearchUrl(site, place, destination);
   return `<a href="${escapeAttribute(href)}">${escapeHtml(destination.label)}</a>`;
 })}
       </ul>
@@ -236,7 +355,7 @@ ${formatList(lines, (lineId) => escapeHtml(lineLabel(lineId)))}
       </ul>
     </section>`;
 
-  return renderLayout({ site, metadata, path, title, description, body });
+  return renderLayout({ site, metadata, path, title, description, body, pageType: 'seo_place' });
 }
 
 export function renderLinePageHtml({ site, metadata, line }) {
@@ -311,5 +430,5 @@ ${formatList(sourcePages, (page) => {
       </ul>
     </section>`;
 
-  return renderLayout({ site, metadata, path, title, description, body });
+  return renderLayout({ site, metadata, path, title, description, body, pageType: 'seo_line' });
 }

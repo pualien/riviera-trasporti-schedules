@@ -7,13 +7,28 @@
   <meta name="description" content="Direzioni, fermate e giorni di servizio della linea 1/1.">
   <link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/lines/1-1/">
   <link rel="stylesheet" href="/riviera-trasporti-schedules/styles.css">
+  <script>
+window.dataLayer=window.dataLayer||[];
+window.dataLayer.push({event:'landing_context',tab:'seo_line',has_route_params:false,has_share_utm:false,utm_source:'',utm_medium:'',utm_campaign:'',referrer_type:document.referrer?'referral':'direct',language:document.documentElement.lang||'it'});
+</script>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-WWVLPF5M');</script>
+  <!-- End Google Tag Manager -->
 </head>
 <body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWVLPF5M"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
   <main class="seo-page">
     <header>
       <h1>Riviera Trasporti linea 1/1</h1>
       <p>Direzioni, fermate e giorni di servizio della linea 1/1.</p>
-      <a class="button" href="/riviera-trasporti-schedules/?tab=search&amp;from=ventimiglia+-+via+cavour&amp;to=ospedale&amp;day=feriale">Cerca nell'app</a>
+      <a class="button" href="/riviera-trasporti-schedules/?tab=search&amp;from=ventimiglia+-+via+cavour&amp;to=ospedale&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo">Cerca nell'app</a>
     </header>
     <section>
       <h2>Direzioni</h2>
@@ -165,5 +180,34 @@
       <p>Pagina generata il 2026-05-27T09:49:45.505Z.</p>
     </footer>
   </main>
+  <script>
+(function(){
+  function targetType(href){
+    var normalizedHref = String(href || '').toLowerCase();
+
+    if(normalizedHref.indexOf('.pdf') !== -1){ return 'official_pdf'; }
+    if(normalizedHref.indexOf('tel:') === 0){ return 'taxi_call'; }
+    if(normalizedHref.indexOf('trenitalia') !== -1 || normalizedHref.indexOf('lefrecce.it') !== -1 || normalizedHref.indexOf('dati.regione.liguria.it') !== -1){ return 'train'; }
+    if(normalizedHref.indexOf('flixbus') !== -1){ return 'flixbus'; }
+    if(normalizedHref.indexOf('blablacar') !== -1){ return 'blablacar'; }
+    if(normalizedHref.indexOf('wa.me') !== -1 || normalizedHref.indexOf('t.me') !== -1 || normalizedHref.indexOf('facebook.com/sharer') !== -1 || normalizedHref.indexOf('twitter.com/intent') !== -1){ return 'social_share'; }
+
+    return 'external';
+  }
+
+  document.addEventListener('click', function(event){
+    var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+
+    if(!link){ return; }
+
+    var href = link.getAttribute('href') || '';
+
+    if(!/^https?:/i.test(href) && !/^tel:/i.test(href)){ return; }
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({event:'outbound_click',target_type:targetType(href),context:'seo_page'});
+  });
+})();
+</script>
 </body>
 </html>

@@ -22,7 +22,7 @@ const SAVED_RESTORE_ROUTE = {
   identity: 'Sanremo Autostazione|sanremo-autostazione|Porto Maurizio|imperia-porto-maurizio|feriale',
 };
 
-const NO_DIRECT_SHARED_ROUTE = '/?tab=search&from=bastia+%2F+leca&fromLocality=albenga&fromStop=bastia-%2F-leca&to=ranzo+borgo&toStop=ranzo-borgo&day=feriale&browse=lines&share=route&utm_medium=route_share';
+const NO_DIRECT_SHARED_ROUTE = '/?tab=search&from=Albenga&fromLocality=albenga&fromStop=albenga&to=bastia+%2F+leca&toStop=bastia-%2F-leca&day=feriale&browse=lines&share=route&utm_medium=route_share';
 
 async function firstTripKeyForSharedRoute(page) {
   await page.goto(SEARCH_ROUTE);
@@ -131,6 +131,35 @@ test('opens provider search tabs and builds a prefilled FlixBus handoff', async 
   await expect(page.getByRole('heading', { name: 'BlaBlaCar search' })).toBeVisible();
 });
 
+test('attributes SEO app CTA traffic to SEO source context', async ({ page }) => {
+  await page.goto(
+    `${SEARCH_ROUTE}&utm_source=seo_route&utm_medium=seo_page&utm_campaign=azzuriva_seo`,
+    { referer: 'http://127.0.0.1:4173/routes/imperia/sanremo/' },
+  );
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+
+  const growthEvents = await page.evaluate(() => (
+    window.dataLayer.filter((entry) => (
+      entry.event === 'landing_context'
+      || entry.event === 'route_result_viewed'
+    ))
+  ));
+
+  expect(growthEvents).toEqual([
+    expect.objectContaining({
+      event: 'landing_context',
+      utm_source: 'seo_route',
+      utm_medium: 'seo_page',
+      utm_campaign: 'azzuriva_seo',
+      referrer_type: 'seo',
+    }),
+    expect.objectContaining({
+      event: 'route_result_viewed',
+      source_context: 'seo',
+    }),
+  ]);
+});
+
 test('shows route action feedback and opens a tracked share modal', async ({ page }) => {
   await page.addInitScript(() => {
     window.__copiedText = '';
@@ -207,12 +236,43 @@ test('uses native sharing for route shares when available', async ({ page }) => 
   ));
 
   expect(sharePayloads).toHaveLength(1);
-  expect(sharePayloads[0].url).toContain('utm_source=share_link');
+  expect(sharePayloads[0].url).toContain('utm_source=share_native');
   expect(routeShareEvents).toEqual([
     expect.objectContaining({
       event: 'route_share',
       share_method: 'native',
-      share_url: expect.stringContaining('utm_source=share_link'),
+      share_url: expect.stringContaining('utm_source=share_native'),
+    }),
+  ]);
+});
+
+test('uses native sharing source for departure shares when available', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__nativeSharePayloads = [];
+    Object.defineProperty(navigator, 'share', {
+      value: async (payload) => {
+        window.__nativeSharePayloads.push(payload);
+      },
+      configurable: true,
+    });
+  });
+
+  await page.goto(SEARCH_ROUTE);
+  await page.locator('[data-share-departure]').first().click();
+
+  const sharePayloads = await page.evaluate(() => window.__nativeSharePayloads);
+  const routeShareEvents = await page.evaluate(() => (
+    window.dataLayer.filter((entry) => entry.event === 'route_share')
+  ));
+
+  expect(sharePayloads).toHaveLength(1);
+  expect(sharePayloads[0].url).toContain('share=departure');
+  expect(sharePayloads[0].url).toContain('utm_source=share_native');
+  expect(routeShareEvents).toEqual([
+    expect.objectContaining({
+      event: 'route_share',
+      share_method: 'native',
+      share_url: expect.stringContaining('utm_source=share_native'),
     }),
   ]);
 });

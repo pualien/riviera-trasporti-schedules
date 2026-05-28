@@ -66,8 +66,35 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('fromLocality=imperia');
     expect(html).toContain('to=Sanremo+Autostazione');
     expect(html).toContain('toStop=sanremo-autostazione');
+    expect(html).toContain('utm_source=seo_route');
+    expect(html).toContain('utm_medium=seo_page');
+    expect(html).toContain('utm_campaign=azzuriva_seo');
     expect(html).toContain('Link permanente');
     expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
+  });
+
+  it('renders GTM and SEO-page outbound analytics hooks when configured', () => {
+    const html = renderRoutePageHtml({
+      site: {
+        ...site,
+        gtmId: 'GTM-TEST',
+      },
+      metadata,
+      route: {
+        slug: 'imperia/sanremo',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo',
+        lineIds: ['12'],
+        dayTypes: ['feriale'],
+        departures: [],
+      },
+    });
+
+    expect(html).toContain('GTM-TEST');
+    expect(html).toContain("event:'landing_context'");
+    expect(html).toContain("tab:'seo_route'");
+    expect(html).toContain("event:'outbound_click'");
+    expect(html).toContain("context:'seo_page'");
   });
 
   it('renders place and line pages with self canonical URLs and Italian headings', () => {
@@ -77,7 +104,21 @@ describe('renderSeoPageHtml', () => {
       place: {
         slug: 'sanremo',
         label: 'Sanremo',
-        directDestinations: [{ label: 'Imperia', slug: 'imperia', routeSlug: 'sanremo/imperia' }],
+        localityId: 'sanremo',
+        directDestinations: [
+          { label: 'Imperia', slug: 'imperia', routeSlug: 'sanremo/imperia' },
+          {
+            label: 'Andora',
+            slug: 'andora',
+            search: {
+              fromLabel: 'Sanremo',
+              fromLocalityId: 'sanremo',
+              toLabel: 'Andora Autostazione',
+              toStopId: 'andora-autostazione',
+              dayType: 'feriale',
+            },
+          },
+        ],
         lineIds: ['12'],
       },
     });
@@ -101,6 +142,9 @@ describe('renderSeoPageHtml', () => {
       '<link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/lines/12/">',
     );
     expect(placeHtml).toContain('href="/riviera-trasporti-schedules/routes/sanremo/imperia/"');
+    expect(placeHtml).toContain(
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Sanremo&amp;to=Andora+Autostazione&amp;fromLocality=sanremo&amp;toStop=andora-autostazione&amp;day=feriale&amp;utm_source=seo_place&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+    );
     expect(placeHtml).toContain('Destinazioni dirette');
     expect(lineHtml).toContain('Riviera Trasporti linea 12');
   });
@@ -138,7 +182,7 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('<td>Sanremo Autostazione</td>');
     expect(html).toContain('https://example.com/orario.pdf#page=23');
     expect(html).toContain(
-      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale"',
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
     );
   });
 
@@ -170,10 +214,14 @@ describe('renderSeoPageHtml', () => {
       },
     });
 
-    expect(routeHtml).toContain('href="/base/app/?tab=search&amp;from=Imperia&amp;to=Sanremo&amp;day=feriale"');
+    expect(routeHtml).toContain(
+      'href="/base/app/?tab=search&amp;from=Imperia&amp;to=Sanremo&amp;day=feriale&amp;utm_source=seo_route&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+    );
     expect(routeHtml).toContain('href="/base/styles.css"');
     expect(routeHtml).not.toContain('/riviera-trasporti-schedules/styles.css');
-    expect(placeHtml).toContain('href="/base/places/imperia/"');
+    expect(placeHtml).toContain(
+      'href="/base/app/?tab=search&amp;from=Sanremo&amp;to=Imperia&amp;day=feriale&amp;utm_source=seo_place&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+    );
     expect(placeHtml).toContain('<link rel="canonical" href="https://example.com/base/places/sanremo/">');
   });
 

@@ -127,9 +127,10 @@ describe('generateSeoPages', () => {
       lineCount: 1,
     });
 
-    await expect(readOutput(rootDir, 'routes/imperia/sanremo/index.html')).resolves.toContain(
-      'Bus Imperia - Sanremo',
-    );
+    const routeHtml = await readOutput(rootDir, 'routes/imperia/sanremo/index.html');
+    expect(routeHtml).toContain('Bus Imperia - Sanremo');
+    expect(routeHtml).toContain('GTM-WWVLPF5M');
+    expect(routeHtml).toContain("context:'seo_page'");
     await expect(readOutput(rootDir, 'places/imperia/index.html')).resolves.toContain('Bus da Imperia');
     await expect(readOutput(rootDir, 'places/imperia/index.html')).resolves.toContain(
       'href="/riviera-trasporti-schedules/routes/imperia/sanremo/"',
@@ -138,7 +139,7 @@ describe('generateSeoPages', () => {
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('Partenze rappresentative');
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('08:00');
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain(
-      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale"',
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
     );
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/imperia/sanremo/');
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain(

@@ -99,6 +99,7 @@ const SHELL_AD_SLOTS = Object.freeze({
   lead: '',
   utility: '',
 });
+const SEO_UTM_MEDIUM = 'seo_page';
 
 function savedRoutesStorage() {
   return getSavedRoutesStorage(window);
@@ -383,11 +384,27 @@ function currentSourceContext() {
     return 'share';
   }
 
+  if (params.get('utm_medium') === SEO_UTM_MEDIUM) {
+    return 'seo';
+  }
+
   if (document.referrer) {
     return 'referrer';
   }
 
   return 'direct';
+}
+
+function landingReferrerType(params) {
+  if (params.get('utm_medium') === SHARE_UTM_MEDIUM) {
+    return 'share';
+  }
+
+  if (params.get('utm_medium') === SEO_UTM_MEDIUM) {
+    return 'seo';
+  }
+
+  return document.referrer ? 'referral' : 'direct';
 }
 
 function outboundTargetTypeForHref(href = '') {
@@ -1701,7 +1718,7 @@ function bindSavedRoutes() {
         nextDeparture: state.resultState?.type === 'results' ? state.resultState.summary.nextDeparture : null,
       });
       const baseUrl = currentRouteAbsoluteUrlWithShare({ shareScope: 'route' });
-      const shareUrl = buildRouteShareUrl(baseUrl, 'link');
+      const shareUrl = buildRouteShareUrl(baseUrl, 'native');
       const payload = buildNativeSharePayload({
         title: routeLabel,
         text: shareText,
@@ -1757,7 +1774,7 @@ function bindSavedRoutes() {
 
       const routeLabel = currentRouteLabel();
       const baseUrl = currentRouteAbsoluteUrlWithShare({ shareScope: 'departure', tripKey });
-      const shareUrl = buildRouteShareUrl(baseUrl, 'link');
+      const shareUrl = buildRouteShareUrl(baseUrl, 'native');
       const text = buildDepartureShareText({
         routeLabel,
         dayTypeLabel: currentDayTypeLabel(),
@@ -1983,7 +2000,7 @@ async function boot() {
       utmSource: bootParams.get('utm_source') ?? '',
       utmMedium: bootParams.get('utm_medium') ?? '',
       utmCampaign: bootParams.get('utm_campaign') ?? '',
-      referrerType: document.referrer ? 'referral' : 'direct',
+      referrerType: landingReferrerType(bootParams),
       language: state.language,
     });
 

@@ -251,8 +251,26 @@ describe('seoPageData', () => {
 
     expect(placeSlugs).toEqual(['punctuation', 'san-remo', 'sanremo-b']);
     expect(punctuation.directDestinations).toEqual([
-      { id: 'sanremo-a', label: 'San Remo', slug: 'san-remo' },
-      { id: 'sanremo-b', label: 'San-Remo', slug: 'sanremo-b' },
+      expect.objectContaining({
+        id: 'sanremo-a',
+        label: 'San Remo',
+        slug: 'san-remo',
+        search: expect.objectContaining({
+          fromLocalityId: 'punctuation',
+          toStopId: 'sanremo-a',
+          dayType: 'feriale',
+        }),
+      }),
+      expect.objectContaining({
+        id: 'sanremo-b',
+        label: 'San-Remo',
+        slug: 'sanremo-b',
+        search: expect.objectContaining({
+          fromLocalityId: 'punctuation',
+          toStopId: 'sanremo-b',
+          dayType: 'feriale',
+        }),
+      }),
     ]);
   });
 

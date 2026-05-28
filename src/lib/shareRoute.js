@@ -10,6 +10,10 @@ export const SHARE_CHANNELS = Object.freeze([
 ]);
 
 function channelConfig(channel) {
+  if (channel === 'native') {
+    return { id: 'native', utmSource: 'share_native' };
+  }
+
   return SHARE_CHANNELS.find((entry) => entry.id === channel) ?? SHARE_CHANNELS[0];
 }
 

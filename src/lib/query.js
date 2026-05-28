@@ -6,6 +6,28 @@ function stopIdForSearchInput(value, aliases) {
   return stopId || null;
 }
 
+function tripStopId(stop) {
+  return stop.stopId ?? stopIdFromName(stop.name);
+}
+
+function findForwardStopSegment(stops, originStopId, destinationStopId) {
+  for (let fromIndex = 0; fromIndex < stops.length; fromIndex += 1) {
+    if (tripStopId(stops[fromIndex]) !== originStopId) {
+      continue;
+    }
+
+    const toIndex = stops.findIndex((stop, index) => (
+      index > fromIndex && tripStopId(stop) === destinationStopId
+    ));
+
+    if (toIndex !== -1) {
+      return { fromIndex, toIndex };
+    }
+  }
+
+  return null;
+}
+
 export function resolveRouteStopIds({
   from = '',
   to = '',
@@ -47,17 +69,13 @@ export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = []
     .filter((trip) => trip.dayType === dayType)
     .flatMap((trip, tripIndex) =>
       resolvedOriginStopIds.map((originStopId) => {
-        const fromIndex = trip.stops.findIndex(
-          (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === originStopId,
-        );
-        const toIndex = trip.stops.findIndex(
-          (stop) => (stop.stopId ?? stopIdFromName(stop.name)) === resolvedToStopId,
-        );
+        const segment = findForwardStopSegment(trip.stops, originStopId, resolvedToStopId);
 
-        if (fromIndex === -1 || toIndex === -1 || fromIndex >= toIndex) {
+        if (!segment) {
           return null;
         }
 
+        const { fromIndex, toIndex } = segment;
         const fromStop = trip.stops[fromIndex];
         const toStop = trip.stops[toIndex];
 

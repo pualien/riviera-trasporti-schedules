@@ -131,6 +131,38 @@ describe('findDirectTrips', () => {
       'sanremo-autostazione',
     ]);
   });
+
+  it('uses a repeated destination stop only when it occurs after the selected origin', () => {
+    const matches = findDirectTrips({
+      from: 'Airole',
+      fromLocalityStopIds: ['airole-bivio'],
+      to: 'Trucco',
+      toStopId: 'trucco',
+      dayType: 'feriale',
+      aliases,
+      trips: [
+        {
+          lineId: '3',
+          dayType: 'feriale',
+          sourcePage: 30,
+          stops: [
+            { stopId: 'trucco', name: 'trucco', time: '08:35' },
+            { stopId: 'airole-bivio', name: 'airole bivio', time: '08:40' },
+            { stopId: 'airole-piazza', name: 'airole piazza', time: '08:43' },
+            { stopId: 'trucco', name: 'trucco', time: '09:20' },
+          ],
+        },
+      ],
+    });
+
+    expect(matches).toHaveLength(1);
+    expect(matches[0]).toMatchObject({
+      fromIndex: 1,
+      toIndex: 3,
+      departureTime: '08:40',
+      arrivalTime: '09:20',
+    });
+  });
 });
 
 describe('resolveRouteStopIds', () => {
