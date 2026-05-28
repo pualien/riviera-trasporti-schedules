@@ -116,6 +116,8 @@ describe('service worker', () => {
 
     expect(cachedUrls).toContain('./styles.css?v=6');
     expect(cachedUrls).toContain('./src/main.js?v=6');
+    expect(cachedUrls).toContain('./src/lib/pwaController.js');
+    expect(cachedUrls).toContain('./src/ui/renderPwaControl.js');
     expect(cachedUrls).toContain('./offline.html');
   });
 

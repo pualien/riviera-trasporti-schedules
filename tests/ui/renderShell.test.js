@@ -52,6 +52,18 @@ describe('renderShell', () => {
     expect(html).toContain('<nav class="app-tabs">Tabs</nav>');
   });
 
+  it('places PWA controls in the topbar actions before the language selector', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      pwaControl: '<div data-pwa-control>PWA</div>',
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('<div data-pwa-control>PWA</div>');
+    expect(html.indexOf('data-pwa-control')).toBeLessThan(html.indexOf('class="language-selector"'));
+  });
+
   it('renders lead and utility ad slots only when configured', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',

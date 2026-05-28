@@ -58,7 +58,7 @@ import {
   isProviderSearchTab,
   updateProviderSearchState,
 } from './lib/providerSearch.js';
-import { registerServiceWorker } from './lib/registerServiceWorker.js';
+import { createPwaController } from './lib/pwaController.js';
 import {
   SHARE_UTM_MEDIUM,
   buildDepartureShareText,
@@ -85,6 +85,7 @@ import { renderEmptyState } from './ui/renderEmptyState.js';
 import { renderLocationPicker } from './ui/renderLocationPicker.js';
 import { renderNoDirectFallback } from './ui/renderNoDirectFallback.js';
 import { renderProviderSearchView } from './ui/renderProviderSearchView.js';
+import { renderPwaControl } from './ui/renderPwaControl.js';
 import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
@@ -95,6 +96,7 @@ import { renderTabNav } from './ui/renderTabNav.js';
 
 const app = document.querySelector('#app');
 let locationPickerRequestId = 0;
+let pwaController = null;
 const SHELL_AD_SLOTS = Object.freeze({
   lead: '',
   utility: '',
@@ -148,6 +150,13 @@ const state = {
   inboundShare: createDefaultInboundShareState(),
   pendingSelectedTripMapKey: null,
   locationPicker: null,
+  pwa: {
+    pwaSupported: false,
+    installAvailable: false,
+    isInstalled: false,
+    isOnline: true,
+    updateAvailable: false,
+  },
 };
 
 function buildReachabilityFromTrips(trips) {
@@ -560,6 +569,35 @@ function updateSeoForCurrentState(t) {
   }));
 }
 
+function rerenderAfterPwaStateChange() {
+  if (!app.innerHTML) {
+    return;
+  }
+
+  renderApp();
+  bindInteractions();
+}
+
+function updatePwaState(nextPwaState) {
+  state.pwa = {
+    ...state.pwa,
+    ...nextPwaState,
+  };
+  rerenderAfterPwaStateChange();
+}
+
+function initializePwaController() {
+  pwaController?.destroy?.();
+  pwaController = createPwaController({
+    windowObject: window,
+    navigatorObject: navigator,
+    onStateChange: updatePwaState,
+    logger: console,
+  });
+  state.pwa = pwaController.getState();
+  pwaController.register();
+}
+
 function renderApp() {
   const t = createTranslator(state.language);
   const originContext = currentOriginContext();
@@ -662,6 +700,7 @@ function renderApp() {
     adSlots: SHELL_AD_SLOTS,
     datasetInfo: state.metadata,
     taxiDirectory: listTaxiOptions(),
+    pwaControl: renderPwaControl({ pwaState: state.pwa, t }),
     tabNavigation: renderTabNav({ activeTab: state.activeTab, t }),
     t,
   });
@@ -1952,6 +1991,16 @@ function bindOutboundAnalytics() {
   });
 }
 
+function bindPwaActions() {
+  document.querySelector('[data-pwa-install]')?.addEventListener('click', async () => {
+    await pwaController?.promptInstall();
+  });
+
+  document.querySelector('[data-pwa-update]')?.addEventListener('click', async () => {
+    await pwaController?.applyUpdate();
+  });
+}
+
 function bindInteractions() {
   bindForm();
   bindProviderSearchForm();
@@ -1964,6 +2013,7 @@ function bindInteractions() {
   bindNoDirectActions();
   bindBrowseActions();
   bindOutboundAnalytics();
+  bindPwaActions();
 }
 
 async function boot() {
@@ -2013,11 +2063,11 @@ async function boot() {
       });
     }
 
+    initializePwaController();
     restoreSearchResultsIfReady();
     renderApp();
     bindInteractions();
     renderPendingSelectedTripMap();
-    registerServiceWorker();
     window.addEventListener('popstate', () => {
       hydrateRouteStateFromUrl();
       restoreSearchResultsIfReady();

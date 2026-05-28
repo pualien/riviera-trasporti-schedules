@@ -75,6 +75,37 @@ a {
   gap: 10px;
 }
 
+.pwa-control {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.pwa-status {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  max-width: 320px;
+  padding: 9px 12px;
+  border: 1px solid rgba(217, 59, 79, 0.22);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--text);
+  font-size: 0.86rem;
+  line-height: 1.25;
+}
+
+.pwa-status span {
+  color: var(--muted);
+}
+
+.pwa-action {
+  cursor: pointer;
+}
+
 .brand-subtitle,
 .eyebrow,
 .section-head p,
@@ -1500,6 +1531,15 @@ a {
 
   .topbar-actions {
     width: 100%;
+  }
+
+  .pwa-control,
+  .pwa-status {
+    width: 100%;
+  }
+
+  .pwa-status {
+    border-radius: 18px;
   }
 
   .departure-meta {

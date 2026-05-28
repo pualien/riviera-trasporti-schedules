@@ -57,6 +57,7 @@ export function renderShell(
     languages = SUPPORTED_LANGUAGES,
     adSlots = {},
     datasetInfo = null,
+    pwaControl = '',
     taxiDirectory = [],
     tabNavigation = '',
     t = createTranslator('en'),
@@ -73,6 +74,7 @@ export function renderShell(
           ${renderFreshnessMarker(datasetInfo, t)}
         </div>
         <div class="topbar-actions">
+          ${pwaControl}
           <a class="topbar-link" href="${ROUTES_INDEX_URL}">
             ${t('shell.routesIndex')}
           </a>
