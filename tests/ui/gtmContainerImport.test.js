@@ -124,6 +124,20 @@ describe('GTM container import', () => {
         'has_taxi_fallback',
         'source_context',
       ],
+      route_no_direct_viewed: [
+        'from',
+        'to',
+        'day_type',
+        'has_transfer_suggestions',
+        'has_taxi_fallback',
+        'source_context',
+      ],
+      share_modal_opened: [
+        'share_scope',
+        'from',
+        'to',
+        'day_type',
+      ],
       shared_route_opened: [
         'utm_source',
         'share_scope',
