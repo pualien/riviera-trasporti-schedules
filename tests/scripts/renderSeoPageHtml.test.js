@@ -92,6 +92,43 @@ describe('renderSeoPageHtml', () => {
     expect(lineHtml).toContain('Riviera Trasporti linea 12');
   });
 
+  it('renders line page departure rows with an app search CTA for a representative stop pair', () => {
+    const html = renderLinePageHtml({
+      site,
+      metadata,
+      line: {
+        slug: '12',
+        lineId: '12',
+        directions: ['Imperia - Sanremo'],
+        stops: [{ canonical: 'Imperia' }, { canonical: 'Sanremo Autostazione' }],
+        dayTypes: ['feriale'],
+        sourcePages: [23],
+        departures: [
+          {
+            dayType: 'feriale',
+            direction: 'Imperia - Sanremo',
+            departureTime: '08:00',
+            arrivalTime: '08:45',
+            fromLabel: 'Imperia',
+            toLabel: 'Sanremo Autostazione',
+            sourcePage: 23,
+          },
+        ],
+      },
+    });
+
+    expect(html).toContain('Partenze rappresentative');
+    expect(html).toContain('<td>feriale</td>');
+    expect(html).toContain('<td>08:00</td>');
+    expect(html).toContain('<td>08:45</td>');
+    expect(html).toContain('<td>Imperia</td>');
+    expect(html).toContain('<td>Sanremo Autostazione</td>');
+    expect(html).toContain('https://example.com/orario.pdf#page=23');
+    expect(html).toContain(
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale"',
+    );
+  });
+
   it('builds internal page links and route CTA from configured baseUrl and appPath', () => {
     const configuredSite = {
       baseUrl: 'https://example.com/base',

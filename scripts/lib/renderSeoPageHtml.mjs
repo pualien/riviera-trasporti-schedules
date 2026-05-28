@@ -125,6 +125,20 @@ function routeSearchUrl(site, route) {
   return `${appPath(site)}?${params.toString()}`;
 }
 
+function lineSearchUrl(site, departure) {
+  const params = new URLSearchParams({
+    tab: 'search',
+    from: departure.fromLabel ?? '',
+    to: departure.toLabel ?? '',
+  });
+
+  if (departure.dayType) {
+    params.set('day', departure.dayType);
+  }
+
+  return `${appPath(site)}?${params.toString()}`;
+}
+
 function lineLabel(lineId) {
   return `Linea ${lineId}`;
 }
@@ -219,9 +233,47 @@ export function renderLinePageHtml({ site, metadata, line }) {
   const directions = line.directions ?? [];
   const stops = line.stops ?? [];
   const sourcePages = line.sourcePages ?? [];
+  const departures = line.departures ?? [];
+  const [representativeDeparture] = departures;
+  const lineSearchCta = representativeDeparture
+    ? `      <a class="button" href="${escapeAttribute(lineSearchUrl(site, representativeDeparture))}">Cerca nell'app</a>`
+    : '';
+  const departuresSection = departures.length
+    ? `    <section>
+      <h2>Partenze rappresentative</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Giorno</th>
+            <th>Da</th>
+            <th>A</th>
+            <th>Partenza</th>
+            <th>Arrivo</th>
+            <th>Fonte</th>
+          </tr>
+        </thead>
+        <tbody>
+${departures
+  .map((departure) => {
+    const pdfUrl = sourcePdfUrl(metadata, departure.sourcePage);
+    return `          <tr>
+            <td>${escapeHtml(departure.dayType)}</td>
+            <td>${escapeHtml(departure.fromLabel)}</td>
+            <td>${escapeHtml(departure.toLabel)}</td>
+            <td>${escapeHtml(departure.departureTime)}</td>
+            <td>${escapeHtml(departure.arrivalTime)}</td>
+            <td>${pdfUrl ? `<a href="${escapeAttribute(pdfUrl)}">PDF pagina ${escapeHtml(departure.sourcePage)}</a>` : ''}</td>
+          </tr>`;
+  })
+  .join('\n')}
+        </tbody>
+      </table>
+    </section>`
+    : '';
   const body = `    <header>
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(description)}</p>
+${lineSearchCta}
     </header>
     <section>
       <h2>Direzioni</h2>
@@ -235,6 +287,7 @@ ${formatList(directions, escapeHtml)}
 ${formatList(stops, (stop) => escapeHtml(stop.canonical))}
       </ul>
     </section>
+${departuresSection}
     <section>
       <h2>Fonte</h2>
       <ul>

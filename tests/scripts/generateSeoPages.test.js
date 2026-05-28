@@ -73,6 +73,11 @@ describe('generateSeoPages', () => {
       'href="/riviera-trasporti-schedules/routes/imperia/sanremo/"',
     );
     await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('linea 12');
+    await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('Partenze rappresentative');
+    await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain('08:00');
+    await expect(readOutput(rootDir, 'lines/12/index.html')).resolves.toContain(
+      'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale"',
+    );
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/imperia/sanremo/');
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain(
       '<loc>https://pualien.github.io/riviera-trasporti-schedules/</loc>',

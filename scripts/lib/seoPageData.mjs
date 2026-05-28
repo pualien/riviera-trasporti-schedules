@@ -57,6 +57,10 @@ function isForwardTimeSegment(departureTime, arrivalTime) {
   return departureMinutes === null || arrivalMinutes === null || arrivalMinutes >= departureMinutes;
 }
 
+function stopLabel(stopById, tripStop = {}) {
+  return stopById.get(tripStop.stopId)?.canonical ?? tripStop.name ?? tripStop.stopId ?? '';
+}
+
 function uniqueSlug(baseValue, fallbackValue, usedSlugs, genericFallback) {
   const baseSlug = slugifySegment(baseValue);
   const fallbackSlug = slugifySegment(fallbackValue);
@@ -253,6 +257,7 @@ export function buildLinePageSummaries({ trips = [], stops = [] } = {}) {
         stops: [],
         dayTypes: new Set(),
         sourcePages: new Set(),
+        departures: [],
       });
     }
 
@@ -261,7 +266,28 @@ export function buildLinePageSummaries({ trips = [], stops = [] } = {}) {
     summary.dayTypes.add(trip.dayType);
     summary.sourcePages.add(trip.sourcePage);
 
-    for (const tripStop of trip.stops ?? []) {
+    const tripStops = trip.stops ?? [];
+    const firstStop = tripStops[0];
+    const lastStop = tripStops.at(-1);
+
+    if (
+      firstStop?.stopId &&
+      lastStop?.stopId &&
+      firstStop.stopId !== lastStop.stopId &&
+      isForwardTimeSegment(firstStop.time, lastStop.time)
+    ) {
+      summary.departures.push({
+        dayType: trip.dayType,
+        direction: trip.direction,
+        departureTime: firstStop.time,
+        arrivalTime: lastStop.time,
+        fromLabel: stopLabel(stopById, firstStop),
+        toLabel: stopLabel(stopById, lastStop),
+        sourcePage: trip.sourcePage,
+      });
+    }
+
+    for (const tripStop of tripStops) {
       if (!tripStop.stopId || summary.stopIds.has(tripStop.stopId)) {
         continue;
       }
@@ -280,6 +306,15 @@ export function buildLinePageSummaries({ trips = [], stops = [] } = {}) {
       directions: uniqueSorted([...summary.directions]),
       dayTypes: uniqueSorted([...summary.dayTypes]),
       sourcePages: uniqueSorted([...summary.sourcePages], (left, right) => Number(left) - Number(right)),
+      departures: summary.departures
+        .sort(
+          (left, right) =>
+            compareText(left.departureTime, right.departureTime) ||
+            compareText(left.arrivalTime, right.arrivalTime) ||
+            compareText(left.dayType, right.dayType) ||
+            compareText(left.direction, right.direction),
+        )
+        .slice(0, 12),
     }))
     .sort((left, right) => compareLineIds(left.lineId, right.lineId));
 }

@@ -266,6 +266,64 @@ describe('seoPageData', () => {
     });
   });
 
+  it('adds representative forward departures to line page summaries', () => {
+    const lineTrips = [
+      {
+        lineId: '12',
+        direction: 'Imperia - Sanremo',
+        dayType: 'festivo',
+        sourcePage: 24,
+        stops: [
+          { stopId: 'imperia', name: 'Imperia', time: '10:00' },
+          { stopId: 'sanremo', name: 'Sanremo', time: '10:45' },
+        ],
+      },
+      {
+        lineId: '12',
+        direction: 'Imperia - Sanremo',
+        dayType: 'feriale',
+        sourcePage: 23,
+        stops: [
+          { stopId: 'imperia', name: 'Imperia', time: '08:00' },
+          { stopId: 'sanremo', name: 'Sanremo', time: '08:45' },
+        ],
+      },
+      {
+        lineId: '12',
+        direction: 'Sanremo - Imperia',
+        dayType: 'feriale',
+        sourcePage: 23,
+        stops: [
+          { stopId: 'sanremo', name: 'Sanremo', time: '22:30' },
+          { stopId: 'imperia', name: 'Imperia', time: '22:10' },
+        ],
+      },
+    ];
+
+    const [summary] = buildLinePageSummaries({ trips: lineTrips, stops });
+
+    expect(summary.departures).toEqual([
+      {
+        dayType: 'feriale',
+        direction: 'Imperia - Sanremo',
+        departureTime: '08:00',
+        arrivalTime: '08:45',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo Autostazione',
+        sourcePage: 23,
+      },
+      {
+        dayType: 'festivo',
+        direction: 'Imperia - Sanremo',
+        departureTime: '10:00',
+        arrivalTime: '10:45',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo Autostazione',
+        sourcePage: 24,
+      },
+    ]);
+  });
+
   it('keeps line slugs non-empty and unique when line ids collide after slugging', () => {
     const lineTrips = [
       {
