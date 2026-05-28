@@ -20,6 +20,7 @@ describe('index.html branding', () => {
   it('includes canonical, description, social metadata, and crawlable shell copy', () => {
     expect(html).toContain('rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/"');
     expect(html).toContain('name="description"');
+    expect(html).toContain('<meta name="google-adsense-account" content="ca-pub-4752698416622962" />');
     expect(html).toContain('<script type="module" src="./src/lib/installAdSense.js"></script>');
     expect(html).toContain('property="og:site_name" content="Azzuriva"');
     expect(html).toContain('property="og:title"');
