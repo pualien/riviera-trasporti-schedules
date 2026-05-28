@@ -92,6 +92,119 @@ describe('service worker', () => {
     expect(cachedUrls).toContain('./src/ui/renderProviderSearchView.js');
   });
 
+  it('precaches the versioned app shell requested by index.html', async () => {
+    const cachedUrls = [];
+    const listeners = loadServiceWorker({
+      caches: {
+        open: async () => ({
+          add: async (url) => {
+            cachedUrls.push(url);
+          },
+        }),
+      },
+      fetch: async () => {
+        throw new Error('unused');
+      },
+      selfOverrides: {
+        skipWaiting: async () => undefined,
+      },
+    });
+    const { event, promises } = waitableEvent();
+
+    listeners.install(event);
+    await expect(promises[0]).resolves.toBeUndefined();
+
+    expect(cachedUrls).toContain('./styles.css?v=6');
+    expect(cachedUrls).toContain('./src/main.js?v=6');
+    expect(cachedUrls).toContain('./offline.html');
+  });
+
+  it('activates a waiting update when messaged by the page', async () => {
+    let skipWaitingCalled = false;
+    const listeners = loadServiceWorker({
+      caches: {
+        open: async () => ({
+          add: async () => undefined,
+        }),
+      },
+      fetch: async () => {
+        throw new Error('unused');
+      },
+      selfOverrides: {
+        skipWaiting: async () => {
+          skipWaitingCalled = true;
+        },
+      },
+    });
+
+    listeners.message({ data: { type: 'SKIP_WAITING' } });
+
+    expect(skipWaitingCalled).toBe(true);
+  });
+
+  it('caches a same-origin page requested by a controlled SEO page', async () => {
+    const putCalls = [];
+    const fetchCalls = [];
+    const networkResponse = {
+      ok: true,
+      type: 'basic',
+      clone: () => ({ ok: true, type: 'basic' }),
+    };
+    const listeners = loadServiceWorker({
+      caches: {
+        open: async () => ({
+          add: async () => undefined,
+          put: async (request, response) => {
+            putCalls.push({ request, response });
+          },
+        }),
+      },
+      fetch: async (request) => {
+        fetchCalls.push(String(request));
+        return networkResponse;
+      },
+    });
+    const promises = [];
+
+    listeners.message({
+      data: { type: 'CACHE_URL', url: 'http://localhost/routes/sanremo/ventimiglia/' },
+      waitUntil(promise) {
+        promises.push(promise);
+      },
+    });
+    await expect(promises[0]).resolves.toBeUndefined();
+
+    expect(fetchCalls).toEqual(['http://localhost/routes/sanremo/ventimiglia/']);
+    expect(putCalls).toHaveLength(1);
+    expect(putCalls[0].request).toBe('http://localhost/routes/sanremo/ventimiglia/');
+  });
+
+  it('ignores cross-origin page cache requests from messages', async () => {
+    const listeners = loadServiceWorker({
+      caches: {
+        open: async () => ({
+          add: async () => undefined,
+          put: async () => {
+            throw new Error('should not cache cross-origin URLs');
+          },
+        }),
+      },
+      fetch: async () => {
+        throw new Error('should not fetch cross-origin URLs');
+      },
+    });
+    const promises = [];
+
+    listeners.message({
+      data: { type: 'CACHE_URL', url: 'https://example.com/routes/sanremo/ventimiglia/' },
+      waitUntil(promise) {
+        promises.push(promise);
+      },
+    });
+
+    expect(promises).toEqual([]);
+  });
+
   it('deletes only old caches owned by this app', async () => {
     const deleted = [];
     const listeners = loadServiceWorker({
@@ -104,6 +217,7 @@ describe('service worker', () => {
           'riviera-dei-fiori-route-finder-v4',
           'riviera-dei-fiori-route-finder-v5',
           'riviera-dei-fiori-route-finder-v6',
+          'riviera-dei-fiori-route-finder-v7',
           'azzuriva-route-tools-v6',
           'riviera-route-tools-v6',
           'other-static-app',
@@ -129,6 +243,7 @@ describe('service worker', () => {
       'riviera-dei-fiori-route-finder-v3',
       'riviera-dei-fiori-route-finder-v4',
       'riviera-dei-fiori-route-finder-v5',
+      'riviera-dei-fiori-route-finder-v6',
       'azzuriva-route-tools-v6',
       'riviera-route-tools-v6',
     ]);
@@ -199,5 +314,34 @@ describe('service worker', () => {
     });
 
     await expect(respondWithPromises[0]).resolves.toBe(networkResponse);
+  });
+
+  it('returns the offline fallback when a navigation request fails without a cached page', async () => {
+    const fallbackResponse = { name: 'offline fallback' };
+    const listeners = loadServiceWorker({
+      caches: {
+        match: async (request) => (request === './offline.html' ? fallbackResponse : null),
+        open: async () => ({
+          put: async () => undefined,
+        }),
+      },
+      fetch: async () => {
+        throw new Error('offline');
+      },
+    });
+    const respondWithPromises = [];
+
+    listeners.fetch({
+      request: {
+        method: 'GET',
+        mode: 'navigate',
+        url: 'http://localhost/routes/sanremo/ventimiglia/',
+      },
+      respondWith(promise) {
+        respondWithPromises.push(promise);
+      },
+    });
+
+    await expect(respondWithPromises[0]).resolves.toBe(fallbackResponse);
   });
 });

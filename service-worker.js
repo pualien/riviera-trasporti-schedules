@@ -3,12 +3,14 @@ const LEGACY_CACHE_PREFIXES = [
   'azzuriva-route-tools-',
   'riviera-route-tools-',
 ];
-const CACHE_NAME = `${CACHE_PREFIX}v6`;
+const CACHE_NAME = `${CACHE_PREFIX}v7`;
 
 const REQUIRED_ASSETS = [
   './',
   './index.html',
+  './offline.html',
   './styles.css',
+  './styles.css?v=6',
   './manifest.webmanifest',
   './assets/brand/apple-touch-icon.png',
   './assets/brand/favicon-16x16.png',
@@ -18,6 +20,7 @@ const REQUIRED_ASSETS = [
   './assets/data/trips.json',
   './assets/data/stops.json',
   './src/main.js',
+  './src/main.js?v=6',
   './src/lib/analytics.js',
   './src/lib/ads.js',
   './src/lib/appBootstrap.js',
@@ -42,7 +45,9 @@ const REQUIRED_ASSETS = [
   './src/lib/searchOutcome.js',
   './src/lib/seo.js',
   './src/lib/serviceDay.js',
+  './src/lib/shareRoute.js',
   './src/lib/taxiDirectory.js',
+  './src/lib/textInputSelection.js',
   './src/lib/time.js',
   './src/lib/transferSuggestions.js',
   './src/ui/renderAdSlot.js',
@@ -111,6 +116,36 @@ async function cacheResponse(request, response) {
   }
 }
 
+async function cacheSameOriginUrl(urlValue) {
+  const url = new URL(urlValue, self.location.origin);
+
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  const response = await fetch(url.href);
+  await cacheResponse(url.href, response);
+}
+
+self.addEventListener('message', (event) => {
+  if (event.data?.type === 'SKIP_WAITING') {
+    self.skipWaiting?.();
+    return;
+  }
+
+  if (event.data?.type === 'CACHE_URL' && event.data.url) {
+    try {
+      const url = new URL(event.data.url, self.location.origin);
+
+      if (url.origin === self.location.origin) {
+        event.waitUntil(cacheSameOriginUrl(url.href));
+      }
+    } catch (error) {
+      // Ignore malformed cache warm-up messages.
+    }
+  }
+});
+
 self.addEventListener('fetch', (event) => {
   const { request } = event;
   const requestUrl = new URL(request.url);
@@ -132,9 +167,14 @@ self.addEventListener('fetch', (event) => {
       return networkResponse;
     } catch (error) {
       if (request.mode === 'navigate') {
-        const fallback = await caches.match('./index.html');
-        if (fallback) {
-          return fallback;
+        const offlineFallback = await caches.match('./offline.html');
+        if (offlineFallback) {
+          return offlineFallback;
+        }
+
+        const appShell = await caches.match('./index.html');
+        if (appShell) {
+          return appShell;
         }
       }
 
