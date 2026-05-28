@@ -28,6 +28,10 @@ describe('routeUrlState', () => {
         stopId: null,
         query: '',
       },
+      share: {
+        shareScope: null,
+        tripKey: null,
+      },
     });
   });
 
@@ -191,5 +195,58 @@ describe('routeUrlState', () => {
         toInput: '',
       },
     })).toBe(false);
+  });
+
+  describe('shared route state', () => {
+    it('parses shared departure state from route URL params', () => {
+      const parsed = parseRouteUrlState('?tab=search&from=Imperia&to=Sanremo&day=feriale&share=departure&trip=12%3Aferiale%3A23%3A0%3Aimperia%3Asanremo');
+
+      expect(parsed).toMatchObject({
+        tab: 'search',
+        search: {
+          fromInput: 'Imperia',
+          toInput: 'Sanremo',
+          dayType: 'feriale',
+        },
+        share: {
+          shareScope: 'departure',
+          tripKey: '12:feriale:23:0:imperia:sanremo',
+        },
+      });
+    });
+
+    it('serializes shared departure state into route URL params', () => {
+      const params = serializeRouteUrlState({
+        tab: 'search',
+        search: {
+          fromInput: 'Imperia',
+          toInput: 'Sanremo',
+          dayType: 'feriale',
+        },
+        share: {
+          shareScope: 'departure',
+          tripKey: 'selected-trip',
+        },
+      });
+
+      expect(params.get('share')).toBe('departure');
+      expect(params.get('trip')).toBe('selected-trip');
+    });
+
+    it('drops invalid share scope without dropping route labels', () => {
+      const parsed = parseRouteUrlState('?tab=search&from=Imperia&to=Sanremo&share=bad&trip=selected-trip');
+
+      expect(parsed).toMatchObject({
+        tab: 'search',
+        search: {
+          fromInput: 'Imperia',
+          toInput: 'Sanremo',
+        },
+        share: {
+          shareScope: null,
+          tripKey: 'selected-trip',
+        },
+      });
+    });
   });
 });

@@ -1,6 +1,7 @@
 const VALID_TABS = new Set(['search', 'trains', 'flixbus', 'blablacar', 'browse', 'saved']);
 const VALID_BROWSE_MODES = new Set(['lines', 'stops']);
 const VALID_DAY_TYPES = new Set(['feriale', 'sabato', 'festivo', 'scolastico']);
+const VALID_SHARE_SCOPES = new Set(['route', 'departure']);
 
 export const DEFAULT_ROUTE_URL_STATE = {
   tab: 'search',
@@ -17,6 +18,10 @@ export const DEFAULT_ROUTE_URL_STATE = {
     lineId: null,
     stopId: null,
     query: '',
+  },
+  share: {
+    shareScope: null,
+    tripKey: null,
   },
 };
 
@@ -61,6 +66,7 @@ export function parseRouteUrlState(search = '') {
   const tab = params.get('tab') ?? DEFAULT_ROUTE_URL_STATE.tab;
   const mode = params.get('browse') ?? DEFAULT_ROUTE_URL_STATE.browse.mode;
   const dayType = params.get('day') ?? DEFAULT_ROUTE_URL_STATE.search.dayType;
+  const shareScope = params.get('share');
 
   if (!VALID_TABS.has(tab) || !VALID_BROWSE_MODES.has(mode) || !VALID_DAY_TYPES.has(dayType)) {
     return cloneDefaultState();
@@ -84,6 +90,10 @@ export function parseRouteUrlState(search = '') {
       stopId: valueOrNull(params.get('stop')),
       query: params.get('browseQuery') ?? '',
     },
+    share: {
+      shareScope: VALID_SHARE_SCOPES.has(shareScope) ? shareScope : null,
+      tripKey: valueOrNull(params.get('trip')),
+    },
   };
 }
 
@@ -98,6 +108,10 @@ export function serializeRouteUrlState(routeState = DEFAULT_ROUTE_URL_STATE) {
     browse: {
       ...DEFAULT_ROUTE_URL_STATE.browse,
       ...routeState.browse,
+    },
+    share: {
+      ...DEFAULT_ROUTE_URL_STATE.share,
+      ...routeState.share,
     },
   };
   const params = new URLSearchParams();
@@ -141,6 +155,14 @@ export function serializeRouteUrlState(routeState = DEFAULT_ROUTE_URL_STATE) {
 
   if (state.browse.query?.trim()) {
     params.set('browseQuery', state.browse.query.trim());
+  }
+
+  if (VALID_SHARE_SCOPES.has(state.share.shareScope)) {
+    params.set('share', state.share.shareScope);
+  }
+
+  if (state.share.tripKey) {
+    params.set('trip', state.share.tripKey);
   }
 
   return params;
