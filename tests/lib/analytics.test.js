@@ -185,15 +185,11 @@ describe('growth analytics', () => {
       dayType: 'sabato',
     });
     pushSharedRouteOpenedEvent(windowObject, {
-      utmSource: 'share_whatsapp',
-      shareScope: 'departure',
-      hasCompleteRouteState: true,
+      hasCompleteRouteState: 1,
       dayType: 'sabato',
     });
     pushSharedRouteRestoredEvent(windowObject, {
       restoreStatus: 'results',
-      resultsCount: 4,
-      selectedDepartureRestored: true,
     });
     pushOutboundClickEvent(windowObject, {
       targetType: 'official_pdf',
@@ -202,15 +198,41 @@ describe('growth analytics', () => {
     pushBrowseInteractionEvent(windowObject, {
       browseAction: 'line_selected',
       mode: 'lines',
-      queryPresent: false,
+      queryPresent: 0,
     });
 
-    expect(windowObject.dataLayer.map((entry) => entry.event)).toEqual([
-      'share_modal_opened',
-      'shared_route_opened',
-      'shared_route_restored',
-      'outbound_click',
-      'browse_interaction',
+    expect(windowObject.dataLayer).toEqual([
+      {
+        event: 'share_modal_opened',
+        share_scope: 'departure',
+        from: 'Imperia',
+        to: 'Sanremo',
+        day_type: 'sabato',
+      },
+      {
+        event: 'shared_route_opened',
+        utm_source: '',
+        share_scope: 'route',
+        has_complete_route_state: true,
+        day_type: 'sabato',
+      },
+      {
+        event: 'shared_route_restored',
+        restore_status: 'results',
+        results_count: 0,
+        selected_departure_restored: false,
+      },
+      {
+        event: 'outbound_click',
+        target_type: 'official_pdf',
+        context: 'result',
+      },
+      {
+        event: 'browse_interaction',
+        browse_action: 'line_selected',
+        mode: 'lines',
+        query_present: false,
+      },
     ]);
   });
 });
