@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
   SHARE_CHANNELS,
+  buildDepartureShareText,
+  buildNativeSharePayload,
   buildRouteShareUrl,
+  buildRouteShareText,
   buildSocialShareHref,
 } from '../../src/lib/shareRoute.js';
 
@@ -46,6 +49,53 @@ describe('shareRoute', () => {
       `https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(text)}`,
     );
     expect(buildSocialShareHref({ channel: 'link', shareUrl, text })).toBe(shareUrl);
+  });
+
+  it('builds route share text around the next departure', () => {
+    expect(
+      buildRouteShareText({
+        routeLabel: 'Imperia -> Sanremo',
+        dayTypeLabel: 'Feriale',
+        nextDeparture: { departureTime: '14:25', arrivalTime: '15:10', lineId: '12' },
+        sourceLabel: 'PDF ufficiale Riviera Trasporti',
+      }),
+    ).toBe(
+      'Azzuriva: Imperia -> Sanremo, linea 12, parte 14:25, arriva 15:10. Giorno: Feriale. Orario dal PDF ufficiale Riviera Trasporti.',
+    );
+  });
+
+  it('builds route-level share text when there is no next departure', () => {
+    expect(
+      buildRouteShareText({
+        routeLabel: 'Imperia -> Sanremo',
+        dayTypeLabel: 'Feriale',
+        nextDeparture: null,
+        sourceLabel: 'PDF ufficiale Riviera Trasporti',
+      }),
+    ).toBe(
+      'Azzuriva: Imperia -> Sanremo. Giorno: Feriale. Orario dal PDF ufficiale Riviera Trasporti.',
+    );
+  });
+
+  it('builds departure share text around the selected departure', () => {
+    expect(
+      buildDepartureShareText({
+        routeLabel: 'Imperia -> Sanremo',
+        dayTypeLabel: 'Sabato',
+        departure: { departureTime: '18:05', arrivalTime: '18:45', lineId: '12' },
+        sourceLabel: 'PDF ufficiale Riviera Trasporti',
+      }),
+    ).toBe(
+      'Azzuriva: Imperia -> Sanremo, linea 12, parte 18:05, arriva 18:45. Giorno: Sabato. Orario dal PDF ufficiale Riviera Trasporti.',
+    );
+  });
+
+  it('builds native share payloads without changing fields', () => {
+    const title = 'Azzuriva';
+    const text = 'Imperia -> Sanremo';
+    const url = 'https://azzuriva.example/app';
+
+    expect(buildNativeSharePayload({ title, text, url })).toEqual({ title, text, url });
   });
 
   it('lists the supported share channels in modal order', () => {

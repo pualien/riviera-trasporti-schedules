@@ -24,6 +24,45 @@ export function buildRouteShareUrl(baseUrl, channel = 'link') {
   return url.toString();
 }
 
+function buildSourceShareSentence({ dayTypeLabel, sourceLabel }) {
+  return `Giorno: ${dayTypeLabel}. Orario dal ${sourceLabel}.`;
+}
+
+function buildTimedShareText({ routeLabel, dayTypeLabel, departure, sourceLabel }) {
+  return `Azzuriva: ${routeLabel}, linea ${departure.lineId}, parte ${departure.departureTime}, arriva ${departure.arrivalTime}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
+}
+
+export function buildRouteShareText({
+  routeLabel,
+  dayTypeLabel,
+  nextDeparture = null,
+  sourceLabel = 'PDF ufficiale Riviera Trasporti',
+}) {
+  if (nextDeparture) {
+    return buildTimedShareText({
+      routeLabel,
+      dayTypeLabel,
+      departure: nextDeparture,
+      sourceLabel,
+    });
+  }
+
+  return `Azzuriva: ${routeLabel}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
+}
+
+export function buildDepartureShareText({
+  routeLabel,
+  dayTypeLabel,
+  departure,
+  sourceLabel = 'PDF ufficiale Riviera Trasporti',
+}) {
+  return buildTimedShareText({ routeLabel, dayTypeLabel, departure, sourceLabel });
+}
+
+export function buildNativeSharePayload({ title, text, url }) {
+  return { title, text, url };
+}
+
 export function buildSocialShareHref({ channel = 'link', shareUrl, text = '' } = {}) {
   if (channel === 'whatsapp') {
     return `https://wa.me/?text=${encodeURIComponent(`${text} ${shareUrl}`.trim())}`;
