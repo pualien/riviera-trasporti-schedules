@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   renderLinePageHtml,
   renderPlacePageHtml,
+  renderRouteIndexPageHtml,
   renderRoutePageHtml,
 } from '../../scripts/lib/renderSeoPageHtml.mjs';
 
@@ -20,6 +21,55 @@ const metadata = {
 };
 
 describe('renderSeoPageHtml', () => {
+  it('renders a route index page grouped by origin with route links', () => {
+    const html = renderRouteIndexPageHtml({
+      site: {
+        ...site,
+        gtmId: 'GTM-TEST',
+      },
+      metadata,
+      routes: [
+        {
+          slug: 'imperia/sanremo',
+          fromLabel: 'Imperia',
+          toLabel: 'Sanremo',
+          lineIds: ['12'],
+          departureCount: 48,
+        },
+        {
+          slug: 'imperia/taggia',
+          fromLabel: 'Imperia',
+          toLabel: 'Taggia',
+          lineIds: ['12'],
+          departureCount: 36,
+        },
+        {
+          slug: 'sanremo/bordighera',
+          fromLabel: 'Sanremo',
+          toLabel: 'Bordighera',
+          lineIds: ['2'],
+          departureCount: 24,
+        },
+      ],
+    });
+
+    expect(html).toContain(
+      '<link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/routes/">',
+    );
+    expect(html).toContain('Percorsi bus Riviera Trasporti');
+    expect(html).toContain('3 percorsi');
+    expect(html).toContain('Da Imperia');
+    expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
+    expect(html).toContain('Imperia - Sanremo');
+    expect(html).toContain('Linea 12');
+    expect(html).toContain('48 partenze');
+    expect(html).toContain(
+      'href="/riviera-trasporti-schedules/?utm_source=seo_routes_index&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
+    );
+    expect(html.indexOf('Da Imperia')).toBeLessThan(html.indexOf('Da Sanremo'));
+    expect(html).toContain("tab:'seo_routes_index'");
+  });
+
   it('renders an Italian route page with canonical URL, source PDF, and app search CTA', () => {
     const html = renderRoutePageHtml({
       site,

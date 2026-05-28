@@ -28,6 +28,8 @@ describe('index.html branding', () => {
     expect(html).toContain('"name": "Azzuriva"');
     expect(html).toContain('"alternateName": "Italian Riviera travel companion"');
     expect(html).toContain('Azzuriva helps you check direct Riviera Trasporti buses');
+    expect(html).toContain('href="./routes/"');
+    expect(html).toContain('Browse route pages');
     expect(html).toContain('Imperia, Sanremo, Ventimiglia, Andora');
     expect(html).toContain('Azzuriva is an independent travel companion');
     expect(html).toContain('All verified taxi numbers');

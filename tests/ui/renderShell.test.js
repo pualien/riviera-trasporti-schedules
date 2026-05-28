@@ -19,6 +19,8 @@ describe('renderShell', () => {
     expect(html).toContain('class="brand-wordmark"');
     expect(html).toContain('Azzuriva');
     expect(html).toContain('Italian Riviera travel companion');
+    expect(html).toContain('Browse routes');
+    expect(html).toContain('href="https://pualien.github.io/riviera-trasporti-schedules/routes/"');
     expect(html).toContain('Official Riviera Trasporti site');
     expect(html).toContain('<section>Body</section>');
     expect(html).not.toContain('brand-lockup-image');

@@ -271,8 +271,88 @@ function placeDestinationSearchUrl(site, place, destination) {
   return `${appPath(site)}?${params.toString()}`;
 }
 
+function routeIndexSearchUrl(site) {
+  const params = new URLSearchParams();
+  addSeoUtm(params, 'seo_routes_index');
+
+  return `${appPath(site)}?${params.toString()}`;
+}
+
 function lineLabel(lineId) {
   return `Linea ${lineId}`;
+}
+
+function pluralizeItalian(count, singular, plural) {
+  return `${count} ${count === 1 ? singular : plural}`;
+}
+
+function compareText(left, right) {
+  return String(left ?? '').localeCompare(String(right ?? ''));
+}
+
+function routeGroupsByOrigin(routes = []) {
+  const groups = new Map();
+
+  for (const route of routes) {
+    const key = route.fromLabel ?? '';
+
+    if (!groups.has(key)) {
+      groups.set(key, []);
+    }
+
+    groups.get(key).push(route);
+  }
+
+  return [...groups.entries()]
+    .sort(([left], [right]) => compareText(left, right))
+    .map(([fromLabel, groupRoutes]) => ({
+      fromLabel,
+      routes: groupRoutes.sort(
+        (left, right) => compareText(left.toLabel, right.toLabel) || compareText(left.slug, right.slug),
+      ),
+    }));
+}
+
+export function renderRouteIndexPageHtml({ site, metadata, routes = [] }) {
+  const path = '/routes/';
+  const title = 'Percorsi bus Riviera Trasporti';
+  const routeCount = routes.length;
+  const description = `Sfoglia ${pluralizeItalian(routeCount, 'percorso bus diretto', 'percorsi bus diretti')} Riviera Trasporti per citta di partenza.`;
+  const groups = routeGroupsByOrigin(routes);
+  const routeGroups = groups.length
+    ? groups
+      .map(
+        (group) => `    <section>
+      <h2>Da ${escapeHtml(group.fromLabel)}</h2>
+      <ul>
+${formatList(group.routes, (route) => {
+  const href = publicPath(site, pagePath('routes', route.slug));
+  const lines = (route.lineIds ?? []).map(lineLabel).join(', ');
+  const departureCount = Number(route.departureCount ?? 0);
+  const meta = [
+    lines,
+    departureCount ? pluralizeItalian(departureCount, 'partenza', 'partenze') : '',
+  ].filter(Boolean).join(' · ');
+
+  return `<a href="${escapeAttribute(href)}">${escapeHtml(route.fromLabel)} - ${escapeHtml(route.toLabel)}</a>${meta ? ` <span>${escapeHtml(meta)}</span>` : ''}`;
+})}
+      </ul>
+    </section>`,
+      )
+      .join('\n')
+    : `    <section>
+      <h2>Percorsi</h2>
+      <p>Nessun percorso statico generato per ora. Usa la ricerca nell'app per consultare le corse dirette.</p>
+    </section>`;
+  const body = `    <header>
+      <h1>${escapeHtml(title)}</h1>
+      <p>${escapeHtml(description)}</p>
+      <p>${escapeHtml(pluralizeItalian(routeCount, 'percorso', 'percorsi'))} disponibili.</p>
+      <a class="button" href="${escapeAttribute(routeIndexSearchUrl(site))}">Cerca nell'app</a>
+    </header>
+${routeGroups}`;
+
+  return renderLayout({ site, metadata, path, title, description, body, pageType: 'seo_routes_index' });
 }
 
 export function renderRoutePageHtml({ site, metadata, route }) {

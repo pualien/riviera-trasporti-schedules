@@ -125,8 +125,13 @@ describe('generateSeoPages', () => {
       routeCount: 1,
       placeCount: 2,
       lineCount: 1,
+      routeIndexCount: 1,
     });
 
+    const routeIndexHtml = await readOutput(rootDir, 'routes/index.html');
+    expect(routeIndexHtml).toContain('Percorsi bus Riviera Trasporti');
+    expect(routeIndexHtml).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
+    expect(routeIndexHtml).toContain('utm_source=seo_routes_index&amp;utm_medium=seo_page');
     const routeHtml = await readOutput(rootDir, 'routes/imperia/sanremo/index.html');
     expect(routeHtml).toContain('Bus Imperia - Sanremo');
     expect(routeHtml).toContain('GTM-WWVLPF5M');
@@ -142,6 +147,7 @@ describe('generateSeoPages', () => {
       'href="/riviera-trasporti-schedules/?tab=search&amp;from=Imperia&amp;to=Sanremo+Autostazione&amp;day=feriale&amp;utm_source=seo_line&amp;utm_medium=seo_page&amp;utm_campaign=azzuriva_seo"',
     );
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/imperia/sanremo/');
+    await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain('/routes/');
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.toContain(
       '<loc>https://pualien.github.io/riviera-trasporti-schedules/</loc>',
     );
@@ -175,6 +181,7 @@ describe('generateSeoPages', () => {
 
     await generateSeoPages({ rootDir, routeLimit: 0 });
 
+    await expect(readOutput(rootDir, 'routes/index.html')).resolves.toContain('Percorsi bus Riviera Trasporti');
     await expect(readOutput(rootDir, 'routes/imperia/sanremo/index.html')).rejects.toMatchObject({
       code: 'ENOENT',
     });

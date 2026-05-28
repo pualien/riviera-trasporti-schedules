@@ -55,6 +55,19 @@ async function seedSavedRoutes(page) {
   });
 }
 
+test('serves a crawlable route index grouped by origin', async ({ page }) => {
+  await page.goto('/routes/');
+
+  await expect(page.getByRole('heading', { name: 'Percorsi bus Riviera Trasporti' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Da Imperia' })).toBeVisible();
+  await expect(page.getByRole('link', { name: /Imperia - Sanremo/ })).toHaveAttribute(
+    'href',
+    '/riviera-trasporti-schedules/routes/imperia/sanremo/',
+  );
+  await expect(page.locator('main.seo-page')).toContainText('50 percorsi disponibili.');
+  expect(await page.content()).toContain("tab:'seo_routes_index'");
+});
+
 test('loads the route search first on mobile and filters Browse stops', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');

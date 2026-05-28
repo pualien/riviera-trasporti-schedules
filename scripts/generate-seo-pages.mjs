@@ -9,6 +9,7 @@ import {
 import {
   renderLinePageHtml,
   renderPlacePageHtml,
+  renderRouteIndexPageHtml,
   renderRoutePageHtml,
 } from './lib/renderSeoPageHtml.mjs';
 
@@ -133,6 +134,13 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
 
   await removeGeneratedPageDirs(rootDir);
 
+  sitemapPages.push('/routes/');
+  await writeText(
+    rootDir,
+    outputPath('routes', ''),
+    renderRouteIndexPageHtml({ site: renderingSite, metadata, routes: routePages }),
+  );
+
   for (const route of routePages) {
     const page = pagePath('routes', route.slug);
     sitemapPages.push(page);
@@ -171,6 +179,7 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
     routeCount: routePages.length,
     placeCount: placePages.length,
     lineCount: linePages.length,
+    routeIndexCount: 1,
   };
 }
 

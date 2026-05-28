@@ -3,6 +3,7 @@ import {
   BRAND_NAME,
   BRAND_SITE_URL,
   FEEDBACK_FORM_URL,
+  ROUTES_INDEX_URL,
 } from '../lib/brand.js';
 import { createTranslator, SUPPORTED_LANGUAGES } from '../lib/i18n.js';
 import { renderAdSlot } from './renderAdSlot.js';
@@ -72,6 +73,9 @@ export function renderShell(
           ${renderFreshnessMarker(datasetInfo, t)}
         </div>
         <div class="topbar-actions">
+          <a class="topbar-link" href="${ROUTES_INDEX_URL}">
+            ${t('shell.routesIndex')}
+          </a>
           <a class="topbar-link" href="${FEEDBACK_FORM_URL}" target="_blank" rel="noreferrer">
             ${t('shell.feedback')}
           </a>
