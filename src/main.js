@@ -7,6 +7,7 @@ import {
   pushRouteSearchEvent,
   pushRouteShareEvent,
   pushShareModalOpenedEvent,
+  pushBrowseInteractionEvent,
   pushSharedRouteOpenedEvent,
   pushSharedRouteRestoredEvent,
 } from './lib/analytics.js';
@@ -340,6 +341,72 @@ function currentSourceContext() {
   }
 
   return 'direct';
+}
+
+function outboundTargetType(link) {
+  const href = link.getAttribute('href') ?? '';
+  const normalizedHref = href.toLowerCase();
+
+  if (normalizedHref.includes('.pdf')) {
+    return 'official_pdf';
+  }
+
+  if (normalizedHref.startsWith('tel:')) {
+    return 'taxi_call';
+  }
+
+  if (normalizedHref.includes('trenitalia')) {
+    return 'train';
+  }
+
+  if (normalizedHref.includes('flixbus')) {
+    return 'flixbus';
+  }
+
+  if (normalizedHref.includes('blablacar')) {
+    return 'blablacar';
+  }
+
+  if (
+    normalizedHref.includes('wa.me')
+    || normalizedHref.includes('t.me')
+    || normalizedHref.includes('facebook.com/sharer')
+    || normalizedHref.includes('twitter.com/intent')
+  ) {
+    return 'social_share';
+  }
+
+  return 'external';
+}
+
+function currentOutboundContext() {
+  if (state.resultState?.type === 'results') {
+    return 'result';
+  }
+
+  if (state.resultState?.type === 'no-direct') {
+    return 'no_direct';
+  }
+
+  if (isProviderSearchTab(state.activeTab)) {
+    return 'provider_tab';
+  }
+
+  return 'shell';
+}
+
+function currentBrowseInteractionContext() {
+  return {
+    mode: state.browseState.mode,
+    queryPresent: state.browseState.query.trim().length > 0,
+  };
+}
+
+function pushBrowseInteraction(browseAction) {
+  pushBrowseInteractionEvent(window, {
+    browseAction,
+    ...currentBrowseInteractionContext(),
+  });
 }
 
 function focusShareModal() {
@@ -1088,6 +1155,7 @@ function bindBrowseActions() {
       ...state.browseState,
       query: input.value,
     };
+    pushBrowseInteraction('filter_changed');
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
@@ -1103,6 +1171,7 @@ function bindBrowseActions() {
         ...state.browseState,
         mode: button.dataset.browseMode ?? 'lines',
       };
+      pushBrowseInteraction('mode_changed');
       writeRouteUrl({ push: true });
       renderApp();
       bindInteractions();
@@ -1116,6 +1185,7 @@ function bindBrowseActions() {
         mode: 'lines',
         lineId: button.dataset.browseLine,
       };
+      pushBrowseInteraction('line_selected');
       writeRouteUrl({ push: true });
       renderApp();
       bindInteractions();
@@ -1129,6 +1199,7 @@ function bindBrowseActions() {
         mode: 'stops',
         stopId: button.dataset.browseStop,
       };
+      pushBrowseInteraction('stop_selected');
       writeRouteUrl({ push: true });
       renderApp();
       bindInteractions();
@@ -1136,11 +1207,17 @@ function bindBrowseActions() {
   });
 
   document.querySelectorAll('[data-search-from-stop]').forEach((button) => {
-    button.addEventListener('click', () => seedSearchStop(button.dataset.searchFromStop, 'from'));
+    button.addEventListener('click', () => {
+      pushBrowseInteraction('search_from_here');
+      seedSearchStop(button.dataset.searchFromStop, 'from');
+    });
   });
 
   document.querySelectorAll('[data-search-to-stop]').forEach((button) => {
-    button.addEventListener('click', () => seedSearchStop(button.dataset.searchToStop, 'to'));
+    button.addEventListener('click', () => {
+      pushBrowseInteraction('search_to_here');
+      seedSearchStop(button.dataset.searchToStop, 'to');
+    });
   });
 }
 
@@ -1689,10 +1766,6 @@ function bindSavedRoutes() {
         shareMethod: link.dataset.shareOption ?? '',
         shareUrl: link.dataset.shareUrl ?? '',
       });
-      pushOutboundClickEvent(window, {
-        targetType: 'share_channel',
-        context: link.dataset.shareOption ?? '',
-      });
     });
   });
 
@@ -1770,6 +1843,17 @@ function bindSavedRoutes() {
   });
 }
 
+function bindOutboundAnalytics() {
+  document.querySelectorAll('a[href^="http"], a[href^="tel:"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      pushOutboundClickEvent(window, {
+        targetType: outboundTargetType(link),
+        context: currentOutboundContext(),
+      });
+    });
+  });
+}
+
 function bindInteractions() {
   bindForm();
   bindProviderSearchForm();
@@ -1781,6 +1865,7 @@ function bindInteractions() {
   bindSavedRoutes();
   bindNoDirectActions();
   bindBrowseActions();
+  bindOutboundAnalytics();
 }
 
 async function boot() {
