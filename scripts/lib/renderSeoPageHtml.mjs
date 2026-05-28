@@ -132,6 +132,37 @@ function renderGtmNoScript(site) {
   <!-- End Google Tag Manager (noscript) -->`;
 }
 
+function renderPwaHead(site) {
+  return `  <link rel="icon" type="image/png" sizes="32x32" href="${escapeAttribute(publicPath(site, '/assets/brand/favicon-32x32.png'))}">
+  <link rel="icon" type="image/png" sizes="16x16" href="${escapeAttribute(publicPath(site, '/assets/brand/favicon-16x16.png'))}">
+  <link rel="apple-touch-icon" href="${escapeAttribute(publicPath(site, '/assets/brand/apple-touch-icon.png'))}">
+  <link rel="manifest" href="${escapeAttribute(publicPath(site, '/manifest.webmanifest'))}">
+  <meta name="theme-color" content="#eb4c60">`;
+}
+
+function renderSeoServiceWorkerScript(site) {
+  const serviceWorkerPath = escapeScriptString(publicPath(site, '/service-worker.js'));
+
+  return `  <script>
+(function(){
+  if(!('serviceWorker' in navigator)){ return; }
+
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('${serviceWorkerPath}').then(function(){
+      return navigator.serviceWorker.ready;
+    }).then(function(registration){
+      var worker = registration.active || navigator.serviceWorker.controller;
+      if(worker){
+        worker.postMessage({type:'CACHE_URL',url:window.location.href});
+      }
+    }).catch(function(error){
+      console.error('Service worker registration failed', error);
+    });
+  });
+})();
+</script>`;
+}
+
 function renderSeoOutboundScript(site) {
   if (!site.gtmId) {
     return '';
@@ -175,7 +206,9 @@ function renderLayout({ site, metadata, path, title, description, body, pageType
   const builtAt = metadata?.builtAt;
   const gtmHead = renderGtmHead(site, pageType);
   const gtmNoScript = renderGtmNoScript(site);
+  const pwaHead = renderPwaHead(site);
   const seoOutboundScript = renderSeoOutboundScript(site);
+  const serviceWorkerScript = renderSeoServiceWorkerScript(site);
 
   return `<!doctype html>
 <html lang="it">
@@ -185,6 +218,7 @@ function renderLayout({ site, metadata, path, title, description, body, pageType
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeAttribute(description)}">
   <link rel="canonical" href="${escapeAttribute(canonical)}">
+${pwaHead}
   <link rel="stylesheet" href="${escapeAttribute(publicPath(site, '/styles.css'))}">
 ${gtmHead ? `${gtmHead}\n` : ''}</head>
 <body>
@@ -195,7 +229,8 @@ ${body}
       ${builtAt ? `<p>Pagina generata il ${escapeHtml(builtAt)}.</p>` : ''}
     </footer>
   </main>
-${seoOutboundScript ? `${seoOutboundScript}\n` : ''}</body>
+${seoOutboundScript ? `${seoOutboundScript}\n` : ''}${serviceWorkerScript}
+</body>
 </html>`;
 }
 

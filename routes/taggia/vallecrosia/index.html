@@ -6,6 +6,11 @@
   <title>Bus Taggia - Vallecrosia</title>
   <meta name="description" content="Orari bus Riviera Trasporti da Taggia a Vallecrosia.">
   <link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/routes/taggia/vallecrosia/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/riviera-trasporti-schedules/assets/brand/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/riviera-trasporti-schedules/assets/brand/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/riviera-trasporti-schedules/assets/brand/apple-touch-icon.png">
+  <link rel="manifest" href="/riviera-trasporti-schedules/manifest.webmanifest">
+  <meta name="theme-color" content="#eb4c60">
   <link rel="stylesheet" href="/riviera-trasporti-schedules/styles.css">
   <script>
 window.dataLayer=window.dataLayer||[];
@@ -169,6 +174,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({event:'outbound_click',target_type:targetType(href),context:'seo_page'});
+  });
+})();
+</script>
+  <script>
+(function(){
+  if(!('serviceWorker' in navigator)){ return; }
+
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('/riviera-trasporti-schedules/service-worker.js').then(function(){
+      return navigator.serviceWorker.ready;
+    }).then(function(registration){
+      var worker = registration.active || navigator.serviceWorker.controller;
+      if(worker){
+        worker.postMessage({type:'CACHE_URL',url:window.location.href});
+      }
+    }).catch(function(error){
+      console.error('Service worker registration failed', error);
+    });
   });
 })();
 </script>

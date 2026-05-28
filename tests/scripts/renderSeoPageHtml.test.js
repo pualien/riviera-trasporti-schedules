@@ -147,6 +147,28 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain("context:'seo_page'");
   });
 
+  it('renders PWA metadata and service-worker registration on generated pages', () => {
+    const html = renderRoutePageHtml({
+      site,
+      metadata,
+      route: {
+        slug: 'imperia/sanremo',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo',
+        lineIds: ['12'],
+        dayTypes: ['feriale'],
+        departures: [],
+      },
+    });
+
+    expect(html).toContain('<link rel="manifest" href="/riviera-trasporti-schedules/manifest.webmanifest">');
+    expect(html).toContain('<meta name="theme-color" content="#eb4c60">');
+    expect(html).toContain('<link rel="apple-touch-icon" href="/riviera-trasporti-schedules/assets/brand/apple-touch-icon.png">');
+    expect(html).toContain("navigator.serviceWorker.register('/riviera-trasporti-schedules/service-worker.js')");
+    expect(html).toContain("type:'CACHE_URL'");
+    expect(html).toContain('url:window.location.href');
+  });
+
   it('renders place and line pages with self canonical URLs and Italian headings', () => {
     const placeHtml = renderPlacePageHtml({
       site,
@@ -327,6 +349,8 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('Imperia &lt;Centro&gt;');
     expect(html).toContain('Sanremo &amp; Mare');
     expect(html).toContain('Linea 12&quot;&gt;&lt;script&gt;');
-    expect(html).not.toContain('<script>');
+    expect(html).not.toContain('Imperia <Centro>');
+    expect(html).not.toContain('PDF <orario>');
+    expect(html).not.toContain('Linea 12"><script>');
   });
 });
