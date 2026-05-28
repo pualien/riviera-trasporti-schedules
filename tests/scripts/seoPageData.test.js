@@ -60,6 +60,117 @@ describe('seoPageData', () => {
     });
   });
 
+  it('ranks route candidates by raw departure count before slicing display rows', () => {
+    const rankingLocalities = [
+      { id: 'origin', label: 'Origin', stopIds: ['origin'] },
+      { id: 'aaron', label: 'Aaron', stopIds: ['aaron'] },
+      { id: 'zeta', label: 'Zeta', stopIds: ['zeta'] },
+    ];
+    const rankingTrips = [
+      ...Array.from({ length: 12 }, (_, index) => ({
+        lineId: '1',
+        direction: 'Origin - Aaron',
+        dayType: 'feriale',
+        sourcePage: 1,
+        stops: [
+          { stopId: 'origin', name: 'Origin', time: `07:${String(index).padStart(2, '0')}` },
+          { stopId: 'aaron', name: 'Aaron', time: `08:${String(index).padStart(2, '0')}` },
+        ],
+      })),
+      ...Array.from({ length: 13 }, (_, index) => ({
+        lineId: '2',
+        direction: 'Origin - Zeta',
+        dayType: 'feriale',
+        sourcePage: 2,
+        stops: [
+          { stopId: 'origin', name: 'Origin', time: `09:${String(index).padStart(2, '0')}` },
+          { stopId: 'zeta', name: 'Zeta', time: `10:${String(index).padStart(2, '0')}` },
+        ],
+      })),
+    ];
+
+    const [firstCandidate] = buildRoutePageCandidates({
+      trips: rankingTrips,
+      localities: rankingLocalities,
+      limit: 10,
+    });
+
+    expect(firstCandidate).toMatchObject({
+      slug: 'origin/zeta',
+      departureCount: 13,
+    });
+    expect(firstCandidate.departures).toHaveLength(12);
+  });
+
+  it('deduplicates broad locality stop pairs to one representative segment per trip', () => {
+    const broadLocalities = [
+      { id: 'imperia', label: 'Imperia', stopIds: ['imperia-porto', 'imperia-oneglia'] },
+      { id: 'sanremo', label: 'Sanremo', stopIds: ['sanremo-foce', 'sanremo-autostazione'] },
+    ];
+    const broadTrips = [
+      {
+        lineId: '12',
+        direction: 'Imperia - Sanremo',
+        dayType: 'feriale',
+        sourcePage: 23,
+        stops: [
+          { stopId: 'imperia-porto', name: 'Imperia Porto', time: '08:00' },
+          { stopId: 'imperia-oneglia', name: 'Imperia Oneglia', time: '08:10' },
+          { stopId: 'sanremo-foce', name: 'Sanremo Foce', time: '08:45' },
+          { stopId: 'sanremo-autostazione', name: 'Sanremo Autostazione', time: '08:55' },
+        ],
+      },
+    ];
+
+    const [candidate] = buildRoutePageCandidates({ trips: broadTrips, localities: broadLocalities });
+
+    expect(candidate).toMatchObject({
+      fromLocalityId: 'imperia',
+      toLocalityId: 'sanremo',
+      departureCount: 1,
+      departures: [
+        expect.objectContaining({
+          departureTime: '08:00',
+          arrivalTime: '08:45',
+        }),
+      ],
+    });
+  });
+
+  it('keeps route slugs non-empty and unique when locality labels collide', () => {
+    const collisionLocalities = [
+      { id: 'origin', label: '!!!', stopIds: ['origin'] },
+      { id: 'sanremo-a', label: 'San Remo', stopIds: ['sanremo-a'] },
+      { id: 'sanremo-b', label: 'San-Remo', stopIds: ['sanremo-b'] },
+    ];
+    const collisionTrips = [
+      {
+        lineId: '1',
+        direction: 'Origin - San Remo',
+        dayType: 'feriale',
+        stops: [
+          { stopId: 'origin', name: 'Origin', time: '08:00' },
+          { stopId: 'sanremo-a', name: 'San Remo', time: '08:30' },
+        ],
+      },
+      {
+        lineId: '2',
+        direction: 'Origin - San-Remo',
+        dayType: 'feriale',
+        stops: [
+          { stopId: 'origin', name: 'Origin', time: '09:00' },
+          { stopId: 'sanremo-b', name: 'San-Remo', time: '09:30' },
+        ],
+      },
+    ];
+
+    const slugs = buildRoutePageCandidates({ trips: collisionTrips, localities: collisionLocalities }).map(
+      (candidate) => candidate.slug,
+    );
+
+    expect(slugs).toEqual(['origin/san-remo', 'origin/sanremo-b']);
+  });
+
   it('builds place summaries with direct destinations', () => {
     const summaries = buildPlacePageSummaries({ trips, localities });
 
@@ -70,6 +181,36 @@ describe('seoPageData', () => {
     });
   });
 
+  it('keeps place slugs and direct destination slugs non-empty and unique', () => {
+    const collisionLocalities = [
+      { id: 'punctuation', label: '!!!', stopIds: ['punctuation'] },
+      { id: 'sanremo-a', label: 'San Remo', stopIds: ['sanremo-a'] },
+      { id: 'sanremo-b', label: 'San-Remo', stopIds: ['sanremo-b'] },
+    ];
+    const collisionTrips = [
+      {
+        lineId: '1',
+        direction: 'Punctuation - San Remo',
+        dayType: 'feriale',
+        stops: [
+          { stopId: 'punctuation', name: 'Punctuation', time: '08:00' },
+          { stopId: 'sanremo-a', name: 'San Remo', time: '08:30' },
+          { stopId: 'sanremo-b', name: 'San-Remo', time: '08:40' },
+        ],
+      },
+    ];
+
+    const summaries = buildPlacePageSummaries({ trips: collisionTrips, localities: collisionLocalities });
+    const placeSlugs = summaries.map((summary) => summary.slug);
+    const punctuation = summaries.find((summary) => summary.localityId === 'punctuation');
+
+    expect(placeSlugs).toEqual(['punctuation', 'san-remo', 'sanremo-b']);
+    expect(punctuation.directDestinations).toEqual([
+      { id: 'sanremo-a', label: 'San Remo', slug: 'san-remo' },
+      { id: 'sanremo-b', label: 'San-Remo', slug: 'sanremo-b' },
+    ]);
+  });
+
   it('builds line page summaries', () => {
     const summaries = buildLinePageSummaries({ trips, stops });
 
@@ -78,5 +219,34 @@ describe('seoPageData', () => {
       lineId: '12',
       directions: ['Imperia - Sanremo'],
     });
+  });
+
+  it('keeps line slugs non-empty and unique when line ids collide after slugging', () => {
+    const lineTrips = [
+      {
+        lineId: 'San Remo',
+        direction: 'A - B',
+        dayType: 'feriale',
+        stops: [],
+      },
+      {
+        lineId: 'San-Remo',
+        direction: 'C - D',
+        dayType: 'feriale',
+        stops: [],
+      },
+      {
+        lineId: '!!!',
+        direction: 'E - F',
+        dayType: 'feriale',
+        stops: [],
+      },
+    ];
+
+    expect(buildLinePageSummaries({ trips: lineTrips }).map((line) => line.slug)).toEqual([
+      'line',
+      'san-remo',
+      'san-remo-2',
+    ]);
   });
 });

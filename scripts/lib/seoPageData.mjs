@@ -33,12 +33,49 @@ function uniqueSorted(values, compare = compareText) {
   return [...new Set(values.filter((value) => value !== undefined && value !== null && value !== ''))].sort(compare);
 }
 
+function uniqueSlug(baseValue, fallbackValue, usedSlugs, genericFallback) {
+  const baseSlug = slugifySegment(baseValue);
+  const fallbackSlug = slugifySegment(fallbackValue);
+  let candidate = baseSlug || fallbackSlug || genericFallback;
+
+  if (usedSlugs.has(candidate)) {
+    candidate = fallbackSlug && fallbackSlug !== baseSlug ? fallbackSlug : candidate;
+  }
+
+  if (usedSlugs.has(candidate)) {
+    const root = candidate;
+    let suffix = 2;
+
+    while (usedSlugs.has(`${root}-${suffix}`)) {
+      suffix += 1;
+    }
+
+    candidate = `${root}-${suffix}`;
+  }
+
+  usedSlugs.add(candidate);
+  return candidate;
+}
+
+function localitySlugMap(localities = []) {
+  const usedSlugs = new Set();
+  const slugByLocalityId = new Map();
+
+  for (const locality of localities) {
+    slugByLocalityId.set(locality.id, uniqueSlug(locality.label, locality.id, usedSlugs, 'place'));
+  }
+
+  return slugByLocalityId;
+}
+
 export function buildRoutePageCandidates({ trips = [], localities = [], limit = 50 } = {}) {
   const localityByStopId = localitiesByStopId(localities);
+  const slugByLocalityId = localitySlugMap(localities);
   const candidates = new Map();
 
   for (const trip of trips) {
     const tripStops = trip.stops ?? [];
+    const seenTripLocalityPairs = new Set();
 
     for (let fromIndex = 0; fromIndex < tripStops.length; fromIndex += 1) {
       const fromLocality = localityByStopId.get(tripStops[fromIndex].stopId);
@@ -54,9 +91,16 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
           continue;
         }
 
-        const fromSlug = slugifySegment(fromLocality.label);
-        const toSlug = slugifySegment(toLocality.label);
         const key = `${fromLocality.id}->${toLocality.id}`;
+
+        if (seenTripLocalityPairs.has(key)) {
+          continue;
+        }
+
+        seenTripLocalityPairs.add(key);
+
+        const fromSlug = slugByLocalityId.get(fromLocality.id) ?? slugifySegment(fromLocality.id) ?? 'place';
+        const toSlug = slugByLocalityId.get(toLocality.id) ?? slugifySegment(toLocality.id) ?? 'place';
 
         if (!candidates.has(key)) {
           candidates.set(key, {
@@ -69,6 +113,7 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
             slug: `${fromSlug}/${toSlug}`,
             lineIds: new Set(),
             dayTypes: new Set(),
+            departureCount: 0,
             departures: [],
           });
         }
@@ -76,6 +121,7 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
         const candidate = candidates.get(key);
         candidate.lineIds.add(trip.lineId);
         candidate.dayTypes.add(trip.dayType);
+        candidate.departureCount += 1;
         candidate.departures.push({
           lineId: trip.lineId,
           dayType: trip.dayType,
@@ -94,22 +140,28 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
       lineIds: uniqueSorted([...candidate.lineIds], compareLineIds),
       dayTypes: uniqueSorted([...candidate.dayTypes]),
       departures: candidate.departures
-        .sort((left, right) => compareText(left.departureTime, right.departureTime))
+        .sort(
+          (left, right) =>
+            compareText(left.departureTime, right.departureTime) ||
+            compareText(left.arrivalTime, right.arrivalTime) ||
+            compareLineIds(left.lineId, right.lineId),
+        )
         .slice(0, 12),
     }))
-    .sort((left, right) => right.departures.length - left.departures.length || compareText(left.slug, right.slug))
+    .sort((left, right) => right.departureCount - left.departureCount || compareText(left.slug, right.slug))
     .slice(0, limit);
 }
 
 export function buildPlacePageSummaries({ trips = [], localities = [] } = {}) {
   const localityByStopId = localitiesByStopId(localities);
+  const slugByLocalityId = localitySlugMap(localities);
   const summaries = new Map(
     localities.map((locality) => [
       locality.id,
       {
         localityId: locality.id,
         label: locality.label,
-        slug: slugifySegment(locality.label),
+        slug: slugByLocalityId.get(locality.id),
         stopIds: locality.stopIds ?? [],
         directDestinations: new Map(),
         lineIds: new Set(),
@@ -140,7 +192,7 @@ export function buildPlacePageSummaries({ trips = [], localities = [] } = {}) {
         summary.directDestinations.set(toLocality.id, {
           id: toLocality.id,
           label: toLocality.label,
-          slug: slugifySegment(toLocality.label),
+          slug: slugByLocalityId.get(toLocality.id),
         });
       }
     }
@@ -161,12 +213,13 @@ export function buildPlacePageSummaries({ trips = [], localities = [] } = {}) {
 export function buildLinePageSummaries({ trips = [], stops = [] } = {}) {
   const stopById = new Map(stops.map((stop) => [stop.id, stop]));
   const summaries = new Map();
+  const usedLineSlugs = new Set();
 
   for (const trip of trips) {
     if (!summaries.has(trip.lineId)) {
       summaries.set(trip.lineId, {
         lineId: trip.lineId,
-        slug: slugifySegment(trip.lineId),
+        slug: uniqueSlug(trip.lineId, trip.lineId, usedLineSlugs, 'line'),
         directions: new Set(),
         stopIds: new Set(),
         stops: [],
