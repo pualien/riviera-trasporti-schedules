@@ -87,6 +87,7 @@ describe('service worker', () => {
     expect(cachedUrls).toContain('./src/lib/installAdSense.js');
     expect(cachedUrls).toContain('./src/lib/providerSearch.js');
     expect(cachedUrls).toContain('./src/ui/renderAdSlot.js');
+    expect(cachedUrls).toContain('./src/ui/renderLogos.js');
     expect(cachedUrls).toContain('./src/ui/renderProviderSearchView.js');
   });
 
@@ -100,6 +101,7 @@ describe('service worker', () => {
           'azzuriva-route-tools-v2',
           'azzuriva-route-tools-v3',
           'azzuriva-route-tools-v4',
+          'azzuriva-route-tools-v5',
           'other-static-app',
         ],
         delete: async (cacheName) => {
@@ -121,6 +123,7 @@ describe('service worker', () => {
       'azzuriva-route-tools-v1',
       'azzuriva-route-tools-v2',
       'azzuriva-route-tools-v3',
+      'azzuriva-route-tools-v4',
     ]);
   });
 

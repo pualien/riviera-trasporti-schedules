@@ -5,6 +5,7 @@ import {
   buildSocialShareHref,
 } from '../lib/shareRoute.js';
 import { renderTaxiOptionsSection } from './renderTaxiOption.js';
+import { renderShareLogo } from './renderLogos.js';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -98,9 +99,10 @@ function renderShareModal(shareModal, routeLabel, t) {
       });
 
       return `
-        <a class="share-option" href="${escapeHtml(href)}" target="_blank" rel="noreferrer"
+        <a class="share-option share-option--${escapeHtml(channel.id)}" href="${escapeHtml(href)}" target="_blank" rel="noreferrer"
           data-share-option="${escapeHtml(channel.id)}" data-share-url="${escapeHtml(shareUrl)}">
-          ${escapeHtml(t(channel.labelKey))}
+          ${renderShareLogo(channel.id)}
+          <span>${escapeHtml(t(channel.labelKey))}</span>
         </a>
       `;
     })
@@ -122,8 +124,9 @@ function renderShareModal(shareModal, routeLabel, t) {
           <input type="text" readonly value="${escapeHtml(directShareUrl)}" data-share-direct-link>
         </label>
         <div class="share-actions">
-          <button type="button" class="share-option" data-share-copy-link data-share-url="${escapeHtml(directShareUrl)}">
-            ${escapeHtml(t('results.share.copyLink'))}
+          <button type="button" class="share-option share-option--link" data-share-copy-link data-share-url="${escapeHtml(directShareUrl)}">
+            ${renderShareLogo('link')}
+            <span>${escapeHtml(t('results.share.copyLink'))}</span>
           </button>
           ${shareOptions}
         </div>

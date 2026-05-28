@@ -295,12 +295,17 @@ describe('renderResultsView', () => {
     expect(html).toContain('role="dialog"');
     expect(html).toContain('aria-modal="true"');
     expect(html).toContain('data-share-modal');
+    expect(html).toContain('share-option-logo');
     expect(html).toContain('utm_source=share_link');
     expect(html).toContain('data-share-option="whatsapp"');
+    expect(html).toContain('share-option--whatsapp');
     expect(html).toContain('utm_source=share_whatsapp');
     expect(html).toContain('data-share-option="telegram"');
+    expect(html).toContain('share-option--telegram');
     expect(html).toContain('data-share-option="facebook"');
+    expect(html).toContain('share-option--facebook');
     expect(html).toContain('data-share-option="x"');
+    expect(html).toContain('share-option--x');
     expect(html).toContain('Link copied');
   });
 });

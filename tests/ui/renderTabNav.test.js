@@ -14,5 +14,9 @@ describe('renderTabNav', () => {
     expect(html).toContain('data-tab-target="saved"');
     expect(html).toContain('aria-current="page"');
     expect(html).toContain('Browse');
+    expect(html).toContain('button-logo--rt');
+    expect(html).toContain('button-logo--trenitalia');
+    expect(html).toContain('button-logo--flixbus');
+    expect(html).toContain('button-logo--blablacar');
   });
 });

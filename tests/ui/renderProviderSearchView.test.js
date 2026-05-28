@@ -22,7 +22,8 @@ describe('renderProviderSearchView', () => {
     expect(html).toContain('value="Sanremo"');
     expect(html).toContain('type="date"');
     expect(html).toContain('data-provider-search="trains"');
-    expect(html).toContain('href="https://www.lefrecce.it/"');
+    expect(html).toContain('data-provider-action-url="https://www.lefrecce.it/"');
+    expect(html).toContain('button-logo--trenitalia');
   });
 
   it('renders a prefilled FlixBus action URL when one is available', () => {
@@ -40,6 +41,7 @@ describe('renderProviderSearchView', () => {
     expect(html).toContain('Cerca FlixBus');
     expect(html).toContain('data-provider-search="flixbus"');
     expect(html).toContain('departureCity=83f11a76-676c-4cd0-ae59-668e1a716496');
-    expect(html).toContain('Apri ricerca');
+    expect(html.match(/Apri ricerca/g)).toHaveLength(1);
+    expect(html).toContain('button-logo--flixbus');
   });
 });

@@ -1,5 +1,6 @@
 import { createTranslator } from '../lib/i18n.js';
 import { PROVIDER_SEARCH_SOURCES } from '../lib/providerSearch.js';
+import { renderProviderLogo } from './renderLogos.js';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -58,10 +59,10 @@ export function renderProviderSearchView({
         </label>
 
         <div class="provider-search-actions">
-          <button type="submit" class="search-form-submit">${escapeHtml(t('provider.submit'))}</button>
-          <a class="provider-source-link" data-provider-search-link href="${escapeHtml(actionUrl)}" target="_blank" rel="noopener noreferrer">
-            ${escapeHtml(t('provider.openLink'))}
-          </a>
+          <button type="submit" class="search-form-submit">
+            ${renderProviderLogo(provider)}
+            <span>${escapeHtml(t('provider.submit'))}</span>
+          </button>
         </div>
 
         <a class="provider-source-link provider-source-link--secondary" href="${escapeHtml(PROVIDER_SEARCH_SOURCES[provider] ?? actionUrl)}" target="_blank" rel="noopener noreferrer">

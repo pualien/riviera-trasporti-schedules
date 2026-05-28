@@ -1,4 +1,5 @@
 import { createTranslator } from '../lib/i18n.js';
+import { renderTabLogo } from './renderLogos.js';
 
 function escapeHtml(value = '') {
   return String(value)
@@ -20,7 +21,8 @@ export function renderTabNav({ activeTab = 'search', t = createTranslator('en') 
           data-tab-target="${tab}"
           ${activeTab === tab ? 'aria-current="page"' : ''}
         >
-          ${escapeHtml(t(`tabs.${tab}`))}
+          ${renderTabLogo(tab)}
+          <span>${escapeHtml(t(`tabs.${tab}`))}</span>
         </button>
       `).join('')}
     </nav>
