@@ -336,7 +336,7 @@ function currentSourceContext() {
   }
 
   if (document.referrer) {
-    return 'organic';
+    return 'referrer';
   }
 
   return 'direct';

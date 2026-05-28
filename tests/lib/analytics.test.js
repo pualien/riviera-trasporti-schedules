@@ -149,7 +149,7 @@ describe('growth analytics', () => {
       dayType: 'festivo',
       hasTransferSuggestions: false,
       hasTaxiFallback: true,
-      sourceContext: 'organic',
+      sourceContext: 'referrer',
     });
 
     expect(windowObject.dataLayer).toEqual([
@@ -170,7 +170,7 @@ describe('growth analytics', () => {
         day_type: 'festivo',
         has_transfer_suggestions: false,
         has_taxi_fallback: true,
-        source_context: 'organic',
+        source_context: 'referrer',
       },
     ]);
   });
