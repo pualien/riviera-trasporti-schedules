@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, rm, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {
@@ -25,6 +25,14 @@ async function writeText(rootDir, relativePath, value) {
   const outputPath = path.join(rootDir, relativePath);
   await mkdir(path.dirname(outputPath), { recursive: true });
   await writeFile(outputPath, value);
+}
+
+async function removeGeneratedPageDirs(rootDir) {
+  await Promise.all(
+    ['routes', 'places', 'lines'].map((dirname) =>
+      rm(path.join(rootDir, dirname), { recursive: true, force: true }),
+    ),
+  );
 }
 
 function trimSlashes(value = '') {
@@ -112,6 +120,8 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
   const linePages = buildLinePageSummaries({ trips, stops });
   const renderingSite = rendererSite(site);
   const sitemapPages = [];
+
+  await removeGeneratedPageDirs(rootDir);
 
   for (const route of routePages) {
     const page = pagePath('routes', route.slug);

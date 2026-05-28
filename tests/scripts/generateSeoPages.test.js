@@ -89,4 +89,20 @@ describe('generateSeoPages', () => {
     expect(routeHtml).toContain('href="/riviera-trasporti-schedules/?tab=search');
     expect(routeHtml).not.toContain('/riviera-trasporti-schedules/riviera-trasporti-schedules/');
   });
+
+  it('removes stale generated route pages before writing the current page set', async () => {
+    const rootDir = await createFixtureRoot();
+
+    await generateSeoPages({ rootDir });
+    await expect(readOutput(rootDir, 'routes/imperia/sanremo/index.html')).resolves.toContain(
+      'Bus Imperia - Sanremo',
+    );
+
+    await generateSeoPages({ rootDir, routeLimit: 0 });
+
+    await expect(readOutput(rootDir, 'routes/imperia/sanremo/index.html')).rejects.toMatchObject({
+      code: 'ENOENT',
+    });
+    await expect(readOutput(rootDir, 'sitemap.xml')).resolves.not.toContain('/routes/imperia/sanremo/');
+  });
 });

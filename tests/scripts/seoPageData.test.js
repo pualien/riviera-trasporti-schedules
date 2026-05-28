@@ -137,6 +137,51 @@ describe('seoPageData', () => {
     });
   });
 
+  it('excludes route departure rows whose arrival time is earlier than departure time', () => {
+    const reverseTimeTrips = [
+      {
+        lineId: '17',
+        direction: 'Taggia - Sanremo',
+        dayType: 'feriale',
+        sourcePage: 17,
+        stops: [
+          { stopId: 'taggia', name: 'Taggia', time: '06:25' },
+          { stopId: 'sanremo', name: 'Sanremo', time: '06:15' },
+        ],
+      },
+      {
+        lineId: '17',
+        direction: 'Taggia - Sanremo',
+        dayType: 'feriale',
+        sourcePage: 17,
+        stops: [
+          { stopId: 'taggia', name: 'Taggia', time: '06:30' },
+          { stopId: 'sanremo', name: 'Sanremo', time: '06:45' },
+        ],
+      },
+    ];
+    const reverseTimeLocalities = [
+      { id: 'taggia', label: 'Taggia', stopIds: ['taggia'] },
+      { id: 'sanremo', label: 'Sanremo', stopIds: ['sanremo'] },
+    ];
+
+    const [candidate] = buildRoutePageCandidates({
+      trips: reverseTimeTrips,
+      localities: reverseTimeLocalities,
+    });
+
+    expect(candidate).toMatchObject({
+      slug: 'taggia/sanremo',
+      departureCount: 1,
+      departures: [
+        expect.objectContaining({
+          departureTime: '06:30',
+          arrivalTime: '06:45',
+        }),
+      ],
+    });
+  });
+
   it('keeps route slugs non-empty and unique when locality labels collide', () => {
     const collisionLocalities = [
       { id: 'origin', label: '!!!', stopIds: ['origin'] },

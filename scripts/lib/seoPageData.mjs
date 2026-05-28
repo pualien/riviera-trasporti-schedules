@@ -33,6 +33,30 @@ function uniqueSorted(values, compare = compareText) {
   return [...new Set(values.filter((value) => value !== undefined && value !== null && value !== ''))].sort(compare);
 }
 
+function parseTimeMinutes(value) {
+  const match = String(value ?? '').match(/^(\d{1,2}):(\d{2})$/);
+
+  if (!match) {
+    return null;
+  }
+
+  const hours = Number(match[1]);
+  const minutes = Number(match[2]);
+
+  if (hours > 23 || minutes > 59) {
+    return null;
+  }
+
+  return hours * 60 + minutes;
+}
+
+function isForwardTimeSegment(departureTime, arrivalTime) {
+  const departureMinutes = parseTimeMinutes(departureTime);
+  const arrivalMinutes = parseTimeMinutes(arrivalTime);
+
+  return departureMinutes === null || arrivalMinutes === null || arrivalMinutes >= departureMinutes;
+}
+
 function uniqueSlug(baseValue, fallbackValue, usedSlugs, genericFallback) {
   const baseSlug = slugifySegment(baseValue);
   const fallbackSlug = slugifySegment(fallbackValue);
@@ -88,6 +112,10 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
         const toLocality = localityByStopId.get(tripStops[toIndex].stopId);
 
         if (!toLocality || toLocality.id === fromLocality.id) {
+          continue;
+        }
+
+        if (!isForwardTimeSegment(tripStops[fromIndex].time, tripStops[toIndex].time)) {
           continue;
         }
 
