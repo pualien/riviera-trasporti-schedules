@@ -85,8 +85,59 @@ describe('renderSeoPageHtml', () => {
     expect(lineHtml).toContain(
       '<link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/lines/12/">',
     );
+    expect(placeHtml).toContain('href="/riviera-trasporti-schedules/places/imperia/"');
     expect(placeHtml).toContain('Destinazioni dirette');
     expect(lineHtml).toContain('Riviera Trasporti linea 12');
+  });
+
+  it('builds internal page links and route CTA from configured baseUrl and appPath', () => {
+    const configuredSite = {
+      baseUrl: 'https://example.com/base',
+      appPath: '/app/',
+    };
+    const routeHtml = renderRoutePageHtml({
+      site: configuredSite,
+      metadata,
+      route: {
+        slug: 'imperia/sanremo',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo',
+        lineIds: ['12'],
+        dayTypes: ['feriale'],
+        departures: [],
+      },
+    });
+    const placeHtml = renderPlacePageHtml({
+      site: configuredSite,
+      metadata,
+      place: {
+        slug: 'sanremo',
+        label: 'Sanremo',
+        directDestinations: [{ label: 'Imperia', slug: 'imperia' }],
+        lineIds: [],
+      },
+    });
+
+    expect(routeHtml).toContain('href="/base/app/?tab=search&amp;from=Imperia&amp;to=Sanremo&amp;day=feriale"');
+    expect(placeHtml).toContain('href="/base/places/imperia/"');
+    expect(placeHtml).toContain('<link rel="canonical" href="https://example.com/base/places/sanremo/">');
+  });
+
+  it('rejects unsafe slugs before rendering canonical URLs', () => {
+    expect(() =>
+      renderRoutePageHtml({
+        site,
+        metadata,
+        route: {
+          slug: 'imperia/sanremo?tab=search#bad',
+          fromLabel: 'Imperia',
+          toLabel: 'Sanremo',
+          lineIds: [],
+          dayTypes: [],
+          departures: [],
+        },
+      }),
+    ).toThrow('Unsafe SEO path segment');
   });
 
   it('escapes dynamic text and URLs in rendered HTML', () => {

@@ -17,16 +17,49 @@ function trimSlashes(value = '') {
   return String(value).replace(/^\/+|\/+$/g, '');
 }
 
+function validatePathSegment(segment) {
+  if (!segment || /[?#]/.test(segment)) {
+    throw new Error(`Unsafe SEO path segment: ${segment}`);
+  }
+}
+
 function pagePath(section, slug) {
-  const cleanSlug = trimSlashes(slug);
-  return cleanSlug ? `/${section}/${cleanSlug}/` : `/${section}/`;
+  const slugSegments = trimSlashes(slug).split('/').filter(Boolean);
+  const segments = [section, ...slugSegments];
+
+  for (const segment of segments) {
+    validatePathSegment(segment);
+  }
+
+  return `/${segments.map((segment) => encodeURIComponent(segment)).join('/')}/`;
+}
+
+function basePath(site) {
+  return new URL(site.baseUrl).pathname.replace(/\/+$/g, '');
+}
+
+function joinPath(...parts) {
+  const cleanParts = parts.map((part) => trimSlashes(part)).filter(Boolean);
+  return `/${cleanParts.join('/')}${cleanParts.length ? '/' : ''}`;
+}
+
+function publicPath(site, path) {
+  return joinPath(basePath(site), path);
+}
+
+function appPath(site) {
+  return joinPath(basePath(site), site.appPath ?? '/');
 }
 
 function canonicalUrl(site, path) {
   const base = new URL(site.baseUrl);
-  const basePath = base.pathname.replace(/\/+$/g, '');
   const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${base.origin}${basePath}${encodeURI(cleanPath)}`;
+
+  if (/[?#]/.test(cleanPath)) {
+    throw new Error(`Unsafe SEO path: ${cleanPath}`);
+  }
+
+  return `${base.origin}${basePath(site)}${cleanPath}`;
 }
 
 function sourcePdfUrl(metadata, page) {
@@ -71,7 +104,7 @@ ${body}
 </html>`;
 }
 
-function routeSearchUrl(route) {
+function routeSearchUrl(site, route) {
   const params = new URLSearchParams({
     tab: 'search',
     from: route.fromLabel ?? '',
@@ -83,7 +116,7 @@ function routeSearchUrl(route) {
     params.set('day', day);
   }
 
-  return `${PROJECT_PATH}/?${params.toString()}`;
+  return `${appPath(site)}?${params.toString()}`;
 }
 
 function lineLabel(lineId) {
@@ -100,7 +133,7 @@ export function renderRoutePageHtml({ site, metadata, route }) {
   const body = `    <header>
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(description)}</p>
-      <a class="button" href="${escapeAttribute(routeSearchUrl(route))}">Cerca nell'app</a>
+      <a class="button" href="${escapeAttribute(routeSearchUrl(site, route))}">Cerca nell'app</a>
     </header>
     <section>
       <h2>Linee disponibili</h2>
@@ -155,7 +188,7 @@ export function renderPlacePageHtml({ site, metadata, place }) {
       <h2>Destinazioni dirette</h2>
       <ul>
 ${formatList(destinations, (destination) => {
-  const href = pagePath('places', destination.slug);
+  const href = publicPath(site, pagePath('places', destination.slug));
   return `<a href="${escapeAttribute(href)}">${escapeHtml(destination.label)}</a>`;
 })}
       </ul>
