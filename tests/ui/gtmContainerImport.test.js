@@ -17,6 +17,18 @@ function constantValue(variableName) {
   return findParameter(findVariable(variableName).parameter, 'value').value;
 }
 
+function customEventTrigger(eventName) {
+  return importConfig.containerVersion.trigger.find((trigger) => (
+    trigger.name === `Custom Event - ${eventName}`
+  ));
+}
+
+function eventTag(destination, eventName) {
+  return importConfig.containerVersion.tag.find((tag) => (
+    tag.name === `${destination} - Event - ${eventName}`
+  ));
+}
+
 describe('GTM container import', () => {
   it('targets the installed GTM container with the requested analytics destinations', () => {
     expect(importConfig.exportFormatVersion).toBe(2);
@@ -89,5 +101,89 @@ describe('GTM container import', () => {
     expect(findParameter(mixpanelRouteShareTag.parameter, 'html').value).toContain(
       "window.mixpanel.track('route_share'",
     );
+  });
+
+  it('captures growth dataLayer events with custom-event triggers and both analytics destinations', () => {
+    const growthEvents = {
+      landing_context: [
+        'tab',
+        'has_route_params',
+        'has_share_utm',
+        'utm_source',
+        'utm_medium',
+        'utm_campaign',
+        'referrer_type',
+        'language',
+      ],
+      route_result_viewed: [
+        'from',
+        'to',
+        'day_type',
+        'results_count',
+        'has_next_departure',
+        'has_taxi_fallback',
+        'source_context',
+      ],
+      shared_route_opened: [
+        'utm_source',
+        'share_scope',
+        'has_complete_route_state',
+        'day_type',
+      ],
+      shared_route_restored: [
+        'restore_status',
+        'results_count',
+        'selected_departure_restored',
+      ],
+      outbound_click: [
+        'target_type',
+        'context',
+      ],
+      browse_interaction: [
+        'browse_action',
+        'mode',
+        'query_present',
+      ],
+    };
+
+    for (const [eventName, expectedParameters] of Object.entries(growthEvents)) {
+      const trigger = customEventTrigger(eventName);
+      const ga4Tag = eventTag('GA4', eventName);
+      const mixpanelTag = eventTag('Mixpanel', eventName);
+
+      expect(trigger).toMatchObject({
+        type: 'CUSTOM_EVENT',
+      });
+      expect(trigger.customEventFilter[0].parameter[1].value).toBe(eventName);
+
+      expect(ga4Tag).toMatchObject({
+        type: 'gaawe',
+        firingTriggerId: [trigger.triggerId],
+      });
+      expect(findParameter(ga4Tag.parameter, 'eventName').value).toBe(eventName);
+      expect(findParameter(ga4Tag.parameter, 'measurementIdOverride').value).toBe(
+        '{{Azzuriva - GA4 Measurement ID}}',
+      );
+      const ga4EventParameters = findParameter(ga4Tag.parameter, 'eventSettingsTable')
+        .list.map((entry) => entry.map.find((item) => item.key === 'parameter').value);
+      expect(ga4EventParameters).toEqual(expectedParameters);
+
+      expect(mixpanelTag).toMatchObject({
+        type: 'html',
+        firingTriggerId: [trigger.triggerId],
+        setupTag: [
+          {
+            tagName: 'Mixpanel - Initialize',
+            stopOnSetupFailure: false,
+          },
+        ],
+      });
+      expect(findParameter(mixpanelTag.parameter, 'html').value).toContain(
+        `window.mixpanel.track('${eventName}'`,
+      );
+      for (const parameterName of expectedParameters) {
+        expect(findParameter(mixpanelTag.parameter, 'html').value).toContain(`${parameterName}:`);
+      }
+    }
   });
 });
