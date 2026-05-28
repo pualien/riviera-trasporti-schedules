@@ -13,6 +13,10 @@ describe('package scripts', () => {
     });
   });
 
+  it('exposes the static SEO page generator', () => {
+    expect(packageJson.scripts['build:seo']).toBe('node scripts/generate-seo-pages.mjs');
+  });
+
   it('pins the browser smoke test runner as a project dev dependency', () => {
     expect(packageJson.devDependencies).toHaveProperty('@playwright/test');
   });

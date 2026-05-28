@@ -9,6 +9,7 @@
     "test:e2e": "playwright test tests/e2e/app-flow.spec.js",
     "test:a11y": "playwright test tests/e2e/a11y.spec.js",
     "test:smoke": "playwright test tests/e2e",
+    "build:seo": "node scripts/generate-seo-pages.mjs",
     "build:data": "node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs"
   },
   "devDependencies": {
