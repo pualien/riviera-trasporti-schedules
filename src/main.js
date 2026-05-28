@@ -145,6 +145,7 @@ const state = {
     shareModal: null,
   },
   inboundShare: createDefaultInboundShareState(),
+  pendingSelectedTripMapKey: null,
   locationPicker: null,
 };
 
@@ -193,6 +194,7 @@ function currentSelectedTripMatch() {
 
 function clearRouteResults() {
   state.resultState = null;
+  state.pendingSelectedTripMapKey = null;
   state.routeActions = {
     saveFeedback: null,
     shareModal: null,
@@ -211,6 +213,7 @@ function createDefaultInboundShareState() {
 
 function clearInboundShareState() {
   state.inboundShare = createDefaultInboundShareState();
+  state.pendingSelectedTripMapKey = null;
 }
 
 function currentSelectedTripPanel(t) {
@@ -232,6 +235,42 @@ function currentSelectedTripPanel(t) {
       },
     ),
   });
+}
+
+async function renderSelectedTripMapForTrip(tripKey) {
+  const match = state.resultState?.type === 'results'
+    ? state.resultState.allDepartures.find((departure) => departure.tripKey === tripKey)
+    : null;
+
+  if (!match) {
+    return;
+  }
+
+  const mapState = buildRouteMapState(match, state.stopCoordinates);
+  if (!mapState.hasMap) {
+    return;
+  }
+
+  const mapRendered = await renderSelectedTripMap(mapState);
+  if (!mapRendered && state.resultState?.type === 'results' && state.resultState.selectedTripKey === tripKey) {
+    state.resultState = {
+      ...state.resultState,
+      selectedTripMapLoadFailed: true,
+    };
+    renderApp();
+    bindInteractions();
+  }
+}
+
+function renderPendingSelectedTripMap() {
+  const tripKey = state.pendingSelectedTripMapKey;
+
+  if (!tripKey) {
+    return;
+  }
+
+  state.pendingSelectedTripMapKey = null;
+  void renderSelectedTripMapForTrip(tripKey);
 }
 
 function currentRouteTaxiOptions() {
@@ -1009,11 +1048,13 @@ function submitCurrentSearch() {
       state.resultState = {
         ...state.resultState,
         selectedTripKey: sharedDeparture.tripKey,
+        selectedTripMapLoadFailed: false,
       };
       state.inboundShare = {
         ...state.inboundShare,
         selectedDepartureRestored: true,
       };
+      state.pendingSelectedTripMapKey = sharedDeparture.tripKey;
     }
   }
 
@@ -1102,6 +1143,8 @@ function bindNoDirectActions() {
         return;
       }
 
+      clearInboundShareState();
+
       if (button.dataset.noDirectAction === 'set-origin-stop') {
         Object.assign(state, selectOriginStop(
           state,
@@ -1138,6 +1181,7 @@ function seedSearchStop(stopId, fieldName) {
     return;
   }
 
+  clearInboundShareState();
   state.activeTab = 'search';
 
   if (fieldName === 'from') {
@@ -1457,11 +1501,11 @@ function bindDepartureSelection() {
       }
 
       const tripKey = card.dataset.tripKey ?? '';
-      const match = state.resultState?.type === 'results'
+      const hasMatch = state.resultState?.type === 'results'
         ? state.resultState.allDepartures.find((departure) => departure.tripKey === tripKey)
         : null;
 
-      if (!match || state.resultState?.type !== 'results') {
+      if (!hasMatch || state.resultState?.type !== 'results') {
         return;
       }
 
@@ -1473,19 +1517,7 @@ function bindDepartureSelection() {
 
       renderApp();
       bindInteractions();
-
-      const mapState = buildRouteMapState(match, state.stopCoordinates);
-      if (mapState.hasMap) {
-        const mapRendered = await renderSelectedTripMap(mapState);
-        if (!mapRendered && state.resultState?.type === 'results' && state.resultState.selectedTripKey === tripKey) {
-          state.resultState = {
-            ...state.resultState,
-            selectedTripMapLoadFailed: true,
-          };
-          renderApp();
-          bindInteractions();
-        }
-      }
+      await renderSelectedTripMapForTrip(tripKey);
     });
   });
 }
@@ -1578,6 +1610,7 @@ function bindTabNavigation() {
 }
 
 function restoreSavedRoute(route) {
+  clearInboundShareState();
   state.activeTab = 'search';
   state.formValues = hydrateSearchStateFromRouteSnapshot({
     currentFormValues: state.formValues,
@@ -1650,7 +1683,7 @@ function bindSavedRoutes() {
   });
 
   document.querySelectorAll('[data-share-current-route]').forEach((button) => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
       writeRouteUrl({ push: false });
       const routeLabel = currentRouteLabel();
       const shareText = buildRouteShareText({
@@ -1658,11 +1691,32 @@ function bindSavedRoutes() {
         dayTypeLabel: currentDayTypeLabel(),
         nextDeparture: state.resultState?.type === 'results' ? state.resultState.summary.nextDeparture : null,
       });
+      const baseUrl = currentRouteAbsoluteUrlWithShare({ shareScope: 'route' });
+      const shareUrl = buildRouteShareUrl(baseUrl, 'link');
+      const payload = buildNativeSharePayload({
+        title: routeLabel,
+        text: shareText,
+        url: shareUrl,
+      });
+
+      if (navigator.share) {
+        try {
+          await navigator.share(payload);
+          pushRouteShareEvent(window, {
+            ...currentRouteActionContext(),
+            shareMethod: 'native',
+            shareUrl,
+          });
+          return;
+        } catch (error) {
+          // Fall back to the manual share sheet when native sharing does not complete.
+        }
+      }
 
       state.routeActions = {
         ...state.routeActions,
         shareModal: {
-          baseUrl: currentRouteAbsoluteUrlWithShare({ shareScope: 'route' }),
+          baseUrl,
           status: null,
           shareScope: 'route',
           title: routeLabel,
@@ -1716,9 +1770,7 @@ function bindSavedRoutes() {
           });
           return;
         } catch (error) {
-          if (error?.name === 'AbortError') {
-            return;
-          }
+          // Fall back to the manual share sheet when native sharing does not complete.
         }
       }
 
@@ -1938,12 +1990,14 @@ async function boot() {
     restoreSearchResultsIfReady();
     renderApp();
     bindInteractions();
+    renderPendingSelectedTripMap();
     registerServiceWorker();
     window.addEventListener('popstate', () => {
       hydrateRouteStateFromUrl();
       restoreSearchResultsIfReady();
       renderApp();
       bindInteractions();
+      renderPendingSelectedTripMap();
     });
   } catch (error) {
     const t = createTranslator(state.language);

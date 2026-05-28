@@ -7,6 +7,22 @@ test.beforeEach(async ({ page }) => {
 });
 
 const SEARCH_ROUTE = '/?tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=lines';
+const SAVED_ROUTES_STORAGE_KEY = 'riviera:saved-routes';
+
+const SAVED_RESTORE_ROUTE = {
+  fromInput: 'Sanremo Autostazione',
+  fromLocalityId: null,
+  fromStopId: 'sanremo-autostazione',
+  toInput: 'Porto Maurizio',
+  toStopId: 'imperia-porto-maurizio',
+  dayType: 'feriale',
+  resultType: 'results',
+  resultCount: 4,
+  timestamp: '2026-05-14T09:00:00.000Z',
+  identity: 'Sanremo Autostazione|sanremo-autostazione|Porto Maurizio|imperia-porto-maurizio|feriale',
+};
+
+const NO_DIRECT_SHARED_ROUTE = '/?tab=search&from=bastia+%2F+leca&fromLocality=albenga&fromStop=bastia-%2F-leca&to=ranzo+borgo&toStop=ranzo-borgo&day=feriale&browse=lines&share=route&utm_medium=route_share';
 
 async function firstTripKeyForSharedRoute(page) {
   await page.goto(SEARCH_ROUTE);
@@ -25,6 +41,18 @@ async function openSharedDeparture(page) {
   await expect(page.locator(`[data-trip-key="${tripKey}"]`).first()).toHaveClass(/departure-card--selected/);
 
   return tripKey;
+}
+
+async function seedSavedRoutes(page) {
+  await page.addInitScript(({ storageKey, route }) => {
+    window.localStorage.setItem(storageKey, JSON.stringify({
+      favorites: [route],
+      recents: [route],
+    }));
+  }, {
+    storageKey: SAVED_ROUTES_STORAGE_KEY,
+    route: SAVED_RESTORE_ROUTE,
+  });
 }
 
 test('loads the route search first on mobile and filters Browse stops', async ({ page }) => {
@@ -135,6 +163,77 @@ test('shows route action feedback and opens a tracked share modal', async ({ pag
   ]);
 });
 
+test('uses native sharing for route shares when available', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__nativeSharePayloads = [];
+    Object.defineProperty(navigator, 'share', {
+      value: async (payload) => {
+        window.__nativeSharePayloads.push(payload);
+      },
+      configurable: true,
+    });
+  });
+
+  await page.goto(SEARCH_ROUTE);
+
+  await page.getByRole('button', { name: /^Share$/ }).click();
+
+  await expect(page.getByRole('dialog', { name: 'Share route' })).toHaveCount(0);
+
+  const sharePayloads = await page.evaluate(() => window.__nativeSharePayloads);
+  const routeShareEvents = await page.evaluate(() => (
+    window.dataLayer.filter((entry) => entry.event === 'route_share')
+  ));
+
+  expect(sharePayloads).toHaveLength(1);
+  expect(sharePayloads[0].url).toContain('utm_source=share_link');
+  expect(routeShareEvents).toEqual([
+    expect.objectContaining({
+      event: 'route_share',
+      share_method: 'native',
+      share_url: expect.stringContaining('utm_source=share_link'),
+    }),
+  ]);
+});
+
+test('falls back to the route share modal when native sharing aborts', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__nativeShareCalls = 0;
+    Object.defineProperty(navigator, 'share', {
+      value: async () => {
+        window.__nativeShareCalls += 1;
+        throw new DOMException('Dismissed', 'AbortError');
+      },
+      configurable: true,
+    });
+  });
+
+  await page.goto(SEARCH_ROUTE);
+
+  await page.getByRole('button', { name: /^Share$/ }).click();
+
+  await expect(page.getByRole('dialog', { name: 'Share route' })).toBeVisible();
+  await expect.poll(() => page.evaluate(() => window.__nativeShareCalls)).toBe(1);
+});
+
+test('falls back to the departure share modal when native sharing aborts', async ({ page }) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, 'share', {
+      value: async () => {
+        throw new DOMException('Dismissed', 'AbortError');
+      },
+      configurable: true,
+    });
+  });
+
+  await page.goto(SEARCH_ROUTE);
+  await page.locator('[data-share-departure]').first().click();
+
+  const dialog = page.getByRole('dialog', { name: 'Share route' });
+  await expect(dialog).toBeVisible();
+  await expect(dialog.getByLabel('Direct link')).toHaveValue(/share=departure/);
+});
+
 test('restores inbound shared departure context from a real trip key', async ({ page }) => {
   await openSharedDeparture(page);
 
@@ -154,6 +253,51 @@ test('clears inbound shared departure context when reversing the shared route', 
   await openSharedDeparture(page);
 
   await page.getByRole('button', { name: 'Reverse' }).click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
+test('clears inbound shared departure context after restoring a saved route', async ({ page }) => {
+  await seedSavedRoutes(page);
+  await openSharedDeparture(page);
+
+  await page.getByRole('button', { name: 'Saved' }).click();
+  await page.getByRole('button', { name: /Sanremo Autostazione -> Porto Maurizio/ }).first().click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
+test('clears inbound shared departure context after restoring a recent route', async ({ page }) => {
+  await seedSavedRoutes(page);
+  await openSharedDeparture(page);
+
+  await page.getByRole('button', { name: 'Saved' }).click();
+  await page.locator('[data-recent-route]').first().click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
+test('clears inbound shared departure context after Browse seeds a route', async ({ page }) => {
+  await openSharedDeparture(page);
+
+  await page.getByRole('button', { name: 'Browse' }).click();
+  await page.getByRole('button', { name: 'Stops' }).click();
+  await page.getByRole('searchbox', { name: 'Search stops' }).fill('Sanremo Autostazione');
+  await page.locator('[data-browse-stop="sanremo-autostazione"]').click();
+  await page.getByRole('button', { name: 'Search to here' }).first().click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
+test('clears inbound shared route context after a no-direct correction action', async ({ page }) => {
+  await page.goto(NO_DIRECT_SHARED_ROUTE);
+  await expect(page.locator('.fallback-suggestion-button').first()).toBeVisible();
+
+  await page.locator('.fallback-suggestion-button').first().click();
 
   await expect(page.locator('.shared-route-context')).toHaveCount(0);
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
