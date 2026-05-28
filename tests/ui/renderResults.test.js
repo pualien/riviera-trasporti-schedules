@@ -349,6 +349,7 @@ describe('renderResultsView', () => {
         shareModal: {
           baseUrl: 'https://azzuriva.example/app?tab=search&from=Imperia&to=Sanremo&day=feriale',
           status: 'copied',
+          text: 'Azzuriva: Imperia -> Sanremo, linea 12, parte 08:30.',
         },
       },
     });
@@ -368,5 +369,6 @@ describe('renderResultsView', () => {
     expect(html).toContain('data-share-option="x"');
     expect(html).toContain('share-option--x');
     expect(html).toContain('Link copied');
+    expect(html).toContain(encodeURIComponent('Azzuriva: Imperia -> Sanremo, linea 12, parte 08:30.'));
   });
 });

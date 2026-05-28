@@ -1,7 +1,14 @@
 import {
+  pushLandingContextEvent,
+  pushOutboundClickEvent,
+  pushRouteNoDirectViewedEvent,
+  pushRouteResultViewedEvent,
   pushRouteSaveEvent,
   pushRouteSearchEvent,
   pushRouteShareEvent,
+  pushShareModalOpenedEvent,
+  pushSharedRouteOpenedEvent,
+  pushSharedRouteRestoredEvent,
 } from './lib/analytics.js';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
@@ -51,7 +58,13 @@ import {
   updateProviderSearchState,
 } from './lib/providerSearch.js';
 import { registerServiceWorker } from './lib/registerServiceWorker.js';
-import { buildRouteShareUrl } from './lib/shareRoute.js';
+import {
+  SHARE_UTM_MEDIUM,
+  buildDepartureShareText,
+  buildNativeSharePayload,
+  buildRouteShareText,
+  buildRouteShareUrl,
+} from './lib/shareRoute.js';
 import {
   hydrateSearchStateFromUrl,
   hydrateSearchStateFromRouteSnapshot,
@@ -129,6 +142,13 @@ const state = {
   routeActions: {
     saveFeedback: null,
     shareModal: null,
+  },
+  inboundShare: {
+    opened: false,
+    restored: false,
+    shareScope: null,
+    tripKey: null,
+    selectedDepartureRestored: false,
   },
   locationPicker: null,
 };
@@ -278,6 +298,19 @@ function currentRouteAbsoluteUrl() {
   return `${window.location.origin}${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
 }
 
+function currentRouteAbsoluteUrlWithShare({ shareScope = 'route', tripKey = null } = {}) {
+  const params = serializeRouteUrlState({
+    ...currentRouteUrlState(),
+    share: {
+      shareScope,
+      tripKey,
+    },
+  });
+  const query = params.toString();
+
+  return `${window.location.origin}${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`;
+}
+
 function currentRouteActionContext() {
   return {
     from: state.formValues.fromInput,
@@ -285,6 +318,28 @@ function currentRouteActionContext() {
     dayType: state.formValues.dayType,
     resultsCount: state.resultState?.type === 'results' ? state.resultState.allDepartures.length : 0,
   };
+}
+
+function currentRouteLabel() {
+  return `${state.formValues.fromInput} -> ${state.formValues.toInput}`;
+}
+
+function currentDayTypeLabel() {
+  return createTranslator(state.language)(`search.dayType.${state.formValues.dayType}`);
+}
+
+function currentSourceContext() {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get('utm_medium') === SHARE_UTM_MEDIUM) {
+    return 'share';
+  }
+
+  if (document.referrer) {
+    return 'organic';
+  }
+
+  return 'direct';
 }
 
 function focusShareModal() {
@@ -303,6 +358,16 @@ function hydrateRouteStateFromUrl() {
     localities: state.localities,
   });
   state.browseState = routeUrlState.browse;
+  const urlParams = new URLSearchParams(window.location.search);
+  const hasShareUtm = urlParams.get('utm_medium') === SHARE_UTM_MEDIUM;
+
+  state.inboundShare = {
+    opened: hasShareUtm,
+    restored: false,
+    shareScope: hasShareUtm ? routeUrlState.share.shareScope : null,
+    tripKey: hasShareUtm ? routeUrlState.share.tripKey : null,
+    selectedDepartureRestored: false,
+  };
   clearRouteResults();
   state.locationPicker = null;
   state.pickerState = {
@@ -423,7 +488,7 @@ function renderApp() {
     parts.push(
       renderResultsView({
         t,
-        routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
+        routeLabel: currentRouteLabel(),
         pdfUrl: state.metadata?.source?.url ?? '#',
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
@@ -432,6 +497,10 @@ function renderApp() {
         selectedTripKey: state.resultState.selectedTripKey,
         selectedTripPanel: currentSelectedTripPanel(t),
         routeActions: state.routeActions,
+        sharedRouteContext: {
+          visible: state.inboundShare.opened,
+          selectedDepartureRestored: state.inboundShare.selectedDepartureRestored,
+        },
       }),
     );
   }
@@ -439,7 +508,7 @@ function renderApp() {
   if (state.activeTab === 'search' && state.resultState?.type === 'no-direct') {
     parts.push(renderNoDirectFallback({
       t,
-      routeLabel: `${state.formValues.fromInput} -> ${state.formValues.toInput}`,
+      routeLabel: currentRouteLabel(),
       pdfUrl: state.metadata?.source?.url ?? '#',
       suggestions: state.resultState.suggestions,
       transferSuggestions: state.resultState.transferSuggestions ?? [],
@@ -850,6 +919,57 @@ function submitCurrentSearch() {
     ? { ...outcome, selectedTripKey: null }
     : outcome;
 
+  if (state.resultState?.type === 'results' && state.inboundShare.tripKey) {
+    const sharedDeparture = state.resultState.allDepartures.find(
+      (departure) => departure.tripKey === state.inboundShare.tripKey,
+    );
+
+    if (sharedDeparture) {
+      state.resultState = {
+        ...state.resultState,
+        selectedTripKey: sharedDeparture.tripKey,
+      };
+      state.inboundShare = {
+        ...state.inboundShare,
+        selectedDepartureRestored: true,
+      };
+    }
+  }
+
+  if (state.resultState?.type === 'results') {
+    pushRouteResultViewedEvent(window, {
+      ...currentRouteActionContext(),
+      hasNextDeparture: Boolean(state.resultState.summary.nextDeparture),
+      hasTaxiFallback: currentRouteTaxiOptions().length > 0,
+      sourceContext: currentSourceContext(),
+    });
+  }
+
+  if (state.resultState?.type === 'no-direct') {
+    pushRouteNoDirectViewedEvent(window, {
+      from: state.formValues.fromInput,
+      to: state.formValues.toInput,
+      dayType: state.formValues.dayType,
+      hasTransferSuggestions: Boolean(state.resultState.transferSuggestions?.length),
+      hasTaxiFallback: currentRouteTaxiOptions().length > 0,
+      sourceContext: currentSourceContext(),
+    });
+  }
+
+  if (state.inboundShare.opened && !state.inboundShare.restored) {
+    pushSharedRouteRestoredEvent(window, {
+      restoreStatus: state.resultState?.type === 'results'
+        ? 'results'
+        : (state.resultState?.type === 'no-direct' ? 'no_direct' : 'failed'),
+      resultsCount: state.resultState?.type === 'results' ? state.resultState.allDepartures.length : 0,
+      selectedDepartureRestored: state.inboundShare.selectedDepartureRestored,
+    });
+    state.inboundShare = {
+      ...state.inboundShare,
+      restored: true,
+    };
+  }
+
   return { matches, outcome };
 }
 
@@ -1240,7 +1360,7 @@ function bindFieldPanels() {
 function bindDepartureSelection() {
   document.querySelectorAll('[data-trip-key]').forEach((card) => {
     card.addEventListener('click', async (event) => {
-      if (event.target.closest('a')) {
+      if (event.target.closest('a, button')) {
         return;
       }
 
@@ -1416,37 +1536,118 @@ function findSavedRoute(identity) {
 }
 
 function bindSavedRoutes() {
-  document.querySelector('[data-save-current-route]')?.addEventListener('click', () => {
-    state.savedRoutes = addFavoriteRoute(savedRoutesStorage(), currentSavedRouteSnapshot({
-      resultType: state.resultState?.type ?? null,
-      resultCount: currentRouteActionContext().resultsCount,
-    }));
+  document.querySelectorAll('[data-save-current-route]').forEach((button) => {
+    button.addEventListener('click', () => {
+      state.savedRoutes = addFavoriteRoute(savedRoutesStorage(), currentSavedRouteSnapshot({
+        resultType: state.resultState?.type ?? null,
+        resultCount: currentRouteActionContext().resultsCount,
+      }));
 
-    const saveStatus = state.savedRoutes.available ? 'saved' : 'unavailable';
-    state.routeActions = {
-      saveFeedback: { status: saveStatus },
-      shareModal: null,
-    };
-    pushRouteSaveEvent(window, {
-      ...currentRouteActionContext(),
-      saveStatus,
+      const saveStatus = state.savedRoutes.available ? 'saved' : 'unavailable';
+      state.routeActions = {
+        saveFeedback: { status: saveStatus },
+        shareModal: null,
+      };
+      pushRouteSaveEvent(window, {
+        ...currentRouteActionContext(),
+        saveStatus,
+      });
+      renderApp();
+      bindInteractions();
     });
-    renderApp();
-    bindInteractions();
   });
 
-  document.querySelector('[data-share-current-route]')?.addEventListener('click', () => {
-    writeRouteUrl({ push: false });
-    state.routeActions = {
-      ...state.routeActions,
-      shareModal: {
-        baseUrl: currentRouteAbsoluteUrl(),
-        status: null,
-      },
-    };
-    renderApp();
-    bindInteractions();
-    focusShareModal();
+  document.querySelectorAll('[data-share-current-route]').forEach((button) => {
+    button.addEventListener('click', () => {
+      writeRouteUrl({ push: false });
+      const routeLabel = currentRouteLabel();
+      const shareText = buildRouteShareText({
+        routeLabel,
+        dayTypeLabel: currentDayTypeLabel(),
+        nextDeparture: state.resultState?.type === 'results' ? state.resultState.summary.nextDeparture : null,
+      });
+
+      state.routeActions = {
+        ...state.routeActions,
+        shareModal: {
+          baseUrl: currentRouteAbsoluteUrlWithShare({ shareScope: 'route' }),
+          status: null,
+          shareScope: 'route',
+          title: routeLabel,
+          text: shareText,
+        },
+      };
+      pushShareModalOpenedEvent(window, {
+        ...currentRouteActionContext(),
+        shareScope: 'route',
+      });
+      renderApp();
+      bindInteractions();
+      focusShareModal();
+    });
+  });
+
+  document.querySelectorAll('[data-share-departure]').forEach((button) => {
+    button.addEventListener('click', async (event) => {
+      event.stopPropagation();
+
+      const tripKey = button.dataset.shareDeparture ?? '';
+      const departure = state.resultState?.type === 'results'
+        ? state.resultState.allDepartures.find((entry) => entry.tripKey === tripKey)
+        : null;
+
+      if (!departure) {
+        return;
+      }
+
+      const routeLabel = currentRouteLabel();
+      const baseUrl = currentRouteAbsoluteUrlWithShare({ shareScope: 'departure', tripKey });
+      const shareUrl = buildRouteShareUrl(baseUrl, 'link');
+      const text = buildDepartureShareText({
+        routeLabel,
+        dayTypeLabel: currentDayTypeLabel(),
+        departure,
+      });
+      const payload = buildNativeSharePayload({
+        title: routeLabel,
+        text,
+        url: shareUrl,
+      });
+
+      if (navigator.share) {
+        try {
+          await navigator.share(payload);
+          pushRouteShareEvent(window, {
+            ...currentRouteActionContext(),
+            shareMethod: 'native',
+            shareUrl,
+          });
+          return;
+        } catch (error) {
+          if (error?.name === 'AbortError') {
+            return;
+          }
+        }
+      }
+
+      state.routeActions = {
+        ...state.routeActions,
+        shareModal: {
+          baseUrl,
+          status: null,
+          shareScope: 'departure',
+          title: routeLabel,
+          text,
+        },
+      };
+      pushShareModalOpenedEvent(window, {
+        ...currentRouteActionContext(),
+        shareScope: 'departure',
+      });
+      renderApp();
+      bindInteractions();
+      focusShareModal();
+    });
   });
 
   document.querySelector('[data-share-copy-link]')?.addEventListener('click', async (event) => {
@@ -1488,6 +1689,10 @@ function bindSavedRoutes() {
         shareMethod: link.dataset.shareOption ?? '',
         shareUrl: link.dataset.shareUrl ?? '',
       });
+      pushOutboundClickEvent(window, {
+        targetType: 'share_channel',
+        context: link.dataset.shareOption ?? '',
+      });
     });
   });
 
@@ -1527,6 +1732,22 @@ function bindSavedRoutes() {
     renderApp();
     bindInteractions();
     document.querySelector('[data-share-current-route]')?.focus();
+  });
+
+  document.querySelector('[data-reverse-shared-route]')?.addEventListener('click', () => {
+    state.formValues = {
+      ...state.formValues,
+      fromInput: state.formValues.toInput,
+      fromLocalityId: null,
+      fromStopId: state.formValues.toStopId,
+      toInput: state.formValues.fromInput,
+      toStopId: state.formValues.fromStopId,
+    };
+    clearRouteResults();
+    writeRouteUrl({ push: true });
+    restoreSearchResultsIfReady();
+    renderApp();
+    bindInteractions();
   });
 
   document.querySelectorAll('[data-saved-route], [data-recent-route]').forEach((button) => {
@@ -1581,6 +1802,34 @@ async function boot() {
     state.savedRoutes = readSavedRoutes(savedRoutesStorage());
 
     hydrateRouteStateFromUrl();
+    const bootParams = new URLSearchParams(window.location.search);
+    const parsedRouteState = parseRouteUrlState(window.location.search);
+
+    pushLandingContextEvent(window, {
+      tab: state.activeTab,
+      hasRouteParams: Boolean(
+        bootParams.get('from')
+        || bootParams.get('to')
+        || bootParams.get('fromStop')
+        || bootParams.get('toStop'),
+      ),
+      hasShareUtm: bootParams.get('utm_medium') === SHARE_UTM_MEDIUM,
+      utmSource: bootParams.get('utm_source') ?? '',
+      utmMedium: bootParams.get('utm_medium') ?? '',
+      utmCampaign: bootParams.get('utm_campaign') ?? '',
+      referrerType: document.referrer ? 'referral' : 'direct',
+      language: state.language,
+    });
+
+    if (bootParams.get('utm_medium') === SHARE_UTM_MEDIUM) {
+      pushSharedRouteOpenedEvent(window, {
+        utmSource: bootParams.get('utm_source') ?? '',
+        shareScope: parsedRouteState.share.shareScope ?? 'route',
+        hasCompleteRouteState: shouldRunSearchFromRouteState(parsedRouteState),
+        dayType: parsedRouteState.search.dayType,
+      });
+    }
+
     restoreSearchResultsIfReady();
     renderApp();
     bindInteractions();

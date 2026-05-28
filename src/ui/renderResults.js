@@ -116,6 +116,7 @@ function renderShareModal(shareModal, routeLabel, t) {
 
   const directShareUrl = buildRouteShareUrl(shareModal.baseUrl, 'link');
   const statusMessage = shareModal.status ? t(`results.share.${shareModal.status}`) : '';
+  const shareText = shareModal.text || routeLabel;
   const shareOptions = SHARE_CHANNELS
     .filter((channel) => channel.id !== 'link')
     .map((channel) => {
@@ -123,7 +124,7 @@ function renderShareModal(shareModal, routeLabel, t) {
       const href = buildSocialShareHref({
         channel: channel.id,
         shareUrl,
-        text: routeLabel,
+        text: shareText,
       });
 
       return `
