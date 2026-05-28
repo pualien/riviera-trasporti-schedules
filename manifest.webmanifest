@@ -1,12 +1,14 @@
 {
+  "id": "./",
   "name": "Riviera Dei Fiori Route Finder",
-  "short_name": "Riviera Dei Fiori Route Finder",
+  "short_name": "Route Finder",
   "description": "Independent Riviera dei Fiori route finder for direct Riviera Trasporti bus checks.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#f7f1ea",
   "theme_color": "#eb4c60",
+  "categories": ["travel", "navigation", "utilities"],
   "icons": [
     {
       "src": "./assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png",
@@ -19,6 +21,63 @@
       "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Search",
+      "short_name": "Search",
+      "description": "Search direct Riviera Trasporti routes.",
+      "url": "./?tab=search",
+      "icons": [
+        {
+          "src": "./assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Browse",
+      "short_name": "Browse",
+      "description": "Browse lines and stops.",
+      "url": "./?tab=browse",
+      "icons": [
+        {
+          "src": "./assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Saved",
+      "short_name": "Saved",
+      "description": "Open saved routes and recent searches.",
+      "url": "./?tab=saved",
+      "icons": [
+        {
+          "src": "./assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png",
+          "sizes": "512x512",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "./assets/brand/pwa-screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Riviera Dei Fiori Route Finder route search on desktop"
+    },
+    {
+      "src": "./assets/brand/pwa-screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Riviera Dei Fiori Route Finder route search on mobile"
     }
   ]
 }
