@@ -355,7 +355,11 @@ function outboundTargetType(link) {
     return 'taxi_call';
   }
 
-  if (normalizedHref.includes('trenitalia')) {
+  if (
+    normalizedHref.includes('trenitalia')
+    || normalizedHref.includes('lefrecce.it')
+    || normalizedHref.includes('dati.regione.liguria.it')
+  ) {
     return 'train';
   }
 
@@ -380,16 +384,16 @@ function outboundTargetType(link) {
 }
 
 function currentOutboundContext() {
+  if (isProviderSearchTab(state.activeTab)) {
+    return 'provider_tab';
+  }
+
   if (state.resultState?.type === 'results') {
     return 'result';
   }
 
   if (state.resultState?.type === 'no-direct') {
     return 'no_direct';
-  }
-
-  if (isProviderSearchTab(state.activeTab)) {
-    return 'provider_tab';
   }
 
   return 'shell';
@@ -1845,6 +1849,10 @@ function bindSavedRoutes() {
 
 function bindOutboundAnalytics() {
   document.querySelectorAll('a[href^="http"], a[href^="tel:"]').forEach((link) => {
+    if (link.matches('[data-share-option]')) {
+      return;
+    }
+
     link.addEventListener('click', () => {
       pushOutboundClickEvent(window, {
         targetType: outboundTargetType(link),

@@ -82,7 +82,7 @@ test('shows route action feedback and opens a tracked share modal', async ({ pag
   await page.getByRole('button', { name: 'Show departures' }).click();
   await expect(page.locator('.route-action-feedback')).toHaveCount(0);
 
-  await page.getByRole('button', { name: 'Share' }).click();
+  await page.getByRole('button', { name: /^Share$/ }).click();
   const dialog = page.getByRole('dialog', { name: 'Share route' });
   await expect(dialog).toBeVisible();
   await expect(dialog.getByLabel('Direct link')).toHaveValue(/utm_source=share_link/);
