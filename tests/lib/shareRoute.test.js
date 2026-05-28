@@ -77,6 +77,13 @@ describe('shareRoute', () => {
     );
   });
 
+  it('uses default route share options when omitted', () => {
+    expect(() => buildRouteShareText()).not.toThrow();
+    expect(buildRouteShareText()).toBe(
+      'Azzuriva: undefined. Giorno: undefined. Orario dal PDF ufficiale Riviera Trasporti.',
+    );
+  });
+
   it('builds departure share text around the selected departure', () => {
     expect(
       buildDepartureShareText({
@@ -90,12 +97,28 @@ describe('shareRoute', () => {
     );
   });
 
+  it('uses default departure share options when omitted', () => {
+    expect(() => buildDepartureShareText()).not.toThrow();
+    expect(buildDepartureShareText()).toBe(
+      'Azzuriva: undefined. Giorno: undefined. Orario dal PDF ufficiale Riviera Trasporti.',
+    );
+  });
+
   it('builds native share payloads without changing fields', () => {
     const title = 'Azzuriva';
     const text = 'Imperia -> Sanremo';
     const url = 'https://azzuriva.example/app';
 
     expect(buildNativeSharePayload({ title, text, url })).toEqual({ title, text, url });
+  });
+
+  it('uses default native share payload options when omitted', () => {
+    expect(() => buildNativeSharePayload()).not.toThrow();
+    expect(buildNativeSharePayload()).toEqual({
+      title: undefined,
+      text: undefined,
+      url: undefined,
+    });
   });
 
   it('lists the supported share channels in modal order', () => {

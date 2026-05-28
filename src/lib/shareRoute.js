@@ -37,7 +37,7 @@ export function buildRouteShareText({
   dayTypeLabel,
   nextDeparture = null,
   sourceLabel = 'PDF ufficiale Riviera Trasporti',
-}) {
+} = {}) {
   if (nextDeparture) {
     return buildTimedShareText({
       routeLabel,
@@ -55,11 +55,15 @@ export function buildDepartureShareText({
   dayTypeLabel,
   departure,
   sourceLabel = 'PDF ufficiale Riviera Trasporti',
-}) {
+} = {}) {
+  if (!departure) {
+    return `Azzuriva: ${routeLabel}. ${buildSourceShareSentence({ dayTypeLabel, sourceLabel })}`;
+  }
+
   return buildTimedShareText({ routeLabel, dayTypeLabel, departure, sourceLabel });
 }
 
-export function buildNativeSharePayload({ title, text, url }) {
+export function buildNativeSharePayload({ title, text, url } = {}) {
   return { title, text, url };
 }
 
