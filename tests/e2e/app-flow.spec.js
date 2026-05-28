@@ -82,6 +82,14 @@ test('loads the route search first on mobile and filters Browse stops', async ({
 });
 
 test('opens provider search tabs and builds a prefilled FlixBus handoff', async ({ page }) => {
+  await page.addInitScript(() => {
+    window.__openedProviderUrls = [];
+    window.open = (url) => {
+      window.__openedProviderUrls.push(String(url));
+      return null;
+    };
+  });
+
   await page.goto('/');
 
   await page.getByRole('button', { name: 'FlixBus search' }).click();
@@ -105,6 +113,19 @@ test('opens provider search tabs and builds a prefilled FlixBus handoff', async 
   await expect(page.locator('[data-provider-search]')).toHaveAttribute('data-provider-action-url', /departureStation=Imperia/);
   await expect(page.locator('[data-provider-search]')).toHaveAttribute('data-provider-action-url', /arrivalStation=Sanremo/);
   await expect(page.locator('[data-provider-search]')).toHaveAttribute('data-provider-action-url', /departureDate=01-06-2026/);
+
+  await page.locator('[data-provider-search]').evaluate((form) => form.requestSubmit());
+  const providerEvents = await page.evaluate(() => (
+    window.dataLayer.filter((entry) => entry.event === 'outbound_click')
+  ));
+  const openedUrls = await page.evaluate(() => window.__openedProviderUrls);
+
+  expect(openedUrls).toHaveLength(1);
+  expect(providerEvents).toContainEqual(expect.objectContaining({
+    event: 'outbound_click',
+    target_type: 'train',
+    context: 'provider_tab',
+  }));
 
   await page.getByRole('button', { name: 'BlaBlaCar search' }).click();
   await expect(page.getByRole('heading', { name: 'BlaBlaCar search' })).toBeVisible();
@@ -301,4 +322,40 @@ test('clears inbound shared route context after a no-direct correction action', 
 
   await expect(page.locator('.shared-route-context')).toHaveCount(0);
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
+test('clears inbound shared departure context after choosing a nearby destination stop', async ({ page }) => {
+  await page.addInitScript(() => {
+    navigator.geolocation.getCurrentPosition = (success) => {
+      success({
+        coords: {
+          latitude: 43.817,
+          longitude: 7.776,
+        },
+      });
+    };
+  });
+  await page.route('https://overpass-api.de/api/interpreter', async (route) => {
+    await route.fulfill({
+      contentType: 'application/json',
+      body: JSON.stringify({
+        elements: [
+          {
+            type: 'node',
+            id: 1,
+            lat: 43.817,
+            lon: 7.776,
+            tags: { name: 'Diano Marina' },
+          },
+        ],
+      }),
+    });
+  });
+
+  await openSharedDeparture(page);
+  await page.locator('[data-location-field="to"]').click();
+  await page.locator('.nearby-stop').first().click();
+
+  await expect(page.locator('.shared-route-context')).toHaveCount(0);
+  await expect(page.locator('[name="to"]')).toHaveValue(/diano marina/i);
 });

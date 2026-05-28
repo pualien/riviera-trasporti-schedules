@@ -3,6 +3,7 @@ import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { DEFAULT_SITE, generateSeoPages } from '../../scripts/generate-seo-pages.mjs';
+import { findDirectTrips } from '../../src/lib/query.js';
 
 const tempRoots = [];
 
@@ -49,6 +50,67 @@ async function createFixtureRoot() {
   ]);
 
   return rootDir;
+}
+
+async function createBroadLocalityFixtureRoot() {
+  const rootDir = await mkdtemp(path.join(tmpdir(), 'azzuriva-seo-broad-'));
+  tempRoots.push(rootDir);
+  await mkdir(path.join(rootDir, 'assets/data'), { recursive: true });
+
+  const metadata = {
+    source: {
+      title: 'Fixture orario',
+      url: 'https://example.com/orario.pdf',
+      effectiveDate: '2026-05-01',
+    },
+    builtAt: '2026-05-28T12:00:00.000Z',
+  };
+  const stops = [
+    { id: 'imperia-oneglia', canonical: 'Imperia Oneglia' },
+    { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
+    { id: 'sanremo-autostazione', canonical: 'Sanremo Autostazione' },
+  ];
+  const localities = [
+    {
+      id: 'imperia',
+      label: 'Imperia',
+      stopIds: ['imperia-oneglia', 'imperia-porto-maurizio'],
+    },
+    {
+      id: 'sanremo',
+      label: 'Sanremo',
+      stopIds: ['sanremo-autostazione'],
+    },
+  ];
+  const trips = [
+    {
+      lineId: '12',
+      direction: 'Imperia - Sanremo',
+      dayType: 'feriale',
+      sourcePage: 23,
+      stops: [
+        { stopId: 'imperia-oneglia', name: 'Imperia Oneglia', time: '08:00' },
+        { stopId: 'imperia-porto-maurizio', name: 'Porto Maurizio', time: '08:10' },
+        { stopId: 'sanremo-autostazione', name: 'Sanremo Autostazione', time: '08:45' },
+      ],
+    },
+  ];
+
+  await writeJson(rootDir, 'assets/data/metadata.json', metadata);
+  await writeJson(rootDir, 'assets/data/stops.json', stops);
+  await writeJson(rootDir, 'assets/data/localities.json', localities);
+  await writeJson(rootDir, 'assets/data/trips.json', trips);
+
+  return {
+    rootDir,
+    trips,
+    localities,
+  };
+}
+
+function firstHref(html, label) {
+  const match = html.match(new RegExp(`<a[^>]+href="([^"]+)"[^>]*>${label}</a>`));
+  return match?.[1]?.replaceAll('&amp;', '&') ?? '';
 }
 
 afterEach(async () => {
@@ -116,5 +178,30 @@ describe('generateSeoPages', () => {
       code: 'ENOENT',
     });
     await expect(readOutput(rootDir, 'sitemap.xml')).resolves.not.toContain('/routes/imperia/sanremo/');
+  });
+
+  it('writes route CTAs that restore matching trips in the SPA search', async () => {
+    const { rootDir, trips, localities } = await createBroadLocalityFixtureRoot();
+
+    await generateSeoPages({ rootDir });
+
+    const routeHtml = await readOutput(rootDir, 'routes/imperia/sanremo/index.html');
+    const ctaUrl = new URL(firstHref(routeHtml, "Cerca nell'app"), 'https://example.test');
+    const fromLocalityId = ctaUrl.searchParams.get('fromLocality');
+    const fromLocality = localities.find((locality) => locality.id === fromLocalityId);
+    const matches = findDirectTrips({
+      from: ctaUrl.searchParams.get('from') ?? '',
+      fromLocalityStopIds: fromLocality?.stopIds ?? [],
+      fromStopId: ctaUrl.searchParams.get('fromStop'),
+      to: ctaUrl.searchParams.get('to') ?? '',
+      toStopId: ctaUrl.searchParams.get('toStop'),
+      dayType: ctaUrl.searchParams.get('day') ?? 'feriale',
+      aliases: {},
+      trips,
+    });
+
+    expect(ctaUrl.searchParams.get('fromLocality')).toBe('imperia');
+    expect(ctaUrl.searchParams.get('toStop')).toBe('sanremo-autostazione');
+    expect(matches.length).toBeGreaterThan(0);
   });
 });

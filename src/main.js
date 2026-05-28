@@ -390,8 +390,7 @@ function currentSourceContext() {
   return 'direct';
 }
 
-function outboundTargetType(link) {
-  const href = link.getAttribute('href') ?? '';
+function outboundTargetTypeForHref(href = '') {
   const normalizedHref = href.toLowerCase();
 
   if (normalizedHref.includes('.pdf')) {
@@ -428,6 +427,10 @@ function outboundTargetType(link) {
   }
 
   return 'external';
+}
+
+function outboundTargetType(link) {
+  return outboundTargetTypeForHref(link.getAttribute('href') ?? '');
 }
 
 function currentOutboundContext() {
@@ -866,6 +869,8 @@ function bindNearbyStopSelection() {
           toInput: selectedStop.canonical,
           toStopId: selectedStop.stopId,
         };
+        clearInboundShareState();
+        clearRouteResults();
       }
 
       state.locationPicker = null;
@@ -1588,6 +1593,10 @@ function bindProviderSearchForm() {
     event.preventDefault();
     const actionUrl = syncProviderSearchForm(form, provider);
 
+    pushOutboundClickEvent(window, {
+      targetType: outboundTargetTypeForHref(actionUrl),
+      context: 'provider_tab',
+    });
     window.open(actionUrl, '_blank', 'noopener,noreferrer');
   });
 }

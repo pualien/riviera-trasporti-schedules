@@ -96,9 +96,10 @@ function localitySlugMap(localities = []) {
   return slugByLocalityId;
 }
 
-export function buildRoutePageCandidates({ trips = [], localities = [], limit = 50 } = {}) {
+export function buildRoutePageCandidates({ trips = [], localities = [], stops = [], limit = 50 } = {}) {
   const localityByStopId = localitiesByStopId(localities);
   const slugByLocalityId = localitySlugMap(localities);
+  const stopById = new Map(stops.map((stop) => [stop.id, stop]));
   const candidates = new Map();
 
   for (const trip of trips) {
@@ -159,6 +160,10 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
           dayType: trip.dayType,
           direction: trip.direction,
           sourcePage: trip.sourcePage,
+          fromStopId: tripStops[fromIndex].stopId,
+          fromLabel: stopLabel(stopById, tripStops[fromIndex]),
+          toStopId: tripStops[toIndex].stopId,
+          toLabel: stopLabel(stopById, tripStops[toIndex]),
           departureTime: tripStops[fromIndex].time,
           arrivalTime: tripStops[toIndex].time,
         });
@@ -167,19 +172,33 @@ export function buildRoutePageCandidates({ trips = [], localities = [], limit = 
   }
 
   return [...candidates.values()]
-    .map((candidate) => ({
-      ...candidate,
-      lineIds: uniqueSorted([...candidate.lineIds], compareLineIds),
-      dayTypes: uniqueSorted([...candidate.dayTypes]),
-      departures: candidate.departures
+    .map((candidate) => {
+      const departures = candidate.departures
         .sort(
           (left, right) =>
             compareText(left.departureTime, right.departureTime) ||
             compareText(left.arrivalTime, right.arrivalTime) ||
             compareLineIds(left.lineId, right.lineId),
         )
-        .slice(0, 12),
-    }))
+        .slice(0, 12);
+      const [representativeDeparture] = departures;
+
+      return {
+        ...candidate,
+        lineIds: uniqueSorted([...candidate.lineIds], compareLineIds),
+        dayTypes: uniqueSorted([...candidate.dayTypes]),
+        departures,
+        search: representativeDeparture
+          ? {
+            fromLabel: candidate.fromLabel,
+            fromLocalityId: candidate.fromLocalityId,
+            toLabel: representativeDeparture.toLabel || candidate.toLabel,
+            toStopId: representativeDeparture.toStopId,
+            dayType: representativeDeparture.dayType,
+          }
+          : null,
+      };
+    })
     .sort((left, right) => right.departureCount - left.departureCount || compareText(left.slug, right.slug))
     .slice(0, limit);
 }

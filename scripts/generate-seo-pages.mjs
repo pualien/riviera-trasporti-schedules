@@ -115,7 +115,7 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
     readJson(rootDir, 'assets/data/stops.json'),
     readJson(rootDir, 'assets/data/localities.json'),
   ]);
-  const routePages = buildRoutePageCandidates({ trips, localities, limit: routeLimit });
+  const routePages = buildRoutePageCandidates({ trips, localities, stops, limit: routeLimit });
   const routeSlugByPair = new Map(
     routePages.map((route) => [`${route.fromLocalityId}->${route.toLocalityId}`, route.slug]),
   );

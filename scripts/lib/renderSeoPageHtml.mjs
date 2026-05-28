@@ -111,12 +111,25 @@ ${body}
 }
 
 function routeSearchUrl(site, route) {
+  const search = route.search ?? {};
   const params = new URLSearchParams({
     tab: 'search',
-    from: route.fromLabel ?? '',
-    to: route.toLabel ?? '',
+    from: search.fromLabel ?? route.fromLabel ?? '',
+    to: search.toLabel ?? route.toLabel ?? '',
   });
-  const [day] = route.dayTypes ?? [];
+  const day = search.dayType ?? (route.dayTypes ?? [])[0];
+
+  if (search.fromLocalityId) {
+    params.set('fromLocality', search.fromLocalityId);
+  }
+
+  if (search.fromStopId) {
+    params.set('fromStop', search.fromStopId);
+  }
+
+  if (search.toStopId) {
+    params.set('toStop', search.toStopId);
+  }
 
   if (day) {
     params.set('day', day);
@@ -154,7 +167,7 @@ export function renderRoutePageHtml({ site, metadata, route }) {
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(description)}</p>
       <a class="button" href="${escapeAttribute(routeSearchUrl(site, route))}">Cerca nell'app</a>
-      <a class="button secondary" href="${escapeAttribute(publicPath(site, path))}">Condividi questa pagina</a>
+      <a class="button secondary" href="${escapeAttribute(publicPath(site, path))}">Link permanente</a>
     </header>
     <section>
       <h2>Linee disponibili</h2>

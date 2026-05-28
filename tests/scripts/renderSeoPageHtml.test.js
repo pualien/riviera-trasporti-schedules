@@ -36,9 +36,20 @@ describe('renderSeoPageHtml', () => {
             dayType: 'feriale',
             departureTime: '08:00',
             arrivalTime: '08:45',
+            fromStopId: 'imperia-oneglia',
+            fromLabel: 'Imperia Oneglia',
+            toStopId: 'sanremo-autostazione',
+            toLabel: 'Sanremo Autostazione',
             sourcePage: 23,
           },
         ],
+        search: {
+          fromLabel: 'Imperia',
+          fromLocalityId: 'imperia',
+          toLabel: 'Sanremo Autostazione',
+          toStopId: 'sanremo-autostazione',
+          dayType: 'feriale',
+        },
       },
     });
 
@@ -52,8 +63,10 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('https://example.com/orario.pdf#page=23');
     expect(html).toContain('?tab=search');
     expect(html).toContain('from=Imperia');
-    expect(html).toContain('to=Sanremo');
-    expect(html).toContain('Condividi questa pagina');
+    expect(html).toContain('fromLocality=imperia');
+    expect(html).toContain('to=Sanremo+Autostazione');
+    expect(html).toContain('toStop=sanremo-autostazione');
+    expect(html).toContain('Link permanente');
     expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
   });
 
