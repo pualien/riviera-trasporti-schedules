@@ -94,6 +94,67 @@ test('loads the route search first on mobile and filters Browse stops', async ({
   await expect(page.locator('.browse-count')).toContainText('matches');
 });
 
+test('keeps From and To pickers roomy on iPhone-sized screens', async ({ page }) => {
+  await page.setViewportSize({ width: 393, height: 852 });
+  await page.goto('/');
+
+  await page.locator('input[name="from"]').click();
+  const fromPanel = page.locator('[data-panel="from"]');
+  await expect(fromPanel).toBeVisible();
+
+  const fromMetrics = await fromPanel.evaluate((panel) => {
+    const option = panel.querySelector('.picker-option');
+    const optionList = panel.querySelector('.picker-option-list');
+    const optionLabel = option?.querySelector('.picker-option-label');
+    const optionAction = option?.querySelector('.picker-option-action');
+    const optionBox = option?.getBoundingClientRect();
+    const labelBox = optionLabel?.getBoundingClientRect();
+    const actionBox = optionAction?.getBoundingClientRect();
+    const actionStyle = optionAction ? getComputedStyle(optionAction) : null;
+
+    return {
+      panelWidth: panel.getBoundingClientRect().width,
+      optionHeight: optionBox?.height ?? 0,
+      optionListMaxHeight: Number.parseFloat(getComputedStyle(optionList).maxHeight),
+      actionWidth: actionBox?.width ?? 0,
+      actionSitsAtRowEnd: (actionBox?.left ?? 0) > (labelBox?.right ?? Number.POSITIVE_INFINITY),
+      actionCenterOffset: Math.abs(
+        ((actionBox?.top ?? 0) + (actionBox?.height ?? 0) / 2)
+          - ((optionBox?.top ?? 0) + (optionBox?.height ?? 0) / 2),
+      ),
+      actionTextIsHidden: actionStyle?.overflow === 'hidden'
+        && ['rgba(0, 0, 0, 0)', 'transparent'].includes(actionStyle.color),
+    };
+  });
+
+  expect(fromMetrics.panelWidth).toBeGreaterThanOrEqual(315);
+  expect(fromMetrics.optionHeight).toBeGreaterThanOrEqual(84);
+  expect(fromMetrics.optionListMaxHeight).toBeGreaterThanOrEqual(360);
+  expect(fromMetrics.actionWidth).toBeLessThanOrEqual(44);
+  expect(fromMetrics.actionSitsAtRowEnd).toBe(true);
+  expect(fromMetrics.actionCenterOffset).toBeLessThanOrEqual(8);
+  expect(fromMetrics.actionTextIsHidden).toBe(true);
+
+  await page.locator('[data-from-value="Porto Maurizio"]').click();
+  await page.locator('[data-from-value="imperia porto maurizio"]').click();
+
+  const toPanel = page.locator('[data-panel="to"]');
+  await expect(toPanel).toBeVisible();
+
+  const toMetrics = await toPanel.evaluate((panel) => {
+    const option = panel.querySelector('.picker-option');
+    const panelBox = panel.getBoundingClientRect();
+
+    return {
+      panelTop: panelBox.top,
+      optionHeight: option?.getBoundingClientRect().height ?? 0,
+    };
+  });
+
+  expect(toMetrics.panelTop).toBeLessThan(620);
+  expect(toMetrics.optionHeight).toBeGreaterThanOrEqual(84);
+});
+
 test('opens provider search tabs and builds a prefilled FlixBus handoff', async ({ page }) => {
   await page.addInitScript(() => {
     window.__openedProviderUrls = [];

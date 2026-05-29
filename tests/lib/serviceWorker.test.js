@@ -39,6 +39,12 @@ function waitableEvent() {
 }
 
 describe('service worker', () => {
+  it('uses a cache version aligned with the versioned app shell assets', () => {
+    const source = fs.readFileSync('service-worker.js', 'utf8');
+
+    expect(source).toContain("const CACHE_NAME = `${CACHE_PREFIX}v8`;");
+  });
+
   it('fails install when a required app-shell asset cannot be cached', async () => {
     const listeners = loadServiceWorker({
       caches: {
@@ -85,7 +91,9 @@ describe('service worker', () => {
 
     expect(cachedUrls).toContain('./assets/data/stop-coordinates.json');
     expect(cachedUrls).toContain('./src/lib/ads.js');
+    expect(cachedUrls).toContain('./src/lib/ads.js?v=8');
     expect(cachedUrls).toContain('./src/lib/installAdSense.js');
+    expect(cachedUrls).toContain('./src/lib/installAdSense.js?v=8');
     expect(cachedUrls).toContain('./src/lib/providerSearch.js');
     expect(cachedUrls).toContain('./src/ui/renderAdSlot.js');
     expect(cachedUrls).toContain('./src/ui/renderLogos.js');
@@ -114,8 +122,10 @@ describe('service worker', () => {
     listeners.install(event);
     await expect(promises[0]).resolves.toBeUndefined();
 
-    expect(cachedUrls).toContain('./styles.css?v=6');
-    expect(cachedUrls).toContain('./src/main.js?v=6');
+    expect(cachedUrls).toContain('./styles.css?v=8');
+    expect(cachedUrls).toContain('./src/main.js?v=8');
+    expect(cachedUrls).toContain('./src/lib/analytics.js?v=8');
+    expect(cachedUrls).toContain('./src/ui/renderSearchForm.js?v=8');
     expect(cachedUrls).toContain('./src/lib/pwaController.js');
     expect(cachedUrls).toContain('./src/ui/renderPwaControl.js');
     expect(cachedUrls).toContain('./offline.html');
@@ -246,6 +256,7 @@ describe('service worker', () => {
       'riviera-dei-fiori-route-finder-v4',
       'riviera-dei-fiori-route-finder-v5',
       'riviera-dei-fiori-route-finder-v6',
+      'riviera-dei-fiori-route-finder-v7',
       'azzuriva-route-tools-v6',
       'riviera-route-tools-v6',
     ]);

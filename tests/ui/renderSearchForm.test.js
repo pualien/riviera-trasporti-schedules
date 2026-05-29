@@ -192,4 +192,19 @@ describe('renderSearchForm', () => {
     expect(html).toContain('placeholder="Choose departure area"');
     expect(html).not.toContain('placeholder="Porto Maurizio"');
   });
+
+  it('exposes mobile-friendly picker semantics for the From and To fields', () => {
+    const html = renderSearchForm({
+      fromPanelOpen: true,
+      toPanelOpen: false,
+    });
+
+    expect(html).toContain('inputmode="search"');
+    expect(html).toContain('enterkeyhint="next"');
+    expect(html).toContain('enterkeyhint="search"');
+    expect(html).toContain('aria-controls="from-picker-panel"');
+    expect(html).toContain('aria-controls="to-picker-panel"');
+    expect(html).toContain('aria-expanded="true"');
+    expect(html).toContain('id="from-picker-panel"');
+  });
 });

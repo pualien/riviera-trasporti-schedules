@@ -10,7 +10,7 @@ import {
   pushBrowseInteractionEvent,
   pushSharedRouteOpenedEvent,
   pushSharedRouteRestoredEvent,
-} from './lib/analytics.js';
+} from './lib/analytics.js?v=8';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
@@ -90,7 +90,7 @@ import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
 import { renderResultsView } from './ui/renderResults.js';
-import { renderSearchForm } from './ui/renderSearchForm.js';
+import { renderSearchForm } from './ui/renderSearchForm.js?v=8';
 import { renderShell } from './ui/renderShell.js';
 import { renderTabNav } from './ui/renderTabNav.js';
 
@@ -1371,6 +1371,16 @@ function focusFromInput(selectText = false) {
   }
 }
 
+function scrollPickerFieldIntoMobileView(fieldName) {
+  if (!window.matchMedia?.('(max-width: 860px)').matches) {
+    return;
+  }
+
+  document.querySelector(`[data-field="${fieldName}"]`)
+    ?.closest('.field')
+    ?.scrollIntoView({ block: 'start', inline: 'nearest' });
+}
+
 function clearFromSelection(nextValue) {
   resetDestinationState();
   state.formValues = {
@@ -1402,6 +1412,7 @@ function bindFieldPanels() {
     renderApp();
     bindInteractions();
     focusFromInput(selectText);
+    scrollPickerFieldIntoMobileView('from');
   }
 
   fromInput?.addEventListener('focus', () => {
@@ -1469,6 +1480,7 @@ function bindFieldPanels() {
     renderApp();
     bindInteractions();
     document.querySelector('[data-field="to"]')?.focus();
+    scrollPickerFieldIntoMobileView('to');
   }
 
   toInput?.addEventListener('pointerdown', () => {
@@ -1534,6 +1546,11 @@ function bindFieldPanels() {
       bindInteractions();
       if (state.uiState.fromPanelOpen) {
         focusFromInput(true);
+        scrollPickerFieldIntoMobileView('from');
+      }
+
+      if (state.uiState.toPanelOpen) {
+        scrollPickerFieldIntoMobileView('to');
       }
     });
   });

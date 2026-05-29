@@ -43,7 +43,7 @@ function renderFromPanel(fromSuggestions, t) {
     : [...areas, ...exactStops];
 
   return `
-    <div class="picker-panel" data-panel="from">
+    <div id="from-picker-panel" class="picker-panel" data-panel="from">
       <div class="picker-panel-head">
         <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
       </div>
@@ -222,6 +222,11 @@ export function renderSearchForm({
               value="${escapeHtml(fromInput)}"
               placeholder="${escapeHtml(t('search.fromPlaceholder'))}"
               autocomplete="off"
+              inputmode="search"
+              enterkeyhint="next"
+              aria-autocomplete="list"
+              aria-controls="from-picker-panel"
+              aria-expanded="${fromPanelOpen ? 'true' : 'false'}"
               data-field="from"
             />
             ${renderLocationButton('from', t('search.useMyLocation'))}
@@ -238,12 +243,17 @@ export function renderSearchForm({
               value="${escapeHtml(toInput)}"
               placeholder="${escapeHtml(t('search.toPlaceholder'))}"
               autocomplete="off"
+              inputmode="search"
+              enterkeyhint="search"
+              aria-autocomplete="list"
+              aria-controls="to-picker-panel"
+              aria-expanded="${toPanelOpen ? 'true' : 'false'}"
               data-field="to"
             />
             ${renderLocationButton('to', t('search.useMyLocation'))}
           </div>
           <small>${toHelp}</small>
-          ${toPanelOpen ? `<div class="picker-panel" data-panel="to">${renderDestinationPanel({
+          ${toPanelOpen ? `<div id="to-picker-panel" class="picker-panel" data-panel="to">${renderDestinationPanel({
             t,
             destinationMode,
             destinationMessage: resolvedDestinationMessage,

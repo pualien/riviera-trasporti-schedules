@@ -1,5 +1,6 @@
 export const ADSENSE_CLIENT_ID = 'ca-pub-4752698416622962';
 export const ADSENSE_SCRIPT_SELECTOR = '[data-adsense-auto-ads="true"]';
+const LOCAL_PREVIEW_HOSTS = new Set(['localhost', '127.0.0.1', '0.0.0.0', '::1']);
 
 export function hasValidAdSenseClientId(clientId = ADSENSE_CLIENT_ID) {
   return /^ca-pub-\d{16}$/.test(String(clientId).trim());
@@ -15,6 +16,10 @@ export function buildAdSenseScriptUrl(clientId = ADSENSE_CLIENT_ID) {
   return `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${encodeURIComponent(normalizedClientId)}`;
 }
 
+function isLocalPreviewHost(hostname) {
+  return LOCAL_PREVIEW_HOSTS.has(String(hostname ?? '').toLowerCase());
+}
+
 export function installAutoAdsScript(
   doc = globalThis.document,
   win = globalThis,
@@ -22,7 +27,12 @@ export function installAutoAdsScript(
 ) {
   const scriptUrl = buildAdSenseScriptUrl(clientId);
 
-  if (!doc?.head || !scriptUrl || doc.querySelector(ADSENSE_SCRIPT_SELECTOR)) {
+  if (
+    !doc?.head
+      || !scriptUrl
+      || isLocalPreviewHost(win?.location?.hostname)
+      || doc.querySelector(ADSENSE_SCRIPT_SELECTOR)
+  ) {
     return false;
   }
 

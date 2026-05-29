@@ -71,4 +71,17 @@ describe('ads helpers', () => {
     expect(doc.headChildren).toHaveLength(0);
     expect(win.__AZZURIVA_ADSENSE_CLIENT__).toBeUndefined();
   });
+
+  it('does not load third-party ads on local preview hosts', () => {
+    const doc = createFakeDocument();
+    const win = {
+      location: {
+        hostname: '127.0.0.1',
+      },
+    };
+
+    expect(installAutoAdsScript(doc, win, 'ca-pub-1234567890123456')).toBe(false);
+    expect(doc.headChildren).toHaveLength(0);
+    expect(win.__AZZURIVA_ADSENSE_CLIENT__).toBeUndefined();
+  });
 });
