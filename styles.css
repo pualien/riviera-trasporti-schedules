@@ -75,6 +75,29 @@ a {
   gap: 10px;
 }
 
+.topbar-secondary-actions {
+  display: contents;
+}
+
+.topbar-more-actions {
+  display: none;
+}
+
+.topbar-more-summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.topbar-more-summary::-webkit-details-marker {
+  display: none;
+}
+
+.topbar-more-panel {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
 .pwa-control {
   display: inline-flex;
   flex-wrap: wrap;
@@ -772,7 +795,8 @@ a {
 }
 
 .picker-option:hover,
-.picker-option:focus-visible {
+.picker-option:focus-visible,
+.picker-option--active {
   transform: translateY(-1px);
   border-color: rgba(217, 59, 79, 0.24);
   background: linear-gradient(180deg, rgba(255, 250, 251, 0.98), rgba(248, 237, 231, 0.98));
@@ -1315,6 +1339,7 @@ a {
   font-weight: 650;
 }
 
+.departure-detail-action,
 .departure-share-action,
 .departure-meta a {
   display: inline-flex;
@@ -1339,11 +1364,18 @@ a {
     background 180ms ease;
 }
 
+.departure-detail-action[aria-pressed="true"] {
+  border-color: rgba(217, 59, 79, 0.28);
+  background: rgba(235, 76, 96, 0.14);
+}
+
 .departure-share-action {
   border-color: rgba(217, 59, 79, 0.18);
   background: rgba(235, 76, 96, 0.1);
 }
 
+.departure-detail-action:hover,
+.departure-detail-action:focus-visible,
 .departure-share-action:hover,
 .departure-share-action:focus-visible,
 .departure-meta a:hover,
@@ -1551,6 +1583,15 @@ a {
   }
 
   .topbar-actions {
+    width: 100%;
+  }
+
+  .topbar-secondary-actions--desktop {
+    display: none;
+  }
+
+  .topbar-more-actions--mobile {
+    display: block;
     width: 100%;
   }
 

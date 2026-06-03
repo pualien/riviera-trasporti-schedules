@@ -180,6 +180,37 @@ describe('renderResultsView', () => {
     expect(html).toContain('data-testid="route-map-panel"');
   });
 
+  it('renders departure detail actions as named buttons', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: null,
+        soonestArrival: null,
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [
+        {
+          tripKey: 'keyboard-trip',
+          departureTime: '06:20',
+          arrivalTime: '07:00',
+          durationMinutes: 40,
+          lineId: '12',
+          sourcePage: 23,
+        },
+      ],
+      allDepartures: [],
+    });
+
+    expect(html).toContain('type="button" class="departure-detail-action"');
+    expect(html).toContain('data-select-departure="keyboard-trip"');
+    expect(html).toContain('aria-label="Details: 06:20 arrives 07:00 · Line 12"');
+  });
+
   it('share diffusion UI', () => {
     const html = renderResultsView({
       t: createTranslator('en'),

@@ -41,6 +41,20 @@ describe('renderShell', () => {
     expect(html).toContain('name="language"');
   });
 
+  it('groups secondary topbar actions into a mobile disclosure menu', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('class="topbar-secondary-actions topbar-secondary-actions--desktop"');
+    expect(html).toContain('class="topbar-more-actions topbar-more-actions--mobile"');
+    expect(html).toContain('<summary class="topbar-link topbar-more-summary">More</summary>');
+    expect(countOccurrences(html, 'href="https://forms.gle/tjo52ginwrjUGdMC6"')).toBe(2);
+    expect(countOccurrences(html, 'name="language"')).toBe(2);
+  });
+
   it('renders top-level tab navigation when provided', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',

@@ -128,6 +128,8 @@ const state = {
   uiState: {
     fromPanelOpen: false,
     toPanelOpen: false,
+    fromActiveOptionId: null,
+    toActiveOptionId: null,
   },
   formValues: {
     fromInput: '',
@@ -640,9 +642,11 @@ function renderApp() {
       exactFromStop,
       fromSuggestions: currentFromSuggestions(t),
       fromPanelOpen: state.uiState.fromPanelOpen,
+      fromActiveOptionId: state.uiState.fromActiveOptionId,
       toInput: state.formValues.toInput,
       toStopSelected: Boolean(state.formValues.toStopId),
       toPanelOpen: state.uiState.toPanelOpen,
+      toActiveOptionId: state.uiState.toActiveOptionId,
       reachableDestinations: destinationOptions,
       destinationMode: currentDestinationMode(),
       destinationMessage: currentDestinationMessage(t),
@@ -733,6 +737,7 @@ function resetDestinationState() {
     toInput: '',
     toStopId: null,
   };
+  state.uiState.toActiveOptionId = null;
   clearRouteResults();
 }
 
@@ -1346,6 +1351,8 @@ function selectFromLocalityChoice(locality) {
   Object.assign(state, selectLocality(state, locality, state.stops, state.reachability));
   state.uiState.fromPanelOpen = true;
   state.uiState.toPanelOpen = false;
+  state.uiState.fromActiveOptionId = null;
+  state.uiState.toActiveOptionId = null;
   writeRouteUrl({ push: false });
 }
 
@@ -1354,6 +1361,8 @@ function selectFromStopChoice(stop) {
   Object.assign(state, selectOriginStop(state, stop, state.reachability, state.stops));
   state.uiState.fromPanelOpen = false;
   state.uiState.toPanelOpen = true;
+  state.uiState.fromActiveOptionId = null;
+  state.uiState.toActiveOptionId = null;
   writeRouteUrl({ push: false });
 }
 
@@ -1394,7 +1403,63 @@ function clearFromSelection(nextValue) {
     exactStopChoices: [],
     reachableDestinations: [],
   };
+  state.uiState.fromActiveOptionId = null;
+  state.uiState.toActiveOptionId = null;
   writeRouteUrl({ push: false });
+}
+
+function activePickerOptionStateKey(fieldName) {
+  return fieldName === 'from' ? 'fromActiveOptionId' : 'toActiveOptionId';
+}
+
+function panelOpenStateKey(fieldName) {
+  return fieldName === 'from' ? 'fromPanelOpen' : 'toPanelOpen';
+}
+
+function pickerOptions(fieldName) {
+  return [...document.querySelectorAll(`[data-panel="${fieldName}"] .picker-option[role="option"]`)];
+}
+
+function setActivePickerOption(fieldName, optionId) {
+  const stateKey = activePickerOptionStateKey(fieldName);
+  state.uiState[stateKey] = optionId;
+
+  const input = document.querySelector(`[data-field="${fieldName}"]`);
+  if (optionId) {
+    input?.setAttribute('aria-activedescendant', optionId);
+  } else {
+    input?.removeAttribute('aria-activedescendant');
+  }
+
+  for (const option of pickerOptions(fieldName)) {
+    const selected = option.id === optionId;
+    option.setAttribute('aria-selected', selected ? 'true' : 'false');
+    option.classList.toggle('picker-option--active', selected);
+  }
+}
+
+function moveActivePickerOption(fieldName, direction) {
+  const options = pickerOptions(fieldName);
+  if (!options.length) {
+    setActivePickerOption(fieldName, null);
+    return;
+  }
+
+  const stateKey = activePickerOptionStateKey(fieldName);
+  const currentIndex = options.findIndex((option) => option.id === state.uiState[stateKey]);
+  const nextIndex = currentIndex === -1
+    ? (direction > 0 ? 0 : options.length - 1)
+    : (currentIndex + direction + options.length) % options.length;
+
+  setActivePickerOption(fieldName, options[nextIndex].id);
+  options[nextIndex].scrollIntoView({ block: 'nearest', inline: 'nearest' });
+}
+
+function selectActivePickerOption(fieldName) {
+  const optionId = state.uiState[activePickerOptionStateKey(fieldName)];
+  const option = optionId ? document.getElementById(optionId) : null;
+  option?.click();
+  return Boolean(option);
 }
 
 function bindFieldPanels() {
@@ -1409,6 +1474,8 @@ function bindFieldPanels() {
 
     state.uiState.fromPanelOpen = true;
     state.uiState.toPanelOpen = false;
+    state.uiState.fromActiveOptionId = null;
+    state.uiState.toActiveOptionId = null;
     renderApp();
     bindInteractions();
     focusFromInput(selectText);
@@ -1436,6 +1503,49 @@ function bindFieldPanels() {
     }
   });
 
+  function openPanelForField(fieldName) {
+    if (fieldName === 'from') {
+      openFromPanel();
+      return;
+    }
+
+    openToPanel();
+  }
+
+  function closePanelForField(fieldName) {
+    state.uiState[panelOpenStateKey(fieldName)] = false;
+    state.uiState[activePickerOptionStateKey(fieldName)] = null;
+    renderApp();
+    bindInteractions();
+    document.querySelector(`[data-field="${fieldName}"]`)?.focus();
+  }
+
+  function handlePickerKeyDown(fieldName, event) {
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (!state.uiState[panelOpenStateKey(fieldName)]) {
+        openPanelForField(fieldName);
+      }
+      moveActivePickerOption(fieldName, event.key === 'ArrowDown' ? 1 : -1);
+      return;
+    }
+
+    if (event.key === 'Enter' && state.uiState[activePickerOptionStateKey(fieldName)]) {
+      event.preventDefault();
+      selectActivePickerOption(fieldName);
+      return;
+    }
+
+    if (event.key === 'Escape' && state.uiState[panelOpenStateKey(fieldName)]) {
+      event.preventDefault();
+      closePanelForField(fieldName);
+    }
+  }
+
+  fromInput?.addEventListener('keydown', (event) => {
+    handlePickerKeyDown('from', event);
+  });
+
   fromInput?.addEventListener('input', (event) => {
     const nextValue = String(event.currentTarget.value ?? '');
     const selection = captureTextInputSelection(event.currentTarget);
@@ -1455,6 +1565,8 @@ function bindFieldPanels() {
     clearRouteResults();
     state.uiState.fromPanelOpen = true;
     state.uiState.toPanelOpen = false;
+    state.uiState.fromActiveOptionId = null;
+    state.uiState.toActiveOptionId = null;
 
     if (shouldClearLocality) {
       state.pickerState = {
@@ -1477,6 +1589,8 @@ function bindFieldPanels() {
 
     state.uiState.fromPanelOpen = false;
     state.uiState.toPanelOpen = true;
+    state.uiState.fromActiveOptionId = null;
+    state.uiState.toActiveOptionId = null;
     renderApp();
     bindInteractions();
     document.querySelector('[data-field="to"]')?.focus();
@@ -1507,6 +1621,10 @@ function bindFieldPanels() {
     }
   });
 
+  toInput?.addEventListener('keydown', (event) => {
+    handlePickerKeyDown('to', event);
+  });
+
   toInput?.addEventListener('input', (event) => {
     const selection = captureTextInputSelection(event.currentTarget);
     state.formValues = {
@@ -1516,6 +1634,7 @@ function bindFieldPanels() {
     };
     clearRouteResults();
     state.uiState.toPanelOpen = true;
+    state.uiState.toActiveOptionId = null;
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
@@ -1550,6 +1669,7 @@ function bindFieldPanels() {
       }
 
       if (state.uiState.toPanelOpen) {
+        document.querySelector('[data-field="to"]')?.focus();
         scrollPickerFieldIntoMobileView('to');
       }
     });
@@ -1564,6 +1684,7 @@ function bindFieldPanels() {
       };
       clearRouteResults();
       state.uiState.toPanelOpen = false;
+      state.uiState.toActiveOptionId = null;
       writeRouteUrl({ push: false });
       renderApp();
       bindInteractions();
@@ -1571,31 +1692,40 @@ function bindFieldPanels() {
   });
 }
 
+async function selectDepartureTrip(tripKey) {
+  const hasMatch = state.resultState?.type === 'results'
+    ? state.resultState.allDepartures.find((departure) => departure.tripKey === tripKey)
+    : null;
+
+  if (!hasMatch || state.resultState?.type !== 'results') {
+    return;
+  }
+
+  state.resultState = {
+    ...state.resultState,
+    selectedTripKey: tripKey,
+    selectedTripMapLoadFailed: false,
+  };
+
+  renderApp();
+  bindInteractions();
+  await renderSelectedTripMapForTrip(tripKey);
+}
+
 function bindDepartureSelection() {
+  document.querySelectorAll('[data-select-departure]').forEach((button) => {
+    button.addEventListener('click', async () => {
+      await selectDepartureTrip(button.dataset.selectDeparture ?? '');
+    });
+  });
+
   document.querySelectorAll('[data-trip-key]').forEach((card) => {
     card.addEventListener('click', async (event) => {
       if (event.target.closest('a, button')) {
         return;
       }
 
-      const tripKey = card.dataset.tripKey ?? '';
-      const hasMatch = state.resultState?.type === 'results'
-        ? state.resultState.allDepartures.find((departure) => departure.tripKey === tripKey)
-        : null;
-
-      if (!hasMatch || state.resultState?.type !== 'results') {
-        return;
-      }
-
-      state.resultState = {
-        ...state.resultState,
-        selectedTripKey: tripKey,
-        selectedTripMapLoadFailed: false,
-      };
-
-      renderApp();
-      bindInteractions();
-      await renderSelectedTripMapForTrip(tripKey);
+      await selectDepartureTrip(card.dataset.tripKey ?? '');
     });
   });
 }
@@ -1609,13 +1739,13 @@ function bindLocationActions() {
 }
 
 function bindLanguageSelector() {
-  const languageSelect = document.querySelector('select[name="language"]');
-
-  languageSelect?.addEventListener('change', (event) => {
-    state.language = String(event.currentTarget.value ?? state.language);
-    persistLanguage(window.localStorage, state.language);
-    renderApp();
-    bindInteractions();
+  document.querySelectorAll('select[name="language"]').forEach((languageSelect) => {
+    languageSelect.addEventListener('change', (event) => {
+      state.language = String(event.currentTarget.value ?? state.language);
+      persistLanguage(window.localStorage, state.language);
+      renderApp();
+      bindInteractions();
+    });
   });
 }
 

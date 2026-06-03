@@ -30,6 +30,10 @@ function renderDepartureCard(departure, t, pdfUrl) {
   const actionLabel = departure.isSelected
     ? t('results.selectedAction')
     : t('results.detailsAction');
+  const detailActionLabel = `${actionLabel}: ${departure.departureTime} ${t('results.arrives').toLowerCase()} ${departure.arrivalTime} · ${t('results.line')} ${departure.lineId}`;
+  const detailAction = departure.tripKey
+    ? `<button type="button" class="departure-detail-action" data-select-departure="${escapeHtml(departure.tripKey)}" aria-label="${escapeHtml(detailActionLabel)}" aria-pressed="${departure.isSelected ? 'true' : 'false'}">${escapeHtml(actionLabel)}</button>`
+    : `<span>${escapeHtml(actionLabel)}</span>`;
   const shareAction = departure.tripKey
     ? `<button type="button" class="departure-share-action" data-share-departure="${escapeHtml(departure.tripKey)}">${escapeHtml(t('results.shareDeparture'))}</button>`
     : '';
@@ -42,7 +46,7 @@ function renderDepartureCard(departure, t, pdfUrl) {
       </div>
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
-        <span>${actionLabel}</span>
+        ${detailAction}
         ${shareAction}
         <a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
       </div>

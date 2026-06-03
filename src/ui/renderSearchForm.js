@@ -16,23 +16,106 @@ function escapeHtml(value = '') {
     .replaceAll('"', '&quot;');
 }
 
-function renderSuggestionButtons(attributeName, suggestions = [], t) {
+function renderActiveDescendantAttribute(activeOptionId) {
+  return activeOptionId ? `aria-activedescendant="${escapeHtml(activeOptionId)}"` : '';
+}
+
+function renderComboboxInput({
+  name,
+  value,
+  placeholder,
+  enterKeyHint,
+  panelId,
+  panelOpen,
+  activeOptionId,
+  fieldName,
+}) {
+  return `
+    <input
+      name="${escapeHtml(name)}"
+      value="${escapeHtml(value)}"
+      placeholder="${escapeHtml(placeholder)}"
+      autocomplete="off"
+      inputmode="search"
+      enterkeyhint="${escapeHtml(enterKeyHint)}"
+      role="combobox"
+      aria-autocomplete="list"
+      aria-haspopup="listbox"
+      aria-controls="${escapeHtml(panelId)}"
+      aria-expanded="${panelOpen ? 'true' : 'false'}"
+      ${renderActiveDescendantAttribute(activeOptionId)}
+      data-field="${escapeHtml(fieldName)}"
+    />
+  `;
+}
+
+function renderSearchInputRow({
+  name,
+  value,
+  placeholder,
+  enterKeyHint,
+  panelId,
+  panelOpen,
+  activeOptionId,
+  fieldName,
+  t,
+}) {
+  return `
+    <div class="field-input-row">
+      ${renderComboboxInput({
+        name,
+        value,
+        placeholder,
+        enterKeyHint,
+        panelId,
+        panelOpen,
+        activeOptionId,
+        fieldName,
+      })}
+      ${renderLocationButton(fieldName, t('search.useMyLocation'))}
+    </div>
+  `;
+}
+
+function renderFieldLabel(fieldName, label) {
+  return `<span id="${escapeHtml(fieldName)}-field-label">${escapeHtml(label)}</span>`;
+}
+
+function renderSuggestionButtons(attributeName, suggestions = [], t, {
+  activeOptionId = null,
+  idPrefix,
+  startIndex = 0,
+} = {}) {
   return suggestions
     .map(
-      ({ value, meta = '', label = '', type = '' }) => `
-        <button type="button" class="picker-option" ${attributeName}="${escapeHtml(value)}" ${type ? `data-option-type="${escapeHtml(type)}"` : ''}>
+      ({ value, meta = '', label = '', type = '' }, index) => {
+        const optionId = `${idPrefix}-${startIndex + index}`;
+        const selected = activeOptionId === optionId;
+
+        return `
+        <button
+          type="button"
+          id="${optionId}"
+          class="picker-option${selected ? ' picker-option--active' : ''}"
+          role="option"
+          aria-selected="${selected ? 'true' : 'false'}"
+          tabindex="-1"
+          ${attributeName}="${escapeHtml(value)}"
+          ${type ? `data-option-type="${escapeHtml(type)}"` : ''}
+        >
           <span class="picker-option-copy">
             <span class="picker-option-label">${escapeHtml(value)}</span>
             ${(meta || label) ? `<small>${escapeHtml(meta || label)}</small>` : ''}
           </span>
           <span class="picker-option-action" aria-hidden="true">${escapeHtml(t('search.panel.choose'))}</span>
         </button>
-      `,
+      `;
+      },
     )
     .join('');
 }
 
-function renderFromPanel(fromSuggestions, t) {
+function renderFromPanel(fromSuggestions, t, { activeOptionId = null } = {}) {
   const {
     areas = [],
     exactStops = [],
@@ -43,19 +126,30 @@ function renderFromPanel(fromSuggestions, t) {
     : [...areas, ...exactStops];
 
   return `
-    <div id="from-picker-panel" class="picker-panel" data-panel="from">
-      <div class="picker-panel-head">
-        <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
-      </div>
-      <div class="picker-option-list">
-        ${renderSuggestionButtons('data-from-value', initialOptions, t)}
-      </div>
-      ${exactStops.length && exactStopHeading ? `
+    <div id="from-picker-panel" class="picker-panel" data-panel="from" role="listbox" aria-labelledby="from-field-label">
+      <div class="picker-option-group" role="group" aria-label="${escapeHtml(t('search.fromPanel.browseAll'))}">
         <div class="picker-panel-head">
-          <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
+          <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
         </div>
         <div class="picker-option-list">
-          ${renderSuggestionButtons('data-from-value', exactStops, t)}
+          ${renderSuggestionButtons('data-from-value', initialOptions, t, {
+            activeOptionId,
+            idPrefix: 'from-picker-option',
+          })}
+        </div>
+      </div>
+      ${exactStops.length && exactStopHeading ? `
+        <div class="picker-option-group" role="group" aria-label="${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}">
+          <div class="picker-panel-head">
+            <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
+          </div>
+          <div class="picker-option-list">
+            ${renderSuggestionButtons('data-from-value', exactStops, t, {
+              activeOptionId,
+              idPrefix: 'from-picker-option',
+              startIndex: initialOptions.length,
+            })}
+          </div>
         </div>
       ` : ''}
     </div>
@@ -110,6 +204,7 @@ function renderDestinationPanel({
   reachableDestinations,
   selectedLocalityLabel,
   exactFromStop,
+  activeOptionId,
 }) {
   const matchScope = exactFromStop
     ? exactFromStop.canonical
@@ -145,18 +240,59 @@ function renderDestinationPanel({
     <div class="picker-option-list">
       ${reachableDestinations
         .map(
-          (stop) => `
-            <button type="button" class="picker-option" data-stop-id="${stop.id}" data-to-value="${escapeHtml(stop.canonical)}">
+          (stop, index) => {
+            const optionId = `to-picker-option-${index}`;
+            const selected = activeOptionId === optionId;
+
+            return `
+            <button
+              type="button"
+              id="${optionId}"
+              class="picker-option${selected ? ' picker-option--active' : ''}"
+              role="option"
+              aria-selected="${selected ? 'true' : 'false'}"
+              tabindex="-1"
+              data-stop-id="${escapeHtml(stop.id)}"
+              data-to-value="${escapeHtml(stop.canonical)}"
+            >
               <span class="picker-option-copy">
                 <span class="picker-option-label">${escapeHtml(stop.canonical)}</span>
                 <small>${escapeHtml(t('search.panel.directDestination'))}</small>
               </span>
               <span class="picker-option-action" aria-hidden="true">${escapeHtml(t('search.panel.choose'))}</span>
             </button>
-          `,
+          `;
+          },
         )
         .join('')}
     </div>
+  `;
+}
+
+function renderToPanel({
+  t,
+  destinationMode,
+  destinationMessage,
+  reachableDestinations,
+  selectedLocalityLabel,
+  exactFromStop,
+  activeOptionId,
+}) {
+  const hasOptions = destinationMode !== 'informational' && destinationMode !== 'empty';
+  const roleAttributes = hasOptions
+    ? 'role="listbox" aria-labelledby="to-field-label"'
+    : 'role="status" aria-live="polite"';
+
+  return `
+    <div id="to-picker-panel" class="picker-panel" data-panel="to" ${roleAttributes}>${renderDestinationPanel({
+      t,
+      destinationMode,
+      destinationMessage,
+      reachableDestinations,
+      selectedLocalityLabel,
+      exactFromStop,
+      activeOptionId,
+    })}</div>
   `;
 }
 
@@ -169,9 +305,11 @@ export function renderSearchForm({
   exactFromStop = null,
   fromSuggestions = { areas: [], exactStops: [], exactStopHeading: '' },
   fromPanelOpen = false,
+  fromActiveOptionId = null,
   toInput = to,
   toStopSelected = false,
   toPanelOpen = false,
+  toActiveOptionId = null,
   reachableDestinations = [],
   destinationMode = 'informational',
   destinationMessage,
@@ -215,52 +353,45 @@ export function renderSearchForm({
           </div>
         </div>
         <label class="field">
-          <span>${escapeHtml(t('search.fromLabel'))}</span>
-          <div class="field-input-row">
-            <input
-              name="from"
-              value="${escapeHtml(fromInput)}"
-              placeholder="${escapeHtml(t('search.fromPlaceholder'))}"
-              autocomplete="off"
-              inputmode="search"
-              enterkeyhint="next"
-              aria-autocomplete="list"
-              aria-controls="from-picker-panel"
-              aria-expanded="${fromPanelOpen ? 'true' : 'false'}"
-              data-field="from"
-            />
-            ${renderLocationButton('from', t('search.useMyLocation'))}
-          </div>
+          ${renderFieldLabel('from', t('search.fromLabel'))}
+          ${renderSearchInputRow({
+            name: 'from',
+            value: fromInput,
+            placeholder: t('search.fromPlaceholder'),
+            enterKeyHint: 'next',
+            panelId: 'from-picker-panel',
+            panelOpen: fromPanelOpen,
+            activeOptionId: fromActiveOptionId,
+            fieldName: 'from',
+            t,
+          })}
           <small>${fromHelp}</small>
-          ${fromPanelOpen ? renderFromPanel(fromSuggestions, t) : ''}
+          ${fromPanelOpen ? renderFromPanel(fromSuggestions, t, { activeOptionId: fromActiveOptionId }) : ''}
         </label>
 
         <label class="field">
-          <span>${escapeHtml(t('search.toLabel'))}</span>
-          <div class="field-input-row">
-            <input
-              name="to"
-              value="${escapeHtml(toInput)}"
-              placeholder="${escapeHtml(t('search.toPlaceholder'))}"
-              autocomplete="off"
-              inputmode="search"
-              enterkeyhint="search"
-              aria-autocomplete="list"
-              aria-controls="to-picker-panel"
-              aria-expanded="${toPanelOpen ? 'true' : 'false'}"
-              data-field="to"
-            />
-            ${renderLocationButton('to', t('search.useMyLocation'))}
-          </div>
+          ${renderFieldLabel('to', t('search.toLabel'))}
+          ${renderSearchInputRow({
+            name: 'to',
+            value: toInput,
+            placeholder: t('search.toPlaceholder'),
+            enterKeyHint: 'search',
+            panelId: 'to-picker-panel',
+            panelOpen: toPanelOpen,
+            activeOptionId: toActiveOptionId,
+            fieldName: 'to',
+            t,
+          })}
           <small>${toHelp}</small>
-          ${toPanelOpen ? `<div id="to-picker-panel" class="picker-panel" data-panel="to">${renderDestinationPanel({
+          ${toPanelOpen ? renderToPanel({
             t,
             destinationMode,
             destinationMessage: resolvedDestinationMessage,
             reachableDestinations,
             selectedLocalityLabel,
             exactFromStop,
-          })}</div>` : ''}
+            activeOptionId: toActiveOptionId,
+          }) : ''}
         </label>
 
         <label class="field">

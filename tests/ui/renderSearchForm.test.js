@@ -207,4 +207,41 @@ describe('renderSearchForm', () => {
     expect(html).toContain('aria-expanded="true"');
     expect(html).toContain('id="from-picker-panel"');
   });
+
+  it('renders route pickers with combobox listbox option semantics', () => {
+    const html = renderSearchForm({
+      fromPanelOpen: true,
+      fromSuggestions: {
+        areas: [
+          { value: 'Porto Maurizio', meta: 'Area' },
+        ],
+        exactStops: [
+          { value: 'imperia porto maurizio', meta: 'Exact stop', type: 'exact-stop' },
+        ],
+        exactStopHeading: 'Porto Maurizio',
+      },
+      toPanelOpen: true,
+      destinationMode: 'locality-destinations',
+      destinationMessage: 'Direct destinations from this area',
+      selectedLocalityLabel: 'Porto Maurizio',
+      reachableDestinations: [
+        { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+      ],
+      fromActiveOptionId: 'from-picker-option-1',
+      toActiveOptionId: 'to-picker-option-0',
+    });
+
+    expect(html).toContain('role="combobox"');
+    expect(html).toContain('aria-haspopup="listbox"');
+    expect(html).toContain('aria-activedescendant="from-picker-option-1"');
+    expect(html).toContain('aria-activedescendant="to-picker-option-0"');
+    expect(html).toContain('id="from-picker-panel" class="picker-panel" data-panel="from" role="listbox"');
+    expect(html).toContain('id="to-picker-panel" class="picker-panel" data-panel="to" role="listbox"');
+    expect(html).toContain('id="from-picker-option-0"');
+    expect(html).toContain('id="from-picker-option-1"');
+    expect(html).toContain('id="to-picker-option-0"');
+    expect(html).toContain('role="option"');
+    expect(html).toContain('aria-selected="true"');
+    expect(html).toContain('tabindex="-1"');
+  });
 });

@@ -27,6 +27,17 @@ function renderLanguageOptions(languages, selectedLanguage) {
     .join('');
 }
 
+function renderLanguageSelector({ languages, language, t }) {
+  return `
+    <label class="language-selector">
+      <span>${t('shell.language')}</span>
+      <select name="language" aria-label="${t('shell.language')}">
+        ${renderLanguageOptions(languages, language)}
+      </select>
+    </label>
+  `;
+}
+
 function renderFreshnessMarker(datasetInfo, t) {
   if (!datasetInfo?.source) {
     return '';
@@ -47,6 +58,18 @@ function renderSeoSupportCopy(t) {
       <p>${t('shell.seoBody')}</p>
       <p class="seo-support-note">${t('shell.sourceTrustBody')}</p>
     </section>
+  `;
+}
+
+function renderSecondaryActions({ languages, language, t }) {
+  return `
+    <a class="topbar-link" href="${FEEDBACK_FORM_URL}" target="_blank" rel="noreferrer">
+      ${t('shell.feedback')}
+    </a>
+    <a class="topbar-link" href="${BRAND_SITE_URL}" target="_blank" rel="noreferrer">
+      ${t('shell.officialSite')}
+    </a>
+    ${renderLanguageSelector({ languages, language, t })}
   `;
 }
 
@@ -78,18 +101,15 @@ export function renderShell(
           <a class="topbar-link" href="${ROUTES_INDEX_URL}">
             ${t('shell.routesIndex')}
           </a>
-          <a class="topbar-link" href="${FEEDBACK_FORM_URL}" target="_blank" rel="noreferrer">
-            ${t('shell.feedback')}
-          </a>
-          <a class="topbar-link" href="${BRAND_SITE_URL}" target="_blank" rel="noreferrer">
-            ${t('shell.officialSite')}
-          </a>
-          <label class="language-selector">
-            <span>${t('shell.language')}</span>
-            <select name="language" aria-label="${t('shell.language')}">
-              ${renderLanguageOptions(languages, language)}
-            </select>
-          </label>
+          <div class="topbar-secondary-actions topbar-secondary-actions--desktop">
+            ${renderSecondaryActions({ languages, language, t })}
+          </div>
+          <details class="topbar-more-actions topbar-more-actions--mobile">
+            <summary class="topbar-link topbar-more-summary">${t('shell.more')}</summary>
+            <div class="topbar-more-panel">
+              ${renderSecondaryActions({ languages, language, t })}
+            </div>
+          </details>
         </div>
       </header>
       ${tabNavigation}

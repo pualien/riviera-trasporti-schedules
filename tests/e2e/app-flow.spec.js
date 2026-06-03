@@ -94,6 +94,21 @@ test('loads the route search first on mobile and filters Browse stops', async ({
   await expect(page.locator('.browse-count')).toContainText('matches');
 });
 
+test('collapses secondary header actions on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const mobileMenu = page.locator('.topbar-more-actions--mobile');
+  await expect(mobileMenu.locator('.topbar-more-summary')).toBeVisible();
+  await expect(mobileMenu.locator('a[href="https://forms.gle/tjo52ginwrjUGdMC6"]')).toBeHidden();
+
+  await mobileMenu.locator('.topbar-more-summary').click();
+
+  await expect(mobileMenu.locator('a[href="https://forms.gle/tjo52ginwrjUGdMC6"]')).toBeVisible();
+  await expect(mobileMenu.locator('a[href="https://rivieratrasporti.it/"]')).toBeVisible();
+  await expect(mobileMenu.locator('select[name="language"]')).toBeVisible();
+});
+
 test('keeps From and To pickers roomy on iPhone-sized screens', async ({ page }) => {
   await page.setViewportSize({ width: 393, height: 852 });
   await page.goto('/');
@@ -153,6 +168,44 @@ test('keeps From and To pickers roomy on iPhone-sized screens', async ({ page })
 
   expect(toMetrics.panelTop).toBeLessThan(620);
   expect(toMetrics.optionHeight).toBeGreaterThanOrEqual(84);
+});
+
+test('announces and selects picker suggestions from the keyboard', async ({ page }) => {
+  await page.goto('/');
+
+  const fromInput = page.locator('input[name="from"]');
+  await fromInput.focus();
+  await expect(fromInput).toHaveAttribute('role', 'combobox');
+  await expect(fromInput).toHaveAttribute('aria-expanded', 'true');
+
+  await page.keyboard.press('ArrowDown');
+  await expect(fromInput).toHaveAttribute('aria-activedescendant', /from-picker-option-\d+/);
+  const fromActiveOptionId = await fromInput.getAttribute('aria-activedescendant');
+  await expect(page.locator(`#${fromActiveOptionId}`)).toHaveAttribute('aria-selected', 'true');
+  const selectedAreaLabel = await page.locator(`#${fromActiveOptionId} .picker-option-label`).innerText();
+
+  await page.keyboard.press('Enter');
+  await expect(fromInput).toHaveValue(selectedAreaLabel);
+  await expect(fromInput).toHaveAttribute('aria-expanded', 'true');
+
+  await page.keyboard.press('ArrowDown');
+  await page.keyboard.press('ArrowDown');
+  await expect(fromInput).toHaveAttribute('aria-activedescendant', /from-picker-option-\d+/);
+  await page.keyboard.press('Enter');
+
+  const toInput = page.locator('input[name="to"]');
+  await expect(toInput).toBeFocused();
+  await expect(toInput).toHaveAttribute('role', 'combobox');
+  await expect(toInput).toHaveAttribute('aria-expanded', 'true');
+
+  await page.keyboard.press('ArrowDown');
+  await expect(toInput).toHaveAttribute('aria-activedescendant', /to-picker-option-\d+/);
+  const toActiveOptionId = await toInput.getAttribute('aria-activedescendant');
+  await expect(page.locator(`#${toActiveOptionId}`)).toHaveAttribute('aria-selected', 'true');
+
+  await page.keyboard.press('Enter');
+  await expect(toInput).not.toHaveValue('');
+  await expect(toInput).toHaveAttribute('aria-expanded', 'false');
 });
 
 test('opens provider search tabs and builds a prefilled FlixBus handoff', async ({ page }) => {
@@ -285,6 +338,19 @@ test('shows route action feedback and opens a tracked share modal', async ({ pag
       share_url: expect.stringContaining('utm_source=share_link'),
     }),
   ]);
+});
+
+test('opens departure details from a keyboard-operable control', async ({ page }) => {
+  await page.goto(SEARCH_ROUTE);
+
+  const detailAction = page.locator('[data-select-departure]').first();
+  await expect(detailAction).toBeVisible();
+
+  await detailAction.focus();
+  await page.keyboard.press('Enter');
+
+  await expect(page.locator('.departure-card--selected').first()).toBeVisible();
+  await expect(page.locator('[data-testid="route-map-panel"]')).toBeVisible();
 });
 
 test('uses native sharing for route shares when available', async ({ page }) => {
