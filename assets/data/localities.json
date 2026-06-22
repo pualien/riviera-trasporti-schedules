@@ -29,22 +29,7 @@
       "ortovero",
       "coasco-b-v",
       "bastia-/-leca",
-      "albenga",
-      "leca-/-bastia",
-      "gazzo",
-      "gavenola",
-      "leverone",
-      "aquila-d-arroscia",
-      "costa-bacelega",
-      "moano",
-      "armo",
-      "montegrosso",
-      "mendatica",
-      "lavina-bivio",
-      "cenova-bivio",
-      "cenova",
-      "rezzo",
-      "lavina"
+      "albenga"
     ],
     "matchTokens": [
       "albenga",
@@ -109,12 +94,12 @@
       "bordighera",
       "bordighera-fs",
       "vallebona",
+      "bordighera-alta",
       "sasso",
       "seborga",
       "borghetto-superiore",
       "borghetto-inferiore",
-      "bordighera-alta-–-via-dei-colli",
-      "rotonda-\"bel-sit\"",
+      "rotonda-\"bel-sit\"-/-atm",
       "via-pasteur-scuole",
       "bordighera-cimitero",
       "porto---piazza-marconi"
@@ -136,10 +121,8 @@
     "label": "Borgomaro",
     "aliases": [],
     "stopIds": [
-      "cartari",
       "san-lazzaro-reale",
       "caravonica",
-      "lucinasco",
       "borgomaro",
       "aurigo",
       "poggialto",
@@ -197,7 +180,6 @@
       "San Bartolomeo al Mare"
     ],
     "stopIds": [
-      "san-bartolomeo-caravonica",
       "san-bartolomeo",
       "cervo",
       "san-bartolomeo-al-mare",
@@ -216,6 +198,7 @@
       "Diano San Pietro"
     ],
     "stopIds": [
+      "isola",
       "diano-castello",
       "diano-san-pietro",
       "diano-roncagli",
@@ -223,8 +206,7 @@
       "diano-arentino",
       "diano-borello",
       "villa-faraldi",
-      "deglio",
-      "isola"
+      "deglio"
     ],
     "matchTokens": [
       "diano castello",
@@ -249,6 +231,9 @@
       "diano-castello",
       "diano-marina-capolinea",
       "diano-marina-vecchia-stazione",
+      "d-marina-v-cesare-battisti",
+      "d-marina-vecchia-stazione",
+      "d-marina-bar-sito-(lato-mare)",
       "diano-san-pietro",
       "diano-roncagli",
       "diano-arentino",
@@ -306,15 +291,12 @@
       "Oneglia"
     ],
     "stopIds": [
+      "imperia-oneglia",
       "imperia-porto-maurizio",
-      "piani-paorelli",
       "caramagna",
-      "imperia-p-maurizio-colla-san-bartolomeo",
       "porto-maurizio-pensilina",
       "piazza-ricci",
-      "v-acquarone",
       "via-cascione",
-      "porto-maurizio-pens",
       "via-xxv-aprile",
       "castelvecchio",
       "riviera-trasporti",
@@ -324,28 +306,25 @@
       "piani-2",
       "caramagna-bacan",
       "artallo",
-      "stazione-fs-arg-sx",
-      "stazione-fs-arg-dx",
       "borgo-san-moro",
       "poggi",
       "poggi-cabina-enel",
-      "imperia-oneglia",
       "caramagna-/-bivio-croce",
+      "montegrazie",
       "moltedo",
       "cantalupo",
-      "montegrazie",
       "prino",
       "piani",
       "torrazza",
-      "ponte-barcheto",
+      "stazione-fs-arg-sx",
       "barcheto",
-      "via-repubblica",
+      "stazione-fs-arg-dx",
       "argine-sx",
       "stazione-fs-dx-arrivo",
       "stazione-fs-dx-partenza",
       "argine-dx",
-      "imperia-on",
-      "imperia-pm-igiene"
+      "via-repubblica",
+      "imperia-on"
     ],
     "matchTokens": [
       "imperia",
@@ -382,8 +361,7 @@
     "label": "Isolabona",
     "aliases": [],
     "stopIds": [
-      "isolabona---arrivo",
-      "isolabona---partenza"
+      "isolabona"
     ],
     "matchTokens": [
       "isolabona"
@@ -453,12 +431,11 @@
       "bestagno",
       "villa-viani",
       "chiusavecchia",
-      "cesio",
-      "arzeno",
+      "colla-san-bartolomeo",
       "gazzelli",
       "chiusanico",
       "torria",
-      "colla-san-bartolomeo"
+      "cesio"
     ],
     "matchTokens": [
       "pontedassio",
@@ -492,7 +469,6 @@
     "label": "Riva Ligure",
     "aliases": [],
     "stopIds": [
-      "riva-ligure-centro-(scuole)",
       "riva-ligure"
     ],
     "matchTokens": [
@@ -512,8 +488,6 @@
       "lingueglietta",
       "costarainera",
       "cipressa",
-      "san-lorenzo-(arrivo)",
-      "piani-paorelli",
       "torre-paponi",
       "boscomare",
       "pietrabruna",
@@ -542,29 +516,29 @@
       "Sanremo Autostazione"
     ],
     "stopIds": [
-      "sanremo-s-martino-stadio",
-      "sanremo-autostazione",
-      "sanremo-partenza",
+      "sanremo-autostaz-partenza",
       "la-brezza",
       "bussana",
       "capo-nero",
-      "villa-helios",
-      "sanremo-arrivo",
+      "sanremo-autostazione",
       "caramagna",
-      "caramagna-bacan",
+      "villa-helios",
+      "sanremo-partenza",
+      "sanremo-arrivo",
       "via-padre-semeria",
+      "caramagna-bacan",
       "caramagna-/-bivio-croce",
       "autostazione",
       "baragallo",
       "foce",
       "scalinata-bussana-vecchia",
       "bussana-scuole-elementari",
-      "poggio-chiesa",
+      "poggio",
       "poggio-direz-via-val-d-olivi",
       "san-romolo",
-      "san-martino-sogg-militare",
-      "via-val-d-olivi-(deposito-rt)",
-      "arma-centro"
+      "san-martino",
+      "arma-centro",
+      "sanremo"
     ],
     "matchTokens": [
       "sanremo",
@@ -611,12 +585,11 @@
       "Triora"
     ],
     "stopIds": [
-      "arma-di-taggia",
       "arma-bivio-rossat",
       "taggia-stazione-fs",
       "taggia-capolinea",
       "arma-di-taggia-rossat",
-      "arma-ex-fs",
+      "arma-di-taggia",
       "taggia",
       "badalucco",
       "montalto-bivio",
@@ -624,7 +597,8 @@
       "carpasio",
       "triora",
       "molini-di-triora",
-      "agaggio-inferiore"
+      "agaggio-inferiore",
+      "arma-di-taggia---centro"
     ],
     "matchTokens": [
       "taggia",
@@ -684,17 +658,14 @@
       "ventimiglia-alta---via-garibaldi",
       "ventimiglia-alta---via-verdi-(rit-)",
       "ventimiglia-via-cavour",
+      "ventimiglia-alta---via-verdi",
       "marina-san-giuseppe",
       "ventimiglia-ponte-andrea-doria",
       "nervia-bivio",
-      "ventimiglia-capolinea",
-      "ventimiglia---centro-studi",
-      "via-gallardi-ponte-bevera",
       "ventimiglia---capolinea",
       "seglia",
-      "ventimiglia-centro-studi",
-      "ventimiglia",
-      "ventimiglia---teatro"
+      "via-gallardi-ponte-bevera",
+      "ventimiglia-teatro"
     ],
     "matchTokens": [
       "ventimiglia",

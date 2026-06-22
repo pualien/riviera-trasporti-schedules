@@ -160,7 +160,11 @@ export async function buildRouteData({
   localityRules = [],
   builtAt = new Date().toISOString(),
 }) {
-  const missingEntries = indexEntries.filter(
+  const availablePageNumbers = new Set(pages.map((page) => page.pageNumber));
+  const indexEntriesInPdf = availablePageNumbers.size
+    ? indexEntries.filter((indexEntry) => availablePageNumbers.has(indexEntry.pageNumber))
+    : indexEntries;
+  const missingEntries = indexEntriesInPdf.filter(
     (indexEntry) =>
       !manifestEntries.some(
         (manifestEntry) =>
@@ -208,7 +212,7 @@ export async function buildRouteData({
     trips,
     localities: validatedLocalities,
     reachability: buildReachability(trips),
-    metadata: buildDatasetMetadata({ indexEntries, manifestEntries, builtAt }),
+    metadata: buildDatasetMetadata({ indexEntries: indexEntriesInPdf, manifestEntries, builtAt }),
   };
 }
 

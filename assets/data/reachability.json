@@ -5,6 +5,7 @@
     "borgo",
     "cimitero",
     "frati-maristi",
+    "frati-maristi-|",
     "la-mortola",
     "latte",
     "marina-san-giuseppe",
@@ -14,19 +15,16 @@
     "roverino",
     "roverino-scuole",
     "san-lorenzo",
-    "sant-antonio",
     "sealza",
     "seglia",
     "torri-|",
     "trucco",
     "varase",
-    "varase-|",
     "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
     "ventimiglia-alta---c-so-verdi",
     "ventimiglia-alta---via-garibaldi",
+    "ventimiglia-alta---via-verdi",
     "ventimiglia-alta---via-verdi-(rit-)",
-    "ventimiglia-capolinea",
     "ventimiglia-via-cavour",
     "via-gallardi-ponte-bevera",
     "via-lamboglia",
@@ -37,7 +35,6 @@
     "la-mortola",
     "latte",
     "ponte-san-luigi",
-    "sant-antonio",
     "sealza",
     "ventimiglia-alta---c-so-verdi"
   ],
@@ -45,7 +42,6 @@
     "la-mortola",
     "latte",
     "ponte-san-luigi",
-    "sant-antonio",
     "sealza",
     "ventimiglia-alta---c-so-verdi"
   ],
@@ -60,7 +56,6 @@
     "la-mortola",
     "latte",
     "ponte-san-luigi",
-    "sant-antonio",
     "sealza",
     "ventimiglia-alta---c-so-verdi"
   ],
@@ -71,136 +66,48 @@
     "sealza",
     "ventimiglia-alta---c-so-verdi"
   ],
-  "sanremo-s-martino-stadio": [
-    "arma-di-taggia",
-    "bivio-pompeiana",
-    "castellaro",
-    "pompeiana",
-    "riva-ligure-centro-(scuole)",
-    "sanremo-autostazione",
-    "sanremo-s-martino-stadio",
-    "terzorio",
-    "via-leva"
+  "san-lorenzo-(partenza)": [
+    "bivio-civezza",
+    "boscomare",
+    "cipressa",
+    "civezza",
+    "costarainera",
+    "lingueglietta",
+    "pietrabruna",
+    "torre-paponi"
   ],
-  "arma-di-taggia": [
-    "andora-bivio-ss1-per-a10",
-    "andora-stazione-fs",
-    "arma-di-taggia",
-    "bivio-pompeiana",
-    "castellaro",
-    "cervo",
-    "diano-marina",
-    "imperia-oneglia",
-    "imperia-porto-maurizio",
-    "pompeiana",
-    "riva-ligure",
-    "riva-ligure-centro-(scuole)",
-    "san-bartolomeo",
-    "san-lorenzo",
-    "sanremo-autostazione",
-    "sanremo-s-martino-stadio",
-    "santo-stefano",
-    "terzorio",
-    "via-leva"
+  "lingueglietta": [
+    "cipressa",
+    "costarainera"
   ],
-  "castellaro": [
-    "arma-di-taggia",
-    "bivio-pompeiana",
-    "castellaro",
-    "pompeiana",
-    "riva-ligure-centro-(scuole)",
-    "sanremo-autostazione",
-    "sanremo-s-martino-stadio",
-    "terzorio",
-    "via-leva"
+  "costarainera": [
+    "cipressa"
   ],
-  "bivio-pompeiana": [
-    "arma-di-taggia",
-    "bivio-pompeiana",
-    "pompeiana",
-    "riva-ligure-centro-(scuole)",
-    "sanremo-autostazione",
-    "terzorio"
+  "cipressa": [],
+  "torre-paponi": [
+    "boscomare",
+    "pietrabruna"
   ],
-  "pompeiana": [
-    "arma-di-taggia",
-    "bivio-pompeiana",
-    "pompeiana",
-    "riva-ligure-centro-(scuole)",
-    "sanremo-autostazione",
-    "terzorio"
+  "boscomare": [
+    "pietrabruna"
   ],
-  "terzorio": [
-    "pompeiana"
+  "pietrabruna": [],
+  "bivio-civezza": [
+    "civezza"
   ],
-  "sanremo-autostazione": [
-    "agaggio-inferiore",
-    "andora-bivio-ss1-per-a10",
-    "andora-stazione-fs",
-    "arma-bivio-rossat",
-    "arma-centro",
-    "arma-di-taggia",
-    "arma-di-taggia-rossat",
-    "arma-ex-fs",
-    "badalucco",
-    "baiardo",
-    "bivio-pompeiana",
-    "bordighera-centro",
-    "bussana",
-    "capo-nero",
-    "carpasio",
-    "castellaro",
-    "ceriana",
-    "cervo",
-    "diano-marina",
-    "imperia-oneglia",
-    "imperia-porto-maurizio",
-    "la-brezza",
-    "madonna-della-villa",
-    "molini-di-triora",
-    "montalto",
-    "montalto-bivio",
-    "nervia-bivio",
-    "ospedaletti",
-    "poggio-chiesa",
-    "pompeiana",
-    "riva-ligure",
-    "riva-ligure-centro-(scuole)",
-    "rotonda-scuola-valle-armea",
-    "san-bartolomeo",
-    "san-lorenzo",
-    "sanremo-autostazione",
-    "sanremo-partenza",
-    "sanremo-s-martino-stadio",
-    "santo-stefano",
-    "taggia",
-    "taggia-capolinea",
-    "taggia-stazione-fs",
-    "terzorio",
-    "triora",
-    "vallecrosia",
-    "ventimiglia-ponte-andrea-doria",
-    "via-leva",
-    "via-val-d-olivi-(deposito-rt)",
-    "villa-helios"
-  ],
-  "riva-ligure-centro-(scuole)": [
-    "pompeiana",
-    "terzorio"
-  ],
-  "via-leva": [
-    "bivio-pompeiana",
-    "pompeiana"
-  ],
+  "civezza": [],
   "cimitero": [
+    "airole-bivio",
+    "airole-piazza",
     "borgo",
     "cimitero",
+    "olivetta-san-michele",
     "ospedale",
     "roverino",
     "roverino-scuole",
     "trucco",
     "varase",
-    "ventimiglia-capolinea",
+    "ventimiglia---capolinea",
     "via-lamboglia",
     "via-roma-centro",
     "via-roma-centro-studi"
@@ -226,7 +133,7 @@
     "roverino",
     "trucco",
     "varase",
-    "ventimiglia-capolinea",
+    "ventimiglia---capolinea",
     "via-lamboglia",
     "via-roma-centro",
     "via-roma-centro-studi"
@@ -240,14 +147,28 @@
     "ospedale",
     "roverino",
     "trucco",
-    "varase",
-    "ventimiglia-capolinea",
+    "ventimiglia---capolinea",
     "via-lamboglia",
     "via-roma-centro",
     "via-roma-centro-studi"
   ],
   "borgo": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "collina-fiorita",
+    "de-amicis",
+    "foce",
+    "madonna-della-costa",
     "ospedale",
+    "p-za-eroi-mercato",
+    "piazza-san-bernardo",
+    "residenza-franchiolo",
+    "san-giovanni",
+    "san-martino",
+    "via-caduti-del-lavoro",
+    "via-de-amicis",
+    "via-goethe",
     "via-lamboglia",
     "via-roma-centro",
     "via-roma-centro-studi"
@@ -259,6 +180,7 @@
   ],
   "ospedale": [
     "comune",
+    "l-nanollo-p",
     "ospedale",
     "porto-maurizio-pensilina",
     "rotonda-borgo-san-moro",
@@ -271,227 +193,51 @@
     "viale-matteotti",
     "villetta"
   ],
-  "varase": [
-    "borgo",
-    "cimitero",
-    "roverino",
-    "ventimiglia-capolinea",
-    "via-roma-centro-studi"
-  ],
   "via-lamboglia": [
     "via-roma-centro"
   ],
   "via-roma-centro": [],
+  "varase": [
+    "borgo",
+    "cimitero",
+    "roverino"
+  ],
   "ventimiglia-alta---via-garibaldi": [
     "marina-san-giuseppe",
+    "ventimiglia-alta---via-garibaldi",
+    "ventimiglia-alta---via-verdi",
     "ventimiglia-alta---via-verdi-(rit-)",
     "ventimiglia-via-cavour"
   ],
   "ventimiglia-alta---via-verdi-(rit-)": [
     "marina-san-giuseppe",
+    "ventimiglia-alta---via-garibaldi",
+    "ventimiglia-alta---via-verdi",
     "ventimiglia-via-cavour"
   ],
-  "ventimiglia-via-cavour": [],
+  "ventimiglia-via-cavour": [
+    "marina-san-giuseppe",
+    "ventimiglia-alta---via-garibaldi",
+    "ventimiglia-alta---via-verdi",
+    "ventimiglia-via-cavour"
+  ],
+  "ventimiglia-alta---via-verdi": [
+    "marina-san-giuseppe"
+  ],
   "marina-san-giuseppe": [
+    "marina-san-giuseppe",
+    "ventimiglia-alta---via-garibaldi",
+    "ventimiglia-alta---via-verdi",
     "ventimiglia-via-cavour"
   ],
-  "san-lorenzo-(partenza)": [
-    "bivio-civezza",
-    "boscomare",
-    "cipressa",
-    "civezza",
-    "costarainera",
-    "lingueglietta",
-    "piani-paorelli",
-    "pietrabruna",
-    "torre-paponi"
-  ],
-  "lingueglietta": [
-    "cipressa",
-    "costarainera"
-  ],
-  "costarainera": [
-    "cipressa"
-  ],
-  "cipressa": [],
-  "l-nanollo-p": [
-    "argine-dx",
-    "argine-sx",
-    "artallo",
-    "arzeno",
-    "aurigo",
-    "baite",
-    "barcheto",
-    "bestagno",
-    "bivio-castelvecchio",
-    "bivio-civezza",
-    "borgo-d-oneglia",
-    "borgo-san-moro",
-    "borgomaro",
-    "boscomare",
-    "candeasco",
-    "cantalupo",
-    "caramagna",
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
-    "caravonica",
-    "cartari",
-    "cascine",
-    "castelvecchio",
-    "cesio",
-    "chiusanico",
-    "chiusavecchia",
-    "cipressa",
-    "civezza",
-    "colla-san-bartolomeo",
-    "collette",
-    "comune",
-    "conio",
-    "coppi-rossi",
-    "costa-d-oneglia",
-    "costarainera",
-    "dolcedo",
-    "garbella",
-    "gazzelli",
-    "imperia-p-maurizio-colla-san-bartolomeo",
-    "imperia-porto-maurizio",
-    "l-nanollo-p",
-    "lecchiore",
-    "lingueglietta",
-    "lucinasco",
-    "maro-castello",
-    "moltedo",
-    "montegrazie",
-    "ospedale",
-    "pantasina",
-    "passo-rocche",
-    "pianavia",
-    "piani",
-    "piani-2",
-    "piani-paorelli",
-    "piazza-calvi",
-    "piazza-ricci",
-    "piazzetta-de-negri",
-    "pietrabruna",
-    "poggi",
-    "poggi-cabina-enel",
-    "poggialto",
-    "ponte-barcheto",
-    "pontedassio",
-    "porto---piazza-marconi",
-    "porto-maurizio-pens",
-    "porto-maurizio-pensilina",
-    "prela",
-    "prino",
-    "riviera-trasporti",
-    "rotonda-borgo-san-moro",
-    "san-bartolomeo-caravonica",
-    "san-lazzaro-reale",
-    "san-lorenzo-(arrivo)",
-    "san-lorenzo-(partenza)",
-    "sant-agata",
-    "sgorreto",
-    "sgorreto-bennet",
-    "stazione-fs-(via-calzamiglia)",
-    "stazione-fs-a-dx",
-    "stazione-fs-a-sx",
-    "stazione-fs-arg-dx",
-    "stazione-fs-arg-sx",
-    "stazione-fs-dx-arrivo",
-    "stazione-fs-dx-partenza",
-    "tavole",
-    "torrazza",
-    "torre-paponi",
-    "torria",
-    "trexenda",
-    "v-acquarone",
-    "valloria",
-    "vasia",
-    "via-cascione",
-    "via-garessio",
-    "via-gavi",
-    "via-repubblica",
-    "via-trento/rotonda",
-    "via-xxv-aprile",
-    "viale-matteotti",
-    "villa-viani",
-    "villatalla",
-    "ville-san-pietro"
-  ],
-  "imperia-porto-maurizio": [
-    "andora-bivio-ss1-per-a10",
-    "andora-stazione-fs",
-    "arma-di-taggia",
-    "arma-di-taggia-rossat",
-    "bivio-civezza",
-    "caramagna",
-    "cervo",
-    "cipressa",
-    "civezza",
-    "costarainera",
-    "diano-marina",
-    "dolcedo",
-    "imperia-oneglia",
-    "imperia-porto-maurizio",
-    "lecchiore",
-    "lingueglietta",
-    "pantasina",
-    "pianavia",
-    "piani-paorelli",
-    "pietrabruna",
-    "prela",
-    "riva-ligure",
-    "rotonda-scuola-valle-armea",
-    "san-bartolomeo",
-    "san-lorenzo",
-    "san-lorenzo-(arrivo)",
-    "san-lorenzo-(partenza)",
-    "sanremo-autostazione",
-    "santo-stefano",
-    "tavole",
-    "torre-paponi",
-    "valloria",
-    "vasia",
-    "villatalla"
-  ],
-  "san-lorenzo-(arrivo)": [
-    "bivio-civezza",
-    "boscomare",
-    "cipressa",
-    "civezza",
-    "costarainera",
-    "lingueglietta",
-    "piani-paorelli",
-    "pietrabruna",
-    "san-lorenzo-(partenza)",
-    "torre-paponi"
-  ],
-  "piani-paorelli": [
-    "cipressa",
-    "costarainera",
-    "lingueglietta"
-  ],
-  "torre-paponi": [
-    "boscomare",
-    "pietrabruna"
-  ],
-  "boscomare": [
-    "pietrabruna"
-  ],
-  "pietrabruna": [],
-  "bivio-civezza": [
-    "civezza"
-  ],
-  "civezza": [],
-  "sanremo-partenza": [
+  "sanremo-autostaz-partenza": [
     "arma-bivio-rossat",
-    "bordighera",
+    "bordighera-centro",
     "bussana",
     "capo-nero",
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
     "taggia-capolinea",
     "taggia-stazione-fs",
     "vallecrosia",
@@ -506,8 +252,8 @@
     "capo-nero",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
     "sanremo-arrivo",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -524,8 +270,8 @@
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
     "sanremo-arrivo",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -550,8 +296,8 @@
     "montalto-bivio",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
     "sanremo-arrivo",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia",
@@ -578,8 +324,8 @@
     "montalto-bivio",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
     "sanremo-arrivo",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia",
@@ -599,8 +345,8 @@
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
     "sanremo-arrivo",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-stazione-fs",
@@ -616,7 +362,7 @@
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -634,19 +380,19 @@
     "capo-nero",
     "castelvittorio",
     "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
+    "isolabona",
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
     "pigna",
     "rocchetta",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
     "taggia-stazione-fs",
     "vallecrosia",
+    "ventimiglia---via-cavour",
     "ventimiglia-ponte-andrea-doria",
     "villa-helios-fermata-via-aurelia"
   ],
@@ -658,7 +404,7 @@
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -673,7 +419,7 @@
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -690,7 +436,7 @@
     "capo-nero",
     "la-brezza",
     "nervia-bivio",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -707,7 +453,7 @@
     "la-brezza",
     "nervia-bivio",
     "ospedaletti",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
@@ -720,66 +466,121 @@
     "arma-bivio-rossat",
     "bussana",
     "la-brezza",
-    "rotonda-scuola-valle-armea",
+    "sanremo-autostaz-partenza",
     "sanremo-autostazione",
     "sanremo-partenza",
     "taggia-capolinea",
     "taggia-stazione-fs"
   ],
-  "rotonda-scuola-valle-armea": [
+  "sanremo-autostazione": [
+    "agaggio-inferiore",
     "andora-bivio-ss1-per-a10",
     "andora-stazione-fs",
     "arma-bivio-rossat",
+    "arma-centro",
+    "arma-di-taggia",
     "arma-di-taggia-rossat",
-    "bordighera",
+    "badalucco",
+    "baiardo",
     "bordighera-centro",
     "bussana",
     "capo-nero",
+    "carpasio",
+    "ceriana",
     "cervo",
     "diano-marina",
+    "fermata-deposito-rt",
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "la-brezza",
+    "madonna-della-villa",
+    "molini-di-triora",
+    "montalto",
+    "montalto-bivio",
     "nervia-bivio",
     "ospedaletti",
+    "poggio",
+    "poggio-direz-via-val-d-olivi",
     "riva-ligure",
     "san-bartolomeo",
     "san-lorenzo",
-    "sanremo-arrivo",
-    "sanremo-autostazione",
+    "sanremo-autostaz-partenza",
     "sanremo-partenza",
     "santo-stefano",
+    "taggia",
     "taggia-capolinea",
     "taggia-stazione-fs",
+    "triora",
     "vallecrosia",
     "ventimiglia-ponte-andrea-doria",
     "villa-helios"
   ],
-  "villa-helios": [
-    "bordighera",
-    "bordighera-centro",
-    "capo-nero",
-    "nervia-bivio",
-    "ospedaletti",
-    "vallecrosia",
-    "ventimiglia-ponte-andrea-doria"
-  ],
-  "bordighera": [
-    "nervia-bivio",
-    "vallecrosia",
-    "ventimiglia-ponte-andrea-doria"
-  ],
-  "sanremo-arrivo": [
-    "bordighera",
-    "bordighera-centro",
-    "capo-nero",
-    "nervia-bivio",
-    "ospedaletti",
+  "imperia-oneglia": [
+    "andora-bivio-ss1-per-a10",
+    "andora-stazione-fs",
+    "arma-di-taggia",
+    "arma-di-taggia-rossat",
+    "aurigo",
+    "bestagno",
+    "borgomaro",
+    "candeasco",
+    "caramagna",
+    "caravonica",
+    "cervo",
+    "cesio",
+    "chiusanico",
+    "chiusavecchia",
+    "colla-san-bartolomeo",
+    "conio",
+    "diano-marina",
+    "dolcedo",
+    "gazzelli",
+    "imperia-porto-maurizio",
+    "lecchiore",
+    "maro-castello",
+    "pantasina",
+    "pianavia",
+    "poggialto",
+    "pontedassio",
+    "prela",
+    "riva-ligure",
+    "san-bartolomeo",
+    "san-lazzaro-reale",
+    "san-lorenzo",
     "sanremo-autostazione",
-    "sanremo-partenza",
-    "vallecrosia",
-    "ventimiglia-ponte-andrea-doria",
-    "villa-helios"
+    "santo-stefano",
+    "tavole",
+    "torria",
+    "valloria",
+    "vasia",
+    "villa-viani",
+    "villatalla",
+    "ville-san-pietro"
+  ],
+  "imperia-porto-maurizio": [
+    "andora-bivio-ss1-per-a10",
+    "andora-stazione-fs",
+    "arma-di-taggia",
+    "arma-di-taggia-rossat",
+    "caramagna",
+    "cervo",
+    "diano-marina",
+    "dolcedo",
+    "imperia-oneglia",
+    "imperia-porto-maurizio",
+    "lecchiore",
+    "pantasina",
+    "pianavia",
+    "prela",
+    "riva-ligure",
+    "san-bartolomeo",
+    "san-lorenzo",
+    "sanremo-autostazione",
+    "santo-stefano",
+    "tavole",
+    "valloria",
+    "vasia",
+    "villatalla"
   ],
   "caramagna": [
     "caramagna",
@@ -823,6 +624,7 @@
     "dolcedo",
     "imperia-porto-maurizio",
     "prela",
+    "tavole",
     "valloria",
     "villatalla"
   ],
@@ -832,7 +634,8 @@
     "imperia-porto-maurizio",
     "prela",
     "tavole",
-    "valloria"
+    "valloria",
+    "villatalla"
   ],
   "valloria": [
     "caramagna",
@@ -841,6 +644,15 @@
     "prela",
     "tavole",
     "villatalla"
+  ],
+  "villa-helios": [
+    "bordighera",
+    "bordighera-centro",
+    "capo-nero",
+    "nervia-bivio",
+    "ospedaletti",
+    "vallecrosia",
+    "ventimiglia-ponte-andrea-doria"
   ],
   "vasia": [
     "caramagna",
@@ -859,14 +671,12 @@
   ],
   "pontedassio": [
     "acquetico",
-    "arzeno",
     "aurigo",
     "bestagno",
     "bivio-cosio",
     "borgomaro",
     "candeasco",
     "caravonica",
-    "cartari",
     "case-rosse",
     "castelvecchio",
     "cesio",
@@ -876,11 +686,9 @@
     "comune",
     "conio",
     "gazzelli",
-    "imperia-on",
     "l-nanollo-p",
     "l-nanollo-p-arrivo",
     "l-nanollo-p-partenza",
-    "lucinasco",
     "maro-castello",
     "nava-centro",
     "passo-rocche",
@@ -890,7 +698,6 @@
     "pornassio",
     "porto-maurizio-pensilina",
     "riviera-trasporti",
-    "san-bartolomeo-caravonica",
     "san-lazzaro-reale",
     "sgorreto",
     "sgorreto-bennet",
@@ -908,85 +715,162 @@
   "villa-viani": [
     "pontedassio"
   ],
-  "imperia-p-maurizio-colla-san-bartolomeo": [],
   "chiusavecchia": [
     "acquetico",
-    "arzeno",
     "aurigo",
     "bivio-cosio",
     "borgomaro",
     "candeasco",
     "caravonica",
-    "cartari",
     "case-rosse",
     "cesio",
     "chiusavecchia",
     "colla-san-bartolomeo",
     "conio",
-    "imperia-on",
-    "lucinasco",
     "maro-castello",
     "nava-centro",
     "pieve-di-teco",
     "poggialto",
     "pontedassio",
     "pornassio",
-    "san-bartolomeo-caravonica",
     "san-lazzaro-reale",
-    "torria",
     "ville-san-pietro"
   ],
-  "cesio": [
-    "arzeno",
-    "colla-san-bartolomeo"
-  ],
-  "arzeno": [],
-  "gazzelli": [
-    "arzeno",
-    "cesio",
-    "chiusanico",
-    "chiusavecchia",
-    "colla-san-bartolomeo",
-    "torria"
-  ],
-  "chiusanico": [
-    "arzeno",
-    "cesio",
-    "colla-san-bartolomeo",
-    "torria"
-  ],
-  "torria": [
-    "arzeno",
-    "cesio",
-    "colla-san-bartolomeo"
-  ],
-  "colla-san-bartolomeo": [
-    "cartari"
-  ],
-  "cartari": [],
   "san-lazzaro-reale": [
     "aurigo",
     "borgomaro",
     "candeasco",
     "caravonica",
-    "cartari",
     "colla-san-bartolomeo",
     "conio",
     "maro-castello",
     "poggialto",
-    "san-bartolomeo-caravonica",
     "ville-san-pietro"
   ],
   "caravonica": [
-    "cartari",
-    "colla-san-bartolomeo",
-    "san-bartolomeo-caravonica"
-  ],
-  "san-bartolomeo-caravonica": [
-    "cartari",
     "colla-san-bartolomeo"
   ],
-  "lucinasco": [],
+  "colla-san-bartolomeo": [],
+  "gazzelli": [
+    "caravonica",
+    "cesio",
+    "chiusanico",
+    "colla-san-bartolomeo",
+    "torria"
+  ],
+  "chiusanico": [
+    "caravonica",
+    "cesio",
+    "colla-san-bartolomeo",
+    "torria"
+  ],
+  "torria": [
+    "caravonica",
+    "cesio",
+    "chiusavecchia",
+    "colla-san-bartolomeo",
+    "san-lazzaro-reale"
+  ],
+  "cesio": [
+    "caravonica",
+    "colla-san-bartolomeo",
+    "san-lazzaro-reale"
+  ],
+  "sanremo-partenza": [
+    "arma-bivio-rossat",
+    "bordighera",
+    "bussana",
+    "capo-nero",
+    "la-brezza",
+    "nervia-bivio",
+    "ospedaletti",
+    "taggia-capolinea",
+    "taggia-stazione-fs",
+    "vallecrosia",
+    "ventimiglia-ponte-andrea-doria",
+    "villa-helios"
+  ],
+  "bordighera": [
+    "nervia-bivio",
+    "vallecrosia",
+    "ventimiglia-ponte-andrea-doria"
+  ],
+  "sanremo-arrivo": [
+    "bordighera",
+    "bordighera-centro",
+    "capo-nero",
+    "nervia-bivio",
+    "ospedaletti",
+    "sanremo-autostazione",
+    "sanremo-partenza",
+    "vallecrosia",
+    "ventimiglia-ponte-andrea-doria",
+    "villa-helios"
+  ],
+  "airole-bivio": [
+    "airole-bivio",
+    "airole-piazza",
+    "cimitero",
+    "olivetta-san-michele",
+    "roverino",
+    "trucco",
+    "ventimiglia---capolinea"
+  ],
+  "olivetta-san-michele": [
+    "airole-bivio",
+    "airole-piazza",
+    "cimitero",
+    "olivetta-san-michele",
+    "roverino",
+    "trucco",
+    "ventimiglia---capolinea"
+  ],
+  "airole-piazza": [
+    "airole-bivio",
+    "airole-piazza",
+    "cimitero",
+    "olivetta-san-michele",
+    "roverino",
+    "trucco",
+    "ventimiglia---capolinea"
+  ],
+  "ventimiglia---capolinea": [],
+  "san-lorenzo": [
+    "andora-bivio-ss1-per-a10",
+    "andora-stazione-fs",
+    "arma-di-taggia",
+    "arma-di-taggia-rossat",
+    "cervo",
+    "diano-marina",
+    "imperia-oneglia",
+    "imperia-porto-maurizio",
+    "rio-masse",
+    "riva-ligure",
+    "san-bartolomeo",
+    "sanremo-autostazione",
+    "santo-stefano"
+  ],
+  "seglia": [
+    "frati-maristi",
+    "san-lorenzo",
+    "seglia"
+  ],
+  "frati-maristi": [
+    "san-lorenzo"
+  ],
+  "via-gallardi-ponte-bevera": [
+    "frati-maristi"
+  ],
+  "frati-maristi-|": [
+    "frati-maristi",
+    "torri-|",
+    "via-gallardi-ponte-bevera"
+  ],
+  "torri-|": [
+    "frati-maristi",
+    "torri-|",
+    "via-gallardi-ponte-bevera"
+  ],
   "borgomaro": [
     "aurigo",
     "candeasco",
@@ -1011,50 +895,203 @@
     "conio"
   ],
   "conio": [],
-  "airole-bivio": [
-    "airole-bivio",
-    "airole-piazza",
-    "cimitero",
-    "olivetta-san-michele",
-    "roverino",
-    "trucco",
-    "varase",
-    "ventimiglia-capolinea"
+  "ventimiglia-teatro": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "perinaldo",
+    "pigna",
+    "rocchetta",
+    "san-biagio",
+    "san-biagio-piazza",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
-  "olivetta-san-michele": [
-    "airole-bivio",
-    "airole-piazza",
-    "cimitero",
-    "olivetta-san-michele",
-    "roverino",
-    "trucco",
-    "varase",
-    "ventimiglia-capolinea"
+  "camporosso": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "rocchetta",
+    "ventimiglia---via-cavour"
   ],
-  "airole-piazza": [
-    "airole-bivio",
-    "airole-piazza",
-    "cimitero",
-    "olivetta-san-michele",
-    "roverino",
-    "trucco",
-    "varase",
-    "ventimiglia-capolinea"
+  "dolceacqua": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "rocchetta",
+    "ventimiglia---via-cavour"
   ],
-  "ventimiglia-capolinea": [],
+  "isolabona": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "rocchetta",
+    "ventimiglia---via-cavour"
+  ],
+  "pigna": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "rocchetta",
+    "ventimiglia---via-cavour"
+  ],
+  "castelvittorio": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "rocchetta",
+    "ventimiglia---via-cavour"
+  ],
+  "apricale": [
+    "apricale",
+    "camporosso",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "rocchetta",
+    "ventimiglia---via-cavour"
+  ],
+  "buggio": [
+    "apricale",
+    "buggio",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "ventimiglia---via-cavour"
+  ],
+  "rocchetta": [
+    "apricale",
+    "camporosso",
+    "castelvittorio",
+    "dolceacqua",
+    "isolabona",
+    "nervia-bivio",
+    "pigna",
+    "rocchetta",
+    "ventimiglia---via-cavour"
+  ],
+  "l-nanollo-p": [
+    "argine-dx",
+    "argine-sx",
+    "artallo",
+    "baite",
+    "barcheto",
+    "bivio-castelvecchio",
+    "borgo-d-oneglia",
+    "borgo-san-moro",
+    "calderina",
+    "cantalupo",
+    "caramagna",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "cascine",
+    "castelvecchio",
+    "civezza",
+    "collette",
+    "comune",
+    "coppi-rossi",
+    "costa-d-oneglia",
+    "diano-marina",
+    "garbella",
+    "gorleri",
+    "l-nanollo-p",
+    "moltedo",
+    "montegrazie",
+    "muratori",
+    "ospedale",
+    "palasalute",
+    "passo-rocche",
+    "piani",
+    "piani-2",
+    "piazza-ricci",
+    "piazzetta-de-negri",
+    "poggi",
+    "poggi-cabina-enel",
+    "pontedassio",
+    "porto---piazza-marconi",
+    "porto-m-pensilina",
+    "porto-maurizio-pensilina",
+    "prino",
+    "riviera-trasporti",
+    "rotonda-borgo-san-moro",
+    "rotonda-palasalute",
+    "sant-agata",
+    "serreta",
+    "sgorreto",
+    "sgorreto-bennet",
+    "stazione-fs-arg-dx",
+    "stazione-fs-arg-sx",
+    "stazione-fs-dx-arrivo",
+    "stazione-fs-dx-partenza",
+    "torrazza",
+    "trexenda",
+    "via-acquarone",
+    "via-cascione",
+    "via-cascione/p-ricci",
+    "via-garessio",
+    "via-gavi",
+    "via-repubblica",
+    "via-xxv-aprile",
+    "viale-matteotti"
+  ],
   "gorleri": [
     "calderina",
     "diano-marina",
+    "gorleri",
+    "muratori",
     "serreta"
   ],
   "serreta": [
     "calderina",
     "diano-marina",
+    "gorleri",
+    "muratori",
+    "serreta"
+  ],
+  "muratori": [
+    "calderina",
+    "diano-marina",
+    "gorleri",
     "serreta"
   ],
   "calderina": [
     "calderina",
     "diano-marina",
+    "gorleri",
     "serreta"
   ],
   "diano-marina": [
@@ -1066,127 +1103,73 @@
     "calderina",
     "cervo",
     "cervo-piazza-castello",
-    "deglio",
-    "diano-arentino",
-    "diano-borello",
     "diano-castello",
     "diano-marina",
     "diano-marina-capolinea",
     "diano-marina-vecchia-stazione",
-    "diano-roncagli",
-    "diano-san-pietro",
-    "evigno",
+    "gorleri",
     "imperia-oneglia",
     "imperia-porto-maurizio",
-    "nuova-stazione-fs",
     "nuova-stazione-fs-(arrivo)",
     "nuova-stazione-fs-(partenza)",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-bartolomeo-al-mare",
     "san-lorenzo",
     "sanremo-autostazione",
     "santo-stefano",
-    "serreta",
-    "villa-faraldi"
+    "serreta"
   ],
-  "ventimiglia---centro-studi": [
-    "frati-maristi",
-    "latte",
-    "ponte-san-luigi",
-    "san-lorenzo",
-    "sant-antonio",
-    "sealza",
-    "seglia",
-    "torri-|",
-    "varase-|",
-    "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
-    "ventimiglia-alta---c-so-verdi",
-    "via-gallardi-ponte-bevera"
+  "vallecrosia-ponte": [
+    "perinaldo",
+    "san-biagio",
+    "san-biagio-piazza",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
-  "sant-antonio": [
-    "bivio-villetta",
-    "san-donato",
-    "sealza",
-    "verezzo-ponte"
+  "vallecrosia-alta": [
+    "perinaldo",
+    "san-biagio",
+    "san-biagio-piazza",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
-  "san-lorenzo": [
-    "andora-bivio-ss1-per-a10",
-    "andora-stazione-fs",
-    "arma-di-taggia",
-    "arma-di-taggia-rossat",
-    "campo-ippico",
-    "cervo",
-    "diano-marina",
-    "frati-maristi",
-    "imperia-oneglia",
-    "imperia-porto-maurizio",
-    "rio-masse",
-    "riva-ligure",
-    "rotonda-scuola-valle-armea",
-    "san-bartolomeo",
-    "sanremo-autostazione",
-    "santo-stefano",
-    "torri-|",
-    "varase-|",
-    "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
-    "via-gallardi-ponte-bevera"
+  "san-biagio": [
+    "perinaldo",
+    "san-biagio",
+    "san-biagio-piazza",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
-  "frati-maristi": [
-    "frati-maristi",
-    "torri-|",
-    "varase-|",
-    "ventimiglia---capolinea",
-    "via-gallardi-ponte-bevera"
+  "soldano": [
+    "perinaldo",
+    "san-biagio",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
-  "via-gallardi-ponte-bevera": [
-    "frati-maristi",
-    "san-lorenzo",
-    "seglia",
-    "torri-|",
-    "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
-    "via-gallardi-ponte-bevera"
+  "perinaldo": [
+    "perinaldo",
+    "san-biagio",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
-  "ventimiglia---capolinea": [
-    "frati-maristi",
-    "san-lorenzo",
-    "torri-|",
-    "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
-    "via-gallardi-ponte-bevera"
-  ],
-  "seglia": [
-    "frati-maristi",
-    "san-lorenzo",
-    "torri-|",
-    "varase-|",
-    "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
-    "via-gallardi-ponte-bevera"
-  ],
-  "torri-|": [
-    "frati-maristi",
-    "torri-|",
-    "varase-|",
-    "ventimiglia---capolinea",
-    "via-gallardi-ponte-bevera"
-  ],
-  "varase-|": [
-    "frati-maristi",
-    "torri-|",
-    "ventimiglia---capolinea",
-    "via-gallardi-ponte-bevera"
-  ],
-  "ventimiglia-centro-studi": [
-    "frati-maristi",
-    "torri-|",
-    "ventimiglia---capolinea",
-    "ventimiglia---via-cavour",
-    "via-gallardi-ponte-bevera"
+  "san-biagio-piazza": [
+    "perinaldo",
+    "san-biagio",
+    "soldano",
+    "vallecrosia-alta",
+    "vallecrosia-ponte",
+    "ventimiglia---via-cavour"
   ],
   "comune": [
     "artallo",
@@ -1206,6 +1189,7 @@
     "moltedo",
     "montegrazie",
     "ospedale",
+    "palasalute",
     "passo-rocche",
     "piani",
     "piani-2",
@@ -1213,25 +1197,25 @@
     "poggi",
     "poggi-cabina-enel",
     "porto---piazza-marconi",
-    "porto-maurizio-pens",
+    "porto-m-pensilina",
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
     "rotonda-borgo-san-moro",
+    "rotonda-palasalute",
     "sgorreto",
     "torrazza",
-    "v-acquarone",
     "vallebona",
+    "via-acquarone",
     "via-cascione",
+    "via-cascione/p-ricci",
     "via-gavi",
     "via-xxv-aprile",
     "viale-matteotti"
   ],
   "porto-maurizio-pensilina": [
     "artallo",
-    "cantalupo",
     "caramagna",
-    "caramagna-/-bivio-croce",
     "caramagna-bacan",
     "castelvecchio",
     "civezza",
@@ -1239,9 +1223,8 @@
     "coppi-rossi",
     "garbella",
     "l-nanollo-p",
-    "moltedo",
-    "montegrazie",
     "ospedale",
+    "palasalute",
     "passo-rocche",
     "piani",
     "piani-2",
@@ -1249,15 +1232,16 @@
     "poggi",
     "poggi-cabina-enel",
     "porto---piazza-marconi",
-    "porto-maurizio-pens",
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
     "rotonda-borgo-san-moro",
+    "rotonda-palasalute",
     "sgorreto",
     "torrazza",
-    "v-acquarone",
+    "via-acquarone",
     "via-cascione",
+    "via-gavi",
     "via-xxv-aprile",
     "viale-matteotti"
   ],
@@ -1267,70 +1251,95 @@
     "caramagna-/-bivio-croce",
     "caramagna-bacan",
     "comune",
+    "l-nanollo-p",
     "moltedo",
     "montegrazie",
-    "porto-maurizio-pens",
+    "palasalute",
+    "porto-m-pensilina",
     "porto-maurizio-pensilina",
-    "v-acquarone",
-    "via-cascione"
+    "rotonda-palasalute",
+    "via-acquarone",
+    "via-cascione",
+    "via-cascione/p-ricci"
   ],
-  "v-acquarone": [
-    "cantalupo",
-    "caramagna",
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
+  "rotonda-palasalute": [
     "comune",
-    "moltedo",
-    "montegrazie",
-    "porto-maurizio-pens",
+    "l-nanollo-p",
     "porto-maurizio-pensilina",
-    "v-acquarone",
+    "rotonda-palasalute",
     "via-cascione"
   ],
   "via-cascione": [
     "artallo",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
     "castelvecchio",
     "civezza",
     "comune",
     "coppi-rossi",
     "garbella",
     "l-nanollo-p",
+    "montegrazie",
     "ospedale",
     "passo-rocche",
     "piani",
     "piani-2",
+    "piazza-ricci",
     "poggi",
     "poggi-cabina-enel",
     "porto---piazza-marconi",
-    "porto-maurizio-pens",
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
     "rotonda-borgo-san-moro",
+    "rotonda-palasalute",
     "sgorreto",
     "torrazza",
-    "v-acquarone",
     "via-cascione",
     "via-gavi",
     "via-xxv-aprile",
     "viale-matteotti"
   ],
-  "porto-maurizio-pens": [
+  "bordighera-fs": [
+    "bel-sit---coggiola",
+    "bel-sit---via-dei-colli",
+    "bordighera-alta",
+    "bordighera-cimitero",
+    "borghetto-inferiore",
+    "borghetto-superiore",
     "comune",
-    "coppi-rossi",
-    "piani-2",
-    "porto-maurizio-pens",
-    "v-acquarone",
-    "via-cascione",
-    "via-gavi"
+    "rotonda-\"bel-sit\"-/-atm",
+    "sasso",
+    "seborga",
+    "vallebona",
+    "via-pasteur-scuole"
   ],
+  "vallebona": [
+    "vallebona"
+  ],
+  "bordighera-alta": [
+    "bel-sit---coggiola",
+    "bel-sit---via-dei-colli",
+    "sasso",
+    "seborga",
+    "via-pasteur-scuole"
+  ],
+  "sasso": [
+    "bel-sit---coggiola",
+    "bel-sit---via-dei-colli",
+    "sasso",
+    "seborga",
+    "via-pasteur-scuole"
+  ],
+  "seborga": [
+    "bel-sit---via-dei-colli",
+    "sasso"
+  ],
+  "bel-sit---via-dei-colli": [],
   "via-xxv-aprile": [
     "castelvecchio",
-    "comune",
-    "l-nanollo-p",
     "passo-rocche",
     "pontedassio",
-    "porto-maurizio-pensilina",
     "riviera-trasporti",
     "sgorreto",
     "sgorreto-bennet",
@@ -1388,16 +1397,15 @@
   ],
   "sgorreto-bennet": [
     "castelvecchio",
-    "comune",
-    "l-nanollo-p",
     "passo-rocche",
     "pontedassio",
-    "porto-maurizio-pensilina",
     "riviera-trasporti",
     "sgorreto-bennet",
     "via-garessio"
   ],
   "via-garessio": [
+    "argine-dx",
+    "argine-sx",
     "castelvecchio",
     "comune",
     "l-nanollo-p",
@@ -1407,130 +1415,11 @@
     "porto-maurizio-pensilina",
     "riviera-trasporti",
     "sgorreto",
-    "stazione-fs-(via-calzamiglia)",
-    "stazione-fs-a-dx",
-    "stazione-fs-a-sx",
+    "stazione-fs-dx-arrivo",
+    "stazione-fs-dx-partenza",
     "via-cascione",
-    "via-trento/rotonda",
-    "via-xxv-aprile"
-  ],
-  "ventimiglia": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "camporosso": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "dolceacqua": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "isolabona---arrivo": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "isolabona---partenza": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "pigna": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "castelvittorio": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "apricale": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna",
-    "rocchetta"
-  ],
-  "buggio": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna"
-  ],
-  "rocchetta": [
-    "apricale",
-    "buggio",
-    "camporosso",
-    "castelvittorio",
-    "dolceacqua",
-    "isolabona---arrivo",
-    "isolabona---partenza",
-    "nervia-bivio",
-    "pigna"
+    "via-xxv-aprile",
+    "viale-matteotti"
   ],
   "l-nanollo-p-partenza": [
     "castelvecchio",
@@ -1569,132 +1458,6 @@
     "via-cascione",
     "via-xxv-aprile"
   ],
-  "piani-2": [
-    "comune",
-    "coppi-rossi",
-    "piani-2",
-    "porto-maurizio-pens",
-    "porto-maurizio-pensilina",
-    "v-acquarone",
-    "via-cascione",
-    "via-gavi"
-  ],
-  "coppi-rossi": [
-    "comune",
-    "coppi-rossi",
-    "piani-2",
-    "porto-maurizio-pens",
-    "porto-maurizio-pensilina",
-    "v-acquarone",
-    "via-cascione",
-    "via-gavi"
-  ],
-  "via-gavi": [
-    "comune",
-    "porto-maurizio-pens",
-    "v-acquarone",
-    "via-cascione"
-  ],
-  "vallecrosia-ponte": [
-    "perinaldo",
-    "san-biagio",
-    "san-biagio-piazza",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "vallecrosia-alta": [
-    "perinaldo",
-    "san-biagio",
-    "san-biagio-piazza",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "san-biagio": [
-    "perinaldo",
-    "san-biagio",
-    "san-biagio-piazza",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "soldano": [
-    "perinaldo",
-    "san-biagio",
-    "san-biagio-piazza",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "perinaldo": [
-    "perinaldo",
-    "san-biagio",
-    "san-biagio-piazza",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "ventimiglia---teatro": [
-    "perinaldo",
-    "san-biagio",
-    "san-biagio-piazza",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "san-biagio-piazza": [
-    "perinaldo",
-    "san-biagio",
-    "soldano",
-    "vallecrosia-alta",
-    "vallecrosia-ponte",
-    "ventimiglia"
-  ],
-  "bordighera-fs": [
-    "bordighera-alta-–-via-dei-colli",
-    "bordighera-cimitero",
-    "borghetto-inferiore",
-    "borghetto-superiore",
-    "comune",
-    "rotonda-\"bel-sit\"",
-    "sasso",
-    "seborga",
-    "vallebona",
-    "ventimiglia",
-    "via-pasteur-scuole"
-  ],
-  "vallebona": [
-    "vallebona"
-  ],
-  "sasso": [
-    "rotonda-\"bel-sit\"",
-    "sasso",
-    "seborga",
-    "via-pasteur-scuole"
-  ],
-  "seborga": [
-    "rotonda-\"bel-sit\"",
-    "sasso",
-    "seborga"
-  ],
-  "caramagna-bacan": [
-    "cantalupo",
-    "caramagna",
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
-    "comune",
-    "moltedo",
-    "montegrazie",
-    "porto-maurizio-pensilina",
-    "via-cascione"
-  ],
   "borghetto-superiore": [
     "vallebona"
   ],
@@ -1702,73 +1465,42 @@
     "borghetto-superiore",
     "vallebona"
   ],
-  "bordighera-alta-–-via-dei-colli": [
-    "rotonda-\"bel-sit\"",
-    "sasso",
-    "seborga",
-    "via-pasteur-scuole"
+  "rotonda-\"bel-sit\"-/-atm": [
+    "borghetto-inferiore",
+    "borghetto-superiore",
+    "vallebona"
   ],
-  "rotonda-\"bel-sit\"": [
+  "bel-sit---coggiola": [
     "via-pasteur-scuole"
   ],
   "via-pasteur-scuole": [],
   "bordighera-cimitero": [],
-  "porto---piazza-marconi": [
-    "artallo"
-  ],
-  "artallo": [],
-  "stazione-fs-arg-sx": [
-    "barcheto",
-    "borgo-san-moro",
+  "piani-2": [
     "comune",
-    "ospedale",
-    "ponte-barcheto",
+    "coppi-rossi",
+    "l-nanollo-p",
+    "piani-2",
     "porto-maurizio-pensilina",
-    "sant-agata",
-    "stazione-fs-arg-dx",
-    "trexenda",
-    "via-cascione"
+    "rotonda-palasalute",
+    "via-cascione",
+    "via-gavi"
   ],
-  "stazione-fs-arg-dx": [
-    "borgo-san-moro",
+  "coppi-rossi": [
     "comune",
-    "ospedale",
+    "coppi-rossi",
+    "l-nanollo-p",
+    "piani-2",
     "porto-maurizio-pensilina",
-    "sant-agata",
-    "via-cascione"
+    "rotonda-palasalute",
+    "via-cascione",
+    "via-gavi"
   ],
-  "borgo-san-moro": [
+  "via-gavi": [
     "comune",
-    "ospedale",
+    "l-nanollo-p",
     "porto-maurizio-pensilina",
-    "sant-agata",
+    "rotonda-palasalute",
     "via-cascione"
-  ],
-  "sant-agata": [
-    "ospedale",
-    "rotonda-borgo-san-moro",
-    "viale-matteotti"
-  ],
-  "trexenda": [
-    "borgo-san-moro",
-    "comune",
-    "ospedale",
-    "porto-maurizio-pensilina",
-    "sant-agata",
-    "stazione-fs-arg-dx",
-    "via-cascione"
-  ],
-  "garbella": [
-    "civezza",
-    "poggi",
-    "poggi-cabina-enel"
-  ],
-  "poggi": [
-    "civezza",
-    "poggi-cabina-enel"
-  ],
-  "poggi-cabina-enel": [
-    "civezza"
   ],
   "piazza-iv-novembre-(partenza)": [
     "case-popolari",
@@ -1796,21 +1528,6 @@
     "piazza-iv-novembre-(arrivo)"
   ],
   "piazza-iv-novembre-(arrivo)": [],
-  "imperia-oneglia": [
-    "andora-bivio-ss1-per-a10",
-    "andora-stazione-fs",
-    "arma-di-taggia",
-    "arma-di-taggia-rossat",
-    "cervo",
-    "diano-marina",
-    "imperia-porto-maurizio",
-    "riva-ligure",
-    "rotonda-scuola-valle-armea",
-    "san-bartolomeo",
-    "san-lorenzo",
-    "sanremo-autostazione",
-    "santo-stefano"
-  ],
   "san-bartolomeo": [
     "andora-bivio-ss1-per-a10",
     "andora-stazione-fs",
@@ -1819,15 +1536,19 @@
     "autostazione",
     "baragallo",
     "cervo",
+    "chiappa",
+    "deglio",
     "diano-marina",
     "gozo",
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "isola",
     "madonna-costa",
+    "molino-del-fico",
+    "pairola",
     "piazza-san-bernardo",
+    "riva-faraldi-(-pensilina-)",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-giacomo",
     "san-giovanni-picchetta",
@@ -1835,7 +1556,8 @@
     "san-romolo",
     "sanremo-autostazione",
     "santo-stefano",
-    "via-caduti-del-lavoro"
+    "tovo",
+    "villa-faraldi"
   ],
   "cervo": [
     "andora-bivio-ss1-per-a10",
@@ -1846,24 +1568,13 @@
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-lorenzo",
     "sanremo-autostazione",
     "santo-stefano"
   ],
   "andora-bivio-ss1-per-a10": [
-    "andora-stazione-fs",
-    "arma-di-taggia",
-    "cervo",
-    "diano-marina",
-    "imperia-oneglia",
-    "imperia-porto-maurizio",
-    "riva-ligure",
-    "san-bartolomeo",
-    "san-lorenzo",
-    "sanremo-autostazione",
-    "santo-stefano"
+    "andora-stazione-fs"
   ],
   "andora-stazione-fs": [
     "andora-rotonda-s-s-1",
@@ -1873,7 +1584,6 @@
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-lorenzo",
     "sanremo-autostazione",
@@ -1887,7 +1597,6 @@
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-lorenzo",
     "sanremo-autostazione",
@@ -1902,7 +1611,6 @@
     "diano-marina",
     "imperia-oneglia",
     "imperia-porto-maurizio",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-lorenzo",
     "sanremo-autostazione",
@@ -1918,61 +1626,113 @@
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-lorenzo",
     "sanremo-autostazione"
   ],
+  "palasalute": [
+    "cantalupo",
+    "caramagna",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "montegrazie",
+    "porto-m-pensilina",
+    "porto-maurizio-pensilina",
+    "via-acquarone",
+    "via-cascione",
+    "via-cascione/p-ricci"
+  ],
+  "via-acquarone": [
+    "cantalupo",
+    "caramagna",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "montegrazie",
+    "porto-m-pensilina",
+    "porto-maurizio-pensilina",
+    "via-cascione",
+    "via-cascione/p-ricci"
+  ],
+  "caramagna-bacan": [
+    "cantalupo",
+    "caramagna",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "montegrazie",
+    "porto-m-pensilina",
+    "porto-maurizio-pensilina",
+    "via-cascione",
+    "via-cascione/p-ricci"
+  ],
   "andora-rotonda-s-s-1": [
+    "arma-di-taggia",
     "arma-di-taggia-rossat",
     "cervo",
     "diano-marina",
     "imperia-oneglia",
     "imperia-porto-maurizio",
     "riva-ligure",
-    "rotonda-scuola-valle-armea",
     "san-bartolomeo",
     "san-lorenzo",
     "sanremo-autostazione",
     "santo-stefano"
   ],
-  "caramagna-/-bivio-croce": [
-    "cantalupo",
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
+  "arma-di-taggia": [
+    "andora-bivio-ss1-per-a10",
+    "andora-stazione-fs",
+    "cervo",
+    "diano-marina",
+    "imperia-oneglia",
+    "imperia-porto-maurizio",
+    "riva-ligure",
+    "san-bartolomeo",
+    "san-lorenzo",
+    "sanremo-autostazione",
+    "santo-stefano"
+  ],
+  "porto---piazza-marconi": [
+    "artallo"
+  ],
+  "artallo": [],
+  "borgo-san-moro": [
     "comune",
-    "moltedo",
-    "montegrazie",
+    "ospedale",
     "porto-maurizio-pensilina",
+    "sant-agata",
     "via-cascione"
   ],
-  "moltedo": [
-    "cantalupo",
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
-    "comune",
-    "moltedo",
-    "porto-maurizio-pensilina",
-    "via-cascione"
+  "sant-agata": [
+    "l-nanollo-p",
+    "ospedale",
+    "rotonda-borgo-san-moro",
+    "viale-matteotti"
   ],
-  "cantalupo": [
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
-    "comune",
-    "moltedo",
-    "porto-maurizio-pensilina",
-    "via-cascione"
+  "trexenda": [
+    "borgo-san-moro",
+    "ospedale",
+    "sant-agata",
+    "stazione-fs-arg-dx"
   ],
-  "montegrazie": [
-    "caramagna-/-bivio-croce",
-    "caramagna-bacan",
-    "comune",
-    "montegrazie",
-    "porto-maurizio-pensilina",
-    "via-cascione"
+  "garbella": [
+    "civezza",
+    "poggi",
+    "poggi-cabina-enel"
+  ],
+  "poggi": [
+    "civezza",
+    "poggi-cabina-enel"
+  ],
+  "poggi-cabina-enel": [
+    "civezza"
   ],
   "andora-fs": [
-    "andora-bivio-ss1-per-a10",
+    "andora-rotonda-s-s-1",
     "arma-di-taggia",
     "cervo",
     "diano-marina",
@@ -1983,6 +1743,156 @@
     "san-lorenzo",
     "sanremo-autostazione",
     "santo-stefano"
+  ],
+  "porto-m-pensilina": [
+    "cantalupo",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "montegrazie",
+    "palasalute",
+    "piazza-ricci",
+    "porto-m-pensilina",
+    "via-acquarone",
+    "via-cascione/p-ricci"
+  ],
+  "caramagna-/-bivio-croce": [
+    "cantalupo",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "montegrazie",
+    "porto-m-pensilina",
+    "via-cascione/p-ricci"
+  ],
+  "montegrazie": [
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "montegrazie",
+    "porto-m-pensilina",
+    "via-cascione/p-ricci"
+  ],
+  "moltedo": [
+    "cantalupo",
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "porto-m-pensilina",
+    "via-cascione/p-ricci"
+  ],
+  "cantalupo": [
+    "caramagna-/-bivio-croce",
+    "caramagna-bacan",
+    "comune",
+    "moltedo",
+    "porto-m-pensilina",
+    "via-cascione/p-ricci"
+  ],
+  "via-cascione/p-ricci": [
+    "comune",
+    "porto-m-pensilina"
+  ],
+  "autostazione": [
+    "autostazione",
+    "baragallo",
+    "bivio-san-giacomo",
+    "bivio-via-galilei/via-martiri",
+    "bivio-via-p-semeria",
+    "bivio-villetta",
+    "borgo",
+    "bussana-scuole-elementari",
+    "campo-ippico",
+    "carceri",
+    "carmelo",
+    "casa-serena",
+    "chiesa",
+    "cimitero-armea",
+    "cimitero-armea-–-arrivo",
+    "cimitero-armea-–-partenza",
+    "coldirodi",
+    "collina-fiorita",
+    "de-amicis",
+    "foce",
+    "gozo",
+    "isola",
+    "madonna-costa",
+    "madonna-della-costa",
+    "madonna-guardia",
+    "mercato",
+    "ospedale",
+    "p-za-eroi-/-mercato",
+    "p-za-eroi-mercato",
+    "piazza-san-bernardo",
+    "poggio",
+    "poggio-direz-via-val-d-olivi",
+    "residenza-franchiolo",
+    "rio-masse",
+    "salve-regina",
+    "san-bartolomeo",
+    "san-donato",
+    "san-giacomo",
+    "san-giovanni",
+    "san-giovanni-picchetta",
+    "san-lorenzo",
+    "san-martino",
+    "san-pietro",
+    "san-romolo",
+    "sant-antonio",
+    "scalinata-bussana-vecchia",
+    "tinasso",
+    "verezzo-ponte",
+    "via-agosti-bivio-borgo",
+    "via-armea-(rotonda-aurelia)",
+    "via-caduti-del-lavoro",
+    "via-de-amicis",
+    "via-gavino",
+    "via-goethe",
+    "via-pascoli",
+    "villetta"
+  ],
+  "p-za-eroi-/-mercato": [
+    "baragallo",
+    "bivio-via-galilei/via-martiri",
+    "madonna-costa",
+    "ospedale",
+    "tinasso"
+  ],
+  "bivio-via-galilei/via-martiri": [
+    "baragallo",
+    "madonna-costa",
+    "ospedale"
+  ],
+  "madonna-costa": [
+    "autostazione",
+    "baragallo",
+    "isola",
+    "ospedale",
+    "piazza-san-bernardo",
+    "san-bartolomeo",
+    "san-giacomo",
+    "san-giovanni-picchetta",
+    "san-romolo"
+  ],
+  "baragallo": [
+    "autostazione",
+    "baragallo",
+    "isola",
+    "madonna-costa",
+    "ospedale",
+    "piazza-san-bernardo",
+    "san-bartolomeo",
+    "san-giacomo",
+    "san-giovanni-picchetta",
+    "san-romolo"
+  ],
+  "tinasso": [
+    "baragallo",
+    "bivio-via-galilei/via-martiri",
+    "madonna-costa"
   ],
   "bivio-castelvecchio": [
     "costa-d-oneglia"
@@ -2001,134 +1911,23 @@
   ],
   "torrazza": [],
   "borgo-d-oneglia": [],
-  "autostazione": [
+  "mercato": [
     "autostazione",
-    "baragallo",
     "bivio-san-giacomo",
-    "bivio-via-galilei/via-martiri",
-    "bivio-via-martiri/via-galilei",
-    "bivio-via-p-semeria",
-    "bivio-villetta",
-    "bussana-scuole-elementari",
-    "campo-ippico",
-    "carceri",
-    "carmelo",
-    "casa-serena",
-    "cimitero-armea",
-    "cimitero-armea-–-arrivo",
-    "cimitero-armea-–-partenza",
-    "coldirodi",
+    "borgo",
+    "chiesa",
     "collina-fiorita",
     "de-amicis",
     "foce",
-    "gozo",
-    "isola",
-    "madonna-costa",
     "madonna-della-costa",
-    "madonna-guardia",
-    "mercato",
-    "ospedale",
-    "p-za-eroi-/-mercato",
-    "p-za-eroi/via-martiri",
-    "piazza-san-bernardo",
-    "poggio-chiesa",
-    "poggio-direz-via-val-d-olivi",
-    "residenza-franchiolo",
-    "rio-masse",
-    "salve-regina",
-    "san-bartolomeo",
-    "san-donato",
-    "san-giacomo",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta",
-    "san-lorenzo",
-    "san-martino-sogg-militare",
-    "san-pietro",
-    "san-romolo",
-    "sant-antonio",
-    "scalinata-bussana-vecchia",
-    "tinasso",
-    "verezzo-ponte",
-    "via-agosti-bivio-borgo",
-    "via-armea-(rotonda-aurelia)",
-    "via-caduti-del-lavoro",
-    "via-de-amicis",
-    "via-gavino",
-    "via-goethe/via-val-del-ponte",
-    "via-pascoli",
-    "villetta"
-  ],
-  "p-za-eroi-/-mercato": [
-    "autostazione",
-    "baragallo",
-    "bivio-via-galilei/via-martiri",
-    "bivio-via-martiri/via-galilei",
-    "de-amicis",
-    "foce",
-    "madonna-costa",
-    "ospedale",
-    "piazza-san-bernardo",
-    "tinasso",
-    "via-agosti-bivio-borgo"
-  ],
-  "bivio-via-galilei/via-martiri": [
-    "baragallo",
-    "madonna-costa",
-    "ospedale"
-  ],
-  "madonna-costa": [
-    "autostazione",
-    "baragallo",
-    "isola",
-    "ospedale",
-    "piazza-san-bernardo",
-    "san-bartolomeo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "san-romolo",
-    "via-caduti-del-lavoro"
-  ],
-  "baragallo": [
-    "autostazione",
-    "baragallo",
-    "isola",
-    "madonna-costa",
-    "ospedale",
-    "piazza-san-bernardo",
-    "san-bartolomeo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "via-caduti-del-lavoro"
-  ],
-  "tinasso": [
-    "baragallo",
-    "bivio-via-galilei/via-martiri",
-    "bivio-via-martiri/via-galilei",
-    "madonna-costa"
-  ],
-  "bivio-via-martiri/via-galilei": [
-    "baragallo",
-    "madonna-costa"
-  ],
-  "via-agosti-bivio-borgo": [
-    "autostazione",
-    "baragallo",
-    "collina-fiorita",
-    "de-amicis",
-    "foce",
-    "gozo",
-    "isola",
-    "madonna-costa",
+    "p-za-eroi-mercato",
     "piazza-san-bernardo",
     "residenza-franchiolo",
-    "san-bartolomeo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "san-martino-sogg-militare",
-    "san-romolo",
+    "san-giovanni",
+    "san-martino",
     "via-caduti-del-lavoro",
     "via-de-amicis",
-    "via-goethe/via-val-del-ponte"
+    "via-goethe"
   ],
   "de-amicis": [
     "autostazione",
@@ -2146,13 +1945,11 @@
     "san-bartolomeo",
     "san-giacomo",
     "san-giovanni-picchetta",
-    "san-romolo",
-    "via-caduti-del-lavoro"
+    "san-romolo"
   ],
   "foce": [
     "autostazione",
-    "piazza-san-bernardo",
-    "via-agosti-bivio-borgo"
+    "piazza-san-bernardo"
   ],
   "via-armea-(rotonda-aurelia)": [
     "autostazione",
@@ -2163,7 +1960,7 @@
     "cimitero-armea-–-arrivo",
     "cimitero-armea-–-partenza",
     "madonna-guardia",
-    "poggio-chiesa",
+    "poggio",
     "poggio-direz-via-val-d-olivi",
     "scalinata-bussana-vecchia",
     "via-armea-(rotonda-aurelia)",
@@ -2177,7 +1974,20 @@
     "cimitero-armea",
     "cimitero-armea-–-partenza",
     "madonna-guardia",
-    "poggio-chiesa",
+    "poggio",
+    "poggio-direz-via-val-d-olivi",
+    "scalinata-bussana-vecchia",
+    "via-armea-(rotonda-aurelia)",
+    "via-gavino"
+  ],
+  "cimitero-armea-–-partenza": [
+    "autostazione",
+    "bussana-scuole-elementari",
+    "carceri",
+    "casa-serena",
+    "cimitero-armea",
+    "madonna-guardia",
+    "poggio",
     "poggio-direz-via-val-d-olivi",
     "scalinata-bussana-vecchia",
     "via-armea-(rotonda-aurelia)",
@@ -2188,7 +1998,7 @@
     "bussana-scuole-elementari",
     "casa-serena",
     "madonna-guardia",
-    "poggio-chiesa",
+    "poggio",
     "poggio-direz-via-val-d-olivi",
     "scalinata-bussana-vecchia",
     "via-gavino"
@@ -2198,7 +2008,7 @@
     "bussana-scuole-elementari",
     "casa-serena",
     "madonna-guardia",
-    "poggio-chiesa",
+    "poggio",
     "poggio-direz-via-val-d-olivi",
     "via-gavino"
   ],
@@ -2206,32 +2016,19 @@
     "autostazione",
     "casa-serena",
     "madonna-guardia",
-    "poggio-chiesa",
+    "poggio",
     "poggio-direz-via-val-d-olivi",
-    "via-gavino"
-  ],
-  "cimitero-armea-–-partenza": [
-    "autostazione",
-    "bussana-scuole-elementari",
-    "carceri",
-    "casa-serena",
-    "cimitero-armea",
-    "madonna-guardia",
-    "poggio-chiesa",
-    "poggio-direz-via-val-d-olivi",
-    "scalinata-bussana-vecchia",
-    "via-armea-(rotonda-aurelia)",
     "via-gavino"
   ],
   "madonna-guardia": [
     "autostazione",
     "casa-serena",
     "cimitero-armea",
-    "poggio-chiesa",
+    "poggio",
     "poggio-direz-via-val-d-olivi",
     "via-gavino"
   ],
-  "poggio-chiesa": [
+  "poggio": [
     "autostazione",
     "baiardo",
     "casa-serena",
@@ -2239,7 +2036,6 @@
     "cimitero-armea",
     "madonna-della-villa",
     "madonna-guardia",
-    "poggio-chiesa",
     "poggio-direz-via-val-d-olivi",
     "via-gavino"
   ],
@@ -2260,55 +2056,6 @@
   "cimitero-armea": [
     "autostazione"
   ],
-  "ponte-barcheto": [
-    "borgo-san-moro",
-    "comune",
-    "ospedale",
-    "porto-maurizio-pensilina",
-    "sant-agata",
-    "stazione-fs-arg-dx",
-    "trexenda",
-    "via-cascione"
-  ],
-  "rotonda-borgo-san-moro": [
-    "viale-matteotti"
-  ],
-  "viale-matteotti": [],
-  "barcheto": [
-    "borgo-san-moro",
-    "comune",
-    "ospedale",
-    "porto-maurizio-pensilina",
-    "stazione-fs-arg-dx",
-    "via-cascione"
-  ],
-  "via-repubblica": [
-    "argine-dx",
-    "argine-sx",
-    "stazione-fs-dx-arrivo",
-    "stazione-fs-dx-partenza",
-    "viale-matteotti"
-  ],
-  "argine-sx": [
-    "argine-dx",
-    "stazione-fs-dx-arrivo",
-    "stazione-fs-dx-partenza",
-    "viale-matteotti"
-  ],
-  "stazione-fs-dx-arrivo": [
-    "argine-dx",
-    "stazione-fs-dx-partenza",
-    "viale-matteotti"
-  ],
-  "stazione-fs-dx-partenza": [
-    "argine-dx",
-    "viale-matteotti"
-  ],
-  "argine-dx": [
-    "viale-matteotti"
-  ],
-  "baite": [],
-  "collette": [],
   "bivio-via-p-semeria": [
     "bivio-via-p-semeria",
     "carmelo",
@@ -2325,18 +2072,50 @@
     "coldirodi"
   ],
   "campo-ippico": [
-    "campo-ippico",
     "rio-masse",
     "salve-regina",
     "san-lorenzo"
   ],
   "salve-regina": [
-    "campo-ippico",
     "rio-masse",
     "san-lorenzo"
   ],
-  "rio-masse": [
-    "campo-ippico"
+  "rio-masse": [],
+  "stazione-fs-arg-sx": [
+    "barcheto",
+    "borgo-san-moro",
+    "comune",
+    "ospedale",
+    "porto-maurizio-pensilina",
+    "sant-agata",
+    "stazione-fs-arg-dx",
+    "trexenda",
+    "via-cascione"
+  ],
+  "barcheto": [
+    "borgo-san-moro",
+    "comune",
+    "ospedale",
+    "porto-maurizio-pensilina",
+    "sant-agata",
+    "stazione-fs-arg-dx",
+    "trexenda",
+    "via-cascione"
+  ],
+  "stazione-fs-arg-dx": [
+    "borgo-san-moro",
+    "comune",
+    "ospedale",
+    "porto-maurizio-pensilina",
+    "sant-agata",
+    "via-cascione"
+  ],
+  "rotonda-borgo-san-moro": [
+    "l-nanollo-p",
+    "viale-matteotti"
+  ],
+  "viale-matteotti": [
+    "l-nanollo-p"
   ],
   "san-pietro": [
     "ospedale",
@@ -2366,9 +2145,98 @@
     "sant-antonio",
     "verezzo-ponte"
   ],
+  "sant-antonio": [
+    "bivio-villetta",
+    "san-donato",
+    "verezzo-ponte"
+  ],
   "san-donato": [
     "bivio-villetta",
     "verezzo-ponte"
+  ],
+  "argine-sx": [
+    "argine-dx",
+    "stazione-fs-dx-arrivo",
+    "stazione-fs-dx-partenza",
+    "viale-matteotti"
+  ],
+  "stazione-fs-dx-arrivo": [
+    "argine-dx",
+    "stazione-fs-dx-partenza",
+    "viale-matteotti"
+  ],
+  "stazione-fs-dx-partenza": [
+    "argine-dx",
+    "viale-matteotti"
+  ],
+  "argine-dx": [
+    "viale-matteotti"
+  ],
+  "via-repubblica": [
+    "argine-dx",
+    "argine-sx",
+    "stazione-fs-dx-arrivo",
+    "stazione-fs-dx-partenza",
+    "viale-matteotti"
+  ],
+  "baite": [],
+  "collette": [],
+  "via-agosti-bivio-borgo": [
+    "autostazione",
+    "baragallo",
+    "gozo",
+    "isola",
+    "madonna-costa",
+    "piazza-san-bernardo",
+    "san-bartolomeo",
+    "san-giacomo",
+    "san-giovanni-picchetta",
+    "san-romolo"
+  ],
+  "isola": [
+    "autostazione",
+    "baragallo",
+    "isola",
+    "madonna-costa",
+    "piazza-san-bernardo",
+    "san-bartolomeo",
+    "san-giacomo",
+    "san-giovanni-picchetta",
+    "san-romolo"
+  ],
+  "san-giacomo": [
+    "autostazione",
+    "baragallo",
+    "isola",
+    "madonna-costa",
+    "piazza-san-bernardo",
+    "san-bartolomeo",
+    "san-giacomo",
+    "san-giovanni-picchetta",
+    "san-romolo"
+  ],
+  "san-romolo": [
+    "autostazione",
+    "baragallo",
+    "san-giacomo",
+    "san-romolo"
+  ],
+  "gozo": [
+    "autostazione",
+    "baragallo",
+    "gozo",
+    "isola",
+    "madonna-costa",
+    "piazza-san-bernardo",
+    "san-bartolomeo",
+    "san-giacomo",
+    "san-giovanni-picchetta",
+    "san-romolo"
+  ],
+  "san-giovanni-picchetta": [
+    "autostazione",
+    "baragallo",
+    "san-giovanni-picchetta"
   ],
   "diano-castello": [
     "diano-castello"
@@ -2419,57 +2287,173 @@
     "san-bartolomeo-al-mare"
   ],
   "san-bartolomeo-al-mare": [
+    "bar-sito-lato-mare",
     "cervo-piazza-castello",
     "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
     "nuova-stazione-fs-(arrivo)",
     "nuova-stazione-fs-(partenza)",
     "san-bartolomeo-al-mare"
   ],
   "cervo-piazza-castello": [
+    "bar-sito-lato-mare",
     "diano-marina-capolinea",
+    "diano-marina-vecchia-stazione",
     "nuova-stazione-fs-(arrivo)",
     "nuova-stazione-fs-(partenza)",
     "san-bartolomeo-al-mare"
   ],
-  "nuova-stazione-fs": [
+  "via-de-amicis": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "collina-fiorita",
+    "madonna-della-costa",
+    "p-za-eroi-mercato",
+    "residenza-franchiolo",
+    "san-giovanni",
+    "san-martino",
+    "via-caduti-del-lavoro",
+    "via-goethe"
+  ],
+  "via-goethe": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "collina-fiorita",
+    "madonna-della-costa",
+    "p-za-eroi-mercato",
+    "residenza-franchiolo",
+    "san-giovanni",
+    "san-martino"
+  ],
+  "san-martino": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "p-za-eroi-mercato",
+    "san-giovanni"
+  ],
+  "p-za-eroi-mercato": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "san-giovanni"
+  ],
+  "bivio-san-giacomo": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "san-giovanni"
+  ],
+  "chiesa": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "san-giovanni"
+  ],
+  "san-giovanni": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "san-giovanni"
+  ],
+  "madonna-della-costa": [
+    "autostazione"
+  ],
+  "collina-fiorita": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "p-za-eroi-mercato",
+    "residenza-franchiolo",
+    "san-giovanni",
+    "san-martino"
+  ],
+  "residenza-franchiolo": [
+    "autostazione",
+    "bivio-san-giacomo",
+    "chiesa",
+    "madonna-della-costa",
+    "p-za-eroi-mercato",
+    "san-giovanni",
+    "san-martino"
+  ],
+  "via-caduti-del-lavoro": [
+    "autostazione"
+  ],
+  "d-marina-v-cesare-battisti": [
+    "chiappa",
+    "d-marina-bar-sito-(lato-mare)",
+    "d-marina-vecchia-stazione",
     "deglio",
     "diano-arentino",
     "diano-borello",
     "diano-roncagli",
     "diano-san-pietro",
     "evigno",
+    "molino-del-fico",
     "nuova-stazione-fs",
+    "pairola",
+    "riva-faraldi-(-pensilina-)",
+    "san-bartolomeo",
+    "tovo",
     "villa-faraldi"
+  ],
+  "d-marina-vecchia-stazione": [
+    "d-marina-bar-sito-(lato-mare)",
+    "diano-arentino",
+    "diano-borello",
+    "diano-roncagli",
+    "diano-san-pietro",
+    "evigno",
+    "nuova-stazione-fs"
+  ],
+  "d-marina-bar-sito-(lato-mare)": [
+    "diano-arentino",
+    "diano-borello",
+    "diano-roncagli",
+    "diano-san-pietro",
+    "evigno",
+    "nuova-stazione-fs"
+  ],
+  "nuova-stazione-fs": [
+    "diano-arentino",
+    "diano-borello",
+    "diano-roncagli",
+    "diano-san-pietro",
+    "evigno",
+    "nuova-stazione-fs"
   ],
   "diano-san-pietro": [
-    "deglio",
     "diano-arentino",
     "diano-borello",
     "diano-roncagli",
     "diano-san-pietro",
     "evigno",
-    "nuova-stazione-fs",
-    "villa-faraldi"
+    "nuova-stazione-fs"
   ],
   "diano-roncagli": [
-    "deglio",
     "diano-arentino",
     "diano-borello",
     "diano-roncagli",
     "diano-san-pietro",
     "evigno",
-    "nuova-stazione-fs",
-    "villa-faraldi"
+    "nuova-stazione-fs"
   ],
   "evigno": [
-    "deglio",
     "diano-arentino",
     "diano-borello",
     "diano-roncagli",
     "diano-san-pietro",
     "evigno",
-    "nuova-stazione-fs",
-    "villa-faraldi"
+    "nuova-stazione-fs"
   ],
   "diano-arentino": [
     "diano-borello",
@@ -2482,184 +2466,66 @@
     "diano-san-pietro",
     "nuova-stazione-fs"
   ],
+  "chiappa": [
+    "deglio",
+    "molino-del-fico",
+    "pairola",
+    "riva-faraldi-(-pensilina-)",
+    "san-bartolomeo",
+    "tovo",
+    "villa-faraldi"
+  ],
+  "tovo": [
+    "deglio",
+    "molino-del-fico",
+    "pairola",
+    "riva-faraldi-(-pensilina-)",
+    "san-bartolomeo",
+    "villa-faraldi"
+  ],
   "villa-faraldi": [
     "deglio",
-    "diano-arentino",
-    "diano-borello",
-    "diano-roncagli",
-    "diano-san-pietro",
-    "evigno",
-    "nuova-stazione-fs"
+    "molino-del-fico",
+    "pairola",
+    "riva-faraldi-(-pensilina-)",
+    "san-bartolomeo",
+    "villa-faraldi"
   ],
   "deglio": [
-    "diano-arentino",
-    "diano-borello",
-    "diano-roncagli",
-    "diano-san-pietro",
-    "evigno",
-    "nuova-stazione-fs"
-  ],
-  "isola": [
-    "autostazione",
-    "baragallo",
-    "isola",
-    "madonna-costa",
-    "piazza-san-bernardo",
+    "molino-del-fico",
+    "pairola",
+    "riva-faraldi-(-pensilina-)",
     "san-bartolomeo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "san-romolo",
-    "via-caduti-del-lavoro"
+    "villa-faraldi"
   ],
-  "san-giacomo": [
-    "autostazione",
-    "baragallo",
-    "isola",
-    "madonna-costa",
-    "piazza-san-bernardo",
+  "riva-faraldi-(-pensilina-)": [
+    "molino-del-fico",
+    "pairola",
+    "san-bartolomeo"
+  ],
+  "molino-del-fico": [
+    "pairola",
+    "san-bartolomeo"
+  ],
+  "pairola": [
+    "chiappa",
+    "deglio",
+    "molino-del-fico",
+    "pairola",
+    "riva-faraldi-(-pensilina-)",
     "san-bartolomeo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "san-romolo",
-    "via-caduti-del-lavoro"
-  ],
-  "via-caduti-del-lavoro": [
-    "autostazione",
-    "baragallo",
-    "collina-fiorita",
-    "madonna-costa",
-    "residenza-franchiolo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "san-martino-sogg-militare",
-    "san-romolo",
-    "via-goethe/via-val-del-ponte"
-  ],
-  "san-romolo": [
-    "autostazione",
-    "baragallo",
-    "san-giacomo",
-    "san-romolo"
-  ],
-  "gozo": [
-    "autostazione",
-    "baragallo",
-    "gozo",
-    "isola",
-    "madonna-costa",
-    "piazza-san-bernardo",
-    "san-bartolomeo",
-    "san-giacomo",
-    "san-giovanni-picchetta",
-    "san-romolo",
-    "via-caduti-del-lavoro"
-  ],
-  "san-giovanni-picchetta": [
-    "autostazione",
-    "baragallo",
-    "bivio-san-giacomo",
-    "madonna-della-costa",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta"
-  ],
-  "mercato": [
-    "autostazione",
-    "collina-fiorita",
-    "residenza-franchiolo",
-    "san-martino-sogg-militare",
-    "via-agosti-bivio-borgo",
-    "via-caduti-del-lavoro",
-    "via-de-amicis",
-    "via-goethe/via-val-del-ponte"
-  ],
-  "via-de-amicis": [
-    "autostazione",
-    "collina-fiorita",
-    "residenza-franchiolo",
-    "san-martino-sogg-militare",
-    "via-caduti-del-lavoro",
-    "via-goethe/via-val-del-ponte"
-  ],
-  "via-goethe/via-val-del-ponte": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "collina-fiorita",
-    "residenza-franchiolo",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta",
-    "san-martino-sogg-militare"
-  ],
-  "san-martino-sogg-militare": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta"
-  ],
-  "p-za-eroi/via-martiri": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "madonna-della-costa",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta"
-  ],
-  "bivio-san-giacomo": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "madonna-della-costa",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta"
-  ],
-  "san-giovanni-chiesa": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "madonna-della-costa",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta"
-  ],
-  "madonna-della-costa": [
-    "autostazione"
-  ],
-  "collina-fiorita": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "residenza-franchiolo",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta",
-    "san-martino-sogg-militare"
-  ],
-  "residenza-franchiolo": [
-    "autostazione",
-    "bivio-san-giacomo",
-    "san-giovanni-chiesa",
-    "san-giovanni-picchetta",
-    "san-martino-sogg-militare"
+    "tovo",
+    "villa-faraldi"
   ],
   "pieve-di-teco": [
     "acquetico",
     "albenga",
-    "aquila-d-arroscia",
-    "armo",
     "bastia-/-leca",
     "bivio-cosio",
     "borghetto",
     "case-rosse",
-    "cenova",
-    "cenova-bivio",
     "chiusavecchia",
     "coasco-b-v",
-    "costa-bacelega",
-    "gavenola",
-    "gazzo",
-    "imperia-on",
-    "l-v-s-vac-s-vac-l-v-cosio",
-    "lavina",
-    "lavina-bivio",
-    "leca-/-bastia",
-    "leverone",
-    "mendatica",
-    "moano",
-    "monta",
-    "montegrosso",
     "nava-centro",
     "ortovero",
     "pieve-di-teco",
@@ -2668,7 +2534,6 @@
     "pornassio",
     "ranzo-bivio-aquila",
     "ranzo-borgo",
-    "rezzo",
     "vessalico"
   ],
   "vessalico": [
@@ -2676,236 +2541,140 @@
     "bastia-/-leca",
     "borghetto",
     "coasco-b-v",
-    "leca-/-bastia",
     "ortovero",
     "pogli",
     "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "ranzo-borgo"
   ],
   "borghetto": [
     "albenga",
-    "aquila-d-arroscia",
     "bastia-/-leca",
-    "borghetto",
     "coasco-b-v",
-    "costa-bacelega",
-    "gavenola",
-    "gazzo",
-    "leca-/-bastia",
-    "leverone",
-    "monta",
     "ortovero",
     "pogli",
     "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "ranzo-borgo"
   ],
   "ranzo-bivio-aquila": [
     "albenga",
     "bastia-/-leca",
-    "borghetto",
     "coasco-b-v",
-    "leca-/-bastia",
     "ortovero",
     "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "ranzo-borgo"
   ],
   "ranzo-borgo": [
     "albenga",
     "bastia-/-leca",
-    "borghetto",
     "coasco-b-v",
-    "leca-/-bastia",
     "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "pogli"
   ],
   "pogli": [
     "albenga",
     "bastia-/-leca",
-    "borghetto",
     "coasco-b-v",
-    "leca-/-bastia",
-    "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "ortovero"
   ],
   "ortovero": [
     "albenga",
     "bastia-/-leca",
-    "borghetto",
-    "coasco-b-v",
-    "leca-/-bastia",
-    "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "coasco-b-v"
   ],
   "coasco-b-v": [
     "albenga",
-    "bastia-/-leca",
-    "borghetto",
-    "coasco-b-v",
-    "leca-/-bastia",
-    "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "bastia-/-leca"
   ],
   "bastia-/-leca": [
-    "albenga",
-    "borghetto",
-    "coasco-b-v",
-    "leca-/-bastia",
-    "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
+    "albenga"
   ],
-  "albenga": [
-    "albenga",
-    "borghetto",
-    "coasco-b-v",
-    "leca-/-bastia",
-    "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
-  ],
-  "leca-/-bastia": [
-    "borghetto",
-    "coasco-b-v",
-    "ortovero",
-    "pogli",
-    "ranzo-bivio-aquila",
-    "ranzo-borgo",
-    "vessalico"
-  ],
-  "gazzo": [
-    "albenga",
-    "aquila-d-arroscia",
-    "costa-bacelega",
-    "gavenola",
-    "leverone",
-    "monta",
-    "ranzo-bivio-aquila"
-  ],
-  "gavenola": [
-    "albenga",
-    "aquila-d-arroscia",
-    "costa-bacelega",
-    "leverone",
-    "monta",
-    "ranzo-bivio-aquila"
-  ],
-  "leverone": [
-    "albenga",
-    "aquila-d-arroscia",
-    "costa-bacelega",
-    "monta",
-    "ranzo-bivio-aquila"
-  ],
-  "aquila-d-arroscia": [
-    "albenga",
-    "aquila-d-arroscia",
-    "costa-bacelega",
-    "monta",
-    "ranzo-bivio-aquila"
-  ],
-  "costa-bacelega": [
-    "albenga",
-    "aquila-d-arroscia",
-    "monta",
-    "ranzo-bivio-aquila"
-  ],
-  "monta": [
-    "albenga",
-    "ranzo-bivio-aquila"
-  ],
-  "moano": [
-    "armo",
-    "l-v-s-vac-s-vac-l-v-cosio",
-    "mendatica",
-    "moano",
-    "montegrosso"
-  ],
-  "armo": [
-    "armo",
-    "l-v-s-vac-s-vac-l-v-cosio",
-    "mendatica",
-    "moano",
-    "montegrosso"
-  ],
-  "montegrosso": [
-    "armo",
-    "l-v-s-vac-s-vac-l-v-cosio",
-    "mendatica",
-    "moano"
-  ],
-  "mendatica": [
-    "armo",
-    "l-v-s-vac-s-vac-l-v-cosio",
-    "moano"
-  ],
-  "l-v-s-vac-s-vac-l-v-cosio": [
-    "armo",
-    "moano"
-  ],
-  "lavina-bivio": [
-    "cenova",
-    "cenova-bivio",
-    "lavina",
-    "rezzo"
-  ],
-  "cenova-bivio": [
-    "cenova",
-    "rezzo"
-  ],
-  "cenova": [
-    "rezzo"
-  ],
-  "rezzo": [],
-  "lavina": [
-    "cenova",
-    "cenova-bivio",
-    "rezzo"
-  ],
-  "via-val-d-olivi-(deposito-rt)": [
+  "albenga": [],
+  "fermata-deposito-rt": [
     "baiardo",
     "ceriana",
     "madonna-della-villa",
-    "poggio-chiesa"
+    "poggio",
+    "poggio-direz-via-val-d-olivi"
   ],
   "ceriana": [
     "baiardo",
     "ceriana",
     "madonna-della-villa",
-    "poggio-chiesa"
+    "poggio-direz-via-val-d-olivi"
   ],
   "madonna-della-villa": [
     "baiardo",
     "ceriana",
     "madonna-della-villa",
-    "poggio-chiesa"
+    "poggio-direz-via-val-d-olivi"
   ],
   "baiardo": [
     "baiardo",
     "ceriana",
     "madonna-della-villa",
-    "poggio-chiesa"
+    "poggio-direz-via-val-d-olivi"
   ],
-  "arma-ex-fs": [
+  "imperia-on": [
+    "acquetico",
+    "bivio-cosio",
+    "case-rosse",
+    "chiusavecchia",
+    "nava-centro",
+    "pieve-di-teco",
+    "pontedassio",
+    "pornassio"
+  ],
+  "acquetico": [
+    "acquetico",
+    "bivio-cosio",
+    "case-rosse",
+    "chiusavecchia",
+    "nava-centro",
+    "pieve-di-teco",
+    "pontedassio",
+    "pornassio"
+  ],
+  "pornassio": [
+    "acquetico",
+    "bivio-cosio",
+    "case-rosse",
+    "chiusavecchia",
+    "nava-centro",
+    "pieve-di-teco",
+    "pontedassio",
+    "pornassio"
+  ],
+  "case-rosse": [
+    "acquetico",
+    "bivio-cosio",
+    "case-rosse",
+    "chiusavecchia",
+    "nava-centro",
+    "pieve-di-teco",
+    "pontedassio",
+    "pornassio"
+  ],
+  "bivio-cosio": [
+    "acquetico",
+    "bivio-cosio",
+    "case-rosse",
+    "chiusavecchia",
+    "nava-centro",
+    "pieve-di-teco",
+    "pontedassio",
+    "pornassio"
+  ],
+  "nava-centro": [
+    "acquetico",
+    "bivio-cosio",
+    "case-rosse",
+    "chiusavecchia",
+    "nava-centro",
+    "pieve-di-teco",
+    "pontedassio",
+    "pornassio"
+  ],
+  "arma-centro": [
     "agaggio-inferiore",
     "arma-bivio-rossat",
     "arma-centro",
@@ -3022,96 +2791,29 @@
     "taggia-stazione-fs",
     "triora"
   ],
-  "arma-centro": [],
-  "imperia-on": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
+  "sanremo": [
+    "arma-di-taggia---centro",
+    "castellaro",
+    "deposito",
+    "pompeiana"
   ],
-  "acquetico": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
+  "deposito": [
+    "arma-di-taggia---centro",
+    "castellaro",
+    "pompeiana"
   ],
-  "pornassio": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
+  "arma-di-taggia---centro": [
+    "arma-di-taggia---centro",
+    "castellaro",
+    "pompeiana"
   ],
-  "case-rosse": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
+  "castellaro": [
+    "arma-di-taggia---centro",
+    "castellaro",
+    "pompeiana"
   ],
-  "bivio-cosio": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
-  ],
-  "nava-centro": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
-  ],
-  "imperia-pm-igiene": [
-    "acquetico",
-    "bivio-cosio",
-    "case-rosse",
-    "chiusavecchia",
-    "imperia-on",
-    "nava-centro",
-    "pieve-di-teco",
-    "pontedassio",
-    "pornassio"
-  ],
-  "stazione-fs-(via-calzamiglia)": [
-    "stazione-fs-a-dx",
-    "stazione-fs-a-sx",
-    "via-trento/rotonda"
-  ],
-  "stazione-fs-a-dx": [
-    "stazione-fs-a-sx",
-    "via-trento/rotonda"
-  ],
-  "via-trento/rotonda": [],
-  "stazione-fs-a-sx": [
-    "via-trento/rotonda"
-  ],
-  "piazza-calvi": []
+  "pompeiana": [
+    "arma-di-taggia---centro",
+    "pompeiana"
+  ]
 }

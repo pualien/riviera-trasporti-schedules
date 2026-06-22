@@ -25,6 +25,21 @@ describe('parsePdfIndex', () => {
     });
   });
 
+  it('extracts hyphenated summer line identifiers', () => {
+    const entries = parsePdfIndex(
+      'LINEA 2-13 : VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA (Feriale) Andata pg.1   Pagina   5',
+    );
+
+    expect(entries).toEqual([
+      {
+        lineId: '2-13',
+        direction: 'VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA (Feriale) Andata pg.1',
+        pageNumber: 5,
+        serviceNote: '',
+      },
+    ]);
+  });
+
   it('reports missing index coverage against the manifest', () => {
     const indexEntries = [
       { lineId: '12', pageNumber: 22, direction: 'SANREMO - IMPERIA - ANDORA' },

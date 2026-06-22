@@ -69,7 +69,7 @@ function parseIndexLine(rawLine, currentLineId) {
     };
   }
 
-  const explicitMatch = line.match(/^LINEA\s+([A-Z0-9 /]+(?:\s+Bis)?)\s*:\s*(.+?)(?:\s+(?:Pagina|" ")\s+(\d+))?$/i);
+  const explicitMatch = line.match(/^LINEA\s+([A-Z0-9 /-]+(?:\s+Bis)?)\s*:\s*(.+?)(?:\s+(?:Pagina|" ")\s+(\d+))?$/i);
   if (explicitMatch) {
     const [, lineId, rawDescriptor, pageNumber] = explicitMatch;
     const descriptorMatch = rawDescriptor.match(/^(.*?)(?:\(([^)]+)\))?$/);

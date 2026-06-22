@@ -11,7 +11,7 @@
     "latitude": 43.8783869,
     "longitude": 8.0162076
   },
-  "porto-maurizio-pens": {
+  "porto-m-pensilina": {
     "latitude": 43.8783869,
     "longitude": 8.0162076
   },
@@ -90,14 +90,6 @@
   "ventimiglia-via-cavour": {
     "latitude": 43.7921001,
     "longitude": 7.6084989
-  },
-  "ventimiglia": {
-    "latitude": 43.7917202,
-    "longitude": 7.6037085
-  },
-  "ventimiglia-capolinea": {
-    "latitude": 43.7917202,
-    "longitude": 7.6037085
   },
   "ventimiglia---capolinea": {
     "latitude": 43.7917202,

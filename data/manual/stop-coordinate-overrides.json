@@ -21,7 +21,7 @@
     "sourceLabel": "Pensilina Porto Maurizio"
   },
   {
-    "stopId": "porto-maurizio-pens",
+    "stopId": "porto-m-pensilina",
     "latitude": 43.8783869,
     "longitude": 8.0162076,
     "source": "OpenStreetMap Overpass",
@@ -159,20 +159,6 @@
     "longitude": 7.6084989,
     "source": "OpenStreetMap Overpass",
     "sourceLabel": "Ventimiglia, via Cavour"
-  },
-  {
-    "stopId": "ventimiglia",
-    "latitude": 43.7917202,
-    "longitude": 7.6037085,
-    "source": "OpenStreetMap Overpass",
-    "sourceLabel": "Ventimiglia"
-  },
-  {
-    "stopId": "ventimiglia-capolinea",
-    "latitude": 43.7917202,
-    "longitude": 7.6037085,
-    "source": "OpenStreetMap Overpass",
-    "sourceLabel": "Ventimiglia"
   },
   {
     "stopId": "ventimiglia---capolinea",

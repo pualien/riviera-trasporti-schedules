@@ -2,320 +2,264 @@
   {
     "lineId": "1",
     "direction": "VENTIMIGLIA - PONTE SAN LUIGI",
-    "serviceNote": "solo feriale",
+    "serviceNote": "",
     "pageNumber": 3,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "19",
-    "direction": "SANREMO - RIVA LIGURE - TERZORIO",
-    "serviceNote": "solo scolastico",
-    "pageNumber": 35,
-    "dayType": "scolastico",
-    "parserFamily": "school-or-limited-service"
+    "lineId": "18",
+    "direction": "ARMA DI TAGGIA - POMPEIANA",
+    "serviceNote": "",
+    "pageNumber": 32,
+    "dayType": "feriale",
+    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "1/1",
-    "direction": "SERVIZIO URBANO DEL COMUNE DI VENTIMIGLIA",
-    "serviceNote": "solo feriale",
+    "direction": "SERVIZIO URBANO DEL COMUNE DI VENTIMIGLIA - M. SAN GIUSEPPE",
+    "serviceNote": "",
     "pageNumber": 4,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "20",
-    "direction": "IMPERIA - SAN LORENZO - CIPRESSA - LINGUEGLIETTA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 36,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "2",
-    "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA",
-    "serviceNote": "feriale lunedì/venerdì",
-    "pageNumber": 5,
+    "direction": "IMPERIA ONEGLIA - SAN LORENZO - CIPRESSA - LINGUEGLIETTA",
+    "serviceNote": "",
+    "pageNumber": 32,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "21",
-    "direction": "IMPERIA - SAN LORENZO - PIETRABRUNA - BOSCOMARE",
-    "serviceNote": "solo feriale",
-    "pageNumber": 36,
+    "direction": "IMPERIA ONEGLIA - SAN LORENZO - PIETRABRUNA - BOSCOMARE",
+    "serviceNote": "",
+    "pageNumber": 32,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "2",
-    "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA",
-    "serviceNote": "feriale lunedì/venerdì",
-    "pageNumber": 6,
+    "lineId": "2-13",
+    "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA (Feriale) Andata pg.1",
+    "serviceNote": "",
+    "pageNumber": 5,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "22",
-    "direction": "IMPERIA - SAN LORENZO - CIVEZZA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 36,
+    "direction": "IMPERIA ONEGLIA - SAN LORENZO - CIVEZZA",
+    "serviceNote": "",
+    "pageNumber": 32,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "2",
-    "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA",
-    "serviceNote": "feriale lunedì/venerdì",
-    "pageNumber": 7,
+    "lineId": "2-13",
+    "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA (Feriale) Andata pg.2",
+    "serviceNote": "",
+    "pageNumber": 6,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "23",
-    "direction": "IMPERIA - DOLCEDO - LECCHIORE",
-    "serviceNote": "solo feriale",
-    "pageNumber": 37,
+    "direction": "IMPERIA ONEGLIA - DOLCEDO - LECCHIORE",
+    "serviceNote": "",
+    "pageNumber": 33,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "2",
-    "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA",
-    "serviceNote": "feriale lunedì/venerdì",
-    "pageNumber": 8,
+    "lineId": "2-13",
+    "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA (Feriale) Ritorno pg.1",
+    "serviceNote": "",
+    "pageNumber": 7,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "24",
-    "direction": "IMPERIA - DOLCEDO - PRELA' - VILLATALLA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 37,
+    "direction": "IMPERIA ONEGLIA - DOLCEDO - PRELA' - VILLATALLA",
+    "serviceNote": "",
+    "pageNumber": 33,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "2",
-    "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA",
-    "serviceNote": "sabato e vacanze",
-    "pageNumber": 9,
-    "dayType": "sabato",
+    "lineId": "2-13",
+    "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA (Feriale) Ritorno pg.2",
+    "serviceNote": "",
+    "pageNumber": 8,
+    "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "25",
-    "direction": "IMPERIA - VASIA - PIANAVIA - PANTASINA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 38,
+    "direction": "IMPERIA ONEGLIA - VASIA - PIANAVIA - PANTASINA",
+    "serviceNote": "",
+    "pageNumber": 34,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "2",
+    "lineId": "2-13",
     "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA",
-    "serviceNote": "sabato e vacanze",
-    "pageNumber": 10,
-    "dayType": "sabato",
+    "serviceNote": "festivo",
+    "pageNumber": 9,
+    "dayType": "festivo",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "26",
-    "direction": "IMPERIA - PONTEDASSIO - BESTAGNO - VILLA VIANI",
-    "serviceNote": "solo feriale",
-    "pageNumber": 38,
+    "direction": "IMPERIA ONEGLIA - PONTEDASSIO - BESTAGNO - VILLA VIANI",
+    "serviceNote": "",
+    "pageNumber": 34,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "2",
+    "lineId": "2-13",
     "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA",
-    "serviceNote": "sabato e vacanze",
-    "pageNumber": 11,
-    "dayType": "sabato",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "27",
-    "direction": "IMPERIA - PONTEDASSIO - GAZZELLI - TORRIA - CESIO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 38,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "2",
-    "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA",
-    "serviceNote": "sabato e vacanze",
-    "pageNumber": 12,
-    "dayType": "sabato",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "27",
-    "direction": "IMPERIA - PONTEDASSIO - CARAVONICA - CARTARI",
-    "serviceNote": "solo feriale",
-    "pageNumber": 39,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "2",
-    "direction": "VENTIMIGLIA - BORDIGHERA - SANREMO - TAGGIA",
     "serviceNote": "festivo",
-    "pageNumber": 13,
+    "pageNumber": 10,
     "dayType": "festivo",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "28",
-    "direction": "IMPERIA - PONTEDASSIO - LUCINASCO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 39,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "2",
-    "direction": "TAGGIA - SANREMO - BORDIGHERA - VENTIMIGLIA",
-    "serviceNote": "festivo",
-    "pageNumber": 14,
-    "dayType": "festivo",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "28",
-    "direction": "IMPERIA - BORGOMARO - CONIO - POGGIALTO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 40,
+    "lineId": "27",
+    "direction": "IMPERIA ONEGLIA - PONTEDASSIO - CARAVONICA - CESIO - TORRIA",
+    "serviceNote": "",
+    "pageNumber": 34,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "3",
-    "direction": "VENTIMIGLIA - TRUCCO - AIROLE - OLIVETTA SAN MICHELE",
-    "serviceNote": "solo feriale",
-    "pageNumber": 15,
+    "direction": "VENTIMIGLIA - TRUCCO - AIROLE - FANGHETTO - OLIVETTA SAN MICHELE",
+    "serviceNote": "",
+    "pageNumber": 11,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "29",
-    "direction": "IMPERIA - GORLERI - SERRETA - DIANO MARINA",
+    "lineId": "28",
+    "direction": "IMPERIA ONEGLIA - PONTEDASSIO",
     "serviceNote": "",
-    "pageNumber": 41,
+    "pageNumber": 35,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "4",
     "direction": "VENTIMIGLIA - LATTE - SEALZA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 16,
+    "serviceNote": "",
+    "pageNumber": 12,
+    "dayType": "feriale",
+    "parserFamily": "linear-intercity"
+  },
+  {
+    "lineId": "28",
+    "direction": "IMPERIA ONEGLIA - CHIUSAVECCHIA - LUCINASCO",
+    "serviceNote": "",
+    "pageNumber": 35,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "5",
     "direction": "VENTIMIGLIA - SEGLIA - SAN LORENZO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 16,
+    "serviceNote": "",
+    "pageNumber": 12,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "30P",
-    "direction": "L.NANOLLO P. - PALASALUTE E RITORNO",
-    "serviceNote": "feriale",
-    "pageNumber": 42,
+    "lineId": "28",
+    "direction": "IMPERIA ONEGLIA - CHIUSAVECCHIA - BORGOMARO - POGGIALTO",
+    "serviceNote": "",
+    "pageNumber": 36,
     "dayType": "feriale",
-    "parserFamily": "urban-branched"
+    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "6",
     "direction": "VENTIMIGLIA - FRATI MARISTI - TORRI",
-    "serviceNote": "solo feriale",
-    "pageNumber": 16,
+    "serviceNote": "",
+    "pageNumber": 12,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "30 / 1",
-    "direction": "VIA CASCIONE - L.NANOLLO P. - SGORRETO - PONTEDASSIO A/R",
-    "serviceNote": "feriale",
-    "pageNumber": 43,
+    "lineId": "28",
+    "direction": "IMPERIA ONEGLIA - CHIUSAVECCHIA - BORGOMARO - CONIO",
+    "serviceNote": "",
+    "pageNumber": 36,
     "dayType": "feriale",
-    "parserFamily": "urban-branched"
+    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "7",
     "direction": "VENTIMIGLIA - DOLCEACQUA - ISOLABONA - PIGNA - CASTELVITTORIO",
     "serviceNote": "",
-    "pageNumber": 17,
+    "pageNumber": 13,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "30 / 1",
-    "direction": "VIA CASCIONE - L.NANOLLO P. - SGORRETO - PONTEDASSIO A/R",
-    "serviceNote": "festivo",
-    "pageNumber": 44,
-    "dayType": "festivo",
-    "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "30 / 2",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - PIANI 2 - COPPI ROSSI",
-    "serviceNote": "feriale",
-    "pageNumber": 45,
+    "lineId": "29",
+    "direction": "ONEGLIA FS - GORLERI - SERRETA - DIANO MARINA",
+    "serviceNote": "",
+    "pageNumber": 37,
     "dayType": "feriale",
-    "parserFamily": "urban-branched"
+    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "8",
-    "direction": "VENTIMIGLIA - SAN BIAGIO - SOLDANO - PERINALDO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 18,
+    "direction": "VENTIMIGLIA-SAN BIAGIO-SOLDANO-PERINALDO",
+    "serviceNote": "",
+    "pageNumber": 14,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "30 / 2",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - PIANI 2 - COPPI ROSSI",
-    "serviceNote": "festivo",
-    "pageNumber": 45,
-    "dayType": "festivo",
+    "lineId": "30 / P",
+    "direction": "L.NANOLLO P - PALASALUTE",
+    "serviceNote": "feriale",
+    "pageNumber": 38,
+    "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "9",
     "direction": "VENTIMIGLIA - BORDIGHERA - VALLEBONA",
     "serviceNote": "",
-    "pageNumber": 19,
+    "pageNumber": 15,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "30 / 3",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - CARAMAGNA",
+    "lineId": "30 / 1",
+    "direction": "L.NANOLLO P - SGORRETO - PONTEDASSIO",
     "serviceNote": "feriale",
-    "pageNumber": 46,
+    "pageNumber": 39,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "10",
     "direction": "VENTIMIGLIA - BORDIGHERA - SASSO - SEBORGA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 19,
+    "serviceNote": "",
+    "pageNumber": 15,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
-    "lineId": "30 / 3",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - CARAMAGNA",
+    "lineId": "30 / 1",
+    "direction": "VIA CASCIONE - L.NANOLLO P, - SGORRETO - PONTEDASSIO",
     "serviceNote": "festivo",
-    "pageNumber": 47,
+    "pageNumber": 40,
     "dayType": "festivo",
     "parserFamily": "urban-branched"
   },
@@ -323,103 +267,119 @@
     "lineId": "11",
     "direction": "SERVIZIO URBANO DEL COMUNE DI BORDIGHERA",
     "serviceNote": "",
-    "pageNumber": 20,
+    "pageNumber": 16,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "30 / 2",
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - PIANI 2 - COPPI ROSSI",
+    "serviceNote": "feriale",
+    "pageNumber": 41,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "11/O",
+    "direction": "SERVIZIO URBANO DEL COMUNE DI OSPEDALETTI",
+    "serviceNote": "",
+    "pageNumber": 17,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "30 / 2",
+    "direction": "L.NANOLLO P - PIANI 2 - COPPI ROSSI",
+    "serviceNote": "festivo",
+    "pageNumber": 41,
+    "dayType": "festivo",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "12",
+    "direction": "SANREMO - IMPERIA - ANDORA",
+    "serviceNote": "feriale",
+    "pageNumber": 18,
+    "dayType": "feriale",
+    "parserFamily": "linear-intercity"
+  },
+  {
+    "lineId": "30 / 3",
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - CARAMAGNA",
+    "serviceNote": "feriale",
+    "pageNumber": 42,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "serviceNote": "feriale",
+    "pageNumber": 19,
+    "dayType": "feriale",
+    "parserFamily": "linear-intercity"
+  },
+  {
+    "lineId": "30 / 3",
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - CARAMAGNA",
+    "serviceNote": "festivo",
+    "pageNumber": 43,
+    "dayType": "festivo",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "12",
+    "direction": "SANREMO - IMPERIA - ANDORA",
+    "serviceNote": "festivo",
+    "pageNumber": 20,
+    "dayType": "festivo",
+    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "30 / 4",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - ARTALLO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 48,
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - ARTALLO",
+    "serviceNote": "",
+    "pageNumber": 44,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "O",
-    "direction": "SERVIZIO URBANO DEL COMUNE DI OSPEDALETTI",
-    "serviceNote": "solo feriale",
+    "lineId": "12",
+    "direction": "ANDORA - IMPERIA - SANREMO",
+    "serviceNote": "festivo",
     "pageNumber": 21,
-    "dayType": "feriale",
-    "parserFamily": "urban-branched"
+    "dayType": "festivo",
+    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "30 / 5",
-    "direction": "L.NANOLLO P. - OSPEDALE - SANT' AGATA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 48,
+    "direction": "L.NANOLLO P - OSPEDALE - SANT' AGATA",
+    "serviceNote": "",
+    "pageNumber": 44,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "12",
-    "direction": "SANREMO - IMPERIA - ANDORA",
-    "serviceNote": "feriale",
-    "pageNumber": 22,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "30 / 6",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - POGGI - CIVEZZA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 48,
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - POGGI - CIVEZZA",
+    "serviceNote": "",
+    "pageNumber": 44,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "12",
-    "direction": "ANDORA - IMPERIA - SANREMO",
-    "serviceNote": "feriale",
-    "pageNumber": 23,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "30 / 7",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - CARAMAGNA - MOLTEDO",
-    "serviceNote": "feriale",
-    "pageNumber": 49,
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - CARAMAGNA - MOLTEDO",
+    "serviceNote": "",
+    "pageNumber": 45,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "12",
-    "direction": "SANREMO - IMPERIA - ANDORA",
-    "serviceNote": "festivo",
-    "pageNumber": 24,
-    "dayType": "festivo",
-    "parserFamily": "linear-intercity"
   },
   {
     "lineId": "30 / 8",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - CARAMAGNA - MONTEGRAZIE",
-    "serviceNote": "feriale",
-    "pageNumber": 49,
-    "dayType": "feriale",
-    "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "12",
-    "direction": "ANDORA - IMPERIA - SANREMO",
-    "serviceNote": "festivo",
-    "pageNumber": 25,
-    "dayType": "festivo",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "30 / 9",
-    "direction": "L.NANOLLO P. - COSTA D' ONEGLIA \" COLLETTE \"",
-    "serviceNote": "solo feriale",
-    "pageNumber": 50,
-    "dayType": "feriale",
-    "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "30 / 10",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - CANTALUPO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 49,
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - CARAMAGNA - MONTEGRAZIE",
+    "serviceNote": "",
+    "pageNumber": 45,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
@@ -427,15 +387,15 @@
     "lineId": "14 / 1",
     "direction": "AUTOSTAZIONE - BORGO BARAGALLO",
     "serviceNote": "",
-    "pageNumber": 26,
+    "pageNumber": 22,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "30 / 11",
-    "direction": "L.NANOLLO P. - CASCINE",
-    "serviceNote": "solo feriale",
-    "pageNumber": 50,
+    "lineId": "30 / 9",
+    "direction": "L.NANOLLO P - COSTA D' ONEGLIA",
+    "serviceNote": "",
+    "pageNumber": 46,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
@@ -443,79 +403,63 @@
     "lineId": "14 / 2",
     "direction": "AUTOSTAZIONE - BORGO TINASSO",
     "serviceNote": "",
-    "pageNumber": 26,
+    "pageNumber": 22,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "30 / 12",
-    "direction": "L.NANOLLO P. - PORTO MAURIZIO - PIANI - TORRAZZA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 50,
+    "lineId": "30 / 10",
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - CARAMAGNA - CANTALUPO",
+    "serviceNote": "",
+    "pageNumber": 45,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "14 / 3",
-    "direction": "AUTOSTAZIONE - FOCE BORGO - CASINO FOCE",
+    "direction": "AUTOSTAZIONE - BORGO - FOCE - Autostaz. con diramaz. Via Caduti",
     "serviceNote": "circolare",
-    "pageNumber": 27,
+    "pageNumber": 23,
     "dayType": "feriale",
     "parserFamily": "circular-or-loop"
   },
   {
-    "lineId": "30 / 13",
-    "direction": "L.NANOLLO P. - BORGO D' ONEGLIA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 50,
-    "dayType": "feriale",
-    "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "14 / 4",
-    "direction": "AUTOSTAZIONE - CIMITERO ARMEA",
+    "lineId": "30 / 11",
+    "direction": "L.NANOLLO P - CASCINE",
     "serviceNote": "",
-    "pageNumber": 28,
-    "dayType": "feriale",
-    "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "30 / 14",
-    "direction": "L.NANOLLO P. - STAZIONE FS - OSPEDALE - VIA CASCIONE",
-    "serviceNote": "feriale",
-    "pageNumber": 51,
+    "pageNumber": 46,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "14 / 4",
-    "direction": "AUTOSTAZIONE - CIMITERO ARMEA - CARCERI - BUSSANA",
+    "direction": "AUTOSTAZIONE - CIMITERO ARMEA con diramazione CARCERI - BUSSANA",
     "serviceNote": "circolare",
-    "pageNumber": 28,
+    "pageNumber": 24,
     "dayType": "feriale",
     "parserFamily": "circular-or-loop"
   },
   {
-    "lineId": "30 / 14",
-    "direction": "L.NANOLLO P. - STAZIONE FS - OSPEDALE - VIA CASCIONE",
-    "serviceNote": "festivo",
-    "pageNumber": 51,
-    "dayType": "festivo",
+    "lineId": "30 / 12",
+    "direction": "L.NANOLLO P - PORTO MAURIZIO - PIANI - TORRAZZA",
+    "serviceNote": "",
+    "pageNumber": 46,
+    "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "14 / 5",
     "direction": "AUTOSTAZIONE - GUARDIA - POGGIO - CASA SERENA",
     "serviceNote": "",
-    "pageNumber": 28,
+    "pageNumber": 24,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "30 / 14FS",
-    "direction": "L.NANOLLO P. - STAZIONE FS",
-    "serviceNote": "navetta",
-    "pageNumber": 52,
+    "lineId": "30 / 13",
+    "direction": "L.NANOLLO P - BORGO D' ONEGLIA",
+    "serviceNote": "",
+    "pageNumber": 46,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
@@ -523,15 +467,15 @@
     "lineId": "14 / 6",
     "direction": "AUTOSTAZIONE - FOCE - VIA PADREA SEMERIA - COLDIRODI",
     "serviceNote": "",
-    "pageNumber": 29,
+    "pageNumber": 25,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "30 / 15",
-    "direction": "L.NANOLLO P. - BAITE'",
-    "serviceNote": "solo feriale",
-    "pageNumber": 52,
+    "lineId": "30 / 14",
+    "direction": "L.NANOLLO P - OSPEDALE - VIA CASCIONE",
+    "serviceNote": "feriale",
+    "pageNumber": 47,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
@@ -539,39 +483,47 @@
     "lineId": "14 / 7",
     "direction": "AUTOSTAZIONE - FOCE - SALVE REGINA - SAN LORENZO - RIO MASSE'",
     "serviceNote": "",
-    "pageNumber": 29,
+    "pageNumber": 25,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "30 / 16",
-    "direction": "L.NANOLLO P. - COLLETTE \" COSTA D'ONEGLIA \"",
-    "serviceNote": "feriale",
-    "pageNumber": 52,
-    "dayType": "feriale",
+    "lineId": "30 / 14",
+    "direction": "L.NANOLLO P - OSPEDALE - VIA CASCIONE",
+    "serviceNote": "festivo",
+    "pageNumber": 47,
+    "dayType": "festivo",
     "parserFamily": "urban-branched"
   },
   {
     "lineId": "14 / 8",
-    "direction": "AUTOSTAZIONE - OSPEDALE - SAN PIETRO - VILLETTA - VIA PASCOLI",
+    "direction": "AUTOSTAZIONE - SAN PIETRO VILLETTA / VIA PASCOLI",
     "serviceNote": "",
-    "pageNumber": 30,
+    "pageNumber": 26,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "31",
-    "direction": "DIANO MARINA - DIANO CASTELLO",
+    "lineId": "30 / 14FS",
+    "direction": "SHUTTLE L.NANOLLO P - STAZIONE FS - L.NANOLLO P",
     "serviceNote": "",
-    "pageNumber": 53,
+    "pageNumber": 48,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "31",
-    "direction": "DIANO MARINA - STAZIONE FS",
+    "lineId": "14 / 9",
+    "direction": "AUTOSTAZIONE - VEREZZO SAN DONATO / SANT' ANTONIO",
     "serviceNote": "",
-    "pageNumber": 53,
+    "pageNumber": 26,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "30 / 15",
+    "direction": "L.NANOLLO P - BAITE'",
+    "serviceNote": "",
+    "pageNumber": 48,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
@@ -579,23 +531,71 @@
     "lineId": "14 / 10",
     "direction": "AUTOSTAZIONE - SAN BARTOLOMEO - GOZO - VILLA - SAN GIACOMO",
     "serviceNote": "",
-    "pageNumber": 31,
+    "pageNumber": 27,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "32",
-    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
-    "serviceNote": "",
-    "pageNumber": 53,
+    "lineId": "30 / 16",
+    "direction": "L.NANOLLO P - COLLETTE",
+    "serviceNote": "unificata con costa d'oneglia",
+    "pageNumber": 48,
     "dayType": "feriale",
-    "parserFamily": "linear-intercity"
+    "parserFamily": "urban-branched"
   },
   {
     "lineId": "14 / 11",
     "direction": "AUTOSTAZIONE - SAN GIACOMO - SAN BARTOLOMEO - SAN ROMOLO",
     "serviceNote": "",
-    "pageNumber": 31,
+    "pageNumber": 27,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "31",
+    "direction": "DIANO MARINA - DIANO CASTELLO",
+    "serviceNote": "",
+    "pageNumber": 49,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "14 / 12",
+    "direction": "AUTOSTAZIONE - VIA DE AMICIS - VIA CADUTI con diramaz. FOCE",
+    "serviceNote": "circolare",
+    "pageNumber": 28,
+    "dayType": "feriale",
+    "parserFamily": "circular-or-loop"
+  },
+  {
+    "lineId": "31Bis",
+    "direction": "NAVETTA STAZIONE FS GOLFO DIANESE",
+    "serviceNote": "",
+    "pageNumber": 49,
+    "dayType": "feriale",
+    "parserFamily": "urban-branched"
+  },
+  {
+    "lineId": "14 / 13",
+    "direction": "AUTOSTAZIONE - VIA GOETHE / SAN MARTINO",
+    "serviceNote": "circolare",
+    "pageNumber": 28,
+    "dayType": "feriale",
+    "parserFamily": "circular-or-loop"
+  },
+  {
+    "lineId": "32",
+    "direction": "DIANO MARINA - SAN PIETRO - RONCAGLI - ARENTINO - EVIGNO",
+    "serviceNote": "",
+    "pageNumber": 50,
+    "dayType": "feriale",
+    "parserFamily": "linear-intercity"
+  },
+  {
+    "lineId": "14 / 14",
+    "direction": "AUTOSTAZIONE - SAN GIOVANNI PICCHETTA",
+    "serviceNote": "",
+    "pageNumber": 28,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
@@ -603,71 +603,23 @@
     "lineId": "33",
     "direction": "DIANO MARINA - PAIROLA - CHIAPPA - VILLA FARALDI - TOVO - DEGLIO",
     "serviceNote": "",
-    "pageNumber": 53,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "14 / 12",
-    "direction": "AUTOSTAZIONE - VIA DE AMICIS",
-    "serviceNote": "circolare",
-    "pageNumber": 32,
-    "dayType": "feriale",
-    "parserFamily": "circular-or-loop"
-  },
-  {
-    "lineId": "34",
-    "direction": "PIEVE DI TECO - ALBENGA",
-    "serviceNote": "",
-    "pageNumber": 54,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "14 / 13",
-    "direction": "AUTOSTAZIONE - VIA GOETHE - SAN MARTINO",
-    "serviceNote": "circolare",
-    "pageNumber": 32,
-    "dayType": "feriale",
-    "parserFamily": "circular-or-loop"
-  },
-  {
-    "lineId": "34",
-    "direction": "PIEVE DI TECO - GAZZO - GAVENOLA - LEVERONE - AQUILA",
-    "serviceNote": "",
-    "pageNumber": 55,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "14 / 14",
-    "direction": "AUTOSTAZIONE - SAN GIOVANNI PICCHETTA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 32,
-    "dayType": "feriale",
-    "parserFamily": "urban-branched"
-  },
-  {
-    "lineId": "35",
-    "direction": "PIEVE DI TECO - ARMO",
-    "serviceNote": "",
-    "pageNumber": 55,
+    "pageNumber": 50,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "14 / 15",
     "direction": "AUTOSTAZIONE - VIA GAVINO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 32,
+    "serviceNote": "",
+    "pageNumber": 28,
     "dayType": "feriale",
     "parserFamily": "urban-branched"
   },
   {
-    "lineId": "36",
-    "direction": "PIEVE DI TECO - MENDATICA con diramazione per MONTEGROSSO",
+    "lineId": "34",
+    "direction": "PIEVE DI TECO - ALBENGA",
     "serviceNote": "",
-    "pageNumber": 55,
+    "pageNumber": 51,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
@@ -675,23 +627,7 @@
     "lineId": "15",
     "direction": "SANREMO - CERIANA - BAIARDO",
     "serviceNote": "",
-    "pageNumber": 33,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "37",
-    "direction": "PIEVE DI TECO - LAVINA - CENOVA - REZZO",
-    "serviceNote": "",
-    "pageNumber": 55,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "16",
-    "direction": "SANREMO - TAGGIA - BADALUCCO - TRIORA - MONTALTO - CARPASIO",
-    "serviceNote": "",
-    "pageNumber": 34,
+    "pageNumber": 29,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
@@ -699,31 +635,23 @@
     "lineId": "38",
     "direction": "IMPERIA - PIEVE DI TECO - NAVA",
     "serviceNote": "",
-    "pageNumber": 56,
+    "pageNumber": 52,
+    "dayType": "feriale",
+    "parserFamily": "linear-intercity"
+  },
+  {
+    "lineId": "16",
+    "direction": "TAGGIA - BADALUCCO - TRIORA - MONTALTO - CARPASIO",
+    "serviceNote": "",
+    "pageNumber": 30,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   },
   {
     "lineId": "17",
-    "direction": "SANREMO - ARMA DI TAGGIA - CASTELLARO",
-    "serviceNote": "solo feriale",
-    "pageNumber": 35,
-    "dayType": "feriale",
-    "parserFamily": "linear-intercity"
-  },
-  {
-    "lineId": "NAVETTE SCOLASTICHE",
-    "direction": "STAZIONE FS - VIA CASCIONE E L.NANOLLO P.",
-    "serviceNote": "scolastico",
-    "pageNumber": 57,
-    "dayType": "scolastico",
-    "parserFamily": "school-or-limited-service"
-  },
-  {
-    "lineId": "18",
-    "direction": "SANREMO - ARMA DI TAGGIA - POMPEIANA",
-    "serviceNote": "solo feriale",
-    "pageNumber": 35,
+    "direction": "ARMA DI TAGGIA - CASTELLARO",
+    "serviceNote": "",
+    "pageNumber": 31,
     "dayType": "feriale",
     "parserFamily": "linear-intercity"
   }

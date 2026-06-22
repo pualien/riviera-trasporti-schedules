@@ -30,51 +30,48 @@
     "variants": []
   },
   {
-    "id": "sanremo-s-martino-stadio",
-    "canonical": "sanremo s.martino stadio",
+    "id": "san-lorenzo-(partenza)",
+    "canonical": "san lorenzo (partenza)",
     "variants": []
   },
   {
-    "id": "arma-di-taggia",
-    "canonical": "arma di taggia",
+    "id": "lingueglietta",
+    "canonical": "lingueglietta",
     "variants": []
   },
   {
-    "id": "castellaro",
-    "canonical": "castellaro",
+    "id": "costarainera",
+    "canonical": "costarainera",
     "variants": []
   },
   {
-    "id": "bivio-pompeiana",
-    "canonical": "bivio pompeiana",
+    "id": "cipressa",
+    "canonical": "cipressa",
     "variants": []
   },
   {
-    "id": "pompeiana",
-    "canonical": "pompeiana",
+    "id": "torre-paponi",
+    "canonical": "torre paponi",
     "variants": []
   },
   {
-    "id": "terzorio",
-    "canonical": "terzorio",
+    "id": "boscomare",
+    "canonical": "boscomare",
     "variants": []
   },
   {
-    "id": "sanremo-autostazione",
-    "canonical": "sanremo autostazione",
-    "variants": [
-      "sanremo",
-      "autostazione sanremo"
-    ]
-  },
-  {
-    "id": "riva-ligure-centro-(scuole)",
-    "canonical": "riva ligure centro (scuole)",
+    "id": "pietrabruna",
+    "canonical": "pietrabruna",
     "variants": []
   },
   {
-    "id": "via-leva",
-    "canonical": "via levà",
+    "id": "bivio-civezza",
+    "canonical": "bivio civezza",
+    "variants": []
+  },
+  {
+    "id": "civezza",
+    "canonical": "civezza",
     "variants": []
   },
   {
@@ -113,11 +110,6 @@
     "variants": []
   },
   {
-    "id": "varase",
-    "canonical": "varase",
-    "variants": []
-  },
-  {
     "id": "via-lamboglia",
     "canonical": "via lamboglia",
     "variants": []
@@ -125,6 +117,11 @@
   {
     "id": "via-roma-centro",
     "canonical": "via roma centro",
+    "variants": []
+  },
+  {
+    "id": "varase",
+    "canonical": "varase",
     "variants": []
   },
   {
@@ -143,81 +140,18 @@
     "variants": []
   },
   {
+    "id": "ventimiglia-alta---via-verdi",
+    "canonical": "ventimiglia alta - via verdi",
+    "variants": []
+  },
+  {
     "id": "marina-san-giuseppe",
     "canonical": "marina san giuseppe",
     "variants": []
   },
   {
-    "id": "san-lorenzo-(partenza)",
-    "canonical": "san lorenzo (partenza)",
-    "variants": []
-  },
-  {
-    "id": "lingueglietta",
-    "canonical": "lingueglietta",
-    "variants": []
-  },
-  {
-    "id": "costarainera",
-    "canonical": "costarainera",
-    "variants": []
-  },
-  {
-    "id": "cipressa",
-    "canonical": "cipressa",
-    "variants": []
-  },
-  {
-    "id": "l-nanollo-p",
-    "canonical": "l. nanollo p.",
-    "variants": []
-  },
-  {
-    "id": "imperia-porto-maurizio",
-    "canonical": "imperia porto maurizio",
-    "variants": [
-      "porto maurizio",
-      "imperia p maurizio"
-    ]
-  },
-  {
-    "id": "san-lorenzo-(arrivo)",
-    "canonical": "san lorenzo (arrivo)",
-    "variants": []
-  },
-  {
-    "id": "piani-paorelli",
-    "canonical": "piani paorelli",
-    "variants": []
-  },
-  {
-    "id": "torre-paponi",
-    "canonical": "torre paponi",
-    "variants": []
-  },
-  {
-    "id": "boscomare",
-    "canonical": "boscomare",
-    "variants": []
-  },
-  {
-    "id": "pietrabruna",
-    "canonical": "pietrabruna",
-    "variants": []
-  },
-  {
-    "id": "bivio-civezza",
-    "canonical": "bivio civezza",
-    "variants": []
-  },
-  {
-    "id": "civezza",
-    "canonical": "civezza",
-    "variants": []
-  },
-  {
-    "id": "sanremo-partenza",
-    "canonical": "sanremo partenza",
+    "id": "sanremo-autostaz-partenza",
+    "canonical": "sanremo autostaz. partenza",
     "variants": []
   },
   {
@@ -281,24 +215,25 @@
     "variants": []
   },
   {
-    "id": "rotonda-scuola-valle-armea",
-    "canonical": "rotonda scuola valle armea",
+    "id": "sanremo-autostazione",
+    "canonical": "sanremo autostazione",
+    "variants": [
+      "sanremo",
+      "autostazione sanremo"
+    ]
+  },
+  {
+    "id": "imperia-oneglia",
+    "canonical": "imperia oneglia",
     "variants": []
   },
   {
-    "id": "villa-helios",
-    "canonical": "villa helios",
-    "variants": []
-  },
-  {
-    "id": "bordighera",
-    "canonical": "bordighera",
-    "variants": []
-  },
-  {
-    "id": "sanremo-arrivo",
-    "canonical": "sanremo arrivo",
-    "variants": []
+    "id": "imperia-porto-maurizio",
+    "canonical": "imperia porto maurizio",
+    "variants": [
+      "porto maurizio",
+      "imperia p maurizio"
+    ]
   },
   {
     "id": "caramagna",
@@ -336,6 +271,11 @@
     "variants": []
   },
   {
+    "id": "villa-helios",
+    "canonical": "villa helios",
+    "variants": []
+  },
+  {
     "id": "vasia",
     "canonical": "vasia",
     "variants": []
@@ -366,23 +306,23 @@
     "variants": []
   },
   {
-    "id": "imperia-p-maurizio-colla-san-bartolomeo",
-    "canonical": "imperia p. maurizio colla san bartolomeo",
-    "variants": []
-  },
-  {
     "id": "chiusavecchia",
     "canonical": "chiusavecchia",
     "variants": []
   },
   {
-    "id": "cesio",
-    "canonical": "cesio",
+    "id": "san-lazzaro-reale",
+    "canonical": "san lazzaro reale",
     "variants": []
   },
   {
-    "id": "arzeno",
-    "canonical": "arzeno",
+    "id": "caravonica",
+    "canonical": "caravonica",
+    "variants": []
+  },
+  {
+    "id": "colla-san-bartolomeo",
+    "canonical": "colla san bartolomeo",
     "variants": []
   },
   {
@@ -401,33 +341,73 @@
     "variants": []
   },
   {
-    "id": "colla-san-bartolomeo",
-    "canonical": "colla san bartolomeo",
+    "id": "cesio",
+    "canonical": "cesio",
     "variants": []
   },
   {
-    "id": "cartari",
-    "canonical": "cartari",
+    "id": "sanremo-partenza",
+    "canonical": "sanremo partenza",
     "variants": []
   },
   {
-    "id": "san-lazzaro-reale",
-    "canonical": "san lazzaro reale",
+    "id": "bordighera",
+    "canonical": "bordighera",
     "variants": []
   },
   {
-    "id": "caravonica",
-    "canonical": "caravonica",
+    "id": "sanremo-arrivo",
+    "canonical": "sanremo arrivo",
     "variants": []
   },
   {
-    "id": "san-bartolomeo-caravonica",
-    "canonical": "san bartolomeo caravonica",
+    "id": "airole-bivio",
+    "canonical": "airole bivio",
     "variants": []
   },
   {
-    "id": "lucinasco",
-    "canonical": "lucinasco",
+    "id": "olivetta-san-michele",
+    "canonical": "olivetta san michele",
+    "variants": []
+  },
+  {
+    "id": "airole-piazza",
+    "canonical": "airole piazza",
+    "variants": []
+  },
+  {
+    "id": "ventimiglia---capolinea",
+    "canonical": "ventimiglia - capolinea",
+    "variants": []
+  },
+  {
+    "id": "san-lorenzo",
+    "canonical": "san lorenzo",
+    "variants": []
+  },
+  {
+    "id": "seglia",
+    "canonical": "seglia",
+    "variants": []
+  },
+  {
+    "id": "frati-maristi",
+    "canonical": "frati maristi",
+    "variants": []
+  },
+  {
+    "id": "via-gallardi-ponte-bevera",
+    "canonical": "via gallardi ponte bevera",
+    "variants": []
+  },
+  {
+    "id": "frati-maristi-|",
+    "canonical": "frati maristi |",
+    "variants": []
+  },
+  {
+    "id": "torri-|",
+    "canonical": "torri |",
     "variants": []
   },
   {
@@ -466,23 +446,53 @@
     "variants": []
   },
   {
-    "id": "airole-bivio",
-    "canonical": "airole bivio",
+    "id": "ventimiglia-teatro",
+    "canonical": "ventimiglia teatro",
     "variants": []
   },
   {
-    "id": "olivetta-san-michele",
-    "canonical": "olivetta san michele",
+    "id": "camporosso",
+    "canonical": "camporosso",
     "variants": []
   },
   {
-    "id": "airole-piazza",
-    "canonical": "airole piazza",
+    "id": "dolceacqua",
+    "canonical": "dolceacqua",
     "variants": []
   },
   {
-    "id": "ventimiglia-capolinea",
-    "canonical": "ventimiglia capolinea",
+    "id": "isolabona",
+    "canonical": "isolabona",
+    "variants": []
+  },
+  {
+    "id": "pigna",
+    "canonical": "pigna",
+    "variants": []
+  },
+  {
+    "id": "castelvittorio",
+    "canonical": "castelvittorio",
+    "variants": []
+  },
+  {
+    "id": "apricale",
+    "canonical": "apricale",
+    "variants": []
+  },
+  {
+    "id": "buggio",
+    "canonical": "buggio",
+    "variants": []
+  },
+  {
+    "id": "rocchetta",
+    "canonical": "rocchetta",
+    "variants": []
+  },
+  {
+    "id": "l-nanollo-p",
+    "canonical": "l.nanollo p.",
     "variants": []
   },
   {
@@ -496,6 +506,11 @@
     "variants": []
   },
   {
+    "id": "muratori",
+    "canonical": "muratori",
+    "variants": []
+  },
+  {
     "id": "calderina",
     "canonical": "calderina",
     "variants": []
@@ -506,53 +521,38 @@
     "variants": []
   },
   {
-    "id": "ventimiglia---centro-studi",
-    "canonical": "ventimiglia - centro studi",
+    "id": "vallecrosia-ponte",
+    "canonical": "vallecrosia ponte",
     "variants": []
   },
   {
-    "id": "sant-antonio",
-    "canonical": "sant'antonio",
+    "id": "vallecrosia-alta",
+    "canonical": "vallecrosia alta",
     "variants": []
   },
   {
-    "id": "san-lorenzo",
-    "canonical": "san lorenzo",
+    "id": "san-biagio",
+    "canonical": "san biagio",
     "variants": []
   },
   {
-    "id": "frati-maristi",
-    "canonical": "frati maristi",
+    "id": "soldano",
+    "canonical": "soldano",
     "variants": []
   },
   {
-    "id": "via-gallardi-ponte-bevera",
-    "canonical": "via gallardi ponte bevera",
+    "id": "perinaldo",
+    "canonical": "perinaldo",
     "variants": []
   },
   {
-    "id": "ventimiglia---capolinea",
-    "canonical": "ventimiglia - capolinea",
+    "id": "san-biagio-piazza",
+    "canonical": "san biagio piazza",
     "variants": []
   },
   {
-    "id": "seglia",
-    "canonical": "seglia",
-    "variants": []
-  },
-  {
-    "id": "torri-|",
-    "canonical": "torri |",
-    "variants": []
-  },
-  {
-    "id": "varase-|",
-    "canonical": "varase |",
-    "variants": []
-  },
-  {
-    "id": "ventimiglia-centro-studi",
-    "canonical": "ventimiglia centro studi",
+    "id": "l-nanollo-p",
+    "canonical": "l. nanollo p.",
     "variants": []
   },
   {
@@ -571,8 +571,8 @@
     "variants": []
   },
   {
-    "id": "v-acquarone",
-    "canonical": "v.acquarone",
+    "id": "rotonda-palasalute",
+    "canonical": "rotonda palasalute",
     "variants": []
   },
   {
@@ -581,8 +581,33 @@
     "variants": []
   },
   {
-    "id": "porto-maurizio-pens",
-    "canonical": "porto maurizio pens.",
+    "id": "bordighera-fs",
+    "canonical": "bordighera fs",
+    "variants": []
+  },
+  {
+    "id": "vallebona",
+    "canonical": "vallebona",
+    "variants": []
+  },
+  {
+    "id": "bordighera-alta",
+    "canonical": "bordighera alta",
+    "variants": []
+  },
+  {
+    "id": "sasso",
+    "canonical": "sasso",
+    "variants": []
+  },
+  {
+    "id": "seborga",
+    "canonical": "seborga",
+    "variants": []
+  },
+  {
+    "id": "bel-sit---via-dei-colli",
+    "canonical": "bel sit - via dei colli",
     "variants": []
   },
   {
@@ -616,56 +641,6 @@
     "variants": []
   },
   {
-    "id": "ventimiglia",
-    "canonical": "ventimiglia",
-    "variants": []
-  },
-  {
-    "id": "camporosso",
-    "canonical": "camporosso",
-    "variants": []
-  },
-  {
-    "id": "dolceacqua",
-    "canonical": "dolceacqua",
-    "variants": []
-  },
-  {
-    "id": "isolabona---arrivo",
-    "canonical": "isolabona - arrivo",
-    "variants": []
-  },
-  {
-    "id": "isolabona---partenza",
-    "canonical": "isolabona - partenza",
-    "variants": []
-  },
-  {
-    "id": "pigna",
-    "canonical": "pigna",
-    "variants": []
-  },
-  {
-    "id": "castelvittorio",
-    "canonical": "castelvittorio",
-    "variants": []
-  },
-  {
-    "id": "apricale",
-    "canonical": "apricale",
-    "variants": []
-  },
-  {
-    "id": "buggio",
-    "canonical": "buggio",
-    "variants": []
-  },
-  {
-    "id": "rocchetta",
-    "canonical": "rocchetta",
-    "variants": []
-  },
-  {
     "id": "l-nanollo-p-partenza",
     "canonical": "l. nanollo p. partenza",
     "variants": []
@@ -681,81 +656,6 @@
     "variants": []
   },
   {
-    "id": "piani-2",
-    "canonical": "piani 2",
-    "variants": []
-  },
-  {
-    "id": "coppi-rossi",
-    "canonical": "coppi rossi",
-    "variants": []
-  },
-  {
-    "id": "via-gavi",
-    "canonical": "via gavi",
-    "variants": []
-  },
-  {
-    "id": "vallecrosia-ponte",
-    "canonical": "vallecrosia ponte",
-    "variants": []
-  },
-  {
-    "id": "vallecrosia-alta",
-    "canonical": "vallecrosia alta",
-    "variants": []
-  },
-  {
-    "id": "san-biagio",
-    "canonical": "san biagio",
-    "variants": []
-  },
-  {
-    "id": "soldano",
-    "canonical": "soldano",
-    "variants": []
-  },
-  {
-    "id": "perinaldo",
-    "canonical": "perinaldo",
-    "variants": []
-  },
-  {
-    "id": "ventimiglia---teatro",
-    "canonical": "ventimiglia - teatro",
-    "variants": []
-  },
-  {
-    "id": "san-biagio-piazza",
-    "canonical": "san biagio piazza",
-    "variants": []
-  },
-  {
-    "id": "bordighera-fs",
-    "canonical": "bordighera fs",
-    "variants": []
-  },
-  {
-    "id": "vallebona",
-    "canonical": "vallebona",
-    "variants": []
-  },
-  {
-    "id": "sasso",
-    "canonical": "sasso",
-    "variants": []
-  },
-  {
-    "id": "seborga",
-    "canonical": "seborga",
-    "variants": []
-  },
-  {
-    "id": "caramagna-bacan",
-    "canonical": "caramagna bacan",
-    "variants": []
-  },
-  {
     "id": "borghetto-superiore",
     "canonical": "borghetto superiore",
     "variants": []
@@ -766,13 +666,13 @@
     "variants": []
   },
   {
-    "id": "bordighera-alta-–-via-dei-colli",
-    "canonical": "bordighera alta – via dei colli",
+    "id": "rotonda-\"bel-sit\"-/-atm",
+    "canonical": "rotonda \"bel sit\" / atm",
     "variants": []
   },
   {
-    "id": "rotonda-\"bel-sit\"",
-    "canonical": "rotonda \"bel sit\"",
+    "id": "bel-sit---coggiola",
+    "canonical": "bel sit - coggiola",
     "variants": []
   },
   {
@@ -786,53 +686,18 @@
     "variants": []
   },
   {
-    "id": "porto---piazza-marconi",
-    "canonical": "porto - piazza marconi",
+    "id": "piani-2",
+    "canonical": "piani 2",
     "variants": []
   },
   {
-    "id": "artallo",
-    "canonical": "artallo",
+    "id": "coppi-rossi",
+    "canonical": "coppi rossi",
     "variants": []
   },
   {
-    "id": "stazione-fs-arg-sx",
-    "canonical": "stazione fs arg. sx",
-    "variants": []
-  },
-  {
-    "id": "stazione-fs-arg-dx",
-    "canonical": "stazione fs arg. dx",
-    "variants": []
-  },
-  {
-    "id": "borgo-san-moro",
-    "canonical": "borgo san moro",
-    "variants": []
-  },
-  {
-    "id": "sant-agata",
-    "canonical": "sant'agata",
-    "variants": []
-  },
-  {
-    "id": "trexenda",
-    "canonical": "trexenda",
-    "variants": []
-  },
-  {
-    "id": "garbella",
-    "canonical": "garbella",
-    "variants": []
-  },
-  {
-    "id": "poggi",
-    "canonical": "poggi",
-    "variants": []
-  },
-  {
-    "id": "poggi-cabina-enel",
-    "canonical": "poggi cabina enel",
+    "id": "via-gavi",
+    "canonical": "via gavi",
     "variants": []
   },
   {
@@ -863,11 +728,6 @@
   {
     "id": "piazza-iv-novembre-(arrivo)",
     "canonical": "piazza iv novembre (arrivo)",
-    "variants": []
-  },
-  {
-    "id": "imperia-oneglia",
-    "canonical": "imperia oneglia",
     "variants": []
   },
   {
@@ -906,13 +766,88 @@
     "variants": []
   },
   {
+    "id": "palasalute",
+    "canonical": "palasalute",
+    "variants": []
+  },
+  {
+    "id": "via-acquarone",
+    "canonical": "via acquarone",
+    "variants": []
+  },
+  {
+    "id": "caramagna-bacan",
+    "canonical": "caramagna bacan",
+    "variants": []
+  },
+  {
     "id": "andora-rotonda-s-s-1",
     "canonical": "andora rotonda s.s.1",
     "variants": []
   },
   {
+    "id": "arma-di-taggia",
+    "canonical": "arma di taggia",
+    "variants": []
+  },
+  {
+    "id": "porto---piazza-marconi",
+    "canonical": "porto - piazza marconi",
+    "variants": []
+  },
+  {
+    "id": "artallo",
+    "canonical": "artallo",
+    "variants": []
+  },
+  {
+    "id": "borgo-san-moro",
+    "canonical": "borgo san moro",
+    "variants": []
+  },
+  {
+    "id": "sant-agata",
+    "canonical": "sant'agata",
+    "variants": []
+  },
+  {
+    "id": "trexenda",
+    "canonical": "trexenda",
+    "variants": []
+  },
+  {
+    "id": "garbella",
+    "canonical": "garbella",
+    "variants": []
+  },
+  {
+    "id": "poggi",
+    "canonical": "poggi",
+    "variants": []
+  },
+  {
+    "id": "poggi-cabina-enel",
+    "canonical": "poggi cabina enel",
+    "variants": []
+  },
+  {
+    "id": "andora-fs",
+    "canonical": "andora fs",
+    "variants": []
+  },
+  {
+    "id": "porto-m-pensilina",
+    "canonical": "porto m. pensilina",
+    "variants": []
+  },
+  {
     "id": "caramagna-/-bivio-croce",
     "canonical": "caramagna / bivio croce",
+    "variants": []
+  },
+  {
+    "id": "montegrazie",
+    "canonical": "montegrazie",
     "variants": []
   },
   {
@@ -926,13 +861,38 @@
     "variants": []
   },
   {
-    "id": "montegrazie",
-    "canonical": "montegrazie",
+    "id": "via-cascione/p-ricci",
+    "canonical": "via cascione/p. ricci",
     "variants": []
   },
   {
-    "id": "andora-fs",
-    "canonical": "andora fs",
+    "id": "autostazione",
+    "canonical": "autostazione",
+    "variants": []
+  },
+  {
+    "id": "p-za-eroi-/-mercato",
+    "canonical": "p.za eroi / mercato",
+    "variants": []
+  },
+  {
+    "id": "bivio-via-galilei/via-martiri",
+    "canonical": "bivio via galilei/via martiri",
+    "variants": []
+  },
+  {
+    "id": "madonna-costa",
+    "canonical": "madonna costa",
+    "variants": []
+  },
+  {
+    "id": "baragallo",
+    "canonical": "baragallo",
+    "variants": []
+  },
+  {
+    "id": "tinasso",
+    "canonical": "tinasso",
     "variants": []
   },
   {
@@ -976,43 +936,8 @@
     "variants": []
   },
   {
-    "id": "autostazione",
-    "canonical": "autostazione",
-    "variants": []
-  },
-  {
-    "id": "p-za-eroi-/-mercato",
-    "canonical": "p.za eroi / mercato",
-    "variants": []
-  },
-  {
-    "id": "bivio-via-galilei/via-martiri",
-    "canonical": "bivio via galilei/via martiri",
-    "variants": []
-  },
-  {
-    "id": "madonna-costa",
-    "canonical": "madonna costa",
-    "variants": []
-  },
-  {
-    "id": "baragallo",
-    "canonical": "baragallo",
-    "variants": []
-  },
-  {
-    "id": "tinasso",
-    "canonical": "tinasso",
-    "variants": []
-  },
-  {
-    "id": "bivio-via-martiri/via-galilei",
-    "canonical": "bivio via martiri/via galilei",
-    "variants": []
-  },
-  {
-    "id": "via-agosti-bivio-borgo",
-    "canonical": "via agosti bivio borgo",
+    "id": "mercato",
+    "canonical": "mercato",
     "variants": []
   },
   {
@@ -1041,6 +966,11 @@
     "variants": []
   },
   {
+    "id": "cimitero-armea-–-partenza",
+    "canonical": "cimitero armea – partenza",
+    "variants": []
+  },
+  {
     "id": "carceri",
     "canonical": "carceri",
     "variants": []
@@ -1056,18 +986,13 @@
     "variants": []
   },
   {
-    "id": "cimitero-armea-–-partenza",
-    "canonical": "cimitero armea – partenza",
-    "variants": []
-  },
-  {
     "id": "madonna-guardia",
     "canonical": "madonna guardia",
     "variants": []
   },
   {
-    "id": "poggio-chiesa",
-    "canonical": "poggio chiesa",
+    "id": "poggio",
+    "canonical": "poggio",
     "variants": []
   },
   {
@@ -1088,66 +1013,6 @@
   {
     "id": "cimitero-armea",
     "canonical": "cimitero armea",
-    "variants": []
-  },
-  {
-    "id": "ponte-barcheto",
-    "canonical": "ponte barcheto",
-    "variants": []
-  },
-  {
-    "id": "rotonda-borgo-san-moro",
-    "canonical": "rotonda borgo san moro",
-    "variants": []
-  },
-  {
-    "id": "viale-matteotti",
-    "canonical": "viale matteotti",
-    "variants": []
-  },
-  {
-    "id": "l-nanollo-p",
-    "canonical": "l.nanollo p.",
-    "variants": []
-  },
-  {
-    "id": "barcheto",
-    "canonical": "barcheto",
-    "variants": []
-  },
-  {
-    "id": "via-repubblica",
-    "canonical": "via repubblica",
-    "variants": []
-  },
-  {
-    "id": "argine-sx",
-    "canonical": "argine sx",
-    "variants": []
-  },
-  {
-    "id": "stazione-fs-dx-arrivo",
-    "canonical": "stazione fs dx arrivo",
-    "variants": []
-  },
-  {
-    "id": "stazione-fs-dx-partenza",
-    "canonical": "stazione fs dx partenza",
-    "variants": []
-  },
-  {
-    "id": "argine-dx",
-    "canonical": "argine dx",
-    "variants": []
-  },
-  {
-    "id": "baite",
-    "canonical": "baité",
-    "variants": []
-  },
-  {
-    "id": "collette",
-    "canonical": "collette",
     "variants": []
   },
   {
@@ -1178,6 +1043,31 @@
   {
     "id": "rio-masse",
     "canonical": "rio massè",
+    "variants": []
+  },
+  {
+    "id": "stazione-fs-arg-sx",
+    "canonical": "stazione fs arg. sx",
+    "variants": []
+  },
+  {
+    "id": "barcheto",
+    "canonical": "barcheto",
+    "variants": []
+  },
+  {
+    "id": "stazione-fs-arg-dx",
+    "canonical": "stazione fs arg. dx",
+    "variants": []
+  },
+  {
+    "id": "rotonda-borgo-san-moro",
+    "canonical": "rotonda borgo san moro",
+    "variants": []
+  },
+  {
+    "id": "viale-matteotti",
+    "canonical": "viale matteotti",
     "variants": []
   },
   {
@@ -1213,6 +1103,71 @@
   {
     "id": "san-donato",
     "canonical": "san donato",
+    "variants": []
+  },
+  {
+    "id": "argine-sx",
+    "canonical": "argine sx",
+    "variants": []
+  },
+  {
+    "id": "stazione-fs-dx-arrivo",
+    "canonical": "stazione fs dx arrivo",
+    "variants": []
+  },
+  {
+    "id": "stazione-fs-dx-partenza",
+    "canonical": "stazione fs dx partenza",
+    "variants": []
+  },
+  {
+    "id": "argine-dx",
+    "canonical": "argine dx",
+    "variants": []
+  },
+  {
+    "id": "via-repubblica",
+    "canonical": "via repubblica",
+    "variants": []
+  },
+  {
+    "id": "baite",
+    "canonical": "baité",
+    "variants": []
+  },
+  {
+    "id": "collette",
+    "canonical": "collette",
+    "variants": []
+  },
+  {
+    "id": "via-agosti-bivio-borgo",
+    "canonical": "via agosti bivio borgo",
+    "variants": []
+  },
+  {
+    "id": "isola",
+    "canonical": "isola",
+    "variants": []
+  },
+  {
+    "id": "san-giacomo",
+    "canonical": "san giacomo",
+    "variants": []
+  },
+  {
+    "id": "san-romolo",
+    "canonical": "san romolo",
+    "variants": []
+  },
+  {
+    "id": "gozo",
+    "canonical": "gozo",
+    "variants": []
+  },
+  {
+    "id": "san-giovanni-picchetta",
+    "canonical": "san giovanni picchetta",
     "variants": []
   },
   {
@@ -1256,6 +1211,76 @@
     "variants": []
   },
   {
+    "id": "via-de-amicis",
+    "canonical": "via de amicis",
+    "variants": []
+  },
+  {
+    "id": "via-goethe",
+    "canonical": "via goethe",
+    "variants": []
+  },
+  {
+    "id": "san-martino",
+    "canonical": "san martino",
+    "variants": []
+  },
+  {
+    "id": "p-za-eroi-mercato",
+    "canonical": "p.za eroi mercato",
+    "variants": []
+  },
+  {
+    "id": "bivio-san-giacomo",
+    "canonical": "bivio san giacomo",
+    "variants": []
+  },
+  {
+    "id": "chiesa",
+    "canonical": "chiesa",
+    "variants": []
+  },
+  {
+    "id": "san-giovanni",
+    "canonical": "san giovanni",
+    "variants": []
+  },
+  {
+    "id": "madonna-della-costa",
+    "canonical": "madonna della costa",
+    "variants": []
+  },
+  {
+    "id": "collina-fiorita",
+    "canonical": "collina fiorita",
+    "variants": []
+  },
+  {
+    "id": "residenza-franchiolo",
+    "canonical": "residenza franchiolo",
+    "variants": []
+  },
+  {
+    "id": "via-caduti-del-lavoro",
+    "canonical": "via caduti del lavoro",
+    "variants": []
+  },
+  {
+    "id": "d-marina-v-cesare-battisti",
+    "canonical": "d. marina v. cesare battisti",
+    "variants": []
+  },
+  {
+    "id": "d-marina-vecchia-stazione",
+    "canonical": "d. marina vecchia stazione",
+    "variants": []
+  },
+  {
+    "id": "d-marina-bar-sito-(lato-mare)",
+    "canonical": "d. marina bar sito (lato mare)",
+    "variants": []
+  },
+  {
     "id": "nuova-stazione-fs",
     "canonical": "nuova stazione fs",
     "variants": []
@@ -1286,6 +1311,16 @@
     "variants": []
   },
   {
+    "id": "chiappa",
+    "canonical": "chiappa",
+    "variants": []
+  },
+  {
+    "id": "tovo",
+    "canonical": "tovo",
+    "variants": []
+  },
+  {
     "id": "villa-faraldi",
     "canonical": "villa faraldi",
     "variants": []
@@ -1296,83 +1331,18 @@
     "variants": []
   },
   {
-    "id": "isola",
-    "canonical": "isola",
+    "id": "riva-faraldi-(-pensilina-)",
+    "canonical": "riva faraldi ( pensilina )",
     "variants": []
   },
   {
-    "id": "san-giacomo",
-    "canonical": "san giacomo",
+    "id": "molino-del-fico",
+    "canonical": "molino del fico",
     "variants": []
   },
   {
-    "id": "via-caduti-del-lavoro",
-    "canonical": "via caduti del lavoro",
-    "variants": []
-  },
-  {
-    "id": "san-romolo",
-    "canonical": "san romolo",
-    "variants": []
-  },
-  {
-    "id": "gozo",
-    "canonical": "gozo",
-    "variants": []
-  },
-  {
-    "id": "san-giovanni-picchetta",
-    "canonical": "san giovanni picchetta",
-    "variants": []
-  },
-  {
-    "id": "mercato",
-    "canonical": "mercato",
-    "variants": []
-  },
-  {
-    "id": "via-de-amicis",
-    "canonical": "via de amicis",
-    "variants": []
-  },
-  {
-    "id": "via-goethe/via-val-del-ponte",
-    "canonical": "via goethe/via val del ponte",
-    "variants": []
-  },
-  {
-    "id": "san-martino-sogg-militare",
-    "canonical": "san martino sogg. militare",
-    "variants": []
-  },
-  {
-    "id": "p-za-eroi/via-martiri",
-    "canonical": "p.za eroi/via martiri",
-    "variants": []
-  },
-  {
-    "id": "bivio-san-giacomo",
-    "canonical": "bivio san giacomo",
-    "variants": []
-  },
-  {
-    "id": "san-giovanni-chiesa",
-    "canonical": "san giovanni chiesa",
-    "variants": []
-  },
-  {
-    "id": "madonna-della-costa",
-    "canonical": "madonna della costa",
-    "variants": []
-  },
-  {
-    "id": "collina-fiorita",
-    "canonical": "collina fiorita",
-    "variants": []
-  },
-  {
-    "id": "residenza-franchiolo",
-    "canonical": "residenza franchiolo",
+    "id": "pairola",
+    "canonical": "pairola",
     "variants": []
   },
   {
@@ -1426,93 +1396,8 @@
     "variants": []
   },
   {
-    "id": "leca-/-bastia",
-    "canonical": "leca / bastia",
-    "variants": []
-  },
-  {
-    "id": "gazzo",
-    "canonical": "gazzo",
-    "variants": []
-  },
-  {
-    "id": "gavenola",
-    "canonical": "gavenola",
-    "variants": []
-  },
-  {
-    "id": "leverone",
-    "canonical": "leverone",
-    "variants": []
-  },
-  {
-    "id": "aquila-d-arroscia",
-    "canonical": "aquila d'arroscia",
-    "variants": []
-  },
-  {
-    "id": "costa-bacelega",
-    "canonical": "costa bacelega",
-    "variants": []
-  },
-  {
-    "id": "monta",
-    "canonical": "montà",
-    "variants": []
-  },
-  {
-    "id": "moano",
-    "canonical": "moano",
-    "variants": []
-  },
-  {
-    "id": "armo",
-    "canonical": "armo",
-    "variants": []
-  },
-  {
-    "id": "montegrosso",
-    "canonical": "montegrosso",
-    "variants": []
-  },
-  {
-    "id": "mendatica",
-    "canonical": "mendatica",
-    "variants": []
-  },
-  {
-    "id": "l-v-s-vac-s-vac-l-v-cosio",
-    "canonical": "l-v s-vac s-vac l-v cosio",
-    "variants": []
-  },
-  {
-    "id": "lavina-bivio",
-    "canonical": "lavina bivio",
-    "variants": []
-  },
-  {
-    "id": "cenova-bivio",
-    "canonical": "cenova bivio",
-    "variants": []
-  },
-  {
-    "id": "cenova",
-    "canonical": "cenova",
-    "variants": []
-  },
-  {
-    "id": "rezzo",
-    "canonical": "rezzo",
-    "variants": []
-  },
-  {
-    "id": "lavina",
-    "canonical": "lavina",
-    "variants": []
-  },
-  {
-    "id": "via-val-d-olivi-(deposito-rt)",
-    "canonical": "via val d'olivi (deposito rt)",
+    "id": "fermata-deposito-rt",
+    "canonical": "fermata deposito rt",
     "variants": []
   },
   {
@@ -1531,8 +1416,38 @@
     "variants": []
   },
   {
-    "id": "arma-ex-fs",
-    "canonical": "arma ex fs",
+    "id": "imperia-on",
+    "canonical": "imperia on.",
+    "variants": []
+  },
+  {
+    "id": "acquetico",
+    "canonical": "acquetico",
+    "variants": []
+  },
+  {
+    "id": "pornassio",
+    "canonical": "pornassio",
+    "variants": []
+  },
+  {
+    "id": "case-rosse",
+    "canonical": "case rosse",
+    "variants": []
+  },
+  {
+    "id": "bivio-cosio",
+    "canonical": "bivio cosio",
+    "variants": []
+  },
+  {
+    "id": "nava-centro",
+    "canonical": "nava centro",
+    "variants": []
+  },
+  {
+    "id": "arma-centro",
+    "canonical": "arma centro",
     "variants": []
   },
   {
@@ -1576,68 +1491,28 @@
     "variants": []
   },
   {
-    "id": "arma-centro",
-    "canonical": "arma centro",
+    "id": "sanremo",
+    "canonical": "sanremo",
     "variants": []
   },
   {
-    "id": "imperia-on",
-    "canonical": "imperia on.",
+    "id": "deposito",
+    "canonical": "deposito",
     "variants": []
   },
   {
-    "id": "acquetico",
-    "canonical": "acquetico",
+    "id": "arma-di-taggia---centro",
+    "canonical": "arma di taggia - centro",
     "variants": []
   },
   {
-    "id": "pornassio",
-    "canonical": "pornassio",
+    "id": "castellaro",
+    "canonical": "castellaro",
     "variants": []
   },
   {
-    "id": "case-rosse",
-    "canonical": "case rosse",
-    "variants": []
-  },
-  {
-    "id": "bivio-cosio",
-    "canonical": "bivio cosio",
-    "variants": []
-  },
-  {
-    "id": "nava-centro",
-    "canonical": "nava centro",
-    "variants": []
-  },
-  {
-    "id": "imperia-pm-igiene",
-    "canonical": "imperia pm igiene",
-    "variants": []
-  },
-  {
-    "id": "stazione-fs-(via-calzamiglia)",
-    "canonical": "stazione fs (via calzamiglia)",
-    "variants": []
-  },
-  {
-    "id": "stazione-fs-a-dx",
-    "canonical": "stazione fs a. dx",
-    "variants": []
-  },
-  {
-    "id": "via-trento/rotonda",
-    "canonical": "via trento/rotonda",
-    "variants": []
-  },
-  {
-    "id": "stazione-fs-a-sx",
-    "canonical": "stazione fs a. sx",
-    "variants": []
-  },
-  {
-    "id": "piazza-calvi",
-    "canonical": "piazza calvi",
+    "id": "pompeiana",
+    "canonical": "pompeiana",
     "variants": []
   }
 ]
