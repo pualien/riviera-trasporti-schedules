@@ -3,28 +3,26 @@ const LEGACY_CACHE_PREFIXES = [
   'azzuriva-route-tools-',
   'riviera-route-tools-',
 ];
-const CACHE_NAME = `${CACHE_PREFIX}v8`;
+const CACHE_NAME = `${CACHE_PREFIX}v9`;
 
 const REQUIRED_ASSETS = [
   './',
   './index.html',
   './offline.html',
   './styles.css',
-  './styles.css?v=8',
+  './styles.css?v=9',
   './manifest.webmanifest',
   './assets/brand/apple-touch-icon.png',
   './assets/brand/favicon-16x16.png',
   './assets/brand/favicon-32x32.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-ios-1024.png',
-  './assets/data/trips.json',
-  './assets/data/stops.json',
   './src/main.js',
-  './src/main.js?v=8',
+  './src/main.js?v=9',
   './src/lib/analytics.js',
-  './src/lib/analytics.js?v=8',
+  './src/lib/analytics.js?v=9',
   './src/lib/ads.js',
-  './src/lib/ads.js?v=8',
+  './src/lib/ads.js?v=9',
   './src/lib/appBootstrap.js',
   './src/lib/brand.js',
   './src/lib/browseIndex.js',
@@ -39,7 +37,7 @@ const REQUIRED_ASSETS = [
   './src/lib/pwaController.js',
   './src/lib/query.js',
   './src/lib/installAdSense.js',
-  './src/lib/installAdSense.js?v=8',
+  './src/lib/installAdSense.js?v=9',
   './src/lib/registerServiceWorker.js',
   './src/lib/routeMap.js',
   './src/lib/routePickerState.js',
@@ -66,21 +64,14 @@ const REQUIRED_ASSETS = [
   './src/ui/renderRouteMapPanel.js',
   './src/ui/renderSavedView.js',
   './src/ui/renderSearchForm.js',
-  './src/ui/renderSearchForm.js?v=8',
+  './src/ui/renderSearchForm.js?v=9',
   './src/ui/renderShell.js',
   './src/ui/renderTabNav.js',
   './src/ui/renderTaxiOption.js',
   './src/ui/renderTransferSuggestions.js',
 ];
 
-const OPTIONAL_ASSETS = [
-  './assets/data/lines.json',
-  './assets/data/metadata.json',
-  './assets/data/localities.json',
-  './assets/data/reachability.json',
-  './assets/data/stop-coordinates.json',
-  './data/manual/localities.json',
-];
+const OPTIONAL_ASSETS = [];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
