@@ -4,15 +4,15 @@
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/sanremo/taggia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/taggia/sanremo/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/pontedassio/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/diano-marina/cervo/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/pontedassio/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/diano-marina/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/sanremo/cervo/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/vallecrosia/ventimiglia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ventimiglia/vallecrosia/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/sanremo/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/sanremo/cervo/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/bordighera/vallecrosia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/bordighera/ventimiglia/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/sanremo/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ospedaletti/bordighera/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ospedaletti/sanremo/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ospedaletti/vallecrosia/</loc></url>
@@ -31,6 +31,16 @@
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ventimiglia/ospedaletti/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ventimiglia/sanremo/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/san-lorenzo-al-mare/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/andora/cervo/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/andora/diano-marina/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/andora/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/diano-marina/andora/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/andora/imperia/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/imperia/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/diano-marina/imperia/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/andora/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/cervo/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/diano-marina/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ospedaletti/taggia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/bordighera/taggia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/taggia/bordighera/</loc></url>
@@ -39,16 +49,6 @@
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/taggia/ventimiglia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/vallecrosia/taggia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/ventimiglia/taggia/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/andora/cervo/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/andora/diano-marina/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/andora/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/diano-marina/andora/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/andora/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/cervo/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/diano-marina/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/andora/imperia/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/cervo/imperia/</loc></url>
-  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/diano-marina/imperia/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/riva-ligure/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/sanremo/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/routes/imperia/santo-stefano-al-mare/</loc></url>
@@ -138,6 +138,7 @@
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/30-14fs/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/30-15/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/30-16/</loc></url>
+  <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/30-a/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/30-p/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/31/</loc></url>
   <url><loc>https://pualien.github.io/riviera-trasporti-schedules/lines/31bis/</loc></url>

@@ -103,6 +103,22 @@ function parseIndexLine(rawLine, currentLineId) {
     };
   }
 
+  const marebusMatch = line.match(/^(SHUTTLE\s+NAVETTA MAREBUS .+?)\s+(?:Pagina|" ")\s+(\d+)$/i);
+  if (marebusMatch) {
+    const [, rawDescriptor, pageNumber] = marebusMatch;
+    const descriptorMatch = rawDescriptor.match(/^(.*?)(?:\(([^)]+)\))?$/);
+
+    return {
+      nextLineId: currentLineId,
+      entry: {
+        lineId: '30 / A',
+        direction: normalizeDirection(descriptorMatch?.[1] ?? rawDescriptor),
+        serviceNote: normalizeServiceNote(descriptorMatch?.[2]),
+        pageNumber: Number(pageNumber),
+      },
+    };
+  }
+
   const continuedMatch = line.match(/^(.+?)\s+(?:Pagina|" ")\s+(\d+)$/);
   if (continuedMatch && currentLineId) {
     const [, rawDescriptor, pageNumber] = continuedMatch;

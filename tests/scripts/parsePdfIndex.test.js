@@ -40,6 +40,22 @@ describe('parsePdfIndex', () => {
     ]);
   });
 
+  it('does not inherit the standalone Marebus shuttle from the previous line', () => {
+    const entries = parsePdfIndex(
+      [
+        'LINEA 38 : IMPERIA - PIEVE DI TECO - NAVA   " "   52',
+        'SHUTTLE   NAVETTA MAREBUS GALEAZZA - PRINO - PARASIO (Imperia)   " "   53',
+      ].join('\n'),
+    );
+
+    expect(entries).toContainEqual({
+      lineId: '30 / A',
+      direction: 'SHUTTLE NAVETTA MAREBUS GALEAZZA - PRINO - PARASIO',
+      serviceNote: 'imperia',
+      pageNumber: 53,
+    });
+  });
+
   it('reports missing index coverage against the manifest', () => {
     const indexEntries = [
       { lineId: '12', pageNumber: 22, direction: 'SANREMO - IMPERIA - ANDORA' },

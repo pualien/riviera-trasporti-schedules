@@ -640,6 +640,14 @@
     "parserFamily": "linear-intercity"
   },
   {
+    "lineId": "30 / A",
+    "direction": "SHUTTLE NAVETTA MAREBUS GALEAZZA - PRINO - PARASIO",
+    "serviceNote": "imperia",
+    "pageNumber": 53,
+    "dayType": "giornaliero",
+    "parserFamily": "urban-sections"
+  },
+  {
     "lineId": "16",
     "direction": "TAGGIA - BADALUCCO - TRIORA - MONTALTO - CARPASIO",
     "serviceNote": "",

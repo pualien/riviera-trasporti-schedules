@@ -49,6 +49,36 @@ describe('parseTimetablePage families', () => {
     expect(trips[0].stops.at(-1).name).toBe('autostazione');
   });
 
+  it('parses separate urban sections on a shared page', () => {
+    const trips = parseTimetablePage({
+      parserFamily: 'urban-sections',
+      lineId: '30 / A',
+      pageNumber: 53,
+      direction: 'SHUTTLE NAVETTA MAREBUS',
+      dayType: 'giornaliero',
+      pageItems: [
+        { str: 'LINEA 30 / A1 : BORGO MARINA - PRINO - BORGO MARINA', x: 100, y: 100 },
+        { str: 'Borgo Marina', x: 100, y: 90 },
+        { str: '09.00', x: 220, y: 90 },
+        { str: 'Prino', x: 100, y: 80 },
+        { str: '09.16', x: 220, y: 80 },
+        { str: 'Borgo Marina', x: 100, y: 70 },
+        { str: '09.20', x: 220, y: 70 },
+        { str: 'LINEA 30 / A3 : BORGO MARINA - PARASIO - BORGO MARINA', x: 100, y: 50 },
+        { str: 'Borgo Marina', x: 100, y: 40 },
+        { str: '10.30', x: 220, y: 40 },
+        { str: 'Parasio', x: 100, y: 30 },
+        { str: '10.38', x: 220, y: 30 },
+        { str: 'Borgo Marina', x: 100, y: 20 },
+        { str: '10.45', x: 220, y: 20 },
+      ],
+    });
+
+    expect(trips).toHaveLength(2);
+    expect(trips[0].stops.map((stop) => stop.name)).toEqual(['borgo marina', 'prino', 'borgo marina']);
+    expect(trips[1].stops.map((stop) => stop.name)).toEqual(['borgo marina', 'parasio', 'borgo marina']);
+  });
+
   it('parses school-only pages', () => {
     const trips = parseTimetablePage({
       parserFamily: 'school-or-limited-service',

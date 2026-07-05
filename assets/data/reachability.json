@@ -183,7 +183,7 @@
     "l-nanollo-p",
     "ospedale",
     "porto-maurizio-pensilina",
-    "rotonda-borgo-san-moro",
+    "rotonda-borgo-san-moro-07-33",
     "san-pietro",
     "sant-agata",
     "via-cascione",
@@ -1012,6 +1012,7 @@
     "barcheto",
     "bivio-castelvecchio",
     "borgo-d-oneglia",
+    "borgo-marina",
     "borgo-san-moro",
     "calderina",
     "cantalupo",
@@ -1034,6 +1035,7 @@
     "muratori",
     "ospedale",
     "palasalute",
+    "parco-urbano",
     "passo-rocche",
     "piani",
     "piani-2",
@@ -1047,7 +1049,7 @@
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
-    "rotonda-borgo-san-moro",
+    "rotonda-borgo-san-moro-07-33",
     "rotonda-palasalute",
     "sant-agata",
     "serreta",
@@ -1201,7 +1203,7 @@
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
-    "rotonda-borgo-san-moro",
+    "rotonda-borgo-san-moro-07-33",
     "rotonda-palasalute",
     "sgorreto",
     "torrazza",
@@ -1235,7 +1237,7 @@
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
-    "rotonda-borgo-san-moro",
+    "rotonda-borgo-san-moro-07-33",
     "rotonda-palasalute",
     "sgorreto",
     "torrazza",
@@ -1291,7 +1293,7 @@
     "porto-maurizio-pensilina",
     "prino",
     "riviera-trasporti",
-    "rotonda-borgo-san-moro",
+    "rotonda-borgo-san-moro-07-33",
     "rotonda-palasalute",
     "sgorreto",
     "torrazza",
@@ -1710,7 +1712,7 @@
   "sant-agata": [
     "l-nanollo-p",
     "ospedale",
-    "rotonda-borgo-san-moro",
+    "rotonda-borgo-san-moro-07-33",
     "viale-matteotti"
   ],
   "trexenda": [
@@ -1903,6 +1905,8 @@
   ],
   "cascine": [],
   "prino": [
+    "borgo-marina",
+    "igiene",
     "piani",
     "torrazza"
   ],
@@ -2110,12 +2114,12 @@
     "sant-agata",
     "via-cascione"
   ],
-  "rotonda-borgo-san-moro": [
-    "l-nanollo-p",
-    "viale-matteotti"
-  ],
   "viale-matteotti": [
     "l-nanollo-p"
+  ],
+  "rotonda-borgo-san-moro-07-33": [
+    "l-nanollo-p",
+    "viale-matteotti"
   ],
   "san-pietro": [
     "ospedale",
@@ -2673,6 +2677,115 @@
     "pieve-di-teco",
     "pontedassio",
     "pornassio"
+  ],
+  "borgo-marina": [
+    "borgo-marina",
+    "calata-cuneo",
+    "igiene",
+    "incrocio-poggi",
+    "l-nanollo-p",
+    "parasio",
+    "parcheggio-rabina",
+    "parco-urbano",
+    "pennello",
+    "prino",
+    "rotonda-piani",
+    "spianata-borgo-peri",
+    "via-ballestra",
+    "via-littardi-q8",
+    "via-pirinoli"
+  ],
+  "via-pirinoli": [
+    "borgo-marina",
+    "igiene",
+    "incrocio-poggi",
+    "prino",
+    "rotonda-piani",
+    "via-ballestra",
+    "via-littardi-q8"
+  ],
+  "igiene": [
+    "borgo-marina",
+    "igiene",
+    "incrocio-poggi",
+    "prino",
+    "rotonda-piani",
+    "via-ballestra",
+    "via-littardi-q8"
+  ],
+  "via-littardi-q8": [
+    "borgo-marina",
+    "igiene",
+    "incrocio-poggi",
+    "prino",
+    "rotonda-piani",
+    "via-ballestra"
+  ],
+  "rotonda-piani": [
+    "borgo-marina",
+    "igiene",
+    "incrocio-poggi",
+    "prino",
+    "via-ballestra"
+  ],
+  "via-ballestra": [
+    "borgo-marina",
+    "igiene",
+    "incrocio-poggi",
+    "prino"
+  ],
+  "incrocio-poggi": [
+    "borgo-marina",
+    "igiene",
+    "prino"
+  ],
+  "parco-urbano": [
+    "borgo-marina",
+    "calata-cuneo",
+    "l-nanollo-p",
+    "parcheggio-rabina",
+    "parco-urbano",
+    "pennello",
+    "spianata-borgo-peri"
+  ],
+  "calata-cuneo": [
+    "borgo-marina",
+    "calata-cuneo",
+    "l-nanollo-p",
+    "parcheggio-rabina",
+    "parco-urbano",
+    "pennello",
+    "spianata-borgo-peri"
+  ],
+  "spianata-borgo-peri": [
+    "borgo-marina",
+    "calata-cuneo",
+    "l-nanollo-p",
+    "parcheggio-rabina",
+    "parco-urbano",
+    "pennello",
+    "spianata-borgo-peri"
+  ],
+  "pennello": [
+    "borgo-marina",
+    "calata-cuneo",
+    "l-nanollo-p",
+    "parcheggio-rabina",
+    "parco-urbano",
+    "pennello",
+    "spianata-borgo-peri"
+  ],
+  "parcheggio-rabina": [
+    "borgo-marina",
+    "calata-cuneo",
+    "l-nanollo-p",
+    "parcheggio-rabina",
+    "parco-urbano",
+    "pennello",
+    "spianata-borgo-peri"
+  ],
+  "parasio": [
+    "borgo-marina"
   ],
   "arma-centro": [
     "agaggio-inferiore",

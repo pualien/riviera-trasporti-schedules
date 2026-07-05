@@ -1061,13 +1061,13 @@
     "variants": []
   },
   {
-    "id": "rotonda-borgo-san-moro",
-    "canonical": "rotonda borgo san moro",
+    "id": "viale-matteotti",
+    "canonical": "viale matteotti",
     "variants": []
   },
   {
-    "id": "viale-matteotti",
-    "canonical": "viale matteotti",
+    "id": "rotonda-borgo-san-moro-07-33",
+    "canonical": "rotonda borgo san moro 07.33",
     "variants": []
   },
   {
@@ -1443,6 +1443,71 @@
   {
     "id": "nava-centro",
     "canonical": "nava centro",
+    "variants": []
+  },
+  {
+    "id": "borgo-marina",
+    "canonical": "borgo marina",
+    "variants": []
+  },
+  {
+    "id": "via-pirinoli",
+    "canonical": "via pirinoli",
+    "variants": []
+  },
+  {
+    "id": "igiene",
+    "canonical": "igiene",
+    "variants": []
+  },
+  {
+    "id": "via-littardi-q8",
+    "canonical": "via littardi q8",
+    "variants": []
+  },
+  {
+    "id": "rotonda-piani",
+    "canonical": "rotonda piani",
+    "variants": []
+  },
+  {
+    "id": "via-ballestra",
+    "canonical": "via ballestra",
+    "variants": []
+  },
+  {
+    "id": "incrocio-poggi",
+    "canonical": "incrocio poggi",
+    "variants": []
+  },
+  {
+    "id": "parco-urbano",
+    "canonical": "parco urbano",
+    "variants": []
+  },
+  {
+    "id": "calata-cuneo",
+    "canonical": "calata cuneo",
+    "variants": []
+  },
+  {
+    "id": "spianata-borgo-peri",
+    "canonical": "spianata borgo peri",
+    "variants": []
+  },
+  {
+    "id": "pennello",
+    "canonical": "pennello",
+    "variants": []
+  },
+  {
+    "id": "parcheggio-rabina",
+    "canonical": "parcheggio rabina",
+    "variants": []
+  },
+  {
+    "id": "parasio",
+    "canonical": "parasio",
     "variants": []
   },
   {
