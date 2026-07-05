@@ -43,7 +43,9 @@ test('keeps the Riviera Dei Fiori Route Finder wordmark readable', async ({ page
   await page.goto('/');
 
   const letterSpacing = await page.locator('.brand-wordmark').evaluate((element) => (
-    Number.parseFloat(getComputedStyle(element).letterSpacing)
+    getComputedStyle(element).letterSpacing === 'normal'
+      ? 0
+      : Number.parseFloat(getComputedStyle(element).letterSpacing)
   ));
 
   expect(letterSpacing).toBeGreaterThan(-2.5);
