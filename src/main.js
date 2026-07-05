@@ -10,7 +10,7 @@ import {
   pushBrowseInteractionEvent,
   pushSharedRouteOpenedEvent,
   pushSharedRouteRestoredEvent,
-} from './lib/analytics.js?v=8';
+} from './lib/analytics.js?v=9';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
@@ -52,6 +52,7 @@ import {
   readStoredLanguage,
 } from './lib/i18n.js';
 import { normalizeText } from './lib/normalize.js';
+import { formatRouteLabel } from './lib/routeDisplay.js';
 import {
   buildProviderSearchUrl,
   createDefaultProviderSearchState,
@@ -90,7 +91,7 @@ import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
 import { renderResultsView } from './ui/renderResults.js';
-import { renderSearchForm } from './ui/renderSearchForm.js?v=8';
+import { renderSearchForm } from './ui/renderSearchForm.js?v=9';
 import { renderShell } from './ui/renderShell.js';
 import { renderTabNav } from './ui/renderTabNav.js';
 
@@ -105,6 +106,17 @@ const SEO_UTM_MEDIUM = 'seo_page';
 
 function savedRoutesStorage() {
   return getSavedRoutesStorage(window);
+}
+
+function createDefaultUiState() {
+  return {
+    fromPanelOpen: false,
+    toPanelOpen: false,
+    fromActiveOptionId: null,
+    toActiveOptionId: null,
+    originRefinementExpanded: false,
+    searchExpanded: false,
+  };
 }
 
 const state = {
@@ -125,12 +137,7 @@ const state = {
     stopId: null,
     query: '',
   },
-  uiState: {
-    fromPanelOpen: false,
-    toPanelOpen: false,
-    fromActiveOptionId: null,
-    toActiveOptionId: null,
-  },
+  uiState: createDefaultUiState(),
   formValues: {
     fromInput: '',
     fromLocalityId: null,
@@ -381,7 +388,16 @@ function currentRouteActionContext() {
 }
 
 function currentRouteLabel() {
-  return `${state.formValues.fromInput} -> ${state.formValues.toInput}`;
+  return formatRouteLabel({
+    fromInput: state.formValues.fromInput,
+    fromLocalityId: state.formValues.fromLocalityId,
+    fromStopId: state.formValues.fromStopId,
+    toInput: state.formValues.toInput,
+    toStopId: state.formValues.toStopId,
+    localities: state.localities,
+    stops: state.stops,
+    separator: createTranslator(state.language)('routeDisplay.separator'),
+  });
 }
 
 function currentDayTypeLabel() {
@@ -499,6 +515,7 @@ function hydrateRouteStateFromUrl() {
   const routeUrlState = parseRouteUrlState(window.location.search);
 
   state.activeTab = routeUrlState.tab;
+  state.uiState = createDefaultUiState();
   state.formValues = hydrateSearchStateFromUrl({
     currentFormValues: state.formValues,
     urlSearchState: routeUrlState.search,
@@ -652,6 +669,13 @@ function renderApp() {
       destinationMessage: currentDestinationMessage(t),
       selectedLocalityLabel: selectedLocality?.label ?? '',
       dayType: state.formValues.dayType,
+      collapseOriginRefinement: Boolean(
+        selectedLocality
+        && !exactFromStop
+        && !state.uiState.originRefinementExpanded
+      ),
+      compactResultMode: Boolean(state.resultState && !state.uiState.searchExpanded),
+      compactRouteLabel: currentRouteLabel(),
     }));
   }
 
@@ -704,6 +728,7 @@ function renderApp() {
     adSlots: SHELL_AD_SLOTS,
     datasetInfo: state.metadata,
     taxiDirectory: listTaxiOptions(),
+    taxiDirectoryMode: state.activeTab === 'search' && state.resultState ? 'collapsed' : 'open',
     pwaControl: renderPwaControl({ pwaState: state.pwa, t }),
     tabNavigation: renderTabNav({ activeTab: state.activeTab, t }),
     t,
@@ -1066,6 +1091,11 @@ function submitCurrentSearch() {
     saveFeedback: null,
     shareModal: null,
   };
+  state.uiState.searchExpanded = false;
+  state.uiState.fromPanelOpen = false;
+  state.uiState.toPanelOpen = false;
+  state.uiState.fromActiveOptionId = null;
+  state.uiState.toActiveOptionId = null;
   const routeStopIds = currentResolvedRouteStopIds();
   const originContext = currentOriginContext();
   const matches = findDirectTrips({
@@ -1161,6 +1191,24 @@ function submitCurrentSearch() {
   return { matches, outcome };
 }
 
+function scrollResultAnchorIntoView({ behavior = 'smooth' } = {}) {
+  if (state.activeTab !== 'search' || !state.resultState) {
+    return;
+  }
+
+  const scroll = () => {
+    document.querySelector('[data-result-anchor]')
+      ?.scrollIntoView({ block: 'start', inline: 'nearest', behavior });
+  };
+
+  if (typeof window.requestAnimationFrame === 'function') {
+    window.requestAnimationFrame(scroll);
+    return;
+  }
+
+  scroll();
+}
+
 function bindForm() {
   const form = document.querySelector('#route-form');
 
@@ -1197,6 +1245,7 @@ function bindForm() {
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
+    scrollResultAnchorIntoView();
   });
 }
 
@@ -1236,6 +1285,7 @@ function bindNoDirectActions() {
       writeRouteUrl({ push: true });
       renderApp();
       bindInteractions();
+      scrollResultAnchorIntoView();
     });
   });
 }
@@ -1349,10 +1399,12 @@ function bindBrowseActions() {
 function selectFromLocalityChoice(locality) {
   resetDestinationState();
   Object.assign(state, selectLocality(state, locality, state.stops, state.reachability));
-  state.uiState.fromPanelOpen = true;
-  state.uiState.toPanelOpen = false;
+  state.uiState.fromPanelOpen = false;
+  state.uiState.toPanelOpen = true;
   state.uiState.fromActiveOptionId = null;
   state.uiState.toActiveOptionId = null;
+  state.uiState.originRefinementExpanded = false;
+  state.uiState.searchExpanded = true;
   writeRouteUrl({ push: false });
 }
 
@@ -1363,6 +1415,8 @@ function selectFromStopChoice(stop) {
   state.uiState.toPanelOpen = true;
   state.uiState.fromActiveOptionId = null;
   state.uiState.toActiveOptionId = null;
+  state.uiState.originRefinementExpanded = false;
+  state.uiState.searchExpanded = true;
   writeRouteUrl({ push: false });
 }
 
@@ -1405,6 +1459,8 @@ function clearFromSelection(nextValue) {
   };
   state.uiState.fromActiveOptionId = null;
   state.uiState.toActiveOptionId = null;
+  state.uiState.originRefinementExpanded = true;
+  state.uiState.searchExpanded = true;
   writeRouteUrl({ push: false });
 }
 
@@ -1476,6 +1532,7 @@ function bindFieldPanels() {
     state.uiState.toPanelOpen = false;
     state.uiState.fromActiveOptionId = null;
     state.uiState.toActiveOptionId = null;
+    state.uiState.searchExpanded = true;
     renderApp();
     bindInteractions();
     focusFromInput(selectText);
@@ -1567,6 +1624,8 @@ function bindFieldPanels() {
     state.uiState.toPanelOpen = false;
     state.uiState.fromActiveOptionId = null;
     state.uiState.toActiveOptionId = null;
+    state.uiState.originRefinementExpanded = true;
+    state.uiState.searchExpanded = true;
 
     if (shouldClearLocality) {
       state.pickerState = {
@@ -1635,6 +1694,7 @@ function bindFieldPanels() {
     clearRouteResults();
     state.uiState.toPanelOpen = true;
     state.uiState.toActiveOptionId = null;
+    state.uiState.searchExpanded = true;
     writeRouteUrl({ push: false });
     renderApp();
     bindInteractions();
@@ -1685,10 +1745,35 @@ function bindFieldPanels() {
       clearRouteResults();
       state.uiState.toPanelOpen = false;
       state.uiState.toActiveOptionId = null;
+      state.uiState.searchExpanded = true;
       writeRouteUrl({ push: false });
       renderApp();
       bindInteractions();
     });
+  });
+
+  document.querySelector('[data-expand-origin-refinement]')?.addEventListener('click', () => {
+    state.uiState.originRefinementExpanded = true;
+    state.uiState.fromPanelOpen = true;
+    state.uiState.toPanelOpen = false;
+    state.uiState.fromActiveOptionId = null;
+    state.uiState.toActiveOptionId = null;
+    renderApp();
+    bindInteractions();
+    focusFromInput(false);
+    scrollPickerFieldIntoMobileView('from');
+  });
+}
+
+function bindRouteEditSummary() {
+  document.querySelector('[data-edit-search]')?.addEventListener('click', () => {
+    state.uiState.searchExpanded = true;
+    state.uiState.fromPanelOpen = false;
+    state.uiState.toPanelOpen = false;
+    state.uiState.fromActiveOptionId = null;
+    state.uiState.toActiveOptionId = null;
+    renderApp();
+    bindInteractions();
   });
 }
 
@@ -1832,10 +1917,7 @@ function restoreSavedRoute(route) {
   });
   clearRouteResults();
   state.locationPicker = null;
-  state.uiState = {
-    fromPanelOpen: false,
-    toPanelOpen: false,
-  };
+  state.uiState = createDefaultUiState();
   state.pickerState = {
     exactStopChoices: [],
     reachableDestinations: [],
@@ -2150,6 +2232,7 @@ function bindPwaActions() {
 
 function bindInteractions() {
   bindForm();
+  bindRouteEditSummary();
   bindProviderSearchForm();
   bindFieldPanels();
   bindDepartureSelection();
@@ -2214,12 +2297,14 @@ async function boot() {
     restoreSearchResultsIfReady();
     renderApp();
     bindInteractions();
+    scrollResultAnchorIntoView({ behavior: 'auto' });
     renderPendingSelectedTripMap();
     window.addEventListener('popstate', () => {
       hydrateRouteStateFromUrl();
       restoreSearchResultsIfReady();
       renderApp();
       bindInteractions();
+      scrollResultAnchorIntoView({ behavior: 'auto' });
       renderPendingSelectedTripMap();
     });
   } catch (error) {

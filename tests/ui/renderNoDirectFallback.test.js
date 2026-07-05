@@ -28,6 +28,7 @@ describe('renderNoDirectFallback', () => {
     });
 
     expect(html).toContain('No direct ride found');
+    expect(html).toContain('class="empty-state empty-state--fallback" data-result-anchor');
     expect(html).toContain('This journey may still require a transfer');
     expect(html).toContain('Imperia Porto Maurizio Piazza Dante');
     expect(html).toContain('data-no-direct-action="set-origin-stop"');

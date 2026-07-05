@@ -49,6 +49,7 @@ export function renderRouteMapPanel({
         <p class="eyebrow">${escapeHtml(t('results.selectedTripMap'))}</p>
         <h3>${escapeHtml(t('results.selectedTripDetails'))}</h3>
         <p>${escapeHtml(t('results.selectedTripMapSubtitle'))}</p>
+        <p class="route-map-precision">${escapeHtml(t('results.mapPrecision'))}</p>
       </div>
       <div class="route-map-meta">
         <strong>${escapeHtml(t('results.line'))} ${escapeHtml(match.lineId)}</strong>

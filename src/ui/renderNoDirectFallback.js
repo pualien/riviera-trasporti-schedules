@@ -33,7 +33,7 @@ export function renderNoDirectFallback({
   taxiOptions = [],
 }) {
   return `
-    <section class="empty-state empty-state--fallback">
+    <section class="empty-state empty-state--fallback" data-result-anchor>
       <p class="eyebrow">${escapeHtml(t('empty.eyebrow'))}</p>
       <h2>${escapeHtml(t('empty.noDirectTitle'))}</h2>
       <p>${escapeHtml(routeLabel)}</p>

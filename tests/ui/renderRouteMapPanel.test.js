@@ -39,6 +39,7 @@ describe('renderRouteMapPanel', () => {
     expect(html).toContain('40 min');
     expect(html).toContain('https://example.com/riviera.pdf#page=23');
     expect(html).toContain('data-map-status="ready"');
+    expect(html).toContain('Mapped stops, not the exact road path.');
     expect(html).not.toContain('Map coordinates are not yet available');
   });
 

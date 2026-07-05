@@ -23,10 +23,12 @@ function pdfHref(pdfUrl, sourcePage) {
   return sourcePage ? `${pdfUrl}#page=${sourcePage}` : pdfUrl;
 }
 
-function renderDepartureCard(departure, t, pdfUrl) {
-  const className = departure.isSelected
-    ? 'departure-card departure-card--selected'
-    : 'departure-card';
+function renderDepartureCard(departure, t, pdfUrl, { compact = false } = {}) {
+  const className = [
+    'departure-card',
+    departure.isSelected ? 'departure-card--selected' : '',
+    compact ? 'departure-card--compact' : '',
+  ].filter(Boolean).join(' ');
   const actionLabel = departure.isSelected
     ? t('results.selectedAction')
     : t('results.detailsAction');
@@ -37,6 +39,9 @@ function renderDepartureCard(departure, t, pdfUrl) {
   const shareAction = departure.tripKey
     ? `<button type="button" class="departure-share-action" data-share-departure="${escapeHtml(departure.tripKey)}">${escapeHtml(t('results.shareDeparture'))}</button>`
     : '';
+  const pdfAction = compact
+    ? ''
+    : `<a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>`;
 
   return `
     <article class="${className}" data-trip-key="${departure.tripKey ?? ''}">
@@ -47,10 +52,86 @@ function renderDepartureCard(departure, t, pdfUrl) {
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
         ${detailAction}
-        ${shareAction}
-        <a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>
+        ${compact ? '' : shareAction}
+        ${pdfAction}
       </div>
     </article>
+  `;
+}
+
+function timeBandKey(departureTime = '') {
+  const hour = Number.parseInt(String(departureTime).slice(0, 2), 10);
+
+  if (!Number.isFinite(hour)) {
+    return 'unknown';
+  }
+
+  if (hour >= 5 && hour < 12) {
+    return 'morning';
+  }
+
+  if (hour >= 12 && hour < 18) {
+    return 'afternoon';
+  }
+
+  if (hour >= 18 && hour < 24) {
+    return 'evening';
+  }
+
+  return 'night';
+}
+
+function renderDepartureArchive({
+  departures = [],
+  selectedTripKey,
+  t,
+}) {
+  if (!departures.length) {
+    return '';
+  }
+
+  const groupedDepartures = new Map();
+  const bandOrder = ['morning', 'afternoon', 'evening', 'night', 'unknown'];
+
+  for (const departure of departures) {
+    const bandKey = timeBandKey(departure.departureTime);
+    const bandDepartures = groupedDepartures.get(bandKey) ?? [];
+
+    bandDepartures.push(departure);
+    groupedDepartures.set(bandKey, bandDepartures);
+  }
+
+  return `
+    <details class="departure-archive">
+      <summary>
+        <span>${escapeHtml(t('results.allDeparturesCount', { count: departures.length }))}</span>
+        <small>${escapeHtml(t('results.allDeparturesDisclosure'))}</small>
+      </summary>
+      <div class="departure-archive-groups">
+        ${bandOrder.map((bandKey) => {
+    const bandDepartures = groupedDepartures.get(bandKey);
+
+    if (!bandDepartures?.length) {
+      return '';
+    }
+
+    return `
+          <section class="departure-time-band">
+            <div class="departure-time-band-head">
+              <h4>${escapeHtml(t(`results.timeBand.${bandKey}`))}</h4>
+              <span>${escapeHtml(t('results.timeBandCount', { count: bandDepartures.length }))}</span>
+            </div>
+            <div class="departure-list departure-list--compact">
+              ${bandDepartures.map((departure) => renderDepartureCard({
+    ...departure,
+    isSelected: departure.tripKey === selectedTripKey,
+  }, t, '#', { compact: true })).join('')}
+            </div>
+          </section>
+        `;
+  }).join('')}
+      </div>
+    </details>
   `;
 }
 
@@ -114,6 +195,22 @@ function renderSharedRouteContext(sharedRouteContext, t) {
         <button type="button" class="topbar-link" data-share-current-route>${escapeHtml(t('results.sharedContext.shareAgain'))}</button>
       </div>
     </section>
+  `;
+}
+
+function renderSecondaryTaxiOptions(taxiOptions, t) {
+  if (!taxiOptions.length) {
+    return '';
+  }
+
+  return `
+    <details class="secondary-route-options">
+      <summary>
+        <span>${escapeHtml(t('taxi.routeSecondarySummary'))}</span>
+        <small>${escapeHtml(t('taxi.routeSecondaryDetail'))}</small>
+      </summary>
+      ${renderTaxiOptionsSection(taxiOptions, { t })}
+    </details>
   `;
 }
 
@@ -188,7 +285,7 @@ export function renderResultsView({
 }) {
   return `
     <section class="results-shell">
-      <article class="summary-card">
+      <article class="summary-card" data-result-anchor>
         <div class="summary-head">
           <div>
             <p class="eyebrow">${t('results.routeSummary')}</p>
@@ -203,7 +300,6 @@ export function renderResultsView({
         </div>
 
         ${renderSummaryMetrics(summary, t)}
-        ${renderTaxiOptionsSection(taxiOptions, { t })}
       </article>
 
       ${renderSharedRouteContext(sharedRouteContext, t)}
@@ -221,19 +317,17 @@ export function renderResultsView({
         </div>
       </section>
 
-      <section class="results-section">
+      ${allDepartures.length ? `
+      <section class="results-section results-section--archive">
         <div class="section-head">
           <h3>${t('results.allDepartures')}</h3>
           <p>${t('results.allDeparturesSubtitle')}</p>
         </div>
-        <div class="departure-list">
-          ${allDepartures.map((departure) => renderDepartureCard({
-            ...departure,
-            isSelected: departure.tripKey === selectedTripKey,
-          }, t, pdfUrl)).join('')}
-        </div>
+        ${renderDepartureArchive({ departures: allDepartures, selectedTripKey, t })}
       </section>
+      ` : ''}
       ${selectedTripPanel}
+      ${renderSecondaryTaxiOptions(taxiOptions, t)}
       ${renderShareModal(routeActions.shareModal, routeLabel, t)}
     </section>
   `;

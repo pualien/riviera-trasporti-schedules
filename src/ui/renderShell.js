@@ -61,6 +61,29 @@ function renderSeoSupportCopy(t) {
   `;
 }
 
+function renderTaxiDirectory(taxiDirectory, { t, mode }) {
+  const directory = renderTaxiOptionsSection(taxiDirectory, {
+    t,
+    titleKey: 'taxi.directoryTitle',
+    bodyKey: 'taxi.directoryBody',
+    className: 'taxi-directory-section',
+  });
+
+  if (mode !== 'collapsed' || !taxiDirectory.length) {
+    return directory;
+  }
+
+  return `
+    <details class="global-alternatives">
+      <summary>
+        <span>${escapeHtml(t('shell.globalAlternatives'))}</span>
+        <small>${escapeHtml(t('shell.globalAlternativesDetail'))}</small>
+      </summary>
+      ${directory}
+    </details>
+  `;
+}
+
 function renderSecondaryActions({ languages, language, t }) {
   return `
     <a class="topbar-link" href="${FEEDBACK_FORM_URL}" target="_blank" rel="noreferrer">
@@ -82,6 +105,7 @@ export function renderShell(
     datasetInfo = null,
     pwaControl = '',
     taxiDirectory = [],
+    taxiDirectoryMode = 'open',
     tabNavigation = '',
     t = createTranslator('en'),
   } = {},
@@ -125,12 +149,7 @@ export function renderShell(
         className: 'ad-slot--utility',
         content: adSlots.utility,
       })}
-      ${renderTaxiOptionsSection(taxiDirectory, {
-        t,
-        titleKey: 'taxi.directoryTitle',
-        bodyKey: 'taxi.directoryBody',
-        className: 'taxi-directory-section',
-      })}
+      ${renderTaxiDirectory(taxiDirectory, { t, mode: taxiDirectoryMode })}
     </div>
   `;
 }

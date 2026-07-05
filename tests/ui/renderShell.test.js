@@ -198,4 +198,31 @@ describe('renderShell', () => {
     expect(taxiPanel).toContain('Verified 2026-05-13');
     expect(html).not.toContain('class="taxi-option-card"');
   });
+
+  it('can tuck the global taxi directory into a contextual alternatives disclosure', () => {
+    const html = renderShell('<section>Route result</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      taxiDirectoryMode: 'collapsed',
+      taxiDirectory: [
+        {
+          serviceId: 'taxi-imperia',
+          provinceId: 'imperia',
+          provinceLabel: 'Provincia di Imperia',
+          serviceLabel: 'Taxi Imperia',
+          phone: '+39 0183 3785',
+          phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
+          sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Imperia'],
+        },
+      ],
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('<details class="global-alternatives"');
+    expect(html).toContain('Taxi and local alternatives');
+    expect(html).toContain('All verified taxi numbers');
+    expect(html.indexOf('<section>Route result</section>')).toBeLessThan(html.indexOf('class="global-alternatives"'));
+  });
 });

@@ -64,6 +64,47 @@ describe('renderSearchForm', () => {
     expect(html).toContain('data-from-value="imperia porto maurizio"');
   });
 
+  it('can collapse exact-stop refinement after a broad origin has been chosen', () => {
+    const html = renderSearchForm({
+      t: createTranslator('en'),
+      fromInput: 'Sanremo',
+      fromLocalitySelected: true,
+      fromPanelOpen: true,
+      collapseOriginRefinement: true,
+      fromSuggestions: {
+        areas: [
+          { value: 'Sanremo', meta: 'Area' },
+        ],
+        exactStops: [
+          { value: 'sanremo autostazione', meta: 'Exact stop' },
+          { value: 'sanremo partenza', meta: 'Exact stop' },
+        ],
+        exactStopHeading: 'Sanremo',
+      },
+    });
+
+    expect(html).toContain('Refine stop in Sanremo');
+    expect(html).toContain('data-expand-origin-refinement');
+    expect(html).not.toContain('data-from-value="sanremo autostazione"');
+    expect(html).not.toContain('data-from-value="sanremo partenza"');
+  });
+
+  it('renders a compact edit surface for an existing result instead of the full hero form', () => {
+    const html = renderSearchForm({
+      t: createTranslator('en'),
+      compactResultMode: true,
+      compactRouteLabel: 'Sanremo to Ventimiglia, Ponte Andrea Doria',
+      dayType: 'feriale',
+    });
+
+    expect(html).toContain('class="route-edit-summary"');
+    expect(html).toContain('Sanremo to Ventimiglia, Ponte Andrea Doria');
+    expect(html).toContain('Weekday');
+    expect(html).toContain('data-edit-search');
+    expect(html).not.toContain('class="hero-copy"');
+    expect(html).not.toContain('class="search-form search-form--capsule"');
+  });
+
   it('renders exact destinations once an origin area has been selected', () => {
     const html = renderSearchForm({
       fromInput: 'Porto Maurizio',

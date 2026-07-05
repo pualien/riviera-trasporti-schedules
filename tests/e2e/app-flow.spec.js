@@ -151,6 +151,10 @@ test('keeps From and To pickers roomy on iPhone-sized screens', async ({ page })
   expect(fromMetrics.actionTextIsHidden).toBe(true);
 
   await page.locator('[data-from-value="Porto Maurizio"]').click();
+  await expect(page.locator('[data-panel="to"]')).toBeVisible();
+  await page.locator('input[name="from"]').click();
+  await expect(page.locator('[data-expand-origin-refinement]')).toBeVisible();
+  await page.locator('[data-expand-origin-refinement]').click();
   await page.locator('[data-from-value="imperia porto maurizio"]').click();
 
   const toPanel = page.locator('[data-panel="to"]');
@@ -186,12 +190,7 @@ test('announces and selects picker suggestions from the keyboard', async ({ page
 
   await page.keyboard.press('Enter');
   await expect(fromInput).toHaveValue(selectedAreaLabel);
-  await expect(fromInput).toHaveAttribute('aria-expanded', 'true');
-
-  await page.keyboard.press('ArrowDown');
-  await page.keyboard.press('ArrowDown');
-  await expect(fromInput).toHaveAttribute('aria-activedescendant', /from-picker-option-\d+/);
-  await page.keyboard.press('Enter');
+  await expect(fromInput).toHaveAttribute('aria-expanded', 'false');
 
   const toInput = page.locator('input[name="to"]');
   await expect(toInput).toBeFocused();
@@ -206,6 +205,22 @@ test('announces and selects picker suggestions from the keyboard', async ({ page
   await page.keyboard.press('Enter');
   await expect(toInput).not.toHaveValue('');
   await expect(toInput).toHaveAttribute('aria-expanded', 'false');
+});
+
+test('opens restored route results in compact answer mode', async ({ page }) => {
+  await page.goto(SEARCH_ROUTE);
+
+  await expect(page.locator('[data-route-edit-summary]')).toBeVisible();
+  await expect(page.locator('#route-form')).toHaveCount(0);
+  await expect(page.locator('[data-result-anchor]')).toBeVisible();
+  await expect(page.locator('[data-route-edit-summary] h1')).toContainText('to');
+
+  const globalAlternatives = page.locator('.global-alternatives');
+  await expect(globalAlternatives).toBeVisible();
+  await expect(globalAlternatives).not.toHaveAttribute('open', '');
+
+  await page.getByRole('button', { name: 'Edit search' }).click();
+  await expect(page.locator('#route-form')).toBeVisible();
 });
 
 test('opens provider search tabs and builds a prefilled FlixBus handoff', async ({ page }) => {
@@ -305,6 +320,7 @@ test('shows route action feedback and opens a tracked share modal', async ({ pag
   await page.getByRole('button', { name: 'Save route' }).click();
   await expect(page.locator('.route-action-feedback')).toContainText('Route saved');
 
+  await page.getByRole('button', { name: 'Edit search' }).click();
   await page.getByRole('button', { name: 'Show departures' }).click();
   await expect(page.locator('.route-action-feedback')).toHaveCount(0);
 
@@ -464,6 +480,7 @@ test('restores inbound shared departure context from a real trip key', async ({ 
 test('clears inbound shared departure context after a manual search submission', async ({ page }) => {
   await openSharedDeparture(page);
 
+  await page.getByRole('button', { name: 'Edit search' }).click();
   await page.getByRole('button', { name: 'Show departures' }).click();
 
   await expect(page.locator('.shared-route-context')).toHaveCount(0);
@@ -553,6 +570,7 @@ test('clears inbound shared departure context after choosing a nearby destinatio
   });
 
   await openSharedDeparture(page);
+  await page.getByRole('button', { name: 'Edit search' }).click();
   await page.locator('[data-location-field="to"]').click();
   await page.locator('.nearby-stop').first().click();
 

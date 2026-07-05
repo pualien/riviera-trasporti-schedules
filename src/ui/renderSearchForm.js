@@ -115,7 +115,10 @@ function renderSuggestionButtons(attributeName, suggestions = [], t, {
     .join('');
 }
 
-function renderFromPanel(fromSuggestions, t, { activeOptionId = null } = {}) {
+function renderFromPanel(fromSuggestions, t, {
+  activeOptionId = null,
+  collapseOriginRefinement = false,
+} = {}) {
   const {
     areas = [],
     exactStops = [],
@@ -141,18 +144,41 @@ function renderFromPanel(fromSuggestions, t, { activeOptionId = null } = {}) {
       ${exactStops.length && exactStopHeading ? `
         <div class="picker-option-group" role="group" aria-label="${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}">
           <div class="picker-panel-head">
-            <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
+            <div class="picker-panel-copy">${escapeHtml(collapseOriginRefinement
+    ? t('search.fromPanel.refineStop', { locality: exactStopHeading })
+    : t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
           </div>
-          <div class="picker-option-list">
+          ${collapseOriginRefinement ? `
+            <button type="button" class="origin-refinement-toggle" data-expand-origin-refinement>
+              ${escapeHtml(t('search.fromPanel.refineStop', { locality: exactStopHeading }))}
+            </button>
+          ` : `
+            <div class="picker-option-list">
             ${renderSuggestionButtons('data-from-value', exactStops, t, {
-              activeOptionId,
-              idPrefix: 'from-picker-option',
-              startIndex: initialOptions.length,
-            })}
-          </div>
+    activeOptionId,
+    idPrefix: 'from-picker-option',
+    startIndex: initialOptions.length,
+  })}
+            </div>
+          `}
         </div>
       ` : ''}
     </div>
+  `;
+}
+
+function renderCompactResultSearch({ t, compactRouteLabel, dayType }) {
+  return `
+    <section class="route-edit-summary" data-route-edit-summary>
+      <div>
+        <p class="eyebrow">${escapeHtml(t('search.compactEyebrow'))}</p>
+        <h1>${escapeHtml(compactRouteLabel || t('search.compactTitle'))}</h1>
+        <p>${escapeHtml(t('search.compactDay', { day: t(`search.dayType.${dayType}`) }))}</p>
+      </div>
+      <button type="button" class="topbar-link" data-edit-search>
+        ${escapeHtml(t('search.editSearch'))}
+      </button>
+    </section>
   `;
 }
 
@@ -315,7 +341,14 @@ export function renderSearchForm({
   destinationMessage,
   selectedLocalityLabel = '',
   dayType = 'feriale',
+  collapseOriginRefinement = false,
+  compactResultMode = false,
+  compactRouteLabel = '',
 } = {}) {
+  if (compactResultMode) {
+    return renderCompactResultSearch({ t, compactRouteLabel, dayType });
+  }
+
   const originReady = fromLocalitySelected || Boolean(exactFromStop);
   const fromHelp = exactFromStop
     ? t('search.fromHelp.exact')
@@ -366,7 +399,10 @@ export function renderSearchForm({
             t,
           })}
           <small>${fromHelp}</small>
-          ${fromPanelOpen ? renderFromPanel(fromSuggestions, t, { activeOptionId: fromActiveOptionId }) : ''}
+          ${fromPanelOpen ? renderFromPanel(fromSuggestions, t, {
+    activeOptionId: fromActiveOptionId,
+    collapseOriginRefinement,
+  }) : ''}
         </label>
 
         <label class="field">

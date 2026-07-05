@@ -25,6 +25,16 @@ describe('i18n helpers', () => {
     expect(t('search.submit')).toBe('Mostrar salidas');
   });
 
+  it('uses polished Italian accents and apostrophes in visible copy', () => {
+    const t = createTranslator('it');
+
+    expect(t('shell.seoBody')).toContain('località');
+    expect(t('shell.sourceTrustBody')).toContain('è indipendente');
+    expect(t('search.guidance.destination')).toContain("l'origine");
+    expect(t('results.soonestArrival')).toBe('Arrivo più rapido');
+    expect(t('location.error.browser')).toContain('può');
+  });
+
   it('stores only supported language codes', () => {
     const writes = [];
     const storage = { setItem: (key, value) => writes.push([key, value]) };
@@ -43,6 +53,7 @@ describe('i18n helpers', () => {
       expect(t('results.detailsAction')).not.toBe('results.detailsAction');
       expect(t('results.selectedAction')).not.toBe('results.selectedAction');
       expect(t('results.mapPartial')).not.toBe('results.mapPartial');
+      expect(t('results.mapPrecision')).not.toBe('results.mapPrecision');
       expect(t('results.mapNoCoordinates')).not.toBe('results.mapNoCoordinates');
       expect(t('results.mapLoadFailed')).not.toBe('results.mapLoadFailed');
       expect(t('results.mapLoadFailedDetail')).not.toBe('results.mapLoadFailedDetail');
@@ -52,6 +63,9 @@ describe('i18n helpers', () => {
       expect(t('search.guidance.destination')).not.toBe('search.guidance.destination');
       expect(t('search.guidance.departure')).not.toBe('search.guidance.departure');
       expect(t('shell.routesIndex')).not.toBe('shell.routesIndex');
+      expect(t('shell.globalAlternatives')).not.toBe('shell.globalAlternatives');
+      expect(t('search.editSearch')).not.toBe('search.editSearch');
+      expect(t('search.fromPanel.refineStop')).not.toBe('search.fromPanel.refineStop');
       expect(t('tabs.trains')).not.toBe('tabs.trains');
       expect(t('provider.flixbus.title')).not.toBe('provider.flixbus.title');
       expect(t('provider.blablacar.hint')).not.toBe('provider.blablacar.hint');

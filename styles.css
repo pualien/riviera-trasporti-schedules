@@ -1,13 +1,15 @@
 :root {
   --bg-top: #f7f1ea;
   --bg-bottom: #efe4d6;
+  --surface-solid: rgb(255, 255, 255);
   --panel: rgba(255, 251, 247, 0.86);
-  --panel-strong: #ffffff;
+  --panel-strong: var(--surface-solid);
   --line: rgba(62, 39, 24, 0.12);
   --text: #1d1a17;
   --muted: #6b6258;
   --accent: #eb4c60;
   --accent-strong: #d93b4f;
+  --on-accent: rgb(255, 255, 255);
   --signal: #ff8a3d;
   --shadow: 0 30px 60px rgba(93, 63, 35, 0.12);
 }
@@ -51,6 +53,8 @@ a {
 .hero-shell,
 .summary-card,
 .results-section,
+.route-edit-summary,
+.global-alternatives,
 .empty-state {
   border: 1px solid rgba(255, 255, 255, 0.92);
   background: var(--panel);
@@ -155,10 +159,10 @@ a {
 .brand-wordmark {
   width: fit-content;
   font-family: -apple-system, BlinkMacSystemFont, "Avenir Next", "Segoe UI", system-ui, sans-serif;
-  font-size: clamp(2rem, 4.4vw, 3rem);
+  font-size: 2.6rem;
   font-weight: 800;
   line-height: 1.02;
-  letter-spacing: -0.035em;
+  letter-spacing: 0px;
   color: var(--text);
 }
 
@@ -239,7 +243,7 @@ a {
 }
 
 .transfer-suggestion {
-  background: #ffffff;
+  background: var(--surface-solid);
   border: 1px solid rgba(62, 39, 24, 0.12);
   border-radius: 20px;
   padding: 18px;
@@ -347,9 +351,9 @@ a {
 
 .app-tab--active,
 .app-tab[aria-current="page"] {
-  background: #eb4c60;
-  border-color: #d93b4f;
-  color: #ffffff;
+  background: var(--accent);
+  border-color: var(--accent-strong);
+  color: var(--on-accent);
 }
 
 .app-tab:focus-visible {
@@ -446,9 +450,9 @@ a {
 
 .hero-copy h1 {
   margin: 10px 0 14px;
-  font-size: clamp(2.1rem, 5vw, 3.8rem);
+  font-size: 3.2rem;
   line-height: 0.98;
-  letter-spacing: -0.06em;
+  letter-spacing: 0px;
 }
 
 .hero-text {
@@ -457,6 +461,37 @@ a {
   color: var(--muted);
   line-height: 1.65;
   font-size: 1rem;
+}
+
+.route-edit-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px 24px;
+}
+
+.route-edit-summary > div {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.route-edit-summary h1,
+.route-edit-summary p {
+  margin: 0;
+}
+
+.route-edit-summary h1 {
+  font-size: 1.65rem;
+  line-height: 1.08;
+  letter-spacing: 0px;
+  overflow-wrap: anywhere;
+}
+
+.route-edit-summary p:not(.eyebrow) {
+  color: var(--muted);
+  line-height: 1.45;
 }
 
 .search-form {
@@ -587,7 +622,7 @@ a {
   border-radius: 20px;
   font: inherit;
   background: linear-gradient(180deg, var(--accent), var(--accent-strong));
-  color: white;
+  color: var(--on-accent);
   border: 0;
   display: inline-flex;
   align-items: center;
@@ -805,6 +840,27 @@ a {
     0 16px 28px rgba(93, 63, 35, 0.12);
 }
 
+.origin-refinement-toggle {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgba(217, 59, 79, 0.18);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+  padding: 0 16px;
+}
+
+.origin-refinement-toggle:hover,
+.origin-refinement-toggle:focus-visible {
+  border-color: rgba(217, 59, 79, 0.3);
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.1);
+  outline: none;
+}
+
 .picker-option-copy {
   display: grid;
   gap: 4px;
@@ -868,8 +924,8 @@ a {
 .saved-route-remove {
   border: 1px solid rgba(62, 39, 24, 0.12);
   border-radius: 18px;
-  background: #ffffff;
-  color: #1d1a17;
+  background: var(--surface-solid);
+  color: var(--text);
   cursor: pointer;
   font: inherit;
   padding: 14px 16px;
@@ -935,7 +991,7 @@ a {
 .browse-stop-actions button {
   border: 1px solid rgba(62, 39, 24, 0.12);
   border-radius: 18px;
-  background: #ffffff;
+  background: var(--surface-solid);
   color: var(--text);
   cursor: pointer;
   font: inherit;
@@ -958,8 +1014,8 @@ a {
 }
 
 .browse-mode-switch [aria-current="page"] {
-  background: #eb4c60;
-  color: #ffffff;
+  background: var(--accent);
+  color: var(--on-accent);
 }
 
 .browse-list button[aria-current="page"] {
@@ -1051,9 +1107,9 @@ a {
 .summary-head h2,
 .empty-state h2 {
   margin: 8px 0 0;
-  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-size: 2.2rem;
   line-height: 1;
-  letter-spacing: -0.05em;
+  letter-spacing: 0px;
 }
 
 .summary-lines {
@@ -1127,7 +1183,7 @@ a {
   height: 40px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  background: #ffffff;
+  background: var(--surface-solid);
   color: var(--text);
   cursor: pointer;
   font: inherit;
@@ -1165,7 +1221,7 @@ a {
   min-height: 44px;
   border: 1px solid var(--line);
   border-radius: 16px;
-  background: #ffffff;
+  background: var(--surface-solid);
   color: var(--text);
   cursor: pointer;
   font: inherit;
@@ -1263,7 +1319,7 @@ a {
   display: block;
   margin-top: 8px;
   font-size: 1.4rem;
-  letter-spacing: -0.04em;
+  letter-spacing: 0px;
 }
 
 .section-head {
@@ -1273,13 +1329,82 @@ a {
 .section-head h3 {
   margin: 0;
   font-size: 1.3rem;
-  letter-spacing: -0.04em;
+  letter-spacing: 0px;
 }
 
 .section-head p,
 .empty-state p {
   color: var(--muted);
   line-height: 1.6;
+}
+
+.departure-archive,
+.secondary-route-options,
+.global-alternatives {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: rgba(255, 251, 247, 0.72);
+}
+
+.departure-archive summary,
+.secondary-route-options summary,
+.global-alternatives summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.departure-archive summary::-webkit-details-marker,
+.secondary-route-options summary::-webkit-details-marker,
+.global-alternatives summary::-webkit-details-marker {
+  display: none;
+}
+
+.departure-archive summary span,
+.secondary-route-options summary span,
+.global-alternatives summary span {
+  color: var(--text);
+  font-weight: 750;
+}
+
+.departure-archive summary small,
+.secondary-route-options summary small,
+.global-alternatives summary small {
+  color: var(--muted);
+  line-height: 1.35;
+  text-align: right;
+}
+
+.departure-archive-groups {
+  display: grid;
+  gap: 16px;
+  padding: 0 18px 18px;
+}
+
+.departure-time-band {
+  display: grid;
+  gap: 10px;
+}
+
+.departure-time-band-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+}
+
+.departure-time-band-head h4 {
+  margin: 0;
+  font-size: 1rem;
+  letter-spacing: 0px;
+}
+
+.departure-time-band-head span {
+  color: var(--muted);
+  font-size: 0.86rem;
 }
 
 .departure-list {
@@ -1309,6 +1434,12 @@ a {
   box-shadow: 0 0 0 3px rgba(235, 76, 96, 0.12), var(--shadow);
 }
 
+.departure-card--compact {
+  padding: 14px 16px;
+  border-color: rgba(62, 39, 24, 0.1);
+  background: rgba(255, 255, 255, 0.68);
+}
+
 .departure-card:hover {
   transform: translateY(-1px);
 }
@@ -1316,7 +1447,7 @@ a {
 .departure-main strong {
   display: block;
   font-size: 1.28rem;
-  letter-spacing: -0.05em;
+  letter-spacing: 0px;
 }
 
 .departure-main p {
@@ -1396,8 +1527,29 @@ a {
   box-shadow: var(--shadow);
 }
 
+.secondary-route-options {
+  padding: 0;
+}
+
+.secondary-route-options .taxi-options-section,
+.global-alternatives .taxi-directory-section {
+  padding: 0 18px 18px;
+}
+
+.global-alternatives {
+  padding: 0;
+}
+
 .route-map-panel .eyebrow {
   margin: 0;
+}
+
+.route-map-precision {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 650;
+  line-height: 1.45;
 }
 
 .route-map-meta {
@@ -1449,7 +1601,7 @@ a {
 .location-picker-copy h3 {
   margin: 8px 0 10px;
   font-size: 1.55rem;
-  letter-spacing: -0.04em;
+  letter-spacing: 0px;
 }
 
 .route-map-message,
@@ -1556,6 +1708,8 @@ a {
   .hero-shell,
   .summary-card,
   .results-section,
+  .route-edit-summary,
+  .global-alternatives,
   .empty-state {
     border-radius: 24px;
   }
@@ -1574,7 +1728,25 @@ a {
     order: -1;
   }
 
+  .brand-wordmark {
+    font-size: 2rem;
+  }
+
+  .hero-copy h1 {
+    font-size: 2.35rem;
+  }
+
+  .route-edit-summary h1 {
+    font-size: 1.35rem;
+  }
+
+  .summary-head h2,
+  .empty-state h2 {
+    font-size: 1.9rem;
+  }
+
   .summary-head,
+  .route-edit-summary,
   .topbar,
   .departure-card,
   .route-map-meta {
@@ -1606,6 +1778,18 @@ a {
 
   .departure-meta {
     justify-items: start;
+    text-align: left;
+  }
+
+  .departure-archive summary,
+  .secondary-route-options summary,
+  .global-alternatives summary {
+    flex-direction: column;
+  }
+
+  .departure-archive summary small,
+  .secondary-route-options summary small,
+  .global-alternatives summary small {
     text-align: left;
   }
 
@@ -1703,7 +1887,7 @@ a {
     padding: 0;
     color: transparent;
     font-size: 0;
-    letter-spacing: 0;
+    letter-spacing: 0px;
   }
 
   .field .picker-option .picker-option-action::before {
