@@ -11,6 +11,42 @@ const match = {
 };
 
 describe('buildRouteMapState', () => {
+  it('uses street geometry when route coordinates are available', () => {
+    const state = buildRouteMapState(match, {
+      'imperia-porto-maurizio': { latitude: 43.886, longitude: 8.029 },
+      'taggia-stazione': { latitude: 43.846, longitude: 7.852 },
+      'sanremo-autostazione': { latitude: 43.817, longitude: 7.777 },
+    }, {
+      routeGeometry: [
+        [43.886, 8.029],
+        [43.870, 7.950],
+        [43.817, 7.777],
+      ],
+    });
+
+    expect(state.geometryStatus).toBe('street-estimate');
+    expect(state.geometryPoints).toEqual([
+      [43.886, 8.029],
+      [43.870, 7.950],
+      [43.817, 7.777],
+    ]);
+  });
+
+  it('falls back to stop-to-stop geometry when street geometry is unavailable', () => {
+    const state = buildRouteMapState(match, {
+      'imperia-porto-maurizio': { latitude: 43.886, longitude: 8.029 },
+      'taggia-stazione': { latitude: 43.846, longitude: 7.852 },
+      'sanremo-autostazione': { latitude: 43.817, longitude: 7.777 },
+    });
+
+    expect(state.geometryStatus).toBe('stop-segment');
+    expect(state.geometryPoints).toEqual([
+      [43.886, 8.029],
+      [43.846, 7.852],
+      [43.817, 7.777],
+    ]);
+  });
+
   it('returns a ready map state when every segment stop has coordinates', () => {
     const state = buildRouteMapState(match, {
       'imperia-porto-maurizio': { latitude: 43.886, longitude: 8.029 },

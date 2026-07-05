@@ -91,6 +91,7 @@ function renderSuggestionButtons(attributeName, suggestions = [], t, {
       ({ value, meta = '', label = '', type = '' }, index) => {
         const optionId = `${idPrefix}-${startIndex + index}`;
         const selected = activeOptionId === optionId;
+        const displayLabel = label || value;
 
         return `
         <button
@@ -104,8 +105,8 @@ function renderSuggestionButtons(attributeName, suggestions = [], t, {
           ${type ? `data-option-type="${escapeHtml(type)}"` : ''}
         >
           <span class="picker-option-copy">
-            <span class="picker-option-label">${escapeHtml(value)}</span>
-            ${(meta || label) ? `<small>${escapeHtml(meta || label)}</small>` : ''}
+            <span class="picker-option-label">${escapeHtml(displayLabel)}</span>
+            ${meta ? `<small>${escapeHtml(meta)}</small>` : ''}
           </span>
           <span class="picker-option-action" aria-hidden="true">${escapeHtml(t('search.panel.choose'))}</span>
         </button>
@@ -120,13 +121,8 @@ function renderFromPanel(fromSuggestions, t, {
   collapseOriginRefinement = false,
 } = {}) {
   const {
-    areas = [],
     exactStops = [],
-    exactStopHeading = '',
   } = fromSuggestions ?? {};
-  const initialOptions = exactStopHeading
-    ? areas
-    : [...areas, ...exactStops];
 
   return `
     <div id="from-picker-panel" class="picker-panel" data-panel="from" role="listbox" aria-labelledby="from-field-label">
@@ -135,34 +131,12 @@ function renderFromPanel(fromSuggestions, t, {
           <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
         </div>
         <div class="picker-option-list">
-          ${renderSuggestionButtons('data-from-value', initialOptions, t, {
+          ${renderSuggestionButtons('data-from-value', exactStops, t, {
             activeOptionId,
             idPrefix: 'from-picker-option',
           })}
         </div>
       </div>
-      ${exactStops.length && exactStopHeading ? `
-        <div class="picker-option-group" role="group" aria-label="${escapeHtml(t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}">
-          <div class="picker-panel-head">
-            <div class="picker-panel-copy">${escapeHtml(collapseOriginRefinement
-    ? t('search.fromPanel.refineStop', { locality: exactStopHeading })
-    : t('search.fromPanel.refineWithin', { locality: exactStopHeading }))}</div>
-          </div>
-          ${collapseOriginRefinement ? `
-            <button type="button" class="origin-refinement-toggle" data-expand-origin-refinement>
-              ${escapeHtml(t('search.fromPanel.refineStop', { locality: exactStopHeading }))}
-            </button>
-          ` : `
-            <div class="picker-option-list">
-            ${renderSuggestionButtons('data-from-value', exactStops, t, {
-    activeOptionId,
-    idPrefix: 'from-picker-option',
-    startIndex: initialOptions.length,
-  })}
-            </div>
-          `}
-        </div>
-      ` : ''}
     </div>
   `;
 }
@@ -282,8 +256,8 @@ function renderDestinationPanel({
               data-to-value="${escapeHtml(stop.canonical)}"
             >
               <span class="picker-option-copy">
-                <span class="picker-option-label">${escapeHtml(stop.canonical)}</span>
-                <small>${escapeHtml(t('search.panel.directDestination'))}</small>
+                <span class="picker-option-label">${escapeHtml(stop.displayLabel || stop.canonical)}</span>
+                <small>${escapeHtml(t('search.panel.stop'))}</small>
               </span>
               <span class="picker-option-action" aria-hidden="true">${escapeHtml(t('search.panel.choose'))}</span>
             </button>

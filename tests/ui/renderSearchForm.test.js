@@ -3,68 +3,120 @@ import { createTranslator } from '../../src/lib/i18n.js';
 import { renderSearchForm } from '../../src/ui/renderSearchForm.js';
 
 describe('renderSearchForm', () => {
+  it('renders From choices as exact stops with the zone after the stop label', () => {
+    const html = renderSearchForm({
+      fromPanelOpen: true,
+      fromSuggestions: {
+        areas: [],
+        exactStops: [
+          {
+            value: 'imperia porto maurizio',
+            label: 'imperia porto maurizio (Porto Maurizio)',
+            meta: 'Stop',
+            type: 'exact-stop',
+          },
+        ],
+        exactStopHeading: '',
+      },
+    });
+
+    expect(html).toContain('data-from-value="imperia porto maurizio"');
+    expect(html).toContain('imperia porto maurizio (Porto Maurizio)');
+    expect(html).toContain('Stop');
+    expect(html).not.toContain('data-option-type="area"');
+    expect(html).not.toContain('Browse all departure areas');
+  });
+
+  it('renders To choices as exact stops with zone context', () => {
+    const html = renderSearchForm({
+      fromInput: 'imperia porto maurizio',
+      fromLocalitySelected: true,
+      exactFromStop: { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
+      toPanelOpen: true,
+      destinationMode: 'exact-stop-destinations',
+      destinationMessage: 'Direct destinations from this stop',
+      reachableDestinations: [
+        {
+          id: 'sanremo-autostazione',
+          canonical: 'sanremo autostazione',
+          displayLabel: 'sanremo autostazione (Sanremo)',
+        },
+      ],
+    });
+
+    expect(html).toContain('data-to-value="sanremo autostazione"');
+    expect(html).toContain('sanremo autostazione (Sanremo)');
+    expect(html).toContain('Stop');
+  });
+
   it('renders a blank initial form with a focusable but informational to field', () => {
     const html = renderSearchForm({
       fromInput: '',
       fromLocalitySelected: false,
       fromPanelOpen: true,
       fromSuggestions: {
-        areas: [
-          { value: 'Porto Maurizio', meta: 'Area' },
-          { value: 'Sanremo', meta: 'Area' },
+        areas: [],
+        exactStops: [
+          {
+            value: 'imperia porto maurizio',
+            label: 'imperia porto maurizio (Porto Maurizio)',
+            meta: 'Stop',
+            type: 'exact-stop',
+          },
         ],
-        exactStops: [],
         exactStopHeading: '',
       },
       toInput: '',
       toPanelOpen: true,
       destinationMode: 'informational',
-      destinationMessage: 'Choose a departure area first to see direct destinations.',
+      destinationMessage: 'Choose a departure stop first to see direct destinations.',
       reachableDestinations: [],
     });
 
     expect(html).toContain('Riviera Dei Fiori Route Finder');
     expect(html).toContain('Find direct Riviera Trasporti buses across the Riviera dei Fiori with Riviera Dei Fiori Route Finder.');
     expect(html).not.toContain('Riviera Trasporti Search');
-    expect(html).toContain('placeholder="Choose departure area"');
+    expect(html).toContain('placeholder="Choose departure stop"');
     expect(html).toContain('name="from"');
     expect(html).toContain('data-panel="from"');
-    expect(html).toContain('data-from-value="Porto Maurizio"');
-    expect(html).toContain('data-from-value="Sanremo"');
+    expect(html).toContain('data-from-value="imperia porto maurizio"');
     expect(html).toContain('name="to"');
     expect(html).toContain('data-panel="to"');
     expect(html).not.toContain('disabled');
-    expect(html).toContain('Choose a departure area first to see direct destinations.');
-    expect(html).toContain('Waiting for area');
-    expect(html).toContain('Choose departure area');
+    expect(html).toContain('Choose a departure stop first to see direct destinations.');
+    expect(html).toContain('Waiting for stop');
+    expect(html).toContain('Choose departure stop');
     expect(html).toContain('data-location-field="from"');
     expect(html).toContain('data-location-field="to"');
   });
 
-  it('renders a grouped from panel with all areas plus refinement choices', () => {
+  it('renders a single exact-stop from panel', () => {
     const html = renderSearchForm({
       fromInput: 'porto',
       fromLocalitySelected: true,
       fromPanelOpen: true,
       fromSuggestions: {
-        areas: [
-          { value: 'Andora', meta: 'Area' },
-          { value: 'Porto Maurizio', meta: 'Area' },
-        ],
+        areas: [],
         exactStops: [
-          { value: 'imperia porto maurizio', meta: 'Exact stop' },
+          {
+            value: 'imperia porto maurizio',
+            label: 'imperia porto maurizio (Porto Maurizio)',
+            meta: 'Stop',
+            type: 'exact-stop',
+          },
         ],
         exactStopHeading: 'Porto Maurizio',
       },
     });
 
-    expect(html).toContain('Browse all departure areas');
-    expect(html).toContain('Refine within Porto Maurizio');
-    expect(html.indexOf('data-from-value="Andora"')).toBeLessThan(html.indexOf('data-from-value="Porto Maurizio"'));
+    expect(html).toContain('Choose departure stop');
+    expect(html).not.toContain('Refine within Porto Maurizio');
+    expect(html).not.toContain('data-option-type="area"');
     expect(html).toContain('data-from-value="imperia porto maurizio"');
+    expect(html).toContain('imperia porto maurizio (Porto Maurizio)');
   });
 
-  it('can collapse exact-stop refinement after a broad origin has been chosen', () => {
+  it('keeps exact-stop choices visible after a broad origin has been restored', () => {
     const html = renderSearchForm({
       t: createTranslator('en'),
       fromInput: 'Sanremo',
@@ -72,21 +124,19 @@ describe('renderSearchForm', () => {
       fromPanelOpen: true,
       collapseOriginRefinement: true,
       fromSuggestions: {
-        areas: [
-          { value: 'Sanremo', meta: 'Area' },
-        ],
+        areas: [],
         exactStops: [
-          { value: 'sanremo autostazione', meta: 'Exact stop' },
-          { value: 'sanremo partenza', meta: 'Exact stop' },
+          { value: 'sanremo autostazione', label: 'sanremo autostazione (Sanremo)', meta: 'Stop', type: 'exact-stop' },
+          { value: 'sanremo partenza', label: 'sanremo partenza (Sanremo)', meta: 'Stop', type: 'exact-stop' },
         ],
         exactStopHeading: 'Sanremo',
       },
     });
 
-    expect(html).toContain('Refine stop in Sanremo');
-    expect(html).toContain('data-expand-origin-refinement');
-    expect(html).not.toContain('data-from-value="sanremo autostazione"');
-    expect(html).not.toContain('data-from-value="sanremo partenza"');
+    expect(html).not.toContain('Refine stop in Sanremo');
+    expect(html).not.toContain('data-expand-origin-refinement');
+    expect(html).toContain('data-from-value="sanremo autostazione"');
+    expect(html).toContain('data-from-value="sanremo partenza"');
   });
 
   it('renders a compact edit surface for an existing result instead of the full hero form', () => {
@@ -120,7 +170,7 @@ describe('renderSearchForm', () => {
 
     expect(html).toContain('Direct destinations from this area');
     expect(html).toContain('data-stop-id="sanremo-autostazione"');
-    expect(html).toContain('Direct destination');
+    expect(html).toContain('Stop');
     expect(html).toContain('Choose');
     expect(html).toContain('Departure area');
     expect(html).toContain('1 direct option');
@@ -158,7 +208,7 @@ describe('renderSearchForm', () => {
     });
 
     expect(html).toContain('Only direct destinations from the selected departure side appear here.');
-    expect(html).not.toContain('Choose a departure area first to see direct destinations.');
+    expect(html).not.toContain('Choose a departure stop first to see direct destinations.');
     expect(html).toContain('Direct destinations from this stop');
   });
 
@@ -169,7 +219,7 @@ describe('renderSearchForm', () => {
       toInput: '',
       toPanelOpen: true,
       destinationMode: 'informational',
-      destinationMessage: 'Choose a departure area first to see direct destinations.',
+      destinationMessage: 'Choose a departure stop first to see direct destinations.',
       reachableDestinations: [],
     });
 
@@ -205,7 +255,7 @@ describe('renderSearchForm', () => {
       toStopSelected: true,
     });
 
-    expect(html).toContain('Choose an origin area or exact stop.');
+    expect(html).toContain('Choose a real departure stop.');
     expect(html).toContain('Direct destinations appear after the origin is known.');
     expect(html).toContain('Select one departure to inspect exact trip details.');
   });
@@ -229,8 +279,8 @@ describe('renderSearchForm', () => {
       fromSuggestions: { areas: [], exactStops: [], exactStopHeading: '' },
     });
 
-    expect(html).toContain('Browse all departure areas');
-    expect(html).toContain('placeholder="Choose departure area"');
+    expect(html).toContain('Choose departure stop');
+    expect(html).toContain('placeholder="Choose departure stop"');
     expect(html).not.toContain('placeholder="Porto Maurizio"');
   });
 
@@ -253,11 +303,14 @@ describe('renderSearchForm', () => {
     const html = renderSearchForm({
       fromPanelOpen: true,
       fromSuggestions: {
-        areas: [
-          { value: 'Porto Maurizio', meta: 'Area' },
-        ],
+        areas: [],
         exactStops: [
-          { value: 'imperia porto maurizio', meta: 'Exact stop', type: 'exact-stop' },
+          {
+            value: 'imperia porto maurizio',
+            label: 'imperia porto maurizio (Porto Maurizio)',
+            meta: 'Stop',
+            type: 'exact-stop',
+          },
         ],
         exactStopHeading: 'Porto Maurizio',
       },
@@ -268,18 +321,18 @@ describe('renderSearchForm', () => {
       reachableDestinations: [
         { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
       ],
-      fromActiveOptionId: 'from-picker-option-1',
+      fromActiveOptionId: 'from-picker-option-0',
       toActiveOptionId: 'to-picker-option-0',
     });
 
     expect(html).toContain('role="combobox"');
     expect(html).toContain('aria-haspopup="listbox"');
-    expect(html).toContain('aria-activedescendant="from-picker-option-1"');
+    expect(html).toContain('aria-activedescendant="from-picker-option-0"');
     expect(html).toContain('aria-activedescendant="to-picker-option-0"');
     expect(html).toContain('id="from-picker-panel" class="picker-panel" data-panel="from" role="listbox"');
     expect(html).toContain('id="to-picker-panel" class="picker-panel" data-panel="to" role="listbox"');
     expect(html).toContain('id="from-picker-option-0"');
-    expect(html).toContain('id="from-picker-option-1"');
+    expect(html).not.toContain('id="from-picker-option-1"');
     expect(html).toContain('id="to-picker-option-0"');
     expect(html).toContain('role="option"');
     expect(html).toContain('aria-selected="true"');

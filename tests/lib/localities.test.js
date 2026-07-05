@@ -7,6 +7,7 @@ import {
   getLocalityReachableStops,
   getLocalityStops,
   getReachableStops,
+  stopDisplayLabel,
   resolveOriginSelection,
 } from '../../src/lib/localities.js';
 
@@ -85,7 +86,11 @@ describe('locality helpers', () => {
     ]);
   });
 
-  it('treats a typed locality alias as a broad origin selection', () => {
+  it('formats stop labels with the containing zone', () => {
+    expect(stopDisplayLabel(stops[0], localities)).toBe('imperia porto maurizio (Porto Maurizio)');
+  });
+
+  it('treats a typed exact stop that also matches a locality alias as an exact origin selection', () => {
     expect(
       resolveOriginSelection({
         fromInput: 'Imperia Porto Maurizio',
@@ -98,14 +103,13 @@ describe('locality helpers', () => {
       }),
     ).toMatchObject({
       selectedLocality: localities[0],
-      exactFromStop: null,
+      exactFromStop: { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio' },
       exactStopChoices: [
         { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
         { id: 'imperia-porto-maurizio-piazza-dante', canonical: 'imperia porto maurizio piazza dante' },
       ],
       reachableDestinations: [
         { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
-        { id: 'taggia-stazione', canonical: 'taggia stazione' },
       ],
     });
   });

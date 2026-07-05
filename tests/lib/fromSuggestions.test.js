@@ -2,29 +2,66 @@ import { describe, expect, it } from 'vitest';
 import { buildFromSuggestionSections } from '../../src/lib/fromSuggestions.js';
 
 const localities = [
-  { id: 'sanremo', label: 'Sanremo', aliases: ['Sanremo Autostazione'] },
-  { id: 'andora', label: 'Andora', aliases: ['Andora Stazione FS'] },
-  { id: 'porto-maurizio', label: 'Porto Maurizio', aliases: ['Imperia Porto Maurizio'] },
+  { id: 'sanremo', label: 'Sanremo', aliases: ['Sanremo Autostazione'], stopIds: ['sanremo-autostazione'] },
+  { id: 'andora', label: 'Andora', aliases: ['Andora Stazione FS'], stopIds: ['andora-stazione-fs'] },
+  {
+    id: 'porto-maurizio',
+    label: 'Porto Maurizio',
+    aliases: ['Imperia Porto Maurizio'],
+    stopIds: ['imperia-porto-maurizio', 'imperia-porto-maurizio-piazza-dante'],
+  },
 ];
 
 describe('buildFromSuggestionSections', () => {
-  it('shows all localities alphabetically before the user types', () => {
+  it('shows exact departure stops with zone context instead of broad area options', () => {
     const sections = buildFromSuggestionSections({
       inputValue: '',
       localities,
       selectedLocalityLabel: '',
       exactStopChoices: [],
+      availableExactStops: [
+        { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
+        { id: 'sanremo-autostazione', canonical: 'sanremo autostazione', variants: [] },
+      ],
     });
 
-    expect(sections.areas.map((entry) => entry.value)).toEqual([
-      'Andora',
-      'Porto Maurizio',
-      'Sanremo',
+    expect(sections.areas).toEqual([]);
+    expect(sections.exactStops).toEqual([
+      {
+        value: 'imperia porto maurizio',
+        label: 'imperia porto maurizio (Porto Maurizio)',
+        meta: 'Stop',
+        type: 'exact-stop',
+      },
+      {
+        value: 'sanremo autostazione',
+        label: 'sanremo autostazione (Sanremo)',
+        meta: 'Stop',
+        type: 'exact-stop',
+      },
     ]);
-    expect(sections.exactStops).toEqual([]);
   });
 
-  it('keeps area browsing available after a locality is selected and adds exact-stop refinement', () => {
+  it('shows all departure stops alphabetically before the user types', () => {
+    const sections = buildFromSuggestionSections({
+      inputValue: '',
+      localities,
+      selectedLocalityLabel: '',
+      exactStopChoices: [],
+      availableExactStops: [
+        { id: 'sanremo-autostazione', canonical: 'sanremo autostazione' },
+        { id: 'andora-stazione-fs', canonical: 'andora stazione fs' },
+      ],
+    });
+
+    expect(sections.areas).toEqual([]);
+    expect(sections.exactStops.map((entry) => entry.label)).toEqual([
+      'andora stazione fs (Andora)',
+      'sanremo autostazione (Sanremo)',
+    ]);
+  });
+
+  it('keeps exact-stop choices available after a locality is restored from an old link', () => {
     const sections = buildFromSuggestionSections({
       inputValue: 'porto',
       localities,
@@ -36,7 +73,7 @@ describe('buildFromSuggestionSections', () => {
       availableExactStops: [],
     });
 
-    expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
+    expect(sections.areas).toEqual([]);
     expect(sections.exactStops.map((entry) => entry.value)).toEqual([
       'imperia porto maurizio',
       'imperia porto maurizio piazza dante',
@@ -44,7 +81,7 @@ describe('buildFromSuggestionSections', () => {
     expect(sections.exactStopHeading).toBe('Porto Maurizio');
   });
 
-  it('matches locality aliases and network-wide departure stops before a locality is selected', () => {
+  it('matches locality aliases by showing the zone stops, not a zone row', () => {
     const sections = buildFromSuggestionSections({
       inputValue: 'imperia porto maurizio',
       localities,
@@ -56,11 +93,11 @@ describe('buildFromSuggestionSections', () => {
       ],
     });
 
-    expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
+    expect(sections.areas).toEqual([]);
     expect(sections.exactStops.map((entry) => entry.value)).toEqual(['imperia porto maurizio']);
   });
 
-  it('shows exact departure stops before typing when locality coverage is incomplete', () => {
+  it('shows exact departure stops before typing regardless of locality coverage', () => {
     const sections = buildFromSuggestionSections({
       inputValue: '',
       localities: [
@@ -79,14 +116,14 @@ describe('buildFromSuggestionSections', () => {
       ],
     });
 
-    expect(sections.areas.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
+    expect(sections.areas).toEqual([]);
     expect(sections.exactStops.map((entry) => entry.value)).toEqual([
       'diano marina',
       'imperia porto maurizio',
     ]);
   });
 
-  it('keeps the blank picker area-first when locality coverage is broadly useful', () => {
+  it('keeps the blank picker stop-first when locality coverage is broadly useful', () => {
     const sections = buildFromSuggestionSections({
       inputValue: '',
       localities: [
@@ -113,7 +150,12 @@ describe('buildFromSuggestionSections', () => {
       ],
     });
 
-    expect(sections.areas.map((entry) => entry.value)).toEqual(['Imperia', 'Sanremo']);
-    expect(sections.exactStops).toEqual([]);
+    expect(sections.areas).toEqual([]);
+    expect(sections.exactStops.map((entry) => entry.value)).toEqual([
+      'diano marina',
+      'imperia oneglia',
+      'imperia porto maurizio',
+      'sanremo autostazione',
+    ]);
   });
 });

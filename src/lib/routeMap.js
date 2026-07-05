@@ -2,7 +2,25 @@ function isUsableCoordinate(coords) {
   return Number.isFinite(coords?.latitude) && Number.isFinite(coords?.longitude);
 }
 
-export function buildRouteMapState(match, stopCoordinates = {}, { mapLoadFailed = false } = {}) {
+function isUsableGeometryPoint(point) {
+  return Array.isArray(point)
+    && point.length === 2
+    && Number.isFinite(point[0])
+    && Number.isFinite(point[1]);
+}
+
+function normalizeRouteGeometry(routeGeometry = []) {
+  if (!Array.isArray(routeGeometry)) {
+    return [];
+  }
+
+  return routeGeometry.filter(isUsableGeometryPoint);
+}
+
+export function buildRouteMapState(match, stopCoordinates = {}, {
+  mapLoadFailed = false,
+  routeGeometry = [],
+} = {}) {
   const stops = match.segmentStops.map((stop) => ({
     stopId: stop.stopId,
     label: stop.name,
@@ -28,10 +46,15 @@ export function buildRouteMapState(match, stopCoordinates = {}, { mapLoadFailed 
   const mapStatus = mapLoadFailed && points.length >= 2
     ? 'load-failed'
     : coordinateStatus;
+  const stopSegmentGeometry = points.map((point) => [point.latitude, point.longitude]);
+  const streetGeometry = normalizeRouteGeometry(routeGeometry);
+  const hasStreetGeometry = streetGeometry.length >= 2;
 
   return {
     hasMap: mapStatus === 'ready' || mapStatus === 'partial',
     mapStatus,
+    geometryStatus: hasStreetGeometry ? 'street-estimate' : coordinateStatus === 'unavailable' ? 'unavailable' : 'stop-segment',
+    geometryPoints: hasStreetGeometry ? streetGeometry : stopSegmentGeometry,
     stops,
     points,
     missingStopIds,

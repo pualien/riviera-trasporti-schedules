@@ -150,12 +150,8 @@ test('keeps From and To pickers roomy on iPhone-sized screens', async ({ page })
   expect(fromMetrics.actionCenterOffset).toBeLessThanOrEqual(8);
   expect(fromMetrics.actionTextIsHidden).toBe(true);
 
-  await page.locator('[data-from-value="Porto Maurizio"]').click();
+  await fromPanel.locator('[data-option-type="exact-stop"]').first().click();
   await expect(page.locator('[data-panel="to"]')).toBeVisible();
-  await page.locator('input[name="from"]').click();
-  await expect(page.locator('[data-expand-origin-refinement]')).toBeVisible();
-  await page.locator('[data-expand-origin-refinement]').click();
-  await page.locator('[data-from-value="imperia porto maurizio"]').click();
 
   const toPanel = page.locator('[data-panel="to"]');
   await expect(toPanel).toBeVisible();
@@ -186,10 +182,10 @@ test('announces and selects picker suggestions from the keyboard', async ({ page
   await expect(fromInput).toHaveAttribute('aria-activedescendant', /from-picker-option-\d+/);
   const fromActiveOptionId = await fromInput.getAttribute('aria-activedescendant');
   await expect(page.locator(`#${fromActiveOptionId}`)).toHaveAttribute('aria-selected', 'true');
-  const selectedAreaLabel = await page.locator(`#${fromActiveOptionId} .picker-option-label`).innerText();
+  const selectedFromValue = await page.locator(`#${fromActiveOptionId}`).getAttribute('data-from-value');
 
   await page.keyboard.press('Enter');
-  await expect(fromInput).toHaveValue(selectedAreaLabel);
+  await expect(fromInput).toHaveValue(selectedFromValue ?? '');
   await expect(fromInput).toHaveAttribute('aria-expanded', 'false');
 
   const toInput = page.locator('input[name="to"]');

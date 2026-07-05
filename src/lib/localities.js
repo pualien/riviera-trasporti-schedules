@@ -10,8 +10,21 @@ function stopTokens(stop) {
     .map(normalizeText);
 }
 
-function localityForStop(stopId, localities) {
-  return localities.find((locality) => locality.stopIds.includes(stopId)) ?? null;
+export function localityForStopId(stopId, localities = []) {
+  return localities.find((locality) => (locality.stopIds ?? []).includes(stopId)) ?? null;
+}
+
+export function stopDisplayLabel(stop, localities = []) {
+  const locality = localityForStopId(stop?.id, localities);
+
+  return locality ? `${stop.canonical} (${locality.label})` : stop?.canonical;
+}
+
+export function withStopDisplayLabels(stops = [], localities = []) {
+  return stops.map((stop) => ({
+    ...stop,
+    displayLabel: stopDisplayLabel(stop, localities),
+  }));
 }
 
 export function findMatchingLocalities(query, localities) {
@@ -91,7 +104,7 @@ export function resolveOriginSelection({
     : null;
 
   if (explicitStop) {
-    const selectedLocality = localityForStop(explicitStop.id, localities);
+    const selectedLocality = localityForStopId(explicitStop.id, localities);
     return {
       selectedLocality,
       exactFromStop: explicitStop,
@@ -111,19 +124,9 @@ export function resolveOriginSelection({
     };
   }
 
-  const typedLocality = fromInput ? findExactLocalityMatch(fromInput, localities) : null;
-  if (typedLocality) {
-    return {
-      selectedLocality: typedLocality,
-      exactFromStop: null,
-      exactStopChoices: getLocalityStops(typedLocality.id, localities, stops),
-      reachableDestinations: getLocalityReachableStops(typedLocality.id, localities, reachability, stops),
-    };
-  }
-
   const typedStop = fromInput ? findExactStopMatch(fromInput, getDepartureStops(stops, reachability)) : null;
   if (typedStop) {
-    const selectedLocality = localityForStop(typedStop.id, localities);
+    const selectedLocality = localityForStopId(typedStop.id, localities);
     return {
       selectedLocality,
       exactFromStop: typedStop,
@@ -131,6 +134,16 @@ export function resolveOriginSelection({
         ? getLocalityStops(selectedLocality.id, localities, stops)
         : [],
       reachableDestinations: getReachableStops(typedStop.id, reachability, stops),
+    };
+  }
+
+  const typedLocality = fromInput ? findExactLocalityMatch(fromInput, localities) : null;
+  if (typedLocality) {
+    return {
+      selectedLocality: typedLocality,
+      exactFromStop: null,
+      exactStopChoices: getLocalityStops(typedLocality.id, localities, stops),
+      reachableDestinations: getLocalityReachableStops(typedLocality.id, localities, reachability, stops),
     };
   }
 

@@ -23,6 +23,7 @@ import {
   getLocalityStops,
   getReachableStops,
   resolveOriginSelection,
+  withStopDisplayLabels,
 } from './lib/localities.js';
 import {
   buildNearbyStopChoices,
@@ -30,6 +31,10 @@ import {
   fetchOverpassNearbyStops,
 } from './lib/nearbyStops.js';
 import { buildRouteMapState } from './lib/routeMap.js';
+import {
+  buildStreetRouteGeometryKey,
+  fetchStreetRouteGeometry,
+} from './lib/streetRouteGeometry.js';
 import {
   openPanelWithPointerSafeTiming,
   shouldOpenPanelFromFocusedInputClick,
@@ -98,6 +103,7 @@ import { renderTabNav } from './ui/renderTabNav.js';
 const app = document.querySelector('#app');
 let locationPickerRequestId = 0;
 let pwaController = null;
+const streetRouteGeometryCache = new Map();
 const SHELL_AD_SLOTS = Object.freeze({
   lead: '',
   utility: '',
@@ -265,11 +271,13 @@ async function renderSelectedTripMapForTrip(tripKey) {
     return;
   }
 
-  const mapState = buildRouteMapState(match, state.stopCoordinates);
-  if (!mapState.hasMap) {
+  const baseMapState = buildRouteMapState(match, state.stopCoordinates);
+  if (!baseMapState.hasMap) {
     return;
   }
 
+  const routeGeometry = await getStreetRouteGeometry(baseMapState.points);
+  const mapState = buildRouteMapState(match, state.stopCoordinates, { routeGeometry });
   const mapRendered = await renderSelectedTripMap(mapState);
   if (!mapRendered && state.resultState?.type === 'results' && state.resultState.selectedTripKey === tripKey) {
     state.resultState = {
@@ -279,6 +287,22 @@ async function renderSelectedTripMapForTrip(tripKey) {
     renderApp();
     bindInteractions();
   }
+}
+
+async function getStreetRouteGeometry(points) {
+  const cacheKey = buildStreetRouteGeometryKey(points);
+
+  if (!cacheKey) {
+    return [];
+  }
+
+  if (streetRouteGeometryCache.has(cacheKey)) {
+    return streetRouteGeometryCache.get(cacheKey);
+  }
+
+  const geometry = await fetchStreetRouteGeometry(points);
+  streetRouteGeometryCache.set(cacheKey, geometry);
+  return geometry;
 }
 
 function renderPendingSelectedTripMap() {
@@ -778,7 +802,7 @@ function currentFromSuggestions(t) {
 
   return {
     areas: sections.areas.map((entry) => ({ ...entry, meta: t('search.panel.area') })),
-    exactStops: sections.exactStops.map((entry) => ({ ...entry, meta: t('search.panel.exactStop') })),
+    exactStops: sections.exactStops.map((entry) => ({ ...entry, meta: t('search.panel.stop') })),
     exactStopHeading: sections.exactStopHeading,
   };
 }
@@ -820,8 +844,8 @@ function currentDestinationOptions() {
   const originContext = currentOriginContext();
   const query = normalizeText(state.formValues.toInput);
 
-  return originContext.reachableDestinations.filter(
-    (stop) => !query || normalizeText(stop.canonical).includes(query),
+  return withStopDisplayLabels(originContext.reachableDestinations, state.localities).filter(
+    (stop) => !query || normalizeText(stop.displayLabel || stop.canonical).includes(query),
   );
 }
 
@@ -898,7 +922,7 @@ async function renderSelectedTripMap(mapState) {
 
   try {
     const L = await ensureLeaflet();
-    const coordinates = mapState.points.map((point) => [point.latitude, point.longitude]);
+    const coordinates = mapState.geometryPoints;
     const map = L.map(mapElement, {
       zoomControl: false,
       attributionControl: true,

@@ -1,4 +1,5 @@
 import { normalizeText } from './normalize.js';
+import { localityForStopId, stopDisplayLabel } from './localities.js';
 
 function sortByLabel(entries) {
   return [...entries].sort((left, right) =>
@@ -6,43 +7,18 @@ function sortByLabel(entries) {
   );
 }
 
-function localityMatches(locality, query) {
-  const tokens = [
-    locality.label,
-    ...(locality.aliases ?? []),
-    ...(locality.matchTokens ?? []),
-  ].map(normalizeText);
-
-  return !query || tokens.some((token) => token.includes(query));
-}
-
-function stopMatches(stop, query) {
+function stopMatches(stop, query, localities = []) {
+  const locality = localityForStopId(stop.id, localities);
   const tokens = [
     stop.canonical,
     ...(stop.variants ?? []),
     ...(stop.matchTokens ?? []),
-  ].map(normalizeText);
+    locality?.label,
+    ...(locality?.aliases ?? []),
+    ...(locality?.matchTokens ?? []),
+  ].filter(Boolean).map(normalizeText);
 
   return !query || tokens.some((token) => token.includes(query));
-}
-
-const EXACT_STOP_FALLBACK_COVERAGE_RATIO = 0.6;
-
-function localityCoverageNeedsExactStopFallback(localities = [], availableExactStops = []) {
-  if (availableExactStops.length === 0) {
-    return false;
-  }
-
-  if (localities.length === 0) {
-    return true;
-  }
-
-  const coveredStopIds = new Set(
-    localities.flatMap((locality) => locality.stopIds ?? []),
-  );
-  const coveredExactStopCount = availableExactStops.filter((stop) => coveredStopIds.has(stop.id)).length;
-
-  return (coveredExactStopCount / availableExactStops.length) < EXACT_STOP_FALLBACK_COVERAGE_RATIO;
 }
 
 export function buildFromSuggestionSections({
@@ -53,19 +29,20 @@ export function buildFromSuggestionSections({
   availableExactStops = [],
 }) {
   const query = normalizeText(inputValue);
-  const matchingAreas = sortByLabel(localities)
-    .filter((locality) => localityMatches(locality, query))
-    .map((locality) => ({ value: locality.label, meta: 'Area', type: 'area' }));
-  const shouldExposeNetworkStops = !query && localityCoverageNeedsExactStopFallback(localities, availableExactStops);
   const exactStopSource = exactStopChoices.length
     ? exactStopChoices
-    : ((query || shouldExposeNetworkStops) ? availableExactStops : []);
+    : availableExactStops;
   const matchingExactStops = sortByLabel(exactStopSource)
-    .filter((stop) => stopMatches(stop, query))
-    .map((stop) => ({ value: stop.canonical, meta: 'Exact stop', type: 'exact-stop' }));
+    .filter((stop) => stopMatches(stop, query, localities))
+    .map((stop) => ({
+      value: stop.canonical,
+      label: stopDisplayLabel(stop, localities),
+      meta: 'Stop',
+      type: 'exact-stop',
+    }));
 
   return {
-    areas: matchingAreas,
+    areas: [],
     exactStops: matchingExactStops,
     exactStopHeading: selectedLocalityLabel,
   };
