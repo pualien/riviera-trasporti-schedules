@@ -22,7 +22,7 @@ describe('index.html branding', () => {
     expect(html).toContain('rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/"');
     expect(html).toContain('name="description"');
     expect(html).toContain('<meta name="google-adsense-account" content="ca-pub-4752698416622962" />');
-    expect(html).toContain('<script type="module" src="./src/lib/installAdSense.js?v=11"></script>');
+    expect(html).toContain('<script type="module" src="./src/lib/installAdSense.js?v=12"></script>');
     expect(html).toContain('property="og:site_name" content="Riviera Dei Fiori Route Finder"');
     expect(html).toContain('property="og:title"');
     expect(html).toContain('name="twitter:card" content="summary_large_image"');

@@ -30,6 +30,49 @@ async function tabLabelCenterOffset(page, label) {
   });
 }
 
+function relativeLuminance({ r, g, b }) {
+  const channels = [r, g, b].map((channel) => {
+    const normalized = channel / 255;
+    return normalized <= 0.03928
+      ? normalized / 12.92
+      : ((normalized + 0.055) / 1.055) ** 2.4;
+  });
+
+  return 0.2126 * channels[0] + 0.7152 * channels[1] + 0.0722 * channels[2];
+}
+
+function contrastRatio(foreground, background) {
+  const foregroundLuminance = relativeLuminance(foreground);
+  const backgroundLuminance = relativeLuminance(background);
+  const lighter = Math.max(foregroundLuminance, backgroundLuminance);
+  const darker = Math.min(foregroundLuminance, backgroundLuminance);
+
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+async function solidColorPair(locator) {
+  return locator.evaluate((element) => {
+    function parseRgb(value) {
+      const match = value.match(/rgba?\(([^)]+)\)/);
+      if (!match) {
+        return null;
+      }
+
+      const [r, g, b, a = 1] = match[1]
+        .split(',')
+        .map((part) => Number.parseFloat(part.trim()));
+
+      return { r, g, b, a };
+    }
+
+    const style = getComputedStyle(element);
+    return {
+      background: parseRgb(style.backgroundColor),
+      color: parseRgb(style.color),
+    };
+  });
+}
+
 test('keeps text-only tabs optically centered', async ({ page }) => {
   await page.setViewportSize({ width: 960, height: 800 });
   await page.goto('/');
@@ -71,4 +114,29 @@ test('styles departure share controls as Riviera Dei Fiori Route Finder actions'
   expect(style.borderRadius).toBeGreaterThanOrEqual(16);
   expect(style.minHeight).toBeGreaterThanOrEqual(34);
   expect(style.cursor).toBe('pointer');
+});
+
+test('keeps dark-mode mobile navigation controls readable', async ({ page }) => {
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const controls = [
+    page.getByRole('button', { name: 'Cerca treni' }),
+    page.getByRole('button', { name: 'Cerca FlixBus' }),
+    page.getByRole('button', { name: 'Cerca BlaBlaCar' }),
+    page.getByRole('button', { name: 'Sfoglia' }),
+    page.getByRole('button', { name: 'Salvati' }),
+    page.locator('.topbar-more-summary'),
+  ];
+
+  for (const control of controls) {
+    await expect(control).toBeVisible();
+    const pair = await solidColorPair(control);
+
+    expect(pair.color).toBeTruthy();
+    expect(pair.background).toBeTruthy();
+    expect(pair.background.a).toBe(1);
+    expect(contrastRatio(pair.color, pair.background)).toBeGreaterThanOrEqual(4.5);
+  }
 });

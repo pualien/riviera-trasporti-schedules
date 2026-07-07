@@ -7,6 +7,10 @@
   --line: rgba(62, 39, 24, 0.12);
   --text: #1d1a17;
   --muted: #6b6258;
+  --control-bg: rgb(255, 253, 250);
+  --control-bg-soft: rgb(250, 246, 241);
+  --control-text: #1d1a17;
+  --control-border: rgba(62, 39, 24, 0.16);
   --accent: #eb4c60;
   --accent-strong: #d93b4f;
   --on-accent: rgb(255, 255, 255);
@@ -16,14 +20,18 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-top: #17191d;
-    --bg-bottom: #101114;
-    --surface-solid: rgb(31, 34, 39);
-    --panel: rgba(35, 38, 44, 0.88);
-    --panel-strong: rgb(38, 41, 47);
-    --line: rgba(255, 255, 255, 0.14);
-    --text: #f7f2ed;
-    --muted: #c7bbb1;
+    --bg-top: #191315;
+    --bg-bottom: #111214;
+    --surface-solid: rgb(32, 35, 41);
+    --panel: rgba(31, 34, 40, 0.96);
+    --panel-strong: rgb(36, 40, 47);
+    --line: rgba(255, 255, 255, 0.24);
+    --text: #fff8f1;
+    --muted: #eee0d5;
+    --control-bg: rgb(43, 48, 56);
+    --control-bg-soft: rgb(37, 41, 49);
+    --control-text: #fff8f1;
+    --control-border: rgba(255, 255, 255, 0.28);
     --accent: #ff6678;
     --accent-strong: #ff7b8a;
     --on-accent: rgb(27, 20, 22);
@@ -119,7 +127,7 @@ a {
 .global-alternatives,
 .no-bus-alternatives,
 .empty-state {
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(18px) saturate(130%);
   border-radius: 30px;
@@ -180,10 +188,10 @@ a {
   gap: 6px;
   max-width: 320px;
   padding: 9px 12px;
-  border: 1px solid rgba(217, 59, 79, 0.22);
+  border: 1px solid var(--control-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.78);
-  color: var(--text);
+  background: var(--control-bg);
+  color: var(--control-text);
   font-size: 0.86rem;
   line-height: 1.25;
 }
@@ -337,9 +345,11 @@ a {
   justify-content: center;
   padding: 10px 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(255, 255, 255, 0.94);
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
+  color: var(--control-text);
   font-size: 0.92rem;
+  font-weight: 700;
 }
 
 .seo-support-copy {
@@ -397,10 +407,10 @@ a {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid rgba(62, 39, 24, 0.14);
+  border: 1px solid var(--control-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.72);
-  color: var(--text, #1d1a17);
+  background: var(--control-bg);
+  color: var(--control-text, #1d1a17);
   cursor: pointer;
   font: inherit;
   font-weight: 700;
@@ -476,9 +486,9 @@ a {
   min-width: 150px;
   min-height: 44px;
   border-radius: 16px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--text);
+  border: 1px solid var(--control-border);
+  background-color: var(--control-bg);
+  color: var(--control-text);
   font: inherit;
   padding: 0 38px 0 12px;
   appearance: none;
@@ -563,7 +573,7 @@ a {
   padding: 18px;
   background: var(--panel-strong);
   border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.94);
+  border: 1px solid var(--line);
 }
 
 .search-form--capsule {
@@ -596,8 +606,8 @@ a {
   align-items: center;
   padding: 12px 14px;
   border-radius: 20px;
-  border: 1px solid rgba(62, 39, 24, 0.08);
-  background: linear-gradient(180deg, rgba(250, 246, 241, 0.86), rgba(255, 255, 255, 0.9));
+  border: 1px solid var(--control-border);
+  background: var(--control-bg-soft);
 }
 
 .route-progress-step--active {
@@ -606,7 +616,7 @@ a {
 }
 
 .route-progress-step--done {
-  background: linear-gradient(180deg, rgba(255, 248, 249, 0.92), rgba(249, 240, 235, 0.92));
+  background: var(--control-bg);
 }
 
 .route-progress-step--pending {
@@ -655,10 +665,10 @@ a {
   min-width: 48px;
   height: 48px;
   min-height: 48px;
-  border: 1px solid rgba(217, 59, 79, 0.24);
+  border: 1px solid var(--control-border);
   border-radius: 999px;
-  background: var(--surface-solid);
-  color: var(--accent-strong);
+  background: var(--control-bg);
+  color: var(--control-text);
   cursor: pointer;
   font: inherit;
   font-size: 1.2rem;
@@ -697,9 +707,9 @@ a {
 .nearby-stop {
   min-height: 56px;
   border-radius: 20px;
-  border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--text);
+  border: 1px solid var(--control-border);
+  background: var(--control-bg);
+  color: var(--control-text);
   font: inherit;
   padding: 0 16px;
 }
@@ -732,8 +742,8 @@ a {
   align-items: center;
   justify-content: center;
   padding: 0 18px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 238, 231, 0.96));
-  color: var(--accent-strong);
+  background: var(--control-bg);
+  color: var(--control-text);
   font-weight: 650;
   cursor: pointer;
   white-space: nowrap;
@@ -755,7 +765,7 @@ a {
 .field-location-button:hover,
 .field-location-button:focus-visible {
   border-color: rgba(217, 59, 79, 0.26);
-  background: linear-gradient(180deg, rgba(255, 248, 249, 0.98), rgba(248, 232, 226, 0.98));
+  background: var(--control-bg-soft);
   box-shadow: 0 12px 24px rgba(93, 63, 35, 0.1);
 }
 
@@ -794,9 +804,9 @@ a {
   min-height: 56px;
   padding: 0 16px;
   border-radius: 20px;
-  border: 1px solid rgba(62, 39, 24, 0.12);
-  background: rgba(255, 255, 255, 0.92);
-  color: var(--accent-strong);
+  border: 1px solid var(--control-border);
+  background: var(--control-bg);
+  color: var(--control-text);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -828,7 +838,7 @@ a {
   padding: 12px;
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: rgba(250, 246, 241, 0.96);
+  background: var(--control-bg-soft);
 }
 
 .picker-panel-copy {
@@ -854,9 +864,9 @@ a {
   min-height: 30px;
   padding: 0 11px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(62, 39, 24, 0.08);
-  color: var(--muted);
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
+  color: var(--control-text);
   font-size: 0.76rem;
   font-weight: 650;
   letter-spacing: 0.04em;
@@ -868,8 +878,8 @@ a {
   gap: 3px;
   padding: 12px 14px;
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
 }
 
 .picker-panel-context-label {
@@ -904,9 +914,9 @@ a {
   min-height: 72px;
   padding: 14px 16px 14px 18px;
   border-radius: 22px;
-  border: 1px solid rgba(62, 39, 24, 0.1);
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(247, 240, 233, 0.98));
-  color: var(--text);
+  border: 1px solid var(--control-border);
+  background: var(--control-bg);
+  color: var(--control-text);
   box-shadow: 0 12px 24px rgba(93, 63, 35, 0.08);
   cursor: pointer;
   text-align: left;
@@ -922,7 +932,7 @@ a {
 .picker-option--active {
   transform: translateY(-1px);
   border-color: rgba(217, 59, 79, 0.24);
-  background: linear-gradient(180deg, rgba(255, 250, 251, 0.98), rgba(248, 237, 231, 0.98));
+  background: var(--control-bg-soft);
   box-shadow:
     0 0 0 4px rgba(235, 76, 96, 0.12),
     0 16px 28px rgba(93, 63, 35, 0.12);
@@ -933,8 +943,8 @@ a {
   min-height: 52px;
   border: 1px solid rgba(217, 59, 79, 0.18);
   border-radius: 18px;
-  background: rgba(255, 255, 255, 0.9);
-  color: var(--accent-strong);
+  background: var(--control-bg);
+  color: var(--control-text);
   cursor: pointer;
   font: inherit;
   font-weight: 700;
@@ -978,7 +988,7 @@ a {
 }
 
 .picker-option small {
-  color: #5a5147;
+  color: var(--muted);
   font-size: 0.82rem;
   line-height: 1.35;
 }
@@ -1411,8 +1421,8 @@ a {
 .metric {
   padding: 16px 18px;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.74);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
 }
 
 .metric span {
@@ -1451,7 +1461,7 @@ a {
 .global-alternatives {
   border: 1px solid var(--line);
   border-radius: 22px;
-  background: rgba(255, 251, 247, 0.72);
+  background: var(--panel-strong);
 }
 
 .departure-archive summary,
@@ -1528,8 +1538,8 @@ a {
   width: 100%;
   padding: 18px 20px;
   border-radius: 22px;
-  background: rgba(255, 255, 255, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  background: var(--control-bg);
+  border: 1px solid var(--control-border);
   cursor: pointer;
   transition:
     transform 180ms ease,
@@ -1539,7 +1549,7 @@ a {
 
 .departure-card--answer:first-child {
   border-color: rgba(217, 59, 79, 0.42);
-  background: var(--surface-solid);
+  background: var(--control-bg);
   box-shadow: 0 16px 34px rgba(93, 63, 35, 0.1);
 }
 
@@ -1550,8 +1560,8 @@ a {
 
 .departure-card--compact {
   padding: 14px 16px;
-  border-color: rgba(62, 39, 24, 0.1);
-  background: rgba(255, 255, 255, 0.68);
+  border-color: var(--control-border);
+  background: var(--control-bg-soft);
 }
 
 .departure-card:hover {
@@ -1617,10 +1627,10 @@ a {
   justify-content: center;
   min-height: 36px;
   padding: 7px 12px;
-  border: 1px solid rgba(62, 39, 24, 0.12);
+  border: 1px solid var(--control-border);
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.86);
-  color: var(--accent-strong);
+  background: var(--control-bg);
+  color: var(--control-text);
   cursor: pointer;
   font: inherit;
   font-size: 0.86rem;
@@ -1660,7 +1670,7 @@ a {
   gap: 16px;
   padding: 24px;
   border-radius: 28px;
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(18px) saturate(130%);
   box-shadow: var(--shadow);
@@ -1737,7 +1747,7 @@ a {
   display: grid;
   gap: 18px;
   padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
   background: var(--panel);
   backdrop-filter: blur(18px) saturate(130%);
   border-radius: 30px;
@@ -1765,8 +1775,8 @@ a {
 .location-map-shell {
   border-radius: 24px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.92);
-  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  background: var(--control-bg);
 }
 
 .location-map {
@@ -1786,7 +1796,7 @@ a {
 }
 
 .location-map[data-map-status="ready"] {
-  background: rgba(255, 255, 255, 0.72);
+  background: var(--control-bg);
 }
 
 .nearby-stop-list {
@@ -1819,9 +1829,39 @@ a {
 }
 
 .dataset-freshness {
+  width: fit-content;
   margin: 0.4rem 0 0;
-  color: var(--muted);
+  color: var(--control-text);
   font-size: 0.85rem;
+}
+
+.dataset-freshness summary {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid var(--control-border);
+  border-radius: 999px;
+  background: var(--control-bg);
+  color: var(--control-text);
+  cursor: pointer;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.dataset-freshness-panel {
+  display: grid;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid var(--control-border);
+  border-radius: 16px;
+  background: var(--panel-strong);
+  color: var(--text);
+}
+
+.dataset-freshness-panel p {
+  margin: 0;
 }
 
 .empty-state--fallback {
