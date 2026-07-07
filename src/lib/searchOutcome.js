@@ -11,6 +11,18 @@ function uniqueLines(matches) {
   return [...new Set(matches.map((match) => match.lineId))];
 }
 
+function minutesUntilDeparture(departure, now) {
+  const nowMinutes = (now.getHours() * 60) + now.getMinutes();
+  return Math.max(0, toMinutes(departure.departureTime) - nowMinutes);
+}
+
+function withDepartureCountdown(departure, now) {
+  return {
+    ...departure,
+    minutesUntilDeparture: minutesUntilDeparture(departure, now),
+  };
+}
+
 function buildFallbackSuggestions({
   fromLocalityId,
   fromStopId,
@@ -94,7 +106,7 @@ export function buildSearchOutcome({
       averageDurationMinutes: averageDuration(matches),
       lines: uniqueLines(matches),
     },
-    nextDepartures: remaining.slice(0, 3),
+    nextDepartures: remaining.slice(0, 3).map((departure) => withDepartureCountdown(departure, now)),
     allDepartures: matches,
   };
 }

@@ -46,9 +46,9 @@ describe('renderResultsView', () => {
     expect(html).toContain('Share');
   });
 
-  it('renders translated results copy without changing line data', () => {
+  it('renders Italian results copy without changing line data', () => {
     const html = renderResultsView({
-      t: createTranslator('es'),
+      t: createTranslator('it'),
       routeLabel: 'Porto Maurizio -> Sanremo',
       pdfUrl: 'https://example.com/riviera.pdf',
       summary: {
@@ -71,9 +71,9 @@ describe('renderResultsView', () => {
       allDepartures: [],
     });
 
-    expect(html).toContain('Proximas salidas');
+    expect(html).toContain('Prossime 3 partenze da adesso');
     expect(html).toContain('Linea 12');
-    expect(html).toContain('Abrir PDF');
+    expect(html).toContain('Apri PDF');
   });
 
   it('uses a sane fallback PDF link when the runtime PDF URL is missing', () => {
@@ -221,7 +221,7 @@ describe('renderResultsView', () => {
       ],
     });
 
-    expect(html.indexOf('Next departures')).toBeLessThan(html.indexOf('class="departure-archive"'));
+    expect(html.indexOf('Next 3 departures from now')).toBeLessThan(html.indexOf('class="departure-archive"'));
     expect(html).toContain('<details class="departure-archive">');
     expect(html).toContain('All departures (3)');
     expect(html).toContain('Morning');
@@ -230,6 +230,53 @@ describe('renderResultsView', () => {
     expect(countOccurrences(html, 'data-share-departure=')).toBe(1);
     expect(countOccurrences(html, 'Open PDF')).toBe(1);
     expect(html).toContain('data-select-departure="morning-trip"');
+  });
+
+  it('renders the next three departures from now as the hero answer with countdowns and line badges', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/riviera.pdf',
+      summary: {
+        serviceEnded: false,
+        nextDeparture: { departureTime: '16:45' },
+        soonestArrival: { arrivalTime: '17:25' },
+        lastDepartureTime: '23:10',
+        averageDurationMinutes: 39,
+        lines: ['12', '13'],
+      },
+      nextDepartures: [
+        {
+          tripKey: 'next-trip',
+          departureTime: '16:45',
+          arrivalTime: '17:25',
+          durationMinutes: 40,
+          lineId: '12',
+          sourcePage: null,
+          minutesUntilDeparture: 35,
+        },
+        {
+          tripKey: 'second-trip',
+          departureTime: '17:10',
+          arrivalTime: '17:52',
+          durationMinutes: 42,
+          lineId: '13',
+          sourcePage: null,
+          minutesUntilDeparture: 60,
+        },
+      ],
+      allDepartures: [],
+      sourceInfo: { type: 'gtfs' },
+    });
+
+    expect(html).toContain('class="next-answer-card"');
+    expect(html).toContain('Next 3 departures from now');
+    expect(html).toContain('Leaves in 35 min');
+    expect(html).toContain('Line 12');
+    expect(html).toContain('class="line-badge"');
+    expect(html).toContain('40 min');
+    expect(html.indexOf('class="next-answer-card"')).toBeLessThan(html.indexOf('class="metrics"'));
+    expect(html).not.toContain('PDF page null');
   });
 
   it('labels selected and unselected departure detail actions clearly', () => {

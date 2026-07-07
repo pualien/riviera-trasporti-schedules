@@ -31,6 +31,26 @@ describe('buildDataFreshnessViewModel', () => {
     });
   });
 
+  it('formats the Italian GTFS validity banner with the concrete valid-until date', () => {
+    const viewModel = buildDataFreshnessViewModel({
+      metadata: {
+        source: {
+          type: 'gtfs',
+          title: 'Regione Liguria GTFS planned-service feed',
+          url: 'https://example.com/gtfs.zip',
+          validFrom: '2026-06-01',
+          validUntil: '2026-09-13',
+        },
+        builtAt: '2026-07-07T16:06:05.593Z',
+      },
+      locale: 'it',
+    });
+
+    expect(viewModel.chipText).toBe('Dati GTFS Regione Liguria, validi fino al 13/09/2026');
+    expect(viewModel.builtLabel).toBe('Ultima build 07/07/2026');
+    expect(viewModel.warningText).toBe('Il feed orari è vicino al limite di validità. Controlla la fonte ufficiale prima di viaggiare.');
+  });
+
   it('uses data-quality sidecar status when present', () => {
     const viewModel = buildDataFreshnessViewModel({
       metadata: {

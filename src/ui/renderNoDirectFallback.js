@@ -24,6 +24,22 @@ function renderFallbackSuggestion(suggestion) {
   `;
 }
 
+function renderNoBusAlternatives(taxiOptions, t) {
+  if (!taxiOptions.length) {
+    return '';
+  }
+
+  return `
+    <section class="no-bus-alternatives">
+      <div class="taxi-section-head">
+        <h3>${escapeHtml(t('taxi.noBusTitle'))}</h3>
+        <p>${escapeHtml(t('taxi.noBusDetail'))}</p>
+      </div>
+      ${renderTaxiOptionsSection(taxiOptions, { t })}
+    </section>
+  `;
+}
+
 export function renderNoDirectFallback({
   t = createTranslator('en'),
   routeLabel,
@@ -45,7 +61,7 @@ export function renderNoDirectFallback({
         ${suggestions.map(renderFallbackSuggestion).join('')}
       </div>
       ${renderTransferSuggestions({ t, suggestions: transferSuggestions, pdfUrl })}
-      ${renderTaxiOptionsSection(taxiOptions, { t })}
+      ${renderNoBusAlternatives(taxiOptions, t)}
     </section>
   `;
 }

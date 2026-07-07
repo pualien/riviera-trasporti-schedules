@@ -14,6 +14,24 @@
   --shadow: 0 30px 60px rgba(93, 63, 35, 0.12);
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-top: #17191d;
+    --bg-bottom: #101114;
+    --surface-solid: rgb(31, 34, 39);
+    --panel: rgba(35, 38, 44, 0.88);
+    --panel-strong: rgb(38, 41, 47);
+    --line: rgba(255, 255, 255, 0.14);
+    --text: #f7f2ed;
+    --muted: #c7bbb1;
+    --accent: #ff6678;
+    --accent-strong: #ff7b8a;
+    --on-accent: rgb(27, 20, 22);
+    --signal: #f0ad4e;
+    --shadow: 0 30px 60px rgba(0, 0, 0, 0.36);
+  }
+}
+
 * {
   box-sizing: border-box;
 }
@@ -49,12 +67,57 @@ a {
   gap: 22px;
 }
 
+.app-skeleton {
+  display: grid;
+  gap: 16px;
+  padding: 24px;
+  border-radius: 28px;
+  background: var(--panel);
+  box-shadow: var(--shadow);
+}
+
+.app-skeleton h1,
+.app-skeleton p {
+  margin: 0;
+}
+
+.app-skeleton p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.skeleton-search {
+  display: grid;
+  gap: 10px;
+  max-width: 560px;
+}
+
+.skeleton-search span {
+  display: block;
+  min-height: 52px;
+  border-radius: 18px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.62));
+  background-size: 220% 100%;
+  animation: skeleton-pulse 1400ms ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
+
 .topbar,
 .hero-shell,
 .summary-card,
 .results-section,
 .route-edit-summary,
 .global-alternatives,
+.no-bus-alternatives,
 .empty-state {
   border: 1px solid rgba(255, 255, 255, 0.92);
   background: var(--panel);
@@ -586,6 +649,31 @@ a {
   gap: 7px;
 }
 
+.route-swap-button {
+  justify-self: center;
+  width: 48px;
+  min-width: 48px;
+  height: 48px;
+  min-height: 48px;
+  border: 1px solid rgba(217, 59, 79, 0.24);
+  border-radius: 999px;
+  background: var(--surface-solid);
+  color: var(--accent-strong);
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 12px 24px rgba(93, 63, 35, 0.08);
+}
+
+.route-swap-button:hover,
+.route-swap-button:focus-visible {
+  outline: none;
+  border-color: rgba(217, 59, 79, 0.36);
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.12);
+}
+
 .field-input-row {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -1093,6 +1181,7 @@ a {
 
 .summary-card,
 .results-section,
+.no-bus-alternatives,
 .empty-state {
   padding: 24px;
 }
@@ -1134,6 +1223,25 @@ a {
   color: var(--accent-strong);
   font-size: 0.9rem;
   font-weight: 700;
+}
+
+.next-answer-card {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+  padding: 18px;
+  border: 1px solid rgba(217, 59, 79, 0.22);
+  border-radius: 24px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 249, 0.96), rgba(255, 255, 255, 0.9));
+}
+
+.next-answer-card .section-head {
+  margin-bottom: 0;
+}
+
+.departure-list--answer {
+  gap: 10px;
 }
 
 .share-modal-backdrop {
@@ -1429,6 +1537,12 @@ a {
     box-shadow 180ms ease;
 }
 
+.departure-card--answer:first-child {
+  border-color: rgba(217, 59, 79, 0.42);
+  background: var(--surface-solid);
+  box-shadow: 0 16px 34px rgba(93, 63, 35, 0.1);
+}
+
 .departure-card--selected {
   border-color: rgba(217, 59, 79, 0.72);
   box-shadow: 0 0 0 3px rgba(235, 76, 96, 0.12), var(--shadow);
@@ -1444,15 +1558,40 @@ a {
   transform: translateY(-1px);
 }
 
+.departure-main-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
 .departure-main strong {
   display: block;
   font-size: 1.28rem;
   letter-spacing: 0px;
 }
 
+.line-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
 .departure-main p {
   margin: 6px 0 0;
   color: var(--muted);
+}
+
+.departure-main .departure-countdown {
+  color: var(--accent-strong);
+  font-weight: 800;
 }
 
 .departure-meta {
@@ -1531,9 +1670,20 @@ a {
   padding: 0;
 }
 
+.no-bus-alternatives {
+  display: grid;
+  gap: 16px;
+  border-color: rgba(217, 59, 79, 0.22);
+}
+
 .secondary-route-options .taxi-options-section,
-.global-alternatives .taxi-directory-section {
+.global-alternatives .taxi-directory-section,
+.no-bus-alternatives .taxi-options-section {
   padding: 0 18px 18px;
+}
+
+.no-bus-alternatives .taxi-options-section {
+  padding: 0;
 }
 
 .global-alternatives {

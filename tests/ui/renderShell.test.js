@@ -22,22 +22,27 @@ describe('renderShell', () => {
     expect(html).toContain('Browse routes');
     expect(html).toContain('href="https://pualien.github.io/riviera-trasporti-schedules/routes/"');
     expect(html).toContain('Official Riviera Trasporti site');
+    expect(html).toContain('Report an error');
     expect(html).toContain('<section>Body</section>');
     expect(html).not.toContain('brand-lockup-image');
   });
 
   it('renders the language selector and translated feedback action', () => {
     const html = renderShell('<section>Body</section>', {
-      language: 'fr',
+      language: 'it',
       languages: SUPPORTED_LANGUAGES,
-      t: createTranslator('fr'),
+      t: createTranslator('it'),
     });
 
-    expect(html).toContain('value="fr" selected');
-    expect(html).toContain('Donner un conseil');
+    expect(html).toContain('value="it" selected');
+    expect(html).toContain('Segnala un errore');
+    expect(html).toContain('value="en"');
+    expect(html).not.toContain('value="fr"');
+    expect(html).not.toContain('value="de"');
+    expect(html).not.toContain('value="es"');
     expect(html).toContain('href="https://forms.gle/tjo52ginwrjUGdMC6"');
     expect(html).not.toContain('PLACEHOLDER');
-    expect(html).toContain('Site officiel Riviera Trasporti');
+    expect(html).toContain('Sito ufficiale Riviera Trasporti');
     expect(html).toContain('name="language"');
   });
 

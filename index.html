@@ -1,12 +1,12 @@
 <!doctype html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Riviera Dei Fiori Route Finder</title>
     <meta
       name="description"
-      content="Riviera Dei Fiori Route Finder helps you check direct Riviera Trasporti buses from the official PDF across the Riviera dei Fiori, including Imperia, Sanremo, Ventimiglia, Andora, and nearby towns."
+      content="Riviera Dei Fiori Route Finder ti aiuta a controllare le corse dirette Riviera Trasporti sulla Riviera dei Fiori, tra Imperia, Sanremo, Ventimiglia, Andora e località vicine."
     />
     <meta name="google-adsense-account" content="ca-pub-4752698416622962" />
     <link rel="canonical" href="https://pualien.github.io/riviera-trasporti-schedules/" />
@@ -14,7 +14,7 @@
     <meta property="og:site_name" content="Riviera Dei Fiori Route Finder" />
     <meta
       property="og:description"
-      content="Riviera Dei Fiori Route Finder helps you check direct Riviera Trasporti buses from the official PDF across the Riviera dei Fiori, including Imperia, Sanremo, Ventimiglia, Andora, and nearby towns."
+      content="Riviera Dei Fiori Route Finder ti aiuta a controllare le corse dirette Riviera Trasporti sulla Riviera dei Fiori, tra Imperia, Sanremo, Ventimiglia, Andora e località vicine."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://pualien.github.io/riviera-trasporti-schedules/" />
@@ -26,7 +26,7 @@
     <meta name="twitter:title" content="Riviera Dei Fiori Route Finder" />
     <meta
       name="twitter:description"
-      content="Riviera Dei Fiori Route Finder helps you check direct Riviera Trasporti buses from the official PDF across the Riviera dei Fiori, including Imperia, Sanremo, Ventimiglia, Andora, and nearby towns."
+      content="Riviera Dei Fiori Route Finder ti aiuta a controllare le corse dirette Riviera Trasporti sulla Riviera dei Fiori, tra Imperia, Sanremo, Ventimiglia, Andora e località vicine."
     />
     <meta
       name="twitter:image"
@@ -37,8 +37,8 @@
     <link rel="apple-touch-icon" href="./assets/brand/apple-touch-icon.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
     <meta name="theme-color" content="#eb4c60" />
-    <link rel="stylesheet" href="./styles.css?v=10" />
-    <script type="module" src="./src/lib/installAdSense.js?v=10"></script>
+    <link rel="stylesheet" href="./styles.css?v=11" />
+    <script type="module" src="./src/lib/installAdSense.js?v=11"></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -46,16 +46,16 @@
           {
             "@type": "WebSite",
             "name": "Riviera Dei Fiori Route Finder",
-            "alternateName": "Riviera dei Fiori bus route lookup",
+            "alternateName": "Ricerca percorsi bus Riviera dei Fiori",
             "url": "https://pualien.github.io/riviera-trasporti-schedules/",
-            "description": "Independent Riviera dei Fiori route finder for direct Riviera Trasporti bus checks from the official PDF."
+            "description": "Ricerca indipendente per controllare corse dirette Riviera Trasporti sulla Riviera dei Fiori."
           },
           {
             "@type": "WebApplication",
             "name": "Riviera Dei Fiori Route Finder",
             "url": "https://pualien.github.io/riviera-trasporti-schedules/",
             "applicationCategory": "TravelApplication",
-            "description": "Independent Riviera dei Fiori route finder for direct Riviera Trasporti bus checks from the official PDF."
+            "description": "Ricerca indipendente per controllare corse dirette Riviera Trasporti sulla Riviera dei Fiori."
           }
         ]
       }
@@ -74,15 +74,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div id="app">
-      <section>
+      <section class="app-skeleton" aria-label="Caricamento ricerca percorsi">
         <h1>Riviera Dei Fiori Route Finder</h1>
-        <p>Riviera Dei Fiori Route Finder helps you check direct Riviera Trasporti buses from the official PDF across the Riviera dei Fiori, including Imperia, Sanremo, Ventimiglia, Andora, and nearby towns.</p>
-        <p>Riviera Dei Fiori Route Finder is an independent bus route finder for direct bus checks, local discovery, and verified fallback contacts.</p>
-        <p>This single-page guide keeps official PDF trust while making Riviera mobility and nearby options easier to scan.</p>
-        <p><a href="./routes/">Browse route pages</a> grouped by origin town.</p>
+        <p>Caricamento ricerca percorsi.</p>
+        <div class="skeleton-search" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <p>Controlla le corse dirette di Riviera Trasporti tra Imperia, Sanremo, Ventimiglia, Andora e località vicine.</p>
+        <p>Riviera Dei Fiori Route Finder è indipendente: gli orari fanno riferimento ai dati ufficiali disponibili.</p>
+        <p><a href="./routes/">Sfoglia percorsi</a> raggruppati per località di partenza.</p>
         <section>
-          <h2>All verified taxi numbers</h2>
-          <p>Useful taxi contacts across the current Riviera Trasporti coverage.</p>
+          <h2>Tutti i numeri taxi verificati</h2>
+          <p>Contatti taxi utili lungo l'attuale copertura Riviera Trasporti.</p>
           <ul>
             <li>Taxi Imperia: +39 0183 3785</li>
             <li>Radio Taxi Albenga: +39 328 7254729</li>
@@ -91,6 +96,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </section>
       </section>
     </div>
-    <script type="module" src="./src/main.js?v=10"></script>
+    <script type="module" src="./src/main.js?v=11"></script>
   </body>
 </html>

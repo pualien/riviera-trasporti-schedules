@@ -1,8 +1,8 @@
 import { createTranslator } from '../lib/i18n.js';
 
-function renderLocationButton(fieldName, label) {
+function renderLocationButton(fieldName, label, ariaLabel = label) {
   return `
-    <button type="button" class="field-location-button" data-location-field="${fieldName}">
+    <button type="button" class="field-location-button" data-location-field="${fieldName}" aria-label="${escapeHtml(ariaLabel)}">
       ${escapeHtml(label)}
     </button>
   `;
@@ -59,6 +59,7 @@ function renderSearchInputRow({
   activeOptionId,
   fieldName,
   t,
+  showLocationButton = false,
 }) {
   return `
     <div class="field-input-row">
@@ -72,8 +73,20 @@ function renderSearchInputRow({
         activeOptionId,
         fieldName,
       })}
-      ${renderLocationButton(fieldName, t('search.useMyLocation'))}
+      ${showLocationButton ? renderLocationButton(
+    fieldName,
+    t('search.useMyLocation'),
+    t(`search.useMyLocation.${fieldName}`),
+  ) : ''}
     </div>
+  `;
+}
+
+function renderSwapButton(t) {
+  return `
+    <button type="button" class="route-swap-button" data-swap-route aria-label="${escapeHtml(t('search.swapRoute'))}">
+      <span aria-hidden="true">&varr;</span>
+    </button>
   `;
 }
 
@@ -371,6 +384,7 @@ export function renderSearchForm({
             activeOptionId: fromActiveOptionId,
             fieldName: 'from',
             t,
+            showLocationButton: true,
           })}
           <small>${fromHelp}</small>
           ${fromPanelOpen ? renderFromPanel(fromSuggestions, t, {
@@ -378,6 +392,8 @@ export function renderSearchForm({
     collapseOriginRefinement,
   }) : ''}
         </label>
+
+        ${renderSwapButton(t)}
 
         <label class="field">
           ${renderFieldLabel('to', t('search.toLabel'))}
@@ -391,6 +407,7 @@ export function renderSearchForm({
             activeOptionId: toActiveOptionId,
             fieldName: 'to',
             t,
+            showLocationButton: true,
           })}
           <small>${toHelp}</small>
           ${toPanelOpen ? renderToPanel({

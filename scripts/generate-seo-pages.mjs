@@ -121,6 +121,10 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
   const routeSlugByPair = new Map(
     routePages.map((route) => [`${route.fromLocalityId}->${route.toLocalityId}`, route.slug]),
   );
+  const routePagesWithReverse = routePages.map((route) => ({
+    ...route,
+    reverseSlug: routeSlugByPair.get(`${route.toLocalityId}->${route.fromLocalityId}`),
+  }));
   const placePages = buildPlacePageSummaries({ trips, localities, stops }).map((place) => ({
     ...place,
     directDestinations: place.directDestinations.map((destination) => ({
@@ -141,7 +145,7 @@ export async function generateSeoPages({ rootDir = process.cwd(), routeLimit = 5
     renderRouteIndexPageHtml({ site: renderingSite, metadata, routes: routePages }),
   );
 
-  for (const route of routePages) {
+  for (const route of routePagesWithReverse) {
     const page = pagePath('routes', route.slug);
     sitemapPages.push(page);
     await writeText(

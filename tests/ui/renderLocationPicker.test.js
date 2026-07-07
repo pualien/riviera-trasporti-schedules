@@ -22,11 +22,11 @@ describe('renderLocationPicker', () => {
     expect(html).toContain('Porto Maurizio');
   });
 
-  it('translates nearby-stop guidance while leaving stop labels unchanged', () => {
+  it('translates nearby-stop guidance in Italian while leaving stop labels unchanged', () => {
     const html = renderLocationPicker({
       fieldName: 'from',
       state: 'ready',
-      t: createTranslator('fr'),
+      t: createTranslator('it'),
       nearbyStops: [
         {
           stopId: 'imperia-porto-maurizio',
@@ -37,7 +37,7 @@ describe('renderLocationPicker', () => {
       ],
     });
 
-    expect(html).toContain('Choisissez d abord une zone');
+    expect(html).toContain('Scegli prima una zona');
     expect(html).toContain('Porto Maurizio');
   });
 

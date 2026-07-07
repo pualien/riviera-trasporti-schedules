@@ -87,7 +87,11 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Waiting for stop');
     expect(html).toContain('Choose departure stop');
     expect(html).toContain('data-location-field="from"');
+    expect(html).toContain('aria-label="Use my location as departure"');
     expect(html).toContain('data-location-field="to"');
+    expect(html).toContain('aria-label="Use my location as destination"');
+    expect(html).toContain('data-swap-route');
+    expect(html).toContain('aria-label="Swap origin and destination"');
   });
 
   it('renders a single exact-stop from panel', () => {
@@ -260,16 +264,16 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Select one departure to inspect exact trip details.');
   });
 
-  it('renders translated hero and field copy in German', () => {
+  it('renders translated hero and field copy in Italian', () => {
     const html = renderSearchForm({
-      t: createTranslator('de'),
-      destinationMessage: createTranslator('de')('search.destination.informational'),
+      t: createTranslator('it'),
+      destinationMessage: createTranslator('it')('search.destination.informational'),
     });
 
     expect(html).toContain('Riviera Dei Fiori Route Finder');
-    expect(html).toContain('Finde direkte Riviera-Trasporti-Busse an der Riviera dei Fiori mit Riviera Dei Fiori Route Finder.');
-    expect(html).toContain('Meinen Standort verwenden');
-    expect(html).toContain('Abfahrten anzeigen');
+    expect(html).toContain('Controlla le corse dirette di Riviera Trasporti sulla Riviera dei Fiori con Riviera Dei Fiori Route Finder.');
+    expect(html).toContain('Usa la mia posizione');
+    expect(html).toContain('Mostra partenze');
   });
 
   it('renders network-wide search copy instead of corridor-specific placeholders', () => {

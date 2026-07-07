@@ -55,6 +55,16 @@ describe('buildSearchOutcome', () => {
         lines: ['12'],
       },
     });
+    expect(outcome.nextDepartures).toEqual([
+      expect.objectContaining({
+        departureTime: '16:45',
+        minutesUntilDeparture: 35,
+      }),
+      expect.objectContaining({
+        departureTime: '18:10',
+        minutesUntilDeparture: 120,
+      }),
+    ]);
   });
 
   it('returns a no-direct fallback with alternate origin stop suggestions', () => {

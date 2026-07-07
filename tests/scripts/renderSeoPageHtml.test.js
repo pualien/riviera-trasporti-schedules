@@ -134,6 +134,54 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('utm_campaign=riviera_dei_fiori_route_finder_seo');
     expect(html).toContain('Link permanente');
     expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
+    expect(html).toContain('Fermate vicine');
+    expect(html).toContain('Verifica sempre la fermata esatta più vicina prima di partire.');
+  });
+
+  it('renders reverse-direction and repaired GTFS source affordances on route pages', () => {
+    const html = renderRoutePageHtml({
+      site,
+      metadata: gtfsMetadata,
+      route: {
+        slug: 'imperia/sanremo',
+        reverseSlug: 'sanremo/imperia',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo',
+        lineIds: ['12'],
+        dayTypes: ['giornaliero'],
+        departures: [
+          {
+            lineId: '12',
+            dayType: 'giornaliero',
+            departureTime: '08:00',
+            arrivalTime: '08:45',
+            fromStopId: 'imperia-oneglia',
+            fromLabel: 'Imperia Oneglia',
+            toStopId: 'sanremo-autostazione',
+            toLabel: 'Sanremo Autostazione',
+            sourcePage: null,
+          },
+          {
+            lineId: '12',
+            dayType: 'giornaliero',
+            departureTime: '08:00',
+            arrivalTime: '08:45',
+            fromStopId: 'imperia-oneglia',
+            fromLabel: 'Imperia Oneglia',
+            toStopId: 'sanremo-autostazione',
+            toLabel: 'Sanremo Autostazione',
+            sourcePage: null,
+          },
+        ],
+      },
+    });
+
+    expect(html).toContain('href="/riviera-trasporti-schedules/routes/sanremo/imperia/"');
+    expect(html).toContain('Direzione inversa');
+    expect(html).toContain('Fonte dati GTFS');
+    expect(html).toContain('Dati GTFS Regione Liguria, validi fino al 12/12/2026');
+    expect(html).not.toContain('PDF pagina null');
+    expect(html.match(/<td>08:00<\/td>/g)).toHaveLength(1);
   });
 
   it('renders GTM and SEO-page outbound analytics hooks when configured', () => {
@@ -175,7 +223,7 @@ describe('renderSeoPageHtml', () => {
     });
 
     expect(html).toContain('Dati pianificati GTFS Regione Liguria');
-    expect(html).toContain('validi fino al 2026-12-12');
+    expect(html).toContain('Dati GTFS Regione Liguria, validi fino al 12/12/2026');
     expect(html).toContain('https://example.com/gtfs.zip');
     expect(html).toContain('PDF ufficiale Riviera Trasporti');
   });

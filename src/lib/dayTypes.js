@@ -3,5 +3,9 @@ export function serviceRunsOnSelectedDay(serviceDayType, selectedDayType) {
     return true;
   }
 
+  if (selectedDayType === 'scolastico' && serviceDayType === 'feriale') {
+    return true;
+  }
+
   return serviceDayType === 'giornaliero';
 }

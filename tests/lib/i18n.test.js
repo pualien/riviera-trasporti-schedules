@@ -14,15 +14,16 @@ describe('i18n helpers', () => {
   });
 
   it('restores a saved supported language code', () => {
-    expect(readStoredLanguage({ getItem: () => 'fr' })).toBe('fr');
+    expect(readStoredLanguage({ getItem: () => 'en' })).toBe('en');
+    expect(readStoredLanguage({ getItem: () => 'fr' })).toBe(DEFAULT_LANGUAGE);
   });
 
   it('translates shell and search copy for a non-default language', () => {
-    const t = createTranslator('es');
+    const t = createTranslator('en');
 
-    expect(SUPPORTED_LANGUAGES.map((language) => language.code)).toEqual(['it', 'en', 'fr', 'de', 'es']);
-    expect(t('shell.feedback')).toBe('Dar consejos');
-    expect(t('search.submit')).toBe('Mostrar salidas');
+    expect(SUPPORTED_LANGUAGES.map((language) => language.code)).toEqual(['it', 'en']);
+    expect(t('shell.feedback')).toBe('Report an error');
+    expect(t('search.submit')).toBe('Show departures');
   });
 
   it('uses polished Italian accents and apostrophes in visible copy', () => {
@@ -39,10 +40,11 @@ describe('i18n helpers', () => {
     const writes = [];
     const storage = { setItem: (key, value) => writes.push([key, value]) };
 
-    persistLanguage(storage, 'de');
+    persistLanguage(storage, 'en');
     persistLanguage(storage, 'xx');
+    persistLanguage(storage, 'de');
 
-    expect(writes).toEqual([['language', 'de']]);
+    expect(writes).toEqual([['language', 'en']]);
   });
 
   it('translates selected-trip map status copy in every supported language', () => {

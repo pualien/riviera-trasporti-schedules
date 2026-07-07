@@ -23,11 +23,24 @@ function pdfHref(pdfUrl, sourcePage) {
   return sourcePage ? `${pdfUrl}#page=${sourcePage}` : pdfUrl;
 }
 
+function renderCountdown(minutesUntilDeparture, t) {
+  if (!Number.isFinite(minutesUntilDeparture)) {
+    return '';
+  }
+
+  if (minutesUntilDeparture <= 0) {
+    return t('results.countdown.now');
+  }
+
+  return t('results.countdown.minutes', { minutes: minutesUntilDeparture });
+}
+
 function renderDepartureCard(departure, t, pdfUrl, { compact = false, sourceInfo = null } = {}) {
   const className = [
     'departure-card',
     departure.isSelected ? 'departure-card--selected' : '',
     compact ? 'departure-card--compact' : '',
+    departure.minutesUntilDeparture !== undefined ? 'departure-card--answer' : '',
   ].filter(Boolean).join(' ');
   const actionLabel = departure.isSelected
     ? t('results.selectedAction')
@@ -50,8 +63,12 @@ function renderDepartureCard(departure, t, pdfUrl, { compact = false, sourceInfo
   return `
     <article class="${className}" data-trip-key="${departure.tripKey ?? ''}">
       <div class="departure-main">
-        <strong>${departure.departureTime}</strong>
-        <p>${t('results.arrives')} ${departure.arrivalTime} · ${t('results.line')} ${departure.lineId}</p>
+        <div class="departure-main-row">
+          <strong>${departure.departureTime}</strong>
+          <span class="line-badge">${escapeHtml(t('results.line'))} ${escapeHtml(departure.lineId)}</span>
+        </div>
+        <p>${escapeHtml(t('results.arrives'))} ${escapeHtml(departure.arrivalTime)}</p>
+        ${departure.minutesUntilDeparture !== undefined ? `<p class="departure-countdown">${escapeHtml(renderCountdown(departure.minutesUntilDeparture, t))}</p>` : ''}
       </div>
       <div class="departure-meta">
         <span>${departure.durationMinutes} min</span>
@@ -60,6 +77,33 @@ function renderDepartureCard(departure, t, pdfUrl, { compact = false, sourceInfo
         ${pdfAction}
       </div>
     </article>
+  `;
+}
+
+function renderNextAnswerCard({
+  nextDepartures = [],
+  selectedTripKey,
+  t,
+  pdfUrl,
+  sourceInfo,
+}) {
+  if (!nextDepartures.length) {
+    return '';
+  }
+
+  return `
+    <section class="next-answer-card" aria-labelledby="next-answer-title">
+      <div class="section-head">
+        <h3 id="next-answer-title">${escapeHtml(t('results.nextAnswerTitle'))}</h3>
+        <p>${escapeHtml(t('results.nextAnswerSubtitle'))}</p>
+      </div>
+      <div class="departure-list departure-list--answer">
+        ${nextDepartures.map((departure) => renderDepartureCard({
+    ...departure,
+    isSelected: departure.tripKey === selectedTripKey,
+  }, t, pdfUrl, { sourceInfo })).join('')}
+      </div>
+    </section>
   `;
 }
 
@@ -230,6 +274,22 @@ function renderSecondaryTaxiOptions(taxiOptions, t) {
   `;
 }
 
+function renderNoBusAlternatives(taxiOptions, t) {
+  if (!taxiOptions.length) {
+    return '';
+  }
+
+  return `
+    <section class="no-bus-alternatives">
+      <div class="taxi-section-head">
+        <h3>${escapeHtml(t('taxi.noBusTitle'))}</h3>
+        <p>${escapeHtml(t('taxi.noBusDetail'))}</p>
+      </div>
+      ${renderTaxiOptionsSection(taxiOptions, { t })}
+    </section>
+  `;
+}
+
 function renderShareModal(shareModal, routeLabel, t) {
   if (!shareModal?.baseUrl) {
     return '';
@@ -318,24 +378,18 @@ export function renderResultsView({
           </div>
         </div>
 
+        ${renderNextAnswerCard({
+    nextDepartures,
+    selectedTripKey,
+    t,
+    pdfUrl,
+    sourceInfo,
+  })}
         ${renderSummaryMetrics(summary, t)}
         ${renderSourceNote(sourceInfo, t)}
       </article>
 
       ${renderSharedRouteContext(sharedRouteContext, t)}
-
-      <section class="results-section">
-        <div class="section-head">
-          <h3>${t('results.nextDepartures')}</h3>
-          <p>${t('results.nextDeparturesSubtitle')}</p>
-        </div>
-        <div class="departure-list">
-          ${nextDepartures.map((departure) => renderDepartureCard({
-            ...departure,
-            isSelected: departure.tripKey === selectedTripKey,
-          }, t, pdfUrl, { sourceInfo })).join('')}
-        </div>
-      </section>
 
       ${allDepartures.length ? `
       <section class="results-section results-section--archive">
@@ -355,7 +409,7 @@ export function renderResultsView({
       </section>
       ` : ''}
       ${selectedTripPanel}
-      ${renderSecondaryTaxiOptions(taxiOptions, t)}
+      ${summary.serviceEnded ? renderNoBusAlternatives(taxiOptions, t) : renderSecondaryTaxiOptions(taxiOptions, t)}
       ${renderShareModal(routeActions.shareModal, routeLabel, t)}
     </section>
   `;

@@ -61,6 +61,9 @@ describe('renderNoDirectFallback', () => {
 
     const taxiPanel = getTaxiPanel(html);
 
+    expect(html).toContain('No bus? Alternatives');
+    expect(html).toContain('Use these only when no direct bus remains today.');
+    expect(html).toContain('class="no-bus-alternatives"');
     expect(html).toContain('Taxi numbers for this route');
     expect(html).toContain('Radio Taxi Sanremo');
     expect(html).toContain('Taggia');

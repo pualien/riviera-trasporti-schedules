@@ -80,11 +80,58 @@ function canonicalUrl(site, path) {
 function sourcePdfUrl(metadata, page) {
   const sourceUrl = metadata?.source?.url;
 
-  if (!sourceUrl) {
+  if (!sourceUrl || metadata?.source?.type === 'gtfs') {
     return '';
   }
 
   return page ? `${sourceUrl}#page=${encodeURIComponent(page)}` : sourceUrl;
+}
+
+function parseDate(value) {
+  if (!value) {
+    return null;
+  }
+
+  const date = new Date(`${String(value).slice(0, 10)}T00:00:00.000Z`);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function formatItalianDate(value) {
+  const date = parseDate(value);
+  if (!date) {
+    return '';
+  }
+
+  return new Intl.DateTimeFormat('it-IT', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    timeZone: 'UTC',
+  }).format(date);
+}
+
+function gtfsFreshnessText(source = {}) {
+  return source.validUntil
+    ? `Dati GTFS Regione Liguria, validi fino al ${formatItalianDate(source.validUntil)}`
+    : 'Dati GTFS Regione Liguria';
+}
+
+function renderDepartureSource(metadata, sourcePage) {
+  const source = metadata?.source ?? {};
+
+  if (source.type === 'gtfs') {
+    return source.url
+      ? `<a href="${escapeAttribute(source.url)}" rel="noreferrer">Fonte dati GTFS</a>`
+      : 'Fonte dati GTFS';
+  }
+
+  const pdfUrl = sourcePdfUrl(metadata, sourcePage);
+
+  if (!pdfUrl || !sourcePage) {
+    return '';
+  }
+
+  return `<a href="${escapeAttribute(pdfUrl)}">PDF pagina ${escapeHtml(sourcePage)}</a>`;
 }
 
 function renderSourceSummary(metadata) {
@@ -94,7 +141,8 @@ function renderSourceSummary(metadata) {
     return `
       <section class="seo-source-summary">
         <h2>Dati pianificati GTFS Regione Liguria</h2>
-        <p>Orari da ${escapeHtml(source.title ?? 'feed GTFS Regione Liguria')}${source.validUntil ? `, validi fino al ${escapeHtml(source.validUntil)}` : ''}.</p>
+        <p>${escapeHtml(gtfsFreshnessText(source))}.</p>
+        <p>Orari da ${escapeHtml(source.title ?? 'feed GTFS Regione Liguria')}.</p>
         ${source.url ? `<p><a href="${escapeAttribute(source.url)}" rel="noreferrer">Fonte dati strutturata</a></p>` : ''}
         ${source.referencePdf?.title ? `<p>Riferimento PDF: ${escapeHtml(source.referencePdf.title)}.</p>` : ''}
       </section>
@@ -113,6 +161,30 @@ function renderSourceSummary(metadata) {
 
 function formatList(values = [], formatter = (value) => value) {
   return values.map((value) => `<li>${formatter(value)}</li>`).join('\n');
+}
+
+function departureDisplayKey(departure = {}) {
+  return [
+    departure.lineId,
+    departure.dayType,
+    departure.departureTime,
+    departure.arrivalTime,
+    departure.fromStopId ?? departure.fromLabel,
+    departure.toStopId ?? departure.toLabel,
+  ].join('|');
+}
+
+function uniqueDepartures(departures = []) {
+  const unique = new Map();
+
+  for (const departure of departures) {
+    const key = departureDisplayKey(departure);
+    if (!unique.has(key)) {
+      unique.set(key, departure);
+    }
+  }
+
+  return [...unique.values()];
 }
 
 const SEO_UTM_MEDIUM = 'seo_page';
@@ -430,14 +502,23 @@ export function renderRoutePageHtml({ site, metadata, route }) {
   const title = `Bus ${route.fromLabel} - ${route.toLabel}`;
   const dayTypes = route.dayTypes ?? [];
   const lines = route.lineIds ?? [];
-  const departures = route.departures ?? [];
+  const departures = uniqueDepartures(route.departures ?? []);
   const description = `Orari bus Riviera Trasporti da ${route.fromLabel} a ${route.toLabel}.`;
+  const reverseLink = route.reverseSlug
+    ? `      <a class="button secondary" href="${escapeAttribute(publicPath(site, pagePath('routes', route.reverseSlug)))}">Direzione inversa</a>`
+    : '';
   const body = `    <header>
       <h1>${escapeHtml(title)}</h1>
       <p>${escapeHtml(description)}</p>
       <a class="button" href="${escapeAttribute(routeSearchUrl(site, route))}">Cerca nell'app</a>
       <a class="button secondary" href="${escapeAttribute(publicPath(site, path))}">Link permanente</a>
+${reverseLink}
     </header>
+    <section class="seo-route-note">
+      <h2>Fermate vicine</h2>
+      <p>Verifica sempre la fermata esatta più vicina prima di partire. La ricerca interattiva usa le fermate GTFS e può mostrare le alternative vicine quando condividi la posizione.</p>
+      ${metadata?.source?.type === 'gtfs' ? `<p>${escapeHtml(gtfsFreshnessText(metadata.source))}.</p>` : ''}
+    </section>
     <section>
       <h2>Linee disponibili</h2>
       <ul>
@@ -459,13 +540,12 @@ ${formatList(lines, (lineId) => escapeHtml(lineLabel(lineId)))}
         <tbody>
 ${departures
   .map((departure) => {
-    const pdfUrl = sourcePdfUrl(metadata, departure.sourcePage);
     return `          <tr>
             <td>${escapeHtml(lineLabel(departure.lineId))}</td>
             <td>${escapeHtml(departure.dayType)}</td>
             <td>${escapeHtml(departure.departureTime)}</td>
             <td>${escapeHtml(departure.arrivalTime)}</td>
-            <td>${pdfUrl ? `<a href="${escapeAttribute(pdfUrl)}">PDF pagina ${escapeHtml(departure.sourcePage)}</a>` : ''}</td>
+            <td>${renderDepartureSource(metadata, departure.sourcePage)}</td>
           </tr>`;
   })
   .join('\n')}
@@ -537,14 +617,13 @@ export function renderLinePageHtml({ site, metadata, line }) {
         <tbody>
 ${departures
   .map((departure) => {
-    const pdfUrl = sourcePdfUrl(metadata, departure.sourcePage);
     return `          <tr>
             <td>${escapeHtml(departure.dayType)}</td>
             <td>${escapeHtml(departure.fromLabel)}</td>
             <td>${escapeHtml(departure.toLabel)}</td>
             <td>${escapeHtml(departure.departureTime)}</td>
             <td>${escapeHtml(departure.arrivalTime)}</td>
-            <td>${pdfUrl ? `<a href="${escapeAttribute(pdfUrl)}">PDF pagina ${escapeHtml(departure.sourcePage)}</a>` : ''}</td>
+            <td>${renderDepartureSource(metadata, departure.sourcePage)}</td>
           </tr>`;
   })
   .join('\n')}

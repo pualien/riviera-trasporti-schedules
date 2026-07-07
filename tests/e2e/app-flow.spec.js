@@ -133,6 +133,20 @@ test('prioritizes typed Porto Maurizio matches in the From picker', async ({ pag
   expect(new Set(visibleLabels).size).toBe(visibleLabels.length);
 });
 
+test('swaps origin and destination without losing the deep-link state contract', async ({ page }) => {
+  await page.goto(SEARCH_ROUTE);
+
+  await page.getByRole('button', { name: 'Edit search' }).click();
+  await page.getByRole('button', { name: 'Swap origin and destination' }).click();
+
+  await expect(page.locator('input[name="from"]')).toHaveValue('Sanremo Autostazione');
+  await expect(page.locator('input[name="to"]')).toHaveValue('Porto Maurizio');
+  await expect(page).toHaveURL(/from=Sanremo\+Autostazione/);
+  await expect(page).toHaveURL(/fromStop=sanremo-autostazione/);
+  await expect(page).toHaveURL(/to=Porto\+Maurizio/);
+  await expect(page).toHaveURL(/toStop=imperia-porto-maurizio/);
+});
+
 test('collapses secondary header actions on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');

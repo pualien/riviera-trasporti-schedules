@@ -110,6 +110,55 @@ describe('findDirectTrips', () => {
     expect(matches.map((match) => match.departureTime)).toEqual(['14:15', '22:15']);
   });
 
+  it('includes weekday, school-only, and daily service when searching school-day departures', () => {
+    const matches = findDirectTrips({
+      fromStopId: 'imperia-porto-maurizio',
+      toStopId: 'sanremo-autostazione',
+      dayType: 'scolastico',
+      aliases,
+      trips: [
+        {
+          lineId: '12',
+          dayType: 'feriale',
+          sourcePage: null,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '07:10' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '07:50' },
+          ],
+        },
+        {
+          lineId: '19',
+          dayType: 'scolastico',
+          sourcePage: null,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '07:35' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '08:20' },
+          ],
+        },
+        {
+          lineId: '12',
+          dayType: 'giornaliero',
+          sourcePage: null,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '08:05' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '08:45' },
+          ],
+        },
+        {
+          lineId: '1',
+          dayType: 'festivo',
+          sourcePage: null,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '09:00' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '09:40' },
+          ],
+        },
+      ],
+    });
+
+    expect(matches.map((match) => match.departureTime)).toEqual(['07:10', '07:35', '08:05']);
+  });
+
   it('deduplicates duplicate visible rides from overlapping service calendars', () => {
     const matches = findDirectTrips({
       fromStopId: 'imperia-porto-maurizio',

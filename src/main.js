@@ -10,7 +10,7 @@ import {
   pushBrowseInteractionEvent,
   pushSharedRouteOpenedEvent,
   pushSharedRouteRestoredEvent,
-} from './lib/analytics.js?v=10';
+} from './lib/analytics.js?v=11';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
@@ -96,7 +96,7 @@ import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
 import { renderResultsView } from './ui/renderResults.js';
-import { renderSearchForm } from './ui/renderSearchForm.js?v=10';
+import { renderSearchForm } from './ui/renderSearchForm.js?v=11';
 import { renderShell } from './ui/renderShell.js';
 import { renderTabNav } from './ui/renderTabNav.js';
 
@@ -1286,6 +1286,33 @@ function bindForm() {
   });
 }
 
+function bindRouteSwap() {
+  document.querySelector('[data-swap-route]')?.addEventListener('click', () => {
+    state.formValues = {
+      ...state.formValues,
+      fromInput: state.formValues.toInput,
+      fromLocalityId: null,
+      fromStopId: state.formValues.toStopId ?? null,
+      toInput: state.formValues.fromInput,
+      toStopId: state.formValues.fromStopId ?? null,
+    };
+    state.uiState = {
+      ...state.uiState,
+      fromPanelOpen: false,
+      toPanelOpen: false,
+      fromActiveOptionId: null,
+      toActiveOptionId: null,
+    };
+    state.locationPicker = null;
+    clearInboundShareState();
+    clearRouteResults();
+    writeRouteUrl({ push: false });
+    renderApp();
+    bindInteractions();
+    document.querySelector('input[name="from"]')?.focus();
+  });
+}
+
 function bindNoDirectActions() {
   document.querySelectorAll('[data-no-direct-action]').forEach((button) => {
     button.addEventListener('click', () => {
@@ -2269,6 +2296,7 @@ function bindPwaActions() {
 
 function bindInteractions() {
   bindForm();
+  bindRouteSwap();
   bindRouteEditSummary();
   bindProviderSearchForm();
   bindFieldPanels();
