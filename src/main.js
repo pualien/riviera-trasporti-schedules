@@ -133,6 +133,7 @@ const state = {
   reachability: {},
   aliases: {},
   metadata: null,
+  dataQuality: null,
   language: readStoredLanguage(window.localStorage),
   activeTab: 'search',
   savedRoutes: { favorites: [], recents: [], available: true },
@@ -446,6 +447,12 @@ function currentSourceContext() {
   return 'direct';
 }
 
+function currentDataSourceInfo() {
+  return {
+    type: state.metadata?.source?.type ?? (state.metadata?.source?.effectiveDate ? 'pdf' : 'unknown'),
+  };
+}
+
 function landingReferrerType(params) {
   if (params.get('utm_medium') === SHARE_UTM_MEDIUM) {
     return 'share';
@@ -725,6 +732,7 @@ function renderApp() {
         selectedTripKey: state.resultState.selectedTripKey,
         selectedTripPanel: currentSelectedTripPanel(t),
         routeActions: state.routeActions,
+        sourceInfo: currentDataSourceInfo(),
         sharedRouteContext: {
           visible: state.inboundShare.opened,
           shareScope: state.inboundShare.shareScope,
@@ -750,7 +758,12 @@ function renderApp() {
     language: state.language,
     languages: SUPPORTED_LANGUAGES,
     adSlots: SHELL_AD_SLOTS,
-    datasetInfo: state.metadata,
+    datasetInfo: state.metadata
+      ? {
+        ...state.metadata,
+        quality: state.dataQuality ?? state.metadata.quality ?? null,
+      }
+      : null,
     taxiDirectory: listTaxiOptions(),
     taxiDirectoryMode: state.activeTab === 'search' && state.resultState ? 'collapsed' : 'open',
     pwaControl: renderPwaControl({ pwaState: state.pwa, t }),
@@ -2284,6 +2297,7 @@ async function boot() {
     state.localities = bootData.generatedLocalities ?? bootData.manualLocalities ?? [];
     state.reachability = bootData.generatedReachability ?? buildReachabilityFromTrips(bootData.trips);
     state.metadata = bootData.metadata;
+    state.dataQuality = bootData.dataQuality;
     state.formValues = bootData.formValues;
     state.aliases = Object.fromEntries(bootData.stops.map((stop) => [stop.canonical, stop.variants]));
     state.savedRoutes = readSavedRoutes(savedRoutesStorage());
