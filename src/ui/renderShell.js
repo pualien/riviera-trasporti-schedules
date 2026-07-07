@@ -5,6 +5,7 @@ import {
   FEEDBACK_FORM_URL,
   ROUTES_INDEX_URL,
 } from '../lib/brand.js';
+import { buildDataFreshnessViewModel } from '../lib/dataFreshness.js';
 import { createTranslator, SUPPORTED_LANGUAGES } from '../lib/i18n.js';
 import { renderAdSlot } from './renderAdSlot.js';
 import { renderTaxiOptionsSection } from './renderTaxiOption.js';
@@ -38,17 +39,42 @@ function renderLanguageSelector({ languages, language, t }) {
   `;
 }
 
-function renderFreshnessMarker(datasetInfo, t) {
-  if (!datasetInfo?.source) {
+function renderFreshnessMarker(datasetInfo, t, language) {
+  const freshness = buildDataFreshnessViewModel({
+    metadata: datasetInfo,
+    quality: datasetInfo?.quality ?? null,
+    locale: language,
+  });
+
+  if (!freshness.visible) {
     return '';
   }
 
   return `
-    <p class="dataset-freshness">
-      ${t('shell.dataFreshness')}${datasetInfo.source.effectiveDate}
-      · ${datasetInfo.builtAt.slice(0, 10)}
-    </p>
+    <details class="dataset-freshness dataset-freshness--${escapeHtml(freshness.status)}">
+      <summary>${escapeHtml(freshness.chipText)}</summary>
+      <div class="dataset-freshness-panel">
+        ${freshness.sourceTitle ? `<p><strong>${escapeHtml(freshness.sourceTitle)}</strong></p>` : ''}
+        ${freshness.builtLabel ? `<p>${escapeHtml(freshness.builtLabel)}</p>` : ''}
+        ${freshness.sourceUrl ? `<a href="${escapeHtml(freshness.sourceUrl)}" target="_blank" rel="noreferrer">${escapeHtml(t('shell.dataSource'))}</a>` : ''}
+        ${freshness.referencePdf ? `<p>${escapeHtml(t('shell.referencePdf'))}: ${escapeHtml(freshness.referencePdf.title)}</p>` : ''}
+      </div>
+    </details>
   `;
+}
+
+function renderFreshnessWarning(datasetInfo, t, language) {
+  const freshness = buildDataFreshnessViewModel({
+    metadata: datasetInfo,
+    quality: datasetInfo?.quality ?? null,
+    locale: language,
+  });
+
+  if (!freshness.warningVisible) {
+    return '';
+  }
+
+  return `<p class="dataset-warning" role="status">${escapeHtml(freshness.warningText)}</p>`;
 }
 
 function renderSeoSupportCopy(t) {
@@ -118,7 +144,7 @@ export function renderShell(
             ${escapeHtml(BRAND_NAME)}
           </a>
           <p class="brand-subtitle">${t('shell.subtitle')}</p>
-          ${renderFreshnessMarker(datasetInfo, t)}
+          ${renderFreshnessMarker(datasetInfo, t, language)}
         </div>
         <div class="topbar-actions">
           ${pwaControl}
@@ -137,6 +163,7 @@ export function renderShell(
         </div>
       </header>
       ${tabNavigation}
+      ${renderFreshnessWarning(datasetInfo, t, language)}
       ${content}
       ${renderAdSlot({
         slotId: 'shell-lead',

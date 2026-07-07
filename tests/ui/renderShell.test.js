@@ -123,23 +123,48 @@ describe('renderShell', () => {
     expect(html.indexOf('<section id="route-search">')).toBeLessThan(html.indexOf('class="taxi-directory-section"'));
   });
 
-  it('renders the dataset freshness marker when metadata is available', () => {
+  it('renders GTFS source status as a details chip when metadata is available', () => {
     const html = renderShell('<section>Body</section>', {
       language: 'en',
       languages: SUPPORTED_LANGUAGES,
       datasetInfo: {
         source: {
-          title: '2025-2026 Orario Invernale Generale 7ª Ver. dal 01-04-2026',
-          effectiveDate: '2026-04-01',
+          type: 'gtfs',
+          title: 'Regione Liguria GTFS planned-service feed',
+          url: 'https://example.com/gtfs.zip',
+          validFrom: '2026-06-14',
+          validUntil: '2026-12-12',
+          referencePdf: { title: 'PDF ufficiale', url: 'https://example.com/orario.pdf' },
         },
-        builtAt: '2026-05-05T08:30:00.000Z',
+        builtAt: '2026-07-06T08:00:00.000Z',
+        quality: { status: 'fresh', warningCount: 0, errorCount: 0 },
       },
       t: createTranslator('en'),
     });
 
-    expect(html).toContain('Updated from official PDF');
-    expect(html).toContain('2026-04-01');
-    expect(html).toContain('2026-05-05');
+    expect(html).toContain('class="dataset-freshness dataset-freshness--fresh"');
+    expect(html).toContain('Structured regional timetable');
+    expect(html).toContain('Regione Liguria GTFS planned-service feed');
+    expect(html).toContain('Last built');
+    expect(html).toContain('https://example.com/gtfs.zip');
+    expect(html).toContain('PDF ufficiale');
+  });
+
+  it('renders a warning banner for warning data quality', () => {
+    const html = renderShell('<section>Body</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      datasetInfo: {
+        source: { type: 'gtfs', validUntil: '2026-07-20' },
+        builtAt: '2026-07-06T08:00:00.000Z',
+        quality: { status: 'warning', warningCount: 1, errorCount: 0 },
+      },
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('class="dataset-warning"');
+    expect(html).toContain('The timetable feed is near its validity limit');
+    expect(html.indexOf('class="dataset-warning"')).toBeLessThan(html.indexOf('<section>Body</section>'));
   });
 
   it('renders supporting crawlable network copy in the shell', () => {
