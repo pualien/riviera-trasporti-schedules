@@ -20,6 +20,19 @@ const metadata = {
   builtAt: '2026-05-28T12:00:00.000Z',
 };
 
+const gtfsMetadata = {
+  source: {
+    type: 'gtfs',
+    title: 'Regione Liguria GTFS planned-service feed',
+    url: 'https://example.com/gtfs.zip',
+    validFrom: '2026-06-14',
+    validUntil: '2026-12-12',
+    referencePdf: { title: 'PDF ufficiale Riviera Trasporti', url: 'https://example.com/orario.pdf' },
+  },
+  builtAt: '2026-07-06T08:00:00.000Z',
+  quality: { status: 'fresh', warningCount: 0, errorCount: 0 },
+};
+
 describe('renderSeoPageHtml', () => {
   it('renders a route index page grouped by origin with route links', () => {
     const html = renderRouteIndexPageHtml({
@@ -145,6 +158,26 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain("tab:'seo_route'");
     expect(html).toContain("event:'outbound_click'");
     expect(html).toContain("context:'seo_page'");
+  });
+
+  it('renders GTFS source freshness on generated pages', () => {
+    const html = renderRoutePageHtml({
+      site,
+      metadata: gtfsMetadata,
+      route: {
+        slug: 'imperia/sanremo',
+        fromLabel: 'Imperia',
+        toLabel: 'Sanremo',
+        lineIds: ['12'],
+        dayTypes: ['feriale'],
+        departures: [],
+      },
+    });
+
+    expect(html).toContain('Dati pianificati GTFS Regione Liguria');
+    expect(html).toContain('validi fino al 2026-12-12');
+    expect(html).toContain('https://example.com/gtfs.zip');
+    expect(html).toContain('PDF ufficiale Riviera Trasporti');
   });
 
   it('renders PWA metadata and service-worker registration on generated pages', () => {

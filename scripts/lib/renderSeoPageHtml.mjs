@@ -87,6 +87,30 @@ function sourcePdfUrl(metadata, page) {
   return page ? `${sourceUrl}#page=${encodeURIComponent(page)}` : sourceUrl;
 }
 
+function renderSourceSummary(metadata) {
+  const source = metadata?.source ?? {};
+
+  if (source.type === 'gtfs') {
+    return `
+      <section class="seo-source-summary">
+        <h2>Dati pianificati GTFS Regione Liguria</h2>
+        <p>Orari da ${escapeHtml(source.title ?? 'feed GTFS Regione Liguria')}${source.validUntil ? `, validi fino al ${escapeHtml(source.validUntil)}` : ''}.</p>
+        ${source.url ? `<p><a href="${escapeAttribute(source.url)}" rel="noreferrer">Fonte dati strutturata</a></p>` : ''}
+        ${source.referencePdf?.title ? `<p>Riferimento PDF: ${escapeHtml(source.referencePdf.title)}.</p>` : ''}
+      </section>
+    `;
+  }
+
+  const sourceTitle = source.title ?? 'orario ufficiale';
+  const effectiveDate = source.effectiveDate;
+  const builtAt = metadata?.builtAt;
+
+  return `
+      <p>Dati da ${escapeHtml(sourceTitle)}${effectiveDate ? `, validi dal ${escapeHtml(effectiveDate)}` : ''}.</p>
+      ${builtAt ? `<p>Pagina generata il ${escapeHtml(builtAt)}.</p>` : ''}
+  `;
+}
+
 function formatList(values = [], formatter = (value) => value) {
   return values.map((value) => `<li>${formatter(value)}</li>`).join('\n');
 }
@@ -216,9 +240,6 @@ function renderSeoOutboundScript(site) {
 
 function renderLayout({ site, metadata, path, title, description, body, pageType }) {
   const canonical = canonicalUrl(site, path);
-  const sourceTitle = metadata?.source?.title ?? 'orario ufficiale';
-  const effectiveDate = metadata?.source?.effectiveDate;
-  const builtAt = metadata?.builtAt;
   const gtmHead = renderGtmHead(site, pageType);
   const gtmNoScript = renderGtmNoScript(site);
   const pwaHead = renderPwaHead(site);
@@ -240,8 +261,7 @@ ${gtmHead ? `${gtmHead}\n` : ''}</head>
 ${gtmNoScript ? `${gtmNoScript}\n` : ''}  <main class="seo-page">
 ${body}
     <footer>
-      <p>Dati da ${escapeHtml(sourceTitle)}${effectiveDate ? `, validi dal ${escapeHtml(effectiveDate)}` : ''}.</p>
-      ${builtAt ? `<p>Pagina generata il ${escapeHtml(builtAt)}.</p>` : ''}
+      ${renderSourceSummary(metadata)}
     </footer>
   </main>
 ${seoOutboundScript ? `${seoOutboundScript}\n` : ''}${serviceWorkerScript}
