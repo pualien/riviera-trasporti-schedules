@@ -9,7 +9,7 @@
     "validUntil": "2026-09-13",
     "referencePdf": null
   },
-  "builtAt": "2026-07-07T14:05:56.249Z",
+  "builtAt": "2026-07-07T14:30:37.967Z",
   "coverage": {
     "routeCount": 76,
     "stopCount": 2724,
@@ -17,8 +17,8 @@
     "stopTimeCount": 143002
   },
   "quality": {
-    "status": "warning",
-    "warningCount": 1,
+    "status": "fresh",
+    "warningCount": 0,
     "errorCount": 0,
     "reportUrl": "./assets/data/data-quality.json"
   }

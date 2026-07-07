@@ -76,7 +76,8 @@ function stopMatchesLocalityRule(stop, rule) {
     ruleTokens.some((ruleToken) =>
       stopToken === ruleToken
       || stopToken.startsWith(`${ruleToken} `)
-      || stopToken.includes(` ${ruleToken} `),
+      || stopToken.includes(` ${ruleToken} `)
+      || stopToken.endsWith(` ${ruleToken}`),
     ));
 }
 

@@ -71,4 +71,12 @@ describe('published data assets', () => {
       }),
     }));
   });
+
+  it('publishes GTFS data without unassigned stop warnings', async () => {
+    const quality = JSON.parse(
+      await readFile(new URL('../../assets/data/data-quality.json', import.meta.url), 'utf8'),
+    );
+
+    expect(quality.warnings.map((warning) => warning.code)).not.toContain('UNASSIGNED_STOPS');
+  });
 });

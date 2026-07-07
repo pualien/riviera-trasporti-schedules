@@ -2,157 +2,623 @@
   {
     "id": "airole",
     "label": "Airole",
-    "aliases": ["Olivetta San Michele"],
-    "matchTokens": ["airole", "olivetta san michele"]
+    "aliases": [
+      "Olivetta San Michele"
+    ],
+    "matchTokens": [
+      "airole",
+      "olivetta san michele",
+      "olivetta",
+      "san michele",
+      "ss 20",
+      "ss20",
+      "bivio trinita"
+    ]
   },
   {
     "id": "albenga",
     "label": "Albenga",
-    "aliases": ["Leca", "Bastia"],
-    "matchTokens": ["albenga", "bastia", "leca", "gazzo", "gavenola", "leverone", "aquila d'arroscia", "costa bacelega", "moano", "armo", "montegrosso", "mendatica", "lavina", "cenova", "rezzo", "ranzo", "pogli", "ortovero", "coasco"]
+    "aliases": [
+      "Leca",
+      "Bastia"
+    ],
+    "matchTokens": [
+      "albenga",
+      "bastia",
+      "leca",
+      "gazzo",
+      "gavenola",
+      "leverone",
+      "aquila d'arroscia",
+      "costa bacelega",
+      "moano",
+      "armo",
+      "montegrosso",
+      "mendatica",
+      "lavina",
+      "cenova",
+      "rezzo",
+      "ranzo",
+      "pogli",
+      "ortovero",
+      "coasco",
+      "noberasco",
+      "damonte",
+      "campi sportivi",
+      "bivio villanova",
+      "borgo verde",
+      "pelassa",
+      "bivio vendone",
+      "bivio garlenda",
+      "rossignoli",
+      "la quiete",
+      "vivaio porcella",
+      "bivio onzo",
+      "tagliarini",
+      "bivio bosco",
+      "ponterotto",
+      "prati albareto",
+      "bacelega",
+      "canata",
+      "martinetto",
+      "calabria",
+      "borghetto centro",
+      "prato marchisa",
+      "perinetti",
+      "muzio",
+      "bivio fantinone",
+      "ristorante rita",
+      "caneto",
+      "bivio leverone",
+      "monta",
+      "campo sportivo aquila",
+      "ristorante la vetta",
+      "ristorante castagneto",
+      "bivio bonfigliara",
+      "bivio araca",
+      "ristorante al sole",
+      "bivio gazzo"
+    ]
   },
   {
     "id": "andora",
     "label": "Andora",
-    "aliases": ["Marina di Andora"],
-    "matchTokens": ["andora"]
+    "aliases": [
+      "Marina di Andora"
+    ],
+    "matchTokens": [
+      "andora",
+      "via amerigo vespucci",
+      "via europa",
+      "via san lazzaro",
+      "via c. colombo",
+      "via g. mazzini"
+    ]
   },
   {
     "id": "apricale",
     "label": "Apricale",
     "aliases": [],
-    "matchTokens": ["apricale"]
+    "matchTokens": [
+      "apricale"
+    ]
   },
   {
     "id": "bordighera",
     "label": "Bordighera",
-    "aliases": ["Sasso", "Seborga", "Vallebona"],
-    "matchTokens": ["bordighera", "sasso", "seborga", "vallebona", "borghetto inferiore", "borghetto superiore", "rotonda \"bel sit\"", "via pasteur", "porto - piazza marconi"]
+    "aliases": [
+      "Sasso",
+      "Seborga",
+      "Vallebona"
+    ],
+    "matchTokens": [
+      "bordighera",
+      "sasso",
+      "seborga",
+      "vallebona",
+      "borghetto inferiore",
+      "borghetto superiore",
+      "rotonda \"bel sit\"",
+      "via pasteur",
+      "porto - piazza marconi"
+    ]
   },
   {
     "id": "borgomaro",
     "label": "Borgomaro",
     "aliases": [],
-    "matchTokens": ["cartari", "san lazzaro reale", "caravonica", "lucinasco", "borgomaro", "aurigo", "poggialto", "candeasco", "maro castello", "ville san pietro", "conio"]
+    "matchTokens": [
+      "cartari",
+      "san lazzaro reale",
+      "caravonica",
+      "lucinasco",
+      "borgomaro",
+      "aurigo",
+      "poggialto",
+      "candeasco",
+      "maro castello",
+      "ville san pietro",
+      "conio",
+      "san lazzaro cimitero",
+      "san lazzaro bivio cimitero",
+      "fabbrica euroemme",
+      "ristorante da emilio",
+      "ville san sebastiano",
+      "bivio colle d'oggia",
+      "borgoratto",
+      "chiesa don abbo",
+      "case moline",
+      "canneti",
+      "cerisola",
+      "campo lucinasco",
+      "bivio s.bart. caravonica",
+      "cappella",
+      "localita fontanavecchia",
+      "poggialt0",
+      "colle san bartolomeo",
+      "borgata boeri",
+      "cabina enel"
+    ]
   },
   {
     "id": "camporosso",
     "label": "Camporosso",
     "aliases": [],
-    "matchTokens": ["camporosso"]
+    "matchTokens": [
+      "camporosso",
+      "via de gasperi",
+      "via braie",
+      "centro revisioni",
+      "centro esse",
+      "supermercato green"
+    ]
   },
   {
     "id": "cervo",
     "label": "Cervo",
-    "aliases": ["San Bartolomeo al Mare"],
-    "matchTokens": ["cervo", "san bartolomeo", "san bartolomeo al mare"]
+    "aliases": [
+      "San Bartolomeo al Mare"
+    ],
+    "matchTokens": [
+      "cervo",
+      "san bartolomeo",
+      "san bartolomeo al mare",
+      "via ii giugno",
+      "via solitario delle alpi",
+      "piazza castello",
+      "strada pairola",
+      "pairola",
+      "bivio riva faraldi",
+      "bivio chiappa",
+      "chiappa",
+      "ristorante san matteo"
+    ]
   },
   {
     "id": "ceriana",
     "label": "Ceriana",
-    "aliases": ["Baiardo"],
-    "matchTokens": ["ceriana", "baiardo", "madonna della villa"]
+    "aliases": [
+      "Baiardo"
+    ],
+    "matchTokens": [
+      "ceriana",
+      "baiardo",
+      "madonna della villa"
+    ]
   },
   {
     "id": "diano-castello",
     "label": "Diano Castello",
-    "aliases": ["Diano San Pietro"],
-    "matchTokens": ["diano castello", "diano san pietro", "diano roncagli", "diano arentino", "diano borello", "evigno", "villa faraldi", "deglio", "isola"]
+    "aliases": [
+      "Diano San Pietro"
+    ],
+    "matchTokens": [
+      "diano castello",
+      "diano san pietro",
+      "diano roncagli",
+      "diano arentino",
+      "diano borello",
+      "evigno",
+      "villa faraldi",
+      "deglio",
+      "isola"
+    ]
   },
   {
     "id": "diano-marina",
     "label": "Diano Marina",
-    "aliases": ["Diano"],
-    "matchTokens": ["diano marina", "d. marina"]
+    "aliases": [
+      "Diano"
+    ],
+    "matchTokens": [
+      "diano marina",
+      "d. marina"
+    ]
   },
   {
     "id": "dolceacqua",
     "label": "Dolceacqua",
     "aliases": [],
-    "matchTokens": ["dolceacqua"]
+    "matchTokens": [
+      "dolceacqua",
+      "rocchetta",
+      "deposito bibite matuzia"
+    ]
   },
   {
     "id": "dolcedo",
     "label": "Dolcedo",
     "aliases": [],
-    "matchTokens": ["dolcedo", "lecchiore", "prelà", "tavole", "villatalla", "valloria", "vasia", "pianavia", "pantasina"]
+    "matchTokens": [
+      "dolcedo",
+      "lecchiore",
+      "prelà",
+      "tavole",
+      "villatalla",
+      "valloria",
+      "vasia",
+      "pianavia",
+      "pantasina",
+      "isolalunga",
+      "via garibaldi supermercato",
+      "frantoio sociale",
+      "rettilineo",
+      "passo clavi",
+      "bastera",
+      "via clavi"
+    ]
   },
   {
     "id": "imperia",
     "label": "Imperia",
-    "aliases": ["Porto Maurizio", "Oneglia"],
-    "matchTokens": ["imperia", "porto maurizio", "oneglia", "borgo san moro", "artallo", "poggi", "caramagna", "moltedo", "montegrazie", "cantalupo", "torrazza", "piani", "prino", "castelvecchio", "riviera trasporti", "sgorreto", "via garessio", "piazza ricci", "v.acquarone", "via cascione", "via xxv aprile", "stazione fs arg", "argine", "barcheto", "ponte barcheto", "via repubblica", "stazione fs dx"]
+    "aliases": [
+      "Porto Maurizio",
+      "Oneglia"
+    ],
+    "matchTokens": [
+      "imperia",
+      "porto maurizio",
+      "oneglia",
+      "borgo san moro",
+      "artallo",
+      "poggi",
+      "caramagna",
+      "moltedo",
+      "montegrazie",
+      "cantalupo",
+      "torrazza",
+      "piani",
+      "prino",
+      "castelvecchio",
+      "riviera trasporti",
+      "sgorreto",
+      "via garessio",
+      "piazza ricci",
+      "v.acquarone",
+      "via cascione",
+      "via xxv aprile",
+      "stazione fs arg",
+      "argine",
+      "barcheto",
+      "ponte barcheto",
+      "via repubblica",
+      "stazione fs dx",
+      "ospedale ingresso",
+      "via amoretti",
+      "motorizzazione",
+      "ponte autostrada concessionaria auto",
+      "scuole via degli ulivi",
+      "via lorenzo acquarone",
+      "museo navale",
+      "via delbecchi",
+      "lungomare vespucci",
+      "ponte austrada",
+      "oliveto via del bey",
+      "via collette",
+      "via don minzoni",
+      "via santa lucia",
+      "via v. piemonte",
+      "via gioacchino rossini",
+      "igiene"
+    ]
   },
   {
     "id": "isolabona",
     "label": "Isolabona",
     "aliases": [],
-    "matchTokens": ["isolabona"]
+    "matchTokens": [
+      "isolabona"
+    ]
   },
   {
     "id": "ospedaletti",
     "label": "Ospedaletti",
     "aliases": [],
-    "matchTokens": ["ospedaletti"]
+    "matchTokens": [
+      "ospedaletti"
+    ]
   },
   {
     "id": "pieve-di-teco",
     "label": "Pieve di Teco",
-    "aliases": ["Nava"],
-    "matchTokens": ["pieve di teco", "vessalico", "acquetico", "pornassio", "nava centro", "case rosse", "bivio cosio"]
+    "aliases": [
+      "Nava"
+    ],
+    "matchTokens": [
+      "pieve di teco",
+      "vessalico",
+      "acquetico",
+      "pornassio",
+      "nava centro",
+      "case rosse",
+      "bivio cosio",
+      "cosio d'arroscia"
+    ]
   },
   {
     "id": "pigna",
     "label": "Pigna",
-    "aliases": ["Castelvittorio", "Buggio"],
-    "matchTokens": ["pigna", "buggio", "castelvittorio"]
+    "aliases": [
+      "Castelvittorio",
+      "Buggio"
+    ],
+    "matchTokens": [
+      "pigna",
+      "buggio",
+      "castelvittorio",
+      "bivio molini"
+    ]
   },
   {
     "id": "pontedassio",
     "label": "Pontedassio",
     "aliases": [],
-    "matchTokens": ["pontedassio", "bestagno", "villa viani", "chiusavecchia", "cesio", "arzeno", "gazzelli", "chiusanico", "torria", "colla san bartolomeo"]
+    "matchTokens": [
+      "pontedassio",
+      "bestagno",
+      "villa viani",
+      "chiusavecchia",
+      "cesio",
+      "arzeno",
+      "gazzelli",
+      "chiusanico",
+      "torria",
+      "colla san bartolomeo",
+      "case bianche",
+      "bivio gazzelli",
+      "riviera alimenti",
+      "rotonda garzi"
+    ]
   },
   {
     "id": "riva-ligure",
     "label": "Riva Ligure",
     "aliases": [],
-    "matchTokens": ["riva ligure"]
+    "matchTokens": [
+      "riva ligure"
+    ]
   },
   {
     "id": "san-lorenzo-al-mare",
     "label": "San Lorenzo al Mare",
-    "aliases": ["Cipressa", "Costarainera", "Civezza"],
-    "matchTokens": ["san lorenzo", "lingueglietta", "costarainera", "cipressa", "piani paorelli", "torre paponi", "boscomare", "pietrabruna", "bivio civezza", "civezza"]
+    "aliases": [
+      "Cipressa",
+      "Costarainera",
+      "Civezza"
+    ],
+    "matchTokens": [
+      "san lorenzo",
+      "lingueglietta",
+      "costarainera",
+      "cipressa",
+      "piani paorelli",
+      "torre paponi",
+      "boscomare",
+      "pietrabruna",
+      "bivio civezza",
+      "civezza"
+    ]
   },
   {
     "id": "sanremo",
     "label": "Sanremo",
-    "aliases": ["Sanremo Autostazione"],
-    "matchTokens": ["sanremo", "baragallo", "bussana", "la brezza", "capo nero", "villa helios", "valle armea", "caramagna", "foce", "via padre semeria", "poggio", "san romolo", "san martino", "corso inglesi", "via val d'olivi", "corso matuzia", "arma centro", "autostazione"]
+    "aliases": [
+      "Sanremo Autostazione"
+    ],
+    "matchTokens": [
+      "sanremo",
+      "baragallo",
+      "bussana",
+      "la brezza",
+      "capo nero",
+      "villa helios",
+      "valle armea",
+      "caramagna",
+      "foce",
+      "via padre semeria",
+      "poggio",
+      "san romolo",
+      "san martino",
+      "corso inglesi",
+      "via val d'olivi",
+      "corso matuzia",
+      "arma centro",
+      "autostazione",
+      "piazza cesare battisti",
+      "via armea",
+      "via frantoi canai",
+      "cimitero armea",
+      "via roma banca",
+      "corso orazio",
+      "corso cavallotti",
+      "piazza eroi sanremesi",
+      "piazza san bernardo",
+      "via martiri della liberta",
+      "via galilei",
+      "via gallilei",
+      "via borea",
+      "carr. san pietro",
+      "san pietro",
+      "via borgo tinasso",
+      "borgo tinasso",
+      "via duca d'aosta",
+      "via duca degli abruzzi",
+      "via solaro",
+      "via pascoli",
+      "case olandesi",
+      "magnan",
+      "via olandesi",
+      "villetta",
+      "via gabriele d'annunzio",
+      "arancia",
+      "bivio via carducci",
+      "forestale",
+      "bivio villa",
+      "sartore",
+      "agraria",
+      "bellavista",
+      "grossi",
+      "bivio gozo",
+      "strada gozo",
+      "gozo inferiore",
+      "fabbro",
+      "via ludovico ariosto",
+      "fontana",
+      "bivio tinasso",
+      "bivio san giovanni",
+      "bivio erchi",
+      "strada golf",
+      "via marsaglia",
+      "san giacomo",
+      "bivio suseneo",
+      "villa sopra san giacomo",
+      "bivio san michele",
+      "pian della castagna",
+      "bivio borello",
+      "pensilina san romolo",
+      "bevino",
+      "ca manin",
+      "bivio perinaldo",
+      "bivio baiardo",
+      "via san francesco",
+      "strada san giovanni",
+      "san giovanni picchetta",
+      "ospedale capolinea",
+      "via dante alighieri",
+      "via zeffiro massa",
+      "via de amicis",
+      "strada carceri",
+      "carceri",
+      "via fonti",
+      "villa di pietra",
+      "condominio collina fiorita",
+      "residenza la pepiniere",
+      "via pietro agosti",
+      "via pitro agosti",
+      "via caduti del lavoro",
+      "via gavino",
+      "residenza franchiolo"
+    ]
   },
   {
     "id": "santo-stefano-al-mare",
     "label": "Santo Stefano al Mare",
-    "aliases": ["Santo Stefano"],
-    "matchTokens": ["santo stefano"]
+    "aliases": [
+      "Santo Stefano"
+    ],
+    "matchTokens": [
+      "santo stefano"
+    ]
   },
   {
     "id": "taggia",
     "label": "Taggia",
-    "aliases": ["Arma di Taggia", "Badalucco", "Triora"],
-    "matchTokens": ["taggia", "arma di taggia", "arma bivio rossat", "arma ex fs", "badalucco", "montalto", "carpasio", "triora", "molini di triora", "agaggio"]
+    "aliases": [
+      "Arma di Taggia",
+      "Badalucco",
+      "Triora"
+    ],
+    "matchTokens": [
+      "taggia",
+      "arma di taggia",
+      "arma bivio rossat",
+      "arma ex fs",
+      "badalucco",
+      "montalto",
+      "carpasio",
+      "triora",
+      "molini di triora",
+      "agaggio",
+      "vecchia strada per glori",
+      "carpenosa",
+      "bivio frazione augelli",
+      "bivio aigovo",
+      "mulino luigio",
+      "bivio grattino",
+      "ferriera",
+      "mulino di pio",
+      "bivio arzene",
+      "girone",
+      "castellaro",
+      "pompeiana",
+      "terzorio",
+      "cento commerciale taggia",
+      "incrocio castellaro",
+      "tornante cava",
+      "strada provinciale civico 8",
+      "bivio strade interpoderali",
+      "arma aurelia"
+    ]
   },
   {
     "id": "vallecrosia",
     "label": "Vallecrosia",
-    "aliases": ["San Biagio", "Soldano", "Perinaldo"],
-    "matchTokens": ["vallecrosia", "san biagio", "soldano", "perinaldo"]
+    "aliases": [
+      "San Biagio",
+      "Soldano",
+      "Perinaldo"
+    ],
+    "matchTokens": [
+      "vallecrosia",
+      "san biagio",
+      "soldano",
+      "perinaldo",
+      "via romana",
+      "via romana/corso italia"
+    ]
   },
   {
     "id": "ventimiglia",
     "label": "Ventimiglia",
-    "aliases": ["Vintimille", "Latte", "La Mortola"],
-    "matchTokens": ["ventimiglia", "latte", "la mortola", "ponte san luigi", "sealza", "roverino", "trucco", "nervia", "marina san giuseppe", "centro studi", "via cavour", "ponte andrea doria", "via gallardi ponte bevera", "seglia"]
+    "aliases": [
+      "Vintimille",
+      "Latte",
+      "La Mortola"
+    ],
+    "matchTokens": [
+      "ventimiglia",
+      "latte",
+      "la mortola",
+      "ponte san luigi",
+      "sealza",
+      "roverino",
+      "trucco",
+      "nervia",
+      "marina san giuseppe",
+      "centro studi",
+      "via cavour",
+      "ponte andrea doria",
+      "via gallardi ponte bevera",
+      "seglia",
+      "ristorante nico",
+      "frantoio rosa",
+      "frantoio rossi",
+      "ristorante da iride",
+      "dancing porra",
+      "vallone di lodi",
+      "case di campagna",
+      "via tacito",
+      "via romana incrocio via veneto"
+    ]
   }
 ]

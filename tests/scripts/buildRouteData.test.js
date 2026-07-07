@@ -177,4 +177,44 @@ Sanremo Autostazione 07.00`,
       }),
     );
   });
+
+  it('matches locality rule tokens at the end of a stop name', async () => {
+    const output = await buildRouteData({
+      indexEntries: [{ lineId: '34', pageNumber: 34, direction: 'VALLEY LOOP' }],
+      manifestEntries: [
+        {
+          lineId: '34',
+          pageNumber: 34,
+          direction: 'VALLEY LOOP',
+          dayType: 'feriale',
+          parserFamily: 'linear-intercity',
+        },
+      ],
+      pages: [
+        {
+          pageNumber: 34,
+          text: `Bivio Gazzelli 08.00
+Pontedassio Centro 08.20`,
+          items: [],
+        },
+      ],
+      aliases: {},
+      localities: [],
+      localityRules: [
+        {
+          id: 'pontedassio',
+          label: 'Pontedassio',
+          aliases: [],
+          matchTokens: ['gazzelli'],
+        },
+      ],
+    });
+
+    expect(output.localities).toContainEqual(
+      expect.objectContaining({
+        id: 'pontedassio',
+        stopIds: expect.arrayContaining(['bivio-gazzelli']),
+      }),
+    );
+  });
 });

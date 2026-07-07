@@ -1,6 +1,6 @@
 {
-  "status": "warning",
-  "generatedAt": "2026-07-07T14:05:56.249Z",
+  "status": "fresh",
+  "generatedAt": "2026-07-07T14:30:37.967Z",
   "source": {
     "type": "gtfs",
     "validFrom": "2026-06-01",
@@ -14,10 +14,5 @@
     "directPairs": 91016
   },
   "errors": [],
-  "warnings": [
-    {
-      "code": "UNASSIGNED_STOPS",
-      "message": "Some stops are not assigned to a locality."
-    }
-  ]
+  "warnings": []
 }
