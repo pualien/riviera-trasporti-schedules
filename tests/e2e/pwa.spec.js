@@ -14,7 +14,8 @@ test('keeps the route search app usable after an offline reload', async ({ conte
   await context.setOffline(true);
   await page.reload();
 
-  await expect(page.getByRole('heading', { name: /Find direct Riviera Trasporti buses/i })).toBeVisible();
+  await expect(page.locator('[data-route-edit-summary]')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Edit search' })).toBeVisible();
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
   await expect(page.locator('[data-pwa-control]')).toContainText('Offline');
 
