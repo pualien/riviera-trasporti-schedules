@@ -111,6 +111,19 @@ test('lets riders choose Porto Maurizio to Sanremo from the pickers', async ({ p
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
 });
 
+test('prioritizes typed Porto Maurizio matches in the From picker', async ({ page }) => {
+  await page.goto('/');
+
+  await page.locator('input[name="from"]').fill('porto maurizio');
+
+  const labels = await page
+    .locator('[data-panel="from"] .picker-option-label')
+    .evaluateAll((elements) => elements.slice(0, 4).map((element) => element.textContent?.trim()));
+
+  expect(labels.filter(Boolean)).not.toContain("Bivio Arzeno d'Oneglia (Imperia)");
+  expect(labels.filter(Boolean).every((label) => label?.toLowerCase().includes('porto maurizio'))).toBe(true);
+});
+
 test('collapses secondary header actions on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');

@@ -97,6 +97,51 @@ describe('buildFromSuggestionSections', () => {
     expect(sections.exactStops.map((entry) => entry.value)).toEqual(['imperia porto maurizio']);
   });
 
+  it('prioritizes direct stop matches over broad locality aliases while typing', () => {
+    const sections = buildFromSuggestionSections({
+      inputValue: 'porto maurizio',
+      localities: [
+        {
+          id: 'imperia',
+          label: 'Imperia',
+          aliases: ['Porto Maurizio'],
+          stopIds: ['bivio-arzeno-d-oneglia', 'imperia-porto-maurizio'],
+        },
+      ],
+      selectedLocalityLabel: '',
+      exactStopChoices: [],
+      availableExactStops: [
+        { id: 'bivio-arzeno-d-oneglia', canonical: "Bivio Arzeno d'Oneglia", variants: [] },
+        { id: 'caramagna-bivio-croce-salita', canonical: 'Caramagna Bivio Croce salita', variants: [] },
+        { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio', variants: ['IMPERIA Pensilina Porto Maurizio'] },
+      ],
+    });
+
+    expect(sections.exactStops.map((entry) => entry.value)).toEqual(['Porto Maurizio']);
+  });
+
+  it('falls back to locality matches when no stop name matches directly', () => {
+    const sections = buildFromSuggestionSections({
+      inputValue: 'oneglia',
+      localities: [
+        {
+          id: 'imperia',
+          label: 'Imperia',
+          aliases: ['Oneglia'],
+          stopIds: ['imperia-borgo-marina'],
+        },
+      ],
+      selectedLocalityLabel: '',
+      exactStopChoices: [],
+      availableExactStops: [
+        { id: 'imperia-borgo-marina', canonical: 'IMPERIA Borgo Marina', variants: [] },
+        { id: 'andora-stazione-fs', canonical: 'Andora Stazione FS', variants: [] },
+      ],
+    });
+
+    expect(sections.exactStops.map((entry) => entry.value)).toEqual(['IMPERIA Borgo Marina']);
+  });
+
   it('shows exact departure stops before typing regardless of locality coverage', () => {
     const sections = buildFromSuggestionSections({
       inputValue: '',

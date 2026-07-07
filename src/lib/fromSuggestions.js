@@ -7,18 +7,38 @@ function sortByLabel(entries) {
   );
 }
 
-function stopMatches(stop, query, localities = []) {
-  const locality = localityForStopId(stop.id, localities);
+function directStopMatches(stop, query) {
   const tokens = [
     stop.canonical,
     ...(stop.variants ?? []),
     ...(stop.matchTokens ?? []),
+  ].filter(Boolean).map(normalizeText);
+
+  return !query || tokens.some((token) => token.includes(query));
+}
+
+function localityStopMatches(stop, query, localities = []) {
+  const locality = localityForStopId(stop.id, localities);
+  const tokens = [
     locality?.label,
     ...(locality?.aliases ?? []),
     ...(locality?.matchTokens ?? []),
   ].filter(Boolean).map(normalizeText);
 
   return !query || tokens.some((token) => token.includes(query));
+}
+
+function matchingStops(stops, query, localities) {
+  if (!query) {
+    return stops;
+  }
+
+  const directMatches = stops.filter((stop) => directStopMatches(stop, query));
+  if (directMatches.length) {
+    return directMatches;
+  }
+
+  return stops.filter((stop) => localityStopMatches(stop, query, localities));
 }
 
 export function buildFromSuggestionSections({
@@ -32,8 +52,7 @@ export function buildFromSuggestionSections({
   const exactStopSource = exactStopChoices.length
     ? exactStopChoices
     : availableExactStops;
-  const matchingExactStops = sortByLabel(exactStopSource)
-    .filter((stop) => stopMatches(stop, query, localities))
+  const matchingExactStops = matchingStops(sortByLabel(exactStopSource), query, localities)
     .map((stop) => ({
       value: stop.canonical,
       label: stopDisplayLabel(stop, localities),
