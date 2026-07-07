@@ -2,7 +2,7 @@
 
 Independent Riviera dei Fiori route finder for Riviera Trasporti timetable data, built for GitHub Pages.
 
-The app turns the official PDF into a route-first bus lookup experience. Instead of manually scanning the timetable, users can search direct rides such as `Porto Maurizio -> Sanremo`, see the next departures, inspect the full timetable for the selected day type, and jump back to the official PDF page for verification. The product also reserves room for local discovery and verified fallback contacts without presenting itself as an official transit site.
+The app turns official Riviera Trasporti timetable data into a route-first bus lookup experience. Instead of manually scanning the timetable, users can search direct rides such as `Porto Maurizio -> Sanremo`, see the next departures, inspect the full timetable for the selected day type, and jump back to the official PDF page for verification when that mapping is available. The product also reserves room for local discovery and verified fallback contacts without presenting itself as an official transit site.
 
 ## Development
 
@@ -12,13 +12,22 @@ Install dependencies:
 npm install
 ```
 
-Build static route data from the official Riviera Trasporti PDF:
+Build static route data from a prepared GTFS feed directory:
 
 ```bash
+GTFS_SOURCE_URL="https://dati.regione.liguria.it/dataset/ds-637" npm run build:data:gtfs
 npm run build:data
 ```
 
-The build now checks the extracted PDF index against [`data/manual/line-pages.json`](./data/manual/line-pages.json) and fails if indexed timetable pages are missing or a configured page parses to zero trips.
+The GTFS builder expects extracted feed files in `build/gtfs/` and writes the runtime JSON assets consumed by the app. Use `GTFS_SOURCE_URL` to record the public dataset page or archive URL in `assets/data/metadata.json`.
+
+Rebuild the legacy PDF-derived data while GTFS output is being validated:
+
+```bash
+npm run build:data:pdf
+```
+
+The PDF build checks the extracted PDF index against [`data/manual/line-pages.json`](./data/manual/line-pages.json) and fails if indexed timetable pages are missing or a configured page parses to zero trips.
 
 Serve the site locally:
 
@@ -49,7 +58,7 @@ The app supports direct rides from the official PDF, including school-only servi
 
 ## Project Structure
 
-- `scripts/`: PDF download, extraction, and data build pipeline
+- `scripts/`: GTFS and PDF data build pipelines
 - `data/manual/`: curated parsing hints and stop aliases
 - `assets/data/`: generated JSON consumed by the frontend
 - `src/`: vanilla JavaScript app modules and UI rendering
