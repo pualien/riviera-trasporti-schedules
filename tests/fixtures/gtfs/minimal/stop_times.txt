@@ -1,0 +1,4 @@
+trip_id,arrival_time,departure_time,stop_id,stop_sequence
+T12_1,05:35:00,05:35:00,S_ANDORA,1
+T12_1,06:20:00,06:20:00,S_IMPERIA,2
+T12_1,07:00:00,07:00:00,S_SANREMO,3

@@ -1,0 +1,4 @@
+stop_id,stop_name,stop_lat,stop_lon
+S_ANDORA,Andora Stazione FS,43.952,8.141
+S_IMPERIA,Imperia Porto Maurizio,43.886,8.030
+S_SANREMO,Sanremo Autostazione,43.817,7.777
