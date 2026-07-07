@@ -4,11 +4,11 @@ import { parsePdfIndex } from './lib/parsePdfIndex.mjs';
 import { parseTimetablePage } from './lib/parseTimetablePage.mjs';
 import { PDF_SOURCE_METADATA } from './lib/pdfSource.mjs';
 
-function stopIdFromName(value) {
+export function stopIdFromName(value) {
   return normalizeText(value).replace(/\s+/g, '-');
 }
 
-function createStopRecord(canonical, variants) {
+export function createStopRecord(canonical, variants) {
   return {
     id: stopIdFromName(canonical),
     canonical,
@@ -39,7 +39,7 @@ function buildStops(trips, aliases) {
   return stopNames.map((name) => createStopRecord(name, aliases[name] ?? []));
 }
 
-function validateLocalities(localities, stops) {
+export function validateLocalities(localities, stops) {
   const stopIds = new Set(stops.map((stop) => stop.id));
 
   for (const locality of localities) {
@@ -80,7 +80,7 @@ function stopMatchesLocalityRule(stop, rule) {
     ));
 }
 
-function deriveLocalitiesFromRules(localityRules = [], stops = []) {
+export function deriveLocalitiesFromRules(localityRules = [], stops = []) {
   return localityRules
     .map((rule) => ({
       id: rule.id,
@@ -94,7 +94,7 @@ function deriveLocalitiesFromRules(localityRules = [], stops = []) {
     .filter((locality) => locality.stopIds.length > 0);
 }
 
-function mergeLocalities(manualLocalities = [], generatedLocalities = []) {
+export function mergeLocalities(manualLocalities = [], generatedLocalities = []) {
   const byId = new Map();
 
   for (const locality of [...generatedLocalities, ...manualLocalities]) {
@@ -119,7 +119,7 @@ function mergeLocalities(manualLocalities = [], generatedLocalities = []) {
   );
 }
 
-function buildReachability(trips) {
+export function buildReachability(trips) {
   const reachability = {};
 
   for (const trip of trips) {
