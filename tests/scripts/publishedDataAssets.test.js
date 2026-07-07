@@ -6,6 +6,7 @@ const PUBLISHED_DATA_ASSETS = [
   { path: '../../assets/data/localities.json', expectedType: 'array' },
   { path: '../../assets/data/reachability.json', expectedType: 'object' },
   { path: '../../assets/data/stop-coordinates.json', expectedType: 'object' },
+  { path: '../../assets/data/data-quality.json', expectedType: 'object' },
 ];
 
 describe('published data assets', () => {

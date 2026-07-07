@@ -17,6 +17,13 @@ describe('package scripts', () => {
     expect(packageJson.scripts['build:seo']).toBe('node scripts/generate-seo-pages.mjs');
   });
 
+  it('exposes separate PDF and GTFS data build entry points', () => {
+    expect(packageJson.scripts).toMatchObject({
+      'build:data:pdf': 'node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs',
+      'build:data:gtfs': 'node scripts/build-gtfs-route-data.mjs',
+    });
+  });
+
   it('pins the browser smoke test runner as a project dev dependency', () => {
     expect(packageJson.devDependencies).toHaveProperty('@playwright/test');
   });

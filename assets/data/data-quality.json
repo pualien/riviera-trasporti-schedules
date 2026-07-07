@@ -1,0 +1,18 @@
+{
+  "status": "fresh",
+  "generatedAt": "2026-07-05T23:02:52.036Z",
+  "source": {
+    "type": "pdf",
+    "validFrom": "2026-06-15",
+    "validUntil": null
+  },
+  "counts": {
+    "lines": 68,
+    "stops": 315,
+    "trips": 2000,
+    "localities": 27,
+    "directPairs": 2324
+  },
+  "errors": [],
+  "warnings": []
+}
