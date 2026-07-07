@@ -86,6 +86,22 @@ describe('locality helpers', () => {
     ]);
   });
 
+  it('deduplicates departure stops that share a normalized stop id', () => {
+    expect(
+      getDepartureStops([
+        { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
+        { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
+        { id: 'sanremo-autostazione', canonical: 'Sanremo Autostazione' },
+      ], {
+        'imperia-porto-maurizio': ['sanremo-autostazione'],
+        'sanremo-autostazione': ['imperia-porto-maurizio'],
+      }),
+    ).toEqual([
+      { id: 'imperia-porto-maurizio', canonical: 'Porto Maurizio' },
+      { id: 'sanremo-autostazione', canonical: 'Sanremo Autostazione' },
+    ]);
+  });
+
   it('formats stop labels with the containing zone', () => {
     expect(stopDisplayLabel(stops[0], localities)).toBe('imperia porto maurizio (Porto Maurizio)');
   });

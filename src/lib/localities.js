@@ -68,7 +68,11 @@ export function getReachableStops(fromStopId, reachability, stops) {
 }
 
 export function getDepartureStops(stops, reachability) {
-  return stops.filter((stop) => (reachability[stop.id] ?? []).length > 0);
+  return [...new Map(
+    stops
+      .filter((stop) => (reachability[stop.id] ?? []).length > 0)
+      .map((stop) => [stop.id, stop]),
+  ).values()];
 }
 
 export function getLocalityReachableStops(localityId, localities, reachability, stops) {

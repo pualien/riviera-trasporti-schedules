@@ -119,9 +119,11 @@ test('prioritizes typed Porto Maurizio matches in the From picker', async ({ pag
   const labels = await page
     .locator('[data-panel="from"] .picker-option-label')
     .evaluateAll((elements) => elements.slice(0, 4).map((element) => element.textContent?.trim()));
+  const visibleLabels = labels.filter(Boolean);
 
-  expect(labels.filter(Boolean)).not.toContain("Bivio Arzeno d'Oneglia (Imperia)");
-  expect(labels.filter(Boolean).every((label) => label?.toLowerCase().includes('porto maurizio'))).toBe(true);
+  expect(visibleLabels).not.toContain("Bivio Arzeno d'Oneglia (Imperia)");
+  expect(visibleLabels.every((label) => label?.toLowerCase().includes('porto maurizio'))).toBe(true);
+  expect(new Set(visibleLabels).size).toBe(visibleLabels.length);
 });
 
 test('collapses secondary header actions on mobile', async ({ page }) => {
