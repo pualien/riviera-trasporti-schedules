@@ -3,6 +3,7 @@ import { buildNearbyStopChoices, createNearbyStopCacheKey } from '../../src/lib/
 
 describe('buildNearbyStopChoices', () => {
   const stops = [
+    { id: 'diano-marina-capolinea-c-battisti', canonical: 'diano marina capolinea c.battisti', variants: ['diano marina'] },
     { id: 'imperia-porto-maurizio', canonical: 'imperia porto maurizio', variants: ['porto maurizio'] },
     { id: 'sanremo-autostazione', canonical: 'sanremo autostazione', variants: ['sanremo'] },
   ];
@@ -43,6 +44,31 @@ describe('buildNearbyStopChoices', () => {
         localityLabel: 'Porto Maurizio',
       }),
       expect.objectContaining({ stopId: 'sanremo-autostazione', distanceMeters: 420 }),
+    ]);
+  });
+
+  it('matches a town-level provider result to a manual timetable stop alias', async () => {
+    const provider = vi.fn().mockResolvedValue([
+      { label: 'Diano Marina', distanceMeters: 120, lat: 43.91, lon: 8.08 },
+    ]);
+
+    const choices = await buildNearbyStopChoices({
+      latitude: 43.91,
+      longitude: 8.08,
+      stops,
+      aliases: {
+        'diano marina capolinea c.battisti': ['diano marina'],
+      },
+      localities,
+      fetchNearbyStops: provider,
+      limit: 5,
+    });
+
+    expect(choices).toEqual([
+      expect.objectContaining({
+        stopId: 'diano-marina-capolinea-c-battisti',
+        canonical: 'diano marina capolinea c.battisti',
+      }),
     ]);
   });
 

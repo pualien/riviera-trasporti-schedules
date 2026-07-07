@@ -1,126 +1,6634 @@
 {
-  "imperia-porto-maurizio": {
-    "latitude": 43.8783009,
-    "longitude": 8.0162007
+  "ventimiglia-villa-voronoff": {
+    "latitude": 43.78438,
+    "longitude": 7.5347
   },
-  "imperia-oneglia": {
-    "latitude": 43.890415,
-    "longitude": 8.039467
+  "ventimiglia-villaggio-europa": {
+    "latitude": 43.7849,
+    "longitude": 7.53627
   },
-  "porto-maurizio-pensilina": {
-    "latitude": 43.8783869,
-    "longitude": 8.0162076
+  "ventimiglia-ufficio-postale": {
+    "latitude": 43.78597,
+    "longitude": 7.5387
   },
-  "porto-m-pensilina": {
-    "latitude": 43.8783869,
-    "longitude": 8.0162076
+  "ventimiglia-san-pietro": {
+    "latitude": 43.78664,
+    "longitude": 7.54129
   },
-  "piazza-ricci": {
-    "latitude": 43.8763477,
-    "longitude": 8.0133072
+  "ventimiglia-bivio-grimaldi": {
+    "latitude": 43.78554,
+    "longitude": 7.54636
   },
-  "via-cascione": {
-    "latitude": 43.8744414,
-    "longitude": 8.0124474
+  "ventimiglia-la-mortola": {
+    "latitude": 43.78427,
+    "longitude": 7.55028
   },
-  "sanremo-autostazione": {
-    "latitude": 43.8181223,
-    "longitude": 7.7785931
+  "ventimiglia-ristorante-ex-nando": {
+    "latitude": 43.78616,
+    "longitude": 7.55021
   },
-  "arma-di-taggia": {
-    "latitude": 43.8321207,
-    "longitude": 7.8497505
+  "ventimiglia-giardini-hanbury": {
+    "latitude": 43.78497,
+    "longitude": 7.55418
   },
-  "taggia-stazione-fs": {
-    "latitude": 43.8446339,
-    "longitude": 7.8553138
+  "ventimiglia-casa-cantoniera-belvedere": {
+    "latitude": 43.78774,
+    "longitude": 7.5575
   },
-  "riva-ligure": {
-    "latitude": 43.8400181,
-    "longitude": 7.8837406
+  "ventimiglia-latte-ricovero": {
+    "latitude": 43.79287,
+    "longitude": 7.56236
   },
-  "santo-stefano": {
-    "latitude": 43.8397317,
-    "longitude": 7.8893057
+  "ventimiglia-latte-centro": {
+    "latitude": 43.79456,
+    "longitude": 7.56395
   },
-  "cipressa": {
-    "latitude": 43.8514947,
-    "longitude": 7.9306421
+  "ventimiglia-latte-ufficio-postale": {
+    "latitude": 43.79362,
+    "longitude": 7.56671
   },
-  "pietrabruna": {
-    "latitude": 43.8898757,
-    "longitude": 7.9024955
+  "ventimiglia-casermone": {
+    "latitude": 43.79458,
+    "longitude": 7.57095
   },
-  "diano-marina": {
-    "latitude": 43.9045232,
-    "longitude": 8.0780877
+  "ventimiglia-villa-uliveto": {
+    "latitude": 43.79442,
+    "longitude": 7.57351
   },
-  "andora-stazione-fs": {
-    "latitude": 43.9599191,
-    "longitude": 8.1391313
+  "ventimiglia-boccanegra": {
+    "latitude": 43.79354,
+    "longitude": 7.58
   },
-  "andora-fs": {
-    "latitude": 43.9599191,
-    "longitude": 8.1391313
+  "ventimiglia-porta-canarda": {
+    "latitude": 43.79352,
+    "longitude": 7.58683
   },
-  "san-bartolomeo": {
-    "latitude": 43.8288553,
-    "longitude": 7.7477332
+  "ventimiglia-passo-ville": {
+    "latitude": 43.79262,
+    "longitude": 7.59046
   },
-  "bordighera": {
-    "latitude": 43.7783475,
-    "longitude": 7.6635979
+  "ventimiglia-caserma-umberto-1°": {
+    "latitude": 43.79064,
+    "longitude": 7.59581
   },
-  "borghetto-superiore": {
-    "latitude": 43.8041919,
-    "longitude": 7.6618059
+  "ventimiglia-colla": {
+    "latitude": 43.79162,
+    "longitude": 7.59952
   },
-  "case-popolari": {
-    "latitude": 43.7848892,
-    "longitude": 7.6554221
+  "ventimiglia-piazza-costituente-edicola": {
+    "latitude": 43.792,
+    "longitude": 7.60379
   },
-  "vallecrosia": {
-    "latitude": 43.7855042,
-    "longitude": 7.6408625
+  "ventimiglia-ventimiglia-teatro-comunale": {
+    "latitude": 43.79195,
+    "longitude": 7.60751
   },
-  "ventimiglia---via-cavour": {
-    "latitude": 43.7921001,
-    "longitude": 7.6084989
+  "vallecrosia-centro": {
+    "latitude": 43.785208,
+    "longitude": 7.641926
+  },
+  "vallecrosia-don-bosco": {
+    "latitude": 43.78394,
+    "longitude": 7.64457
+  },
+  "bordighera-ospedale": {
+    "latitude": 43.78298,
+    "longitude": 7.64771
+  },
+  "bordighera-via-ferrara": {
+    "latitude": 43.78225,
+    "longitude": 7.65072
+  },
+  "bordighera-regina-margherita": {
+    "latitude": 43.77783,
+    "longitude": 7.6739
+  },
+  "bordighera-villa-delle-onde": {
+    "latitude": 43.78255,
+    "longitude": 7.67708
+  },
+  "bordighera-via-camposanto-civico-37": {
+    "latitude": 43.78388,
+    "longitude": 7.67799
+  },
+  "bordighera-entrata-cimitero": {
+    "latitude": 43.7853,
+    "longitude": 7.67852
+  },
+  "bordighera-entrata-nord": {
+    "latitude": 43.7868,
+    "longitude": 7.67811
+  },
+  "bordighera-cimitero-capolinea": {
+    "latitude": 43.7882,
+    "longitude": 7.67671
+  },
+  "ventimiglia-via-roma-mercato": {
+    "latitude": 43.79169,
+    "longitude": 7.60672
+  },
+  "ventimiglia-via-cavour-capolinea": {
+    "latitude": 43.792,
+    "longitude": 7.60836
   },
   "ventimiglia-via-cavour": {
-    "latitude": 43.7921001,
-    "longitude": 7.6084989
+    "latitude": 43.793,
+    "longitude": 7.60623
   },
-  "ventimiglia---capolinea": {
-    "latitude": 43.7917202,
-    "longitude": 7.6037085
+  "ventimiglia-piazza-costituente": {
+    "latitude": 43.7921,
+    "longitude": 7.60367
   },
-  "ponte-san-luigi": {
-    "latitude": 43.7855489,
-    "longitude": 7.5315556
+  "ventimiglia-ponte-san-luigi": {
+    "latitude": 43.78608,
+    "longitude": 7.53005
   },
-  "dolceacqua": {
-    "latitude": 43.8512726,
-    "longitude": 7.6232014
+  "ventimiglia-borgo-capolinea": {
+    "latitude": 43.79221,
+    "longitude": 7.60393
   },
-  "olivetta-san-michele": {
-    "latitude": 43.8783764,
-    "longitude": 7.535065
+  "via-romana/corso-italia": {
+    "latitude": 43.78303,
+    "longitude": 7.6664
   },
-  "lecchiore": {
-    "latitude": 43.9133513,
-    "longitude": 7.926429
+  "roverino-inversione": {
+    "latitude": 43.80841,
+    "longitude": 7.59444
   },
-  "vasia": {
-    "latitude": 43.9325895,
-    "longitude": 7.9530413
+  "ventimiglia-fusco-bivio-ciaixe-discesa": {
+    "latitude": 43.81498,
+    "longitude": 7.59297
   },
-  "albenga": {
-    "latitude": 44.0472894,
-    "longitude": 8.2215848
+  "ventimiglia-centro-commerciale": {
+    "latitude": 43.8004,
+    "longitude": 7.60037
+  },
+  "ventimiglia-cimitero": {
+    "latitude": 43.79941,
+    "longitude": 7.60075
+  },
+  "ventimiglia-regione-gianchette": {
+    "latitude": 43.7959,
+    "longitude": 7.60333
+  },
+  "ventimiglia-ponte-autostrada": {
+    "latitude": 43.8012,
+    "longitude": 7.59985
+  },
+  "ventimiglia-roverino-scuole": {
+    "latitude": 43.80367,
+    "longitude": 7.59766
+  },
+  "roverino-tabacchi-hotel-bruno": {
+    "latitude": 43.80555,
+    "longitude": 7.59593
+  },
+  "roverino-via-caduti-del-lavoro": {
+    "latitude": 43.8091,
+    "longitude": 7.59345
+  },
+  "ventimiglia-falegnameria-fusco": {
+    "latitude": 43.8169,
+    "longitude": 7.59223
+  },
+  "ventimiglia-muro": {
+    "latitude": 43.81792,
+    "longitude": 7.59147
+  },
+  "ventimiglia-bivio-ciaixe": {
+    "latitude": 43.81949,
+    "longitude": 7.59025
+  },
+  "ventimiglia-calcestruzzi-riviera": {
+    "latitude": 43.82325,
+    "longitude": 7.58723
+  },
+  "ventimiglia-vallone-di-lodi-ex-keromec": {
+    "latitude": 43.82603,
+    "longitude": 7.58498
+  },
+  "ristorante-nico": {
+    "latitude": 43.83227,
+    "longitude": 7.58395
+  },
+  "frantoio-rosa": {
+    "latitude": 43.83411,
+    "longitude": 7.58301
+  },
+  "ss-20-civico-50": {
+    "latitude": 43.83688,
+    "longitude": 7.58346
+  },
+  "ss20-autodemolizioni": {
+    "latitude": 43.84006,
+    "longitude": 7.58784
+  },
+  "bivio-trinita": {
+    "latitude": 43.84202,
+    "longitude": 7.59055
+  },
+  "trucco-ristorante-pallanca": {
+    "latitude": 43.84486,
+    "longitude": 7.59045
+  },
+  "trucco-chiesa": {
+    "latitude": 43.84582,
+    "longitude": 7.58891
+  },
+  "trucco-ciai": {
+    "latitude": 43.847,
+    "longitude": 7.58717
+  },
+  "trucco-forno": {
+    "latitude": 43.8491,
+    "longitude": 7.58156
+  },
+  "trucco-passo-para": {
+    "latitude": 43.8497,
+    "longitude": 7.57906
+  },
+  "airole-bivio-collabassa": {
+    "latitude": 43.86997,
+    "longitude": 7.55432
+  },
+  "airole-case-giauma-enel": {
+    "latitude": 43.8701,
+    "longitude": 7.54995
+  },
+  "san-michele-stazione": {
+    "latitude": 43.878,
+    "longitude": 7.53607
+  },
+  "san-michele-case-popolari": {
+    "latitude": 43.8793,
+    "longitude": 7.53491
+  },
+  "bivio-olivetta": {
+    "latitude": 43.8822,
+    "longitude": 7.53459
+  },
+  "olivetta-capolinea": {
+    "latitude": 43.8797,
+    "longitude": 7.51623
+  },
+  "airole-case-popolari": {
+    "latitude": 43.87062,
+    "longitude": 7.55369
+  },
+  "airole-piazza": {
+    "latitude": 43.8718,
+    "longitude": 7.55513
+  },
+  "ventimiglia-latte-chiesa": {
+    "latitude": 43.79659,
+    "longitude": 7.56284
+  },
+  "ventimiglia-latte-ponte-autostrada": {
+    "latitude": 43.79831,
+    "longitude": 7.56219
+  },
+  "latte-case-popolari-civico-26": {
+    "latitude": 43.80087,
+    "longitude": 7.56262
+  },
+  "ventimiglia-latte-cimitero": {
+    "latitude": 43.80383,
+    "longitude": 7.56128
+  },
+  "latte-bivio-sealza-sant-antonio": {
+    "latitude": 43.80594,
+    "longitude": 7.56115
+  },
+  "ventimiglia-case-sant-andrea": {
+    "latitude": 43.80587,
+    "longitude": 7.56106
+  },
+  "ventimiglia-via-delle-8-case-civico-13": {
+    "latitude": 43.80538,
+    "longitude": 7.5596
+  },
+  "ventimiglia-via-delle-8-case-civico-23": {
+    "latitude": 43.80365,
+    "longitude": 7.5597
+  },
+  "ventimiglia-case-zanin": {
+    "latitude": 43.80669,
+    "longitude": 7.55546
+  },
+  "ventimiglia-via-delle-8-case-civico-75": {
+    "latitude": 43.80684,
+    "longitude": 7.55445
+  },
+  "ventimiglia-localita-ciappe": {
+    "latitude": 43.8084,
+    "longitude": 7.5538
+  },
+  "ventimiglia-case-bastei": {
+    "latitude": 43.80984,
+    "longitude": 7.55058
+  },
+  "ventimiglia-via-delle-8-case-civico-98": {
+    "latitude": 43.81273,
+    "longitude": 7.54839
+  },
+  "ventimiglia-case-molinari": {
+    "latitude": 43.81142,
+    "longitude": 7.54824
+  },
+  "ventimiglia-sealza-chiesa-capolinea": {
+    "latitude": 43.80919,
+    "longitude": 7.5495
+  },
+  "ventimiglia-via-ughetto-civico-18": {
+    "latitude": 43.80902,
+    "longitude": 7.5592
+  },
+  "ventimiglia-ponte-carletti": {
+    "latitude": 43.81011,
+    "longitude": 7.55832
+  },
+  "ventimiglia-via-ughetto-civico-75": {
+    "latitude": 43.81429,
+    "longitude": 7.55781
+  },
+  "ventimiglia-via-sant-antonio-civico-12": {
+    "latitude": 43.818,
+    "longitude": 7.55609
+  },
+  "ventimiglia-sant-antonio-capolinea": {
+    "latitude": 43.8192,
+    "longitude": 7.55354
+  },
+  "ventimiglia-deposito-rt": {
+    "latitude": 43.7928,
+    "longitude": 7.60297
+  },
+  "ventimiglia-bivio-gallardi": {
+    "latitude": 43.79436,
+    "longitude": 7.59724
+  },
+  "ventimiglia-caserma-gallardi": {
+    "latitude": 43.79635,
+    "longitude": 7.59382
+  },
+  "ventimiglia-case-santa-teresa-civico-16": {
+    "latitude": 43.8015,
+    "longitude": 7.58828
+  },
+  "ventimiglia-palmari": {
+    "latitude": 43.8015,
+    "longitude": 7.58629
+  },
+  "ventimiglia-bivio-seglia": {
+    "latitude": 43.80227,
+    "longitude": 7.58472
+  },
+  "ventimiglia-vista-del-mare": {
+    "latitude": 43.8027,
+    "longitude": 7.58274
+  },
+  "ventimiglia-case-boi-1": {
+    "latitude": 43.80559,
+    "longitude": 7.5801
+  },
+  "ventimiglia-case-boi-2": {
+    "latitude": 43.80442,
+    "longitude": 7.57962
+  },
+  "ventimiglia-riviera-flowers": {
+    "latitude": 43.8052,
+    "longitude": 7.57779
+  },
+  "ventimiglia-casa-giovannina": {
+    "latitude": 43.80421,
+    "longitude": 7.57714
+  },
+  "ventimiglia-bivio-castel-d-appio": {
+    "latitude": 43.80344,
+    "longitude": 7.57658
+  },
+  "ventimiglia-peidaigo": {
+    "latitude": 43.80422,
+    "longitude": 7.57517
+  },
+  "ventimiglia-san-lorenzo-d-appio-1": {
+    "latitude": 43.80465,
+    "longitude": 7.57434
+  },
+  "ventimiglia-san-lorenzo-d-appio-2": {
+    "latitude": 43.80563,
+    "longitude": 7.57216
+  },
+  "san-lorenzo-d-appio-capolinea": {
+    "latitude": 43.80694,
+    "longitude": 7.56856
+  },
+  "ventimiglia-scuole-elementari": {
+    "latitude": 43.80368,
+    "longitude": 7.58319
+  },
+  "ventimiglia-san-bernardo-chiesa": {
+    "latitude": 43.80503,
+    "longitude": 7.58299
+  },
+  "ventimiglia-muro-via-ciappin": {
+    "latitude": 43.80761,
+    "longitude": 7.58333
+  },
+  "ventimiglia-bungalow": {
+    "latitude": 43.81037,
+    "longitude": 7.58357
+  },
+  "ventimiglia-monte-al-mare": {
+    "latitude": 43.8122,
+    "longitude": 7.5833
+  },
+  "ventimiglia-seglia-capolinea": {
+    "latitude": 43.81015,
+    "longitude": 7.58372
+  },
+  "ventimiglia-ponte-autostrada-gallardi": {
+    "latitude": 43.80017,
+    "longitude": 7.59088
+  },
+  "ventimiglia-frati-maristi": {
+    "latitude": 43.80593,
+    "longitude": 7.58942
+  },
+  "ventimiglia-via-gallardi-civico-118": {
+    "latitude": 43.8078,
+    "longitude": 7.58739
+  },
+  "ventimiglia-casa-del-verde": {
+    "latitude": 43.81186,
+    "longitude": 7.5877
+  },
+  "ventimiglia-manera": {
+    "latitude": 43.81542,
+    "longitude": 7.58783
+  },
+  "ventimiglia-frantoio": {
+    "latitude": 43.81675,
+    "longitude": 7.58589
+  },
+  "ventimiglia-pallanca": {
+    "latitude": 43.81835,
+    "longitude": 7.58447
+  },
+  "ventimiglia-via-gallardi-civico-204": {
+    "latitude": 43.82009,
+    "longitude": 7.58206
+  },
+  "ventimiglia-bevera-ponte": {
+    "latitude": 43.8217,
+    "longitude": 7.57941
+  },
+  "ventimiglia-bevera-chiesa": {
+    "latitude": 43.82403,
+    "longitude": 7.57868
+  },
+  "ventimiglia-bevera-case-popolari": {
+    "latitude": 43.8251,
+    "longitude": 7.57716
+  },
+  "ventimiglia-via-tempesta-civico-6": {
+    "latitude": 43.8238,
+    "longitude": 7.57321
+  },
+  "ventimiglia-via-tempesta-civico-22": {
+    "latitude": 43.8252,
+    "longitude": 7.55837
+  },
+  "ventimiglia-calvo-centro": {
+    "latitude": 43.8298,
+    "longitude": 7.55739
+  },
+  "ventimiglia-calvo-scuole": {
+    "latitude": 43.8322,
+    "longitude": 7.55746
+  },
+  "ventimiglia-torri-garage": {
+    "latitude": 43.8361,
+    "longitude": 7.55587
+  },
+  "ventimiglia-torri-capolinea": {
+    "latitude": 43.83835,
+    "longitude": 7.55284
+  },
+  "ventimiglia-centro": {
+    "latitude": 43.79102,
+    "longitude": 7.61081
+  },
+  "ventimiglia-vallone-ventimiglia": {
+    "latitude": 43.79061,
+    "longitude": 7.61264
+  },
+  "ventimiglia-ventimiglia-via-dante": {
+    "latitude": 43.78956,
+    "longitude": 7.6168
+  },
+  "ventimiglia-ventimiglia-asl": {
+    "latitude": 43.7888,
+    "longitude": 7.62206
+  },
+  "ventimiglia-ospedale": {
+    "latitude": 43.78912,
+    "longitude": 7.62524
+  },
+  "bivio-nervia-mobilificio": {
+    "latitude": 43.79,
+    "longitude": 7.62932
+  },
+  "camporosso-principe": {
+    "latitude": 43.7909,
+    "longitude": 7.6293
+  },
+  "camporosso-fornace": {
+    "latitude": 43.7928,
+    "longitude": 7.62963
+  },
+  "camporosso-agrotecnica": {
+    "latitude": 43.7956,
+    "longitude": 7.62894
+  },
+  "camporosso-ponte-dell-amicizia": {
+    "latitude": 43.80563,
+    "longitude": 7.62488
+  },
+  "camporosso-pro-loco": {
+    "latitude": 43.80884,
+    "longitude": 7.62576
+  },
+  "camporosso-pessana": {
+    "latitude": 43.81159,
+    "longitude": 7.62812
+  },
+  "camporosso-centro": {
+    "latitude": 43.81419,
+    "longitude": 7.62857
+  },
+  "camporosso-madonna": {
+    "latitude": 43.81797,
+    "longitude": 7.62763
+  },
+  "camporosso-cimitero": {
+    "latitude": 43.8211,
+    "longitude": 7.62811
+  },
+  "camporosso-cippo": {
+    "latitude": 43.82293,
+    "longitude": 7.62836
+  },
+  "camporosso-chiesa-sant-andrea": {
+    "latitude": 43.82667,
+    "longitude": 7.62779
+  },
+  "camporosso-centrale": {
+    "latitude": 43.82945,
+    "longitude": 7.62803
+  },
+  "camporosso-confini": {
+    "latitude": 43.83314,
+    "longitude": 7.62689
+  },
+  "dolceacqua-chiesa-san-rocco": {
+    "latitude": 43.83766,
+    "longitude": 7.62665
+  },
+  "dolceacqua-ristorante-la-vecchia": {
+    "latitude": 43.84126,
+    "longitude": 7.62587
+  },
+  "dolceacqua-cimitero": {
+    "latitude": 43.84418,
+    "longitude": 7.6248
+  },
+  "dolceacqua-municipio": {
+    "latitude": 43.84709,
+    "longitude": 7.62404
+  },
+  "dolceacqua-ponte-nuovo": {
+    "latitude": 43.84946,
+    "longitude": 7.62349
+  },
+  "dolceacqua-centro": {
+    "latitude": 43.8518,
+    "longitude": 7.62368
+  },
+  "dolceacqua-farmacia": {
+    "latitude": 43.85446,
+    "longitude": 7.62403
+  },
+  "dolceacqua-mobilsol": {
+    "latitude": 43.85827,
+    "longitude": 7.62396
+  },
+  "dolceacqua-bivio-rocchetta": {
+    "latitude": 43.86241,
+    "longitude": 7.62254
+  },
+  "isolabona-cartiera-vivaio-mediterraneo": {
+    "latitude": 43.87148,
+    "longitude": 7.62744
+  },
+  "deposito-bibite-matuzia": {
+    "latitude": 43.87304,
+    "longitude": 7.62952
+  },
+  "isolabona-segheria": {
+    "latitude": 43.8759,
+    "longitude": 7.63507
+  },
+  "isolabona-km-10-800": {
+    "latitude": 43.87751,
+    "longitude": 7.6369
+  },
+  "isolabona-centro": {
+    "latitude": 43.87898,
+    "longitude": 7.63862
+  },
+  "isolabona-bivio-apricale": {
+    "latitude": 43.8815,
+    "longitude": 7.6398
+  },
+  "isolabona-ristorante-adolfo": {
+    "latitude": 43.88688,
+    "longitude": 7.64122
+  },
+  "isolabona-piani-di-goute": {
+    "latitude": 43.88991,
+    "longitude": 7.64388
+  },
+  "isolabona-prati-di-goute": {
+    "latitude": 43.89463,
+    "longitude": 7.64681
+  },
+  "isolabona-bunda": {
+    "latitude": 43.90812,
+    "longitude": 7.64954
+  },
+  "pigna-bivio-gouta": {
+    "latitude": 43.92388,
+    "longitude": 7.64784
+  },
+  "pigna-casermette": {
+    "latitude": 43.92818,
+    "longitude": 7.64935
+  },
+  "pigna-casa-di-riposo": {
+    "latitude": 43.93065,
+    "longitude": 7.65348
+  },
+  "pigna-ponti": {
+    "latitude": 43.93168,
+    "longitude": 7.65571
+  },
+  "pigna-ciappa": {
+    "latitude": 43.93241,
+    "longitude": 7.65996
+  },
+  "pigna-ristorante-carla": {
+    "latitude": 43.93167,
+    "longitude": 7.66209
+  },
+  "pigna-centro": {
+    "latitude": 43.9324,
+    "longitude": 7.66467
+  },
+  "pigna-quattro-camini": {
+    "latitude": 43.93203,
+    "longitude": 7.66614
+  },
+  "pigna-terme": {
+    "latitude": 43.93068,
+    "longitude": 7.67019
+  },
+  "pigna-bivio-castelvittorio": {
+    "latitude": 43.93311,
+    "longitude": 7.67774
+  },
+  "castelvittorio-busciun": {
+    "latitude": 43.93462,
+    "longitude": 7.6808
+  },
+  "castelvittorio-pettavin": {
+    "latitude": 43.9321,
+    "longitude": 7.67876
+  },
+  "castelvittorio-scuole": {
+    "latitude": 43.92885,
+    "longitude": 7.67508
+  },
+  "castelvittorio-capolinea": {
+    "latitude": 43.92665,
+    "longitude": 7.67464
+  },
+  "bivio-molini": {
+    "latitude": 43.93658,
+    "longitude": 7.68137
+  },
+  "buggio-capolinea": {
+    "latitude": 43.96007,
+    "longitude": 7.68364
+  },
+  "rocchetta-rio-del-mulino": {
+    "latitude": 43.8667,
+    "longitude": 7.61599
+  },
+  "rocchetta-ponte-raggio": {
+    "latitude": 43.8785,
+    "longitude": 7.60625
+  },
+  "rocchetta-ristorante-lagobin": {
+    "latitude": 43.88412,
+    "longitude": 7.60357
+  },
+  "rocchetta-caserma-finanza": {
+    "latitude": 43.88817,
+    "longitude": 7.60245
+  },
+  "rocchetta-capolinea": {
+    "latitude": 43.88993,
+    "longitude": 7.59987
+  },
+  "isolabona-galleria": {
+    "latitude": 43.87966,
+    "longitude": 7.6418
+  },
+  "apricale-ristorante-la-favorita": {
+    "latitude": 43.88121,
+    "longitude": 7.65416
+  },
+  "apricale-civico-24": {
+    "latitude": 43.88064,
+    "longitude": 7.65736
+  },
+  "apricale-baracca": {
+    "latitude": 43.87994,
+    "longitude": 7.66069
+  },
+  "apricale-benso": {
+    "latitude": 43.88004,
+    "longitude": 7.66217
+  },
+  "apricale-centro": {
+    "latitude": 43.87969,
+    "longitude": 7.6633
+  },
+  "apricale-capolinea": {
+    "latitude": 43.87933,
+    "longitude": 7.66468
+  },
+  "via-de-gasperi": {
+    "latitude": 43.78979,
+    "longitude": 7.63334
+  },
+  "via-braie-assistenza-fiat": {
+    "latitude": 43.7941,
+    "longitude": 7.6342
+  },
+  "supermercato-green": {
+    "latitude": 43.79828,
+    "longitude": 7.63023
+  },
+  "via-braie-chiesa": {
+    "latitude": 43.80144,
+    "longitude": 7.62862
+  },
+  "centro-revisioni": {
+    "latitude": 43.80367,
+    "longitude": 7.62841
+  },
+  "centro-esse": {
+    "latitude": 43.80478,
+    "longitude": 7.62706
+  },
+  "camporosso-bivio-nervia-agip": {
+    "latitude": 43.78958,
+    "longitude": 7.62945
+  },
+  "camporosso-mare": {
+    "latitude": 43.78899,
+    "longitude": 7.63306
+  },
+  "vallecrosia-mercato-fiori": {
+    "latitude": 43.78773,
+    "longitude": 7.63593
+  },
+  "vallecrosia-ristorante-impero": {
+    "latitude": 43.7867,
+    "longitude": 7.63909
+  },
+  "vallecrosia-ponte": {
+    "latitude": 43.7867,
+    "longitude": 7.64046
+  },
+  "vallecrosia-incrocio-strada-romana": {
+    "latitude": 43.7885,
+    "longitude": 7.64203
+  },
+  "vallecrosia-scuole-medie": {
+    "latitude": 43.7928,
+    "longitude": 7.64492
+  },
+  "vallecrosia-caserma-bevilacqua": {
+    "latitude": 43.7951,
+    "longitude": 7.6466
+  },
+  "vallecrosia-tennis": {
+    "latitude": 43.7977,
+    "longitude": 7.64667
+  },
+  "vallecrosia-cimitero": {
+    "latitude": 43.8015,
+    "longitude": 7.64808
+  },
+  "vallecrosia-segheria": {
+    "latitude": 43.8045,
+    "longitude": 7.64888
+  },
+  "vallecrosia-alta-ponte": {
+    "latitude": 43.8068,
+    "longitude": 7.65094
+  },
+  "vallecrosia-ponte-nuovo": {
+    "latitude": 43.8077,
+    "longitude": 7.65042
+  },
+  "vallecrosia-confini": {
+    "latitude": 43.8119,
+    "longitude": 7.65145
+  },
+  "san-biagio-della-cima-san-biagio-bivio": {
+    "latitude": 43.8163,
+    "longitude": 7.64948
+  },
+  "san-biagio-cimitero": {
+    "latitude": 43.8198,
+    "longitude": 7.65139
+  },
+  "soldano-municipio": {
+    "latitude": 43.8287,
+    "longitude": 7.65517
+  },
+  "soldano-centro": {
+    "latitude": 43.83,
+    "longitude": 7.65664
+  },
+  "soldano-mulino": {
+    "latitude": 43.8315,
+    "longitude": 7.65847
+  },
+  "soldano-campo-sportivo": {
+    "latitude": 43.8343,
+    "longitude": 7.66189
+  },
+  "soldano-segheria": {
+    "latitude": 43.8371,
+    "longitude": 7.66183
+  },
+  "perinaldo-massabo-confine": {
+    "latitude": 43.8429,
+    "longitude": 7.66406
+  },
+  "perinaldo-massabo": {
+    "latitude": 43.8534,
+    "longitude": 7.6688
+  },
+  "perinaldo-ristorante-da-emma": {
+    "latitude": 43.8555,
+    "longitude": 7.66776
+  },
+  "perinaldo-mobilificio-fogliarini": {
+    "latitude": 43.8581,
+    "longitude": 7.66509
+  },
+  "perinaldo-pianolo": {
+    "latitude": 43.8609,
+    "longitude": 7.6659
+  },
+  "perinaldo-ruve": {
+    "latitude": 43.8619,
+    "longitude": 7.66687
+  },
+  "perinaldo-madonna": {
+    "latitude": 43.8621,
+    "longitude": 7.66687
+  },
+  "perinaldo-bivio-apricale": {
+    "latitude": 43.8641,
+    "longitude": 7.66732
+  },
+  "perinaldo-bivio-cimitero": {
+    "latitude": 43.8659,
+    "longitude": 7.67295
+  },
+  "perinaldo-ristorante-la-riana": {
+    "latitude": 43.8666,
+    "longitude": 7.66988
+  },
+  "perinaldo-rondo": {
+    "latitude": 43.8674,
+    "longitude": 7.66774
+  },
+  "perinaldo-scuole": {
+    "latitude": 43.86726,
+    "longitude": 7.66786
+  },
+  "perinaldo-capolinea": {
+    "latitude": 43.86709,
+    "longitude": 7.67056
+  },
+  "bordighera-stazione-fs": {
+    "latitude": 43.77862,
+    "longitude": 7.66369
+  },
+  "bordighera-chiesa-di-terrasanta": {
+    "latitude": 43.77838,
+    "longitude": 7.66691
+  },
+  "bordighera-zeni": {
+    "latitude": 43.77785,
+    "longitude": 7.66941
+  },
+  "bordighera-centro": {
+    "latitude": 43.7794,
+    "longitude": 7.66285
+  },
+  "bordighera-distributore-esso": {
+    "latitude": 43.78049,
+    "longitude": 7.65816
+  },
+  "bordighera-bivio-borghetto": {
+    "latitude": 43.78136,
+    "longitude": 7.6542
+  },
+  "bordighera-rotonda-via-romana": {
+    "latitude": 43.78544,
+    "longitude": 7.65674
+  },
+  "bordighera-segheria": {
+    "latitude": 43.7885,
+    "longitude": 7.65806
+  },
+  "bordighera-baita": {
+    "latitude": 43.7905,
+    "longitude": 7.65802
+  },
+  "bordighera-via-alba": {
+    "latitude": 43.7937,
+    "longitude": 7.65969
+  },
+  "bordighera-due-strade": {
+    "latitude": 43.7949,
+    "longitude": 7.66003
+  },
+  "bordighera-viale-mameli-civico-30": {
+    "latitude": 43.7972,
+    "longitude": 7.66011
+  },
+  "bordighera-viale-mameli-civico-52": {
+    "latitude": 43.7991,
+    "longitude": 7.66056
+  },
+  "bordighera-viale-mameli-civico-72": {
+    "latitude": 43.8008,
+    "longitude": 7.66139
+  },
+  "bordighera-borghetto-superiore": {
+    "latitude": 43.8041,
+    "longitude": 7.66182
+  },
+  "bordighera-borghetto-cimitero": {
+    "latitude": 43.8062,
+    "longitude": 7.66302
+  },
+  "vallebona-cimitero": {
+    "latitude": 43.8084,
+    "longitude": 7.66396
+  },
+  "vallebona-civico-23": {
+    "latitude": 43.8111,
+    "longitude": 7.66402
+  },
+  "vallebona-capolinea": {
+    "latitude": 43.8131,
+    "longitude": 7.66771
+  },
+  "bordighera-largo-valgoi": {
+    "latitude": 43.77883,
+    "longitude": 7.671
+  },
+  "bordighera-via-piave": {
+    "latitude": 43.77981,
+    "longitude": 7.6718
+  },
+  "bordighera-piazza-maddalena": {
+    "latitude": 43.78061,
+    "longitude": 7.67447
+  },
+  "bordighera-suore-san-paolo": {
+    "latitude": 43.78282,
+    "longitude": 7.67573
+  },
+  "bordighera-via-corombeire": {
+    "latitude": 43.78288,
+    "longitude": 7.67514
+  },
+  "bordighera-via-tiziano": {
+    "latitude": 43.78258,
+    "longitude": 7.67272
+  },
+  "bordighera-carillon": {
+    "latitude": 43.78305,
+    "longitude": 7.67214
+  },
+  "bordighera-via-inglesi": {
+    "latitude": 43.7845,
+    "longitude": 7.6722
+  },
+  "bordighera-la-storietta": {
+    "latitude": 43.7875,
+    "longitude": 7.67275
+  },
+  "bordighera-hotel-bel-sit": {
+    "latitude": 43.7921,
+    "longitude": 7.67103
+  },
+  "bordighera-vivaio-garden": {
+    "latitude": 43.79281,
+    "longitude": 7.66562
+  },
+  "bordighera-pesce-mignon": {
+    "latitude": 43.79639,
+    "longitude": 7.66702
+  },
+  "bordighera-bivio-autostrada": {
+    "latitude": 43.79891,
+    "longitude": 7.66862
+  },
+  "bordighera-crocevia": {
+    "latitude": 43.80074,
+    "longitude": 7.66959
+  },
+  "bordighera-ciousi-civico-92": {
+    "latitude": 43.80174,
+    "longitude": 7.67017
+  },
+  "bordighera-bivio-via-silvio-pellico": {
+    "latitude": 43.8022,
+    "longitude": 7.67044
+  },
+  "bordighera-serra": {
+    "latitude": 43.80528,
+    "longitude": 7.67254
+  },
+  "bordighera-sasso-paese": {
+    "latitude": 43.80495,
+    "longitude": 7.67017
+  },
+  "bordighera-sasso-bellavista": {
+    "latitude": 43.80791,
+    "longitude": 7.67316
+  },
+  "sasso-madonna-della-neve-civico-17": {
+    "latitude": 43.81345,
+    "longitude": 7.67908
+  },
+  "bordighera-sasso-roccascura": {
+    "latitude": 43.8167,
+    "longitude": 7.6823
+  },
+  "bordighera-sasso-confini": {
+    "latitude": 43.82145,
+    "longitude": 7.68742
+  },
+  "seborga-fascia-piana": {
+    "latitude": 43.82408,
+    "longitude": 7.69254
+  },
+  "seborga-via-antico-principato": {
+    "latitude": 43.8246,
+    "longitude": 7.69008
+  },
+  "seborga-palme-e-mimose": {
+    "latitude": 43.8252,
+    "longitude": 7.69169
+  },
+  "seborga-bivio-corso-leone": {
+    "latitude": 43.82556,
+    "longitude": 7.69334
+  },
+  "seborga-capolinea": {
+    "latitude": 43.82637,
+    "longitude": 7.69505
+  },
+  "bordighera-via-inglesi-scalinata": {
+    "latitude": 43.7854,
+    "longitude": 7.66982
+  },
+  "bordighera-via-inglesi-casa-rosa": {
+    "latitude": 43.7845,
+    "longitude": 7.67195
+  },
+  "bordighera-via-inglesi-civico-38": {
+    "latitude": 43.7851,
+    "longitude": 7.67256
+  },
+  "bordighera-via-inglesi-civico-77": {
+    "latitude": 43.7873,
+    "longitude": 7.67276
+  },
+  "bordighera-via-inglesi-civico-92": {
+    "latitude": 43.7899,
+    "longitude": 7.67195
+  },
+  "bordighera-via-inglesi-rampa": {
+    "latitude": 43.7915,
+    "longitude": 7.67117
+  },
+  "bordighera-via-inglesi-civico-121": {
+    "latitude": 43.7931,
+    "longitude": 7.67052
+  },
+  "roverino-piazza-caduti-sul-lavoro": {
+    "latitude": 43.80849,
+    "longitude": 7.59404
+  },
+  "ventimiglia-cimitero-bevera": {
+    "latitude": 43.82906,
+    "longitude": 7.57989
+  },
+  "ventimiglia-bevera-centrale-enel": {
+    "latitude": 43.83311,
+    "longitude": 7.57893
+  },
+  "ventimiglia-ciape": {
+    "latitude": 43.83779,
+    "longitude": 7.57927
+  },
+  "ventimiglia-tre-ponti": {
+    "latitude": 43.8389,
+    "longitude": 7.58031
+  },
+  "ventimiglia-varase-capolinea": {
+    "latitude": 43.8403,
+    "longitude": 7.58239
+  },
+  "bordighera-arziglia": {
+    "latitude": 43.78372,
+    "longitude": 7.67819
+  },
+  "bordighera-cabina-enel": {
+    "latitude": 43.7854,
+    "longitude": 7.68137
+  },
+  "case-di-campagna": {
+    "latitude": 43.8402,
+    "longitude": 7.58785
+  },
+  "frantoio-rossi": {
+    "latitude": 43.8369,
+    "longitude": 7.58339
+  },
+  "ristorante-da-iride": {
+    "latitude": 43.83422,
+    "longitude": 7.58295
+  },
+  "dancing-porra": {
+    "latitude": 43.83216,
+    "longitude": 7.58388
+  },
+  "vallone-di-lodi": {
+    "latitude": 43.82632,
+    "longitude": 7.58481
+  },
+  "ventimiglia-via-della-repubblica-onesta": {
+    "latitude": 43.79153,
+    "longitude": 7.60901
+  },
+  "vallecrosia-ristorante-u-giappun": {
+    "latitude": 43.78612,
+    "longitude": 7.63958
+  },
+  "bordighera-viale-mameli-civico-47": {
+    "latitude": 43.7993,
+    "longitude": 7.6608
+  },
+  "bordighera-case-popolari": {
+    "latitude": 43.78493,
+    "longitude": 7.65543
+  },
+  "bordighera-piani-di-borghetto-scuole": {
+    "latitude": 43.78445,
+    "longitude": 7.65465
+  },
+  "bordighera-piani-di-borghetto": {
+    "latitude": 43.78321,
+    "longitude": 7.65434
+  },
+  "bordighera-piazza-de-amicis-comune": {
+    "latitude": 43.77867,
+    "longitude": 7.67363
+  },
+  "bordighera-via-dante-villa-palmizi": {
+    "latitude": 43.78168,
+    "longitude": 7.67008
+  },
+  "bordighera-mercato": {
+    "latitude": 43.77844,
+    "longitude": 7.6688
+  },
+  "bordighera-standa": {
+    "latitude": 43.77855,
+    "longitude": 7.66727
+  },
+  "bordighera-ristorante-da-fulvio": {
+    "latitude": 43.7858,
+    "longitude": 7.68236
+  },
+  "ventimiglia-rotonda-biscione": {
+    "latitude": 43.7852,
+    "longitude": 7.62881
+  },
+  "ventimiglia-via-asse": {
+    "latitude": 43.7852,
+    "longitude": 7.62558
+  },
+  "ventimiglia-dispensario": {
+    "latitude": 43.7861,
+    "longitude": 7.61959
+  },
+  "ventimiglia-via-dante-civico-2": {
+    "latitude": 43.7884,
+    "longitude": 7.61643
+  },
+  "ventimiglia-via-roma-centro-studi": {
+    "latitude": 43.78842,
+    "longitude": 7.61528
+  },
+  "ventimiglia-via-roma-standa": {
+    "latitude": 43.79045,
+    "longitude": 7.60955
+  },
+  "ventimiglia-roverino-case-popolari": {
+    "latitude": 43.8074,
+    "longitude": 7.5955
+  },
+  "ventimiglia-roverino-via-montale": {
+    "latitude": 43.80719,
+    "longitude": 7.59472
+  },
+  "ventimiglia-alta": {
+    "latitude": 43.7925,
+    "longitude": 7.59943
+  },
+  "ventimiglia-piscina-ventimiglia": {
+    "latitude": 43.788,
+    "longitude": 7.62091
+  },
+  "ventimiglia-ingresso-ospedale": {
+    "latitude": 43.7893,
+    "longitude": 7.62685
+  },
+  "ventimiglia-ufficio-collocamento": {
+    "latitude": 43.7878,
+    "longitude": 7.62713
+  },
+  "ventimiglia-via-lamboglia": {
+    "latitude": 43.7862,
+    "longitude": 7.62642
+  },
+  "via-romana-incrocio-via-veneto": {
+    "latitude": 43.78362,
+    "longitude": 7.66271
+  },
+  "bordighera-via-romana-hotel-continental": {
+    "latitude": 43.7846,
+    "longitude": 7.65945
+  },
+  "bordighera-via-pasteur-civico-231": {
+    "latitude": 43.7962,
+    "longitude": 7.6605
+  },
+  "bordighera-via-pasteur-ponte": {
+    "latitude": 43.7978,
+    "longitude": 7.66158
+  },
+  "bordighera-via-pasteur-case-popolari": {
+    "latitude": 43.7989,
+    "longitude": 7.66255
+  },
+  "bordighera-borghetto-inferiore": {
+    "latitude": 43.8011,
+    "longitude": 7.66313
+  },
+  "bordighera-centro-atm": {
+    "latitude": 43.7906,
+    "longitude": 7.66634
+  },
+  "bordighera-bivio-sasso": {
+    "latitude": 43.78903,
+    "longitude": 7.66405
+  },
+  "bordighera-via-gardenie": {
+    "latitude": 43.78944,
+    "longitude": 7.66223
+  },
+  "bordighera-via-mafalda": {
+    "latitude": 43.78747,
+    "longitude": 7.6595
+  },
+  "bordighera-coggiola-civico-23": {
+    "latitude": 43.78665,
+    "longitude": 7.65932
+  },
+  "bordighera-coggiola-villa-crosa": {
+    "latitude": 43.7856,
+    "longitude": 7.66049
+  },
+  "via-tacito-ponente": {
+    "latitude": 43.78725,
+    "longitude": 7.62047
+  },
+  "bordighera-punta-migliarese": {
+    "latitude": 43.7865,
+    "longitude": 7.68508
+  },
+  "bordighera-mattatoio": {
+    "latitude": 43.7884,
+    "longitude": 7.68864
+  },
+  "bordighera-casa-del-mattone": {
+    "latitude": 43.7911,
+    "longitude": 7.69181
+  },
+  "bordighera-madonna-della-ruota": {
+    "latitude": 43.7943,
+    "longitude": 7.69373
+  },
+  "bordighera-casa-cantoniera": {
+    "latitude": 43.7973,
+    "longitude": 7.69528
+  },
+  "ospedaletti-termini": {
+    "latitude": 43.8008,
+    "longitude": 7.70217
+  },
+  "ospedaletti-pic-nic": {
+    "latitude": 43.8014,
+    "longitude": 7.70956
+  },
+  "ospedaletti-bivio-ponente": {
+    "latitude": 43.8017,
+    "longitude": 7.7111
+  },
+  "ospedaletti-distributore-shell": {
+    "latitude": 43.8025,
+    "longitude": 7.71518
+  },
+  "ospedaletti-centro": {
+    "latitude": 43.80196,
+    "longitude": 7.71864
+  },
+  "ospedaletti-alexandra": {
+    "latitude": 43.8012,
+    "longitude": 7.72217
+  },
+  "ospedaletti-piccadilly": {
+    "latitude": 43.7997,
+    "longitude": 7.72544
+  },
+  "ospedaletti-bivio-levante": {
+    "latitude": 43.7986,
+    "longitude": 7.72795
+  },
+  "ospedaletti-complesso-patrizia": {
+    "latitude": 43.7974,
+    "longitude": 7.73208
+  },
+  "ospedaletti-bivio-coldirodi": {
+    "latitude": 43.7968,
+    "longitude": 7.73433
+  },
+  "sanremo-capo-nero": {
+    "latitude": 43.7966,
+    "longitude": 7.73831
+  },
+  "sanremo-capo-pino": {
+    "latitude": 43.79928,
+    "longitude": 7.74128
+  },
+  "sanremo-villa-riserva": {
+    "latitude": 43.8006,
+    "longitude": 7.7427
+  },
+  "sanremo-pian-di-poma-tiro-a-volo": {
+    "latitude": 43.8026,
+    "longitude": 7.74502
+  },
+  "sanremo-villa-helios-clinica": {
+    "latitude": 43.8052,
+    "longitude": 7.74795
+  },
+  "sanremo-via-privata-al-sole": {
+    "latitude": 43.8064,
+    "longitude": 7.75016
+  },
+  "sanremo-via-monta-dei-guisci": {
+    "latitude": 43.808,
+    "longitude": 7.75299
+  },
+  "sanremo-hotel-napoleon": {
+    "latitude": 43.8086,
+    "longitude": 7.75472
+  },
+  "corso-matuzia-chiesa-san-rocco-(p)": {
+    "latitude": 43.8101,
+    "longitude": 7.75916
+  },
+  "corso-matuzia-supermercato-coop-(p)": {
+    "latitude": 43.811,
+    "longitude": 7.76101
+  },
+  "sanremo-corso-matuzia-foce": {
+    "latitude": 43.81118,
+    "longitude": 7.76263
+  },
+  "sanremo-corso-imperatrice-(p)": {
+    "latitude": 43.81267,
+    "longitude": 7.76739
+  },
+  "piazza-cesare-battisti-ex-stazione-fs": {
+    "latitude": 43.81436,
+    "longitude": 7.77264
+  },
+  "sanremo-via-roma-civico-46": {
+    "latitude": 43.8156,
+    "longitude": 7.77547
+  },
+  "sanremo-via-roma-angolo-civico-136": {
+    "latitude": 43.81695,
+    "longitude": 7.77824
+  },
+  "via-armea-bivio": {
+    "latitude": 43.82002,
+    "longitude": 7.83533
+  },
+  "via-armea-mercato-dei-fiori": {
+    "latitude": 43.82151,
+    "longitude": 7.83468
+  },
+  "via-armea-sidis": {
+    "latitude": 43.82327,
+    "longitude": 7.83333
+  },
+  "via-armea-garden": {
+    "latitude": 43.82471,
+    "longitude": 7.83121
+  },
+  "via-armea-amaie": {
+    "latitude": 43.8261,
+    "longitude": 7.82891
+  },
+  "via-frantoi-canai": {
+    "latitude": 43.82771,
+    "longitude": 7.82682
+  },
+  "cimitero-armea-chiesa": {
+    "latitude": 43.8307,
+    "longitude": 7.82378
+  },
+  "cimitero-armea-capolinea": {
+    "latitude": 43.8319,
+    "longitude": 7.82065
+  },
+  "sanremo-autostazione": {
+    "latitude": 43.8183,
+    "longitude": 7.7785
+  },
+  "sanremo-via-roma-angolo-via-gaudio": {
+    "latitude": 43.8168,
+    "longitude": 7.7778
+  },
+  "via-roma-banca-popolare-di-novara": {
+    "latitude": 43.8154,
+    "longitude": 7.77497
+  },
+  "sanremo-corso-imperatrice": {
+    "latitude": 43.81272,
+    "longitude": 7.76748
+  },
+  "sanremo-foce-corso-matuzia-(p)": {
+    "latitude": 43.81122,
+    "longitude": 7.76298
+  },
+  "sanremo-corso-matuzia-bar-eden-(p)": {
+    "latitude": 43.8108,
+    "longitude": 7.76051
+  },
+  "sanremo-corso-matuzia-via-padre-semeria": {
+    "latitude": 43.8097,
+    "longitude": 7.75755
+  },
+  "sanremo-villa-helios": {
+    "latitude": 43.8053,
+    "longitude": 7.74807
+  },
+  "ospedaletti-ristorante-bellavista": {
+    "latitude": 43.8023,
+    "longitude": 7.71395
+  },
+  "ospedaletti-residence-du-parc": {
+    "latitude": 43.8014,
+    "longitude": 7.70725
+  },
+  "corso-orazio-raimondo-zampillo-(p)": {
+    "latitude": 43.81838,
+    "longitude": 7.78057
+  },
+  "sanremo-corso-orazio-raimondo-morgana": {
+    "latitude": 43.81911,
+    "longitude": 7.78169
+  },
+  "sanremo-via-fiume": {
+    "latitude": 43.8207,
+    "longitude": 7.78284
+  },
+  "corso-cavallotti-don-orione-fs-(p)": {
+    "latitude": 43.82121,
+    "longitude": 7.78498
+  },
+  "sanremo-corso-cavallotti-tribunale-(p)": {
+    "latitude": 43.82162,
+    "longitude": 7.78795
+  },
+  "sanremo-corso-cavallotti-villa-nobel": {
+    "latitude": 43.82152,
+    "longitude": 7.79286
+  },
+  "corso-cavallotti-san-martino-chiesa-(p)": {
+    "latitude": 43.82204,
+    "longitude": 7.79684
+  },
+  "sanremo-corso-cavallotti-deposito-rt": {
+    "latitude": 43.82306,
+    "longitude": 7.79961
+  },
+  "sanremo-corso-mazzini-stadio": {
+    "latitude": 43.8234,
+    "longitude": 7.80195
+  },
+  "sanremo-corso-mazzini-via-primavera-(p)": {
+    "latitude": 43.82345,
+    "longitude": 7.80391
+  },
+  "sanremo-corso-mazzini-passo-poggio": {
+    "latitude": 43.82348,
+    "longitude": 7.80629
+  },
+  "sanremo-corso-mazzini-la-brezza": {
+    "latitude": 43.82322,
+    "longitude": 7.80881
+  },
+  "sanremo-corso-mazzini-park-hotel": {
+    "latitude": 43.82265,
+    "longitude": 7.81399
+  },
+  "sanremo-corso-mazzini-tre-ponti": {
+    "latitude": 43.82181,
+    "longitude": 7.81717
+  },
+  "sanremo-corso-mazzini-la-vesca": {
+    "latitude": 43.82061,
+    "longitude": 7.82026
+  },
+  "sanremo-corso-mazzini-hotel-montecarlo": {
+    "latitude": 43.81952,
+    "longitude": 7.82349
+  },
+  "sanremo-corso-mazzini-passo-guardia": {
+    "latitude": 43.81858,
+    "longitude": 7.82559
+  },
+  "sanremo-corso-mazzini-faro": {
+    "latitude": 43.81668,
+    "longitude": 7.831
+  },
+  "sanremo-bussana-bivio-armea-(rotonda)": {
+    "latitude": 43.81989,
+    "longitude": 7.83597
+  },
+  "sanremo-bussana-casa-cantoniera": {
+    "latitude": 43.82201,
+    "longitude": 7.83939
+  },
+  "sanremo-bussana-centro": {
+    "latitude": 43.824,
+    "longitude": 7.84007
+  },
+  "sanremo-bussana-villa-spinola": {
+    "latitude": 43.8268,
+    "longitude": 7.84177
+  },
+  "sanremo-bussana-fortezza": {
+    "latitude": 43.82914,
+    "longitude": 7.84566
+  },
+  "taggia-arma-hotel-diana": {
+    "latitude": 43.83167,
+    "longitude": 7.84811
+  },
+  "taggia-arma-chiesa-astra": {
+    "latitude": 43.83207,
+    "longitude": 7.85005
+  },
+  "taggia-arma-ex-stazione-fs": {
+    "latitude": 43.8326,
+    "longitude": 7.85396
+  },
+  "taggia-arma-via-oro": {
+    "latitude": 43.83358,
+    "longitude": 7.85513
+  },
+  "taggia-arma-bivio-rossat": {
+    "latitude": 43.83469,
+    "longitude": 7.85493
+  },
+  "taggia-arma-farmacia-del-torto": {
+    "latitude": 43.83687,
+    "longitude": 7.85422
+  },
+  "taggia-arma-leva-scuole-chiesa": {
+    "latitude": 43.84058,
+    "longitude": 7.85271
+  },
+  "taggia-distributore-mobil": {
+    "latitude": 43.842,
+    "longitude": 7.85254
+  },
+  "taggia-stazione-fs": {
+    "latitude": 43.8439,
+    "longitude": 7.8556
+  },
+  "taggia-municipio": {
+    "latitude": 43.84387,
+    "longitude": 7.85093
+  },
+  "taggia-scofferi-cambio": {
+    "latitude": 43.84648,
+    "longitude": 7.85207
+  },
+  "taggia-scofferi-case-popolari": {
+    "latitude": 43.84771,
+    "longitude": 7.85209
+  },
+  "taggia-cimitero": {
+    "latitude": 43.85147,
+    "longitude": 7.85303
+  },
+  "taggia-sempreviva": {
+    "latitude": 43.85488,
+    "longitude": 7.85331
+  },
+  "taggia-ex-carabinieri": {
+    "latitude": 43.85737,
+    "longitude": 7.85326
+  },
+  "taggia-la-capannuccia": {
+    "latitude": 43.85931,
+    "longitude": 7.85356
+  },
+  "taggia-piazza-eroi-taggesi": {
+    "latitude": 43.86092,
+    "longitude": 7.8535
+  },
+  "taggia-piazza-garibaldi": {
+    "latitude": 43.8623,
+    "longitude": 7.85317
+  },
+  "taggia-piazza-iv-novembre": {
+    "latitude": 43.864,
+    "longitude": 7.85366
+  },
+  "via-val-d-olivi-villa-del-sole": {
+    "latitude": 43.82353,
+    "longitude": 7.80019
+  },
+  "via-val-d-olivi-via-ginestre": {
+    "latitude": 43.82521,
+    "longitude": 7.80047
+  },
+  "via-val-d-olivi-ponte": {
+    "latitude": 43.82843,
+    "longitude": 7.80174
+  },
+  "via-val-d-olivi-banchette": {
+    "latitude": 43.82577,
+    "longitude": 7.80239
+  },
+  "via-val-d-olivi-da-pisano": {
+    "latitude": 43.826,
+    "longitude": 7.80696
+  },
+  "via-val-d-olivi-da-aicardi": {
+    "latitude": 43.82647,
+    "longitude": 7.807
+  },
+  "via-val-d-olivi-curva-pere": {
+    "latitude": 43.82723,
+    "longitude": 7.81055
+  },
+  "via-val-d-olivi-case-torino": {
+    "latitude": 43.82743,
+    "longitude": 7.81114
+  },
+  "via-val-d-olivi-civico-349": {
+    "latitude": 43.82847,
+    "longitude": 7.81005
+  },
+  "via-val-d-olivi-civico-371": {
+    "latitude": 43.82773,
+    "longitude": 7.81252
+  },
+  "via-val-d-olivi-salita-poggio": {
+    "latitude": 43.8279,
+    "longitude": 7.81493
+  },
+  "poggio-bivio-guardia": {
+    "latitude": 43.82841,
+    "longitude": 7.81483
+  },
+  "poggio-centro": {
+    "latitude": 43.83086,
+    "longitude": 7.81394
+  },
+  "poggio-ex-capolinea": {
+    "latitude": 43.83245,
+    "longitude": 7.81242
+  },
+  "poggio-bivio-casa-serena": {
+    "latitude": 43.834,
+    "longitude": 7.8109
+  },
+  "poggio-cantalupo": {
+    "latitude": 43.83719,
+    "longitude": 7.80876
+  },
+  "poggio-tropical-fauna": {
+    "latitude": 43.8403,
+    "longitude": 7.80672
+  },
+  "poggio-civico-303": {
+    "latitude": 43.84145,
+    "longitude": 7.80398
+  },
+  "poggio-vasche-acquedotto": {
+    "latitude": 43.84665,
+    "longitude": 7.80698
+  },
+  "ceriana-bontempo": {
+    "latitude": 43.85147,
+    "longitude": 7.80468
+  },
+  "ceriana-villa-petit-bois": {
+    "latitude": 43.85368,
+    "longitude": 7.8033
+  },
+  "ceriana-localita-gasi": {
+    "latitude": 43.85907,
+    "longitude": 7.80381
+  },
+  "ceriana-chiesa-santa-filomena": {
+    "latitude": 43.8644,
+    "longitude": 7.80157
+  },
+  "ceriana-santa-filomena": {
+    "latitude": 43.86781,
+    "longitude": 7.79828
+  },
+  "ceriana-loreto": {
+    "latitude": 43.8697,
+    "longitude": 7.79516
+  },
+  "ceriana-vecchia-fattoria": {
+    "latitude": 43.87114,
+    "longitude": 7.79262
+  },
+  "ceriana-ciana-1": {
+    "latitude": 43.87308,
+    "longitude": 7.79055
+  },
+  "ceriana-ciana-2": {
+    "latitude": 43.87472,
+    "longitude": 7.78786
+  },
+  "ceriana-giro-da-vi": {
+    "latitude": 43.87605,
+    "longitude": 7.78247
+  },
+  "ceriana-bivio-fontanella": {
+    "latitude": 43.8767,
+    "longitude": 7.77906
+  },
+  "ceriana-case-popolari": {
+    "latitude": 43.87865,
+    "longitude": 7.77662
+  },
+  "ceriana-poste": {
+    "latitude": 43.87952,
+    "longitude": 7.77434
+  },
+  "ceriana-galleria": {
+    "latitude": 43.88071,
+    "longitude": 7.77331
+  },
+  "ceriana-capolinea": {
+    "latitude": 43.8816,
+    "longitude": 7.77227
+  },
+  "ceriana-via-mora": {
+    "latitude": 43.88245,
+    "longitude": 7.77285
+  },
+  "ceriana-segheria": {
+    "latitude": 43.88642,
+    "longitude": 7.7691
+  },
+  "ceriana-san-bernardo": {
+    "latitude": 43.88793,
+    "longitude": 7.76391
+  },
+  "ceriana-salita-bestagno": {
+    "latitude": 43.88912,
+    "longitude": 7.76006
+  },
+  "ceriana-fontanella-di-bestagno": {
+    "latitude": 43.89029,
+    "longitude": 7.75543
+  },
+  "ceriana-passo-di-belando": {
+    "latitude": 43.89248,
+    "longitude": 7.75365
+  },
+  "ceriana-passo-di-parlei": {
+    "latitude": 43.89322,
+    "longitude": 7.75239
   },
   "madonna-della-villa": {
-    "latitude": 43.8945542,
-    "longitude": 7.7494336
+    "latitude": 43.89407,
+    "longitude": 7.75058
+  },
+  "madonna-della-villa-chiesa": {
+    "latitude": 43.89452,
+    "longitude": 7.74851
+  },
+  "baiardo-la-bricula": {
+    "latitude": 43.8965,
+    "longitude": 7.74656
+  },
+  "baiardo-localita-gordola": {
+    "latitude": 43.89711,
+    "longitude": 7.73909
+  },
+  "baiardo-ristorante-nerone": {
+    "latitude": 43.89912,
+    "longitude": 7.73362
+  },
+  "baiardo-passo-ghimbegna": {
+    "latitude": 43.90099,
+    "longitude": 7.72783
+  },
+  "baiardo-ristorante-bellavista": {
+    "latitude": 43.90297,
+    "longitude": 7.7256
+  },
+  "baiardo-fontanella": {
+    "latitude": 43.90347,
+    "longitude": 7.72104
+  },
+  "baiardo-capolinea": {
+    "latitude": 43.9034,
+    "longitude": 7.71702
+  },
+  "taggia-demolitore": {
+    "latitude": 43.86927,
+    "longitude": 7.8552
+  },
+  "taggia-villa-noiosa": {
+    "latitude": 43.87657,
+    "longitude": 7.85164
+  },
+  "taggia-passo-maberga": {
+    "latitude": 43.88024,
+    "longitude": 7.84697
+  },
+  "taggia-centrale-enel": {
+    "latitude": 43.88294,
+    "longitude": 7.84654
+  },
+  "badalucco-cave-san-giorgio": {
+    "latitude": 43.89086,
+    "longitude": 7.84262
+  },
+  "badalucco-meonso": {
+    "latitude": 43.89442,
+    "longitude": 7.84399
+  },
+  "badalucco-oxentina": {
+    "latitude": 43.8999,
+    "longitude": 7.84184
+  },
+  "badalucco-mecfer-pubblicita": {
+    "latitude": 43.90244,
+    "longitude": 7.84114
+  },
+  "badalucco-ponte-fraitusa": {
+    "latitude": 43.90556,
+    "longitude": 7.84165
+  },
+  "badalucco-ristorante-ca-mea": {
+    "latitude": 43.90676,
+    "longitude": 7.84506
+  },
+  "badalucco-da-simone": {
+    "latitude": 43.91093,
+    "longitude": 7.84463
+  },
+  "badalucco-oleificio": {
+    "latitude": 43.91382,
+    "longitude": 7.84476
+  },
+  "badalucco-pozzetto": {
+    "latitude": 43.91436,
+    "longitude": 7.84619
+  },
+  "badalucco-braglia": {
+    "latitude": 43.9149,
+    "longitude": 7.84782
+  },
+  "badalucco-centro": {
+    "latitude": 43.91576,
+    "longitude": 7.84778
+  },
+  "badalucco-hotel-rocca": {
+    "latitude": 43.91848,
+    "longitude": 7.84574
+  },
+  "badalucco-case-popolari": {
+    "latitude": 43.91991,
+    "longitude": 7.84489
+  },
+  "badalucco-ponte-localita-isola": {
+    "latitude": 43.92264,
+    "longitude": 7.84244
+  },
+  "badalucco-desteglio": {
+    "latitude": 43.92594,
+    "longitude": 7.84316
+  },
+  "montalto-bivio-strada-vecchia": {
+    "latitude": 43.92952,
+    "longitude": 7.84285
+  },
+  "montalto-bivio-carpasio": {
+    "latitude": 43.93116,
+    "longitude": 7.84242
+  },
+  "montalto-monumento-ai-caduti": {
+    "latitude": 43.92641,
+    "longitude": 7.84472
+  },
+  "montalto-bivio-glori": {
+    "latitude": 43.943,
+    "longitude": 7.83547
+  },
+  "vecchia-strada-per-glori": {
+    "latitude": 43.95135,
+    "longitude": 7.83365
+  },
+  "carpenosa-ponte": {
+    "latitude": 43.95613,
+    "longitude": 7.82808
+  },
+  "carpenosa-ex-ristorante-pineta": {
+    "latitude": 43.95886,
+    "longitude": 7.8243
+  },
+  "bivio-frazione-augelli": {
+    "latitude": 43.96306,
+    "longitude": 7.82092
+  },
+  "bivio-aigovo": {
+    "latitude": 43.96648,
+    "longitude": 7.81749
+  },
+  "agaggio-ufficio-postale": {
+    "latitude": 43.97018,
+    "longitude": 7.81632
+  },
+  "bivio-agaggio-superiore": {
+    "latitude": 43.97131,
+    "longitude": 7.81574
+  },
+  "mulino-luigio-bottega-lavanda": {
+    "latitude": 43.97448,
+    "longitude": 7.8095
+  },
+  "bivio-grattino": {
+    "latitude": 43.97468,
+    "longitude": 7.80402
+  },
+  "ferriera": {
+    "latitude": 43.98058,
+    "longitude": 7.79445
+  },
+  "bivio-rezzo-melosa": {
+    "latitude": 43.98772,
+    "longitude": 7.77695
+  },
+  "molini-di-triora-piazza-dei-carri": {
+    "latitude": 43.98926,
+    "longitude": 7.77568
+  },
+  "molini-di-triora-poste": {
+    "latitude": 43.99096,
+    "longitude": 7.77581
+  },
+  "molini-di-triora-bivio-corte": {
+    "latitude": 43.9994,
+    "longitude": 7.77014
+  },
+  "mulino-di-pio": {
+    "latitude": 44.00233,
+    "longitude": 7.76842
+  },
+  "triora-meccanico": {
+    "latitude": 43.99078,
+    "longitude": 7.76762
+  },
+  "triora-mane": {
+    "latitude": 43.99194,
+    "longitude": 7.76556
+  },
+  "triora-panificio": {
+    "latitude": 43.99329,
+    "longitude": 7.763
+  },
+  "triora-municipio": {
+    "latitude": 43.99392,
+    "longitude": 7.76182
+  },
+  "triora-capolinea": {
+    "latitude": 43.99307,
+    "longitude": 7.76534
+  },
+  "montalto-poste": {
+    "latitude": 43.9273,
+    "longitude": 7.84443
+  },
+  "montalto-trattoria-alpi": {
+    "latitude": 43.9282,
+    "longitude": 7.84341
+  },
+  "montalto-fontanella": {
+    "latitude": 43.9291,
+    "longitude": 7.84476
+  },
+  "montalto-civico-2": {
+    "latitude": 43.93748,
+    "longitude": 7.8513
+  },
+  "montalto-costa-rossa": {
+    "latitude": 43.9461,
+    "longitude": 7.85814
+  },
+  "bivio-arzene": {
+    "latitude": 43.95427,
+    "longitude": 7.86629
+  },
+  "girone-localita-poggia": {
+    "latitude": 43.96076,
+    "longitude": 7.869
+  },
+  "carpasio-istituto": {
+    "latitude": 43.95961,
+    "longitude": 7.86654
+  },
+  "carpasio-capolinea": {
+    "latitude": 43.95887,
+    "longitude": 7.86635
+  },
+  "riva-ligure-prati": {
+    "latitude": 43.83643,
+    "longitude": 7.86317
+  },
+  "riva-ligure-bivio-castellaro": {
+    "latitude": 43.8356,
+    "longitude": 7.86859
+  },
+  "castellaro-casa-valle": {
+    "latitude": 43.8438,
+    "longitude": 7.86246
+  },
+  "castellaro-da-gino": {
+    "latitude": 43.8494,
+    "longitude": 7.86248
+  },
+  "castellaro-giro-del-fico": {
+    "latitude": 43.8523,
+    "longitude": 7.86292
+  },
+  "castellaro-ca-de-berta": {
+    "latitude": 43.8536,
+    "longitude": 7.86327
+  },
+  "castellaro-bivio-strade-interpoderali": {
+    "latitude": 43.85769,
+    "longitude": 7.86861
+  },
+  "castellaro-ristorante-l-uliveto": {
+    "latitude": 43.8597,
+    "longitude": 7.86987
+  },
+  "castellaro-bivio-cimitero-castellaro": {
+    "latitude": 43.862,
+    "longitude": 7.86995
+  },
+  "castellaro-centro": {
+    "latitude": 43.8656,
+    "longitude": 7.86939
+  },
+  "castellaro-bivio-pompeiana": {
+    "latitude": 43.8673,
+    "longitude": 7.87085
+  },
+  "riva-ligure-scuole": {
+    "latitude": 43.8369,
+    "longitude": 7.87913
+  },
+  "riva-ligure-ex-passaggio-a-livello": {
+    "latitude": 43.8366,
+    "longitude": 7.87317
+  },
+  "riva-ligure-verruggio": {
+    "latitude": 43.8392,
+    "longitude": 7.8781
+  },
+  "riva-ligure-strada-provinciale-1": {
+    "latitude": 43.8405,
+    "longitude": 7.88006
+  },
+  "riva-ligure-condominio-alba": {
+    "latitude": 43.8418,
+    "longitude": 7.87942
+  },
+  "riva-ligure-eucaliptus": {
+    "latitude": 43.8427,
+    "longitude": 7.87865
+  },
+  "riva-ligure-dabbene": {
+    "latitude": 43.8419,
+    "longitude": 7.88066
+  },
+  "riva-ligure-strada-provinciale-3": {
+    "latitude": 43.8426,
+    "longitude": 7.88313
+  },
+  "pompeiana-da-u-pescettu": {
+    "latitude": 43.8474,
+    "longitude": 7.88404
+  },
+  "pompeiana-via-mazzini": {
+    "latitude": 43.849,
+    "longitude": 7.88463
+  },
+  "pompeiana-piazza-dante": {
+    "latitude": 43.8498,
+    "longitude": 7.88574
+  },
+  "pompeiana-piazza-verdi": {
+    "latitude": 43.8505,
+    "longitude": 7.88659
+  },
+  "pompeiana-piazza-san-rocco": {
+    "latitude": 43.8533,
+    "longitude": 7.88915
+  },
+  "pompeiana-capolinea": {
+    "latitude": 43.8546,
+    "longitude": 7.88851
+  },
+  "riva-ligure-banco-ambrosiano": {
+    "latitude": 43.8399,
+    "longitude": 7.88057
+  },
+  "riva-ligure-cimitero": {
+    "latitude": 43.84026,
+    "longitude": 7.8846
+  },
+  "santo-stefano-la-palma": {
+    "latitude": 43.8396,
+    "longitude": 7.89112
+  },
+  "santo-stefano-strada-provinciale-1": {
+    "latitude": 43.8401,
+    "longitude": 7.8991
+  },
+  "santo-stefano-strada-provinciale-2": {
+    "latitude": 43.8425,
+    "longitude": 7.89931
+  },
+  "santo-stefano-strada-provinciale-3": {
+    "latitude": 43.8445,
+    "longitude": 7.90002
+  },
+  "terzorio-madonnina": {
+    "latitude": 43.8508,
+    "longitude": 7.89915
+  },
+  "terzorio-capolinea": {
+    "latitude": 43.8533,
+    "longitude": 7.89874
+  },
+  "piazza-eroi-sanremesi-(p)": {
+    "latitude": 43.8178,
+    "longitude": 7.77441
+  },
+  "via-martiri-della-liberta-strada-rocca": {
+    "latitude": 43.82072,
+    "longitude": 7.77108
+  },
+  "via-martiri-della-liberta-strada-borgo": {
+    "latitude": 43.82152,
+    "longitude": 7.7693
+  },
+  "via-martiri-della-liberta-eurospin": {
+    "latitude": 43.82274,
+    "longitude": 7.76777
+  },
+  "via-galilei-bar-venezia": {
+    "latitude": 43.82461,
+    "longitude": 7.76428
+  },
+  "sanremo-madonna-della-costa-belvedere": {
+    "latitude": 43.82101,
+    "longitude": 7.77423
+  },
+  "via-borea-ricovero": {
+    "latitude": 43.82224,
+    "longitude": 7.77799
+  },
+  "via-borea-telecom": {
+    "latitude": 43.82263,
+    "longitude": 7.78026
+  },
+  "via-borea-bivio-via-pascoli": {
+    "latitude": 43.82408,
+    "longitude": 7.78031
+  },
+  "via-borea-ospedale": {
+    "latitude": 43.82252,
+    "longitude": 7.7794
+  },
+  "via-borea-martini": {
+    "latitude": 43.82374,
+    "longitude": 7.77741
+  },
+  "via-borea": {
+    "latitude": 43.82513,
+    "longitude": 7.7762
+  },
+  "via-borea-civico-106": {
+    "latitude": 43.82595,
+    "longitude": 7.7754
+  },
+  "via-borea-civico-110": {
+    "latitude": 43.82679,
+    "longitude": 7.77447
+  },
+  "via-borea-colletta": {
+    "latitude": 43.82802,
+    "longitude": 7.77446
+  },
+  "carr-san-pietro-enpa": {
+    "latitude": 43.82898,
+    "longitude": 7.77536
+  },
+  "carr-san-pietro-civico-112": {
+    "latitude": 43.83131,
+    "longitude": 7.77661
+  },
+  "carr-san-pietro-civico-113": {
+    "latitude": 43.83265,
+    "longitude": 7.77678
+  },
+  "carr-san-pietro-ponte-autostrada": {
+    "latitude": 43.83411,
+    "longitude": 7.77636
+  },
+  "carr-san-pietro-ponte": {
+    "latitude": 43.83571,
+    "longitude": 7.7766
+  },
+  "carr-san-pietro-civico-168": {
+    "latitude": 43.83456,
+    "longitude": 7.77835
+  },
+  "carr-san-pietro-bivio-olandesi": {
+    "latitude": 43.83454,
+    "longitude": 7.7796
+  },
+  "carr-san-pietro-civico-163": {
+    "latitude": 43.8369,
+    "longitude": 7.77749
+  },
+  "san-pietro-capolinea": {
+    "latitude": 43.83813,
+    "longitude": 7.77631
+  },
+  "via-borgo-tinasso-case-popolari": {
+    "latitude": 43.8261,
+    "longitude": 7.76307
+  },
+  "via-borgo-tinasso-deposito-edile": {
+    "latitude": 43.82708,
+    "longitude": 7.76146
+  },
+  "via-borgo-tinasso-vecchio-mulino": {
+    "latitude": 43.82815,
+    "longitude": 7.76038
+  },
+  "via-borgo-tinasso-civico-213": {
+    "latitude": 43.82891,
+    "longitude": 7.75877
+  },
+  "borgo-tinasso-capolinea": {
+    "latitude": 43.82969,
+    "longitude": 7.75678
+  },
+  "via-duca-d-aosta-passo-guardia": {
+    "latitude": 43.81873,
+    "longitude": 7.82533
+  },
+  "sanremo-via-padre-semeria-incrocio": {
+    "latitude": 43.80965,
+    "longitude": 7.75695
+  },
+  "via-padre-semeria-condominio-maristella": {
+    "latitude": 43.8096,
+    "longitude": 7.7557
+  },
+  "via-padre-semeria-condominio-pleiadi": {
+    "latitude": 43.80934,
+    "longitude": 7.75261
+  },
+  "sanremo-via-padre-semeria-telecom": {
+    "latitude": 43.80884,
+    "longitude": 7.7508
+  },
+  "sanremo-via-padre-semeria-rosati": {
+    "latitude": 43.80778,
+    "longitude": 7.74922
+  },
+  "via-padre-semeria-acque-minerali": {
+    "latitude": 43.80767,
+    "longitude": 7.74436
+  },
+  "sanremo-via-padre-semeria-vivaio": {
+    "latitude": 43.8058,
+    "longitude": 7.74135
+  },
+  "sanremo-via-padre-semeria-carmelo": {
+    "latitude": 43.8046,
+    "longitude": 7.7394
+  },
+  "sanremo-via-padre-semeria-galletto": {
+    "latitude": 43.80782,
+    "longitude": 7.73969
+  },
+  "sanremo-via-padre-semeria-civico-564": {
+    "latitude": 43.8102,
+    "longitude": 7.74038
+  },
+  "via-padre-semeria-bivio-salve-regina": {
+    "latitude": 43.81183,
+    "longitude": 7.74064
+  },
+  "via-padre-semeria-strada-coldirodi": {
+    "latitude": 43.8123,
+    "longitude": 7.73984
+  },
+  "sanremo-via-padre-semeria-civico-596": {
+    "latitude": 43.81,
+    "longitude": 7.73616
+  },
+  "via-padre-semeria-bivio-autostrada": {
+    "latitude": 43.8069,
+    "longitude": 7.73374
+  },
+  "via-padre-semeria-bivio-ospedaletti": {
+    "latitude": 43.80376,
+    "longitude": 7.73256
+  },
+  "sanremo-via-padre-semeria-ripetitore": {
+    "latitude": 43.80397,
+    "longitude": 7.73166
+  },
+  "via-padre-semeria-bivio-san-romolo": {
+    "latitude": 43.80528,
+    "longitude": 7.73046
+  },
+  "sanremo-madonna-pellegrina": {
+    "latitude": 43.8069,
+    "longitude": 7.73011
+  },
+  "sanremo-coldirodi-inizio-paese": {
+    "latitude": 43.80942,
+    "longitude": 7.73141
+  },
+  "sanremo-coldirodi-piazza-scuole": {
+    "latitude": 43.81109,
+    "longitude": 7.7321
+  },
+  "sanremo-coldirodi-capolinea": {
+    "latitude": 43.81178,
+    "longitude": 7.73173
+  },
+  "sanremo-via-legnano": {
+    "latitude": 43.811,
+    "longitude": 7.76013
+  },
+  "sanremo-via-solaro-villa-dei-pini": {
+    "latitude": 43.8115,
+    "longitude": 7.75826
+  },
+  "sanremo-via-solaro-via-alfano": {
+    "latitude": 43.81255,
+    "longitude": 7.75555
+  },
+  "sanremo-via-solaro-conad": {
+    "latitude": 43.81379,
+    "longitude": 7.75266
+  },
+  "sanremo-via-solaro-campo-ippico": {
+    "latitude": 43.8145,
+    "longitude": 7.75049
+  },
+  "sanremo-via-solaro-rapalin-tabaccaio": {
+    "latitude": 43.8153,
+    "longitude": 7.7496
+  },
+  "sanremo-via-solaro-rapalin-bacci": {
+    "latitude": 43.8146,
+    "longitude": 7.74688
+  },
+  "via-solaro-rapalin-salita-verdini": {
+    "latitude": 43.8148,
+    "longitude": 7.74327
+  },
+  "sanremo-via-solaro-rapalin-ferrari": {
+    "latitude": 43.8148,
+    "longitude": 7.74178
+  },
+  "sanremo-via-solaro-rapalin-iezzoni": {
+    "latitude": 43.8135,
+    "longitude": 7.74193
+  },
+  "sanremo-salve-regina-capolinea": {
+    "latitude": 43.8115,
+    "longitude": 7.74468
+  },
+  "sanremo-via-solaro-casa-bella": {
+    "latitude": 43.8148,
+    "longitude": 7.75322
+  },
+  "sanremo-via-solaro-bivio-hotel-nyala": {
+    "latitude": 43.8145,
+    "longitude": 7.75546
+  },
+  "strada-san-lorenzo-palazzo-cilli": {
+    "latitude": 43.8156,
+    "longitude": 7.75295
+  },
+  "sanremo-strada-san-lorenzo-vasi": {
+    "latitude": 43.8178,
+    "longitude": 7.75104
+  },
+  "strada-san-lorenzo-bivio-rio-masse": {
+    "latitude": 43.8187,
+    "longitude": 7.74903
+  },
+  "sanremo-strada-san-lorenzo-scuole": {
+    "latitude": 43.8187,
+    "longitude": 7.74679
+  },
+  "strada-san-lorenzo-salita-san-lorenzo": {
+    "latitude": 43.8189,
+    "longitude": 7.74567
+  },
+  "sanremo-strada-san-lorenzo-serra": {
+    "latitude": 43.8189,
+    "longitude": 7.74356
+  },
+  "sanremo-strada-san-lorenzo-civico-123": {
+    "latitude": 43.8186,
+    "longitude": 7.74021
+  },
+  "sanremo-strada-san-lorenzo-civico-160": {
+    "latitude": 43.8186,
+    "longitude": 7.73747
+  },
+  "sanremo-san-lorenzo-capolinea": {
+    "latitude": 43.81878,
+    "longitude": 7.73617
+  },
+  "sanremo-rio-masse-pezzana": {
+    "latitude": 43.8208,
+    "longitude": 7.74775
+  },
+  "sanremo-rio-masse-redigolo": {
+    "latitude": 43.8215,
+    "longitude": 7.74437
+  },
+  "sanremo-rio-masse-stradina": {
+    "latitude": 43.8216,
+    "longitude": 7.74213
+  },
+  "sanremo-rio-masse-capolinea": {
+    "latitude": 43.82205,
+    "longitude": 7.74028
+  },
+  "sanremo-via-giovanni-marsaglia": {
+    "latitude": 43.81989,
+    "longitude": 7.77794
+  },
+  "sanremo-via-zeffiro-massa-supermercato": {
+    "latitude": 43.82093,
+    "longitude": 7.77636
+  },
+  "sanremo-via-san-francesco-rotonda": {
+    "latitude": 43.82209,
+    "longitude": 7.77528
+  },
+  "via-borea-bivio-via-pascoli-2": {
+    "latitude": 43.82442,
+    "longitude": 7.78044
+  },
+  "via-pascoli-gatto-verde": {
+    "latitude": 43.82571,
+    "longitude": 7.77925
+  },
+  "via-pascoli-enel": {
+    "latitude": 43.82721,
+    "longitude": 7.77742
+  },
+  "via-pascoli-civico-145": {
+    "latitude": 43.82943,
+    "longitude": 7.77821
+  },
+  "via-pascoli-ponte": {
+    "latitude": 43.83158,
+    "longitude": 7.77884
+  },
+  "via-pascoli-civico-150": {
+    "latitude": 43.83012,
+    "longitude": 7.78061
+  },
+  "via-pascoli-civ-184b": {
+    "latitude": 43.82707,
+    "longitude": 7.78281
+  },
+  "via-pascoli-capolinea": {
+    "latitude": 43.82852,
+    "longitude": 7.78661
+  },
+  "case-olandesi": {
+    "latitude": 43.83191,
+    "longitude": 7.7825
+  },
+  "magnan-colabella": {
+    "latitude": 43.83052,
+    "longitude": 7.78454
+  },
+  "via-olandesi-civico-32": {
+    "latitude": 43.8309,
+    "longitude": 7.78699
+  },
+  "villetta-capolinea": {
+    "latitude": 43.83002,
+    "longitude": 7.79068
+  },
+  "villetta-chiesa": {
+    "latitude": 43.83101,
+    "longitude": 7.78993
+  },
+  "sanremo-via-duca-degli-abruzzi-italgas": {
+    "latitude": 43.82281,
+    "longitude": 7.78768
+  },
+  "sanremo-via-duca-degli-abruzzi-salita": {
+    "latitude": 43.82313,
+    "longitude": 7.79159
+  },
+  "via-duca-degli-abruzzi-civico-64": {
+    "latitude": 43.825,
+    "longitude": 7.7928
+  },
+  "sanremo-via-duca-degli-abruzzi-tabacchi": {
+    "latitude": 43.8263,
+    "longitude": 7.79265
+  },
+  "via-duca-degli-abruzzi-bivio-san-martino": {
+    "latitude": 43.82752,
+    "longitude": 7.79334
+  },
+  "via-duca-degli-abruzzi-palazzo-serena": {
+    "latitude": 43.8294,
+    "longitude": 7.79358
+  },
+  "sanremo-via-duca-degli-abruzzi-vasca": {
+    "latitude": 43.83101,
+    "longitude": 7.79333
+  },
+  "via-duca-degli-abruzzi-rocca-gitana": {
+    "latitude": 43.83247,
+    "longitude": 7.79445
+  },
+  "via-duca-degli-abruzzi-bivio-ville": {
+    "latitude": 43.8346,
+    "longitude": 7.79394
+  },
+  "sanremo-via-duca-degli-abruzzi-santina": {
+    "latitude": 43.8362,
+    "longitude": 7.79295
+  },
+  "sanremo-via-duca-degli-abruzzi-fracasso": {
+    "latitude": 43.83716,
+    "longitude": 7.79264
+  },
+  "via-duca-degli-abruzzi-mulattiera": {
+    "latitude": 43.84294,
+    "longitude": 7.78779
+  },
+  "sanremo-via-duca-degli-abruzzi-perallo": {
+    "latitude": 43.84671,
+    "longitude": 7.78566
+  },
+  "via-duca-degli-abruzzi-tre-ponti": {
+    "latitude": 43.85092,
+    "longitude": 7.78384
+  },
+  "sanremo-via-duca-degli-abruzzi-scuole": {
+    "latitude": 43.85197,
+    "longitude": 7.78212
+  },
+  "via-duca-degli-abruzzi-salita-cava": {
+    "latitude": 43.85288,
+    "longitude": 7.78008
+  },
+  "via-duca-degli-abruzzi-bivio-cava": {
+    "latitude": 43.85487,
+    "longitude": 7.77973
+  },
+  "sanremo-sant-antonio-salita-rodi": {
+    "latitude": 43.85369,
+    "longitude": 7.78148
+  },
+  "sanremo-sant-antonio-modeni": {
+    "latitude": 43.8538,
+    "longitude": 7.78488
+  },
+  "sanremo-sant-antonio-fontanetta": {
+    "latitude": 43.85336,
+    "longitude": 7.78756
+  },
+  "sanremo-sant-antonio-zona-murene": {
+    "latitude": 43.85121,
+    "longitude": 7.78854
+  },
+  "sanremo-sant-antonio-chiesa-capolinea": {
+    "latitude": 43.84916,
+    "longitude": 7.78912
+  },
+  "via-duca-degli-abruzzi-da-silvestro": {
+    "latitude": 43.8549,
+    "longitude": 7.78
+  },
+  "sanremo-san-donato-santuario": {
+    "latitude": 43.85339,
+    "longitude": 7.77909
+  },
+  "sanremo-san-donato-bailin": {
+    "latitude": 43.85112,
+    "longitude": 7.77962
+  },
+  "sanremo-san-donato-capolinea": {
+    "latitude": 43.84897,
+    "longitude": 7.78107
+  },
+  "piazza-san-bernardo": {
+    "latitude": 43.81686,
+    "longitude": 7.7711
+  },
+  "corso-inglesi-via-asquasciati": {
+    "latitude": 43.81662,
+    "longitude": 7.76822
+  },
+  "corso-inglesi-via-nuvoloni": {
+    "latitude": 43.81599,
+    "longitude": 7.76677
+  },
+  "arancia-amari": {
+    "latitude": 43.8154,
+    "longitude": 7.76539
+  },
+  "bivio-via-carducci": {
+    "latitude": 43.81566,
+    "longitude": 7.76453
+  },
+  "forestale": {
+    "latitude": 43.8162,
+    "longitude": 7.76438
+  },
+  "via-gabriele-d-annunzio-tabacchino": {
+    "latitude": 43.81546,
+    "longitude": 7.76253
+  },
+  "via-gabriele-d-annunzio-case-popolari": {
+    "latitude": 43.8167,
+    "longitude": 7.7611
+  },
+  "via-gabriele-d-annunzio-civico-53": {
+    "latitude": 43.81939,
+    "longitude": 7.75837
+  },
+  "bivio-villa": {
+    "latitude": 43.82173,
+    "longitude": 7.75586
+  },
+  "sartore": {
+    "latitude": 43.8208,
+    "longitude": 7.7582
+  },
+  "agraria": {
+    "latitude": 43.82041,
+    "longitude": 7.76069
+  },
+  "bellavista": {
+    "latitude": 43.82263,
+    "longitude": 7.75751
+  },
+  "via-gabriele-d-annunzio-civico-143": {
+    "latitude": 43.82466,
+    "longitude": 7.75424
+  },
+  "via-gabriele-d-annunzio-civico-232": {
+    "latitude": 43.82568,
+    "longitude": 7.75199
+  },
+  "grossi": {
+    "latitude": 43.82577,
+    "longitude": 7.75049
+  },
+  "via-gabriele-d-annunzio-civico-270": {
+    "latitude": 43.82659,
+    "longitude": 7.74913
+  },
+  "san-bartolomeo-bivio-gozo": {
+    "latitude": 43.82883,
+    "longitude": 7.74783
+  },
+  "bivio-gozo-superiore": {
+    "latitude": 43.82946,
+    "longitude": 7.74615
+  },
+  "strada-gozo-inferiore-civico-16": {
+    "latitude": 43.83026,
+    "longitude": 7.7427
+  },
+  "gozo-inferiore-capolinea": {
+    "latitude": 43.83025,
+    "longitude": 7.74057
+  },
+  "fabbro": {
+    "latitude": 43.83053,
+    "longitude": 7.74784
+  },
+  "isola-vento": {
+    "latitude": 43.83284,
+    "longitude": 7.74454
+  },
+  "isola-fico": {
+    "latitude": 43.8361,
+    "longitude": 7.74337
+  },
+  "isola-bombole": {
+    "latitude": 43.83886,
+    "longitude": 7.74187
+  },
+  "isola-ex-capolinea": {
+    "latitude": 43.8405,
+    "longitude": 7.74037
+  },
+  "via-ludovico-ariosto-ponte-autostrada": {
+    "latitude": 43.83888,
+    "longitude": 7.74709
+  },
+  "isola-villetta-civico-123": {
+    "latitude": 43.83863,
+    "longitude": 7.75085
+  },
+  "fontana": {
+    "latitude": 43.83704,
+    "longitude": 7.75391
+  },
+  "bivio-tinasso": {
+    "latitude": 43.8398,
+    "longitude": 7.74406
+  },
+  "sanremo-via-marsaglia-galleria": {
+    "latitude": 43.82098,
+    "longitude": 7.77419
+  },
+  "sanremo-via-marsaglia-don-orione": {
+    "latitude": 43.8205,
+    "longitude": 7.77455
+  },
+  "sanremo-madonna-della-costa": {
+    "latitude": 43.82057,
+    "longitude": 7.77422
+  },
+  "sanremo-via-marsaglia-civico-21": {
+    "latitude": 43.82538,
+    "longitude": 7.77007
+  },
+  "sanremo-via-marsaglia-pizzeria-fonzie": {
+    "latitude": 43.82671,
+    "longitude": 7.76817
+  },
+  "sanremo-via-marsaglia-civico-126": {
+    "latitude": 43.82763,
+    "longitude": 7.76721
+  },
+  "bivio-san-giovanni": {
+    "latitude": 43.82882,
+    "longitude": 7.76716
+  },
+  "bivio-erchi-civico-155": {
+    "latitude": 43.82904,
+    "longitude": 7.76583
+  },
+  "strada-golf": {
+    "latitude": 43.82961,
+    "longitude": 7.76392
+  },
+  "via-marsaglia-civico-194": {
+    "latitude": 43.83061,
+    "longitude": 7.7624
+  },
+  "via-marsaglia-civico-176": {
+    "latitude": 43.83133,
+    "longitude": 7.76249
+  },
+  "san-giacomo-centro": {
+    "latitude": 43.83433,
+    "longitude": 7.7597
+  },
+  "san-giacomo-bivio-san-bartolomeo": {
+    "latitude": 43.8351,
+    "longitude": 7.75856
+  },
+  "bivio-suseneo": {
+    "latitude": 43.83737,
+    "longitude": 7.7561
+  },
+  "villa-sopra-san-giacomo": {
+    "latitude": 43.84042,
+    "longitude": 7.74796
+  },
+  "via-marsaglia-pilone-funivia": {
+    "latitude": 43.8418,
+    "longitude": 7.74507
+  },
+  "via-marsaglia-civico-333": {
+    "latitude": 43.842,
+    "longitude": 7.74444
+  },
+  "via-marsaglia-civico-341-tornante": {
+    "latitude": 43.84241,
+    "longitude": 7.74291
+  },
+  "bivio-san-michele": {
+    "latitude": 43.842,
+    "longitude": 7.74714
+  },
+  "via-marsaglia-civico-348": {
+    "latitude": 43.84298,
+    "longitude": 7.74537
+  },
+  "via-marsaglia-civico-358": {
+    "latitude": 43.84344,
+    "longitude": 7.7437
+  },
+  "via-marsaglia-civico-364": {
+    "latitude": 43.84498,
+    "longitude": 7.74034
+  },
+  "pian-della-castagna": {
+    "latitude": 43.84608,
+    "longitude": 7.74271
+  },
+  "bivio-borello": {
+    "latitude": 43.8526,
+    "longitude": 7.72742
+  },
+  "pensilina-san-romolo": {
+    "latitude": 43.85278,
+    "longitude": 7.72522
+  },
+  "via-marsaglia-civico-394": {
+    "latitude": 43.85319,
+    "longitude": 7.72344
+  },
+  "bevino": {
+    "latitude": 43.85106,
+    "longitude": 7.72055
+  },
+  "ca-manin": {
+    "latitude": 43.8536,
+    "longitude": 7.72205
+  },
+  "bivio-perinaldo": {
+    "latitude": 43.85536,
+    "longitude": 7.72494
+  },
+  "bivio-baiardo": {
+    "latitude": 43.85616,
+    "longitude": 7.72665
+  },
+  "san-romolo-capolinea": {
+    "latitude": 43.858,
+    "longitude": 7.72654
+  },
+  "sanremo-via-san-francesco-ponte-foibe": {
+    "latitude": 43.82406,
+    "longitude": 7.77481
+  },
+  "via-san-francesco-florovivaistica": {
+    "latitude": 43.82625,
+    "longitude": 7.77249
+  },
+  "via-san-francesco-strada-baragallo": {
+    "latitude": 43.82693,
+    "longitude": 7.77167
+  },
+  "sanremo-strada-san-giovanni-civico-56": {
+    "latitude": 43.82908,
+    "longitude": 7.76713
+  },
+  "sanremo-strada-san-giovanni-civico-74": {
+    "latitude": 43.83037,
+    "longitude": 7.76636
+  },
+  "sanremo-strada-san-giovanni-civico-142": {
+    "latitude": 43.8318,
+    "longitude": 7.7648
+  },
+  "strada-san-giovanni-ponte-autostrada": {
+    "latitude": 43.83613,
+    "longitude": 7.76342
+  },
+  "sanremo-strada-san-giovanni-civico-176": {
+    "latitude": 43.83786,
+    "longitude": 7.76365
+  },
+  "sanremo-strada-san-giovanni-chiesa": {
+    "latitude": 43.83838,
+    "longitude": 7.76245
+  },
+  "sanremo-strada-san-giovanni-civico-183": {
+    "latitude": 43.83969,
+    "longitude": 7.76169
+  },
+  "san-giovanni-picchetta-capolinea": {
+    "latitude": 43.8419,
+    "longitude": 7.76377
+  },
+  "sanremo-strada-san-giovanni-civico-152": {
+    "latitude": 43.83525,
+    "longitude": 7.76294
+  },
+  "ospedale-capolinea": {
+    "latitude": 43.82374,
+    "longitude": 7.77776
+  },
+  "via-marsaglia-civico-316": {
+    "latitude": 43.841,
+    "longitude": 7.74646
+  },
+  "via-marsaglia-civico-326": {
+    "latitude": 43.8419,
+    "longitude": 7.74482
+  },
+  "via-marsaglia-civico-393": {
+    "latitude": 43.85251,
+    "longitude": 7.72604
+  },
+  "via-marsaglia-civico-390": {
+    "latitude": 43.8525,
+    "longitude": 7.72595
+  },
+  "sanremo-via-solaro-civico-73": {
+    "latitude": 43.8132,
+    "longitude": 7.75412
+  },
+  "sanremo-strada-san-lorenzo-civico-140": {
+    "latitude": 43.8186,
+    "longitude": 7.73884
+  },
+  "sanremo-via-padre-semeria-civico-606": {
+    "latitude": 43.80622,
+    "longitude": 7.7324
+  },
+  "sanremo-coldirodi-cimitero": {
+    "latitude": 43.80817,
+    "longitude": 7.73064
+  },
+  "via-duca-degli-abruzzi-civico-162": {
+    "latitude": 43.85254,
+    "longitude": 7.78113
+  },
+  "sanremo-sant-antonio-civico-65": {
+    "latitude": 43.85011,
+    "longitude": 7.78862
+  },
+  "ceriana-incrocio-strada-monte-colma": {
+    "latitude": 43.8566,
+    "longitude": 7.80398
+  },
+  "via-pascoli-ex-capolinea": {
+    "latitude": 43.82549,
+    "longitude": 7.78458
+  },
+  "via-pascoli-civ-277": {
+    "latitude": 43.82752,
+    "longitude": 7.7852
+  },
+  "taggia-piazza-iv-novembre-capolinea": {
+    "latitude": 43.8636,
+    "longitude": 7.85275
+  },
+  "taggia-arma-minigolf": {
+    "latitude": 43.83844,
+    "longitude": 7.85368
+  },
+  "sanremo-bussana-supermercato-gs": {
+    "latitude": 43.82082,
+    "longitude": 7.8374
+  },
+  "sanremo-corso-mazzini-via-primavera": {
+    "latitude": 43.82348,
+    "longitude": 7.80412
+  },
+  "sanremo-corso-mazzini-stadio-(p)": {
+    "latitude": 43.82337,
+    "longitude": 7.80173
+  },
+  "sanremo-corso-cavallotti-ex-liceo-(p)": {
+    "latitude": 43.82236,
+    "longitude": 7.79813
+  },
+  "sanremo-corso-cavallotti-san-martino": {
+    "latitude": 43.82189,
+    "longitude": 7.79474
+  },
+  "sanremo-corso-cavallotti-via-norero-(p)": {
+    "latitude": 43.82146,
+    "longitude": 7.79113
+  },
+  "taggia-bar-900": {
+    "latitude": 43.8603,
+    "longitude": 7.85381
+  },
+  "castellaro-poggio-castellaro": {
+    "latitude": 43.85771,
+    "longitude": 7.86867
+  },
+  "via-dante-alighieri-bivio-ospedale": {
+    "latitude": 43.82403,
+    "longitude": 7.77554
+  },
+  "sanremo-corso-inglesi-via-nuvoloni": {
+    "latitude": 43.81592,
+    "longitude": 7.76672
+  },
+  "sanremo-corso-inglesi-via-asquasciati": {
+    "latitude": 43.8166,
+    "longitude": 7.76814
+  },
+  "sanremo-piazza-san-bernardo": {
+    "latitude": 43.81679,
+    "longitude": 7.77101
+  },
+  "sanremo-strada-san-lorenzo-civico-47": {
+    "latitude": 43.8183,
+    "longitude": 7.75004
+  },
+  "sanremo-piazza-del-borgo": {
+    "latitude": 43.82548,
+    "longitude": 7.76244
+  },
+  "via-galilei-ex-fornace": {
+    "latitude": 43.82441,
+    "longitude": 7.7653
+  },
+  "via-galilei-palazzo-stilo": {
+    "latitude": 43.82407,
+    "longitude": 7.7667
+  },
+  "via-galilei-palazzo-prora": {
+    "latitude": 43.82369,
+    "longitude": 7.76773
+  },
+  "via-galilei-palazzo-alpe": {
+    "latitude": 43.82284,
+    "longitude": 7.76917
+  },
+  "via-galilei-444---scalinata": {
+    "latitude": 43.8224,
+    "longitude": 7.76976
+  },
+  "sanremo-via-dante-alighieri-acquedotto": {
+    "latitude": 43.823221,
+    "longitude": 7.772589
+  },
+  "sanremo-via-dante-alighieri-officina-nu": {
+    "latitude": 43.82495,
+    "longitude": 7.771836
+  },
+  "sanremo-via-dante-alighieri-baragallo": {
+    "latitude": 43.8266,
+    "longitude": 7.77095
+  },
+  "via-dante-alighieri-finanza": {
+    "latitude": 43.82775,
+    "longitude": 7.77147
+  },
+  "via-dante-alighieri-farmaceutica": {
+    "latitude": 43.82555,
+    "longitude": 7.77424
+  },
+  "via-zeffiro-massa-villa-vigo": {
+    "latitude": 43.82222,
+    "longitude": 7.77661
+  },
+  "sanremo-via-san-francesco-fabbro": {
+    "latitude": 43.82146,
+    "longitude": 7.77553
+  },
+  "sanremo-sottopasso-corso-francia": {
+    "latitude": 43.81992,
+    "longitude": 7.77723
+  },
+  "sanremo-via-san-francesco-civ-29": {
+    "latitude": 43.81901,
+    "longitude": 7.77702
+  },
+  "sanremo-corso-inglesi-corallo": {
+    "latitude": 43.81233,
+    "longitude": 7.7605
+  },
+  "sanremo-corso-inglesi-via-serenella": {
+    "latitude": 43.81407,
+    "longitude": 7.75893
+  },
+  "sanremo-corso-inglesi-carabinieri": {
+    "latitude": 43.8152,
+    "longitude": 7.75855
+  },
+  "sanremo-corso-inglesi-civico-491": {
+    "latitude": 43.81668,
+    "longitude": 7.75694
+  },
+  "corso-inglesi-stazione-sperimentale": {
+    "latitude": 43.81645,
+    "longitude": 7.75894
+  },
+  "sanremo-corso-inglesi-villa-ufficiali": {
+    "latitude": 43.81466,
+    "longitude": 7.76122
+  },
+  "sanremo-corso-inglesi-via-hope": {
+    "latitude": 43.81383,
+    "longitude": 7.76407
+  },
+  "corso-inglesi-via-hope": {
+    "latitude": 43.81378,
+    "longitude": 7.76399
+  },
+  "corso-inglesi-villa-ufficiali": {
+    "latitude": 43.81461,
+    "longitude": 7.76133
+  },
+  "corso-inglesi-civico-491": {
+    "latitude": 43.81659,
+    "longitude": 7.75696
+  },
+  "corso-inglesi-carabinieri": {
+    "latitude": 43.81514,
+    "longitude": 7.75861
+  },
+  "corso-inglesi-via-serenella": {
+    "latitude": 43.814,
+    "longitude": 7.75895
+  },
+  "corso-inglesi-corallo": {
+    "latitude": 43.81238,
+    "longitude": 7.76047
+  },
+  "sanremo-via-de-amicis-civico-26": {
+    "latitude": 43.8191,
+    "longitude": 7.76838
+  },
+  "sanremo-via-de-amicis-civico-58": {
+    "latitude": 43.8196,
+    "longitude": 7.76766
+  },
+  "via-de-amicis": {
+    "latitude": 43.81907,
+    "longitude": 7.7684
+  },
+  "sanremo-strada-san-bartolomeo-civico-41": {
+    "latitude": 43.81847,
+    "longitude": 7.76656
+  },
+  "sanremo-via-capinera-civico-20": {
+    "latitude": 43.81757,
+    "longitude": 7.769
+  },
+  "sanremo-via-capinera-civico-16": {
+    "latitude": 43.81821,
+    "longitude": 7.76835
+  },
+  "cimitero-armea-entrata": {
+    "latitude": 43.8307,
+    "longitude": 7.82395
+  },
+  "cimitero-armea-entrata-nord": {
+    "latitude": 43.83217,
+    "longitude": 7.82156
+  },
+  "valle-armea-savio": {
+    "latitude": 43.8362,
+    "longitude": 7.81959
+  },
+  "strada-carceri-magazzini-borea": {
+    "latitude": 43.83694,
+    "longitude": 7.82569
+  },
+  "carceri": {
+    "latitude": 43.83877,
+    "longitude": 7.827
+  },
+  "via-fonti-fabbro": {
+    "latitude": 43.84034,
+    "longitude": 7.82902
+  },
+  "via-fonti-ponte": {
+    "latitude": 43.83633,
+    "longitude": 7.834
+  },
+  "bivio-bussana-vecchia": {
+    "latitude": 43.82978,
+    "longitude": 7.83332
+  },
+  "villa-di-pietra": {
+    "latitude": 43.82781,
+    "longitude": 7.83457
+  },
+  "bussana-angolo-via-torino": {
+    "latitude": 43.82536,
+    "longitude": 7.83665
+  },
+  "bussana-angolo-via-lavatoio": {
+    "latitude": 43.82487,
+    "longitude": 7.83755
+  },
+  "bussana-giardini": {
+    "latitude": 43.82377,
+    "longitude": 7.83815
+  },
+  "bussana-civico-23": {
+    "latitude": 43.82247,
+    "longitude": 7.83884
+  },
+  "poggio-bivio-cimitero": {
+    "latitude": 43.83363,
+    "longitude": 7.81043
+  },
+  "poggio-casa-serena": {
+    "latitude": 43.83378,
+    "longitude": 7.80948
+  },
+  "via-duca-d-aosta-civ-211": {
+    "latitude": 43.82781,
+    "longitude": 7.81767
+  },
+  "via-duca-d-aosta-civ-206": {
+    "latitude": 43.82478,
+    "longitude": 7.82083
+  },
+  "via-duca-d-aosta-vasca": {
+    "latitude": 43.82381,
+    "longitude": 7.82404
+  },
+  "via-duca-d-aosta-madonnina": {
+    "latitude": 43.82228,
+    "longitude": 7.82604
+  },
+  "via-duca-d-aosta-guardia": {
+    "latitude": 43.82038,
+    "longitude": 7.83033
+  },
+  "via-duca-d-aosta-civico-63": {
+    "latitude": 43.81889,
+    "longitude": 7.8302
+  },
+  "via-duca-d-aosta-civico-50": {
+    "latitude": 43.81889,
+    "longitude": 7.83207
+  },
+  "via-duca-d-aosta-civ-32": {
+    "latitude": 43.81872,
+    "longitude": 7.82802
+  },
+  "via-duca-d-aosta-tornante": {
+    "latitude": 43.8207,
+    "longitude": 7.8237
+  },
+  "via-duca-d-aosta-salita": {
+    "latitude": 43.81879,
+    "longitude": 7.82788
+  },
+  "via-duca-d-aosta-civico-52": {
+    "latitude": 43.8189,
+    "longitude": 7.83202
+  },
+  "via-duca-d-aosta-civico-206": {
+    "latitude": 43.82477,
+    "longitude": 7.82088
+  },
+  "via-duca-d-aosta": {
+    "latitude": 43.82781,
+    "longitude": 7.81769
+  },
+  "sanremo-via-goethe-usl": {
+    "latitude": 43.822,
+    "longitude": 7.78304
+  },
+  "sanremo-via-goethe-via-moduponte": {
+    "latitude": 43.8245,
+    "longitude": 7.78224
+  },
+  "sanremo-via-goethe-civico-136": {
+    "latitude": 43.8236,
+    "longitude": 7.78363
+  },
+  "sanremo-via-goethe-comune": {
+    "latitude": 43.823,
+    "longitude": 7.78575
+  },
+  "sanremo-via-goethe-villa-speranza": {
+    "latitude": 43.8235,
+    "longitude": 7.78686
+  },
+  "sanremo-via-repubblica-civico-279": {
+    "latitude": 43.82754,
+    "longitude": 7.79409
+  },
+  "sanremo-via-repubblica-case-popolari": {
+    "latitude": 43.82759,
+    "longitude": 7.79502
+  },
+  "sanremo-bivio-via-lamarmora": {
+    "latitude": 43.82574,
+    "longitude": 7.79493
+  },
+  "sanremo-via-repubblica-ufficio-poste": {
+    "latitude": 43.82376,
+    "longitude": 7.79489
+  },
+  "sanremo-condominio-la-palma": {
+    "latitude": 43.8239,
+    "longitude": 7.78584
+  },
+  "condominio-collina-fiorita-capolinea": {
+    "latitude": 43.82425,
+    "longitude": 7.78559
+  },
+  "ospedaletti-capolinea": {
+    "latitude": 43.8004,
+    "longitude": 7.71933
+  },
+  "ospedaletti-ospedaletti-farmacia": {
+    "latitude": 43.801,
+    "longitude": 7.7218
+  },
+  "ospedaletti-strada-noci-case-popolari": {
+    "latitude": 43.8064,
+    "longitude": 7.71709
+  },
+  "ospedaletti-corso-marconi-civico-74": {
+    "latitude": 43.8054,
+    "longitude": 7.71935
+  },
+  "ospedaletti-corso-garibaldi-inizio": {
+    "latitude": 43.8039,
+    "longitude": 7.72087
+  },
+  "ospedaletti-corso-garibaldi-civico-c4": {
+    "latitude": 43.8032,
+    "longitude": 7.72375
+  },
+  "ospedaletti-condominio-bouganville": {
+    "latitude": 43.8043,
+    "longitude": 7.72273
+  },
+  "ospedaletti-via-dei-pepi-ponte": {
+    "latitude": 43.8031,
+    "longitude": 7.72101
+  },
+  "residenza-la-pepiniere-civico-11": {
+    "latitude": 43.8025,
+    "longitude": 7.72289
+  },
+  "ospedaletti-via-dei-pepi-civico-48": {
+    "latitude": 43.8011,
+    "longitude": 7.72591
+  },
+  "ospedaletti-villa-ricard-civico-14": {
+    "latitude": 43.8006,
+    "longitude": 7.72616
+  },
+  "ospedaletti-via-cavour-discesa-agavi": {
+    "latitude": 43.8008,
+    "longitude": 7.72492
+  },
+  "ospedaletti-via-xx-settembre-civico-137": {
+    "latitude": 43.8015,
+    "longitude": 7.71235
+  },
+  "ospedaletti-pontino": {
+    "latitude": 43.8017,
+    "longitude": 7.70899
+  },
+  "ospedaletti-condominio-solenzara-1": {
+    "latitude": 43.8026,
+    "longitude": 7.7081
+  },
+  "ospedaletti-condominio-solenzara-2": {
+    "latitude": 43.8023,
+    "longitude": 7.70723
+  },
+  "ospedaletti-incrocio-strada-termini": {
+    "latitude": 43.8038,
+    "longitude": 7.70484
+  },
+  "ospedaletti-bivio-costa-dei-pini": {
+    "latitude": 43.8039,
+    "longitude": 7.70844
+  },
+  "ospedaletti-strada-termini-civico-44": {
+    "latitude": 43.8039,
+    "longitude": 7.71279
+  },
+  "ospedaletti-salita-mimose": {
+    "latitude": 43.8046,
+    "longitude": 7.717
+  },
+  "ospedaletti-via-xx-settembre-civico-95": {
+    "latitude": 43.8014,
+    "longitude": 7.71459
+  },
+  "ospedaletti-via-xx-settembre-comune": {
+    "latitude": 43.8006,
+    "longitude": 7.71759
+  },
+  "strada-san-bartolomeo-civico-38": {
+    "latitude": 43.81768,
+    "longitude": 7.76756
+  },
+  "via-duca-d-aosta-civico-20": {
+    "latitude": 43.82018,
+    "longitude": 7.82613
+  },
+  "via-pietro-agosti-civico-20": {
+    "latitude": 43.81932,
+    "longitude": 7.77211
+  },
+  "via-pitro-agosti-civico-110": {
+    "latitude": 43.82027,
+    "longitude": 7.77098
+  },
+  "via-pietro-agosti-incrocio-via-ramelli": {
+    "latitude": 43.8233,
+    "longitude": 7.76516
+  },
+  "via-pietro-agosti-incrocio-borgo": {
+    "latitude": 43.824922,
+    "longitude": 7.762939
+  },
+  "corso-inglesi-polo-nord": {
+    "latitude": 43.818467,
+    "longitude": 7.770099
+  },
+  "corso-inglesi-civico-197": {
+    "latitude": 43.81798,
+    "longitude": 7.77176
+  },
+  "via-caduti-del-lavoro": {
+    "latitude": 43.818137,
+    "longitude": 7.772044
+  },
+  "piazza-eroi-sanremesi-torre-saracena": {
+    "latitude": 43.81826,
+    "longitude": 7.7733
+  },
+  "via-gallilei-civico-285": {
+    "latitude": 43.82437,
+    "longitude": 7.76283
+  },
+  "via-gallilei-civico-231": {
+    "latitude": 43.82348,
+    "longitude": 7.76363
+  },
+  "via-gallilei-fronte-distributore-ip": {
+    "latitude": 43.82194,
+    "longitude": 7.76614
+  },
+  "via-gallilei-civico-39": {
+    "latitude": 43.81889,
+    "longitude": 7.76951
+  },
+  "via-pietro-agosti-civico-202": {
+    "latitude": 43.8212,
+    "longitude": 7.76814
+  },
+  "via-gallilei-502": {
+    "latitude": 43.821798,
+    "longitude": 7.770866
+  },
+  "via-gallilei-705-scalinata": {
+    "latitude": 43.82114,
+    "longitude": 7.77258
+  },
+  "imperia-argine-dx-civico-449": {
+    "latitude": 43.902631,
+    "longitude": 8.025826
+  },
+  "imperia-villaggio-verde": {
+    "latitude": 43.904869,
+    "longitude": 8.024898
+  },
+  "imperia-garage-gattai": {
+    "latitude": 43.907468,
+    "longitude": 8.024646
+  },
+  "santo-stefano-ex-trattoria-della-rosa": {
+    "latitude": 43.83858,
+    "longitude": 7.89658
+  },
+  "santo-stefano-lucciola": {
+    "latitude": 43.83829,
+    "longitude": 7.90754
+  },
+  "cipressa-aregai": {
+    "latitude": 43.84285,
+    "longitude": 7.91543
+  },
+  "cipressa-ronchi": {
+    "latitude": 43.8452,
+    "longitude": 7.92613
+  },
+  "cipressa-casa-cantoniera": {
+    "latitude": 43.8466,
+    "longitude": 7.94141
+  },
+  "costarainera-passo-piani": {
+    "latitude": 43.8478,
+    "longitude": 7.94798
+  },
+  "costarainera-ospedale": {
+    "latitude": 43.84879,
+    "longitude": 7.95125
+  },
+  "san-lorenzo-al-mare-san-lorenzo-centro": {
+    "latitude": 43.8536,
+    "longitude": 7.9638
+  },
+  "san-lorenzo-bivio-civezza": {
+    "latitude": 43.85816,
+    "longitude": 7.96738
+  },
+  "san-lorenzo-ponticelli": {
+    "latitude": 43.86117,
+    "longitude": 7.9705
+  },
+  "imperia-barbarossa": {
+    "latitude": 43.8647,
+    "longitude": 7.98501
+  },
+  "imperia-bivio-poggi": {
+    "latitude": 43.8682,
+    "longitude": 7.99865
+  },
+  "imperia-2": {
+    "latitude": 43.869111,
+    "longitude": 8.000487
+  },
+  "imperia-prino-bivio-piani": {
+    "latitude": 43.87071,
+    "longitude": 8.003524
+  },
+  "imperia-via-nizza-universita": {
+    "latitude": 43.872831,
+    "longitude": 8.01031
+  },
+  "imperia-corso-garibaldi-ex-tesoro": {
+    "latitude": 43.872431,
+    "longitude": 8.013719
+  },
+  "imperia-corso-garibaldi-via-boine": {
+    "latitude": 43.873732,
+    "longitude": 8.017095
+  },
+  "imperia-corso-garibaldi-via-pirinoli": {
+    "latitude": 43.87559,
+    "longitude": 8.01747
+  },
+  "imperia-porto-maurizio": {
+    "latitude": 43.878285,
+    "longitude": 8.016057
+  },
+  "imperia-porto-maurizio-stazione-fs": {
+    "latitude": 43.880911,
+    "longitude": 8.019276
+  },
+  "imperia-due-leoni": {
+    "latitude": 43.882831,
+    "longitude": 8.023675
+  },
+  "imperia-municipio": {
+    "latitude": 43.88525,
+    "longitude": 8.0278
+  },
+  "imperia-catasto": {
+    "latitude": 43.887,
+    "longitude": 8.03039
+  },
+  "imperia-via-matteotti-fiat": {
+    "latitude": 43.889411,
+    "longitude": 8.033207
+  },
+  "imperia-viale-matteotti-banca": {
+    "latitude": 43.8896,
+    "longitude": 8.0334
+  },
+  "imperia-oviesse": {
+    "latitude": 43.8903,
+    "longitude": 8.03639
+  },
+  "andora-centro": {
+    "latitude": 43.95043,
+    "longitude": 8.14727
+  },
+  "imperia-mercato-andrea-doria": {
+    "latitude": 43.88796,
+    "longitude": 8.04251
+  },
+  "imperia-borgo-peri": {
+    "latitude": 43.887832,
+    "longitude": 8.045948
+  },
+  "imperia-via-aurelia-istituto-suore": {
+    "latitude": 43.88812,
+    "longitude": 8.04934
+  },
+  "imperia-cabina": {
+    "latitude": 43.88938,
+    "longitude": 8.05609
+  },
+  "imperia-cippo": {
+    "latitude": 43.8909,
+    "longitude": 8.06674
+  },
+  "imperia-capo-berta": {
+    "latitude": 43.89271,
+    "longitude": 8.07214
+  },
+  "diano-marina-casette": {
+    "latitude": 43.8971,
+    "longitude": 8.07486
+  },
+  "diano-marina-hotel-villa-igea": {
+    "latitude": 43.90237,
+    "longitude": 8.07504
+  },
+  "diano-marina-sant-anna": {
+    "latitude": 43.90439,
+    "longitude": 8.07795
+  },
+  "diano-marina-agenzia-realino": {
+    "latitude": 43.90811,
+    "longitude": 8.08174
+  },
+  "diano-marina-eden-park": {
+    "latitude": 43.91209,
+    "longitude": 8.08633
+  },
+  "diano-marina-distributore-esso": {
+    "latitude": 43.91641,
+    "longitude": 8.08948
+  },
+  "san-bartolomeo-ponte-rosso": {
+    "latitude": 43.91874,
+    "longitude": 8.09355
+  },
+  "san-bartolomeo-agenzia-martini": {
+    "latitude": 43.91984,
+    "longitude": 8.09704
+  },
+  "san-bartolomeo-agenzia-igotours": {
+    "latitude": 43.92123,
+    "longitude": 8.10126
+  },
+  "san-bartolomeo-distributore-erg": {
+    "latitude": 43.9222,
+    "longitude": 8.10429
+  },
+  "cervo-stazione-fs": {
+    "latitude": 43.92422,
+    "longitude": 8.10996
+  },
+  "cervo-agenzia-oglino": {
+    "latitude": 43.92471,
+    "longitude": 8.11403
+  },
+  "cervo-villa-delle-rose": {
+    "latitude": 43.9279,
+    "longitude": 8.12695
+  },
+  "cervo-capo-mimosa": {
+    "latitude": 43.9332,
+    "longitude": 8.13176
+  },
+  "andora-hotel-foresta": {
+    "latitude": 43.9369,
+    "longitude": 8.13294
+  },
+  "andora-conca-verde": {
+    "latitude": 43.93993,
+    "longitude": 8.13364
+  },
+  "andora-via-xxv-aprile": {
+    "latitude": 43.94902,
+    "longitude": 8.14031
+  },
+  "via-amerigo-vespucci-12": {
+    "latitude": 43.95028,
+    "longitude": 8.1434
+  },
+  "via-amerigo-vespucci-30": {
+    "latitude": 43.95253,
+    "longitude": 8.14318
+  },
+  "via-amerigo-vespucci---luna-park": {
+    "latitude": 43.95721,
+    "longitude": 8.14206
+  },
+  "via-europa-unita-direz-capolinea-andora": {
+    "latitude": 43.95971,
+    "longitude": 8.14081
+  },
+  "via-europa-unita-direz-mare": {
+    "latitude": 43.96062,
+    "longitude": 8.14279
+  },
+  "via-san-lazzaro-71": {
+    "latitude": 43.95784,
+    "longitude": 8.14583
+  },
+  "via-san-lazzaro-49": {
+    "latitude": 43.95568,
+    "longitude": 8.14718
+  },
+  "via-c-colombo-3": {
+    "latitude": 43.95408,
+    "longitude": 8.14914
+  },
+  "via-g-mazzini-5": {
+    "latitude": 43.95186,
+    "longitude": 8.15109
+  },
+  "andora-agenzia-ota": {
+    "latitude": 43.94958,
+    "longitude": 8.14377
+  },
+  "san-bartolomeo-semaforo": {
+    "latitude": 43.92209,
+    "longitude": 8.10391
+  },
+  "imperia-oneglia": {
+    "latitude": 43.888756,
+    "longitude": 8.044811
+  },
+  "andora-capolinea": {
+    "latitude": 43.95231,
+    "longitude": 8.15508
+  },
+  "imperia-inail": {
+    "latitude": 43.889564,
+    "longitude": 8.033345
+  },
+  "imperia-prefettura": {
+    "latitude": 43.88283,
+    "longitude": 8.02118
+  },
+  "imperia-miramare-fs": {
+    "latitude": 43.881317,
+    "longitude": 8.018777
+  },
+  "imperia-galleria-gastaldi-entrata": {
+    "latitude": 43.873821,
+    "longitude": 8.016929
+  },
+  "imperia-galleria-gastaldi-uscita": {
+    "latitude": 43.8759,
+    "longitude": 8.01358
+  },
+  "imperia-via-cascione": {
+    "latitude": 43.874521,
+    "longitude": 8.012487
+  },
+  "imperia-capuccini": {
+    "latitude": 43.871642,
+    "longitude": 8.009202
+  },
+  "andora-fs-capolinea": {
+    "latitude": 43.95992,
+    "longitude": 8.13925
+  },
+  "igiene---ponte": {
+    "latitude": 43.87326,
+    "longitude": 8.01115
+  },
+  "costarainera-regione-pozzi": {
+    "latitude": 43.854,
+    "longitude": 7.96156
+  },
+  "costarainera-residence-giare": {
+    "latitude": 43.8558,
+    "longitude": 7.95991
+  },
+  "costarainera-condominio-virginia": {
+    "latitude": 43.8566,
+    "longitude": 7.95728
+  },
+  "costarainera-petachin": {
+    "latitude": 43.853,
+    "longitude": 7.95423
+  },
+  "costarainera-vasche-d-argento": {
+    "latitude": 43.8536,
+    "longitude": 7.94837
+  },
+  "costarainera-passo-scaglie": {
+    "latitude": 43.8555,
+    "longitude": 7.94473
+  },
+  "costarainera-bivio-lingueglietta": {
+    "latitude": 43.8584,
+    "longitude": 7.94344
+  },
+  "costarainera-cimitero": {
+    "latitude": 43.8588,
+    "longitude": 7.93957
+  },
+  "costarainera-villaggio-olandesi": {
+    "latitude": 43.8627,
+    "longitude": 7.93502
+  },
+  "costarainera-lingueglietta-centro": {
+    "latitude": 43.8674,
+    "longitude": 7.93058
+  },
+  "costarainera-paese": {
+    "latitude": 43.8546,
+    "longitude": 7.94127
+  },
+  "costarainera-barracuda": {
+    "latitude": 43.8543,
+    "longitude": 7.93866
+  },
+  "costarainera-complesso-le-palme": {
+    "latitude": 43.8533,
+    "longitude": 7.93768
+  },
+  "cipressa-regione-colla": {
+    "latitude": 43.8526,
+    "longitude": 7.93508
+  },
+  "cipressa-municipio": {
+    "latitude": 43.8531,
+    "longitude": 7.9337
+  },
+  "cipressa-capolinea": {
+    "latitude": 43.8518,
+    "longitude": 7.93074
+  },
+  "san-lorenzo-inversione": {
+    "latitude": 43.8568,
+    "longitude": 7.96126
+  },
+  "san-lorenzo-via-castello": {
+    "latitude": 43.8555,
+    "longitude": 7.96377
+  },
+  "san-lorenzo-frantoio": {
+    "latitude": 43.8574,
+    "longitude": 7.96212
+  },
+  "san-lorenzo-strada-pinea": {
+    "latitude": 43.86,
+    "longitude": 7.95971
+  },
+  "san-lorenzo-al-mare-ca-di-sanremaschi": {
+    "latitude": 43.8709,
+    "longitude": 7.94795
+  },
+  "san-lorenzo-al-mare-bivio-avreghi": {
+    "latitude": 43.8756,
+    "longitude": 7.94513
+  },
+  "pietrabruna-bivio-torre-paponi": {
+    "latitude": 43.885,
+    "longitude": 7.93176
+  },
+  "pietrabruna-bivio-boscomare": {
+    "latitude": 43.8865,
+    "longitude": 7.92526
+  },
+  "pietrabruna-mulino-da-bodo": {
+    "latitude": 43.8881,
+    "longitude": 7.92561
+  },
+  "pietrabruna-polveriera": {
+    "latitude": 43.8881,
+    "longitude": 7.92424
+  },
+  "pietrabruna-busei": {
+    "latitude": 43.888,
+    "longitude": 7.92175
+  },
+  "pietrabruna-bivio-cimitero": {
+    "latitude": 43.8877,
+    "longitude": 7.90794
+  },
+  "pietrabruna-case-popolari": {
+    "latitude": 43.8888,
+    "longitude": 7.90468
+  },
+  "pietrabruna-lavatoio": {
+    "latitude": 43.8892,
+    "longitude": 7.90393
+  },
+  "pietrabruna-cabina-enel": {
+    "latitude": 43.8896,
+    "longitude": 7.90603
+  },
+  "pietrabruna-bivio-montefaudo": {
+    "latitude": 43.8901,
+    "longitude": 7.9069
+  },
+  "pietrabruna-viale-kennedy": {
+    "latitude": 43.8903,
+    "longitude": 7.90503
+  },
+  "pietrabruna-capolinea": {
+    "latitude": 43.89,
+    "longitude": 7.90267
+  },
+  "pietrabruna-boscomare": {
+    "latitude": 43.8789,
+    "longitude": 7.9066
+  },
+  "san-lorenzo-bivio-civezza-2": {
+    "latitude": 43.85831,
+    "longitude": 7.96733
+  },
+  "san-lorenzo-cagliero": {
+    "latitude": 43.8584,
+    "longitude": 7.9672
+  },
+  "san-lorenzo-via-renovi": {
+    "latitude": 43.8622,
+    "longitude": 7.96676
+  },
+  "san-lorenzo-ciaparin": {
+    "latitude": 43.8664,
+    "longitude": 7.96358
+  },
+  "san-lorenzo-al-mare-san-lorenzo-campi": {
+    "latitude": 43.8704,
+    "longitude": 7.95916
+  },
+  "civezza-terre-bianche-cimitero": {
+    "latitude": 43.8749,
+    "longitude": 7.95248
+  },
+  "civezza-croce": {
+    "latitude": 43.8772,
+    "longitude": 7.95169
+  },
+  "civezza-capolinea": {
+    "latitude": 43.880892,
+    "longitude": 7.952317
+  },
+  "imperia-piazza-ricci": {
+    "latitude": 43.8762,
+    "longitude": 8.01326
+  },
+  "imperia-garage-oreggia": {
+    "latitude": 43.8778,
+    "longitude": 8.01187
+  },
+  "imperia-fondura": {
+    "latitude": 43.876642,
+    "longitude": 8.010492
+  },
+  "imperia-ponte-di-pietra": {
+    "latitude": 43.877638,
+    "longitude": 8.007724
+  },
+  "imperia-protezione-civile": {
+    "latitude": 43.879633,
+    "longitude": 8.005766
+  },
+  "imperia-via-giuseppe-airenti-civico-27": {
+    "latitude": 43.8802,
+    "longitude": 8.00291
+  },
+  "imperia-bar-rosa-dep-autostrada": {
+    "latitude": 43.880621,
+    "longitude": 8.000868
+  },
+  "imperia-garbarino-civico-123": {
+    "latitude": 43.881804,
+    "longitude": 7.998301
+  },
+  "imperia-bivio-caramagnetta": {
+    "latitude": 43.882674,
+    "longitude": 7.996405
+  },
+  "imperia-caramagnetta-ponte-di-via-piani": {
+    "latitude": 43.883925,
+    "longitude": 7.994857
+  },
+  "imperia-caramagna-centro": {
+    "latitude": 43.885601,
+    "longitude": 7.993822
+  },
+  "imperia-via-caramagna-civico-150": {
+    "latitude": 43.887497,
+    "longitude": 7.992194
+  },
+  "imperia-caramagna-da-bursotto": {
+    "latitude": 43.88799,
+    "longitude": 7.98748
+  },
+  "vasia-bivio-vasia": {
+    "latitude": 43.89094,
+    "longitude": 7.97862
+  },
+  "vasia-bastera": {
+    "latitude": 43.88901,
+    "longitude": 7.97814
+  },
+  "dolcedo-passo-clavi": {
+    "latitude": 43.89029,
+    "longitude": 7.97555
+  },
+  "dolcedo-rettilineo": {
+    "latitude": 43.89241,
+    "longitude": 7.97335
+  },
+  "dolcedo-frantoio-sociale": {
+    "latitude": 43.89818,
+    "longitude": 7.96523
+  },
+  "dolcedo-via-garibaldi-supermercato": {
+    "latitude": 43.90114,
+    "longitude": 7.96053
+  },
+  "dolcedo-isolalunga": {
+    "latitude": 43.90346,
+    "longitude": 7.95639
+  },
+  "dolcedo-casa-ranise": {
+    "latitude": 43.9063,
+    "longitude": 7.95443
+  },
+  "dolcedo-ristorante-francesco": {
+    "latitude": 43.90751,
+    "longitude": 7.95333
+  },
+  "dolcedo-piazza-doria": {
+    "latitude": 43.9071,
+    "longitude": 7.95179
+  },
+  "dolcedo-ca-di-perletto": {
+    "latitude": 43.90524,
+    "longitude": 7.95122
+  },
+  "dolcedo-chiesa-san-carlo": {
+    "latitude": 43.90493,
+    "longitude": 7.95073
+  },
+  "dolcedo-strada-san-paolo": {
+    "latitude": 43.90331,
+    "longitude": 7.95024
+  },
+  "dolcedo-costa-carnara": {
+    "latitude": 43.89966,
+    "longitude": 7.9512
+  },
+  "dolcedo-costa-carnara-centro": {
+    "latitude": 43.9013,
+    "longitude": 7.94741
+  },
+  "dolcedo-castellazzo": {
+    "latitude": 43.9033,
+    "longitude": 7.9465
+  },
+  "dolcedo-ramelli": {
+    "latitude": 43.9036,
+    "longitude": 7.94214
+  },
+  "dolcedo-bellissimi-ville": {
+    "latitude": 43.9053,
+    "longitude": 7.938
+  },
+  "dolcedo-bellissimi-centro": {
+    "latitude": 43.9073,
+    "longitude": 7.9356
+  },
+  "dolcedo-borgata-magliani": {
+    "latitude": 43.9099,
+    "longitude": 7.93319
+  },
+  "dolcedo-lecchiore-bivio": {
+    "latitude": 43.9119,
+    "longitude": 7.92954
+  },
+  "dolcedo-lecchiore-capolinea": {
+    "latitude": 43.9138,
+    "longitude": 7.92402
+  },
+  "dolcedo-piazza-rebuttati": {
+    "latitude": 43.90793,
+    "longitude": 7.95163
+  },
+  "dolcedo-farmacia": {
+    "latitude": 43.90891,
+    "longitude": 7.95007
+  },
+  "dolcedo-cimitero": {
+    "latitude": 43.91323,
+    "longitude": 7.94886
+  },
+  "dolcedo-capannoni": {
+    "latitude": 43.91706,
+    "longitude": 7.94713
+  },
+  "prela-pontino": {
+    "latitude": 43.92207,
+    "longitude": 7.94368
+  },
+  "prela-ponte": {
+    "latitude": 43.92479,
+    "longitude": 7.94162
+  },
+  "prela-prela-centro": {
+    "latitude": 43.925,
+    "longitude": 7.94008
+  },
+  "prela-san-giovanni": {
+    "latitude": 43.92627,
+    "longitude": 7.93674
+  },
+  "prela-aretti": {
+    "latitude": 43.92704,
+    "longitude": 7.9334
+  },
+  "prela-costiolo": {
+    "latitude": 43.92694,
+    "longitude": 7.92844
+  },
+  "prela-bivio-valloria": {
+    "latitude": 43.93076,
+    "longitude": 7.91965
+  },
+  "valloria-centro": {
+    "latitude": 43.92747,
+    "longitude": 7.92093
+  },
+  "tavole-cimitero": {
+    "latitude": 43.92949,
+    "longitude": 7.9108
+  },
+  "tavole-centro": {
+    "latitude": 43.93092,
+    "longitude": 7.90803
+  },
+  "case-bianche": {
+    "latitude": 43.93223,
+    "longitude": 7.90714
+  },
+  "villatalla-capolinea": {
+    "latitude": 43.93956,
+    "longitude": 7.90891
+  },
+  "vasia-case-tedeschi": {
+    "latitude": 43.8924,
+    "longitude": 7.97744
+  },
+  "vasia-strafforello": {
+    "latitude": 43.90061,
+    "longitude": 7.9684
+  },
+  "vasia-poggio": {
+    "latitude": 43.92498,
+    "longitude": 7.95218
+  },
+  "vasia-frantoio": {
+    "latitude": 43.93133,
+    "longitude": 7.95303
+  },
+  "vasia-centro": {
+    "latitude": 43.93308,
+    "longitude": 7.95279
+  },
+  "dolcedo-torretta": {
+    "latitude": 43.94279,
+    "longitude": 7.94937
+  },
+  "dolcedo-pianavia-centro": {
+    "latitude": 43.94496,
+    "longitude": 7.94398
+  },
+  "dolcedo-pianavia-bivio-prela": {
+    "latitude": 43.94325,
+    "longitude": 7.94289
+  },
+  "dolcedo-ciappin": {
+    "latitude": 43.94468,
+    "longitude": 7.93503
+  },
+  "prela-pantasina-capolinea": {
+    "latitude": 43.94211,
+    "longitude": 7.93299
+  },
+  "imperia-via-nazionale-210": {
+    "latitude": 43.908508,
+    "longitude": 8.026706
+  },
+  "imperia-centrale-elettrica": {
+    "latitude": 43.911391,
+    "longitude": 8.027604
+  },
+  "imperia-trattoria-da-lena": {
+    "latitude": 43.914914,
+    "longitude": 8.026558
+  },
+  "imperia-passo-rocche": {
+    "latitude": 43.918488,
+    "longitude": 8.025593
+  },
+  "imperia-deposito-rt": {
+    "latitude": 43.925064,
+    "longitude": 8.022492
+  },
+  "imperia-latte-alberti": {
+    "latitude": 43.9291,
+    "longitude": 8.02061
+  },
+  "pontedassio-s-lucia": {
+    "latitude": 43.934,
+    "longitude": 8.01678
+  },
+  "pontedassio-centro": {
+    "latitude": 43.940413,
+    "longitude": 8.012187
+  },
+  "pontedassio-capolinea": {
+    "latitude": 43.94286,
+    "longitude": 8.00576
+  },
+  "pontedassio-frantoio": {
+    "latitude": 43.95092,
+    "longitude": 8.00278
+  },
+  "bivio-gazzelli": {
+    "latitude": 43.95235,
+    "longitude": 8.00019
+  },
+  "riviera-alimenti": {
+    "latitude": 43.95478,
+    "longitude": 8.00038
+  },
+  "chiusanico-gazzelli-centro": {
+    "latitude": 43.9616,
+    "longitude": 7.99857
+  },
+  "chiusanico-gazzelli-1": {
+    "latitude": 43.96337,
+    "longitude": 7.99879
+  },
+  "chiusanico-centro": {
+    "latitude": 43.97422,
+    "longitude": 7.99149
+  },
+  "torria-localita-zerbi": {
+    "latitude": 43.9815,
+    "longitude": 7.9818
+  },
+  "chiusanico-torria-centro": {
+    "latitude": 43.9812,
+    "longitude": 7.97978
+  },
+  "chiusanico-bivio-torria-ss-28": {
+    "latitude": 43.99973,
+    "longitude": 7.97871
+  },
+  "cesio": {
+    "latitude": 44.00903,
+    "longitude": 7.97357
+  },
+  "cesio-fontana-capolinea": {
+    "latitude": 44.01294,
+    "longitude": 7.97367
+  },
+  "chiusavecchia-passo-sarola": {
+    "latitude": 43.95552,
+    "longitude": 7.99814
+  },
+  "chiusavecchia-casa-cantoniera": {
+    "latitude": 43.95773,
+    "longitude": 7.9959
+  },
+  "chiusavecchia-case-popolari": {
+    "latitude": 43.96432,
+    "longitude": 7.9882
+  },
+  "chiusavecchia-centro": {
+    "latitude": 43.96826,
+    "longitude": 7.98323
+  },
+  "chiusavecchia-bivio-lucinasco": {
+    "latitude": 43.97006,
+    "longitude": 7.98161
+  },
+  "chiusavecchia-garzi": {
+    "latitude": 43.97242,
+    "longitude": 7.98019
+  },
+  "chiusavecchia-bivio-borgomaro": {
+    "latitude": 43.97493,
+    "longitude": 7.97569
+  },
+  "borgomaro-san-lazzaro-reale": {
+    "latitude": 43.9769,
+    "longitude": 7.97047
+  },
+  "san-lazzaro-cimitero": {
+    "latitude": 43.9761,
+    "longitude": 7.96866
+  },
+  "san-lazzaro-bivio-cimitero": {
+    "latitude": 43.97428,
+    "longitude": 7.9515
+  },
+  "fabbrica-euroemme": {
+    "latitude": 43.97501,
+    "longitude": 7.94788
+  },
+  "borgomaro-centro": {
+    "latitude": 43.97558,
+    "longitude": 7.94567
+  },
+  "borgomaro-bivio-poggialto": {
+    "latitude": 43.97534,
+    "longitude": 7.94231
+  },
+  "borgomaro-casetta-rurale": {
+    "latitude": 43.975,
+    "longitude": 7.94013
+  },
+  "borgomaro-macello": {
+    "latitude": 43.9752,
+    "longitude": 7.93987
+  },
+  "borgomaro-pian-cappello": {
+    "latitude": 43.9749,
+    "longitude": 7.93913
+  },
+  "maro-castello": {
+    "latitude": 43.97244,
+    "longitude": 7.94335
+  },
+  "ristorante-da-emilio": {
+    "latitude": 43.97053,
+    "longitude": 7.92767
+  },
+  "ville-san-sebastiano-centro": {
+    "latitude": 43.96947,
+    "longitude": 7.9264
+  },
+  "bivio-colle-d-oggia": {
+    "latitude": 43.96653,
+    "longitude": 7.91595
+  },
+  "ville-san-pietro-piazza-del-carmin": {
+    "latitude": 43.96881,
+    "longitude": 7.91329
+  },
+  "ville-san-pietro-centro": {
+    "latitude": 43.9702,
+    "longitude": 7.91066
+  },
+  "ville-san-pietro-costa": {
+    "latitude": 43.97069,
+    "longitude": 7.90744
+  },
+  "conio-lavatoio": {
+    "latitude": 43.98147,
+    "longitude": 7.89413
+  },
+  "conio-largo": {
+    "latitude": 43.9824,
+    "longitude": 7.8961
+  },
+  "conio-da-belenda": {
+    "latitude": 43.98317,
+    "longitude": 7.8949
+  },
+  "conio-capolinea": {
+    "latitude": 43.98281,
+    "longitude": 7.89424
+  },
+  "chiusavecchia-frantoio": {
+    "latitude": 43.97101,
+    "longitude": 7.98039
+  },
+  "borgoratto-bivio": {
+    "latitude": 43.96909,
+    "longitude": 7.98043
+  },
+  "chiesa-don-abbo-il-santo": {
+    "latitude": 43.9672,
+    "longitude": 7.97579
+  },
+  "case-moline": {
+    "latitude": 43.96815,
+    "longitude": 7.97641
+  },
+  "canneti": {
+    "latitude": 43.96968,
+    "longitude": 7.97625
+  },
+  "cerisola": {
+    "latitude": 43.96509,
+    "longitude": 7.97003
+  },
+  "campo-lucinasco": {
+    "latitude": 43.9683,
+    "longitude": 7.97228
+  },
+  "lucinasco-primo-tornante-discesa": {
+    "latitude": 43.9634,
+    "longitude": 7.96302
+  },
+  "lucinasco-frantoio": {
+    "latitude": 43.96805,
+    "longitude": 7.96469
+  },
+  "lucinasco-ex-capolinea": {
+    "latitude": 43.96663,
+    "longitude": 7.96153
+  },
+  "lucinasco-laghetto-capolinea": {
+    "latitude": 43.96522,
+    "longitude": 7.9579
+  },
+  "borgomaro-san-lazzaro-merli": {
+    "latitude": 43.98187,
+    "longitude": 7.96852
+  },
+  "caravonica-cimitero": {
+    "latitude": 43.9904,
+    "longitude": 7.96333
+  },
+  "caravonica-piazza-roma": {
+    "latitude": 43.99166,
+    "longitude": 7.96066
+  },
+  "caravonica-municipio": {
+    "latitude": 43.99253,
+    "longitude": 7.95848
+  },
+  "caravonica-civico-60": {
+    "latitude": 43.99361,
+    "longitude": 7.95605
+  },
+  "caravonica-uscita-paese": {
+    "latitude": 43.99728,
+    "longitude": 7.9578
+  },
+  "bivio-s-bart-caravonica": {
+    "latitude": 44.00351,
+    "longitude": 7.95251
+  },
+  "san-bartolomeo-di-caravonica": {
+    "latitude": 44.00545,
+    "longitude": 7.95322
+  },
+  "caravonica-colle-san-bartolomeo": {
+    "latitude": 44.01026,
+    "longitude": 7.95267
+  },
+  "borgomaro-bivio-candeasco": {
+    "latitude": 43.97661,
+    "longitude": 7.94481
+  },
+  "candeasco-centro": {
+    "latitude": 43.9784,
+    "longitude": 7.94978
+  },
+  "cappella": {
+    "latitude": 43.98019,
+    "longitude": 7.9361
+  },
+  "aurigo-croce": {
+    "latitude": 43.98157,
+    "longitude": 7.92489
+  },
+  "aurigo-monumento-ai-caduti": {
+    "latitude": 43.98197,
+    "longitude": 7.92488
+  },
+  "aurigo-centro": {
+    "latitude": 43.98228,
+    "longitude": 7.92228
+  },
+  "aurigo-ciase": {
+    "latitude": 43.98206,
+    "longitude": 7.92113
+  },
+  "localita-fontanavecchia": {
+    "latitude": 43.9884,
+    "longitude": 7.90884
+  },
+  "poggialt0-capolinea": {
+    "latitude": 43.98662,
+    "longitude": 7.90694
+  },
+  "imperia-via-diano-calderina-macellaio": {
+    "latitude": 43.88842,
+    "longitude": 8.04712
+  },
+  "imperia-villa-novarini": {
+    "latitude": 43.8904,
+    "longitude": 8.04811
+  },
+  "imperia-via-diano-calderina-civico-58": {
+    "latitude": 43.89136,
+    "longitude": 8.04875
+  },
+  "imperia-via-diano-calderina-tabacchino": {
+    "latitude": 43.892,
+    "longitude": 8.04949
+  },
+  "imperia-salita-spesci": {
+    "latitude": 43.89243,
+    "longitude": 8.04952
+  },
+  "imperia-vecchio-dazio": {
+    "latitude": 43.894,
+    "longitude": 8.05075
+  },
+  "imperia-da-manetti": {
+    "latitude": 43.8952,
+    "longitude": 8.05273
+  },
+  "imperia-incrocio-via-molle": {
+    "latitude": 43.8958,
+    "longitude": 8.05341
+  },
+  "imperia-bonavera": {
+    "latitude": 43.8963,
+    "longitude": 8.05271
+  },
+  "imperia-gommista": {
+    "latitude": 43.89611,
+    "longitude": 8.05539
+  },
+  "imperia-da-viale": {
+    "latitude": 43.89442,
+    "longitude": 8.05494
+  },
+  "imperia-dal-cancello": {
+    "latitude": 43.89298,
+    "longitude": 8.05466
+  },
+  "imperia-centro-residenziale": {
+    "latitude": 43.89921,
+    "longitude": 8.05833
+  },
+  "imperia-da-scajola": {
+    "latitude": 43.9005,
+    "longitude": 8.0572
+  },
+  "imperia-via-diano-calderina-civico-157": {
+    "latitude": 43.9023,
+    "longitude": 8.05628
+  },
+  "imperia-dal-bello": {
+    "latitude": 43.90294,
+    "longitude": 8.05599
+  },
+  "imperia-san-leonardo": {
+    "latitude": 43.90355,
+    "longitude": 8.05587
+  },
+  "imperia-azienda-agricola-temesio": {
+    "latitude": 43.90444,
+    "longitude": 8.05512
+  },
+  "imperia-da-matita": {
+    "latitude": 43.9049,
+    "longitude": 8.05517
+  },
+  "diano-marina-osteria-del-pino": {
+    "latitude": 43.90534,
+    "longitude": 8.05573
+  },
+  "diano-marina-diano-gorleri-chiesa": {
+    "latitude": 43.90578,
+    "longitude": 8.0561
+  },
+  "diano-marina-ristorante-da-irma": {
+    "latitude": 43.90615,
+    "longitude": 8.05519
+  },
+  "diano-marina-diano-gorleri-capolinea": {
+    "latitude": 43.91382,
+    "longitude": 8.05955
+  },
+  "diano-gorleri-civico-38-rettilineo": {
+    "latitude": 43.90771,
+    "longitude": 8.05422
+  },
+  "diano-marina-strada-pineta": {
+    "latitude": 43.90862,
+    "longitude": 8.05358
+  },
+  "diano-marina-localita-ferra": {
+    "latitude": 43.91007,
+    "longitude": 8.05329
+  },
+  "diano-marina-strada-balano": {
+    "latitude": 43.91251,
+    "longitude": 8.05308
+  },
+  "diano-marina-diano-serreta-scuole": {
+    "latitude": 43.9132,
+    "longitude": 8.05518
+  },
+  "diano-marina-diano-serreta-centro": {
+    "latitude": 43.9139,
+    "longitude": 8.05667
+  },
+  "diano-serreta-ristorante-liliana": {
+    "latitude": 43.91365,
+    "longitude": 8.05831
+  },
+  "diano-marina-cimitero-serreta": {
+    "latitude": 43.91332,
+    "longitude": 8.06044
+  },
+  "diano-marina-ca-sottane": {
+    "latitude": 43.91262,
+    "longitude": 8.06211
+  },
+  "diano-marina-bivio-frazione-muratori": {
+    "latitude": 43.91481,
+    "longitude": 8.06233
+  },
+  "diano-marina-diano-calderina": {
+    "latitude": 43.91293,
+    "longitude": 8.06691
+  },
+  "diano-calderina-ponte-autostrada": {
+    "latitude": 43.9108,
+    "longitude": 8.06767
+  },
+  "diano-marina-campeggio": {
+    "latitude": 43.90979,
+    "longitude": 8.06859
+  },
+  "diano-marina-cimitero": {
+    "latitude": 43.90918,
+    "longitude": 8.07361
+  },
+  "diano-marina-quattro-strade": {
+    "latitude": 43.91278,
+    "longitude": 8.07727
+  },
+  "diano-marina-capolinea-c-battisti": {
+    "latitude": 43.91136,
+    "longitude": 8.07964
+  },
+  "diano-castello-hotel-bel-soggiorno": {
+    "latitude": 43.91638,
+    "longitude": 8.07311
+  },
+  "diano-castello-bivio-varcavello": {
+    "latitude": 43.91869,
+    "longitude": 8.07107
+  },
+  "diano-castello-via-besusta": {
+    "latitude": 43.92092,
+    "longitude": 8.06885
+  },
+  "diano-castello-rotonda-capolinea": {
+    "latitude": 43.92373,
+    "longitude": 8.06699
+  },
+  "diano-san-pietro-centro": {
+    "latitude": 43.93094,
+    "longitude": 8.0684
+  },
+  "diano-san-pietro-da-ugo": {
+    "latitude": 43.93395,
+    "longitude": 8.0646
+  },
+  "diano-san-pietro-marzocco": {
+    "latitude": 43.93796,
+    "longitude": 8.06274
+  },
+  "diano-san-pietro-moltedo": {
+    "latitude": 43.93952,
+    "longitude": 8.06118
+  },
+  "diano-san-pietro-diano-borganzo-trinita": {
+    "latitude": 43.94119,
+    "longitude": 8.0584
+  },
+  "diano-borganzo-case-messighi": {
+    "latitude": 43.94353,
+    "longitude": 8.05647
+  },
+  "diano-san-pietro-diano-borganzo-centro": {
+    "latitude": 43.94614,
+    "longitude": 8.05509
+  },
+  "diano-san-pietro-diano-borganzo-ruggiu": {
+    "latitude": 43.94757,
+    "longitude": 8.05604
+  },
+  "diano-san-pietro-ciappai-ponte": {
+    "latitude": 43.95102,
+    "longitude": 8.05179
+  },
+  "diano-roncagli-l-usignolo": {
+    "latitude": 43.95209,
+    "longitude": 8.04996
+  },
+  "diano-roncagli-capolinea": {
+    "latitude": 43.9553,
+    "longitude": 8.04747
+  },
+  "diano-san-pietro-diano-roncagli-ponte": {
+    "latitude": 43.95468,
+    "longitude": 8.04744
+  },
+  "diano-arentino-bivio-evigno": {
+    "latitude": 43.94986,
+    "longitude": 8.0479
+  },
+  "diano-arentino-bivio-evigno-2": {
+    "latitude": 43.96342,
+    "longitude": 8.03167
+  },
+  "diano-arentino-evigno-frantoio": {
+    "latitude": 43.96579,
+    "longitude": 8.03415
+  },
+  "evigno-locanda-panorama-dianese": {
+    "latitude": 43.96636,
+    "longitude": 8.03489
+  },
+  "diano-arentino-evigno-capolinea": {
+    "latitude": 43.96643,
+    "longitude": 8.03421
+  },
+  "san-bartolomeo-via-xxv-aprile-fs": {
+    "latitude": 43.92308,
+    "longitude": 8.10282
+  },
+  "san-bartolomeo-scuole": {
+    "latitude": 43.92743,
+    "longitude": 8.10149
+  },
+  "san-bartolomeo-via-roma-municipio": {
+    "latitude": 43.9295,
+    "longitude": 8.10301
+  },
+  "san-bartolomeo-al-mare-bivio-chiappa": {
+    "latitude": 43.93528,
+    "longitude": 8.10381
+  },
+  "villa-faraldi-bivio-deglio": {
+    "latitude": 43.968,
+    "longitude": 8.08969
+  },
+  "villa-faraldi-tovo-capolinea": {
+    "latitude": 43.965,
+    "longitude": 8.10148
+  },
+  "villa-faraldi-deglio-capolinea": {
+    "latitude": 43.97532,
+    "longitude": 8.06954
+  },
+  "strada-pairola-pontino": {
+    "latitude": 43.93442,
+    "longitude": 8.098
+  },
+  "san-bartolomeo-al-mare-pairola-chiesa": {
+    "latitude": 43.94119,
+    "longitude": 8.09637
+  },
+  "pairola-via-costa": {
+    "latitude": 43.94282,
+    "longitude": 8.09617
+  },
+  "albenga-piazza-del-popolo": {
+    "latitude": 44.0481,
+    "longitude": 8.2147
+  },
+  "albenga-viale-pontelungo": {
+    "latitude": 44.0512,
+    "longitude": 8.21309
+  },
+  "albenga-porta-mulino": {
+    "latitude": 44.05075,
+    "longitude": 8.21203
+  },
+  "albenga-caserma-tuminetto": {
+    "latitude": 44.0559,
+    "longitude": 8.2005
+  },
+  "albenga-2000": {
+    "latitude": 44.0562,
+    "longitude": 8.19653
+  },
+  "noberasco": {
+    "latitude": 44.0565,
+    "longitude": 8.18758
+  },
+  "damonte": {
+    "latitude": 44.058,
+    "longitude": 8.18499
+  },
+  "leca-croce": {
+    "latitude": 44.0586,
+    "longitude": 8.18418
+  },
+  "leca-centro": {
+    "latitude": 44.06,
+    "longitude": 8.18276
+  },
+  "bastia-croce": {
+    "latitude": 44.05758,
+    "longitude": 8.17619
+  },
+  "bastia-centro": {
+    "latitude": 44.05658,
+    "longitude": 8.1725
+  },
+  "bastia-asilo": {
+    "latitude": 44.05721,
+    "longitude": 8.16822
+  },
+  "campi-sportivi": {
+    "latitude": 44.05723,
+    "longitude": 8.16444
+  },
+  "coasco": {
+    "latitude": 44.0552,
+    "longitude": 8.15567
+  },
+  "bivio-villanova": {
+    "latitude": 44.05092,
+    "longitude": 8.14752
+  },
+  "borgo-verde": {
+    "latitude": 44.05203,
+    "longitude": 8.14218
+  },
+  "pelassa": {
+    "latitude": 44.05319,
+    "longitude": 8.13776
+  },
+  "bivio-vendone": {
+    "latitude": 44.05533,
+    "longitude": 8.11718
+  },
+  "bivio-garlenda": {
+    "latitude": 44.0545,
+    "longitude": 8.10545
+  },
+  "ortovero-farmacia": {
+    "latitude": 44.05418,
+    "longitude": 8.10151
+  },
+  "ortovero-ufficio-postale": {
+    "latitude": 44.05373,
+    "longitude": 8.09418
+  },
+  "rossignoli": {
+    "latitude": 44.05385,
+    "longitude": 8.08961
+  },
+  "la-quiete": {
+    "latitude": 44.05344,
+    "longitude": 8.0824
+  },
+  "pogli": {
+    "latitude": 44.05347,
+    "longitude": 8.0745
+  },
+  "pogli-centro": {
+    "latitude": 44.05471,
+    "longitude": 8.06843
+  },
+  "vivaio-porcella": {
+    "latitude": 44.05548,
+    "longitude": 8.06548
+  },
+  "bivio-onzo": {
+    "latitude": 44.05479,
+    "longitude": 8.05821
+  },
+  "tagliarini": {
+    "latitude": 44.0542,
+    "longitude": 8.05243
+  },
+  "bivio-bosco": {
+    "latitude": 44.05575,
+    "longitude": 8.04431
+  },
+  "ponterotto": {
+    "latitude": 44.05671,
+    "longitude": 8.04137
+  },
+  "prati-albareto": {
+    "latitude": 44.05771,
+    "longitude": 8.03689
+  },
+  "bacelega-chiesa": {
+    "latitude": 44.05835,
+    "longitude": 8.02207
+  },
+  "ranzo-borgo": {
+    "latitude": 44.05955,
+    "longitude": 8.01321
+  },
+  "ranzo-bivio-aquila": {
+    "latitude": 44.0598,
+    "longitude": 8.00591
+  },
+  "canata": {
+    "latitude": 44.05894,
+    "longitude": 8.00305
+  },
+  "martinetto": {
+    "latitude": 44.06083,
+    "longitude": 7.99729
+  },
+  "calabria": {
+    "latitude": 44.05933,
+    "longitude": 7.98366
+  },
+  "borghetto-centro": {
+    "latitude": 44.05778,
+    "longitude": 7.98189
+  },
+  "prato-marchisa": {
+    "latitude": 44.05064,
+    "longitude": 7.97187
+  },
+  "vessalico-centro": {
+    "latitude": 44.04597,
+    "longitude": 7.96134
+  },
+  "vessalico-canevai": {
+    "latitude": 44.04318,
+    "longitude": 7.95398
+  },
+  "perinetti": {
+    "latitude": 44.0388,
+    "longitude": 7.9451
+  },
+  "muzio": {
+    "latitude": 44.03793,
+    "longitude": 7.94016
+  },
+  "pieve-di-teco-parodi": {
+    "latitude": 44.03884,
+    "longitude": 7.92797
+  },
+  "pieve-di-teco-bivio-albenga": {
+    "latitude": 44.04212,
+    "longitude": 7.92065
+  },
+  "bivio-fantinone": {
+    "latitude": 44.06244,
+    "longitude": 7.99968
+  },
+  "ristorante-rita": {
+    "latitude": 44.06302,
+    "longitude": 7.99846
+  },
+  "caneto-scuola": {
+    "latitude": 44.06372,
+    "longitude": 8.00024
+  },
+  "bivio-leverone": {
+    "latitude": 44.0646,
+    "longitude": 8.00708
+  },
+  "monta-bivio": {
+    "latitude": 44.08034,
+    "longitude": 8.00934
+  },
+  "campo-sportivo-aquila": {
+    "latitude": 44.0839,
+    "longitude": 8.00775
+  },
+  "aquila-d-arroscia-centro": {
+    "latitude": 44.08368,
+    "longitude": 8.00577
+  },
+  "leverone-cimitero": {
+    "latitude": 44.07826,
+    "longitude": 7.99482
+  },
+  "gavenola": {
+    "latitude": 44.0796,
+    "longitude": 7.97761
+  },
+  "gavenola-fontana": {
+    "latitude": 44.0783,
+    "longitude": 7.97138
+  },
+  "ristorante-la-vetta": {
+    "latitude": 44.08713,
+    "longitude": 8.00464
+  },
+  "gazzo-tornante": {
+    "latitude": 44.0703,
+    "longitude": 7.96728
+  },
+  "leverone-centro": {
+    "latitude": 44.07771,
+    "longitude": 7.99724
+  },
+  "ristorante-castagneto": {
+    "latitude": 44.0763,
+    "longitude": 7.99652
+  },
+  "bivio-bonfigliara": {
+    "latitude": 44.06622,
+    "longitude": 8.00352
+  },
+  "bivio-araca": {
+    "latitude": 44.06443,
+    "longitude": 8.0034
+  },
+  "pieve-di-teco-moano-chiesa": {
+    "latitude": 44.0788,
+    "longitude": 7.91873
+  },
+  "pieve-di-teco-mulinassi": {
+    "latitude": 44.08202,
+    "longitude": 7.91363
+  },
+  "pieve-di-teco-trastanello-bivio": {
+    "latitude": 44.08033,
+    "longitude": 7.91364
+  },
+  "pieve-di-teco-trovasta-bivio": {
+    "latitude": 44.07478,
+    "longitude": 7.91477
+  },
+  "pieve-di-teco-ospedale": {
+    "latitude": 44.0518,
+    "longitude": 7.91515
+  },
+  "pieve-di-teco-piazza-borelli": {
+    "latitude": 44.04748,
+    "longitude": 7.91628
+  },
+  "pieve-di-teco-bivio-acquetico": {
+    "latitude": 44.05321,
+    "longitude": 7.89246
+  },
+  "rezzo-piazza": {
+    "latitude": 44.021682,
+    "longitude": 7.872684
+  },
+  "rezzo-fontanabuona": {
+    "latitude": 44.021851,
+    "longitude": 7.875026
+  },
+  "rezzo-bivio-lavina": {
+    "latitude": 44.02796,
+    "longitude": 7.90711
+  },
+  "rezzo-lavina-centro": {
+    "latitude": 44.02717,
+    "longitude": 7.90431
+  },
+  "pieve-di-teco-bivio-rezzo": {
+    "latitude": 44.03645,
+    "longitude": 7.92645
+  },
+  "imperia-piazza-roma": {
+    "latitude": 43.88003,
+    "longitude": 8.016
+  },
+  "imperia-via-artallo-civico-12": {
+    "latitude": 43.880259,
+    "longitude": 8.014641
+  },
+  "imperia-via-artallo-civico-130": {
+    "latitude": 43.881729,
+    "longitude": 8.013035
+  },
+  "imperia-artallo-cimitero": {
+    "latitude": 43.883824,
+    "longitude": 8.012316
+  },
+  "imperia-artallo-ponte-autostrada": {
+    "latitude": 43.886743,
+    "longitude": 8.011039
+  },
+  "imperia-via-artallo-civico-302": {
+    "latitude": 43.889672,
+    "longitude": 8.010422
+  },
+  "imperia-via-artallo-civico-330": {
+    "latitude": 43.891622,
+    "longitude": 8.00925
+  },
+  "imperia-artallo-capolinea": {
+    "latitude": 43.892337,
+    "longitude": 8.008864
+  },
+  "imperia-garbella-bivio-poggi": {
+    "latitude": 43.86829,
+    "longitude": 7.9984
+  },
+  "imperia-via-poggi-civico-52": {
+    "latitude": 43.869546,
+    "longitude": 7.995938
+  },
+  "imperia-villa-adolfo": {
+    "latitude": 43.870256,
+    "longitude": 7.993669
+  },
+  "imperia-via-poggi-civico-108-tornante": {
+    "latitude": 43.871027,
+    "longitude": 7.992387
+  },
+  "imperia-ponte-autostrada-civico-116": {
+    "latitude": 43.870847,
+    "longitude": 7.991623
+  },
+  "imperia-via-poggi-civico-130": {
+    "latitude": 43.871356,
+    "longitude": 7.98861
+  },
+  "imperia-mira-maurizio": {
+    "latitude": 43.868291,
+    "longitude": 7.991416
+  },
+  "imperia-strada-ciana": {
+    "latitude": 43.869635,
+    "longitude": 7.985403
+  },
+  "imperia-poggi-piazza-chiesa-capolinea": {
+    "latitude": 43.871248,
+    "longitude": 7.982626
+  },
+  "imperia-strada-civezza-via-fontana": {
+    "latitude": 43.872889,
+    "longitude": 7.981173
+  },
+  "imperia-tornante-strada-del-colle": {
+    "latitude": 43.872674,
+    "longitude": 7.979502
+  },
+  "imperia-strada-civezza-44": {
+    "latitude": 43.873871,
+    "longitude": 7.975704
+  },
+  "imperia-poggi-quattro-strade": {
+    "latitude": 43.875244,
+    "longitude": 7.971171
+  },
+  "imperia-largo-don-luigi-lupi-colla": {
+    "latitude": 43.880559,
+    "longitude": 7.958983
+  },
+  "civezza-bivio-asilo": {
+    "latitude": 43.8806,
+    "longitude": 7.95415
+  },
+  "imperia-via-caramagna-civico-170-scuole": {
+    "latitude": 43.88861,
+    "longitude": 7.99055
+  },
+  "imperia-via-caramagna-civico-180-asilo": {
+    "latitude": 43.889102,
+    "longitude": 7.989332
+  },
+  "imperia-caramagna-soprana": {
+    "latitude": 43.889701,
+    "longitude": 7.987452
+  },
+  "imperia-via-moltedo-civico-26": {
+    "latitude": 43.892993,
+    "longitude": 7.985191
+  },
+  "imperia-caramagna-bivio-croce-capolinea": {
+    "latitude": 43.89512,
+    "longitude": 7.98466
+  },
+  "imperia-via-moltedo-civico-75": {
+    "latitude": 43.897059,
+    "longitude": 7.983536
+  },
+  "imperia-via-moltedo-civico-72": {
+    "latitude": 43.901532,
+    "longitude": 7.978474
+  },
+  "imperia-via-moltedo-civico-76": {
+    "latitude": 43.9027,
+    "longitude": 7.97782
+  },
+  "imperia-via-moltedo-muro": {
+    "latitude": 43.905138,
+    "longitude": 7.976082
+  },
+  "imperia-strada-barella": {
+    "latitude": 43.908046,
+    "longitude": 7.972144
+  },
+  "imperia-strada-rollaro": {
+    "latitude": 43.913389,
+    "longitude": 7.969666
+  },
+  "imperia-monumento-della-madonnina": {
+    "latitude": 43.916471,
+    "longitude": 7.96939
+  },
+  "imperia-moltedo-capolinea": {
+    "latitude": 43.917566,
+    "longitude": 7.97002
+  },
+  "imperia-via-montegrazie-civico-24": {
+    "latitude": 43.898254,
+    "longitude": 7.984061
+  },
+  "imperia-via-montegrazie-civico-36": {
+    "latitude": 43.899174,
+    "longitude": 7.984051
+  },
+  "imperia-via-montegrazie-civico-9": {
+    "latitude": 43.901934,
+    "longitude": 7.981004
+  },
+  "imperia-via-montegrazie-ponte": {
+    "latitude": 43.902722,
+    "longitude": 7.980105
+  },
+  "imperia-strada-ciappa": {
+    "latitude": 43.907047,
+    "longitude": 7.978287
+  },
+  "imperia-rettilineo-montegrazie": {
+    "latitude": 43.905971,
+    "longitude": 7.979716
+  },
+  "imperia-tornante-montegrazie": {
+    "latitude": 43.904363,
+    "longitude": 7.982243
+  },
+  "imperia-via-montegrazie-civico-92": {
+    "latitude": 43.91548,
+    "longitude": 7.987331
+  },
+  "imperia-via-montegrazie-civico-2": {
+    "latitude": 43.917392,
+    "longitude": 7.987138
+  },
+  "imperia-montegrazie-capolinea": {
+    "latitude": 43.918608,
+    "longitude": 7.985475
+  },
+  "imperia-via-felice-musso": {
+    "latitude": 43.89902,
+    "longitude": 8.03651
+  },
+  "imperia-parco-robinson": {
+    "latitude": 43.900907,
+    "longitude": 8.037456
+  },
+  "imperia-via-felice-musso-civico-57": {
+    "latitude": 43.90245,
+    "longitude": 8.03801
+  },
+  "imperia-oliveto-civico-91": {
+    "latitude": 43.90409,
+    "longitude": 8.03817
+  },
+  "imperia-oliveto-ponte-autostrada": {
+    "latitude": 43.90627,
+    "longitude": 8.03709
+  },
+  "imperia-ponte-regione-panegai": {
+    "latitude": 43.90981,
+    "longitude": 8.03824
+  },
+  "imperia-palo-enel-civico-165": {
+    "latitude": 43.91146,
+    "longitude": 8.03788
+  },
+  "imperia-costa-d-oneglia-capolinea": {
+    "latitude": 43.91479,
+    "longitude": 8.03261
+  },
+  "imperia-bivio-santa-lucia": {
+    "latitude": 43.889368,
+    "longitude": 8.044674
+  },
+  "imperia-via-berio-isah": {
+    "latitude": 43.891216,
+    "longitude": 8.043054
+  },
+  "imperia-bivio-don-minzoni": {
+    "latitude": 43.89046,
+    "longitude": 8.04455
+  },
+  "imperia-bivio-pastonchi": {
+    "latitude": 43.892384,
+    "longitude": 8.044221
+  },
+  "imperia-via-privata-casale": {
+    "latitude": 43.894636,
+    "longitude": 8.044435
+  },
+  "imperia-cascine-tabacchino": {
+    "latitude": 43.895592,
+    "longitude": 8.044585
+  },
+  "imperia-pompe-amat": {
+    "latitude": 43.89761,
+    "longitude": 8.044003
+  },
+  "imperia-chiesa-san-luca": {
+    "latitude": 43.899035,
+    "longitude": 8.043775
+  },
+  "imperia-via-lagoni": {
+    "latitude": 43.898032,
+    "longitude": 8.045848
+  },
+  "imperia-via-poggi-civico-155": {
+    "latitude": 43.900403,
+    "longitude": 8.047281
+  },
+  "imperia-cascine-capolinea": {
+    "latitude": 43.903182,
+    "longitude": 8.049067
+  },
+  "imperia-campeggio-piani": {
+    "latitude": 43.878316,
+    "longitude": 7.985899
+  },
+  "imperia-piani-chiesa": {
+    "latitude": 43.877703,
+    "longitude": 7.984571
+  },
+  "imperia-piani-tabacchino": {
+    "latitude": 43.879936,
+    "longitude": 7.981693
+  },
+  "imperia-piani-mulino": {
+    "latitude": 43.881966,
+    "longitude": 7.980145
+  },
+  "imperia-piani-ronchi-brighei": {
+    "latitude": 43.884957,
+    "longitude": 7.97565
+  },
+  "imperia-via-clavi-coppirossi": {
+    "latitude": 43.88674,
+    "longitude": 7.97182
+  },
+  "imperia-via-clavi-cabina": {
+    "latitude": 43.888257,
+    "longitude": 7.971071
+  },
+  "imperia-via-clavi-bivio-torrazza": {
+    "latitude": 43.890157,
+    "longitude": 7.970575
+  },
+  "imperia-torrazza-cimitero": {
+    "latitude": 43.888906,
+    "longitude": 7.969795
+  },
+  "imperia-pozzi-di-torrazza": {
+    "latitude": 43.888928,
+    "longitude": 7.968821
+  },
+  "imperia-strada-torrazza-civico-25": {
+    "latitude": 43.887292,
+    "longitude": 7.967485
+  },
+  "imperia-torrazza-capolinea": {
+    "latitude": 43.887,
+    "longitude": 7.96633
+  },
+  "imperia-via-bellone-civico-3": {
+    "latitude": 43.917056,
+    "longitude": 8.025904
+  },
+  "imperia-via-roggetti": {
+    "latitude": 43.918015,
+    "longitude": 8.023605
+  },
+  "imperia-via-bellone-civico-27": {
+    "latitude": 43.919806,
+    "longitude": 8.022827
+  },
+  "imperia-piazza-san-michele": {
+    "latitude": 43.916187,
+    "longitude": 8.02091
+  },
+  "imperia-borgo-d-oneglia-capolinea": {
+    "latitude": 43.915039,
+    "longitude": 8.020947
+  },
+  "imperia-via-vecchia-piemonte": {
+    "latitude": 43.896221,
+    "longitude": 8.035533
+  },
+  "imperia-argine-sx-deposito-amat": {
+    "latitude": 43.898984,
+    "longitude": 8.032161
+  },
+  "imperia-argine-sx-borea": {
+    "latitude": 43.900308,
+    "longitude": 8.031174
+  },
+  "imperia-concessionaria-ducati": {
+    "latitude": 43.90164,
+    "longitude": 8.02877
+  },
+  "imperia-argine-dx-ex-mattatoio": {
+    "latitude": 43.90072,
+    "longitude": 8.02784
+  },
+  "imperia-via-privata-ghiglione": {
+    "latitude": 43.89799,
+    "longitude": 8.03116
+  },
+  "imperia-stazione-fs-argine-dx-mare": {
+    "latitude": 43.89692,
+    "longitude": 8.03167
+  },
+  "imperia-argine-dx-tabacchino": {
+    "latitude": 43.894052,
+    "longitude": 8.033041
+  },
+  "imperia-bivio-via-sant-agata": {
+    "latitude": 43.890963,
+    "longitude": 8.033747
+  },
+  "imperia-via-sant-agata-civico-12": {
+    "latitude": 43.892796,
+    "longitude": 8.032824
+  },
+  "imperia-via-sant-agata-civico-74": {
+    "latitude": 43.892502,
+    "longitude": 8.032768
+  },
+  "imperia-tabacchino-ospedale": {
+    "latitude": 43.89158,
+    "longitude": 8.0321
+  },
+  "ospedale-ingresso": {
+    "latitude": 43.891794,
+    "longitude": 8.030177
+  },
+  "imperia-da-gaggin": {
+    "latitude": 43.894895,
+    "longitude": 8.029101
+  },
+  "imperia-sant-agata-ponte-autostrada": {
+    "latitude": 43.897481,
+    "longitude": 8.02677
+  },
+  "imperia-via-sant-agata-civico-188": {
+    "latitude": 43.898658,
+    "longitude": 8.023943
+  },
+  "imperia-bivio-strada-dei-francesi": {
+    "latitude": 43.899431,
+    "longitude": 8.019531
+  },
+  "imperia-via-fontanarosa": {
+    "latitude": 43.900308,
+    "longitude": 8.018297
+  },
+  "imperia-via-sant-agata-civico-101": {
+    "latitude": 43.902183,
+    "longitude": 8.01698
+  },
+  "imperia-via-sant-agata-civico-105": {
+    "latitude": 43.903484,
+    "longitude": 8.01738
+  },
+  "imperia-via-sant-agata-civico-218": {
+    "latitude": 43.90523,
+    "longitude": 8.01548
+  },
+  "imperia-tornante-civico-125": {
+    "latitude": 43.906133,
+    "longitude": 8.011004
+  },
+  "imperia-osteria-dell-orso": {
+    "latitude": 43.906315,
+    "longitude": 8.010661
+  },
+  "imperia-trattoria-u-gumbu": {
+    "latitude": 43.907064,
+    "longitude": 8.008963
+  },
+  "imperia-sant-agata-capolinea": {
+    "latitude": 43.908777,
+    "longitude": 8.008628
+  },
+  "imperia-ospedale-(rotonda)": {
+    "latitude": 43.89225,
+    "longitude": 8.031072
+  },
+  "imperia-via-trento-angolo-via-gazzano": {
+    "latitude": 43.889857,
+    "longitude": 8.032829
+  },
+  "imperia-piazza-della-vittoria": {
+    "latitude": 43.886533,
+    "longitude": 8.028557
+  },
+  "imperia-caserma-crespi": {
+    "latitude": 43.88676,
+    "longitude": 8.0271
+  },
+  "imperia-regione-baite-case-popolari": {
+    "latitude": 43.887778,
+    "longitude": 8.021805
+  },
+  "imperia-regione-baite-civico-32": {
+    "latitude": 43.888038,
+    "longitude": 8.023039
+  },
+  "imperia-baite-capolinea": {
+    "latitude": 43.88833,
+    "longitude": 8.023967
+  },
+  "via-amoretti-civico-43": {
+    "latitude": 43.890263,
+    "longitude": 8.029544
+  },
+  "via-amoretti-civico-40": {
+    "latitude": 43.889154,
+    "longitude": 8.029697
+  },
+  "via-amoretti-civico-25": {
+    "latitude": 43.888274,
+    "longitude": 8.029691
+  },
+  "via-amoretti-civico-19": {
+    "latitude": 43.887124,
+    "longitude": 8.028557
+  },
+  "imperia-bivio-cantalupo": {
+    "latitude": 43.88706,
+    "longitude": 7.992883
+  },
+  "imperia-via-cantalupo-civico-54": {
+    "latitude": 43.889805,
+    "longitude": 7.995557
+  },
+  "imperia-via-cantalupo-civico-74": {
+    "latitude": 43.89002,
+    "longitude": 7.99472
+  },
+  "imperia-via-cantalupo-civico-99": {
+    "latitude": 43.890892,
+    "longitude": 7.995013
+  },
+  "imperia-bivio-borgata-ricci": {
+    "latitude": 43.892165,
+    "longitude": 7.996982
+  },
+  "imperia-cantalupo-chiesa-capolinea": {
+    "latitude": 43.892846,
+    "longitude": 7.998961
+  },
+  "via-ii-giugno-ponte": {
+    "latitude": 43.9246,
+    "longitude": 8.11276
+  },
+  "via-solitario-delle-alpi": {
+    "latitude": 43.93035,
+    "longitude": 8.11198
+  },
+  "piazza-castello-capolinea": {
+    "latitude": 43.92728,
+    "longitude": 8.11508
+  },
+  "chiappa-bivio-via-rocca": {
+    "latitude": 43.95085,
+    "longitude": 8.10787
+  },
+  "cipressa-bivio-cimitero-cipressa": {
+    "latitude": 43.8496,
+    "longitude": 7.93128
+  },
+  "cipressa-via-fossati-civico-50": {
+    "latitude": 43.8496,
+    "longitude": 7.93476
+  },
+  "cipressa-via-fossati-vasca": {
+    "latitude": 43.8479,
+    "longitude": 7.93081
+  },
+  "cipressa-residence-cipressa": {
+    "latitude": 43.8477,
+    "longitude": 7.92683
+  },
+  "cipressa-condominio-folache-civico-77": {
+    "latitude": 43.8464,
+    "longitude": 7.92063
+  },
+  "cipressa-via-nuova-civico-67": {
+    "latitude": 43.8462,
+    "longitude": 7.91865
+  },
+  "cipressa-via-nuova-chiesa": {
+    "latitude": 43.8446,
+    "longitude": 7.91793
+  },
+  "cipressa-bivio-aurelia": {
+    "latitude": 43.8435,
+    "longitude": 7.91608
+  },
+  "dolcedo-via-parco-9": {
+    "latitude": 43.9001,
+    "longitude": 7.95182
+  },
+  "imperia-pizzeria-piani": {
+    "latitude": 43.878813,
+    "longitude": 7.986921
+  },
+  "imperia-regione-bussi": {
+    "latitude": 43.877943,
+    "longitude": 7.988677
+  },
+  "motorizzazione-incrocio-via-littardi": {
+    "latitude": 43.87649,
+    "longitude": 7.98989
+  },
+  "ponte-autostrada-concessionaria-auto": {
+    "latitude": 43.875414,
+    "longitude": 7.991226
+  },
+  "imperia-bivio-autostrada": {
+    "latitude": 43.873396,
+    "longitude": 7.996829
+  },
+  "imperia-raffineria-romano": {
+    "latitude": 43.872512,
+    "longitude": 7.999388
+  },
+  "imperia-distributore-q8": {
+    "latitude": 43.871833,
+    "longitude": 8.001026
+  },
+  "prela-centro": {
+    "latitude": 43.92502,
+    "longitude": 7.94006
+  },
+  "prela-prela-ponte": {
+    "latitude": 43.92476,
+    "longitude": 7.94187
+  },
+  "isolalunga": {
+    "latitude": 43.9035,
+    "longitude": 7.95633
+  },
+  "via-garibaldi-supermercato": {
+    "latitude": 43.90118,
+    "longitude": 7.96043
+  },
+  "frantoio-sociale": {
+    "latitude": 43.8982,
+    "longitude": 7.96513
+  },
+  "rettilineo": {
+    "latitude": 43.89247,
+    "longitude": 7.97326
+  },
+  "passo-clavi": {
+    "latitude": 43.89022,
+    "longitude": 7.97554
+  },
+  "bastera": {
+    "latitude": 43.88897,
+    "longitude": 7.97822
+  },
+  "imperia-via-colombera-conad": {
+    "latitude": 43.87891,
+    "longitude": 8.006337
+  },
+  "imperia-via-colombera-civico-16": {
+    "latitude": 43.876354,
+    "longitude": 8.008142
+  },
+  "dolcedo-pantasina-casa-bianca": {
+    "latitude": 43.94031,
+    "longitude": 7.93411
+  },
+  "dolcedo-canneto": {
+    "latitude": 43.9282,
+    "longitude": 7.93884
+  },
+  "dolcedo-bivio-praelo": {
+    "latitude": 43.93009,
+    "longitude": 7.93942
+  },
+  "dolcedo-case-carli": {
+    "latitude": 43.93088,
+    "longitude": 7.94164
+  },
+  "chiusanico-riviera-alimenti": {
+    "latitude": 43.9547,
+    "longitude": 8.00041
+  },
+  "chiusanico-bivio-gazzelli": {
+    "latitude": 43.95231,
+    "longitude": 8.00021
+  },
+  "pontedassio-santa-lucia": {
+    "latitude": 43.9341,
+    "longitude": 8.01661
+  },
+  "imperia-sede-riviera-trasporti": {
+    "latitude": 43.925122,
+    "longitude": 8.022256
+  },
+  "via-diano-calderina-civico-157": {
+    "latitude": 43.90228,
+    "longitude": 8.0563
+  },
+  "diano-marina-da-matita": {
+    "latitude": 43.90492,
+    "longitude": 8.05517
+  },
+  "diano-marina-san-leonardo": {
+    "latitude": 43.90355,
+    "longitude": 8.05584
+  },
+  "diano-marina-azienda-agricola-temesio": {
+    "latitude": 43.90442,
+    "longitude": 8.05508
+  },
+  "diano-arentino-landini": {
+    "latitude": 43.9531,
+    "longitude": 8.03845
+  },
+  "diano-arentino-ristorante": {
+    "latitude": 43.95124,
+    "longitude": 8.04206
+  },
+  "diano-arentino-centro": {
+    "latitude": 43.94943,
+    "longitude": 8.04047
+  },
+  "diano-arentino-arentino-chiesa": {
+    "latitude": 43.94702,
+    "longitude": 8.04085
+  },
+  "diano-arentino-municipio": {
+    "latitude": 43.94774,
+    "longitude": 8.04217
+  },
+  "diano-arentino-villaggio-ginestre": {
+    "latitude": 43.94652,
+    "longitude": 8.04527
+  },
+  "diano-arentino-regione-campi": {
+    "latitude": 43.94644,
+    "longitude": 8.04631
+  },
+  "diano-borello-residence-uliveto": {
+    "latitude": 43.9469,
+    "longitude": 8.04929
+  },
+  "diano-arentino-diano-borello": {
+    "latitude": 43.94743,
+    "longitude": 8.04968
+  },
+  "villa-faraldi-pera": {
+    "latitude": 43.96811,
+    "longitude": 8.10188
+  },
+  "villa-faraldi-tovetto": {
+    "latitude": 43.96908,
+    "longitude": 8.0995
+  },
+  "villa-faraldi-centro": {
+    "latitude": 43.9675,
+    "longitude": 8.0916
+  },
+  "villa-faraldi-cimitero": {
+    "latitude": 43.9659,
+    "longitude": 8.09187
+  },
+  "bivio-riva-faraldi": {
+    "latitude": 43.96264,
+    "longitude": 8.08803
+  },
+  "san-bartolomeo-al-mare-mulino-del-fico": {
+    "latitude": 43.95104,
+    "longitude": 8.0957
+  },
+  "bivio-chiappa-via-luvea": {
+    "latitude": 43.95001,
+    "longitude": 8.09557
+  },
+  "strada-pairola-ponte-autostrada": {
+    "latitude": 43.93035,
+    "longitude": 8.09931
+  },
+  "san-bartolomeo-via-roma": {
+    "latitude": 43.9284,
+    "longitude": 8.10141
+  },
+  "diano-marina-via-colombo": {
+    "latitude": 43.91098,
+    "longitude": 8.08312
+  },
+  "bivio-pairola-via-luvea": {
+    "latitude": 43.94445,
+    "longitude": 8.09816
+  },
+  "ristorante-san-matteo": {
+    "latitude": 43.94187,
+    "longitude": 8.09987
+  },
+  "san-bartolomeo-al-mare-san-simone": {
+    "latitude": 43.93849,
+    "longitude": 8.10521
+  },
+  "san-bartolomeo-al-mare-chiappa-cimitero": {
+    "latitude": 43.94721,
+    "longitude": 8.10757
+  },
+  "chiappa-capolinea": {
+    "latitude": 43.95252,
+    "longitude": 8.10853
+  },
+  "pieve-di-teco-capolinea": {
+    "latitude": 44.04685,
+    "longitude": 7.9148
+  },
+  "albenga-ospedale": {
+    "latitude": 44.0536,
+    "longitude": 8.19927
+  },
+  "albenga-vadino": {
+    "latitude": 44.0451,
+    "longitude": 8.21332
+  },
+  "albenga-via-xxv-aprile": {
+    "latitude": 44.0451,
+    "longitude": 8.21966
+  },
+  "albenga-stazione-fs-capolinea": {
+    "latitude": 44.0472,
+    "longitude": 8.22109
+  },
+  "borghetto-bivio-gazzo": {
+    "latitude": 44.05637,
+    "longitude": 7.98017
+  },
+  "leverone-chiesa": {
+    "latitude": 44.07773,
+    "longitude": 7.99723
+  },
+  "gazzo": {
+    "latitude": 44.0677,
+    "longitude": 7.97153
+  },
+  "ristorante-al-sole": {
+    "latitude": 44.08559,
+    "longitude": 8.01798
+  },
+  "costa-bacelega": {
+    "latitude": 44.06908,
+    "longitude": 8.02959
+  },
+  "armo-capolinea": {
+    "latitude": 44.08804,
+    "longitude": 7.91353
+  },
+  "pieve-di-teco-strada-teco": {
+    "latitude": 44.05212,
+    "longitude": 7.89848
+  },
+  "pieve-di-teco-acquetico-centro": {
+    "latitude": 44.05553,
+    "longitude": 7.88613
+  },
+  "pornassio-ponti-di-pornassio-vivaio": {
+    "latitude": 44.0588,
+    "longitude": 7.87271
+  },
+  "ponti-di-pornassio-bivio-san-luigi": {
+    "latitude": 44.0635,
+    "longitude": 7.86076
+  },
+  "ponti-di-pornassio-genzianella": {
+    "latitude": 44.0647,
+    "longitude": 7.85599
+  },
+  "pornassio-ponti-di-pornassio-centro": {
+    "latitude": 44.0655,
+    "longitude": 7.85573
+  },
+  "pornassio-ponti-di-pornassio-gandalini": {
+    "latitude": 44.0669,
+    "longitude": 7.85295
+  },
+  "pornassio-castagneti": {
+    "latitude": 44.0668,
+    "longitude": 7.84721
+  },
+  "pornassio-casone": {
+    "latitude": 44.0679,
+    "longitude": 7.82671
+  },
+  "montegrosso-bivio": {
+    "latitude": 44.07179,
+    "longitude": 7.81688
+  },
+  "montegrosso-centro": {
+    "latitude": 44.06703,
+    "longitude": 7.81702
+  },
+  "mendatica-serra": {
+    "latitude": 44.0754,
+    "longitude": 7.80995
+  },
+  "mendatica-garage-rt": {
+    "latitude": 44.07571,
+    "longitude": 7.8059
+  },
+  "mendatica-chiesa-capolinea": {
+    "latitude": 44.07641,
+    "longitude": 7.80568
+  },
+  "rezzo-cenova-centro": {
+    "latitude": 44.030506,
+    "longitude": 7.89579
+  },
+  "rezzo-bivio-cenova": {
+    "latitude": 44.026022,
+    "longitude": 7.881427
+  },
+  "rezzo-capolinea": {
+    "latitude": 44.020345,
+    "longitude": 7.872006
+  },
+  "sgorreto-ipervalle": {
+    "latitude": 43.92928,
+    "longitude": 8.01833
+  },
+  "imperia-via-lorenzo-acquarone": {
+    "latitude": 43.8837,
+    "longitude": 8.01129
+  },
+  "imperia-via-lorenzo-acquarone-rotonda": {
+    "latitude": 43.882,
+    "longitude": 8.0115
+  },
+  "imperia-palasalute": {
+    "latitude": 43.87987,
+    "longitude": 8.01221
+  },
+  "imperia-caramagna-bivio-croce-discesa": {
+    "latitude": 43.895,
+    "longitude": 7.98479
+  },
+  "imperia-cascine-ex-capolinea": {
+    "latitude": 43.903201,
+    "longitude": 8.049046
+  },
+  "imperia-ricovero": {
+    "latitude": 43.890468,
+    "longitude": 8.042464
+  },
+  "imperia-via-agnesi": {
+    "latitude": 43.891738,
+    "longitude": 8.041675
+  },
+  "imperia-trexenda-inversione": {
+    "latitude": 43.909681,
+    "longitude": 8.024785
+  },
+  "cosio-d-arroscia---capolinea": {
+    "latitude": 44.0775,
+    "longitude": 7.83262
+  },
+  "bivio-cosio-d-arroscia": {
+    "latitude": 44.08057,
+    "longitude": 7.85485
+  },
+  "nava-capolinea": {
+    "latitude": 44.08484,
+    "longitude": 7.8729
+  },
+  "nava-colonia": {
+    "latitude": 44.08074,
+    "longitude": 7.867
+  },
+  "case-rosse-1": {
+    "latitude": 44.07837,
+    "longitude": 7.86091
+  },
+  "case-rosse-2": {
+    "latitude": 44.07615,
+    "longitude": 7.86329
+  },
+  "pornassio": {
+    "latitude": 44.07002,
+    "longitude": 7.87096
+  },
+  "imperia-via-xxv-aprile": {
+    "latitude": 43.89272,
+    "longitude": 8.04044
+  },
+  "imperia-nuovo-tribunale": {
+    "latitude": 43.894926,
+    "longitude": 8.039808
+  },
+  "imperia-campo-sportivo": {
+    "latitude": 43.897015,
+    "longitude": 8.037325
+  },
+  "imperia-castelvecchio-ufficio-postale": {
+    "latitude": 43.8991,
+    "longitude": 8.03571
+  },
+  "imperia-meccanico": {
+    "latitude": 43.90069,
+    "longitude": 8.03403
+  },
+  "imperia-castelvecchio-giro-dei-galli": {
+    "latitude": 43.902581,
+    "longitude": 8.030743
+  },
+  "pontedassio-bivio-bestagno-ss-28": {
+    "latitude": 43.938524,
+    "longitude": 8.016859
+  },
+  "pontedassio-piazza-agnesi": {
+    "latitude": 43.93992,
+    "longitude": 8.01044
+  },
+  "pontedassio-bivio-bestagno": {
+    "latitude": 43.93857,
+    "longitude": 8.01689
+  },
+  "pontedassio-ramoino": {
+    "latitude": 43.9388,
+    "longitude": 8.00198
+  },
+  "pontedassio-santuario-bestagno": {
+    "latitude": 43.93769,
+    "longitude": 8.00425
+  },
+  "pontedassio-bestagno": {
+    "latitude": 43.93248,
+    "longitude": 8.00138
+  },
+  "pontedassio-bestagno-2": {
+    "latitude": 43.93333,
+    "longitude": 7.99952
+  },
+  "pontedassio-bivio-villa-viani": {
+    "latitude": 43.93222,
+    "longitude": 7.99521
+  },
+  "pontedassio-bestagno-bivio-sant-agata": {
+    "latitude": 43.93134,
+    "longitude": 7.99229
+  },
+  "pontedassio-prati": {
+    "latitude": 43.9322,
+    "longitude": 7.98412
+  },
+  "pontedassio-bivio-via-costa": {
+    "latitude": 43.93858,
+    "longitude": 7.98277
+  },
+  "pontedassio-chiesetta": {
+    "latitude": 43.9392,
+    "longitude": 7.98489
+  },
+  "pontedassio-arco-ex-ipab": {
+    "latitude": 43.93947,
+    "longitude": 7.98504
+  },
+  "pontedassio-villa-viani": {
+    "latitude": 43.93958,
+    "longitude": 7.98508
+  },
+  "pontedassio-villa-guardia": {
+    "latitude": 43.94073,
+    "longitude": 7.98852
+  },
+  "imperia-via-garessio-fronte-civico-88": {
+    "latitude": 43.895345,
+    "longitude": 8.037446
+  },
+  "imperia-fratelli-carli": {
+    "latitude": 43.894,
+    "longitude": 8.03791
+  },
+  "imperia-distributore-api": {
+    "latitude": 43.8926,
+    "longitude": 8.04004
+  },
+  "villanova-d-albenga-distrib-ip-andata": {
+    "latitude": 44.04554,
+    "longitude": 8.14242
+  },
+  "piani-rotonda": {
+    "latitude": 43.87892,
+    "longitude": 7.98683
+  },
+  "imperia-piani-case-popolari": {
+    "latitude": 43.88079,
+    "longitude": 7.98563
+  },
+  "imperia-piani-2-via-g-dalla-chiesa": {
+    "latitude": 43.88158,
+    "longitude": 7.9843
+  },
+  "imperia-corso-allende": {
+    "latitude": 43.88278,
+    "longitude": 7.9825
+  },
+  "imperia-distributore-gas-corso-allende": {
+    "latitude": 43.88571,
+    "longitude": 7.97786
+  },
+  "imperia-coppirossi-inversione": {
+    "latitude": 43.88676,
+    "longitude": 7.97437
+  },
+  "imperia-via-gavi": {
+    "latitude": 43.8756,
+    "longitude": 8.00828
+  },
+  "imperia-via-cesare-battisti-civico-32": {
+    "latitude": 43.90049,
+    "longitude": 8.03489
+  },
+  "imperia-via-cesare-battisti-civico-74": {
+    "latitude": 43.90195,
+    "longitude": 8.03386
+  },
+  "imperia-da-gerini-civico-116": {
+    "latitude": 43.90239,
+    "longitude": 8.03286
+  },
+  "imperia-incrocio-con-via-carli": {
+    "latitude": 43.902981,
+    "longitude": 8.033883
+  },
+  "imperia-via-collette-civico-72": {
+    "latitude": 43.9041,
+    "longitude": 8.03236
+  },
+  "imperia-via-collette-civico-98": {
+    "latitude": 43.90664,
+    "longitude": 8.03005
+  },
+  "imperia-incrocio-con-via-dante": {
+    "latitude": 43.90537,
+    "longitude": 8.02988
+  },
+  "imperia-scuole-castelvecchio": {
+    "latitude": 43.90396,
+    "longitude": 8.03065
+  },
+  "imperia-via-dante-civico-12": {
+    "latitude": 43.902869,
+    "longitude": 8.03045
+  },
+  "scuole-via-degli-ulivi": {
+    "latitude": 43.88006,
+    "longitude": 8.01226
+  },
+  "via-lorenzo-acquarone-rotonda": {
+    "latitude": 43.88217,
+    "longitude": 8.01147
+  },
+  "via-lorenzo-acquarone": {
+    "latitude": 43.8844,
+    "longitude": 8.01147
+  },
+  "bivio-arzeno-d-oneglia": {
+    "latitude": 44.0139,
+    "longitude": 7.96493
+  },
+  "cesio-arzeno-d-oneglia": {
+    "latitude": 44.00942,
+    "longitude": 7.96347
+  },
+  "cartari-capolinea": {
+    "latitude": 44.02718,
+    "longitude": 7.9574
+  },
+  "cartari-bivio": {
+    "latitude": 44.0266,
+    "longitude": 7.96043
+  },
+  "colle-san-bartolomeo": {
+    "latitude": 44.01023,
+    "longitude": 7.95233
+  },
+  "bivio-arzeno-discesa": {
+    "latitude": 44.013919,
+    "longitude": 7.964935
+  },
+  "cesio-fontana-discesa": {
+    "latitude": 44.011657,
+    "longitude": 7.974378
+  },
+  "rotonda-garzi-ritorno": {
+    "latitude": 43.973592,
+    "longitude": 7.977404
+  },
+  "ranzo-via-l-guido": {
+    "latitude": 44.0601,
+    "longitude": 8.01177
+  },
+  "bacelega-bivio": {
+    "latitude": 44.05806,
+    "longitude": 8.03144
+  },
+  "piani-paorelli": {
+    "latitude": 43.850211,
+    "longitude": 7.947318
+  },
+  "via-gavino-capolinea": {
+    "latitude": 43.8302,
+    "longitude": 7.79881
+  },
+  "residenza-franchiolo": {
+    "latitude": 43.829459,
+    "longitude": 7.797345
+  },
+  "marina-san-giuseppe-1": {
+    "latitude": 43.789562,
+    "longitude": 7.602324
+  },
+  "marina-san-giuseppe-2": {
+    "latitude": 43.789065,
+    "longitude": 7.60467
+  },
+  "marina-san-giuseppe-3": {
+    "latitude": 43.791269,
+    "longitude": 7.604254
+  },
+  "bussana-gs---scuole": {
+    "latitude": 43.82223,
+    "longitude": 7.83714
+  },
+  "pieve-di-teco-capolinea-chiesa": {
+    "latitude": 44.04636,
+    "longitude": 7.91521
+  },
+  "imperia-borgo-marina": {
+    "latitude": 43.87655,
+    "longitude": 8.01927
+  },
+  "imperia-capitaneria-di-porto": {
+    "latitude": 43.8785,
+    "longitude": 8.01859
+  },
+  "museo-navale": {
+    "latitude": 43.8801,
+    "longitude": 8.01931
+  },
+  "via-delbecchi": {
+    "latitude": 43.8894,
+    "longitude": 8.03526
+  },
+  "lungomare-vespucci": {
+    "latitude": 43.8868,
+    "longitude": 8.03235
+  },
+  "san-biagio-centro": {
+    "latitude": 43.8172,
+    "longitude": 7.65107
+  },
+  "san-biagio-agriturismo": {
+    "latitude": 43.8236,
+    "longitude": 7.65282
+  },
+  "san-biagio-bivio": {
+    "latitude": 43.818,
+    "longitude": 7.65095
+  },
+  "san-biagio-ristorante": {
+    "latitude": 43.8167,
+    "longitude": 7.64983
+  },
+  "cento-commerciale-taggia": {
+    "latitude": 43.84652,
+    "longitude": 7.85546
+  },
+  "incrocio-castellaro": {
+    "latitude": 43.8373,
+    "longitude": 7.86586
+  },
+  "tornante-cava": {
+    "latitude": 43.8501,
+    "longitude": 7.86292
+  },
+  "poggio-castellaro": {
+    "latitude": 43.8551,
+    "longitude": 7.86312
+  },
+  "strada-provinciale-civico-8": {
+    "latitude": 43.8551,
+    "longitude": 7.86301
+  },
+  "via-martiri-della-liberta-inizio": {
+    "latitude": 43.81904,
+    "longitude": 7.77272
+  },
+  "via-galilei-bar-venezia-bivio": {
+    "latitude": 43.8248,
+    "longitude": 7.76419
+  },
+  "carr-san-pietro-civico-102": {
+    "latitude": 43.82994,
+    "longitude": 7.77674
+  },
+  "taggia-centro-commerciale": {
+    "latitude": 43.84648,
+    "longitude": 7.85548
+  },
+  "bivio-strade-interpoderali": {
+    "latitude": 43.8566,
+    "longitude": 7.86506
+  },
+  "via-padre-semeria-incrocio": {
+    "latitude": 43.8097,
+    "longitude": 7.75713
+  },
+  "imperia-istituto-isah": {
+    "latitude": 43.889355,
+    "longitude": 8.05911
+  },
+  "dolcedo-parco-rimembranze": {
+    "latitude": 43.9046,
+    "longitude": 7.95256
+  },
+  "borgata-boeri": {
+    "latitude": 43.9038,
+    "longitude": 7.93858
+  },
+  "strada-civezza-civico-90": {
+    "latitude": 43.876478,
+    "longitude": 7.967801
+  },
+  "cabina-enel-civico-92": {
+    "latitude": 43.879181,
+    "longitude": 7.965951
+  },
+  "caramagna-bivio-croce-salita": {
+    "latitude": 43.8953,
+    "longitude": 7.98475
+  },
+  "oliveto-via-del-bey": {
+    "latitude": 43.9054,
+    "longitude": 8.03757
+  },
+  "via-clavi-civico-97": {
+    "latitude": 43.8839,
+    "longitude": 7.97756
+  },
+  "dolcedo-parco-delle-rimembranze": {
+    "latitude": 43.9046,
+    "longitude": 7.95262
+  },
+  "via-caramagna-civico-150": {
+    "latitude": 43.887636,
+    "longitude": 7.992022
+  },
+  "chiappa-chiesa": {
+    "latitude": 43.94966,
+    "longitude": 8.1075
+  },
+  "sgorreto---ponte-ingresso": {
+    "latitude": 43.9291,
+    "longitude": 8.02025
+  },
+  "ponte-austrada": {
+    "latitude": 43.8869,
+    "longitude": 8.01096
+  },
+  "via-collette-civico-78": {
+    "latitude": 43.90696,
+    "longitude": 8.03157
+  },
+  "via-amoretti-civico-6": {
+    "latitude": 43.886681,
+    "longitude": 8.027333
+  },
+  "via-don-minzoni-20": {
+    "latitude": 43.891222,
+    "longitude": 8.04516
+  },
+  "via-don-minzoni-42": {
+    "latitude": 43.892763,
+    "longitude": 8.046418
+  },
+  "via-don-minzoni-202": {
+    "latitude": 43.894637,
+    "longitude": 8.049063
+  },
+  "via-santa-lucia-151": {
+    "latitude": 43.893095,
+    "longitude": 8.049029
+  },
+  "via-santa-lucia-91": {
+    "latitude": 43.891909,
+    "longitude": 8.047275
+  },
+  "via-santa-lucia-29": {
+    "latitude": 43.890065,
+    "longitude": 8.045816
+  },
+  "stazione-fs-argine-sx-monte-2": {
+    "latitude": 43.897701,
+    "longitude": 8.032675
+  },
+  "via-garessio-off-basso": {
+    "latitude": 43.892611,
+    "longitude": 8.040081
+  },
+  "via-v-piemonte-ex-distributore": {
+    "latitude": 43.895943,
+    "longitude": 8.036956
+  },
+  "stazione-fs-argine-sx-monte-1": {
+    "latitude": 43.897397,
+    "longitude": 8.032854
+  },
+  "stazione-fs-diano-marina": {
+    "latitude": 43.92481,
+    "longitude": 8.07366
+  },
+  "imperia-largo-nannollo-piana": {
+    "latitude": 43.89021,
+    "longitude": 8.03958
+  },
+  "trucco-inversione-piazzale": {
+    "latitude": 43.84593,
+    "longitude": 7.58806
+  },
+  "diano-c---via-argine-sx-17-dir-mare": {
+    "latitude": 43.91958,
+    "longitude": 8.07764
+  },
+  "diano-c---via-argine-sx-17-dir-monti": {
+    "latitude": 43.91964,
+    "longitude": 8.07766
+  },
+  "via-gioacchino-rossini---materna": {
+    "latitude": 43.91389,
+    "longitude": 8.08206
+  },
+  "arma-aurelia-rotonda": {
+    "latitude": 43.8355,
+    "longitude": 7.85339
+  },
+  "arma-aurelia-incrocio-via-campi": {
+    "latitude": 43.8346,
+    "longitude": 7.8502
+  },
+  "arma-aurelia-distributore-eni": {
+    "latitude": 43.8329,
+    "longitude": 7.84886
+  },
+  "acquetico-centro": {
+    "latitude": 44.05469,
+    "longitude": 7.8891
+  },
+  "pornassio-centro": {
+    "latitude": 44.07002,
+    "longitude": 7.87102
+  },
+  "pornassio-bivio-ottano": {
+    "latitude": 44.07312,
+    "longitude": 7.86713
+  },
+  "case-rosse-casa-cantoniera": {
+    "latitude": 44.07612,
+    "longitude": 7.86332
+  },
+  "case-rosse-bottega": {
+    "latitude": 44.0783,
+    "longitude": 7.86097
+  },
+  "case-rosse-bivio-cosio": {
+    "latitude": 44.08057,
+    "longitude": 7.85506
+  },
+  "colle-di-nava-colonie": {
+    "latitude": 44.08078,
+    "longitude": 7.86655
+  },
+  "colle-di-nava-lorenzina": {
+    "latitude": 44.08563,
+    "longitude": 7.87284
+  },
+  "colle-di-nava-pro-loco": {
+    "latitude": 44.09022,
+    "longitude": 7.87356
+  },
+  "colle-di-nava-centro": {
+    "latitude": 44.0937,
+    "longitude": 7.87266
+  },
+  "colle-di-nava-colonia": {
+    "latitude": 44.08079,
+    "longitude": 7.86691
+  },
+  "diano-marina-vecchia-stazione": {
+    "latitude": 43.90957,
+    "longitude": 8.07883
+  },
+  "villanova-d-albenga-distrib-ip-ritorno": {
+    "latitude": 44.04565,
+    "longitude": 8.14284
+  },
+  "san-biagio-piazza": {
+    "latitude": 43.8178,
+    "longitude": 7.64913
   }
 }

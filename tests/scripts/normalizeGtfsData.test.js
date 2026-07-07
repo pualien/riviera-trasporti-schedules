@@ -27,13 +27,16 @@ describe('normalizeGtfsData', () => {
           matchTokens: ['imperia'],
         },
       ],
+      stopIdOverrides: {
+        'Imperia Porto Maurizio': 'legacy-imperia-stop',
+      },
       sourceUrl: 'https://example.com/gtfs.zip',
       builtAt: '2026-07-06T08:00:00.000Z',
     });
 
     expect(output.lines).toEqual([{ lineId: '12', pages: [] }]);
     expect(output.stops).toContainEqual({
-      id: 'imperia-porto-maurizio',
+      id: 'legacy-imperia-stop',
       canonical: 'Imperia Porto Maurizio',
       variants: ['porto maurizio'],
     });
@@ -46,13 +49,13 @@ describe('normalizeGtfsData', () => {
     });
     expect(output.trips[0].stops).toEqual([
       { name: 'Andora Stazione FS', time: '05:35', stopId: 'andora-stazione-fs' },
-      { name: 'Imperia Porto Maurizio', time: '06:20', stopId: 'imperia-porto-maurizio' },
+      { name: 'Imperia Porto Maurizio', time: '06:20', stopId: 'legacy-imperia-stop' },
       { name: 'Sanremo Autostazione', time: '07:00', stopId: 'sanremo-autostazione' },
     ]);
     expect(output.localities).toContainEqual(
-      expect.objectContaining({ id: 'imperia', stopIds: ['imperia-porto-maurizio'] }),
+      expect.objectContaining({ id: 'imperia', stopIds: ['legacy-imperia-stop'] }),
     );
-    expect(output.reachability['imperia-porto-maurizio']).toEqual(['sanremo-autostazione']);
+    expect(output.reachability['legacy-imperia-stop']).toEqual(['sanremo-autostazione']);
     expect(output.stopCoordinates).toMatchObject({
       'sanremo-autostazione': { latitude: 43.817, longitude: 7.777 },
     });

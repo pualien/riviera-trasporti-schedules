@@ -89,6 +89,10 @@ function renderDepartureArchive({
   departures = [],
   selectedTripKey,
   t,
+  open = false,
+  compact = true,
+  pdfUrl = '#',
+  sourceInfo = null,
 }) {
   if (!departures.length) {
     return '';
@@ -106,7 +110,7 @@ function renderDepartureArchive({
   }
 
   return `
-    <details class="departure-archive">
+    <details class="departure-archive"${open ? ' open' : ''}>
       <summary>
         <span>${escapeHtml(t('results.allDeparturesCount', { count: departures.length }))}</span>
         <small>${escapeHtml(t('results.allDeparturesDisclosure'))}</small>
@@ -129,7 +133,7 @@ function renderDepartureArchive({
               ${bandDepartures.map((departure) => renderDepartureCard({
     ...departure,
     isSelected: departure.tripKey === selectedTripKey,
-  }, t, '#', { compact: true })).join('')}
+  }, t, pdfUrl, { compact, sourceInfo })).join('')}
             </div>
           </section>
         `;
@@ -296,6 +300,8 @@ export function renderResultsView({
   sharedRouteContext = null,
   sourceInfo = null,
 }) {
+  const archiveAsPrimary = !nextDepartures.length;
+
   return `
     <section class="results-shell">
       <article class="summary-card" data-result-anchor>
@@ -337,7 +343,15 @@ export function renderResultsView({
           <h3>${t('results.allDepartures')}</h3>
           <p>${t('results.allDeparturesSubtitle')}</p>
         </div>
-        ${renderDepartureArchive({ departures: allDepartures, selectedTripKey, t })}
+        ${renderDepartureArchive({
+    departures: allDepartures,
+    selectedTripKey,
+    t,
+    open: archiveAsPrimary,
+    compact: !archiveAsPrimary,
+    pdfUrl,
+    sourceInfo,
+  })}
       </section>
       ` : ''}
       ${selectedTripPanel}

@@ -21,15 +21,29 @@ function normalizeTime(value) {
   return `${match[1].padStart(2, '0')}:${match[2]}`;
 }
 
-function dayTypeForService(calendarEntry) {
-  if (!calendarEntry) {
-    return 'giornaliero';
+function activeDaysForCalendarDates(calendarDateEntries = []) {
+  const days = new Set();
+
+  for (const entry of calendarDateEntries) {
+    if (entry.exception_type === '2') {
+      continue;
+    }
+
+    const date = parseGtfsDate(entry.date);
+    if (!date) {
+      continue;
+    }
+
+    days.add(new Date(`${date}T12:00:00Z`).getUTCDay());
   }
 
-  const weekdayActive = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
-    .some((day) => calendarEntry[day] === '1');
-  const saturdayActive = calendarEntry.saturday === '1';
-  const sundayActive = calendarEntry.sunday === '1';
+  return days;
+}
+
+function dayTypeFromActiveDays(activeDays) {
+  const weekdayActive = [1, 2, 3, 4, 5].some((day) => activeDays.has(day));
+  const saturdayActive = activeDays.has(6);
+  const sundayActive = activeDays.has(0);
 
   if (weekdayActive && !saturdayActive && !sundayActive) {
     return 'feriale';
@@ -42,13 +56,50 @@ function dayTypeForService(calendarEntry) {
   return 'giornaliero';
 }
 
-function serviceRange(calendar = []) {
+function dayTypeForService(calendarEntry, calendarDateEntries = [], serviceId = '') {
+  if (String(serviceId).includes('SCO')) {
+    return 'scolastico';
+  }
+
+  if (!calendarEntry) {
+    const activeDays = activeDaysForCalendarDates(calendarDateEntries);
+    return activeDays.size ? dayTypeFromActiveDays(activeDays) : 'giornaliero';
+  }
+
+  const activeDays = new Set();
+  if (['monday', 'tuesday', 'wednesday', 'thursday', 'friday']
+    .some((day) => calendarEntry[day] === '1')) {
+    [1, 2, 3, 4, 5].forEach((day) => activeDays.add(day));
+  }
+  if (calendarEntry.saturday === '1') activeDays.add(6);
+  if (calendarEntry.sunday === '1') activeDays.add(0);
+
+  return dayTypeFromActiveDays(activeDays);
+}
+
+function serviceRange({ calendar = [], calendarDates = [], feedInfo = [] } = {}) {
+  const feed = feedInfo[0] ?? {};
+  const feedStart = parseGtfsDate(feed.feed_start_date);
+  const feedEnd = parseGtfsDate(feed.feed_end_date);
+
+  if (feedStart || feedEnd) {
+    return {
+      validFrom: feedStart,
+      validUntil: feedEnd,
+    };
+  }
+
   const starts = calendar.map((entry) => parseGtfsDate(entry.start_date)).filter(Boolean).sort();
   const ends = calendar.map((entry) => parseGtfsDate(entry.end_date)).filter(Boolean).sort();
+  const activeDates = calendarDates
+    .filter((entry) => entry.exception_type !== '2')
+    .map((entry) => parseGtfsDate(entry.date))
+    .filter(Boolean)
+    .sort();
 
   return {
-    validFrom: starts[0] ?? null,
-    validUntil: ends.at(-1) ?? null,
+    validFrom: starts[0] ?? activeDates[0] ?? null,
+    validUntil: ends.at(-1) ?? activeDates.at(-1) ?? null,
   };
 }
 
@@ -58,14 +109,21 @@ function sortedStopTimes(stopTimes) {
   );
 }
 
-function buildStops(gtfsStops, aliases) {
+function gtfsStopId(stop, stopIdOverrides = {}) {
+  return stopIdOverrides[stop.stop_name] ?? stopIdFromName(stop.stop_name);
+}
+
+function buildStops(gtfsStops, aliases, stopIdOverrides) {
   return gtfsStops.map((stop) => {
     const canonical = stop.stop_name;
-    return createStopRecord(canonical, aliases[canonical.toLowerCase()] ?? aliases[canonical] ?? []);
+    return {
+      ...createStopRecord(canonical, aliases[canonical.toLowerCase()] ?? aliases[canonical] ?? []),
+      id: gtfsStopId(stop, stopIdOverrides),
+    };
   });
 }
 
-function buildCoordinates(gtfsStops) {
+function buildCoordinates(gtfsStops, stopIdOverrides) {
   return Object.fromEntries(
     gtfsStops
       .map((stop) => {
@@ -76,7 +134,7 @@ function buildCoordinates(gtfsStops) {
           return null;
         }
 
-        return [stopIdFromName(stop.stop_name), { latitude, longitude }];
+        return [gtfsStopId(stop, stopIdOverrides), { latitude, longitude }];
       })
       .filter(Boolean),
   );
@@ -89,7 +147,15 @@ function buildLines(routes) {
   }));
 }
 
-function buildTrips({ routesById, trips, stopTimesByTripId, stopsById, calendarByServiceId }) {
+function buildTrips({
+  routesById,
+  trips,
+  stopTimesByTripId,
+  stopsById,
+  calendarByServiceId,
+  calendarDatesByServiceId,
+  stopIdOverrides,
+}) {
   return trips.flatMap((trip, tripIndex) => {
     const route = routesById.get(trip.route_id);
     const stopTimes = sortedStopTimes(stopTimesByTripId.get(trip.trip_id) ?? []);
@@ -109,7 +175,7 @@ function buildTrips({ routesById, trips, stopTimesByTripId, stopsById, calendarB
       return {
         name: stop.stop_name,
         time,
-        stopId: stopIdFromName(stop.stop_name),
+        stopId: gtfsStopId(stop, stopIdOverrides),
       };
     });
 
@@ -120,7 +186,11 @@ function buildTrips({ routesById, trips, stopTimesByTripId, stopsById, calendarB
     return [{
       lineId: route.route_short_name || route.route_id,
       direction: trip.trip_headsign || route.route_long_name || '',
-      dayType: dayTypeForService(calendarByServiceId.get(trip.service_id)),
+      dayType: dayTypeForService(
+        calendarByServiceId.get(trip.service_id),
+        calendarDatesByServiceId.get(trip.service_id) ?? [],
+        trip.service_id,
+      ),
       sourcePage: null,
       tripIndex,
       stops,
@@ -133,13 +203,21 @@ export function normalizeGtfsData({
   aliases = {},
   localities = [],
   localityRules = [],
+  stopIdOverrides = {},
   sourceUrl,
   builtAt = new Date().toISOString(),
 }) {
   const routesById = new Map(feed.routes.map((route) => [route.route_id, route]));
   const stopsById = new Map(feed.stops.map((stop) => [stop.stop_id, stop]));
   const calendarByServiceId = new Map(feed.calendar.map((entry) => [entry.service_id, entry]));
+  const calendarDatesByServiceId = new Map();
   const stopTimesByTripId = new Map();
+
+  for (const calendarDate of feed.calendarDates) {
+    const entries = calendarDatesByServiceId.get(calendarDate.service_id) ?? [];
+    entries.push(calendarDate);
+    calendarDatesByServiceId.set(calendarDate.service_id, entries);
+  }
 
   for (const stopTime of feed.stopTimes) {
     const entries = stopTimesByTripId.get(stopTime.trip_id) ?? [];
@@ -147,17 +225,23 @@ export function normalizeGtfsData({
     stopTimesByTripId.set(stopTime.trip_id, entries);
   }
 
-  const stops = buildStops(feed.stops, aliases);
+  const stops = buildStops(feed.stops, aliases, stopIdOverrides);
   const trips = buildTrips({
     routesById,
     trips: feed.trips,
     stopTimesByTripId,
     stopsById,
     calendarByServiceId,
+    calendarDatesByServiceId,
+    stopIdOverrides,
   });
   const generatedLocalities = deriveLocalitiesFromRules(localityRules, stops);
   const validatedLocalities = validateLocalities(mergeLocalities(localities, generatedLocalities), stops);
-  const { validFrom, validUntil } = serviceRange(feed.calendar);
+  const { validFrom, validUntil } = serviceRange({
+    calendar: feed.calendar,
+    calendarDates: feed.calendarDates,
+    feedInfo: feed.feedInfo,
+  });
 
   return {
     lines: buildLines(feed.routes),
@@ -165,7 +249,7 @@ export function normalizeGtfsData({
     trips,
     localities: validatedLocalities,
     reachability: buildReachability(trips),
-    stopCoordinates: buildCoordinates(feed.stops),
+    stopCoordinates: buildCoordinates(feed.stops, stopIdOverrides),
     metadata: {
       source: {
         type: 'gtfs',

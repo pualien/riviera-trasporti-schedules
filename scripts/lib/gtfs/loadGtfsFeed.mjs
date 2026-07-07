@@ -12,6 +12,7 @@ const REQUIRED_FILES = Object.freeze({
 const OPTIONAL_FILES = Object.freeze({
   calendar: 'calendar.txt',
   calendarDates: 'calendar_dates.txt',
+  feedInfo: 'feed_info.txt',
 });
 
 async function readGtfsFile(directoryUrl, filename, { required }) {

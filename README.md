@@ -15,7 +15,7 @@ npm install
 Build static route data from a prepared GTFS feed directory:
 
 ```bash
-GTFS_SOURCE_URL="https://dati.regione.liguria.it/dataset/ds-637" npm run build:data:gtfs
+GTFS_SOURCE_URL="https://dati.regione.liguria.it/dataset/ds-639" npm run build:data:gtfs
 npm run build:data
 ```
 

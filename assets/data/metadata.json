@@ -1,12 +1,25 @@
 {
   "source": {
-    "title": "2026 Orario Estivo Ver. 1.3ª dal 15-06-2026",
-    "url": "https://rivieratrasporti.it/images/_ORARI/2026_Orario_Estivo_Ver._1.3%C2%AA_dal_15-06-2026.pdf",
-    "effectiveDate": "2026-06-15"
+    "type": "gtfs",
+    "title": "Regione Liguria GTFS planned-service feed",
+    "url": "https://dati.regione.liguria.it/dataset/ds-639",
+    "publisher": "RIVIERA TRASPORTI S.P.A.",
+    "releasedAt": null,
+    "validFrom": "2026-06-01",
+    "validUntil": "2026-09-13",
+    "referencePdf": null
   },
-  "builtAt": "2026-07-05T23:02:52.036Z",
+  "builtAt": "2026-07-07T14:05:56.249Z",
   "coverage": {
-    "indexedPageCount": 83,
-    "manifestPageCount": 83
+    "routeCount": 76,
+    "stopCount": 2724,
+    "tripCount": 3226,
+    "stopTimeCount": 143002
+  },
+  "quality": {
+    "status": "warning",
+    "warningCount": 1,
+    "errorCount": 0,
+    "reportUrl": "./assets/data/data-quality.json"
   }
 }

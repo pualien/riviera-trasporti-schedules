@@ -35,7 +35,7 @@ The product audit from 2026-07-06 found that trust is already a major strength, 
 
 Regione Liguria publishes regional planned-service data through GTFS and NeTEx resources at:
 
-https://dati.regione.liguria.it/dataset/ds-637
+https://dati.regione.liguria.it/dataset/ds-639
 
 During design discovery on 2026-07-06, the dataset page indicated a recent release/modified date of 2026-07-03 and temporal coverage from 2026-06-14 to 2026-12-12. The implementation must re-check the dataset page or feed metadata during build instead of hard-coding these dates.
 

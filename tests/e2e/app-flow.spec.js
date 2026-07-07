@@ -22,7 +22,7 @@ const SAVED_RESTORE_ROUTE = {
   identity: 'Sanremo Autostazione|sanremo-autostazione|Porto Maurizio|imperia-porto-maurizio|feriale',
 };
 
-const NO_DIRECT_SHARED_ROUTE = '/?tab=search&from=Albenga&fromLocality=albenga&fromStop=albenga&to=bastia+%2F+leca&toStop=bastia-%2F-leca&day=feriale&browse=lines&share=route&utm_medium=route_share';
+const NO_DIRECT_SHARED_ROUTE = '/?tab=search&from=Airole&fromLocality=airole&to=Albenga&toStop=albenga-piazza-del-popolo&day=festivo&browse=lines&share=route&utm_medium=route_share';
 
 async function firstTripKeyForSharedRoute(page) {
   await page.goto(SEARCH_ROUTE);

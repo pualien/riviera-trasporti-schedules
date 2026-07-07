@@ -974,6 +974,8 @@ function bindNearbyStopSelection() {
         return;
       }
 
+      clearInboundShareState();
+
       if (state.locationPicker.fieldName === 'from') {
         if (selectedStop.localityId) {
           const locality = state.localities.find((entry) => entry.id === selectedStop.localityId);
@@ -992,7 +994,6 @@ function bindNearbyStopSelection() {
           toInput: selectedStop.canonical,
           toStopId: selectedStop.stopId,
         };
-        clearInboundShareState();
         clearRouteResults();
       }
 
@@ -1104,7 +1105,6 @@ async function openLocationPicker(fieldName) {
         renderApp();
         bindInteractions();
       }
-      bindNearbyStopSelection();
     }
   }, () => {
     if (state.locationPicker?.requestId !== requestId) {
@@ -2274,6 +2274,7 @@ function bindInteractions() {
   bindFieldPanels();
   bindDepartureSelection();
   bindLocationActions();
+  bindNearbyStopSelection();
   bindLanguageSelector();
   bindTabNavigation();
   bindSavedRoutes();
