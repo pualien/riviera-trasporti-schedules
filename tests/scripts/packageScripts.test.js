@@ -20,7 +20,7 @@ describe('package scripts', () => {
   it('exposes separate PDF and GTFS data build entry points', () => {
     expect(packageJson.scripts).toMatchObject({
       'build:data:pdf': 'node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs',
-      'build:data:gtfs': 'node scripts/build-gtfs-route-data.mjs',
+      'build:data:gtfs': 'node scripts/fetch-gtfs.mjs && node scripts/build-gtfs-route-data.mjs',
     });
   });
 

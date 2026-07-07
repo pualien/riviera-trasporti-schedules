@@ -10,7 +10,7 @@ import {
   pushBrowseInteractionEvent,
   pushSharedRouteOpenedEvent,
   pushSharedRouteRestoredEvent,
-} from './lib/analytics.js?v=9';
+} from './lib/analytics.js?v=10';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
@@ -96,7 +96,7 @@ import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
 import { renderResultsView } from './ui/renderResults.js';
-import { renderSearchForm } from './ui/renderSearchForm.js?v=9';
+import { renderSearchForm } from './ui/renderSearchForm.js?v=10';
 import { renderShell } from './ui/renderShell.js';
 import { renderTabNav } from './ui/renderTabNav.js';
 

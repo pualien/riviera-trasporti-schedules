@@ -3,14 +3,14 @@ const LEGACY_CACHE_PREFIXES = [
   'azzuriva-route-tools-',
   'riviera-route-tools-',
 ];
-const CACHE_NAME = `${CACHE_PREFIX}v9`;
+const CACHE_NAME = `${CACHE_PREFIX}v10`;
 
 const REQUIRED_ASSETS = [
   './',
   './index.html',
   './offline.html',
   './styles.css',
-  './styles.css?v=9',
+  './styles.css?v=10',
   './manifest.webmanifest',
   './assets/brand/apple-touch-icon.png',
   './assets/brand/favicon-16x16.png',
@@ -18,11 +18,11 @@ const REQUIRED_ASSETS = [
   './assets/brand/riviera-trasporti-ricerca-percorsi-android-512.png',
   './assets/brand/riviera-trasporti-ricerca-percorsi-ios-1024.png',
   './src/main.js',
-  './src/main.js?v=9',
+  './src/main.js?v=10',
   './src/lib/analytics.js',
-  './src/lib/analytics.js?v=9',
+  './src/lib/analytics.js?v=10',
   './src/lib/ads.js',
-  './src/lib/ads.js?v=9',
+  './src/lib/ads.js?v=10',
   './src/lib/appBootstrap.js',
   './src/lib/brand.js',
   './src/lib/browseIndex.js',
@@ -37,7 +37,7 @@ const REQUIRED_ASSETS = [
   './src/lib/pwaController.js',
   './src/lib/query.js',
   './src/lib/installAdSense.js',
-  './src/lib/installAdSense.js?v=9',
+  './src/lib/installAdSense.js?v=10',
   './src/lib/registerServiceWorker.js',
   './src/lib/routeMap.js',
   './src/lib/routePickerState.js',
@@ -64,7 +64,7 @@ const REQUIRED_ASSETS = [
   './src/ui/renderRouteMapPanel.js',
   './src/ui/renderSavedView.js',
   './src/ui/renderSearchForm.js',
-  './src/ui/renderSearchForm.js?v=9',
+  './src/ui/renderSearchForm.js?v=10',
   './src/ui/renderShell.js',
   './src/ui/renderTabNav.js',
   './src/ui/renderTaxiOption.js',
@@ -72,6 +72,17 @@ const REQUIRED_ASSETS = [
 ];
 
 const OPTIONAL_ASSETS = [];
+
+const RUNTIME_DATA_ASSETS = [
+  './assets/data/trips.json',
+  './assets/data/stops.json',
+  './assets/data/stop-coordinates.json',
+  './assets/data/localities.json',
+  './assets/data/reachability.json',
+  './assets/data/metadata.json',
+  './assets/data/data-quality.json',
+  './data/manual/localities.json',
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -86,17 +97,22 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((cacheNames) => Promise.all(
-      cacheNames
-        .filter((cacheName) => (
-          (
-            cacheName.startsWith(CACHE_PREFIX)
-            || LEGACY_CACHE_PREFIXES.some((prefix) => cacheName.startsWith(prefix))
-          )
-          && cacheName !== CACHE_NAME
-        ))
-        .map((cacheName) => caches.delete(cacheName)),
-    )).then(() => self.clients?.claim?.()),
+    caches.keys()
+      .then((cacheNames) => Promise.all(
+        cacheNames
+          .filter((cacheName) => (
+            (
+              cacheName.startsWith(CACHE_PREFIX)
+              || LEGACY_CACHE_PREFIXES.some((prefix) => cacheName.startsWith(prefix))
+            )
+            && cacheName !== CACHE_NAME
+          ))
+          .map((cacheName) => caches.delete(cacheName)),
+      ))
+      .then(() => Promise.all(
+        RUNTIME_DATA_ASSETS.map((url) => cacheSameOriginUrl(url).catch(() => null)),
+      ))
+      .then(() => self.clients?.claim?.()),
   );
 });
 

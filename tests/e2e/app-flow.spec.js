@@ -60,9 +60,9 @@ test('serves a crawlable route index grouped by origin', async ({ page }) => {
 
   await expect(page.getByRole('heading', { name: 'Percorsi bus Riviera Trasporti' })).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Da Imperia' })).toBeVisible();
-  await expect(page.getByRole('link', { name: /Imperia - Sanremo/ })).toHaveAttribute(
+  await expect(page.getByRole('link', { name: /Imperia - San Lorenzo al Mare/ })).toHaveAttribute(
     'href',
-    '/riviera-trasporti-schedules/routes/imperia/sanremo/',
+    '/riviera-trasporti-schedules/routes/imperia/san-lorenzo-al-mare/',
   );
   await expect(page.locator('main.seo-page')).toContainText('50 percorsi disponibili.');
   expect(await page.content()).toContain("tab:'seo_routes_index'");
