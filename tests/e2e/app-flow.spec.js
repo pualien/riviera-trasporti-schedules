@@ -94,6 +94,23 @@ test('loads the route search first on mobile and filters Browse stops', async ({
   await expect(page.locator('.browse-count')).toContainText('matches');
 });
 
+test('lets riders choose Porto Maurizio to Sanremo from the pickers', async ({ page }) => {
+  await page.goto('/');
+
+  await page.locator('input[name="from"]').fill('Porto Maurizio');
+  await page.getByRole('option', { name: /^Porto Maurizio\b/ }).click();
+
+  const toInput = page.locator('input[name="to"]');
+  await expect(toInput).toBeFocused();
+  await toInput.fill('Sanremo');
+
+  await expect(page.getByRole('option', { name: /Sanremo Autostazione/ })).toBeVisible();
+  await page.getByRole('option', { name: /Sanremo Autostazione/ }).click();
+  await page.getByRole('button', { name: 'Show departures' }).click();
+
+  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+});
+
 test('collapses secondary header actions on mobile', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');

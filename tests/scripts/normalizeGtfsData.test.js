@@ -30,6 +30,16 @@ describe('normalizeGtfsData', () => {
       stopIdOverrides: {
         'Imperia Porto Maurizio': 'legacy-imperia-stop',
       },
+      stopLabelOverrides: {
+        'legacy-imperia-stop': {
+          canonical: 'Porto Maurizio',
+          variants: ['Pensilina Porto Maurizio', 'Imperia Porto Maurizio'],
+        },
+        'Sanremo Autostazione': {
+          canonical: 'Sanremo Autostazione',
+          variants: ['SANREMO Autostazione ARRIVO'],
+        },
+      },
       sourceUrl: 'https://example.com/gtfs.zip',
       builtAt: '2026-07-06T08:00:00.000Z',
     });
@@ -37,8 +47,8 @@ describe('normalizeGtfsData', () => {
     expect(output.lines).toEqual([{ lineId: '12', pages: [] }]);
     expect(output.stops).toContainEqual({
       id: 'legacy-imperia-stop',
-      canonical: 'Imperia Porto Maurizio',
-      variants: ['porto maurizio'],
+      canonical: 'Porto Maurizio',
+      variants: ['Pensilina Porto Maurizio', 'Imperia Porto Maurizio'],
     });
     expect(output.trips).toHaveLength(1);
     expect(output.trips[0]).toMatchObject({

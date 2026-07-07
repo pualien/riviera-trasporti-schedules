@@ -3146,16 +3146,21 @@
   },
   {
     "id": "sanremo-autostazione",
-    "canonical": "SANREMO Autostazione",
+    "canonical": "Sanremo Autostazione",
     "variants": [
+      "SANREMO Autostazione ARRIVO",
+      "SANREMO Autostazione PARTENZA",
       "sanremo",
       "autostazione sanremo"
     ]
   },
   {
     "id": "sanremo-autostazione",
-    "canonical": "SANREMO Autostazione PARTENZA",
-    "variants": []
+    "canonical": "Sanremo Autostazione",
+    "variants": [
+      "SANREMO Autostazione ARRIVO",
+      "SANREMO Autostazione PARTENZA"
+    ]
   },
   {
     "id": "sanremo-via-roma-angolo-via-gaudio",
@@ -3329,8 +3334,11 @@
   },
   {
     "id": "sanremo-autostazione",
-    "canonical": "SANREMO Autostazione ARRIVO",
-    "variants": []
+    "canonical": "Sanremo Autostazione",
+    "variants": [
+      "SANREMO Autostazione ARRIVO",
+      "SANREMO Autostazione PARTENZA"
+    ]
   },
   {
     "id": "corso-orazio-raimondo-zampillo-(p)",
@@ -7744,8 +7752,12 @@
   },
   {
     "id": "imperia-porto-maurizio",
-    "canonical": "IMPERIA Pensilina Porto Maurizio",
-    "variants": []
+    "canonical": "Porto Maurizio",
+    "variants": [
+      "IMPERIA Pensilina Porto Maurizio",
+      "Imperia Porto Maurizio",
+      "Pensilina Porto Maurizio"
+    ]
   },
   {
     "id": "imperia-porto-maurizio-stazione-fs",
@@ -8104,8 +8116,12 @@
   },
   {
     "id": "imperia-porto-maurizio",
-    "canonical": "IMPERIA Pensilina Porto Maurizio",
-    "variants": []
+    "canonical": "Porto Maurizio",
+    "variants": [
+      "IMPERIA Pensilina Porto Maurizio",
+      "Imperia Porto Maurizio",
+      "Pensilina Porto Maurizio"
+    ]
   },
   {
     "id": "imperia-galleria-gastaldi-entrata",

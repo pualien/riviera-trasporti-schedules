@@ -26,6 +26,7 @@ export async function buildGtfsRouteData({
   localities,
   localityRules,
   stopIdOverrides,
+  stopLabelOverrides,
   sourceUrl,
   builtAt = new Date().toISOString(),
   now = new Date(),
@@ -37,6 +38,7 @@ export async function buildGtfsRouteData({
     localities,
     localityRules,
     stopIdOverrides,
+    stopLabelOverrides,
     sourceUrl,
     builtAt,
   });
@@ -74,6 +76,10 @@ async function main() {
   const localities = await readJson(new URL('../data/manual/localities.json', import.meta.url), []);
   const localityRules = await readJson(new URL('../data/manual/locality-rules.json', import.meta.url), []);
   const stopIdOverrides = await readJson(new URL('../data/manual/gtfs-stop-id-overrides.json', import.meta.url), {});
+  const stopLabelOverrides = await readJson(
+    new URL('../data/manual/gtfs-stop-label-overrides.json', import.meta.url),
+    {},
+  );
   const sourceUrl = process.env.GTFS_SOURCE_URL ?? 'https://dati.regione.liguria.it/dataset/ds-639';
 
   const output = await buildGtfsRouteData({
@@ -83,6 +89,7 @@ async function main() {
     localities,
     localityRules,
     stopIdOverrides,
+    stopLabelOverrides,
     sourceUrl,
   });
 

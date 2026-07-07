@@ -1,0 +1,18 @@
+{
+  "imperia-porto-maurizio": {
+    "canonical": "Porto Maurizio",
+    "variants": [
+      "IMPERIA Pensilina Porto Maurizio",
+      "Imperia Porto Maurizio",
+      "Pensilina Porto Maurizio"
+    ]
+  },
+  "sanremo-autostazione": {
+    "canonical": "Sanremo Autostazione",
+    "variants": [
+      "SANREMO Autostazione",
+      "SANREMO Autostazione ARRIVO",
+      "SANREMO Autostazione PARTENZA"
+    ]
+  }
+}

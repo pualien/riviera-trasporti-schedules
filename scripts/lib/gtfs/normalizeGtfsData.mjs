@@ -113,12 +113,44 @@ function gtfsStopId(stop, stopIdOverrides = {}) {
   return stopIdOverrides[stop.stop_name] ?? stopIdFromName(stop.stop_name);
 }
 
-function buildStops(gtfsStops, aliases, stopIdOverrides) {
+function variantListForStop(rawCanonical, publicCanonical, aliases, labelOverride) {
+  const aliasVariants = aliases[rawCanonical.toLowerCase()] ?? aliases[rawCanonical] ?? [];
+  const variants = [
+    ...(labelOverride?.variants ?? []),
+    ...aliasVariants,
+  ];
+
+  if (publicCanonical !== rawCanonical) {
+    variants.push(rawCanonical);
+  }
+
+  const publicCanonicalKey = publicCanonical.toLowerCase();
+  const seen = new Set();
+
+  return variants.filter((variant) => {
+    const key = String(variant).toLowerCase();
+    if (!key || key === publicCanonicalKey || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  });
+}
+
+function buildStops(gtfsStops, aliases, stopIdOverrides, stopLabelOverrides) {
   return gtfsStops.map((stop) => {
-    const canonical = stop.stop_name;
+    const id = gtfsStopId(stop, stopIdOverrides);
+    const rawCanonical = stop.stop_name;
+    const labelOverride = stopLabelOverrides[id] ?? stopLabelOverrides[rawCanonical];
+    const canonical = labelOverride?.canonical ?? rawCanonical;
+
     return {
-      ...createStopRecord(canonical, aliases[canonical.toLowerCase()] ?? aliases[canonical] ?? []),
-      id: gtfsStopId(stop, stopIdOverrides),
+      ...createStopRecord(
+        canonical,
+        variantListForStop(rawCanonical, canonical, aliases, labelOverride),
+      ),
+      id,
     };
   });
 }
@@ -204,6 +236,7 @@ export function normalizeGtfsData({
   localities = [],
   localityRules = [],
   stopIdOverrides = {},
+  stopLabelOverrides = {},
   sourceUrl,
   builtAt = new Date().toISOString(),
 }) {
@@ -225,7 +258,7 @@ export function normalizeGtfsData({
     stopTimesByTripId.set(stopTime.trip_id, entries);
   }
 
-  const stops = buildStops(feed.stops, aliases, stopIdOverrides);
+  const stops = buildStops(feed.stops, aliases, stopIdOverrides, stopLabelOverrides);
   const trips = buildTrips({
     routesById,
     trips: feed.trips,
