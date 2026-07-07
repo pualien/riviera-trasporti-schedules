@@ -56,4 +56,25 @@ describe('loadAppBootstrapData', () => {
     expect(data.manualLocalities).toBeNull();
     expect(data.metadata).toBeNull();
   });
+
+  it('loads data-quality sidecar when available', async () => {
+    const payloads = {
+      './assets/data/trips.json': [],
+      './assets/data/stops.json': [],
+      './assets/data/stop-coordinates.json': {},
+      './assets/data/localities.json': [],
+      './assets/data/reachability.json': {},
+      './data/manual/localities.json': [],
+      './assets/data/metadata.json': { source: { type: 'gtfs' } },
+      './assets/data/data-quality.json': { status: 'fresh' },
+    };
+
+    const data = await loadAppBootstrapData({
+      fetchJson: async (url) => payloads[url],
+      fetchJsonOrNull: async (url) => payloads[url],
+      now: new Date('2026-07-06T08:00:00.000Z'),
+    });
+
+    expect(data.dataQuality).toEqual({ status: 'fresh' });
+  });
 });

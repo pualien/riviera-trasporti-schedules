@@ -21,6 +21,7 @@ export async function loadAppBootstrapData({
     generatedReachability,
     manualLocalities,
     metadata,
+    dataQuality,
   ] = await Promise.all([
     fetchJson('./assets/data/trips.json'),
     fetchJson('./assets/data/stops.json'),
@@ -29,6 +30,7 @@ export async function loadAppBootstrapData({
     optionalJson(fetchJsonOrNull, './assets/data/reachability.json'),
     optionalJson(fetchJsonOrNull, './data/manual/localities.json'),
     optionalJson(fetchJsonOrNull, './assets/data/metadata.json'),
+    optionalJson(fetchJsonOrNull, './assets/data/data-quality.json'),
   ]);
 
   return {
@@ -39,6 +41,7 @@ export async function loadAppBootstrapData({
     generatedReachability,
     manualLocalities,
     metadata,
+    dataQuality,
     formValues: {
       fromInput: '',
       fromLocalityId: null,
