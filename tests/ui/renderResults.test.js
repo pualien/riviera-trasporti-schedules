@@ -105,6 +105,37 @@ describe('renderResultsView', () => {
     expect(html).toContain('href="#"');
   });
 
+  it('renders GTFS source copy and feed-only labels when PDF page is unavailable', () => {
+    const html = renderResultsView({
+      t: createTranslator('en'),
+      routeLabel: 'Porto Maurizio -> Sanremo',
+      pdfUrl: 'https://example.com/orario.pdf',
+      sourceInfo: { type: 'gtfs' },
+      summary: {
+        serviceEnded: false,
+        nextDeparture: { departureTime: '16:45' },
+        soonestArrival: { arrivalTime: '17:25' },
+        lastDepartureTime: '19:45',
+        averageDurationMinutes: 39,
+        lines: ['12'],
+      },
+      nextDepartures: [
+        {
+          departureTime: '16:45',
+          arrivalTime: '17:25',
+          durationMinutes: 40,
+          lineId: '12',
+          sourcePage: null,
+        },
+      ],
+      allDepartures: [],
+    });
+
+    expect(html).toContain('Times generated from Regione Liguria GTFS planned-service data');
+    expect(html).toContain('Feed source only');
+    expect(html).not.toContain('Open PDF');
+  });
+
   it('renders selectable departure cards and the selected trip panel', () => {
     const html = renderResultsView({
       t: createTranslator('en'),

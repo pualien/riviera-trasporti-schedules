@@ -23,7 +23,7 @@ function pdfHref(pdfUrl, sourcePage) {
   return sourcePage ? `${pdfUrl}#page=${sourcePage}` : pdfUrl;
 }
 
-function renderDepartureCard(departure, t, pdfUrl, { compact = false } = {}) {
+function renderDepartureCard(departure, t, pdfUrl, { compact = false, sourceInfo = null } = {}) {
   const className = [
     'departure-card',
     departure.isSelected ? 'departure-card--selected' : '',
@@ -41,7 +41,11 @@ function renderDepartureCard(departure, t, pdfUrl, { compact = false } = {}) {
     : '';
   const pdfAction = compact
     ? ''
-    : `<a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>`;
+    : departure.sourcePage
+      ? `<a href="${pdfHref(pdfUrl, departure.sourcePage)}" target="_blank" rel="noreferrer">${t('results.openPdf')}</a>`
+      : sourceInfo?.type === 'gtfs'
+        ? `<span>${escapeHtml(t('results.feedSourceOnly'))}</span>`
+        : '';
 
   return `
     <article class="${className}" data-trip-key="${departure.tripKey ?? ''}">
@@ -156,6 +160,14 @@ function renderSummaryMetrics(summary, t) {
       </div>
     </div>
   `;
+}
+
+function renderSourceNote(sourceInfo, t) {
+  if (sourceInfo?.type !== 'gtfs') {
+    return '';
+  }
+
+  return `<p class="results-source-note">${escapeHtml(t('results.gtfsSourceNote'))}</p>`;
 }
 
 function renderSaveFeedback(saveFeedback, t) {
@@ -282,6 +294,7 @@ export function renderResultsView({
   selectedTripPanel = '',
   routeActions = { saveFeedback: null, shareModal: null },
   sharedRouteContext = null,
+  sourceInfo = null,
 }) {
   return `
     <section class="results-shell">
@@ -300,6 +313,7 @@ export function renderResultsView({
         </div>
 
         ${renderSummaryMetrics(summary, t)}
+        ${renderSourceNote(sourceInfo, t)}
       </article>
 
       ${renderSharedRouteContext(sharedRouteContext, t)}
@@ -313,7 +327,7 @@ export function renderResultsView({
           ${nextDepartures.map((departure) => renderDepartureCard({
             ...departure,
             isSelected: departure.tripKey === selectedTripKey,
-          }, t, pdfUrl)).join('')}
+          }, t, pdfUrl, { sourceInfo })).join('')}
         </div>
       </section>
 
