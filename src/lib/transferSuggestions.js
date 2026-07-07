@@ -1,3 +1,4 @@
+import { serviceRunsOnSelectedDay } from './dayTypes.js';
 import { durationBetween, toMinutes } from './time.js';
 
 const MIN_TRANSFER_MINUTES = 5;
@@ -52,7 +53,7 @@ function uniqueSuggestions(suggestions) {
 }
 
 function sameDayTrips(trips, dayType) {
-  return trips.filter((trip) => trip.dayType === dayType);
+  return trips.filter((trip) => serviceRunsOnSelectedDay(trip.dayType, dayType));
 }
 
 function hasPositiveDuration(startTime, endTime) {

@@ -1,5 +1,6 @@
 import { canonicalizeStopName, stopIdFromName } from './normalize.js';
 import { durationBetween, toMinutes } from './time.js';
+import { serviceRunsOnSelectedDay } from './dayTypes.js';
 
 function stopIdForSearchInput(value, aliases) {
   const stopId = stopIdFromName(canonicalizeStopName(value, aliases));
@@ -26,6 +27,31 @@ function findForwardStopSegment(stops, originStopId, destinationStopId) {
   }
 
   return null;
+}
+
+function directTripDisplayKey(match) {
+  return [
+    match.lineId,
+    match.fromStopId,
+    match.toStopId,
+    match.departureTime,
+    match.arrivalTime,
+  ].join('|');
+}
+
+function dedupeDirectTrips(matches, selectedDayType) {
+  const uniqueMatches = new Map();
+
+  for (const match of matches) {
+    const key = directTripDisplayKey(match);
+    const existing = uniqueMatches.get(key);
+
+    if (!existing || (existing.dayType !== selectedDayType && match.dayType === selectedDayType)) {
+      uniqueMatches.set(key, match);
+    }
+  }
+
+  return [...uniqueMatches.values()];
 }
 
 export function resolveRouteStopIds({
@@ -65,8 +91,8 @@ export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = []
     return [];
   }
 
-  return trips
-    .filter((trip) => trip.dayType === dayType)
+  const matches = trips
+    .filter((trip) => serviceRunsOnSelectedDay(trip.dayType, dayType))
     .flatMap((trip, tripIndex) =>
       resolvedOriginStopIds.map((originStopId) => {
         const segment = findForwardStopSegment(trip.stops, originStopId, resolvedToStopId);
@@ -82,6 +108,7 @@ export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = []
         return {
           tripKey: `${trip.lineId}:${trip.dayType}:${trip.sourcePage}:${tripIndex}:${originStopId}:${resolvedToStopId}`,
           lineId: trip.lineId,
+          dayType: trip.dayType,
           direction: trip.direction,
           sourcePage: trip.sourcePage,
           fromStopId: originStopId,
@@ -97,6 +124,8 @@ export function findDirectTrips({ from, to, fromStopId, fromLocalityStopIds = []
     )
     .filter(Boolean)
     .sort((left, right) => toMinutes(left.departureTime) - toMinutes(right.departureTime));
+
+  return dedupeDirectTrips(matches, dayType);
 }
 
 export function buildRouteSummary(matches) {

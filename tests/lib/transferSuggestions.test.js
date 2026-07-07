@@ -89,6 +89,41 @@ describe('findOneTransferSuggestions', () => {
     });
   });
 
+  it('includes daily service when building weekday transfer suggestions', () => {
+    const suggestions = findOneTransferSuggestions({
+      trips: [
+        {
+          lineId: 'A',
+          dayType: 'giornaliero',
+          sourcePage: 20,
+          stops: [
+            { stopId: 'origin', name: 'Origin', time: '18:00' },
+            { stopId: 'transfer', name: 'Transfer', time: '18:20' },
+          ],
+        },
+        {
+          lineId: 'B',
+          dayType: 'giornaliero',
+          sourcePage: 21,
+          stops: [
+            { stopId: 'transfer', name: 'Transfer', time: '18:30' },
+            { stopId: 'destination', name: 'Destination', time: '19:00' },
+          ],
+        },
+      ],
+      fromStopIds: ['origin'],
+      toStopId: 'destination',
+      dayType: 'feriale',
+      now: new Date('2026-05-14T17:30:00'),
+    });
+
+    expect(suggestions).toHaveLength(1);
+    expect(suggestions[0]).toMatchObject({
+      firstLeg: { departureTime: '18:00' },
+      secondLeg: { departureTime: '18:30' },
+    });
+  });
+
   it('returns at most 3 suggestions', () => {
     const manyTrips = Array.from({ length: 6 }, (_, index) => ([
       {

@@ -111,6 +111,13 @@ test('lets riders choose Porto Maurizio to Sanremo from the pickers', async ({ p
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
 });
 
+test('includes daily service in Porto Maurizio to Sanremo weekday results', async ({ page }) => {
+  await page.goto(SEARCH_ROUTE);
+
+  await expect(page.locator('.metric').filter({ hasText: 'Last departure' })).toContainText('24:15');
+  await expect(page.locator('.departure-archive summary')).toContainText('All departures (65)');
+});
+
 test('prioritizes typed Porto Maurizio matches in the From picker', async ({ page }) => {
   await page.goto('/');
 

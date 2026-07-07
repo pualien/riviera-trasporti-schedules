@@ -79,6 +79,73 @@ describe('findDirectTrips', () => {
     expect(matches[0].toStopId).toBe('sanremo-autostazione');
   });
 
+  it('includes daily service when searching weekday departures', () => {
+    const matches = findDirectTrips({
+      fromStopId: 'imperia-porto-maurizio',
+      toStopId: 'sanremo-autostazione',
+      dayType: 'feriale',
+      aliases,
+      trips: [
+        {
+          lineId: '12',
+          dayType: 'feriale',
+          sourcePage: 22,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '14:15' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '15:00' },
+          ],
+        },
+        {
+          lineId: '12',
+          dayType: 'giornaliero',
+          sourcePage: 22,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '22:15' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '22:55' },
+          ],
+        },
+      ],
+    });
+
+    expect(matches.map((match) => match.departureTime)).toEqual(['14:15', '22:15']);
+  });
+
+  it('deduplicates duplicate visible rides from overlapping service calendars', () => {
+    const matches = findDirectTrips({
+      fromStopId: 'imperia-porto-maurizio',
+      toStopId: 'sanremo-autostazione',
+      dayType: 'feriale',
+      aliases,
+      trips: [
+        {
+          lineId: '12',
+          dayType: 'feriale',
+          sourcePage: 22,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '14:15' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '15:00' },
+          ],
+        },
+        {
+          lineId: '12',
+          dayType: 'giornaliero',
+          sourcePage: 23,
+          stops: [
+            { stopId: 'imperia-porto-maurizio', name: 'imperia porto maurizio', time: '14:15' },
+            { stopId: 'sanremo-autostazione', name: 'sanremo autostazione', time: '15:00' },
+          ],
+        },
+      ],
+    });
+
+    expect(matches).toHaveLength(1);
+    expect(matches[0]).toMatchObject({
+      lineId: '12',
+      departureTime: '14:15',
+      arrivalTime: '15:00',
+    });
+  });
+
   it('searches across every stop in the selected locality when no exact origin stop exists', () => {
     const matches = findDirectTrips({
       from: 'Porto Maurizio',
