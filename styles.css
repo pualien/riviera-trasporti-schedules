@@ -249,7 +249,8 @@ a {
   padding: 8px 18px;
   border-radius: 22px;
   border: 1px solid var(--line);
-  background: rgba(255, 255, 255, 0.82);
+  background: var(--panel-strong);
+  color: var(--text);
   display: grid;
   gap: 0;
 }
@@ -258,10 +259,11 @@ a {
   display: grid;
   gap: 14px;
   padding: 18px 0;
+  color: var(--text);
 }
 
 .taxi-panel-entry + .taxi-panel-entry {
-  border-top: 1px solid rgba(92, 77, 61, 0.12);
+  border-top: 1px solid var(--line);
 }
 
 .taxi-panel-entry h4,
@@ -269,15 +271,44 @@ a {
   margin: 0;
 }
 
+.taxi-panel-entry h4 {
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.22;
+  font-weight: 800;
+}
+
+.taxi-panel-entry-copy > p:not(.eyebrow):not(.taxi-panel-entry-meta) {
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.taxi-panel-entry .eyebrow {
+  color: var(--text);
+}
+
 .taxi-options-section,
 .taxi-directory-section {
   display: grid;
   gap: 14px;
+  color: var(--text);
+}
+
+.app-shell > .taxi-directory-section {
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: var(--panel-strong);
+  box-shadow: var(--shadow);
 }
 
 .taxi-section-head h3,
 .taxi-section-head p {
   margin: 0;
+}
+
+.taxi-section-head h3 {
+  color: var(--text);
 }
 
 .taxi-section-head p {
@@ -305,6 +336,38 @@ a {
 .taxi-panel-entry-meta {
   color: var(--muted);
   font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.taxi-panel-entry-meta a {
+  color: var(--text);
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
+}
+
+.taxi-call-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 10px 16px;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  background: var(--text);
+  color: var(--surface-solid);
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.taxi-call-button:hover,
+.taxi-call-button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.16);
 }
 
 .transfer-suggestions {
@@ -1684,6 +1747,9 @@ a {
   display: grid;
   gap: 16px;
   border-color: rgba(217, 59, 79, 0.22);
+  background: var(--panel-strong);
+  color: var(--text);
+  backdrop-filter: none;
 }
 
 .secondary-route-options .taxi-options-section,
@@ -1698,6 +1764,9 @@ a {
 
 .global-alternatives {
   padding: 0;
+  background: var(--panel-strong);
+  color: var(--text);
+  backdrop-filter: none;
 }
 
 .route-map-panel .eyebrow {

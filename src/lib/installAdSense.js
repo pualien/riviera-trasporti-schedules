@@ -1,3 +1,3 @@
-import { installAutoAdsScript } from './ads.js?v=12';
+import { installAutoAdsScript } from './ads.js?v=13';
 
 installAutoAdsScript(document, window);

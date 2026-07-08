@@ -73,6 +73,37 @@ async function solidColorPair(locator) {
   });
 }
 
+async function effectiveColorPair(locator) {
+  return locator.evaluate((element) => {
+    function parseRgb(value) {
+      const match = value.match(/rgba?\(([^)]+)\)/);
+      if (!match) {
+        return null;
+      }
+
+      const [r, g, b, a = 1] = match[1]
+        .split(',')
+        .map((part) => Number.parseFloat(part.trim()));
+
+      return { r, g, b, a };
+    }
+
+    const color = parseRgb(getComputedStyle(element).color);
+    let current = element;
+
+    while (current) {
+      const background = parseRgb(getComputedStyle(current).backgroundColor);
+      if (background && background.a > 0) {
+        return { background, color };
+      }
+
+      current = current.parentElement;
+    }
+
+    return { background: null, color };
+  });
+}
+
 test('keeps text-only tabs optically centered', async ({ page }) => {
   await page.setViewportSize({ width: 960, height: 800 });
   await page.goto('/');
@@ -137,6 +168,36 @@ test('keeps dark-mode mobile navigation controls readable', async ({ page }) => 
     expect(pair.color).toBeTruthy();
     expect(pair.background).toBeTruthy();
     expect(pair.background.a).toBe(1);
+    expect(contrastRatio(pair.color, pair.background)).toBeGreaterThanOrEqual(4.5);
+  }
+});
+
+test('keeps taxi alternative sections readable', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const taxiDirectory = page.locator('.taxi-directory-section').first();
+  await expect(taxiDirectory).toBeVisible();
+
+  const readableTargets = [
+    taxiDirectory.locator('.taxi-section-head h3').first(),
+    taxiDirectory.locator('.taxi-section-head p').first(),
+    taxiDirectory.locator('.taxi-panel-entry .eyebrow').first(),
+    taxiDirectory.locator('.taxi-panel-entry h4').first(),
+    taxiDirectory.locator('.taxi-panel-entry-copy > p:not(.eyebrow):not(.taxi-panel-entry-meta)').first(),
+    taxiDirectory.locator('.taxi-panel-entry-coverage').first(),
+    taxiDirectory.locator('.taxi-panel-entry-meta').first(),
+    taxiDirectory.locator('.taxi-panel-entry-meta a').first(),
+    taxiDirectory.locator('.taxi-call-button').first(),
+  ];
+
+  for (const target of readableTargets) {
+    await expect(target).toBeVisible();
+    const pair = await effectiveColorPair(target);
+
+    expect(pair.color).toBeTruthy();
+    expect(pair.background).toBeTruthy();
+    expect(pair.background.a).toBeGreaterThanOrEqual(0.95);
     expect(contrastRatio(pair.color, pair.background)).toBeGreaterThanOrEqual(4.5);
   }
 });

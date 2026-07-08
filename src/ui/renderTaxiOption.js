@@ -51,7 +51,7 @@ export function renderTaxiOption(taxiOption, { t = createTranslator('en') } = {}
       </div>
       <div class="taxi-panel-entry-actions">
         ${phoneEntries.map((phoneEntry) => `
-          <a class="topbar-link" href="${phoneEntry.href}">${escapeHtml(t('taxi.call'))} ${escapeHtml(phoneEntry.label)}</a>
+          <a class="taxi-call-button" href="${phoneEntry.href}">${escapeHtml(t('taxi.call'))} ${escapeHtml(phoneEntry.label)}</a>
         `).join('')}
         ${taxiOption.bookingUrl
     ? `<a class="topbar-link" href="${taxiOption.bookingUrl}" target="_blank" rel="noreferrer">${escapeHtml(t('taxi.bookOnline'))}</a>`

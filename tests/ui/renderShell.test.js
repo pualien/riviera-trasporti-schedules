@@ -217,6 +217,7 @@ describe('renderShell', () => {
     expect(html).toContain('Porto Maurizio');
     expect(html).toContain('Radio Taxi Albenga');
     expect(html).toContain('tel:+3901820303');
+    expect(html).toContain('class="taxi-call-button" href="tel:+3901820303"');
     expect(countOccurrences(html, '<div class="taxi-panel">')).toBe(1);
     expect(countOccurrences(taxiPanel, '<article class="taxi-panel-entry">')).toBe(2);
     expect(taxiPanel).toContain('<h4>Taxi Imperia</h4>');
