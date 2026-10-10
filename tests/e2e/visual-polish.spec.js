@@ -156,6 +156,8 @@ test('keeps mobile navigation controls readable under a dark OS preference', asy
   await expect.poll(() => page.evaluate(() => getComputedStyle(document.documentElement).colorScheme))
     .toContain('light');
 
+  await page.locator('.app-tab-more summary').click();
+
   const controls = [
     page.getByRole('button', { name: 'Cerca treni' }),
     page.getByRole('button', { name: 'Cerca FlixBus' }),
@@ -181,6 +183,7 @@ test('keeps taxi alternative sections readable', async ({ page }) => {
   await page.goto('/');
 
   const taxiDirectory = page.locator('.taxi-directory-section').first();
+  await page.locator('.global-alternatives summary').click();
   await expect(taxiDirectory).toBeVisible();
 
   const readableTargets = [

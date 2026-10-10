@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-const SEARCH_ROUTE = '/?tab=search&from=Sanremo+Autostazione&fromStop=sanremo-autostazione&to=VENTIMIGLIA+Centro&toStop=ventimiglia-centro&day=feriale&browse=lines';
+const SEARCH_ROUTE = '/?tab=search&from=Porto+Maurizio&fromLocality=porto-maurizio&fromStop=imperia-porto-maurizio&to=Sanremo+Autostazione&toStop=sanremo-autostazione&day=feriale&browse=lines';
 
 test.use({ serviceWorkers: 'block' });
 

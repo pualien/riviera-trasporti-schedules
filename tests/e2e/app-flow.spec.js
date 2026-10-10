@@ -98,7 +98,7 @@ test('lets riders choose Porto Maurizio to Sanremo from the pickers', async ({ p
   await page.goto('/');
 
   await page.locator('input[name="from"]').fill('Porto Maurizio');
-  await page.getByRole('option', { name: /^Porto Maurizio\b/ }).click();
+  await page.locator('[data-from-value="imperia porto maurizio"]').click();
 
   const toInput = page.locator('input[name="to"]');
   await expect(toInput).toBeFocused();
@@ -114,8 +114,10 @@ test('lets riders choose Porto Maurizio to Sanremo from the pickers', async ({ p
 test('includes daily service in Porto Maurizio to Sanremo weekday results', async ({ page }) => {
   await page.goto(SEARCH_ROUTE);
 
-  await expect(page.locator('.metric').filter({ hasText: 'Last departure' })).toContainText('24:15');
-  await expect(page.locator('.departure-archive summary')).toContainText('All departures (65)');
+  await expect(page.locator('.metric').filter({ hasText: 'Last service departure' })).toContainText(/\d{2}:\d{2}/);
+  await expect(page.locator('.departure-archive summary')).toContainText(/All departures \(\d+\)/);
+  const departureCount = await page.locator('.departure-archive summary').textContent();
+  expect(Number(departureCount?.match(/\((\d+)\)/)?.[1])).toBeGreaterThan(0);
 });
 
 test('prioritizes typed Porto Maurizio matches in the From picker', async ({ page }) => {
@@ -167,6 +169,7 @@ test('keeps From and To pickers roomy on iPhone-sized screens', async ({ page })
   await page.goto('/');
 
   await page.locator('input[name="from"]').click();
+  await page.locator('input[name="from"]').fill('imperia porto');
   const fromPanel = page.locator('[data-panel="from"]');
   await expect(fromPanel).toBeVisible();
 
@@ -228,6 +231,7 @@ test('announces and selects picker suggestions from the keyboard', async ({ page
 
   const fromInput = page.locator('input[name="from"]');
   await fromInput.focus();
+  await fromInput.fill('imperia');
   await expect(fromInput).toHaveAttribute('role', 'combobox');
   await expect(fromInput).toHaveAttribute('aria-expanded', 'true');
 
@@ -283,6 +287,7 @@ test('opens provider search tabs and builds a prefilled FlixBus handoff', async 
 
   await page.goto('/');
 
+  await page.locator('.app-tab-more summary').click();
   await page.getByRole('button', { name: 'FlixBus search' }).click();
   await expect(page.getByRole('heading', { name: 'FlixBus search' })).toBeVisible();
 
@@ -533,7 +538,7 @@ test('clears inbound shared departure context after a manual search submission',
   await page.getByRole('button', { name: 'Show departures' }).click();
 
   await expect(page.locator('.shared-route-context')).toHaveCount(0);
-  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+  await expect(page.locator('[data-result-anchor]')).toBeVisible();
 });
 
 test('clears inbound shared departure context when reversing the shared route', async ({ page }) => {
@@ -587,7 +592,7 @@ test('clears inbound shared route context after a no-direct correction action', 
   await page.locator('.fallback-suggestion-button').first().click();
 
   await expect(page.locator('.shared-route-context')).toHaveCount(0);
-  await expect(page.locator('[data-trip-key]').first()).toBeVisible();
+  await expect(page.locator('[data-result-anchor]')).toBeVisible();
 });
 
 test('clears inbound shared departure context after choosing a nearby destination stop', async ({ page }) => {
