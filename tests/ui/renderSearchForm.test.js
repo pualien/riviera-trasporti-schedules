@@ -5,6 +5,7 @@ import { renderSearchForm } from '../../src/ui/renderSearchForm.js';
 describe('renderSearchForm', () => {
   it('renders From choices as exact stops with the zone after the stop label', () => {
     const html = renderSearchForm({
+      fromInput: 'imperia',
       fromPanelOpen: true,
       fromSuggestions: {
         areas: [],
@@ -21,6 +22,7 @@ describe('renderSearchForm', () => {
     });
 
     expect(html).toContain('data-from-value="imperia porto maurizio"');
+    expect(html).not.toContain('Type a town or stop to search 1 stops.');
     expect(html).toContain('imperia porto maurizio (Porto Maurizio)');
     expect(html).toContain('Stop');
     expect(html).not.toContain('data-option-type="area"');
@@ -79,7 +81,8 @@ describe('renderSearchForm', () => {
     expect(html).toContain('placeholder="Choose departure stop"');
     expect(html).toContain('name="from"');
     expect(html).toContain('data-panel="from"');
-    expect(html).toContain('data-from-value="imperia porto maurizio"');
+    expect(html).not.toContain('data-from-value="imperia porto maurizio"');
+    expect(html).toContain('Type a town or stop to search 1 stops.');
     expect(html).toContain('name="to"');
     expect(html).toContain('data-panel="to"');
     expect(html).not.toContain('disabled');
@@ -273,7 +276,7 @@ describe('renderSearchForm', () => {
       toStopSelected: true,
     });
 
-    expect(html).toContain('Choose a real departure stop.');
+    expect(html).toContain('Area restored from a shared link. Choose an exact stop to narrow it.');
     expect(html).toContain('Direct destinations appear after the origin is known.');
     expect(html).toContain('Select one departure to inspect exact trip details.');
   });
@@ -304,6 +307,7 @@ describe('renderSearchForm', () => {
 
   it('exposes mobile-friendly picker semantics for the From and To fields', () => {
     const html = renderSearchForm({
+      fromInput: 'imperia',
       fromPanelOpen: true,
       toPanelOpen: false,
     });
@@ -319,6 +323,7 @@ describe('renderSearchForm', () => {
 
   it('renders route pickers with combobox listbox option semantics', () => {
     const html = renderSearchForm({
+      fromInput: 'imperia',
       fromPanelOpen: true,
       fromSuggestions: {
         areas: [],

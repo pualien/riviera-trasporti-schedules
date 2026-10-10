@@ -115,7 +115,7 @@ function buildColumnAnchors(sectionRows) {
   const anchors = [];
 
   const xs = sectionRows
-    .flatMap((row) => row.cells.map((cell) => cell.x))
+    .flatMap((row) => (row.cells ?? []).map((cell) => cell.x))
     .sort((left, right) => left - right);
 
   for (const x of xs) {

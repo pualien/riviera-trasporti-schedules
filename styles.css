@@ -31,6 +31,7 @@
   --shadow: 0 18px 38px oklch(22.01% 0.0074 67.43 / 0.1);
   --shadow-small: 0 12px 24px oklch(22.01% 0.0074 67.43 / 0.1);
   --shadow-hover: 0 16px 28px oklch(22.01% 0.0074 67.43 / 0.12);
+  --shadow-focus: 0 0 0 4px oklch(64.28% 0.1944 17.41 / 0.16);
   --shadow-action: 0 12px 24px oklch(64.28% 0.1944 17.41 / 0.18);
   --shadow-action-hover: 0 22px 34px oklch(64.28% 0.1944 17.41 / 0.28);
 }
@@ -365,7 +366,7 @@ a {
 .taxi-call-button:hover,
 .taxi-call-button:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 4px rgba(235, 76, 96, 0.16);
+  box-shadow: var(--shadow-focus);
 }
 
 .transfer-suggestions {

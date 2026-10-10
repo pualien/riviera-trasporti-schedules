@@ -270,7 +270,7 @@ describe('renderResultsView', () => {
     });
 
     expect(html).toContain('class="next-answer-card"');
-    expect(html).toContain('Next 3 departures from now');
+    expect(html).toContain('Next departures from now');
     expect(html).toContain('Leaves in 35 min');
     expect(html).toContain('Line 12');
     expect(html).toContain('class="line-badge"');
