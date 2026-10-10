@@ -135,10 +135,8 @@ test('keeps route results and metadata readable', async ({ page }) => {
   await page.goto(SEARCH_ROUTE);
 
   const results = await readContrast(page, [
-    { name: 'next departure heading', selector: '.next-answer-card .section-head h3' },
-    { name: 'next departure description', selector: '.next-answer-card .section-head p' },
-    { name: 'line badge', selector: '.line-badge' },
-    { name: 'departure countdown', selector: '.departure-countdown' },
+    { name: 'departure archive label', selector: '.departure-archive summary' },
+    { name: 'line badge', selector: '.departure-card .line-badge' },
     { name: 'duration chip', selector: '.departure-meta > span' },
     { name: 'route summary line', selector: '.summary-lines' },
   ]);

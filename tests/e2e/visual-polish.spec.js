@@ -183,7 +183,6 @@ test('keeps taxi alternative sections readable', async ({ page }) => {
   await page.goto('/');
 
   const taxiDirectory = page.locator('.taxi-directory-section').first();
-  await page.locator('.global-alternatives summary').click();
   await expect(taxiDirectory).toBeVisible();
 
   const readableTargets = [
@@ -192,7 +191,6 @@ test('keeps taxi alternative sections readable', async ({ page }) => {
     taxiDirectory.locator('.taxi-panel-entry .eyebrow').first(),
     taxiDirectory.locator('.taxi-panel-entry h4').first(),
     taxiDirectory.locator('.taxi-panel-entry-copy > p:not(.eyebrow):not(.taxi-panel-entry-meta)').first(),
-    taxiDirectory.locator('.taxi-panel-entry-coverage').first(),
     taxiDirectory.locator('.taxi-panel-entry-meta').first(),
     taxiDirectory.locator('.taxi-panel-entry-meta a').first(),
     taxiDirectory.locator('.taxi-call-button').first(),

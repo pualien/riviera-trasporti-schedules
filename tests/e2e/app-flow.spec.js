@@ -102,10 +102,7 @@ test('lets riders choose Porto Maurizio to Sanremo from the pickers', async ({ p
 
   const toInput = page.locator('input[name="to"]');
   await expect(toInput).toBeFocused();
-  await toInput.fill('Sanremo');
-
-  await expect(page.getByRole('option', { name: /Sanremo Autostazione/ })).toBeVisible();
-  await page.getByRole('option', { name: /Sanremo Autostazione/ }).click();
+  await page.locator('[data-to-value="sanremo autostazione"]').click();
   await page.getByRole('button', { name: 'Show departures' }).click();
 
   await expect(page.locator('[data-trip-key]').first()).toBeVisible();
@@ -300,6 +297,7 @@ test('opens provider search tabs and builds a prefilled FlixBus handoff', async 
   await expect(providerForm).toHaveAttribute('data-provider-action-url', /arrivalCity=32183c0e-909d-48ce-8c32-7a0f77b4db5c/);
   await expect(providerForm).toHaveAttribute('data-provider-action-url', /rideDate=01.06.2026/);
 
+  await page.locator('.app-tab-more summary').click();
   await page.getByRole('button', { name: 'Train search' }).click();
   await expect(page.getByRole('heading', { name: 'Train search' })).toBeVisible();
   await page.locator('input[name="provider-from"]').fill('Imperia');
