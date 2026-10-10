@@ -268,7 +268,7 @@ describe('renderSearchForm', () => {
     expect(html).toContain('Choose direct destination');
   });
 
-  it('guides users from route selection to selected departure details without a wizard', () => {
+  it('keeps origin and destination guidance in the route picker without repeated helper copy', () => {
     const html = renderSearchForm({
       t: createTranslator('en'),
       fromLocalitySelected: true,
@@ -279,7 +279,7 @@ describe('renderSearchForm', () => {
 
     expect(html).toContain('Area restored from a shared link. Choose an exact stop to narrow it.');
     expect(html).toContain('Direct destinations appear after the origin is known.');
-    expect(html).toContain('Select one departure to inspect exact trip details.');
+    expect(html).not.toContain('Select one departure to inspect exact trip details.');
   });
 
   it('renders translated hero and field copy in Italian', () => {
