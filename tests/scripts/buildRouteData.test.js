@@ -122,9 +122,9 @@ Sanremo Autostazione 07.00`,
 
     expect(output.metadata).toMatchObject({
       source: {
-        title: '2026 Orario Estivo Ver. 1.3ª dal 15-06-2026',
-        url: expect.stringContaining('2026_Orario_Estivo_Ver._1.3'),
-        effectiveDate: '2026-06-15',
+        title: 'Orario Generale Invernale 2026-2027, aggiornato al 9 ottobre 2026',
+        url: expect.stringContaining('2026-2027_Orario_Invernale_Generale_1.1'),
+        effectiveDate: '2026-09-14',
       },
       builtAt: '2026-05-05T08:30:00.000Z',
       coverage: {

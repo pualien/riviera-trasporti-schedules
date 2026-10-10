@@ -353,7 +353,9 @@ export function renderSearchForm({
   const toHelp = originReady
     ? t('search.toHelp.ready')
     : t('search.toHelp.locked');
-  const resolvedDestinationMessage = destinationMessage ?? t('search.destination.informational');
+  const resolvedDestinationMessage = destinationMessage ?? t(
+    originReady ? 'search.guidance.destination' : 'search.destination.informational',
+  );
 
   return `
     <section id="route-search" class="hero-shell hero-shell--search-first">

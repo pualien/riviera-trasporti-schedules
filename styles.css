@@ -365,7 +365,6 @@ a {
 
 .taxi-call-button:hover,
 .taxi-call-button:focus-visible {
-  outline: none;
   box-shadow: var(--shadow-focus);
 }
 
