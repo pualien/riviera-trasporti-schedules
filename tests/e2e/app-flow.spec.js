@@ -321,6 +321,7 @@ test('opens provider search tabs and builds a prefilled FlixBus handoff', async 
     context: 'provider_tab',
   }));
 
+  await page.locator('.app-tab-more summary').click();
   await page.getByRole('button', { name: 'BlaBlaCar search' }).click();
   await expect(page.getByRole('heading', { name: 'BlaBlaCar search' })).toBeVisible();
 });

@@ -135,9 +135,9 @@ test('keeps route results and metadata readable', async ({ page }) => {
   await page.goto(SEARCH_ROUTE);
 
   const results = await readContrast(page, [
-    { name: 'departure archive label', selector: '.departure-archive summary' },
-    { name: 'line badge', selector: '.departure-card .line-badge' },
-    { name: 'duration chip', selector: '.departure-meta > span' },
+    { name: 'summary service day', selector: '.summary-service-day' },
+    { name: 'summary metric label', selector: '.metric span' },
+    { name: 'summary metric value', selector: '.metric strong' },
     { name: 'route summary line', selector: '.summary-lines' },
   ]);
 

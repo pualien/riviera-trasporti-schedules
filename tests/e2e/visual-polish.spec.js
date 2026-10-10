@@ -76,24 +76,25 @@ async function solidColorPair(locator) {
 
 async function effectiveColorPair(locator) {
   return locator.evaluate((element) => {
-    function parseRgb(value) {
-      const match = value.match(/rgba?\(([^)]+)\)/);
-      if (!match) {
-        return null;
-      }
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
 
-      const [r, g, b, a = 1] = match[1]
-        .split(',')
-        .map((part) => Number.parseFloat(part.trim()));
-
-      return { r, g, b, a };
+    function parseColor(value) {
+      context.clearRect(0, 0, 1, 1);
+      context.fillStyle = 'rgba(0, 0, 0, 0)';
+      context.fillStyle = value;
+      context.fillRect(0, 0, 1, 1);
+      const [r, g, b, alpha] = context.getImageData(0, 0, 1, 1).data;
+      return { r, g, b, a: alpha / 255 };
     }
 
-    const color = parseRgb(getComputedStyle(element).color);
+    const color = parseColor(getComputedStyle(element).color);
     let current = element;
 
     while (current) {
-      const background = parseRgb(getComputedStyle(current).backgroundColor);
+      const background = parseColor(getComputedStyle(current).backgroundColor);
       if (background && background.a > 0) {
         return { background, color };
       }
