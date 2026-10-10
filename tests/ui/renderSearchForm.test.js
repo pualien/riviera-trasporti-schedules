@@ -273,6 +273,7 @@ describe('renderSearchForm', () => {
       t: createTranslator('en'),
       fromLocalitySelected: true,
       exactFromStop: null,
+      toPanelOpen: true,
       toStopSelected: true,
     });
 
