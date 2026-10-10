@@ -94,6 +94,19 @@ describe('renderSearchForm', () => {
     expect(html).toContain('aria-label="Swap origin and destination"');
   });
 
+  it('puts the route picker before supporting hero copy for search-first landing', () => {
+    const html = renderSearchForm({
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('id="route-search"');
+    expect(html).toContain('class="hero-shell hero-shell--search-first"');
+    expect(html.indexOf('class="search-form search-form--capsule"')).toBeLessThan(
+      html.indexOf('class="hero-copy"'),
+    );
+    expect(html.indexOf('name="from"')).toBeLessThan(html.indexOf('name="to"'));
+  });
+
   it('renders a single exact-stop from panel', () => {
     const html = renderSearchForm({
       fromInput: 'porto',
@@ -111,6 +124,7 @@ describe('renderSearchForm', () => {
         ],
         exactStopHeading: 'Porto Maurizio',
       },
+      fromInput: 'imperia',
     });
 
     expect(html).toContain('Choose departure stop');
@@ -333,7 +347,7 @@ describe('renderSearchForm', () => {
     expect(html).toContain('aria-haspopup="listbox"');
     expect(html).toContain('aria-activedescendant="from-picker-option-0"');
     expect(html).toContain('aria-activedescendant="to-picker-option-0"');
-    expect(html).toContain('id="from-picker-panel" class="picker-panel" data-panel="from" role="listbox"');
+    expect(html).toContain('id="from-picker-panel" class="picker-option-list" role="listbox"');
     expect(html).toContain('id="to-picker-panel" class="picker-panel" data-panel="to" role="listbox"');
     expect(html).toContain('id="from-picker-option-0"');
     expect(html).not.toContain('id="from-picker-option-1"');

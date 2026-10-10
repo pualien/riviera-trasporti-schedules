@@ -226,8 +226,41 @@ describe('renderShell', () => {
     expect(taxiPanel).toContain('If you need a fallback in Provincia di Savona, you can call a verified taxi contact.');
     expect(taxiPanel).toContain('href="https://www.comune.imperia.it/it/page/taxi-imperia"');
     expect(taxiPanel).toContain('href="https://www.radiotaxialbenga.it/"');
+    expect(taxiPanel).toContain('class="taxi-call-button" href="tel:+3901833785"');
+    expect(taxiPanel).toContain('class="taxi-call-button" href="tel:+3901820303"');
     expect(taxiPanel).toContain('Verified 2026-05-13');
     expect(html).not.toContain('class="taxi-option-card"');
+  });
+
+  it('renders mobile quick actions for routes, taxi, and the official PDF', () => {
+    const html = renderShell('<section id="route-search">Route search</section>', {
+      language: 'en',
+      languages: SUPPORTED_LANGUAGES,
+      officialPdfUrl: 'https://example.com/riviera.pdf',
+      taxiDirectory: [
+        {
+          serviceId: 'taxi-imperia',
+          provinceId: 'imperia',
+          provinceLabel: 'Provincia di Imperia',
+          serviceLabel: 'Taxi Imperia',
+          phone: '+39 0183 3785',
+          phones: [{ label: '+39 0183 3785', href: 'tel:+3901833785' }],
+          sourceUrl: 'https://www.comune.imperia.it/it/page/taxi-imperia',
+          verifiedAt: '2026-05-13',
+          coverageLabels: ['Imperia'],
+        },
+      ],
+      t: createTranslator('en'),
+    });
+
+    expect(html).toContain('id="taxi-directory"');
+    expect(html).toContain('class="mobile-quick-actions"');
+    expect(html).toContain('href="#route-search"');
+    expect(html).toContain('href="#taxi-directory"');
+    expect(html).toContain('href="https://example.com/riviera.pdf"');
+    expect(html.indexOf('class="mobile-quick-actions"')).toBeGreaterThan(
+      html.indexOf('class="taxi-directory-section"'),
+    );
   });
 
   it('can tuck the global taxi directory into a contextual alternatives disclosure', () => {

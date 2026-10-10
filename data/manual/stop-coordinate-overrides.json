@@ -21,13 +21,6 @@
     "sourceLabel": "Pensilina Porto Maurizio"
   },
   {
-    "stopId": "porto-m-pensilina",
-    "latitude": 43.8783869,
-    "longitude": 8.0162076,
-    "source": "OpenStreetMap Overpass",
-    "sourceLabel": "Pensilina Porto Maurizio"
-  },
-  {
     "stopId": "piazza-ricci",
     "latitude": 43.8763477,
     "longitude": 8.0133072,

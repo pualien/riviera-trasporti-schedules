@@ -1,17 +1,17 @@
 {
   "status": "fresh",
-  "generatedAt": "2026-07-07T16:06:05.594Z",
+  "generatedAt": "2026-10-10T18:24:30.890Z",
   "source": {
-    "type": "gtfs",
-    "validFrom": "2026-06-01",
-    "validUntil": "2026-09-13"
+    "type": "pdf",
+    "validFrom": "2026-09-14",
+    "validUntil": "2027-06-13"
   },
   "counts": {
-    "lines": 76,
-    "stops": 2724,
-    "trips": 3226,
+    "lines": 71,
+    "stops": 336,
+    "trips": 2323,
     "localities": 27,
-    "directPairs": 91016
+    "directPairs": 2557
   },
   "errors": [],
   "warnings": []

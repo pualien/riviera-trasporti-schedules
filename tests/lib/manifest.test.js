@@ -11,6 +11,8 @@ describe('manifest.webmanifest', () => {
 
     expect(manifest.id).toBe('./');
     expect(manifest.display).toBe('standalone');
+    expect(manifest.background_color).toBe('#fffaf4');
+    expect(manifest.theme_color).toBe('#eb4c60');
     expect(manifest.shortcuts).toEqual([
       expect.objectContaining({
         name: 'Search',

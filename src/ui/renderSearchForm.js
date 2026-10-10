@@ -131,24 +131,33 @@ function renderSuggestionButtons(attributeName, suggestions = [], t, {
 
 function renderFromPanel(fromSuggestions, t, {
   activeOptionId = null,
-  collapseOriginRefinement = false,
+  inputValue = '',
 } = {}) {
   const {
     exactStops = [],
   } = fromSuggestions ?? {};
+  const query = String(inputValue).trim();
+  const visibleStops = query ? exactStops.slice(0, 12) : [];
+  const pickerMessage = !query
+    ? t('search.fromPanel.typeToSearch', { count: exactStops.length })
+    : exactStops.length > visibleStops.length
+      ? t('search.fromPanel.limited', { visible: visibleStops.length, total: exactStops.length })
+      : exactStops.length === 0
+        ? t('search.fromPanel.noMatches')
+        : '';
 
   return `
-    <div id="from-picker-panel" class="picker-panel" data-panel="from" role="listbox" aria-labelledby="from-field-label">
-      <div class="picker-option-group" role="group" aria-label="${escapeHtml(t('search.fromPanel.browseAll'))}">
-        <div class="picker-panel-head">
-          <div class="picker-panel-copy">${escapeHtml(t('search.fromPanel.browseAll'))}</div>
-        </div>
-        <div class="picker-option-list">
-          ${renderSuggestionButtons('data-from-value', exactStops, t, {
+    <div class="picker-panel" data-panel="from">
+      ${pickerMessage ? `<p class="picker-panel-copy" role="status">${escapeHtml(pickerMessage)}</p>` : ''}
+      <div id="from-picker-panel" class="picker-option-list" role="listbox" aria-labelledby="from-field-label">
+        ${visibleStops.length ? `
+        <div class="picker-option-group" role="group" aria-label="${escapeHtml(t('search.fromPanel.browseAll'))}">
+          ${renderSuggestionButtons('data-from-value', visibleStops, t, {
             activeOptionId,
             idPrefix: 'from-picker-option',
           })}
         </div>
+        ` : ''}
       </div>
     </div>
   `;
@@ -156,7 +165,7 @@ function renderFromPanel(fromSuggestions, t, {
 
 function renderCompactResultSearch({ t, compactRouteLabel, dayType }) {
   return `
-    <section class="route-edit-summary" data-route-edit-summary>
+    <section id="route-search" class="route-edit-summary" data-route-edit-summary>
       <div>
         <p class="eyebrow">${escapeHtml(t('search.compactEyebrow'))}</p>
         <h1>${escapeHtml(compactRouteLabel || t('search.compactTitle'))}</h1>
@@ -328,7 +337,6 @@ export function renderSearchForm({
   destinationMessage,
   selectedLocalityLabel = '',
   dayType = 'feriale',
-  collapseOriginRefinement = false,
   compactResultMode = false,
   compactRouteLabel = '',
 } = {}) {
@@ -348,17 +356,11 @@ export function renderSearchForm({
   const resolvedDestinationMessage = destinationMessage ?? t('search.destination.informational');
 
   return `
-    <section class="hero-shell hero-shell--compact">
-      <div class="hero-copy">
-        <p class="eyebrow">${escapeHtml(t('search.eyebrow'))}</p>
-        <h1>${escapeHtml(t('search.title'))}</h1>
-        <p class="hero-text">
-          ${escapeHtml(t('search.heroText'))}
-        </p>
-      </div>
-
-      <form id="route-form" class="search-form search-form--capsule">
+    <section id="route-search" class="hero-shell hero-shell--search-first">
+      <form id="route-form" class="search-form search-form--capsule" aria-labelledby="route-search-title">
         <div class="search-form-intro">
+          <p class="eyebrow">${escapeHtml(t('search.eyebrow'))}</p>
+          <h1 id="route-search-title">${escapeHtml(t('search.title'))}</h1>
           <p class="field-hint">${escapeHtml(t('search.fieldHint'))}</p>
           ${renderRouteProgress({
             fromLocalitySelected,
@@ -366,11 +368,6 @@ export function renderSearchForm({
             toStopSelected,
             t,
           })}
-          <div class="route-guidance">
-            <span>${escapeHtml(t('search.guidance.origin'))}</span>
-            <span>${escapeHtml(t('search.guidance.destination'))}</span>
-            <span>${escapeHtml(t('search.guidance.departure'))}</span>
-          </div>
         </div>
         <label class="field">
           ${renderFieldLabel('from', t('search.fromLabel'))}
@@ -389,7 +386,7 @@ export function renderSearchForm({
           <small>${fromHelp}</small>
           ${fromPanelOpen ? renderFromPanel(fromSuggestions, t, {
     activeOptionId: fromActiveOptionId,
-    collapseOriginRefinement,
+    inputValue: fromInput,
   }) : ''}
         </label>
 
@@ -433,6 +430,13 @@ export function renderSearchForm({
 
         <button type="submit" class="search-form-submit">${escapeHtml(t('search.submit'))}</button>
       </form>
+
+      <div class="hero-copy">
+        <p class="hero-text">
+          ${escapeHtml(t('search.heroText'))}
+        </p>
+        <p class="hero-source-note">${escapeHtml(t('shell.sourceTrustBody'))}</p>
+      </div>
     </section>
   `;
 }

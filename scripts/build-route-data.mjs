@@ -152,6 +152,27 @@ function buildDatasetMetadata({ indexEntries, manifestEntries, builtAt }) {
   };
 }
 
+function buildDataQuality({ lines, stops, trips, localities, reachability, builtAt }) {
+  return {
+    status: 'fresh',
+    generatedAt: builtAt,
+    source: {
+      type: PDF_SOURCE_METADATA.type,
+      validFrom: PDF_SOURCE_METADATA.effectiveDate,
+      validUntil: PDF_SOURCE_METADATA.validUntil,
+    },
+    counts: {
+      lines: lines.length,
+      stops: stops.length,
+      trips: trips.length,
+      localities: localities.length,
+      directPairs: Object.values(reachability).reduce((sum, destinations) => sum + destinations.length, 0),
+    },
+    errors: [],
+    warnings: [],
+  };
+}
+
 export async function buildRouteData({
   indexEntries,
   manifestEntries,
@@ -246,6 +267,7 @@ async function main() {
     localities,
     localityRules,
   });
+  const quality = buildDataQuality({ ...output, builtAt: new Date().toISOString() });
 
   await mkdir(new URL('../assets/data/', import.meta.url), { recursive: true });
   await writeFile(new URL('../assets/data/trips.json', import.meta.url), JSON.stringify(output.trips, null, 2));
@@ -262,6 +284,10 @@ async function main() {
   await writeFile(
     new URL('../assets/data/reachability.json', import.meta.url),
     JSON.stringify(output.reachability, null, 2),
+  );
+  await writeFile(
+    new URL('../assets/data/data-quality.json', import.meta.url),
+    JSON.stringify(quality, null, 2),
   );
 
   console.log(`Built ${output.trips.length} trips across ${indexEntries.length} indexed pages`);

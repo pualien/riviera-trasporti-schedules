@@ -66,13 +66,14 @@ export function renderTaxiOptionsSection(taxiOptions = [], {
   titleKey = 'taxi.routeTitle',
   bodyKey = null,
   className = 'taxi-options-section',
+  sectionId = '',
 } = {}) {
   if (!taxiOptions.length) {
     return '';
   }
 
   return `
-    <section class="${className}">
+    <section class="${className}"${sectionId ? ` id="${escapeHtml(sectionId)}"` : ''}>
       <div class="taxi-section-head">
         <h3>${escapeHtml(t(titleKey))}</h3>
         ${bodyKey ? `<p>${escapeHtml(t(bodyKey))}</p>` : ''}

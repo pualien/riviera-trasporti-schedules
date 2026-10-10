@@ -1,4 +1,4 @@
-import { splitRemainingDepartures } from './serviceDay.js';
+import { defaultDayTypeForDate, splitRemainingDepartures } from './serviceDay.js';
 import { toMinutes } from './time.js';
 
 function averageDuration(matches) {
@@ -72,6 +72,7 @@ function buildFallbackSuggestions({
 export function buildSearchOutcome({
   matches,
   now = new Date(),
+  dayType = null,
   fromLocalityId = null,
   fromStopId = null,
   localities = [],
@@ -91,7 +92,13 @@ export function buildSearchOutcome({
     };
   }
 
-  const { remaining, serviceEnded } = splitRemainingDepartures(matches, now);
+  const todayDayType = defaultDayTypeForDate(now);
+  const serviceDayIsCurrent = dayType == null
+    || dayType === todayDayType
+    || (todayDayType === 'scolastico' && dayType === 'feriale');
+  const { remaining, serviceEnded } = serviceDayIsCurrent
+    ? splitRemainingDepartures(matches, now)
+    : { remaining: matches, serviceEnded: false };
   const remainingByArrival = [...remaining].sort(
     (left, right) => toMinutes(left.arrivalTime) - toMinutes(right.arrivalTime),
   );
@@ -100,13 +107,17 @@ export function buildSearchOutcome({
     type: 'results',
     summary: {
       serviceEnded,
+      serviceDayType: dayType,
+      serviceDayIsCurrent,
       nextDeparture: remaining[0] ?? null,
       soonestArrival: remainingByArrival[0] ?? null,
       lastDepartureTime: matches.at(-1)?.departureTime ?? null,
       averageDurationMinutes: averageDuration(matches),
       lines: uniqueLines(matches),
     },
-    nextDepartures: remaining.slice(0, 3).map((departure) => withDepartureCountdown(departure, now)),
+    nextDepartures: remaining.slice(0, 3).map((departure) => (
+      serviceDayIsCurrent ? withDepartureCountdown(departure, now) : departure
+    )),
     allDepartures: matches,
   };
 }

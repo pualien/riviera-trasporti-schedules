@@ -83,6 +83,8 @@ function renderDepartureCard(departure, t, pdfUrl, { compact = false, sourceInfo
 function renderNextAnswerCard({
   nextDepartures = [],
   selectedTripKey,
+  serviceDayLabel,
+  serviceDayIsCurrent = true,
   t,
   pdfUrl,
   sourceInfo,
@@ -94,8 +96,12 @@ function renderNextAnswerCard({
   return `
     <section class="next-answer-card" aria-labelledby="next-answer-title">
       <div class="section-head">
-        <h3 id="next-answer-title">${escapeHtml(t('results.nextAnswerTitle'))}</h3>
-        <p>${escapeHtml(t('results.nextAnswerSubtitle'))}</p>
+        <h3 id="next-answer-title">${escapeHtml(serviceDayIsCurrent
+    ? (nextDepartures.length === 3 ? t('results.nextAnswerTitle') : t('results.nextAnswerTitleGeneric'))
+    : t('results.serviceDeparturesTitle', { day: serviceDayLabel }))}</h3>
+        <p>${escapeHtml(t(serviceDayIsCurrent
+    ? 'results.nextAnswerSubtitle'
+    : 'results.serviceDeparturesSubtitle'))}</p>
       </div>
       <div class="departure-list departure-list--answer">
         ${nextDepartures.map((departure) => renderDepartureCard({
@@ -188,18 +194,25 @@ function renderDepartureArchive({
 }
 
 function renderSummaryMetrics(summary, t) {
+  const serviceDayIsCurrent = summary.serviceDayIsCurrent !== false;
+
   return `
     <div class="metrics">
+      ${summary.serviceEnded ? `
       <div class="metric">
-        <span>${summary.serviceEnded ? t('results.noMoreDeparturesToday') : t('results.nextDeparture')}</span>
-        <strong>${summary.nextDeparture?.departureTime ?? '—'}</strong>
-      </div>
+        <span>${escapeHtml(t('results.noMoreDeparturesToday'))}</span>
+      </div>` : `
       <div class="metric">
-        <span>${t('results.soonestArrival')}</span>
-        <strong>${summary.soonestArrival?.arrivalTime ?? '—'}</strong>
-      </div>
+        <span>${escapeHtml(t(serviceDayIsCurrent ? 'results.nextDeparture' : 'results.firstServiceDeparture'))}</span>
+        <strong>${escapeHtml(summary.nextDeparture?.departureTime ?? '')}</strong>
+      </div>`}
+      ${summary.soonestArrival ? `
       <div class="metric">
-        <span>${t('results.lastDepartureToday')}</span>
+        <span>${escapeHtml(t('results.soonestArrival'))}</span>
+        <strong>${summary.soonestArrival.arrivalTime}</strong>
+      </div>` : ''}
+      <div class="metric">
+        <span>${escapeHtml(t(serviceDayIsCurrent ? 'results.lastDepartureToday' : 'results.lastServiceDeparture'))}</span>
         <strong>${summary.lastDepartureTime ?? '—'}</strong>
       </div>
       <div class="metric">
@@ -349,6 +362,7 @@ function renderShareModal(shareModal, routeLabel, t) {
 export function renderResultsView({
   t = createTranslator('en'),
   routeLabel,
+  serviceDayLabel = '',
   pdfUrl = '#',
   summary,
   nextDepartures,
@@ -369,6 +383,7 @@ export function renderResultsView({
           <div>
             <p class="eyebrow">${t('results.routeSummary')}</p>
             <h2>${routeLabel}</h2>
+            <p class="summary-service-day">${escapeHtml(t('results.serviceDay', { day: serviceDayLabel }))}</p>
           </div>
           <div class="summary-lines">${t('results.line')} ${summary.lines.join(', ')}</div>
           <div class="summary-actions">
@@ -380,6 +395,8 @@ export function renderResultsView({
 
         ${renderNextAnswerCard({
     nextDepartures,
+    serviceDayLabel,
+    serviceDayIsCurrent: summary.serviceDayIsCurrent,
     selectedTripKey,
     t,
     pdfUrl,

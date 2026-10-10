@@ -4,11 +4,12 @@ import { describe, expect, it } from 'vitest';
 const packageJson = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
 
 describe('package scripts', () => {
-  it('exposes browser, e2e, accessibility, and smoke test entry points', () => {
+  it('exposes browser, e2e, accessibility, contrast, and smoke test entry points', () => {
     expect(packageJson.scripts).toMatchObject({
       'test:browser': 'playwright test',
       'test:e2e': 'playwright test tests/e2e/app-flow.spec.js',
       'test:a11y': 'playwright test tests/e2e/a11y.spec.js',
+      'test:contrast': 'playwright test tests/e2e/contrast.spec.js',
       'test:smoke': 'playwright test tests/e2e',
     });
   });
@@ -18,6 +19,7 @@ describe('package scripts', () => {
   });
 
   it('exposes separate PDF and GTFS data build entry points', () => {
+    expect(packageJson.scripts['build:data']).toBe('npm run build:data:pdf');
     expect(packageJson.scripts).toMatchObject({
       'build:data:pdf': 'node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs',
       'build:data:gtfs': 'node scripts/fetch-gtfs.mjs && node scripts/build-gtfs-route-data.mjs',

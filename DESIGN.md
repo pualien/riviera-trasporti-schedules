@@ -3,15 +3,17 @@ name: Riviera Dei Fiori Route Finder
 description: Route-first timetable lookup for direct Riviera buses.
 colors:
   primary: "#eb4c60"
-  primary-deep: "#d93b4f"
-  signal: "#ff8a3d"
-  cream-top: "#f7f1ea"
-  cream-bottom: "#efe4d6"
-  panel: "#fffbf7"
-  panel-strong: "#ffffff"
+  primary-deep: "#eb4c60"
+  signal: "#eb4c60"
+  cream-top: "#fffaf4"
+  cream-bottom: "#fffaf4"
+  panel: "#fffaf4"
+  panel-strong: "#fffaf4"
   text: "#1d1a17"
-  muted: "#6b6258"
-  quiet-line: "#3e2718"
+  muted: "#65625e"
+  quiet-line: "#8e8a86"
+  selected: "#fde5e2"
+  focus: "#1d1a17"
 typography:
   display:
     fontFamily: "\"Avenir Next\", \"Segoe UI\", \"Helvetica Neue\", sans-serif"
@@ -60,14 +62,14 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.primary}"
-    textColor: "{colors.panel-strong}"
+    textColor: "{colors.text}"
     rounded: "{rounded.sm}"
     padding: "0 16px"
     height: "56px"
     typography: "{typography.label}"
   button-secondary:
     backgroundColor: "{colors.panel-strong}"
-    textColor: "{colors.primary-deep}"
+    textColor: "{colors.text}"
     rounded: "{rounded.sm}"
     padding: "0 18px"
     height: "56px"
@@ -124,20 +126,18 @@ This system explicitly rejects the dated public-service portal look described in
 The palette is restrained: cream and paper neutrals hold the surface, while coral carries action, selection, and route emphasis.
 
 ### Primary
-- **Riviera Coral** (`#eb4c60`): The primary action tone. Use it for submit actions, active emphasis, and focus-adjacent highlights that need immediate recognition.
-- **Timetable Red** (`#d93b4f`): The deeper companion to Riviera Coral. Use it for stronger text-on-light emphasis, action labels, and the lower edge of button gradients.
+- **Riviera Coral** (`#eb4c60`): The only saturated action tone. Use it for submit fills, active emphasis, selected borders, and route certainty. Do not use it for normal-sized text on cream.
 
 ### Secondary
-- **Signal Apricot** (`#ff8a3d`): A supporting warmth note used sparingly in atmospheric highlights and secondary signal moments. It is not a second primary action color.
+- No secondary accent is used. Semantic variation comes from ink, cream, and derived warm or coral-tinted surfaces.
 
 ### Neutral
-- **Morning Cream** (`#f7f1ea`): The upper page wash. It gives the interface a warm daylight start instead of sterile white.
-- **Sand Fade** (`#efe4d6`): The lower page wash. Use it to complete the page gradient and prevent the canvas from feeling flat.
-- **Ticket Paper** (`#fffbf7`): The translucent panel base. It supports glass-like softness without turning into decorative glassmorphism.
-- **Clear Panel** (`#ffffff`): The strongest content surface for forms and selection rows.
+- **Riviera Cream** (`#fffaf4`): The canvas, panel, and control surface for the explicit light theme.
+- **Selected Blush** (`#fde5e2`): A quiet selected or highlighted surface that always uses ink text.
 - **Timetable Ink** (`#1d1a17`): The primary text color. All critical labels and route data should resolve to this family.
-- **Quiet Taupe** (`#6b6258`): Secondary copy, helper text, and supportive metadata.
-- **Warm Rule** (`#3e2718`): The border anchor behind low-contrast dividing lines and subtle structure.
+- **Quiet Taupe** (`#65625e`): Secondary copy, helper text, and supportive metadata; it reaches 4.5:1 on Riviera Cream.
+- **Control Rule** (`#8e8a86`): Interactive control boundaries; it reaches 3:1 on Riviera Cream.
+- **Subtle Rule** (`#dfdbd5`): Decorative separators that do not define an interaction.
 
 **The One Warm Pulse Rule.** Coral appears where the user should act or where the system must confirm importance. It is forbidden as idle decoration.
 
@@ -170,7 +170,7 @@ Depth is softly layered, not flat and not heavily lifted. Large shells use blurr
 - **Ambient Shell** (`0 30px 60px rgba(93, 63, 35, 0.12)`): Use on top-level shells such as the hero, results sections, and location picker.
 - **Hover Lift** (`0 16px 28px rgba(93, 63, 35, 0.12)`): Use on interactive rows that need a gentle readiness cue.
 - **Action Lift** (`0 18px 30px rgba(217, 59, 79, 0.24)`): Use on the primary submit action only.
-- **Focus Halo** (`0 0 0 4px rgba(235, 76, 96, 0.12)`): Use for keyboard-visible focus on selects and selectable rows.
+- **Focus Ring** (`3px solid #1d1a17` with `3px` offset): Use for every keyboard-focusable control. It must remain at least 3:1 against both cream and coral.
 
 **The Soft Layer Rule.** Panels should feel cushioned, not glossy. If a surface looks like floating glass or a 2014 raised card, the blur or shadow is wrong.
 
@@ -178,9 +178,9 @@ Depth is softly layered, not flat and not heavily lifted. Large shells use blurr
 
 ### Buttons
 - **Shape:** High-comfort rounded rectangles (`20px`) for standard actions, full pills (`999px`) for compact metadata chips.
-- **Primary:** Coral gradient fill from Riviera Coral to Timetable Red, white text, `56px` minimum height, medium-heavy label weight. This is the “Show departures” voice.
-- **Hover / Focus:** A slight upward shift (`translateY(-1px)`) and stronger shadow. Focus must stay visible through a coral halo or equivalent high-contrast state.
-- **Secondary / Utility:** The location button keeps a pale cream-white gradient, coral text, and the same control height so it feels related without competing.
+- **Primary:** Solid Riviera Coral fill with Timetable Ink text, `56px` minimum height, and medium-heavy label weight. This pair reaches WCAG AA for normal text and is the “Show departures” voice.
+- **Hover / Focus:** A slight upward shift (`translateY(-1px)`) and stronger shadow on hover. Keyboard focus uses the shared opaque ink ring, never a translucent halo.
+- **Secondary / Utility:** The location button keeps a warm cream surface, ink text, and the same control height so it feels related without competing.
 
 ### Chips
 - **Style:** Metadata chips use pale paper backgrounds with coral or taupe text and a full pill radius (`999px`).
@@ -195,7 +195,7 @@ Depth is softly layered, not flat and not heavily lifted. Large shells use blurr
 
 ### Inputs / Fields
 - **Style:** Inputs and selects are large, soft, and highly legible: `56px` minimum height, `20px` radius, pale white background, warm border, and dark ink text.
-- **Focus:** Focus uses a coral halo and border strengthening, never a browser-default blue that clashes with the warm system.
+- **Focus:** Focus uses the shared opaque Timetable Ink ring with offset. Interactive control boundaries reach 3:1 independently of the focus treatment.
 - **Error / Disabled:** Error states should preserve the same size and structure while shifting border and helper copy color only. Disabled states should reduce contrast carefully without dropping below accessibility targets.
 
 ### Navigation
@@ -210,7 +210,7 @@ Depth is softly layered, not flat and not heavily lifted. Large shells use blurr
 ### Do:
 - **Do** keep primary controls at `56px` minimum height with `20px` rounding so touch and scan effort stay low.
 - **Do** use Timetable Ink (`#1d1a17`) for essential route names, departure times, and labels that drive decisions.
-- **Do** reserve Riviera Coral (`#eb4c60`) and Timetable Red (`#d93b4f`) for action, active emphasis, and route certainty.
+- **Do** reserve Riviera Coral (`#eb4c60`) for action fills, selected emphasis, and route certainty; use Timetable Ink for normal-sized text.
 - **Do** preserve soft layer depth with one ambient shell shadow and subtle hover lift, not stacked container effects.
 - **Do** treat WCAG AA as the floor and push critical reading surfaces toward AAA contrast where practical.
 

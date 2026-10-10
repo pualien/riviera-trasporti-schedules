@@ -10,7 +10,7 @@ import {
   pushBrowseInteractionEvent,
   pushSharedRouteOpenedEvent,
   pushSharedRouteRestoredEvent,
-} from './lib/analytics.js?v=13';
+} from './lib/analytics.js?v=14';
 import { loadAppBootstrapData } from './lib/appBootstrap.js';
 import { buildBrowseIndex } from './lib/browseIndex.js';
 import { buildFromSuggestionSections } from './lib/fromSuggestions.js';
@@ -96,7 +96,7 @@ import { renderRouteMapPanel } from './ui/renderRouteMapPanel.js';
 import { renderSavedView } from './ui/renderSavedView.js';
 import { renderBrowseView } from './ui/renderBrowseView.js';
 import { renderResultsView } from './ui/renderResults.js';
-import { renderSearchForm } from './ui/renderSearchForm.js?v=13';
+import { renderSearchForm } from './ui/renderSearchForm.js?v=14';
 import { renderShell } from './ui/renderShell.js';
 import { renderTabNav } from './ui/renderTabNav.js';
 
@@ -700,11 +700,6 @@ function renderApp() {
       destinationMessage: currentDestinationMessage(t),
       selectedLocalityLabel: selectedLocality?.label ?? '',
       dayType: state.formValues.dayType,
-      collapseOriginRefinement: Boolean(
-        selectedLocality
-        && !exactFromStop
-        && !state.uiState.originRefinementExpanded
-      ),
       compactResultMode: Boolean(state.resultState && !state.uiState.searchExpanded),
       compactRouteLabel: currentRouteLabel(),
     }));
@@ -724,6 +719,7 @@ function renderApp() {
       renderResultsView({
         t,
         routeLabel: currentRouteLabel(),
+        serviceDayLabel: currentDayTypeLabel(),
         pdfUrl: state.metadata?.source?.url ?? '#',
         summary: state.resultState.summary,
         nextDepartures: state.resultState.nextDepartures,
@@ -905,7 +901,7 @@ async function renderNearbyMap(requestId) {
 
     L.circleMarker([latitude, longitude], {
       radius: 8,
-      color: '#d93b4f',
+      color: '#eb4c60',
       weight: 3,
       fillColor: '#eb4c60',
       fillOpacity: 0.35,
@@ -947,7 +943,7 @@ async function renderSelectedTripMap(mapState) {
     }).addTo(map);
 
     L.polyline(coordinates, {
-      color: '#d93b4f',
+      color: '#eb4c60',
       weight: 4,
     }).addTo(map);
 
@@ -1151,6 +1147,7 @@ function submitCurrentSearch() {
   const outcome = buildSearchOutcome({
     matches,
     now: new Date(),
+    dayType: state.formValues.dayType,
     fromLocalityId: originContext.selectedLocality?.id ?? null,
     fromStopId: originContext.exactFromStop?.id ?? null,
     localities: state.localities,

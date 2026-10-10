@@ -12,20 +12,21 @@ Install dependencies:
 npm install
 ```
 
-Build static route data from a prepared GTFS feed directory:
+Build the current operator timetable into the static route data used by the app:
 
 ```bash
-GTFS_SOURCE_URL="https://dati.regione.liguria.it/dataset/ds-639" npm run build:data:gtfs
 npm run build:data
 ```
 
-The GTFS builder expects extracted feed files in `build/gtfs/` and writes the runtime JSON assets consumed by the app. Use `GTFS_SOURCE_URL` to record the public dataset page or archive URL in `assets/data/metadata.json`.
+The build fetches the official Riviera Trasporti PDF listed in [`scripts/lib/pdfSource.mjs`](./scripts/lib/pdfSource.mjs), extracts all indexed timetable pages, and writes the runtime JSON assets consumed by the app. Update that source metadata when Riviera Trasporti publishes a revised timetable.
 
-Rebuild the legacy PDF-derived data while GTFS output is being validated:
+The regional GTFS builder remains available when Regione Liguria publishes a current feed:
 
 ```bash
-npm run build:data:pdf
+GTFS_FEED_URL="<current-feed-url>" GTFS_SOURCE_URL="<source-page-url>" npm run build:data:gtfs
 ```
+
+The checked-in timetable is the Winter 2026–2027 PDF, valid from 14 September 2026 through 13 June 2027 and updated by Riviera Trasporti on 9 October 2026.
 
 The PDF build checks the extracted PDF index against [`data/manual/line-pages.json`](./data/manual/line-pages.json) and fails if indexed timetable pages are missing or a configured page parses to zero trips.
 

@@ -52,23 +52,24 @@ function contrastRatio(foreground, background) {
 
 async function solidColorPair(locator) {
   return locator.evaluate((element) => {
-    function parseRgb(value) {
-      const match = value.match(/rgba?\(([^)]+)\)/);
-      if (!match) {
-        return null;
-      }
+    const canvas = document.createElement('canvas');
+    canvas.width = 1;
+    canvas.height = 1;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
 
-      const [r, g, b, a = 1] = match[1]
-        .split(',')
-        .map((part) => Number.parseFloat(part.trim()));
-
-      return { r, g, b, a };
+    function parseColor(value) {
+      context.clearRect(0, 0, 1, 1);
+      context.fillStyle = 'rgba(0, 0, 0, 0)';
+      context.fillStyle = value;
+      context.fillRect(0, 0, 1, 1);
+      const [r, g, b, alpha] = context.getImageData(0, 0, 1, 1).data;
+      return { r, g, b, a: alpha / 255 };
     }
 
     const style = getComputedStyle(element);
     return {
-      background: parseRgb(style.backgroundColor),
-      color: parseRgb(style.color),
+      background: parseColor(style.backgroundColor),
+      color: parseColor(style.color),
     };
   });
 }
@@ -147,10 +148,13 @@ test('styles departure share controls as Riviera Dei Fiori Route Finder actions'
   expect(style.cursor).toBe('pointer');
 });
 
-test('keeps dark-mode mobile navigation controls readable', async ({ page }) => {
+test('keeps mobile navigation controls readable under a dark OS preference', async ({ page }) => {
   await page.emulateMedia({ colorScheme: 'dark' });
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/');
+
+  await expect.poll(() => page.evaluate(() => getComputedStyle(document.documentElement).colorScheme))
+    .toContain('light');
 
   const controls = [
     page.getByRole('button', { name: 'Cerca treni' }),

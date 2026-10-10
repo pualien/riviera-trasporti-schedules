@@ -48,6 +48,7 @@ describe('renderSeoPageHtml', () => {
           toLabel: 'Sanremo',
           lineIds: ['12'],
           departureCount: 48,
+          departures: [{ departureTime: '08:00' }],
         },
         {
           slug: 'imperia/taggia',
@@ -55,6 +56,7 @@ describe('renderSeoPageHtml', () => {
           toLabel: 'Taggia',
           lineIds: ['12'],
           departureCount: 36,
+          departures: [{ departureTime: '09:00' }],
         },
         {
           slug: 'sanremo/bordighera',
@@ -62,6 +64,7 @@ describe('renderSeoPageHtml', () => {
           toLabel: 'Bordighera',
           lineIds: ['2'],
           departureCount: 24,
+          departures: [{ departureTime: '07:30' }],
         },
       ],
     });
@@ -72,6 +75,12 @@ describe('renderSeoPageHtml', () => {
     expect(html).toContain('Percorsi bus Riviera Trasporti');
     expect(html).toContain('3 percorsi');
     expect(html).toContain('Da Imperia');
+    expect(html).toContain('class="route-origin-card"');
+    expect(html).toContain('data-route-count="2"');
+    expect(html).toContain('2 percorsi diretti');
+    expect(html).toContain('class="route-card-next"');
+    expect(html).toContain('Prima partenza 08:00');
+    expect(html).toContain('class="route-card-link"');
     expect(html).toContain('href="/riviera-trasporti-schedules/routes/imperia/sanremo/"');
     expect(html).toContain('Imperia - Sanremo');
     expect(html).toContain('Linea 12');
@@ -244,6 +253,7 @@ describe('renderSeoPageHtml', () => {
 
     expect(html).toContain('<link rel="manifest" href="/riviera-trasporti-schedules/manifest.webmanifest">');
     expect(html).toContain('<meta name="theme-color" content="#eb4c60">');
+    expect(html).toContain('<meta name="color-scheme" content="light">');
     expect(html).toContain('<link rel="apple-touch-icon" href="/riviera-trasporti-schedules/assets/brand/apple-touch-icon.png">');
     expect(html).toContain("var serviceWorkerUrls = ['/riviera-trasporti-schedules/service-worker.js', '/service-worker.js'];");
     expect(html).toContain('navigator.serviceWorker.register(url)');

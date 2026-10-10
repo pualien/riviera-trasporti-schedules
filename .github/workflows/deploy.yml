@@ -22,8 +22,11 @@ jobs:
         with:
           node-version: 22
       - run: npm ci
+      - run: npm test
       - run: npm run build:data
       - run: npm run build:seo
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:smoke
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

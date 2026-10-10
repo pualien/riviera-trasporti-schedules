@@ -8,9 +8,10 @@
     "test:browser": "playwright test",
     "test:e2e": "playwright test tests/e2e/app-flow.spec.js",
     "test:a11y": "playwright test tests/e2e/a11y.spec.js",
+    "test:contrast": "playwright test tests/e2e/contrast.spec.js",
     "test:smoke": "playwright test tests/e2e",
     "build:seo": "node scripts/generate-seo-pages.mjs",
-    "build:data": "node scripts/fetch-gtfs.mjs && node scripts/build-gtfs-route-data.mjs",
+    "build:data": "npm run build:data:pdf",
     "build:data:pdf": "node scripts/fetch-pdf.mjs && node scripts/extract-pages.mjs && node scripts/build-route-data.mjs && node scripts/build-stop-coordinates.mjs",
     "build:data:gtfs": "node scripts/fetch-gtfs.mjs && node scripts/build-gtfs-route-data.mjs"
   },

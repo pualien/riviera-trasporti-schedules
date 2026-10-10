@@ -71,7 +71,7 @@ describe('renderResultsView', () => {
       allDepartures: [],
     });
 
-    expect(html).toContain('Prossime 3 partenze da adesso');
+    expect(html).toContain('Prossime partenze da adesso');
     expect(html).toContain('Linea 12');
     expect(html).toContain('Apri PDF');
   });

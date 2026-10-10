@@ -2,6 +2,7 @@ const TIME_RE = /\b\d{2}\.\d{2}\b/g;
 const TIME_OR_DASH_RE = /^(\d{2}\.\d{2}|-)$/;
 const ROW_TOLERANCE = 0.75;
 const COLUMN_TOLERANCE = 12;
+const SERVICE_HEADER_TOLERANCE = 28;
 
 function normalizeTime(value) {
   return value.replace('.', ':');
@@ -66,6 +67,7 @@ function parseItemRows(pageItems) {
       }
 
       return {
+        y: items[0].y,
         stopName: normalizeStopLabel(stopName),
         cells: items
           .slice(firstCellIndex)
@@ -158,14 +160,14 @@ function alignRowTimes(row, columnAnchors) {
   };
 }
 
-function buildTripsFromRows(parsedRows, { pageNumber, lineId, direction, dayType }) {
+function buildTripsFromRows(parsedRows, { pageNumber, lineId, direction, dayType, columnDayTypes = [] }) {
   if ('times' in parsedRows[0]) {
     const tripCount = parsedRows.reduce((max, row) => Math.max(max, row.times.length), 0);
 
     return Array.from({ length: tripCount }, (_, tripIndex) => ({
       lineId,
       direction,
-      dayType,
+      dayType: columnDayTypes[tripIndex] ?? dayType,
       sourcePage: pageNumber,
       stops: parsedRows
         .map((row) => ({
@@ -183,7 +185,7 @@ function buildTripsFromRows(parsedRows, { pageNumber, lineId, direction, dayType
   return Array.from({ length: tripCount }, (_, tripIndex) => ({
     lineId,
     direction,
-    dayType,
+      dayType: columnDayTypes[tripIndex] ?? dayType,
     sourcePage: pageNumber,
     stops: alignedRows
       .map((row) => ({
@@ -192,6 +194,38 @@ function buildTripsFromRows(parsedRows, { pageNumber, lineId, direction, dayType
       }))
       .filter((stop) => stop.time),
   })).filter((trip) => trip.stops.length > 1);
+}
+
+function serviceDayType(value) {
+  const label = value.toUpperCase().replace(/\s+/g, ' ').trim();
+
+  if (/\bSAB(?:ATO)?\b/.test(label)) return 'sabato';
+  if (/\bSC(?:OLASTICO)?\b/.test(label)) return 'scolastico';
+  if (/\b(?:LV|M)\b/.test(label)) return 'feriale';
+  if (/\bFESTIVO\b/.test(label)) return 'festivo';
+  return null;
+}
+
+function inferColumnDayTypes(pageItems, sectionRows, anchors, fallbackDayType) {
+  if (!sectionRows.length || !sectionRows[0].cells) {
+    return [];
+  }
+
+  const firstRowY = sectionRows[0].y;
+  const headers = pageItems
+    .map((item) => ({ ...item, dayType: serviceDayType(item.str) }))
+    .filter((item) => (
+      item.dayType
+      && item.y > firstRowY
+      && item.y - firstRowY <= SERVICE_HEADER_TOLERANCE
+    ));
+
+  return anchors.map((anchor) => {
+    const match = headers
+      .filter((item) => Math.abs(item.x - anchor) <= COLUMN_TOLERANCE)
+      .sort((left, right) => (left.y - firstRowY) - (right.y - firstRowY))[0];
+    return match?.dayType ?? fallbackDayType;
+  });
 }
 
 export function parseSharedTimetable(
@@ -223,6 +257,12 @@ export function parseSharedTimetable(
       lineId,
       direction,
       dayType: defaultDayType,
+      columnDayTypes: inferColumnDayTypes(
+        pageItems ?? [],
+        sectionRows,
+        buildColumnAnchors(sectionRows),
+        defaultDayType,
+      ),
     }),
   );
 }

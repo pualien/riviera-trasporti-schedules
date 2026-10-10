@@ -3,6 +3,7 @@ import {
   BRAND_NAME,
   BRAND_SITE_URL,
   FEEDBACK_FORM_URL,
+  OFFICIAL_TIMETABLE_PDF_URL,
   ROUTES_INDEX_URL,
 } from '../lib/brand.js';
 import { buildDataFreshnessViewModel } from '../lib/dataFreshness.js';
@@ -93,6 +94,7 @@ function renderTaxiDirectory(taxiDirectory, { t, mode }) {
     titleKey: 'taxi.directoryTitle',
     bodyKey: 'taxi.directoryBody',
     className: 'taxi-directory-section',
+    sectionId: 'taxi-directory',
   });
 
   if (mode !== 'collapsed' || !taxiDirectory.length) {
@@ -107,6 +109,23 @@ function renderTaxiDirectory(taxiDirectory, { t, mode }) {
       </summary>
       ${directory}
     </details>
+  `;
+}
+
+function resolveOfficialPdfUrl(datasetInfo, configuredUrl) {
+  return configuredUrl
+    || datasetInfo?.source?.referencePdf?.url
+    || (datasetInfo?.source?.type === 'pdf' ? datasetInfo?.source?.url : '')
+    || OFFICIAL_TIMETABLE_PDF_URL;
+}
+
+function renderMobileQuickActions({ t, officialPdfUrl }) {
+  return `
+    <nav class="mobile-quick-actions" aria-label="${escapeHtml(t('tabs.label'))}">
+      <a href="#route-search">${escapeHtml(t('shell.quickRoutes'))}</a>
+      <a href="#taxi-directory">${escapeHtml(t('shell.quickTaxi'))}</a>
+      <a href="${escapeHtml(officialPdfUrl)}" target="_blank" rel="noreferrer">${escapeHtml(t('shell.quickPdf'))}</a>
+    </nav>
   `;
 }
 
@@ -130,14 +149,17 @@ export function renderShell(
     adSlots = {},
     datasetInfo = null,
     pwaControl = '',
+    officialPdfUrl = '',
     taxiDirectory = [],
     taxiDirectoryMode = 'open',
     tabNavigation = '',
     t = createTranslator('en'),
   } = {},
 ) {
+  const resolvedOfficialPdfUrl = resolveOfficialPdfUrl(datasetInfo, officialPdfUrl);
+
   return `
-    <div class="app-shell">
+    <main class="app-shell">
       <header class="topbar">
         <div class="brand-lockup">
           <a class="brand-wordmark" href="${APP_SITE_URL}" aria-label="${BRAND_NAME}">
@@ -177,6 +199,7 @@ export function renderShell(
         content: adSlots.utility,
       })}
       ${renderTaxiDirectory(taxiDirectory, { t, mode: taxiDirectoryMode })}
-    </div>
+      ${renderMobileQuickActions({ t, officialPdfUrl: resolvedOfficialPdfUrl })}
+    </main>
   `;
 }

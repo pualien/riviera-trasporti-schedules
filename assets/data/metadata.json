@@ -1,25 +1,15 @@
 {
   "source": {
-    "type": "gtfs",
-    "title": "Regione Liguria GTFS planned-service feed",
-    "url": "https://dati.regione.liguria.it/dataset/ds-639",
-    "publisher": "RIVIERA TRASPORTI S.P.A.",
-    "releasedAt": null,
-    "validFrom": "2026-06-01",
-    "validUntil": "2026-09-13",
-    "referencePdf": null
+    "type": "pdf",
+    "title": "Orario Generale Invernale 2026-2027, aggiornato al 9 ottobre 2026",
+    "url": "https://rivieratrasporti.it/images/_ORARI/2026-2027_Orario_Invernale_Generale_1.1%C2%AAVer_dal_14-09-2026.pdf",
+    "effectiveDate": "2026-09-14",
+    "validUntil": "2027-06-13",
+    "updatedAt": "2026-10-09"
   },
-  "builtAt": "2026-07-07T16:06:05.593Z",
+  "builtAt": "2026-10-10T18:24:30.747Z",
   "coverage": {
-    "routeCount": 76,
-    "stopCount": 2724,
-    "tripCount": 3226,
-    "stopTimeCount": 143002
-  },
-  "quality": {
-    "status": "fresh",
-    "warningCount": 0,
-    "errorCount": 0,
-    "reportUrl": "./assets/data/data-quality.json"
+    "indexedPageCount": 92,
+    "manifestPageCount": 92
   }
 }

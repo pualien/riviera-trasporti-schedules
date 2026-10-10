@@ -233,7 +233,8 @@ function renderPwaHead(site) {
   <link rel="icon" type="image/png" sizes="16x16" href="${escapeAttribute(publicPath(site, '/assets/brand/favicon-16x16.png'))}">
   <link rel="apple-touch-icon" href="${escapeAttribute(publicPath(site, '/assets/brand/apple-touch-icon.png'))}">
   <link rel="manifest" href="${escapeAttribute(publicPath(site, '/manifest.webmanifest'))}">
-  <meta name="theme-color" content="#eb4c60">`;
+  <meta name="theme-color" content="#eb4c60">
+  <meta name="color-scheme" content="light">`;
 }
 
 function renderSeoServiceWorkerScript(site) {
@@ -455,6 +456,16 @@ function routeGroupsByOrigin(routes = []) {
     }));
 }
 
+function firstDepartureTime(routes = []) {
+  const times = routes
+    .flatMap((route) => route.departures ?? [])
+    .map((departure) => departure.departureTime)
+    .filter(Boolean)
+    .sort(compareText);
+
+  return times[0] ?? '';
+}
+
 export function renderRouteIndexPageHtml({ site, metadata, routes = [] }) {
   const path = '/routes/';
   const title = 'Percorsi bus Riviera Trasporti';
@@ -464,10 +475,10 @@ export function renderRouteIndexPageHtml({ site, metadata, routes = [] }) {
   const routeGroups = groups.length
     ? groups
       .map(
-        (group) => `    <section>
-      <h2>Da ${escapeHtml(group.fromLabel)}</h2>
-      <ul>
-${formatList(group.routes, (route) => {
+        (group) => {
+          const directRouteCount = group.routes.length;
+          const nextDeparture = firstDepartureTime(group.routes);
+          const routeLinks = group.routes.map((route) => {
   const href = publicPath(site, pagePath('routes', route.slug));
   const lines = (route.lineIds ?? []).map(lineLabel).join(', ');
   const departureCount = Number(route.departureCount ?? 0);
@@ -476,10 +487,28 @@ ${formatList(group.routes, (route) => {
     departureCount ? pluralizeItalian(departureCount, 'partenza', 'partenze') : '',
   ].filter(Boolean).join(' · ');
 
-  return `<a href="${escapeAttribute(href)}">${escapeHtml(route.fromLabel)} - ${escapeHtml(route.toLabel)}</a>${meta ? ` <span>${escapeHtml(meta)}</span>` : ''}`;
-})}
-      </ul>
-    </section>`,
+  return `        <a class="route-card-link" href="${escapeAttribute(href)}">
+          <span class="route-card-route">${escapeHtml(route.fromLabel)} - ${escapeHtml(route.toLabel)}</span>
+          ${meta ? `<span class="route-card-meta">${escapeHtml(meta)}</span>` : ''}
+        </a>`;
+}).join('\n');
+
+          return `    <section class="route-origin-card" data-route-count="${escapeAttribute(directRouteCount)}">
+      <div class="route-card-head">
+        <div>
+          <p class="eyebrow">Partenza</p>
+          <h2>Da ${escapeHtml(group.fromLabel)}</h2>
+        </div>
+        <div class="route-card-summary">
+          <p class="route-card-count">${escapeHtml(pluralizeItalian(directRouteCount, 'percorso diretto', 'percorsi diretti'))}</p>
+          ${nextDeparture ? `<p class="route-card-next">Prima partenza ${escapeHtml(nextDeparture)}</p>` : ''}
+        </div>
+      </div>
+      <div class="route-card-list">
+${routeLinks}
+      </div>
+    </section>`;
+        },
       )
       .join('\n')
     : `    <section>
