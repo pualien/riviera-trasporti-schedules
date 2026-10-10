@@ -133,6 +133,7 @@ function expectContrast(results, minimum) {
 
 test('keeps route results and metadata readable', async ({ page }) => {
   await page.goto(SEARCH_ROUTE);
+  await expect(page.locator('.summary-card')).toBeVisible();
 
   const results = await readContrast(page, [
     { name: 'summary service day', selector: '.summary-service-day' },
